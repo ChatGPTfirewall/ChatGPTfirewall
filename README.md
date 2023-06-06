@@ -1,1 +1,1 @@
-# forschungsprojekt-ccc-wiki
+# forschungsprojekt-ccc
