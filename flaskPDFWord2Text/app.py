@@ -4,11 +4,16 @@ import textract
 from docx import Document
 import psycopg2
 
+import boto3
+
 app = Flask(__name__)
 
 # Konfiguration für die PostgreSQL-Datenbank
 database_connection = "dbname=datadocs user=robert password=postgres host=localhost port=5432"
 
+# AWS-Anmeldeinformationen konfigurieren
+session = boto3.Session(aws_access_key_id='', aws_secret_access_key='', region_name='eu-west-2')
+rekognition = session.client('rekognition')
 
 def extract_text_from_pdf(file_path):
     text = textract.process(file_path, method='pdfminer')
@@ -21,6 +26,15 @@ def extract_text_from_word(file_path):
     text = '\n'.join(paragraphs)
     return text
 
+# Funktion zum Analysieren eines Bildes und Extrahieren von Labels
+def extract_text_from_image(image_path):
+    with open(image_path, 'rb') as image_file:
+        image_bytes = image_file.read()
+
+    response = rekognition.detect_labels(Image={'Bytes': image_bytes}, MaxLabels=10, MinConfidence=75)
+
+    labels = [label['Name'] for label in response['Labels']]
+    return labels
 
 def insert_document_to_database(filename, text):
     conn = psycopg2.connect(database_connection)
@@ -53,6 +67,8 @@ def upload():
         text = extract_text_from_pdf(temp_file_path)
     elif file_ext == '.docx':
         text = extract_text_from_word(temp_file_path)
+    elif file_ext == '.jpg' or file_ext == '.png':
+        text = extract_text_from_image(temp_file_path)
     else:
         text = ''
 
