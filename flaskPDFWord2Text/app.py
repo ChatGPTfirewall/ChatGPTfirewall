@@ -3,16 +3,24 @@ import os
 import textract
 from docx import Document
 import psycopg2
-
+from dotenv import load_dotenv
 import boto3
+from pathlib import Path
 
 app = Flask(__name__)
+dotenv_path = Path('.env')
+load_dotenv(dotenv_path)
 
+DB_HOST=os.getenv('DB_HOST')
+DB_PORT=os.getenv('DB_PORT')
+DB_USER=os.getenv('DB_USER')
+DB_NAME=os.getenv('DB_NAME')
+DB_PASSWORD=os.getenv('DB_PASSWORD')
 # Konfiguration für die PostgreSQL-Datenbank
-database_connection = "dbname=datadocs user=robert password=postgres host=localhost port=5432"
+database_connection = f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} host={DB_HOST} port=5432"
 
 # AWS-Anmeldeinformationen konfigurieren
-session = boto3.Session(aws_access_key_id='', aws_secret_access_key='', region_name='eu-west-2')
+session = boto3.Session(aws_access_key_id=os.getenv('AWS_KEY'), aws_secret_access_key=os.getenv('AWS_SECRET'), region_name='eu-west-2')
 rekognition = session.client('rekognition')
 
 def extract_text_from_pdf(file_path):
@@ -79,6 +87,21 @@ def upload():
     os.remove(temp_file_path)
 
     return 'Dokument erfolgreich hochgeladen und Text extrahiert.'
+
+
+@app.route('/all')
+def show_all_documents():
+    database_connection = "dbname=datadocs user=robert password=postgres host=localhost port=5432"
+    conn = psycopg2.connect(database_connection)
+    cursor = conn.cursor()
+    query = "SELECT * FROM documents;"
+    cursor.execute(query)
+    documents = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template('all_documents.html', documents=documents)
 
 
 if __name__ == '__main__':
