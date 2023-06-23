@@ -12,6 +12,7 @@ import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanel, AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
+import { UploadButton } from "../../components/UploadButton";
 
 const Chat = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -124,11 +125,18 @@ const Chat = () => {
         setSelectedAnswer(index);
     };
 
+    const handleUpload = event => {
+        const fileUploaded = event.target.files[0];
+        console.log(fileUploaded)
+        fileUploaded
+      };
+
     return (
         <div className={styles.container}>
             <div className={styles.commandsContainer}>
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                 <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                <UploadButton className={styles.commandButton} onClick={handleUpload}/>
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
