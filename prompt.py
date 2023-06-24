@@ -6,7 +6,7 @@ from simple_elmo import ElmoModel
 from termcolor import colored
 
 
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('de_core_news_sm')
 
 print(colored("Type Question (and press Enter):", "green"))
 text = input()
@@ -24,7 +24,7 @@ print("#")
 model = ElmoModel()
 
 # load model (201.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-model.load("201")
+model.load("/Users/robert/Documents/repoHSFlensburg/Forschungsprojekt/confidential-cloud-computing/repo/201")
 
 # create vectors
 ################
