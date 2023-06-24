@@ -61,6 +61,17 @@ export async function chatApi(options: ChatRequest): Promise<AskResponse> {
     return parsedResponse;
 }
 
+export async function uploadFiles(data: FormData): Promise<any> {
+    const response = await fetch("/upload", {
+        method: 'POST',
+        body: data,
+    }).then((response) => {
+        response.json().then((body) => {
+            body
+        })
+    })
+}
+
 export function getCitationFilePath(citation: string): string {
     return `/content/${citation}`;
 }

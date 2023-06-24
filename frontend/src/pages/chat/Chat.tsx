@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Approaches, AskResponse, ChatRequest, ChatTurn } from "../../api";
+import { chatApi, Approaches, AskResponse, ChatRequest, ChatTurn, uploadFiles } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -125,18 +125,19 @@ const Chat = () => {
         setSelectedAnswer(index);
     };
 
-    const handleUpload = event => {
-        const fileUploaded = event.target.files[0];
-        console.log(fileUploaded)
-        fileUploaded
-      };
+    const handleUpload = async (event: any) => {
+        const data = new FormData();
+        data.append('files', event.target.files);
+
+        const result = await uploadFiles(data);
+    };
 
     return (
         <div className={styles.container}>
             <div className={styles.commandsContainer}>
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                 <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
-                <UploadButton className={styles.commandButton} onClick={handleUpload}/>
+                <UploadButton className={styles.commandButton} onClick={handleUpload} />
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>

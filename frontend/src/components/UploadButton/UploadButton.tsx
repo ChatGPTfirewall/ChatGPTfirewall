@@ -13,17 +13,16 @@ interface Props {
 export const UploadButton = ({ className, disabled, onClick }: Props) => {
 
     const hiddenFileInput = React.useRef(null);
-  
+
     const handleClick = event => {
-    hiddenFileInput.current.click();
+        hiddenFileInput.current.click();
     };
 
     return (
         <div className={`${styles.container} ${className ?? ""} ${disabled && styles.disabled}`} onClick={handleClick}>
-                  <ArrowUpload24Regular />
+            <ArrowUpload24Regular />
             <Text>{"Upload"}</Text>
-
-            <input type="file" style={{display:'none'}}  ref={hiddenFileInput} onChange={onClick} /> 
+            <input type="file" style={{ display: 'none' }} ref={hiddenFileInput} onChange={onClick} multiple accept=".doc,.docx,.pdf,.txt" />
         </div>
     );
 };
