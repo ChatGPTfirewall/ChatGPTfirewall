@@ -2,7 +2,7 @@ from qdrant_client import QdrantClient
 import numpy as np
 from pprint import pprint
 import spacy
-from simple_elmo import ElmoModel
+from sentence_transformers import SentenceTransformer, util
 from termcolor import colored
 
 
@@ -19,20 +19,17 @@ print(colored(token,"red"))
 print("#")
 
 
-# Init Elmo
+# Init EMB-Model
 ############
-model = ElmoModel()
-
-# load model (193.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-model.load("193")
+model = SentenceTransformer('multi-qa-MiniLM-L6-cos-v1')
 
 # create vectors
 ################
-pprint(token)
+#pprint(token)
 
-vector = model.get_elmo_vectors(token)
-print(colored(vector,"red"))
-print("x")
+vector = model.encode(token)
+#print(colored(vector,"red"))
+#print("x")
 
 #client = QdrantClient(host="localhost", port=6333)
 client = QdrantClient(
@@ -40,9 +37,8 @@ client = QdrantClient(
     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
 )
 
-#query_vector = np.random.rand(1024)
 hits = client.search(
-    collection_name="my_collection",
+    collection_name="my_collection2",
     query_vector=vector[0].tolist(),
     limit=5  # Return 5 closest points
 )

@@ -2,7 +2,7 @@ from qdrant_client import QdrantClient
 from pprint import pprint
 import spacy
 import tensorflow as tf
-from simple_elmo import ElmoModel
+from sentence_transformers import SentenceTransformer, util
 from termcolor import colored
 
 from flask import Flask, request, jsonify
@@ -18,11 +18,9 @@ app = Flask(__name__)
 #
 #########################################################################################
 nlp = spacy.load('en_core_web_lg')
-graph = tf.Graph()
-with graph.as_default() as elmo_graph:
-    model = ElmoModel()
-    # load model (193.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-    model.load("193")
+model = SentenceTransformer('multi-qa-MiniLM-L6-cos-v1')
+
+
 
 #client = QdrantClient(host="localhost", port=6333)
 client = QdrantClient(
@@ -64,11 +62,10 @@ def getCoontext():
     print("1")
     #model.load("193")
     print(model )
-    with graph.as_default():
-            vector = model.get_elmo_vector_average(token)
+    vector = model.encode(token)
     print("1")
     hits = client.search (
-        collection_name="my_collection",
+        collection_name="my_collection2",
         query_vector=vector[0].tolist(),
         limit=5  # Return 5 closest points
     )
