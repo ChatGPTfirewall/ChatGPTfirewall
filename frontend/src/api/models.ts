@@ -31,11 +31,20 @@ export type AskResponse = {
 
 export type ChatTurn = {
     user: string;
-    bot?: string;
+    bot?: Response;
 };
 
 export type ChatRequest = {
-    history: ChatTurn[];
-    approach: Approaches;
-    overrides?: AskRequestOverrides;
-};
+    content: string;
+}
+
+export type Fact = {
+    content: string;
+    file_path: string;
+    score: number;
+}
+
+export type Response = {
+    facts: Fact[];
+    error?: string;
+}

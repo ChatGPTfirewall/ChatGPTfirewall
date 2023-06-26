@@ -1,52 +1,27 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { getCitationFilePath } from "../../api";
+import { Fact } from "../../api";
 
 type HtmlParsedAnswer = {
-    answerHtml: string;
+    answersHtml: string;
     citations: string[];
-    followupQuestions: string[];
+    scores: number[];
 };
 
-export function parseAnswerToHtml(answer: string, onCitationClicked: (citationFilePath: string) => void): HtmlParsedAnswer {
+export function parseAnswerToHtml(answer: Fact[]): HtmlParsedAnswer {
+    const answersHtml: string = ""
     const citations: string[] = [];
-    const followupQuestions: string[] = [];
+    const scores: number[] = []
 
-    // Extract any follow-up questions that might be in the answer
-    let parsedAnswer = answer.replace(/<<([^>>]+)>>/g, (match, content) => {
-        followupQuestions.push(content);
-        return "";
-    });
+console.log(answer)
 
-    // trim any whitespace from the end of the answer after removing follow-up questions
-    parsedAnswer = parsedAnswer.trim();
-
-    const parts = parsedAnswer.split(/\[([^\]]+)\]/g);
-
-    const fragments: string[] = parts.map((part, index) => {
-        if (index % 2 === 0) {
-            return part;
-        } else {
-            let citationIndex: number;
-            if (citations.indexOf(part) !== -1) {
-                citationIndex = citations.indexOf(part) + 1;
-            } else {
-                citations.push(part);
-                citationIndex = citations.length;
-            }
-
-            const path = getCitationFilePath(part);
-
-            return renderToStaticMarkup(
-                <a className="supContainer" title={part} onClick={() => onCitationClicked(path)}>
-                    <sup>{citationIndex}</sup>
-                </a>
-            );
-        }
-    });
+    let result = answer.reduce((acc, fact) => {
+        acc + "," + fact.content
+    }, "")
 
     return {
-        answerHtml: fragments.join(""),
+        answerHtml: result,
         citations,
-        followupQuestions
+        scores
     };
 }
