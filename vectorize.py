@@ -6,6 +6,7 @@ from pathlib import Path
 from qdrant_client import QdrantClient
 import numpy as np
 from qdrant_client.models import PointStruct
+import psycopg2
 
 class Text:
     path = ""
@@ -32,7 +33,21 @@ vectorlist = []
 
 # collect txt
 ##############
-filelist = list( Path( './repo' ).glob('**/*.txt') )
+# read from db
+database_connection = "dbname=datadocs user=robert password=postgres host=localhost port=5432"
+conn = psycopg2.connect(database_connection)
+cursor = conn.cursor()
+
+# example 
+query = "SELECT * FROM documents;"
+cursor.execute(query)
+documents = cursor.fetchall()
+
+cursor.close()
+conn.close()
+
+#filelist = list( Path( './repo' ).glob('**/*.txt') )
+filelist = list(documents)
 
 for file in filelist:
     tmpLine = Text()
@@ -42,13 +57,13 @@ for file in filelist:
 
 # tokenize sentences
 ####################
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('de_core_news_sm')
 
 for file in vectorlist:
-    with open(file.path) as f:
-        text = f.read()
+    #with open(file.path) as f:
+    #    text = f.read()
     #print(text)
-    toks = nlp(text)
+    toks = nlp(str(documents))
     sentences = [[w.text for w in s] for s in toks.sents]
     file.token = sentences
     print("#")
@@ -59,7 +74,7 @@ for file in vectorlist:
 model = ElmoModel()
 
 # load model (201.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-model.load("201")
+model.load("/Users/robert/Documents/repoHSFlensburg/Forschungsprojekt/confidential-cloud-computing/repo/201")
 
 # create vectors
 ################
