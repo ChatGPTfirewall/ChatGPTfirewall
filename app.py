@@ -25,7 +25,7 @@ with graph.as_default() as elmo_graph:
     model.load("193")
 
 #client = QdrantClient(host="localhost", port=6333)
-qdrant_client = QdrantClient(
+client = QdrantClient(
     url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
 )

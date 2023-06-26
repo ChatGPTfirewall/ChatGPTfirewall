@@ -1,0 +1,8 @@
+201
+.vscode
+.elixir_ls
+_build
+.vite
+deps
+node_modules
+.env
