@@ -9,18 +9,18 @@ type HtmlParsedAnswer = {
 };
 
 export function parseAnswerToHtml(answer: Fact[]): HtmlParsedAnswer {
-    const answersHtml: string = ""
+    let answersHtml: string = ""
     const citations: string[] = [];
     const scores: number[] = []
 
-console.log(answer)
-
-    let result = answer.reduce((acc, fact) => {
-        acc + "," + fact.content
-    }, "")
+    for (var fact of answer) {
+        answersHtml = answersHtml + "," + fact.content
+      }
+    
+    console.log(answersHtml)
 
     return {
-        answerHtml: result,
+        answersHtml: answersHtml,
         citations,
         scores
     };

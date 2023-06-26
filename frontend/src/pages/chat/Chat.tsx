@@ -46,8 +46,8 @@ const Chat = () => {
         try {
             const request: ChatRequest = {
                 content: question,
-
             };
+            
             const result = await chatApi(request);
             setAnswers([...answers, [question, result]]);
         } catch (e) {
@@ -187,18 +187,6 @@ const Chat = () => {
                         />
                     </div>
                 </div>
-
-                {answers.length > 0 && activeAnalysisPanelTab && (
-                    <AnalysisPanel
-                        className={styles.chatAnalysisPanel}
-                        activeCitation={activeCitation}
-                        onActiveTabChanged={x => onToggleTab(x, selectedAnswer)}
-                        citationHeight="810px"
-                        answer={answers[selectedAnswer][1]}
-                        activeTab={activeAnalysisPanelTab}
-                    />
-                )}
-
                 <Panel
                     headerText="Configure answer generation"
                     isOpen={isConfigPanelOpen}

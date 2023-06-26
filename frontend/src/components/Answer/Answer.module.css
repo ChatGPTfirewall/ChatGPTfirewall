@@ -133,3 +133,7 @@ sup {
     content: "";
     animation: loading 1s infinite;
 }
+
+.gap{
+    margin-bottom: 32px;
+}

@@ -27,9 +27,6 @@ export const Answer = ({
     onFollowupQuestionClicked,
     showFollowupQuestions
 }: Props) => {
-    const parsedAnswer = useMemo(() => parseAnswerToHtml(answer.facts), [answer]);
-
-    const sanitizedAnswerHtml = DOMPurify.sanitize(parsedAnswer.answerHtml);
 
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
@@ -56,24 +53,23 @@ export const Answer = ({
             </Stack.Item>
 
             <Stack.Item grow>
-                <div className={styles.answerText} dangerouslySetInnerHTML={{ __html: sanitizedAnswerHtml }}></div>
+                {answer.facts.map((fact, index) => (
+                    <div>
+                        <span className={styles.citationLearnMore}>Fact {index+1}:</span>
+                        <div className={styles.answerText}>{fact.content}</div>
+                        <span className={styles.citationLearnMore}>Citation:</span>
+                        <a key={index} className={styles.citation} title={fact.file_path} onClick={() => onCitationClicked(getCitationFilePath(fact.file_path))}>
+                            {fact.file_path}
+                        </a>
+                        <br></br>
+                        <span className={styles.citationLearnMore}>Score:</span>
+                        <div className={styles.gap}>{fact.score}</div>
+                    </div>
+                ))}
+
             </Stack.Item>
 
-            {!!parsedAnswer.citations.length && (
-                <Stack.Item>
-                    <Stack horizontal wrap tokens={{ childrenGap: 5 }}>
-                        <span className={styles.citationLearnMore}>Citations:</span>
-                        {parsedAnswer.citations.map((x, i) => {
-                            const path = getCitationFilePath(x);
-                            return (
-                                <a key={i} className={styles.citation} title={x} onClick={() => onCitationClicked(path)}>
-                                    {`${++i}. ${x}`}
-                                </a>
-                            );
-                        })}
-                    </Stack>
-                </Stack.Item>
-            )}
+
         </Stack>
     );
 };
