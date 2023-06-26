@@ -1,3 +1,11 @@
+201
+.vscode
+.elixir_ls
+_build
+.vite
+deps
+node_modules
+.env
 # Azure az webapp deployment details
 .azure
 *_env
