@@ -4,6 +4,7 @@ from simple_elmo import ElmoModel
 import spacy
 from pathlib import Path
 from qdrant_client import QdrantClient
+from qdrant_client.http.models import Distance, VectorParams
 import numpy as np
 from qdrant_client.models import PointStruct
 import psycopg2
@@ -34,7 +35,7 @@ vectorlist = []
 # collect txt
 ##############
 # read from db
-database_connection = "dbname=datadocs user=robert password=postgres host=localhost port=5432"
+database_connection = "dbname=postgres user=postgres password=postgres host=localhost port=5432"
 conn = psycopg2.connect(database_connection)
 cursor = conn.cursor()
 
@@ -57,7 +58,7 @@ for file in filelist:
 
 # tokenize sentences
 ####################
-nlp = spacy.load('de_core_news_sm')
+nlp = spacy.load('en_core_web_lg')
 
 for file in vectorlist:
     #with open(file.path) as f:
@@ -74,7 +75,7 @@ for file in vectorlist:
 model = ElmoModel()
 
 # load model (201.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-model.load("/Users/robert/Documents/repoHSFlensburg/Forschungsprojekt/confidential-cloud-computing/repo/201")
+model.load("193")
 
 # create vectors
 ################
@@ -86,6 +87,11 @@ for text in vectorlist:
 # save vector and payload in qdrant
 ###################################
 client = QdrantClient(host="localhost", port=6333)
+
+client.recreate_collection(
+    collection_name="my_collection",
+    vectors_config=VectorParams(size=1024, distance=Distance.DOT),
+)
 
 idx = 1
 for file in vectorlist:
@@ -109,3 +115,5 @@ for file in vectorlist:
         )
         x = x+1
     print(x)
+
+print("Done")

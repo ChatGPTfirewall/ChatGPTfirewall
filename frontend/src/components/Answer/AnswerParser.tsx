@@ -16,8 +16,7 @@ export function parseAnswerToHtml(answer: Fact[]): HtmlParsedAnswer {
     for (var fact of answer) {
         answersHtml = answersHtml + "," + fact.content
       }
-    
-    console.log(answersHtml)
+
 
     return {
         answersHtml: answersHtml,

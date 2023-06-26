@@ -47,7 +47,7 @@ const Chat = () => {
             const request: ChatRequest = {
                 content: question,
             };
-            
+
             const result = await chatApi(request);
             setAnswers([...answers, [question, result]]);
         } catch (e) {
@@ -118,7 +118,7 @@ const Chat = () => {
 
     const handleUpload = async (event: any) => {
         const data = new FormData();
-        data.append('files', event.target.files);
+        data.append('files', event.target.files[0]);
 
         const result = await uploadFiles(data);
     };

@@ -4,7 +4,7 @@ import textract
 from docx import Document
 import psycopg2
 from dotenv import load_dotenv
-import boto3
+# import boto3
 from pathlib import Path
 
 app = Flask(__name__)
@@ -20,8 +20,8 @@ DB_PASSWORD=os.getenv('DB_PASSWORD')
 database_connection = f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} host={DB_HOST} port=5432"
 
 # AWS-Anmeldeinformationen konfigurieren
-session = boto3.Session(aws_access_key_id=os.getenv('AWS_KEY'), aws_secret_access_key=os.getenv('AWS_SECRET'), region_name='eu-west-2')
-rekognition = session.client('rekognition')
+# session = boto3.Session(aws_access_key_id=os.getenv('AWS_KEY'), aws_secret_access_key=os.getenv('AWS_SECRET'), region_name='eu-west-2')
+# recognition = session.client('recognition')
 
 def extract_text_from_pdf(file_path):
     text = textract.process(file_path, method='pdfminer')
@@ -39,7 +39,7 @@ def extract_text_from_image(image_path):
     with open(image_path, 'rb') as image_file:
         image_bytes = image_file.read()
 
-    response = rekognition.detect_labels(Image={'Bytes': image_bytes}, MaxLabels=10, MinConfidence=75)
+    response = recognition.detect_labels(Image={'Bytes': image_bytes}, MaxLabels=10, MinConfidence=75)
 
     labels = [label['Name'] for label in response['Labels']]
     return labels
@@ -91,7 +91,7 @@ def upload():
 
 @app.route('/all')
 def show_all_documents():
-    database_connection = "dbname=datadocs user=robert password=postgres host=localhost port=5432"
+    database_connection = "dbname=postgres user=postgres password=postgres host=localhost port=5432"
     conn = psycopg2.connect(database_connection)
     cursor = conn.cursor()
     query = "SELECT * FROM documents;"

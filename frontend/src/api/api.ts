@@ -31,35 +31,30 @@ export async function askApi(options: AskRequest): Promise<Response> {
 }
 
 export async function chatApi(options: ChatRequest): Promise<Response> {
-    // const response = await fetch("/chat", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //         content: options.content
-    //     })
-    // });
+    const response = await fetch("/api/context?content=" + options.content, {
+        method: "GET",
+    });
 
-    const parsedResponse: Response = { facts: [{ content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", file_path: "bla/test.pdf", score: 50.6 }, { content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", file_path: "bla/test2.pdf", score: 51.6 }] }
+    const parsedResponse: Response = await response.json();
 
-    // await response.json();
+    if (response.status > 299 || !response.ok) {
+        throw Error(parsedResponse.error || "Unknown error");
+    }
 
-    // if (response.status > 299 || !response.ok) {
-    //     throw Error(parsedResponse.error || "Unknown error");
-    // }
     return parsedResponse;
 }
 
-export async function uploadFiles(data: FormData): Promise<any> {
+export async function uploadFiles(data: any): Promise<any> {
+
     const response = await fetch("/upload", {
         method: 'POST',
         body: data,
-    }).then((response) => {
-        response.json().then((body) => {
-            body
-        })
-    })
+        headers: {
+            'content-type': data.type,
+            'content-length': `${data.size}`,
+        },
+    }).then((response) => response.json())
+        .then((data) => console.log(data))
 }
 
 export function getCitationFilePath(citation: string): string {

@@ -5,9 +5,19 @@ import tensorflow as tf
 from simple_elmo import ElmoModel
 from termcolor import colored
 
-from flask import Flask, request, jsonify
+from flask import Flask, request
+import os
+import textract
+from docx import Document
+import psycopg2
+from dotenv import load_dotenv
+# import boto3
+from pathlib import Path
 
 app = Flask(__name__)
+
+dotenv_path = Path('.env')
+load_dotenv(dotenv_path)
 
 #########################################################################################
 # Init
@@ -24,11 +34,11 @@ with graph.as_default() as elmo_graph:
     # load model (193.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
     model.load("193")
 
-#client = QdrantClient(host="localhost", port=6333)
-client = QdrantClient(
-    url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
-    api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
-)
+client = QdrantClient(host="localhost", port=6333)
+# client = QdrantClient(
+#     url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
+#     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
+# )
 
 #########################################################################################
 # GET: Context
@@ -51,7 +61,7 @@ client = QdrantClient(
 #
 #########################################################################################
 @app.route("/api/context" , methods=['GET'])
-def getCoontext():
+def getContext():
     # get contet from request 
     content = request.args.get('content')
     print(content)
@@ -86,7 +96,7 @@ def getCoontext():
 
     return answer
 
-# Eample answer JSON
+# Example answer JSON
 # {
 #   "facts": [
 #     {
@@ -116,3 +126,64 @@ def getCoontext():
 #     }
 #   ]
 # }
+
+# Upload route
+
+DB_HOST=os.getenv('DB_HOST')
+DB_PORT=os.getenv('DB_PORT')
+DB_USER=os.getenv('DB_USER')
+DB_NAME=os.getenv('DB_NAME')
+DB_PASSWORD=os.getenv('DB_PASSWORD')
+# Konfiguration für die PostgreSQL-Datenbank
+database_connection = f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} host={DB_HOST} port=5432"
+
+# AWS-Anmeldeinformationen konfigurieren
+# session = boto3.Session(aws_access_key_id=os.getenv('AWS_KEY'), aws_secret_access_key=os.getenv('AWS_SECRET'), region_name='eu-west-2')
+# recognition = session.client('recognition')
+
+def extract_text_from_pdf(file_path):
+    text = textract.process(file_path, method='pdfminer')
+    return text.decode('utf-8')
+
+
+def extract_text_from_word(file_path):
+    doc = Document(file_path)
+    paragraphs = [p.text for p in doc.paragraphs]
+    text = '\n'.join(paragraphs)
+    return text
+
+def insert_document_to_database(filename, text):
+    conn = psycopg2.connect(database_connection)
+    cursor = conn.cursor()
+    insert_query = "INSERT INTO documents (filename, text) VALUES (%s, %s);"
+    cursor.execute(insert_query, (filename, text))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    uploaded_file = request.files['file']
+    filename = uploaded_file.filename
+
+    # Speichere das hochgeladene Dokument temporär lokal
+    temp_file_path = os.path.join(app.root_path, 'temp', filename)
+    uploaded_file.save(temp_file_path)
+
+    # Extrahiere den Text aus dem hochgeladenen Dokument
+    file_ext = os.path.splitext(filename)[1].lower()
+
+    if file_ext == '.pdf':
+        text = extract_text_from_pdf(temp_file_path)
+    elif file_ext == '.docx':
+        text = extract_text_from_word(temp_file_path)
+    else:
+        text = ''
+
+    # Füge das Dokument und den extrahierten Text zur Datenbank hinzu
+    insert_document_to_database(filename, text)
+
+    # Lösche das temporäre Dokument
+    os.remove(temp_file_path)
+
+    return 'Dokument erfolgreich hochgeladen und Text extrahiert.'
