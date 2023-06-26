@@ -1,15 +1,12 @@
 # Python demo script for vectorizing txt files
 
-print("LOAD")
-from simple_elmo import ElmoModel
+from sentence_transformers import SentenceTransformer, util
 import spacy
 from pathlib import Path
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, VectorParams
 import numpy as np
 from qdrant_client.models import PointStruct
-
-pprint("GO")
+from pprint import pprint
 
 class Text:
     path = ""
@@ -49,26 +46,31 @@ for file in filelist:
 nlp = spacy.load('en_core_web_lg')
 
 for file in vectorlist:
-    #with open(file.path) as f:
-    #    text = f.read()
-    #print(text)
-    toks = nlp(str(documents))
+    with open(file.path) as f:
+        text = f.read()
+    toks = nlp(text)
     sentences = [[w.text for w in s] for s in toks.sents]
+    sentences = []
+    
+    for sent in toks.sents:
+        sentences.append([w.text for w in sent])
+        #pprint([w.text for w in sent])
+        pprint("OOOOOOOOOOOOOOOOOOOOOO")
+
     file.token = sentences
     print("#")
     
-
-# Init Elmo
+    
+# Init EMB-Model
 ############
-model = ElmoModel()
+model = SentenceTransformer('multi-qa-MiniLM-L6-cos-v1')
 
-# load model (193.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-model.load("193")
 
 # create vectors
 ################
 for text in vectorlist:
-    vector = model.get_elmo_vector_average(text.token)
+    pprint(text.token)
+    vector = model.encode(text.token)
     text.setVector(vector)
 
 
@@ -78,11 +80,6 @@ for text in vectorlist:
 client = QdrantClient(
     url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
-)
-
-client.recreate_collection(
-    collection_name="my_collection",
-    vectors_config=VectorParams(size=1024, distance=Distance.DOT),
 )
 
 idx = 1
@@ -96,7 +93,7 @@ for file in vectorlist:
         print(" ".join(file.token[x]))
         print("###")
         client.upsert(
-            collection_name="my_collection",
+            collection_name="my_collection2",
             points=[
                 PointStruct(
                     id=x,
@@ -107,5 +104,3 @@ for file in vectorlist:
         )
         x = x+1
     print(x)
-
-print("Done")
