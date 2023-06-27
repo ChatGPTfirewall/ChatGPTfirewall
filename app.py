@@ -32,11 +32,11 @@ model = SentenceTransformer('multi-qa-MiniLM-L6-cos-v1')
 
 
 
-client = QdrantClient(host="localhost", port=6333)
-# client = QdrantClient(
-#     url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
-#     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
-# )
+# client = QdrantClient(host="localhost", port=6333)
+client = QdrantClient(
+    url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
+    api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
+)
 
 #########################################################################################
 # GET: Context

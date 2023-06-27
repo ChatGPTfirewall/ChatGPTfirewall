@@ -39,8 +39,8 @@ export type ChatRequest = {
 }
 
 export type Fact = {
-    content: string;
-    file_path: string;
+    answer: string;
+    file: string;
     score: number;
 }
 

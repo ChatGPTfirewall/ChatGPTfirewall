@@ -6,6 +6,8 @@ _build
 .vite
 deps
 node_modules
+__pycache__
+temp
 .env
 # Azure az webapp deployment details
 .azure

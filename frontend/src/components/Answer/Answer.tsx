@@ -56,10 +56,10 @@ export const Answer = ({
                 {answer.facts.map((fact, index) => (
                     <div>
                         <span className={styles.citationLearnMore}>Fact {index+1}:</span>
-                        <div className={styles.answerText}>{fact.content}</div>
+                        <div className={styles.answerText}>{fact.answer}</div>
                         <span className={styles.citationLearnMore}>Citation:</span>
-                        <a key={index} className={styles.citation} title={fact.file_path} onClick={() => onCitationClicked(getCitationFilePath(fact.file_path))}>
-                            {fact.file_path}
+                        <a key={index} className={styles.citation} title={fact.file} onClick={() => onCitationClicked(getCitationFilePath(fact.file))}>
+                            {fact.file}
                         </a>
                         <br></br>
                         <span className={styles.citationLearnMore}>Score:</span>
