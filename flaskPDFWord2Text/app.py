@@ -6,6 +6,9 @@ import psycopg2
 from dotenv import load_dotenv
 # import boto3
 from pathlib import Path
+import ocrmypdf
+import tempfile
+import PyPDF2
 
 app = Flask(__name__)
 dotenv_path = Path('.env')
@@ -23,7 +26,27 @@ database_connection = f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} h
 # session = boto3.Session(aws_access_key_id=os.getenv('AWS_KEY'), aws_secret_access_key=os.getenv('AWS_SECRET'), region_name='eu-west-2')
 # recognition = session.client('recognition')
 
+def is_scanned_pdf(file_path):
+    with open(file_path, 'rb') as file:
+        reader = PyPDF2.PdfReader(file)
+        for page in reader.pages:
+            text = page.extract_text()
+            if text:
+                # Es wurde Text auf der Seite gefunden
+                return False
+    return True
+
 def extract_text_from_pdf(file_path):
+    if is_scanned_pdf(file_path):
+        # Das PDF ist gescannt, führe OCR-Texterkennung durch
+        with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
+            temp_pdf_path = temp_file.name
+            ocrmypdf.ocr(file_path, temp_pdf_path)
+            text = extract_text_from_pdf(temp_pdf_path)
+            os.unlink(temp_pdf_path)
+            return text
+
+    # Das PDF ist textbasiert, extrahiere den Text
     text = textract.process(file_path, method='pdfminer')
     return text.decode('utf-8')
 
