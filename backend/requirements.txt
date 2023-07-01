@@ -1,0 +1,12 @@
+python-docx
+python-dotenv
+flask
+numpy
+psycopg2-binary
+qdrant_client
+sentence_transformers
+simple_elmo
+spacy
+tensorflow
+termcolor
+textract

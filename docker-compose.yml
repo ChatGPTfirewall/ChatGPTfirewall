@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes: 
+      - ./frontend:/app
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./backend:/app
+  postgres_db:
+    image: postgres:15.3-bullseye
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+volumes:
+  postgres_db:
+    driver: local
