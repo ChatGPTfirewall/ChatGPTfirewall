@@ -61,7 +61,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['POST'])
 def upload():
     uploaded_file = request.files['files']
     filename = uploaded_file.filename
