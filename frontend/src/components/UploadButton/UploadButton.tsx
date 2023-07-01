@@ -9,20 +9,35 @@ interface Props {
     onClick: () => void;
     disabled?: boolean;
 }
-
-export const UploadButton = ({ className, disabled, onClick }: Props) => {
-
+export const UploadButton = ({ className, disabled }: Props) => {
     const hiddenFileInput = React.useRef(null);
-
-    const handleClick = event => {
-        hiddenFileInput.current.click();
+  
+    const handleClick = () => {
+      hiddenFileInput.current.click();
     };
-
+  
+    const handleFileChange = (event) => {
+      const files = event.target.files;
+      if (files && files.length > 0) {
+        const formData = new FormData();
+        formData.append("files", files[0]);
+  
+        fetch("http://127.0.0.1:5000/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.log(error));
+      }
+    };
+  
     return (
-        <div className={`${styles.container} ${className ?? ""} ${disabled && styles.disabled}`} onClick={handleClick}>
-            <ArrowUpload24Regular />
-            <Text>{"Upload"}</Text>
-            <input type="file" style={{ display: 'none' }} ref={hiddenFileInput} onChange={onClick} multiple accept=".doc,.docx,.pdf,.txt" />
-        </div>
+      <div className={`${styles.container} ${className ?? ""} ${disabled && styles.disabled}`} onClick={handleClick}>
+        <ArrowUpload24Regular />
+        <Text>{"Upload"}</Text>
+        <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx" />
+      </div>
     );
-};
+  };
+  
