@@ -46,11 +46,10 @@ export async function chatApi(options: ChatRequest): Promise<Response> {
 
 export async function uploadFiles(data: any): Promise<any> {
 
-    const response = await fetch("/upload", {
+    const response = await fetch("http://127.0.0.1:5000/upload", {
         method: 'POST',
         body: data,
         headers: {
-            'content-type': data.type,
             'content-length': `${data.size}`,
         },
     }).then((response) => response.json())
