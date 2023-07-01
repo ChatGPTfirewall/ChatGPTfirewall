@@ -6,8 +6,10 @@ import psycopg2
 from dotenv import load_dotenv
 # import boto3
 from pathlib import Path
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 dotenv_path = Path('.env')
 load_dotenv(dotenv_path)
 
@@ -61,7 +63,7 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    uploaded_file = request.files['file']
+    uploaded_file = request.files['files']
     filename = uploaded_file.filename
 
     # Speichere das hochgeladene Dokument temporär lokal
@@ -91,7 +93,7 @@ def upload():
 
 @app.route('/all')
 def show_all_documents():
-    database_connection = "dbname=postgres user=postgres password=postgres host=localhost port=5432"
+    database_connection = f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} host={DB_HOST} port=5432"
     conn = psycopg2.connect(database_connection)
     cursor = conn.cursor()
     query = "SELECT * FROM documents;"
