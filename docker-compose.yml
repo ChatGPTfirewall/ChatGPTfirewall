@@ -2,17 +2,20 @@ version: '3.8'
 services:
   frontend:
     build: ./frontend
+    stdin_open: true
+    tty: true
     ports:
       - "5173:5173"
     volumes: 
       - ./frontend:/app
+      - ./frontend/node_modules:/app/node_modules
   backend:
     build: ./backend
     ports:
       - "5001:5001"
     volumes:
       - ./backend:/app
-  postgres_db:
+  postgres:
     image: postgres:15.3-bullseye
     environment:
       - POSTGRES_DB=postgres
@@ -21,7 +24,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - postgres_db:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
 volumes:
-  postgres_db:
+  postgres:
     driver: local

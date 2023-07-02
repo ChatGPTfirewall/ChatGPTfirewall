@@ -3,6 +3,7 @@ python-dotenv
 flask
 numpy
 psycopg2-binary
+PyPDF2
 qdrant_client
 sentence_transformers
 simple_elmo

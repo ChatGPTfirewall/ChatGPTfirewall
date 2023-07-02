@@ -1,7 +1,11 @@
-FROM node
+FROM node:18.16.1
+
 WORKDIR /app
-COPY . .
+
+COPY package.json ./
+
 RUN npm install
-RUN npm install esbuild
-CMD ["npm", "run" , "dev"]
-# CMD [ "tail", "-f", "/dev/null"]
+
+COPY . ./
+
+RUN npm run dev
