@@ -9,5 +9,5 @@ RUN rm ./193.zip
 RUN pip3 install --upgrade setuptools
 RUN pip3 install -r requirements.txt
 RUN python -m spacy download en_core_web_lg
-CMD [ "python", "app.py"]
-# CMD [ "tail", "-f", "/dev/null"]
+RUN ["chmod", "+x", "entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
