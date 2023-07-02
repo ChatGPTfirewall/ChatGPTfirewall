@@ -17,9 +17,9 @@ export default defineConfig({
         strictPort: true,
         port: 5173, // you can replace this port with any port
         proxy: {
-            "/api/context": "http://127.0.0.1:5000",
+            "/api/context": "http://127.0.0.1:7007",
             '/upload': {
-                target: "http://127.0.0.1:5000", // Geben Sie hier die URL Ihres Backend-Servers an
+                target: "http://127.0.0.1:7007", // Geben Sie hier die URL Ihres Backend-Servers an
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/upload/, ''),
               },    
