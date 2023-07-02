@@ -1,13 +1,13 @@
 # Python demo script for vectorizing txt files
 
 print("LOAD")
-from simple_elmo import ElmoModel
 import spacy
 from pathlib import Path
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams
-import numpy as np
 from qdrant_client.models import PointStruct
+from pprint import pprint
+from embModel import Model, Algo, embModel
 
 pprint("GO")
 
@@ -36,41 +36,52 @@ vectorlist = []
 
 # collect txt
 ##############
-filelist = list( Path( './repo' ).glob('**/*.txt') )
+filelist = list( Path( './repo/contracts' ).glob('**/*.txt') )
+textlist = []
 
 for file in filelist:
     tmpLine = Text()
     tmpLine.setPath(file)
-    print(tmpLine.path) 
-    vectorlist.append(tmpLine)
+    #print(tmpLine.path) 
+    textlist.append(tmpLine)
 
 # tokenize sentences
 ####################
+#nlp = spacy.load('de_core_news_sm')
 nlp = spacy.load('en_core_web_lg')
 
-for file in vectorlist:
-    #with open(file.path) as f:
-    #    text = f.read()
-    #print(text)
-    toks = nlp(str(documents))
+
+for file in textlist:
+    with open(file.path) as f:
+        text = f.read()
+    toks = nlp(text)
     sentences = [[w.text for w in s] for s in toks.sents]
-    file.token = sentences
+    #for ent in toks.ents:
+    #    print(ent.text, ent.start_char, ent.end_char, ent.label_)
+    #pprint(sentences)
+    for sentence in sentences:
+        tmp = Text()
+        tmp.path = file.path
+        tmp.token = sentence
+        vectorlist.append(tmp)
     print("#")
     
+#exit()
 
-# Init Elmo
+# Init embModel
 ############
-model = ElmoModel()
-
-# load model (193.zip from http://vectors.nlpl.eu/repository/ [German Wikipedia Dump of March 2020] [VECTORSIZE: 1024]) 
-model.load("193")
+model = embModel(Model.SENTENCE_TRANFORM, Algo.SE_MSMARCO)
+model.initModel()
 
 # create vectors
 ################
 for text in vectorlist:
-    vector = model.get_elmo_vector_average(text.token)
+    vector = model.vectorize(text.token)
     text.setVector(vector)
+    #pprint(vector)
+    pprint("lenght: " + str(len(vector[0])))
 
+#exit()
 
 # save vector and payload in qdrant
 ###################################
@@ -81,31 +92,25 @@ client = QdrantClient(
 )
 
 client.recreate_collection(
-    collection_name="my_collection",
-    vectors_config=VectorParams(size=1024, distance=Distance.DOT),
+    collection_name="contracts",
+    vectors_config=VectorParams(size=768, distance=Distance.COSINE),
 )
 
 idx = 1
-for file in vectorlist:
-    print(file.token)
-    print(file.vector)
-    x = 0
-    for vectorLine in file.vector:
-        print(vectorLine)
-        print(file.token[x])
-        print(" ".join(file.token[x]))
-        print("###")
-        client.upsert(
-            collection_name="my_collection",
-            points=[
-                PointStruct(
-                    id=x,
-                    vector=vectorLine.tolist(),
-                    payload={"file": file.path, "text": " ".join(file.token[x])}
-                )
-            ]
-        )
-        x = x+1
-    print(x)
+for sentence in vectorlist:
+    #print(sentence.token)
+    #pprint(sentence.vector)
+    client.upsert(
+        #collection_name="my_collection",
+        collection_name="contracts",
+        points=[
+            PointStruct(
+                id=idx,
+                vector=sentence.vector[0].tolist(),
+                payload={"embModel": "Sentence_Transformer" ,"file": sentence.path, "text": " ".join(sentence.token)}
+            )
+        ]
+    )
+    idx= idx+1
 
 print("Done")
