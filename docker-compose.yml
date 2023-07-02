@@ -11,6 +11,8 @@ services:
       - ./frontend/node_modules:/app/node_modules
     depends_on:
       - backend
+    env_file:
+      - .env
   backend:
     build: ./backend
     stdin_open: true
@@ -19,6 +21,8 @@ services:
       - "7007:7007"
     volumes:
       - ./backend:/app
+    env_file:
+      - .env
   postgres:
     image: postgres:15.3-bullseye
     environment:
