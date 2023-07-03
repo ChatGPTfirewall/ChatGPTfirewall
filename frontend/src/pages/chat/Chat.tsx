@@ -13,6 +13,7 @@ import { AnalysisPanel, AnalysisPanelTabs } from "../../components/AnalysisPanel
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import { UploadButton } from "../../components/UploadButton";
+import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 
 const Chat = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -128,7 +129,7 @@ const Chat = () => {
             <div className={styles.commandsContainer}>
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                 <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
-                <UploadButton className={styles.commandButton} onClick={handleUpload} />
+                <KnowledgeBaseModal buttonClassName={styles.commandButton}/>
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
