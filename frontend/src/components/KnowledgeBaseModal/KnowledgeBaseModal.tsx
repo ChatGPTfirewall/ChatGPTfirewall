@@ -1,6 +1,5 @@
-import * as React from 'react';
 import { useId, useBoolean } from '@fluentui/react-hooks';
-import { Add24Regular } from "@fluentui/react-icons";
+import { Add24Regular, ArrowUpload24Regular, Box24Regular } from "@fluentui/react-icons";
 import styles from "./KnowledgeBaseModal.module.css";
 import {
   getTheme,
@@ -12,6 +11,7 @@ import {
   IStackProps,
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { FileCard } from '../FileCard';
 
 
 interface Props {
@@ -39,7 +39,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
       >
         <div className={contentStyles.header}>
           <h2 className={contentStyles.heading} id={titleId}>
-            Lorem Ipsum
+            Select method
           </h2>
           <IconButton
             styles={iconButtonStyles}
@@ -48,8 +48,10 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
             onClick={hideModal}
           />
         </div>
-        <div className={contentStyles.body}>
-          {/* Content */}
+        <div className={styles.modal_container}>
+          <FileCard Icon={<Box24Regular/>} title="S3 Storage" subtitle="Scalable storage in the cloud."/>
+          <FileCard Icon={<Box24Regular/>} title="Nextcloud" />
+          <FileCard Icon={<ArrowUpload24Regular/>} title="Upload" subtitle="Select a folder or a file to upload." />
         </div>
       </Modal>
     </div>
@@ -85,7 +87,7 @@ const contentStyles = mergeStyleSets({
     margin: '0',
   },
   body: {
-    flex: '4 4 auto',
+    grid: '4 4 auto',
     padding: '0 24px 24px 24px',
     overflowY: 'hidden',
     selectors: {

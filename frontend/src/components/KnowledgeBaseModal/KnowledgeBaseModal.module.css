@@ -8,3 +8,14 @@
 .disabled {
     opacity: 0.4;
 }
+
+.modal_container {
+    display: flex;
+    width: 404px;
+    padding: 15px 0px;
+    margin: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
