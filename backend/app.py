@@ -1,11 +1,9 @@
 from qdrant_client import QdrantClient
-from pprint import pprint
 import spacy
-import tensorflow as tf
-from sentence_transformers import SentenceTransformer, util
-from termcolor import colored
+from sentence_transformers import SentenceTransformer
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import textract
 from docx import Document
@@ -18,6 +16,7 @@ import tempfile
 from pathlib import Path
 
 app = Flask(__name__)
+CORS(app)
 
 dotenv_path = Path('.env')
 load_dotenv(dotenv_path)
@@ -88,6 +87,7 @@ def extract_text_from_word(file_path):
 #     return labels
 
 def insert_document_to_database(filename, text):
+    print(filename)
     insert_query = "INSERT INTO documents (filename, text) VALUES (%s, %s);"
     cursor.execute(insert_query, (filename, text))
     conn.commit()
@@ -96,31 +96,35 @@ def insert_document_to_database(filename, text):
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    uploaded_file = request.files['files']
-    filename = uploaded_file.filename
+    uploaded_files = request.files.getlist('files')
+    filenames = []
+    Path("temp").mkdir(parents=True, exist_ok=True)
+    for uploaded_file in uploaded_files:
+        filename = uploaded_file.filename
+        # Speichere das hochgeladene Dokument temporär lokal
 
-    # Speichere das hochgeladene Dokument temporär lokal
-    temp_file_path = os.path.join(app.root_path, 'temp', filename)
-    uploaded_file.save(temp_file_path)
+        temp_file_path = os.path.join(app.root_path, 'temp', filename)
+        uploaded_file.save(temp_file_path)
 
-    # Extrahiere den Text aus dem hochgeladenen Dokument
-    file_ext = os.path.splitext(filename)[1].lower()
+        # Extrahiere den Text aus dem hochgeladenen Dokument
+        file_ext = os.path.splitext(filename)[1].lower()
 
-    if file_ext == '.pdf':
-        text = extract_text_from_pdf(temp_file_path)
-    elif file_ext == '.docx':
-        text = extract_text_from_word(temp_file_path)
-    else:
-        text = ''
+        if file_ext == '.pdf':
+            text = extract_text_from_pdf(temp_file_path)
+        elif file_ext == '.docx':
+            text = extract_text_from_word(temp_file_path)
+        else:
+            text = ''
 
-    # Füge das Dokument und den extrahierten Text zur Datenbank hinzu
-    insert_document_to_database(filename, text)
+        # Füge das Dokument und den extrahierten Text zur Datenbank hinzu
+        insert_document_to_database(filename, text)
 
-    # Lösche das temporäre Dokument
-    os.remove(temp_file_path)
+        # Lösche das temporäre Dokument
+        os.remove(temp_file_path)
 
-    return 'Dokument erfolgreich hochgeladen und Text extrahiert.'
+        filenames.append(filename)
 
+    return jsonify({'filenames': filenames})
 
 #########################################################################################
 # Init

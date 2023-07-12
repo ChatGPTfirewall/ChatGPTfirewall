@@ -12,13 +12,36 @@ import {
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { FileCard } from '../FileCard';
+import React from 'react';
+import { uploadFiles } from '../../api';
 
 
 interface Props {
-    buttonClassName?: string;
+  buttonClassName?: string;
 }
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
+  const hiddenFileInput = React.useRef(null);
+
+  const handleClick = () => {
+    if (hiddenFileInput.current) {
+      hiddenFileInput.current.click();
+    }
+  };
+
+  const handleFileChange = (event: any) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const formData = new FormData();
+
+      for (let i = 0; i < files.length; i++) {
+        formData.append(files[i].name, files[i])
+      }
+      console.log(formData)
+
+      uploadFiles(formData)
+    }
+  };
 
   // Use useId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings and manually ensure uniqueness.)
@@ -49,9 +72,11 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
           />
         </div>
         <div className={styles.modal_container}>
-          <FileCard Icon={<Box24Regular/>} title="S3 Storage" subtitle="Scalable storage in the cloud."/>
-          <FileCard Icon={<Box24Regular/>} title="Nextcloud" />
-          <FileCard Icon={<ArrowUpload24Regular/>} title="Upload" subtitle="Select a folder or a file to upload." />
+          <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." />
+          <FileCard Icon={<Box24Regular />} title="Nextcloud" />
+          <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
+            <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx" />
+          </FileCard>
         </div>
       </Modal>
     </div>

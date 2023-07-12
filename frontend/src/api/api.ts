@@ -50,10 +50,11 @@ export async function uploadFiles(data: any): Promise<any> {
         method: 'POST',
         body: data,
         headers: {
-            'content-length': `${data.size}`,
+            'Content-Type': "multipart/form-data",
         },
     }).then((response) => response.json())
         .then((data) => console.log(data))
+        .catch((error) => console.log(error));
 }
 
 export function getCitationFilePath(citation: string): string {
