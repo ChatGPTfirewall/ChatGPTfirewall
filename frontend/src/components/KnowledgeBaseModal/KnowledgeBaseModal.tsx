@@ -47,6 +47,11 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   // (It's also okay to use plain strings and manually ensure uniqueness.)
   const titleId = useId('title');
 
+  const redirectToS3 = () => {
+    // Perform the redirection to Amazon S3 here
+    window.location.href = "https://aws.amazon.com/s3"; // Replace this with the actual Amazon S3 URL
+  };
+
   return (
     <div>
       <div className={`${styles.container} ${buttonClassName ?? ""}`} onClick={showModal}>
@@ -72,7 +77,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
           />
         </div>
         <div className={styles.modal_container}>
-          <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." />
+          <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
           <FileCard Icon={<Box24Regular />} title="Nextcloud" />
           <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
             <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx" />
