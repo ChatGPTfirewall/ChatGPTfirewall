@@ -35,9 +35,8 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
       const formData = new FormData();
 
       for (let i = 0; i < files.length; i++) {
-        formData.append(files[i].name, files[i])
+        formData.append("files", files[i]);
       }
-      console.log(formData)
 
       uploadFiles(formData)
     }

@@ -38,6 +38,8 @@ cursor = conn.cursor()
 insert_query = "CREATE TABLE IF NOT EXISTS documents (id SERIAL PRIMARY KEY,filename VARCHAR(255),text TEXT)"
 cursor.execute(insert_query)
 conn.commit()
+cursor.close()
+conn.close()
 
 print("Table created...")
 
@@ -87,7 +89,8 @@ def extract_text_from_word(file_path):
 #     return labels
 
 def insert_document_to_database(filename, text):
-    print(filename)
+    conn = psycopg2.connect(database_connection)
+    cursor = conn.cursor()
     insert_query = "INSERT INTO documents (filename, text) VALUES (%s, %s);"
     cursor.execute(insert_query, (filename, text))
     conn.commit()
