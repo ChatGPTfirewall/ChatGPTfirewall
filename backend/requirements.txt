@@ -123,3 +123,4 @@ Werkzeug==2.3.6
 wrapt==1.14.1
 xlrd==1.2.0
 XlsxWriter==3.1.2
+Flask_Cors==4.0.0

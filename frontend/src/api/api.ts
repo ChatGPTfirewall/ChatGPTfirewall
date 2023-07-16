@@ -48,12 +48,10 @@ export async function uploadFiles(data: any): Promise<any> {
 
     const response = await fetch("http://127.0.0.1:7007/upload", {
         method: 'POST',
-        body: data,
-        headers: {
-            'content-length': `${data.size}`,
-        },
+        body: data
     }).then((response) => response.json())
         .then((data) => console.log(data))
+        .catch((error) => console.log(error));
 }
 
 export function getCitationFilePath(citation: string): string {

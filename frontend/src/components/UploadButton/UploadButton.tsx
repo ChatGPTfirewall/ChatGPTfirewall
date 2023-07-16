@@ -3,6 +3,7 @@ import { Text } from "@fluentui/react";
 import { ArrowUpload24Regular } from "@fluentui/react-icons";
 
 import styles from "./UploadButton.module.css";
+import { uploadFiles } from '../../api';
 
 interface Props {
     className?: string;
@@ -20,15 +21,11 @@ export const UploadButton = ({ className, disabled }: Props) => {
       const files = event.target.files;
       if (files && files.length > 0) {
         const formData = new FormData();
-        formData.append("files", files[0]);
+        files.array.forEach(file => {
+          formData.append("files", file)
+        });
   
-        fetch("http://127.0.0.1:7007/upload", {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => console.log(data))
-          .catch((error) => console.log(error));
+        uploadFiles(formData)
       }
     };
   
