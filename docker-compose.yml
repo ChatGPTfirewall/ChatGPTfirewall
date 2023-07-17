@@ -1,14 +1,17 @@
 version: '3.8'
 services:
   frontend:
-    build: ./frontend
+    image: node:current-bullseye-slim
+    container_name: vite-react
+    entrypoint: ./app/entrypoint.sh
     stdin_open: true
     tty: true
     ports:
       - "5173:5173"
-    volumes: 
-      - ./frontend:/app
-      - ./frontend/node_modules:/app/node_modules
+    volumes:
+        - type: bind
+          source: ./frontend
+          target: /app
     depends_on:
       - backend
     env_file:
@@ -20,7 +23,9 @@ services:
     ports:
       - "7007:7007"
     volumes:
-      - ./backend:/app
+      - type: bind
+        source: ./backend
+        target: /app
     env_file:
       - .env
   postgres:
