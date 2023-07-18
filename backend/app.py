@@ -78,7 +78,7 @@ def extract_text_from_word_doc(file_path):
         paragraphs = [p.text for p in doc.paragraphs]
         text = '\n'.join(paragraphs)
         return text
-    elif file_path.lower().endswith('.doc'):
+    #elif file_path.lower().endswith('.doc'):
         #TODO: .doc-Documents
     elif file_path.lower().endswith('.txt'):
         with open(file_path, "r", encoding="utf-8") as txt:
