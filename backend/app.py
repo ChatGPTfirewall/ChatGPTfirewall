@@ -72,11 +72,18 @@ def extract_text_from_pdf(file_path):
     return text.decode('utf-8')
 
 
-def extract_text_from_word(file_path):
-    doc = Document(file_path)
-    paragraphs = [p.text for p in doc.paragraphs]
-    text = '\n'.join(paragraphs)
-    return text
+def extract_text_from_word_doc(file_path):
+    if file_path.lower().endswith('.docx'):
+        doc = Document(file_path)
+        paragraphs = [p.text for p in doc.paragraphs]
+        text = '\n'.join(paragraphs)
+        return text
+    elif file_path.lower().endswith('.doc'):
+        #TODO: .doc-Documents
+    elif file_path.lower().endswith('.txt'):
+        with open(file_path, "r", encoding="utf-8") as txt:
+            text = txt.read()
+        return text
 
 # Funktion zum Analysieren eines Bildes und Extrahieren von Labels
 # def extract_text_from_image(image_path):
@@ -114,8 +121,8 @@ def upload():
 
         if file_ext == '.pdf':
             text = extract_text_from_pdf(temp_file_path)
-        elif file_ext == '.docx':
-            text = extract_text_from_word(temp_file_path)
+        elif file_ext == '.docx' or file_ext == '.doc' or file_ext == '.txt':
+            text = extract_text_from_word_doc(temp_file_path)
         else:
             text = ''
 
