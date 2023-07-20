@@ -14,6 +14,8 @@ import ocrmypdf
 import PyPDF2
 import tempfile
 from pathlib import Path
+from striprtf.striprtf import rtf_to_text
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 CORS(app)
@@ -84,6 +86,31 @@ def extract_text_from_word_doc(file_path):
         with open(file_path, "r", encoding="utf-8") as txt:
             text = txt.read()
         return text
+    
+def extract_text_from_rtf_html_xml_csv(file_path):
+    if file_path.lower().endswith('.rtf'):
+        with open(file_path, "r") as rtf:
+            text = rtf.read()
+            text = rtf_to_text(text)
+            print(text)
+        return text
+    elif file_path.lower().endswith('.html'):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            soup = BeautifulSoup(file, 'html.parser')
+            text = soup.get_text(separator='\n')
+        return text
+    elif file_path.lower().endswith('.xml'):
+        with open(file_path, "r", encoding="utf-8") as xml:
+            text = xml.read()
+        return text
+    elif file_path.lower().endswith('.csv'):
+        with open(file_path, "r", encoding="utf-8") as csv:
+            text = csv.read()
+        return text
+    elif file_path.lower().endswith('.md'):
+        with open(file_path, "r", encoding="utf-8") as md:
+            text = md.read()
+        return text
 
 # Funktion zum Analysieren eines Bildes und Extrahieren von Labels
 # def extract_text_from_image(image_path):
@@ -123,6 +150,8 @@ def upload():
             text = extract_text_from_pdf(temp_file_path)
         elif file_ext == '.docx' or file_ext == '.doc' or file_ext == '.txt':
             text = extract_text_from_word_doc(temp_file_path)
+        elif file_ext == '.rtf' or file_ext == '.html' or file_ext == '.xml' or file_ext == '.csv' or file_ext == '.md':
+            text = extract_text_from_rtf_html_xml_csv(temp_file_path)
         else:
             text = ''
 
