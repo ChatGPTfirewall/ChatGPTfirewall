@@ -1,10 +1,15 @@
 import { Outlet, NavLink, Link } from "react-router-dom";
 
-import github from "../../assets/github.svg";
+
+
+import { useAuth0 } from "@auth0/auth0-react";
 
 import styles from "./Layout.module.css";
 
 const Layout = () => {
+
+    const { loginWithRedirect, logout } = useAuth0();
+
     return (
         <div className={styles.layout}>
             <header className={styles.header} role={"banner"}>
@@ -23,6 +28,12 @@ const Layout = () => {
                                 <NavLink to="/qa" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
                                     Ask a question
                                 </NavLink>
+                            </li>
+                            <li className={styles.headerNavLeftMargin}>
+                                <button onClick={() => loginWithRedirect()}>Log In</button>
+                                <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                                    Log Out
+                                </button>
                             </li>
                         </ul>
                     </nav>
