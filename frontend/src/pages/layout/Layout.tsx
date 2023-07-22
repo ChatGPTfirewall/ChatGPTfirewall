@@ -5,10 +5,17 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import styles from "./Layout.module.css";
+import { AuthenticationButton } from "../../components/AuthenticationButton";
 
 const Layout = () => {
 
-    const { loginWithRedirect, logout } = useAuth0();
+    const {user, isLoading } = useAuth0();
+
+    console.log(user)
+
+    if (isLoading) {
+        return <div>Loading ...</div>;
+    }
 
     return (
         <div className={styles.layout}>
@@ -30,10 +37,7 @@ const Layout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <button onClick={() => loginWithRedirect()}>Log In</button>
-                                <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-                                    Log Out
-                                </button>
+                                <AuthenticationButton/>
                             </li>
                         </ul>
                     </nav>
