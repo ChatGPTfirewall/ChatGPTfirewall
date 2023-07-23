@@ -92,7 +92,6 @@ def extract_text_from_rtf_html_xml_csv(file_path):
         with open(file_path, "r") as rtf:
             text = rtf.read()
             text = rtf_to_text(text)
-            print(text)
         return text
     elif file_path.lower().endswith('.html'):
         with open(file_path, 'r', encoding='utf-8') as file:

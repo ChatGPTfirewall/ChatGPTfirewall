@@ -33,7 +33,7 @@ export const UploadButton = ({ className, disabled }: Props) => {
       <div className={`${styles.container} ${className ?? ""} ${disabled && styles.disabled}`} onClick={handleClick}>
         <ArrowUpload24Regular />
         <Text>{"Upload"}</Text>
-        <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt" />
+        <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rft,.html,.xml,.csv,.md" />
       </div>
     );
   };
