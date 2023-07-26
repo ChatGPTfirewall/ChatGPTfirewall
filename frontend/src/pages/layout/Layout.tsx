@@ -1,10 +1,24 @@
 import { Outlet, NavLink, Link } from "react-router-dom";
 
-import github from "../../assets/github.svg";
+
+
+import { useAuth0 } from "@auth0/auth0-react";
 
 import styles from "./Layout.module.css";
+import { AuthenticationButton } from "../../components/AuthenticationButton";
+import { initUser } from "../../api";
 
 const Layout = () => {
+    const {user, isLoading, isAuthenticated} = useAuth0();
+
+    const onFirstLogin = () => {
+        // insert code for operations after the first login of a user
+        console.log("This was a users first login")}
+
+    if (isAuthenticated) {
+        initUser(user!, onFirstLogin)
+    }
+
     return (
         <div className={styles.layout}>
             <header className={styles.header} role={"banner"}>
@@ -20,9 +34,7 @@ const Layout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <NavLink to="/qa" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
-                                    Ask a question
-                                </NavLink>
+                                <AuthenticationButton/>
                             </li>
                         </ul>
                     </nav>

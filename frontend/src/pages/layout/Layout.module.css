@@ -36,6 +36,7 @@
 
 .headerNavList {
     display: flex;
+    align-items: center;
     list-style: none;
     padding-left: 0;
 }

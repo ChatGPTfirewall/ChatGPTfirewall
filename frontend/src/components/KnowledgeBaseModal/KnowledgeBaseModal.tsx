@@ -14,6 +14,7 @@ import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { FileCard } from '../FileCard';
 import React from 'react';
 import { uploadFiles } from '../../api';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const hiddenFileInput = React.useRef(null);
+  const { user } = useAuth0();
 
   const handleClick = () => {
     if (hiddenFileInput.current) {
@@ -38,7 +40,10 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
         formData.append("files", files[i]);
       }
 
-      uploadFiles(formData)
+      formData.append("user", user!.sub as string);
+
+
+      uploadFiles(formData, user!)
     }
   };
 

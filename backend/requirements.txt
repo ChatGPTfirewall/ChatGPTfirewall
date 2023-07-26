@@ -125,4 +125,4 @@ xlrd==1.2.0
 XlsxWriter==3.1.2
 Flask_Cors==4.0.0
 striprtf==0.0.26
-BeautifulSoup==3.2.2
+BeautifulSoup==4.12.2

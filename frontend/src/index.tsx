@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { initializeIcons } from "@fluentui/react";
+import { Auth0Provider } from '@auth0/auth0-react';
 
 import "./index.css";
 
@@ -28,6 +29,15 @@ export default function App() {
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <App />
+        <Auth0Provider
+            domain="dev-ccc.eu.auth0.com"
+            clientId="C1VKNSTk1BMd2ReoSzUWOogc0TATmADR"
+            authorizationParams={{
+                redirect_uri: window.location.origin
+            }}
+            cacheLocation="localstorage"
+        >
+            <App />
+        </Auth0Provider>
     </React.StrictMode>
 );
