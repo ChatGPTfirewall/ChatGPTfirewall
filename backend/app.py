@@ -18,6 +18,7 @@ from pathlib import Path
 from striprtf.striprtf import rtf_to_text
 from bs4 import BeautifulSoup
 import init_db
+import json
 
 app = Flask(__name__)
 CORS(app)
