@@ -1,4 +1,5 @@
 import { AskRequest, Response, ChatRequest } from "./models";
+import { User } from "@auth0/auth0-react";
 
 export async function askApi(options: AskRequest): Promise<Response> {
     const response = await fetch("/ask", {
@@ -44,14 +45,32 @@ export async function chatApi(options: ChatRequest): Promise<Response> {
     return parsedResponse;
 }
 
-export async function uploadFiles(data: any): Promise<any> {
+export async function uploadFiles(data: any, user: User): Promise<any> {
 
-    const response = await fetch("http://127.0.0.1:7007/upload", {
+    const response = await fetch("http://127.0.0.1:7007/upload?user_name=" + user.nickname, {
         method: 'POST',
         body: data
     }).then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.log(error));
+}
+
+export async function initUser(user: User, firstLoginHook: any): Promise<any> {
+    const response = await fetch("http://127.0.0.1:7007/user/create", {
+        method: 'POST',
+        body: JSON.stringify({
+            user_sub: user.sub,
+            username: user.nickname,
+            email: user.email
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }).then((response) => response.json())
+        .then(data => {
+            if (!data.error) {
+                firstLoginHook()
+            }
+        })
 }
 
 export function getCitationFilePath(citation: string): string {

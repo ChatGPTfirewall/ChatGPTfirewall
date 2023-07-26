@@ -12,7 +12,6 @@ import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanel, AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
-import { UploadButton } from "../../components/UploadButton";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 
 const Chat = () => {
