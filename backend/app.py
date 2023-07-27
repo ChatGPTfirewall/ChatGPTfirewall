@@ -2,13 +2,15 @@ from qdrant_client import QdrantClient
 import spacy
 from sentence_transformers import SentenceTransformer
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS
 import os
 import textract
 from docx import Document
 import psycopg2
 from dotenv import load_dotenv
+import requests
+from xml.etree import ElementTree as ET
 
 # import boto3
 import ocrmypdf
@@ -188,6 +190,86 @@ def init_user():
     conn.close()
 
     return result
+
+
+
+@app.route("/nextcloud", methods=["POST"])
+def nextcloud():
+    client_id = request.args['clientId']
+    client_secret = request.args['clientSecret']
+    authorizationUrl = request.args['authorizationUrl']
+    nextCloudUserName = request.args['nextCloudUserName']
+    print(nextCloudUserName)
+
+    params = {
+        "client_id": client_id,
+        "redirect_uri": client_secret,
+        "response_type": "code",
+        "scope": "read",  # Passen Sie die gewünschten Berechtigungen an
+    }
+    url = authorizationUrl + "?" + "&".join([f"{key}={value}" for key, value in params.items()])
+    REDIRECT_URI = "http://127.0.0.1:5000/redirect"
+    TOKEN_URL = authorizationUrl + "index.php/apps/oauth2/api/v1/token"
+    FILES_URL = authorizationUrl + "remote.php/dav/files/{nextCloudUserName}/"
+    
+
+    code = request.args.get("code") 
+    payload = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": REDIRECT_URI,
+        "client_id": client_id,
+        "client_secret": client_secret,
+    }
+
+    response = requests.post(TOKEN_URL, payload)
+    if response.status_code == 200:
+        try:
+            # Versuche, die Antwort im JSON-Format zu dekodieren
+            access_token = response.json()["access_token"]
+            print(access_token)
+
+            # Hier kannst du den Access Token weiterverwenden, z. B. um API-Anfragen im Namen des Benutzers auszuführen
+
+            return jsonify(access_token=access_token)
+        except ValueError:
+            return "Fehler beim Dekodieren der API-Antwort (JSON-Format)"
+    else:
+        return f"Fehler bei der API-Anfrage: {response.status_code}"
+
+    #return redirect(url)
+
+@app.route("/redirect")
+def redirect_url():
+    client_id = request.args['clientId']
+    client_secret = request.args['clientSecret']
+    authorizationUrl = request.args['authorizationUrl']
+    nextCloudUserName = request.args['nextCloudUserName']
+    REDIRECT_URI = "http://127.0.0.1:5000/redirect"
+    TOKEN_URL = authorizationUrl + "index.php/apps/oauth2/api/v1/token"
+    FILES_URL = authorizationUrl + "remote.php/dav/files/{nextCloudUserName}/"
+    
+
+    code = request.args.get("code") 
+    payload = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": REDIRECT_URI,
+        "client_id": client_id,
+        "client_secret": client_secret,
+    }
+    response = requests.post(TOKEN_URL, data=payload)
+    access_token = response.json()["access_token"]
+    print(access_token)
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.request("PROPFIND", FILES_URL, headers=headers)
+    
+    root = ET.fromstring(response.content)
+    files = [elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != '/']
+    print(files)
+
+    # Filtern Sie nur .txt Dateien
+    #txt_files = [file for file in files if file.endswith(".txt")]
 
 
 #########################################################################################

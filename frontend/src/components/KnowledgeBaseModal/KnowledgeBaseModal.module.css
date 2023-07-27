@@ -19,3 +19,64 @@
     gap: 10px;
 }
 
+/* In deinem Stylesheet (z. B. KnowledgeBaseModal.module.css) */
+
+.nextcloudModal {
+    padding: 20px;
+    max-width: 400px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .nextcloudModal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nextcloudModal label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .nextcloudModal input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+  }
+  
+  .modalButtons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .saveButton, .cancelButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .saveButton {
+    background-color: #0078d4;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .cancelButton {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .cancelButton:hover, .saveButton:hover {
+    background-color: #eee;
+  }
+  
+

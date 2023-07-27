@@ -14,7 +14,9 @@ import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { FileCard } from '../FileCard';
 import React from 'react';
 import { uploadFiles } from '../../api';
+import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useState } from 'react';
 
 
 interface Props {
@@ -24,6 +26,13 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const hiddenFileInput = React.useRef(null);
   const { user } = useAuth0();
+  // State-Hooks für die Werte der Eingabefelder
+  const [clientId, setClientId] = useState('');
+  const [clientSecret, setClientSecret] = useState('');
+  const [authorizationUrl, setAuthorizationUrl] = useState('');
+  const [nextCloudUserName, setUsername] = useState('');
+  const [isNextcloudModalOpen, { setTrue: showNextCloudModal, setFalse: hideNextcloudModal }] = useBoolean(false);
+  
 
   const handleClick = () => {
     if (hiddenFileInput.current) {
@@ -46,6 +55,69 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
       uploadFiles(formData, user!)
     }
   };
+
+  /*
+    Popup für Nextcloud
+  */
+ // Handler für die Änderung der Eingabefelder
+ const handleClientIdChange = (event) => {
+  setClientId(event.target.value);
+};
+
+const handleClientSecretChange = (event) => {
+  setClientSecret(event.target.value);
+};
+
+const handleAuthorizationUrlChange = (event) => {
+  setAuthorizationUrl(event.target.value);
+};
+
+const handleUsernameChange = (event) => {
+  setUsername(event.target.value);
+};
+
+// Handler für das Öffnen des Popups
+const handleNextcloudClick = () => {
+  showNextCloudModal(); // showModal kann so benannt sein wie in deinem Code, um das Haupt-Modal zu öffnen
+};
+
+  // Handler für das Schließen des Popups und Speichern der eingegebenen Werte
+const handleNextcloudSave = () => {
+    // Speichern der eingegebenen Werte, z. B. in einer Funktion zum Hochladen auf Nextcloud
+    // client_id, client_secret und authorization_url werden hier mit den eingegebenen Werten gefüllt
+   uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
+   hideNextcloudModal(); // hideModal kann so benannt sein wie in deinem Code, um das Haupt-Modal zu schließen
+  };
+
+    // Inhalt des Popups für Nextcloud
+    const nextcloudModalContent = (
+      <div className={styles.nextcloudModal}>
+        <h2>Nextcloud Configuration</h2>
+        <div>
+          <label htmlFor="clientId">Client ID:</label>
+          <input type="text" id="clientId" value={clientId} onChange={handleClientIdChange} />
+        </div>
+        <div>
+          <label htmlFor="clientSecret">Client Secret:</label>
+          <input type="text" id="clientSecret" value={clientSecret} onChange={handleClientSecretChange} />
+        </div>
+        <div>
+          <label htmlFor="authorizationUrl">Authorization URL:</label>
+          <input type="text" id="authorizationUrl" value={authorizationUrl} onChange={handleAuthorizationUrlChange} />
+        </div>
+        <div>
+          <label htmlFor="nextCloudUserName">Nextcloud Username:</label>
+          <input type="text" id="nextCloudUserName" value={nextCloudUserName} onChange={handleUsernameChange} />
+        </div>
+        <div className={styles.modalButtons}>
+          <button className={styles.saveButton} onClick={handleNextcloudSave}>Save</button>
+          <button className={styles.cancelButton} onClick={hideNextcloudModal}>Cancel</button>
+        </div>
+      </div>
+    );
+
+
+
 
   // Use useId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings and manually ensure uniqueness.)
@@ -82,11 +154,19 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
         </div>
         <div className={styles.modal_container}>
           <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
-          <FileCard Icon={<Box24Regular />} title="Nextcloud" />
+          <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick}/>
           <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
             <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
           </FileCard>
         </div>
+      </Modal>
+      <Modal
+        isOpen={isNextcloudModalOpen}
+        onDismiss={hideNextcloudModal}
+        isBlocking={false}
+        containerClassName={contentStyles.container}
+      >
+        {nextcloudModalContent}
       </Modal>
     </div>
   );
@@ -147,3 +227,4 @@ const iconButtonStyles: Partial<IButtonStyles> = {
     color: theme.palette.neutralDark,
   },
 };
+
