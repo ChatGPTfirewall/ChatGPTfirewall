@@ -21,6 +21,9 @@ from striprtf.striprtf import rtf_to_text
 from bs4 import BeautifulSoup
 import init_db
 import json
+from oauthlib.oauth2 import BackendApplicationClient
+from requests_oauthlib import OAuth2Session
+from requests.auth import HTTPBasicAuth
 
 app = Flask(__name__)
 CORS(app)
@@ -192,84 +195,86 @@ def init_user():
     return result
 
 
+@app.route("/nextcloud", methods=["GET"])
+def nextcloud_callback():
+    access_token = request.args.get("code")
+    nextlcloudUser = request.args.get("nextCloudUserName")
+    client_id = request.args.get("clientId")
+    client_secret = request.args.get("clientSecret")
+    authorizationUrl = request.args.get("authorizationUrl")
+    redirect_uri = "http://127.0.0.1:7007/nextcloud"
+    FILES_URL = f"{authorizationUrl}remote.php/dav/files/{nextlcloudUser}/"
+    TOKEN_URL = f"{authorizationUrl}index.php/apps/oauth2/api/v1/token"
 
-@app.route("/nextcloud", methods=["POST"])
-def nextcloud():
-    client_id = request.args['clientId']
-    client_secret = request.args['clientSecret']
-    authorizationUrl = request.args['authorizationUrl']
-    nextCloudUserName = request.args['nextCloudUserName']
-    print(nextCloudUserName)
-
-    params = {
-        "client_id": client_id,
-        "redirect_uri": client_secret,
-        "response_type": "code",
-        "scope": "read",  # Passen Sie die gewünschten Berechtigungen an
-    }
-    url = authorizationUrl + "?" + "&".join([f"{key}={value}" for key, value in params.items()])
-    REDIRECT_URI = "http://127.0.0.1:5000/redirect"
-    TOKEN_URL = authorizationUrl + "index.php/apps/oauth2/api/v1/token"
-    FILES_URL = authorizationUrl + "remote.php/dav/files/{nextCloudUserName}/"
-    
-
-    code = request.args.get("code") 
+    code = request.args.get("code")
+    access_token = request.args.get("code")
+    nextlcloudUser = request.args.get("nextCloudUserName")
+    client_id = request.args.get("clientId")
+    client_secret = request.args.get("clientSecret")
+    authorizationUrl = request.args.get("authorizationUrl")
     payload = {
         "grant_type": "authorization_code",
         "code": code,
-        "redirect_uri": REDIRECT_URI,
-        "client_id": client_id,
-        "client_secret": client_secret,
-    }
-
-    response = requests.post(TOKEN_URL, payload)
-    if response.status_code == 200:
-        try:
-            # Versuche, die Antwort im JSON-Format zu dekodieren
-            access_token = response.json()["access_token"]
-            print(access_token)
-
-            # Hier kannst du den Access Token weiterverwenden, z. B. um API-Anfragen im Namen des Benutzers auszuführen
-
-            return jsonify(access_token=access_token)
-        except ValueError:
-            return "Fehler beim Dekodieren der API-Antwort (JSON-Format)"
-    else:
-        return f"Fehler bei der API-Anfrage: {response.status_code}"
-
-    #return redirect(url)
-
-@app.route("/redirect")
-def redirect_url():
-    client_id = request.args['clientId']
-    client_secret = request.args['clientSecret']
-    authorizationUrl = request.args['authorizationUrl']
-    nextCloudUserName = request.args['nextCloudUserName']
-    REDIRECT_URI = "http://127.0.0.1:5000/redirect"
-    TOKEN_URL = authorizationUrl + "index.php/apps/oauth2/api/v1/token"
-    FILES_URL = authorizationUrl + "remote.php/dav/files/{nextCloudUserName}/"
-    
-
-    code = request.args.get("code") 
-    payload = {
-        "grant_type": "authorization_code",
-        "code": code,
-        "redirect_uri": REDIRECT_URI,
+        "redirect_uri": redirect_uri,
         "client_id": client_id,
         "client_secret": client_secret,
     }
     response = requests.post(TOKEN_URL, data=payload)
+    print(response.json())
     access_token = response.json()["access_token"]
     print(access_token)
-    headers = {"Authorization": f"Bearer {access_token}"}
-    response = requests.request("PROPFIND", FILES_URL, headers=headers)
-    
-    root = ET.fromstring(response.content)
-    files = [elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != '/']
-    print(files)
 
-    # Filtern Sie nur .txt Dateien
-    #txt_files = [file for file in files if file.endswith(".txt")]
+
+    if access_token:
+
+        print(access_token)
+        if not access_token:
+            return "Unauthorized", 401
+
+        headers = {"Authorization": f"Bearer {access_token}"}
+        response = requests.request("PROPFIND", FILES_URL, headers=headers)
+
+        if response.status_code != 207:
+            return "Fehler beim Abrufen der Dateien", 500
+
+        root = ET.fromstring(response.content)
+        files = [elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != '/']
+
+        txt_files = [file for file in files if file.endswith(".txt")]
+
+
+        text_content = ""
+        for file in txt_files:
+            download_url = f"{authorizationUrl}{file}"
+            text = fetch_txt_content(download_url, access_token)
+            text_content += f"<h3>{file}</h3><pre>{text}</pre>"
+
+        return f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Nextcloud File Explorer</title>
+            </head>
+            <body>
+                <h1>Nextcloud File Explorer</h1>
+                {text_content}
+            </body>
+            </html>
+            """
+
+    else:
+        return "Authorization Code not found in URL.", 400
+
+
+def fetch_txt_content(url, access_token):
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        return response.content.decode("utf-8")
+    else:
+        return "Fehler beim Abrufen des Textinhalts"
+    
 
 
 #########################################################################################
