@@ -103,15 +103,15 @@ const handleNextcloudClick = () => {
       <div className={styles.nextcloudModal}>
         <h2>Nextcloud Configuration</h2>
         <div>
-          <label htmlFor="clientId">Client ID:</label>
+          <label htmlFor="clientId">Client ID: (Client-Identifikationsmerkmal)</label>
           <input type="text" id="clientId" value={clientId} onChange={handleClientIdChange} />
         </div>
         <div>
-          <label htmlFor="clientSecret">Client Secret:</label>
+          <label htmlFor="clientSecret">Client Secret: (Geheimnis)</label>
           <input type="text" id="clientSecret" value={clientSecret} onChange={handleClientSecretChange} />
         </div>
         <div>
-          <label htmlFor="authorizationUrl">Authorization URL:</label>
+          <label htmlFor="authorizationUrl">Authorization URL: (https:example.com/)</label>
           <input type="text" id="authorizationUrl" value={authorizationUrl} onChange={handleAuthorizationUrlChange} />
         </div>
         <div>
