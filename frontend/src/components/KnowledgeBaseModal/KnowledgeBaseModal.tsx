@@ -84,17 +84,18 @@ const handleNextcloudClick = () => {
   // Handler für das Schließen des Popups und Speichern der eingegebenen Werte
   const handleNextcloudSave = () => {
     uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
-    const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
+    //const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
+    const popup = window.open("http://127.0.0.1:7007/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
   
-    setTimeout(() => {
-      if (!popup.closed) {
-        popup.close();
-      }
+    //setTimeout(() => {
+    //  if (!popup.closed) {
+    //    popup.close();
+    //  }
         //uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
   
       // Schließen Sie das Modal
       hideNextcloudModal();
-    }, 100000); // 10000 Millisekunden = 10 Sekunden
+   // }, 100000); // 10000 Millisekunden = 10 Sekunden
   };
 
     // Inhalt des Popups für Nextcloud

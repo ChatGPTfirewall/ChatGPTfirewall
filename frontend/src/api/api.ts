@@ -53,19 +53,19 @@ export async function uploadFiles(data: any, user: User): Promise<any> {
     }).then((response) => response.json())
 }
 
-uploadToNextcloud
-
 export async function uploadToNextcloud(clientId: any, clientSecret: any, authorizationUrl: any, nextCloudUserName: any): Promise<any> {
-
-    const response = await fetch("http://127.0.0.1:7007/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, {
+    const response = await fetch("http://127.0.0.1:7007/nextcloud", {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Setzen Sie den Content-Type auf 'application/json'
+        },
         body: JSON.stringify({
-        client_id: clientId,
-        client_secret: clientSecret,
-        authorization_url: authorizationUrl,
-        nextCloud_Username: nextCloudUserName
+            clientId: clientId,
+            clientSecret: clientSecret,
+            authorizationUrl: authorizationUrl,
+            nextCloudUserName: nextCloudUserName
         }),
-    }).then((response) => response.json())
+    }).then((response) => response.json());
 }
 
 export async function initUser(user: User, firstLoginHook: any): Promise<any> {
