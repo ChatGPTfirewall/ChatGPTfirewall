@@ -300,17 +300,6 @@ def getfiles():
     """
 
 
-def fetch_txt_content(url, access_token):
-    headers = {"Authorization": f"Bearer {access_token}"}
-    response = requests.get(url, headers=headers)
-
-    if response.status_code == 200:
-        return response.content.decode("utf-8")
-    else:
-        return "Fehler beim Abrufen des Textinhalts"
-    
-
-
 #########################################################################################
 # Init
 # -----------
