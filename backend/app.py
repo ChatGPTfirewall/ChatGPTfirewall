@@ -2,13 +2,15 @@ from qdrant_client import QdrantClient
 import spacy
 from sentence_transformers import SentenceTransformer
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect, session
 from flask_cors import CORS
 import os
 import textract
 from docx import Document
 import psycopg2
 from dotenv import load_dotenv
+import requests
+from xml.etree import ElementTree as ET
 
 # import boto3
 import ocrmypdf
@@ -19,8 +21,13 @@ from striprtf.striprtf import rtf_to_text
 from bs4 import BeautifulSoup
 import init_db
 import json
+from oauthlib.oauth2 import BackendApplicationClient
+from requests_oauthlib import OAuth2Session
+from requests.auth import HTTPBasicAuth
+import secrets
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 CORS(app)
 
 dotenv_path = Path(".env")
@@ -188,6 +195,110 @@ def init_user():
     conn.close()
 
     return result
+
+
+@app.route("/nextcloud")
+def nextcloud():
+    nextcloudUser = request.args.get("nextCloudUserName")
+    clientId = request.args.get("clientId")
+    clientSecret = request.args.get("clientSecret")
+    authorizationUrl = request.args.get("authorizationUrl")
+    redirect_uri = "http://127.0.0.1:7007/redirect"
+    FILES_URL = f"{authorizationUrl}remote.php/dav/files/{nextcloudUser}/"
+    TOKEN_URL = f"{authorizationUrl}index.php/apps/oauth2/api/v1/token"
+    AUTHORIZATION_URL = f"{authorizationUrl}/index.php/apps/oauth2/authorize"
+
+    data = {
+        "client_id": clientId,
+        "redirect_uri": redirect_uri,
+        "response_type": "code",
+        "scope": "read",
+    }
+
+    session["clientSecret"] = clientSecret  # Speichere clientSecret in der Session
+    session["authorizationUrl"] = authorizationUrl  # Speichere die authorizationUrl in der Session
+    session["clientId"] = clientId  # Speichere die clientId in der Session
+    session["nextcloudUser"] = nextcloudUser  # Speichere die clientId in der Session
+    session["token_url"] = TOKEN_URL  # Speichere die clientId in der Session
+    session["files_url"] = FILES_URL  # Speichere die clientId in der Session
+    session["redirect_uri"] = redirect_uri  # Speichere die clientId in der Session
+
+    url = AUTHORIZATION_URL + "?" + "&".join([f"{key}={value}" for key, value in data.items()])
+    return redirect(url)
+
+@app.route("/redirect")
+def getfiles():
+    code = request.args.get("code")
+    clientSecret = session.get("clientSecret")  # Hole clientSecret aus der Session
+    authorizationUrl = session.get("authorizationUrl")  # Hole authorizationUrl aus der Session
+    clientId = session.get("clientId")
+    nextcloudUser = session.get("nextcloudUser")
+    TOKEN_URL = session.get("token_url")
+    FILES_URL = session.get("files_url")
+    REDIRECT_URI = session.get("redirect_uri")
+    Path("temp").mkdir(parents=True, exist_ok=True)
+
+    payload = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": REDIRECT_URI,
+        "client_id": clientId,
+        "client_secret": clientSecret,
+    }
+    response = requests.post(TOKEN_URL, data=payload)
+    access_token = response.json().get("access_token")
+
+    if access_token:
+        headers = {"Authorization": f"Bearer {access_token}"}
+        response = requests.request("PROPFIND", FILES_URL, headers=headers)
+
+        if response.status_code != 207:
+            return "Fehler beim Abrufen der Dateien", 500
+
+        root = ET.fromstring(response.content)
+        files = [elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != '/']
+
+    text_content = ""
+    for file in files:
+        filename = file.split("/")[-1]  # Dateiname aus der URL extrahieren
+        file_ext = os.path.splitext(filename)[1].lower()
+
+        download_url = f"{authorizationUrl}{file}"
+        temp_file_path = os.path.join(app.root_path, "temp", filename)
+
+        # Datei manuell herunterladen
+        response = requests.get(download_url, headers={"Authorization": f"Bearer {access_token}"})
+        with open(temp_file_path, "wb") as f:
+            f.write(response.content)
+
+        # Text extrahieren
+        if file_ext == ".pdf":
+            text = extract_text_from_pdf(temp_file_path)
+        elif file_ext in ['.docx', '.doc', '.txt']:
+            text = extract_text_from_word_doc(temp_file_path)
+        elif file_ext in ['.rtf', '.html', '.xml', '.csv', '.md']:
+            text = extract_text_from_rtf_html_xml_csv(temp_file_path)
+        else:
+            text = ""
+
+        # Text zur Textinhalt hinzufügen
+        text_content += f"<h3>{filename}</h3><pre>{text}</pre>"
+
+        # Temporäre Datei löschen
+        os.remove(temp_file_path)
+
+    return f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Nextcloud File Explorer</title>
+        </head>
+        <body>
+            <h1>Nextcloud File Explorer</h1>
+            {text_content}
+        </body>
+        </html>
+    """
 
 
 #########################################################################################
