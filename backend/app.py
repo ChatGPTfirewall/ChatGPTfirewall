@@ -4,6 +4,9 @@ from qdrant_client.http.models import Distance, VectorParams
 import spacy
 from sentence_transformers import SentenceTransformer
 import json
+from langchain import PromptTemplate, LLMChain
+from langchain.llms import OpenAI
+import tiktoken
 
 from flask import Flask, request, jsonify, redirect, session
 from flask_cors import CORS
@@ -48,6 +51,22 @@ init_db.migrate()
 nlp = spacy.load("de_core_news_lg")
 model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
 
+template = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
+Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
+mit "Ich weiß es nicht".
+
+{kontext}
+
+Frage: {frage}
+
+Antwort: "" """
+
+prompt = PromptTemplate(template=template, input_variables=["kontext", "frage"])
+## ccc apikey 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
+llm = OpenAI(openai_api_key="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")
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+
 # client = QdrantClient(host="localhost", port=6333)
 client = QdrantClient(
     url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
@@ -66,6 +85,12 @@ def getText(filepath):
     with open(filepath) as f:
             text = f.read()
     return text
+
+
+def num_tokens_from_string(userPrompt):
+    encoding = tiktoken.get_encoding("cl100k_base") #gpt3.5turbo and gpt4 
+    num_tokens = len(encoding.encode(userPrompt))
+    return num_tokens
 
 def is_scanned_pdf(file_path):
     with open(file_path, "rb") as file:
@@ -400,7 +425,6 @@ def getContext():
 
     return answer
 
-
 # Example answer JSON
 # {
 #   "facts": [
@@ -431,6 +455,70 @@ def getContext():
 #     }
 #   ]
 # }
+
+#########################################################################################
+# POST: llmaanswer
+# -----------
+# POST Body
+#   * JSON :: json with context-text
+# route
+#   * /api/llmaanswer
+# return
+#  "answer":
+#      "answer": "Both Northwind and Health Plus...exams and glasses."
+#
+#########################################################################################
+#
+# Todo:
+#
+#########################################################################################
+@app.route("/api/llmanswer", methods=["POST"])
+def getLLManswer():
+    # get contet from request
+    content = request.get_json()
+    #print(content)
+    # todo: check if request is valid
+    # [...]
+    
+    kontext = ""
+    for context in content['contexts']:
+        print(context['file'])
+        kontext = kontext + context["file"] + "\n"
+        kontext = kontext + context["editedText"] + "\n\n"
+             
+    frage = content['question']
+
+
+    #f = open("demofile2.txt", "a")
+    #f.write(prompt.format(frage=frage,kontext=kontext))
+    #f.close()
+
+
+    toks = num_tokens_from_string(prompt.format(frage=frage,kontext=kontext))
+    print(toks)
+    # max 4097 tokens!
+
+    if toks < 4098:
+        answer = llm_chain.run({"kontext":kontext,"frage":frage})
+    else:
+        answer = "Uh, die Frage war zu lang!"
+    return answer
+
+#{
+#  "contexts": [
+#    {
+#      "file": "Molecule Man",
+#      "editedText": "Lorem Ipsum1"
+#    },
+#    {
+#      "file": "Molecule Man2",
+#      "editedText": "Lorem Ipsum2 "
+#    }
+#  ],
+#  "question": "this is the question?"
+#}
+
+#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
 
 #########################################################################################
 # GET: POST
