@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton } from "@fluentui/react";
+import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Modal } from "@fluentui/react";
 import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
@@ -13,6 +13,7 @@ import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
+import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 
@@ -177,23 +178,23 @@ const Chat = () => {
                                 <div ref={chatMessageStreamEnd} />
                             </div>
                         )}
-                    {!editText ? (
-                        <div className={styles.chatInput}>
-                            <QuestionInput
-                                clearOnSend
-                                placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
-                                disabled={isLoading}
-                                onSend={question => makeApiRequest(question)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={styles.promptReady}>
-                            <div className={styles.buttonGroup}>
-                            <DefaultButton>Edit Text</DefaultButton>
-                            <DefaultButton>Send</DefaultButton>
+                        {!editText ? (
+                            <div className={styles.chatInput}>
+                                <QuestionInput
+                                    clearOnSend
+                                    placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                                    disabled={isLoading}
+                                    onSend={question => makeApiRequest(question)}
+                                />
                             </div>
-                        </div>
-                    ) }
+                        ) : (
+                            <div className={styles.promptReady}>
+                                <div className={styles.buttonGroup}>
+                                    <EditTextModal text={"test"} />
+                                    <PrimaryButton>Send</PrimaryButton>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <Panel
                         headerText="Configure answer generation"
@@ -253,7 +254,7 @@ const Chat = () => {
                     <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
                     <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>Login and ask anything or try an example</h2>
-                    <AuthenticationButton/>
+                    <AuthenticationButton />
                 </div>
             </div>
         </div>

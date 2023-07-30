@@ -209,7 +209,7 @@ def insert_document_to_vectorDatabase(user_col, filename, text):
     for sentence in tokText:
         #print(sentence)
         try:
-            vecSentence = model.encode([sentence])
+            vecSentence = transformer.encode([sentence])
         except:
             print("Bad input")
             print(sentence)
