@@ -1,12 +1,11 @@
 import os
 import psycopg2
 
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_USER = os.getenv("DB_USER")
-DB_NAME = os.getenv("DB_NAME")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_PORT = os.getenv("DB_PORT")
+DB_HOST = "localhost" 
+DB_PORT = "5432"
+DB_USER = "postgres"
+DB_NAME = "postgres"
+DB_PASSWORD = "postgres"
 
 database_connection = f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} host={DB_HOST} port={DB_PORT}"
 
@@ -38,3 +37,7 @@ def migrate():
     conn.close()
 
     print("DB successfully initialized.")
+
+
+if __name__ == "__main__":
+    migrate()

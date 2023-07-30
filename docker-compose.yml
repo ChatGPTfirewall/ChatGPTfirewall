@@ -1,34 +1,5 @@
 version: '3.8'
 services:
-  frontend:
-    image: node:current-bullseye-slim
-    container_name: frontend
-    entrypoint: ./app/entrypoint.sh
-    stdin_open: true
-    tty: true
-    ports:
-      - "5173:5173"
-    volumes:
-        - type: bind
-          source: ./frontend
-          target: /app
-    depends_on:
-      - backend
-    env_file:
-      - .env
-  backend:
-    build: ./backend
-    container_name: backend
-    stdin_open: true
-    tty: true
-    ports:
-      - "7007:7007"
-    volumes:
-      - type: bind
-        source: ./backend
-        target: /app
-    env_file:
-      - .env
   postgres:
     image: postgres:15.3-bullseye
     container_name: postgres
