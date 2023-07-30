@@ -7,6 +7,7 @@ import json
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import OpenAI
 import tiktoken
+import uuid
 
 from flask import Flask, request, jsonify, redirect, session
 from flask_cors import CORS
@@ -178,20 +179,27 @@ def insert_document_to_database(user_id, filename, text):
 
 def insert_document_to_vectorDatabase(user_col, filename, text):
     tokText = prepareText(text)
+    idx = 0
+
     for sentence in tokText:
-        print(sentence)
-        vecSentence = model.encode([sentence])
-        print(vecSentence)
+        #print(sentence)
+        try:
+            vecSentence = model.encode([sentence])
+        except:
+            print("Bad input")
+            print(sentence)
+        #print(vecSentence)
         client.upsert(
             collection_name=user_col,
             points=[
                 PointStruct(
-                    id=0,
+                    id=str(uuid.uuid4()),
                     vector=vecSentence[0].tolist(),
                     payload={"file": filename, "text": sentence}
                 )
             ]
         )
+        idx=idx+1
 
 
 @app.route("/upload", methods=["POST"])
