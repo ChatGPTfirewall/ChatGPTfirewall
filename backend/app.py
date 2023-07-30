@@ -8,6 +8,7 @@ from langchain import PromptTemplate, LLMChain
 from langchain.llms import OpenAI
 import tiktoken
 import uuid
+import numpy as np
 
 from flask import Flask, request, jsonify, redirect, session
 from flask_cors import CORS
@@ -195,7 +196,7 @@ def insert_document_to_vectorDatabase(user_col, filename, text):
     for sentence in tokText:
         #print(sentence)
         try:
-            vecSentence = model.encode([sentence])
+            vecSentence = transformer.encode([sentence])
         except:
             print("Bad input")
             print(sentence)
@@ -205,7 +206,7 @@ def insert_document_to_vectorDatabase(user_col, filename, text):
             points=[
                 PointStruct(
                     id=str(uuid.uuid4()),
-                    vector=vecSentence[0].tolist(),
+                    vector=vecSentence[0].tolist(), #numpy nparry.tolist
                     payload={"file": filename, "text": sentence}
                 )
             ]
@@ -420,6 +421,7 @@ def getContext():
     # [...]
     sentence = prepareText(content)
     vector = transformer.encode(sentence)
+    print(vector[0].tolist())
     hits = client.search (
         collection_name=user_collection_name,
         query_vector=vector[0].tolist(),
