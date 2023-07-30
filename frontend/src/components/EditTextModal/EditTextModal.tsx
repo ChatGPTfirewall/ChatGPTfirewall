@@ -1,5 +1,4 @@
 import { useBoolean } from '@fluentui/react-hooks';
-import { Add24Regular, Edit20Regular, Edit24Regular } from "@fluentui/react-icons";
 import styles from "./EditTextModal.module.css";
 import {
   getTheme,
@@ -12,22 +11,29 @@ import {
   TextField,
 } from '@fluentui/react';
 import { IconButton, IButtonStyles, DefaultButton } from '@fluentui/react/lib/Button';
-import React from 'react';
-
-
+import { useState } from 'react';
 
 interface Props {
   buttonClassName?: string;
   text: string;
+  sendToParent: any;
 }
-export const EditTextModal = ({ buttonClassName, text }: Props) => {
+export const EditTextModal = ({ buttonClassName, text, sendToParent }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
+  const [updatedText, setUpdatedText] = useState(text);
+
+  const sendTextToParent = (e) => {
+    setUpdatedText(e.target.value)
+    sendToParent(e.target.value)
+};
+
 
   return (
     <div>
       <DefaultButton className={`${styles.container} ${buttonClassName ?? ""}`} onClick={showModal}>
         <Text>{"Edit Text"}</Text>
       </DefaultButton>
+      
       <Modal
         isOpen={isModalOpen}
         onDismiss={hideModal}
@@ -46,7 +52,7 @@ export const EditTextModal = ({ buttonClassName, text }: Props) => {
           />
         </div>
         <div className={styles.modal_container}>
-        <TextField multiline autoAdjustHeight value={text} className={contentStyles.textfield}/>
+          <TextField id="text_value_field" multiline autoAdjustHeight value={updatedText} onChange={sendTextToParent} className={contentStyles.textfield} />
         </div>
       </Modal>
     </div>

@@ -57,7 +57,7 @@ const Chat = () => {
 
             const result = await chatApi(request, user!);
             setEditText(true)
-            setText(result.facts[0].text)
+            setText(result.facts[0].text[0])
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -72,6 +72,14 @@ const Chat = () => {
         setActiveCitation(undefined);
         setActiveAnalysisPanelTab(undefined);
         setAnswers([]);
+    };
+
+    const saveText = (text) => {
+        setText(text)
+    }
+
+    const sendText = () => {
+        
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
@@ -193,8 +201,8 @@ const Chat = () => {
                         ) : (
                             <div className={styles.promptReady}>
                                 <div className={styles.buttonGroup}>
-                                    <EditTextModal text={text} />
-                                    <PrimaryButton>Send</PrimaryButton>
+                                    <EditTextModal text={text} sendToParent={saveText}/>
+                                    <PrimaryButton onClick={sendText}>Send</PrimaryButton>
                                 </div>
                             </div>
                         )}
