@@ -1,5 +1,6 @@
 import { useId, useBoolean } from '@fluentui/react-hooks';
-import { Add24Regular, ArrowUpload24Regular, Box24Regular, Spinner } from "@fluentui/react-icons";
+import { Add24Regular, ArrowUpload24Regular, Box24Regular } from "@fluentui/react-icons";
+import { Spinner } from '@fluentui/react';
 import styles from "./KnowledgeBaseModal.module.css";
 import {
   getTheme,
@@ -27,6 +28,8 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const hiddenFileInput = React.useRef(null);
   const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
+  const [fileNames, setFileNames] = useState([]); // Zustand für die Dateinamen hinzufügen
+
 
   // State-Hooks für die Werte der Eingabefelder
   const [clientId, setClientId] = useState('');
@@ -46,21 +49,27 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       const formData = new FormData();
+      const newFileNames = []; // Neues Array für Dateinamen erstellen
 
       for (let i = 0; i < files.length; i++) {
         formData.append("files", files[i]);
+        newFileNames.push(files[i].name); // Dateinamen zum neuen Array hinzufügen
       }
 
       formData.append("user", user!.sub as string);
+
+      setFileNames(newFileNames); // Dateinamen in den Zustand setzen
 
       setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
 
       uploadFiles(formData, user!)
         .then(() => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
+          setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads
         })
         .catch((error) => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn ein Fehler auftritt
+          setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array bei Fehlern
           console.error('Upload error:', error);
         });
     }
@@ -175,13 +184,13 @@ const handleNextcloudClick = () => {
           <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
           <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick}/>
           <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
-            <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
-            </FileCard>
-            {isLoading && <Spinner label="Uploading..." ariaLive="assertive" labelPosition="right" />}
-        
-            
-        </div>
+              <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
           
+            </FileCard>
+            {isLoading && (
+            <Spinner label={`Uploading ${fileNames}`} ariaLive="assertive" labelPosition="right" />
+          )}
+        </div>
       </Modal>
       <Modal
         isOpen={isNextcloudModalOpen}
@@ -189,7 +198,7 @@ const handleNextcloudClick = () => {
         isBlocking={false}
         containerClassName={contentStyles.container}
       >
-        {nextcloudModalContent}
+        {nextcloudModalContent} 
       </Modal>
     </div>
   );
