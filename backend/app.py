@@ -50,7 +50,7 @@ init_db.migrate()
 # recognition = session.client('recognition')
 
 nlp = spacy.load("de_core_news_lg")
-model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
+transformer = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 template = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
 Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
@@ -80,13 +80,24 @@ def prepareText(content):
     token = sentences
     return token
 
-def getText(filepath):
-    # TODO postgres anbindung
-    #         CREATE TABLE IF NOT EXISTS documents (id SERIAL PRIMARY KEY, user_id INT, filename VARCHAR(255),text TEXT, CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id));
-    with open(filepath) as f:
-            text = f.read()
-    return text
+def getText(filename, user_collection_name_):
+    #with open(filename) as f:
+    #        text = f.read()
+    conn = psycopg2.connect(init_db.database_connection)
+    cursor = conn.cursor()
+    queryUser = "SELECT id FROM users WHERE auth0_id = %s LIMIT 1"
+    cursor.execute(queryUser, (user_collection_name_,))
+    user = cursor.fetchone()
 
+    print(user)
+
+    PostgreSQL_select_Query = "select text from documents where filename = %s AND user_id = %s"
+    cursor.execute(PostgreSQL_select_Query,(filename,user))
+    text = cursor.fetchone()
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return text
 
 def num_tokens_from_string(userPrompt):
     encoding = tiktoken.get_encoding("cl100k_base") #gpt3.5turbo and gpt4 
@@ -398,38 +409,34 @@ def getfiles():
 #   *  GET Parameter minimal Score
 #
 #########################################################################################
-@app.route("/api/context", methods=["GET"])
+@app.route("/api/context" , methods=['GET'])
 def getContext():
-    # get contet from request
-    content = request.args.get("content")
+    # get contet from request 
+    content = request.args.get('content')
     print(content)
+
+    user_collection_name = request.args.get('user_collection_name') # or auth0_id in db (user table)
     # todo: check if request is valid
     # [...]
-    toks = nlp(content)
-    print("1")
-    sentences = [[w.text for w in s] for s in toks.sents]
-    token = sentences
-    print("1")
-    # model.load("193")
-    print(model)
-    vector = model.encode(token)
-    print("1")
-    hits = client.search(
-        collection_name="my_collection2",
+    sentence = prepareText(content)
+    vector = transformer.encode(sentence)
+    hits = client.search (
+        collection_name=user_collection_name,
         query_vector=vector[0].tolist(),
-        limit=5,  # Return 5 closest points
+        limit=3  # magic number
     )
-
-    # answer = '{"facts":[{"answer":1, "file":2, "score":3}]}'
+    
+    #answer = '{"facts":[{"answer":1, "file":2, "score":3, "text":loremiosum}]}'
     tmpFactArray = []
     for hit in hits:
         tmpFact = {}
         tmpFact["answer"] = hit.payload.get("text")
         tmpFact["file"] = hit.payload.get("file")
         tmpFact["score"] = hit.score
+        tmpFact["text"] = getText(hit.payload.get("file"),user_collection_name)
         tmpFactArray.append(tmpFact)
         print(hit)
-    answer = {"facts": tmpFactArray}
+    answer = {"facts":tmpFactArray}
 
     return answer
 
