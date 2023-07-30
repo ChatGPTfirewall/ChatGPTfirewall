@@ -1,5 +1,6 @@
 201
 193
+*.temp.py
 .vscode
 .elixir_ls
 _build
