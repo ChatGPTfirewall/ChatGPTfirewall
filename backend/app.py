@@ -236,6 +236,7 @@ def getfiles():
     TOKEN_URL = session.get("token_url")
     FILES_URL = session.get("files_url")
     REDIRECT_URI = session.get("redirect_uri")
+    Path("temp").mkdir(parents=True, exist_ok=True)
 
     payload = {
         "grant_type": "authorization_code",
