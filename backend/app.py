@@ -26,6 +26,20 @@ from requests_oauthlib import OAuth2Session
 from requests.auth import HTTPBasicAuth
 import secrets
 
+from qdrant_client import QdrantClient, http
+from qdrant_client.models import Distance, VectorParams
+from pprint import pprint
+import spacy
+from sentence_transformers import SentenceTransformer, util
+from langchain import PromptTemplate
+from huggingface_hub import InferenceClient
+from langchain import HuggingFaceHub, LLMChain
+import os
+from langchain.llms import OpenAI
+from langchain import PromptTemplate, LLMChain
+from flask import Flask, request, jsonify
+import json
+
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 CORS(app)
@@ -309,14 +323,48 @@ def getfiles():
 # Todo:
 #
 #########################################################################################
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load('de_core_news_lg')
 model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
+transformer = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 # client = QdrantClient(host="localhost", port=6333)
 client = QdrantClient(
     url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
 )
+
+#os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+#os.environ["OPENAI_API_KEY"] = "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"
+
+print("...prep")
+
+template = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
+Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
+mit "Ich weiß es nicht".
+
+{kontext}
+
+Frage: {frage}
+
+Antwort: "" """
+
+
+prompt = PromptTemplate(template=template, input_variables=["kontext", "frage"])
+## ccc apikey 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
+llm = OpenAI(openai_api_key="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")
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+def prepareText(content):
+    toks = nlp(content)
+    sentences = [[w.text for w in s] for s in toks.sents]
+    token = sentences
+    return token
+
+def getText(filepath):
+    # TODO postgres anbindung
+    with open(filepath) as f:
+            text = f.read()
+    return text
 
 
 #########################################################################################
@@ -339,72 +387,175 @@ client = QdrantClient(
 #   *  GET Parameter minimal Score
 #
 #########################################################################################
-@app.route("/api/context", methods=["GET"])
+@app.route("/api/context" , methods=['GET'])
 def getContext():
-    # get contet from request
-    content = request.args.get("content")
+    # get contet from request 
+    content = request.args.get('content')
     print(content)
     # todo: check if request is valid
     # [...]
-    toks = nlp(content)
-    print("1")
-    sentences = [[w.text for w in s] for s in toks.sents]
-    token = sentences
-    print("1")
-    # model.load("193")
-    print(model)
-    vector = model.encode(token)
-    print("1")
-    hits = client.search(
-        collection_name="my_collection2",
+    sentence = prepareText(content)
+    vector = transformer.encode(sentence)
+    hits = client.search (
+        collection_name="my_collection3",
         query_vector=vector[0].tolist(),
-        limit=5,  # Return 5 closest points
+        limit=3  # magic number
     )
-
-    # answer = '{"facts":[{"answer":1, "file":2, "score":3}]}'
+    
+    #answer = '{"facts":[{"answer":1, "file":2, "score":3, "text":loremiosum}]}'
     tmpFactArray = []
     for hit in hits:
         tmpFact = {}
         tmpFact["answer"] = hit.payload.get("text")
         tmpFact["file"] = hit.payload.get("file")
         tmpFact["score"] = hit.score
+        tmpFact["text"] = getText(hit.payload.get("file"))
         tmpFactArray.append(tmpFact)
         print(hit)
-    answer = {"facts": tmpFactArray}
+    answer = {"facts":tmpFactArray}
 
     return answer
 
 
-# Example answer JSON
+# Eample answer JSON
 # {
 #   "facts": [
 #     {
 #       "answer": "|url = https://www.csoonline.com / article/3674836 / confidential - computing - what - is - it - and - why - do - you - need - it.html |accessdate=2023 - 03 - 12 |website = CSO Online } } < /ref >  ",
 #       "file": "repo/ccc.txt",
-#       "score": 0.39699805
+#       "text": "text from file ..."
 #     },
 #     {
 #       "answer": "[ [ Tencent ] ] and [ [ VMware]].<ref>{{Cite web |title = Confidential Computing Consortium Establishes Formation with Founding Members and Open Governance Structure |publisher = Linux Foundation |url = https://www.linuxfoundation.org / press / press - release / confidential - computing - consortium - establishes - formation - with - founding - members - and - open - governance - structure-2 |accessdate=2023 - 03 - 12}}</ref><ref>{{Cite web |last = Gold |first = Jack |date=2020 - 09 - 28 |title = Confidential computing : What is it and why do you need it ?",
 #       "file": "repo/ccc.txt",
-#       "score": 0.38119522
+#       "text": "text from file ..."
 #     },
 #     {
 #       "answer": "Mithril Security,<ref>{{Cite web |title = Mithril Security Democratizes AI Privacy Thanks To Daniel Quoc Dung Huynh|url = https://www.techtimes.com / articles/282785/20221102 / mithril - security - democratizes - ai - privacy - thanks - to - daniel - quoc - dung - huynh.htm|last = Thompson|first = David|date=2022 - 11 - 02|accessdate=2023 - 03 - 12}}</ref >",
 #       "file": "repo/ccc.txt",
-#       "score": 0.38079184
+#       "text": "text from file ..."
 #     },
-#     {
-#       "answer": "In their various implementations , TEEs can provide different levels of isolation including [ [ virtual machine ] ] , individual application , or compute functions.<ref>{{Cite web |last1 = Sturmann |first2 = Axel|last2= Simon |first1 = Lily |date=2019 - 12 - 02 |title = Current Trusted Execution Environment landscape |url = https://next.redhat.com/2019/12/02 / current - trusted - execution - environment - landscape/ |accessdate=2023 - 03 - 12 |website = Red Hat Emerging Technologies}}</ref>\\nTypically , data in use in a computer 's compute components and memory exists in a decrypted state and can be vulnerable to examination or tampering by unauthorized software or administrators.<ref name = spectrum>{{Cite web |title = What Is Confidential Computing?|url = https://spectrum.ieee.org / what - is - confidential - computing |accessdate=2023 - 03 - 12 |website = IEEE Spectrum|first = Fahmida|last = Rashid|date=2020 - 05 - 27}}</ref><ref>{{Cite web |title = What Is Confidential Computing and Why It 's Key To Securing Data in Use ?",
-#       "file": "repo/ccc.txt",
-#       "score": 0.37619933
-#     },
-#     {
-#       "answer": "and others.\\n\\n==Confidential Computing Consortium==\\nConfidential computing is supported by an advocacy and technical collaboration group called the Confidential Computing Consortium.<ref name = ccc>{{Cite web |title = What is the Confidential Computing Consortium?|url = https://confidentialcomputing.io/ |accessdate=2023 - 03 - 12 |website = Confidential Computing Consortium } } < /ref >  ",
-#       "file": "repo/ccc.txt",
-#       "score": 0.36752164
-#     }
+#     [...]
 #   ]
 # }
+
+#########################################################################################
+# POST: llmaanswer
+# -----------
+# POST Body
+#   * JSON :: json with context-text
+# route
+#   * /api/llmaanswer
+# return
+#  "answer":
+#      "answer": "Both Northwind and Health Plus...exams and glasses."
+#
+#########################################################################################
+#
+# Todo:
+#
+#########################################################################################
+@app.route("/api/llmanswer", methods=["POST"])
+def getLLManswer():
+    # get contet from request
+    content = request.get_json()
+    print(content)
+    # todo: check if request is valid
+    # [...]
+    
+    kontext = ""
+    for context in content['contexts']:
+        print(context['file'])
+        kontext = kontext + context["file"] + "\n"
+        kontext = kontext + context["editedText"] + "\n\n"
+             
+    frage = content['question']
+
+    #pprint(kontext)
+    #pprint("###")
+    #pprint(frage)
+
+
+    f = open("demofile2.txt", "a")
+    f.write(prompt.format(frage=frage,kontext=kontext))
+    f.close()
+
+    answer = llm_chain.run({"kontext":kontext,"frage":frage})
+    print(answer)
+
+    return prompt.format(frage=frage,kontext=kontext)
+
+#{
+#  "contexts": [
+#    {
+#      "file": "Molecule Man",
+#      "editedText": "Lorem Ipsum1"
+#    },
+#    {
+#      "file": "Molecule Man2",
+#      "editedText": "Lorem Ipsum2 "
+#    }
+#  ],
+#  "question": "this is the question?"
+#}
+
+#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
+
+
+#########################################################################################
+# GET: POST
+# -----------
+# GET Parameter
+#   * user_collection_name :: Word, sentence or paragraph from user
+# route
+#   * /api/createCollection
+# return
+#   * TRUE or FALSE
+#########################################################################################
+#
+# Todo:
+#   *  good return with error handling
+#
+#########################################################################################
+@app.route("/api/createCollection", methods=["POST"])
+def createCollection():
+    # get contet from request
+    content = request.get_json()
+    print(content)
+    # todo: check if request is valid
+    # [...]
+    # client = QdrantClient(host="localhost", port=6333)
+    client = QdrantClient(
+        url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
+        api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
+    )
+
+    user_collection_name = content["user_collection_name"]
+
+    try:
+        status = client.get_collection(collection_name=user_collection_name)
+    except http.exceptions.UnexpectedResponse as e:
+        error = json.loads(e.content)["status"]["error"]
+        # Collection doesnt exist
+        if error == "Not found: Collection `"+user_collection_name+"` doesn't exist!":
+            # create collection
+            print("create collection: " + user_collection_name)
+            client.recreate_collection(
+                collection_name=user_collection_name,
+                vectors_config=VectorParams(size=512, distance=Distance.COSINE),
+            )
+            return "True"
+        # other Error
+        else:
+            print("other error")
+            return "False"
+
+    except Exception as exception:
+        print("Something else went wrong")
+        return "False"
+
+    return "True"
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=7007)

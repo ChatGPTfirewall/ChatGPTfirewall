@@ -13,3 +13,5 @@ python-docx
 oauthlib
 requests_oauthlib
 requests
+langchain
+openai
