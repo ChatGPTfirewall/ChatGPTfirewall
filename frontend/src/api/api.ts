@@ -31,8 +31,8 @@ export async function askApi(options: AskRequest): Promise<Response> {
     return parsedResponse;
 }
 
-export async function chatApi(options: ChatRequest): Promise<Response> {
-    const response = await fetch("/api/context?content=" + options.content, {
+export async function chatApi(options: ChatRequest, user : User): Promise<Response> {
+    const response = await fetch("/api/context?content=" + options.content+"&user_collection_name="+user.sub, {
         method: "GET",
     });
 
