@@ -31,7 +31,7 @@ const Chat = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
-    const [editText, setEditText] = useState(true);
+    const [editText, setEditText] = useState(false);
 
     const [activeCitation, setActiveCitation] = useState<string>();
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
@@ -39,7 +39,7 @@ const Chat = () => {
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
     const [answers, setAnswers] = useState<[user: string, response: Response][]>([]);
 
-    const { isAuthenticated } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
         lastQuestionRef.current = question;
@@ -54,7 +54,8 @@ const Chat = () => {
                 content: question,
             };
 
-            const result = await chatApi(request);
+            const result = await chatApi(request, user!);
+            setEditText(true)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
