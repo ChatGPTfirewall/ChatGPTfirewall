@@ -7,6 +7,7 @@ import json
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import OpenAI
 import tiktoken
+import uuid
 
 from flask import Flask, request, jsonify, redirect, session
 from flask_cors import CORS
@@ -63,7 +64,7 @@ init_db.migrate()
 # recognition = session.client('recognition')
 
 nlp = spacy.load("de_core_news_lg")
-model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
+transformer = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 template = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
 Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
@@ -93,13 +94,24 @@ def prepareText(content):
     token = sentences
     return token
 
-def getText(filepath):
-    # TODO postgres anbindung
-    #         CREATE TABLE IF NOT EXISTS documents (id SERIAL PRIMARY KEY, user_id INT, filename VARCHAR(255),text TEXT, CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id));
-    with open(filepath) as f:
-            text = f.read()
-    return text
+def getText(filename, user_collection_name_):
+    #with open(filename) as f:
+    #        text = f.read()
+    conn = psycopg2.connect(init_db.database_connection)
+    cursor = conn.cursor()
+    queryUser = "SELECT id FROM users WHERE auth0_id = %s LIMIT 1"
+    cursor.execute(queryUser, (user_collection_name_,))
+    user = cursor.fetchone()
 
+    print(user)
+
+    PostgreSQL_select_Query = "select text from documents where filename = %s AND user_id = %s"
+    cursor.execute(PostgreSQL_select_Query,(filename,user))
+    text = cursor.fetchone()
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return text
 
 def num_tokens_from_string(userPrompt):
     encoding = tiktoken.get_encoding("cl100k_base") #gpt3.5turbo and gpt4 
@@ -192,20 +204,27 @@ def insert_document_to_database(user_id, filename, text):
 
 def insert_document_to_vectorDatabase(user_col, filename, text):
     tokText = prepareText(text)
+    idx = 0
+
     for sentence in tokText:
-        print(sentence)
-        vecSentence = model.encode([sentence])
-        print(vecSentence)
+        #print(sentence)
+        try:
+            vecSentence = model.encode([sentence])
+        except:
+            print("Bad input")
+            print(sentence)
+        #print(vecSentence)
         client.upsert(
             collection_name=user_col,
             points=[
                 PointStruct(
-                    id=0,
+                    id=str(uuid.uuid4()),
                     vector=vecSentence[0].tolist(),
                     payload={"file": filename, "text": sentence}
                 )
             ]
         )
+        idx=idx+1
 
 
 @app.route("/upload", methods=["POST"])
@@ -454,17 +473,19 @@ def getText(filepath):
 #   *  GET Parameter minimal Score
 #
 #########################################################################################
-@app.route("/api/context" , methods=['GET'])
+@app.route("/api/context", methods=["GET"])
 def getContext():
-    # get contet from request 
-    content = request.args.get('content')
+    # get contet from request
+    content = request.args.get("content")
     print(content)
+
+    user_collection_name = request.args.get('user_collection_name') # or auth0_id in db (user table)
     # todo: check if request is valid
     # [...]
     sentence = prepareText(content)
     vector = transformer.encode(sentence)
     hits = client.search (
-        collection_name="my_collection3",
+        collection_name=user_collection_name,
         query_vector=vector[0].tolist(),
         limit=3  # magic number
     )
@@ -476,10 +497,10 @@ def getContext():
         tmpFact["answer"] = hit.payload.get("text")
         tmpFact["file"] = hit.payload.get("file")
         tmpFact["score"] = hit.score
-        tmpFact["text"] = getText(hit.payload.get("file"))
+        tmpFact["text"] = getText(hit.payload.get("file"),user_collection_name)
         tmpFactArray.append(tmpFact)
         print(hit)
-    answer = {"facts":tmpFactArray}
+    answer = {"facts": tmpFactArray}
 
     return answer
 
