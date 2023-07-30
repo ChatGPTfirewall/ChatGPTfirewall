@@ -31,8 +31,8 @@ export async function askApi(options: AskRequest): Promise<Response> {
     return parsedResponse;
 }
 
-export async function chatApi(options: ChatRequest, user : User): Promise<Response> {
-    const response = await fetch("/api/context?content=" + options.content+"&user_collection_name="+user.sub, {
+export async function chatApi(options: ChatRequest, user: User): Promise<Response> {
+    const response = await fetch("/api/context?content=" + options.content + "&user_collection_name=" + user.sub, {
         method: "GET",
     });
 
@@ -43,6 +43,21 @@ export async function chatApi(options: ChatRequest, user : User): Promise<Respon
     }
 
     return parsedResponse;
+}
+
+export async function chatWithLLM(question: string, file: string, text: string): Promise<any> {
+    const response = await fetch("http://127.0.0.1:7007/api/llmanswer", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            question: question,
+            contexts: [
+                { file: file, editedText: text }
+            ]
+        }),
+    }).then((response) => console.log(response.json()));
 }
 
 export async function uploadFiles(data: any, user: User): Promise<any> {
@@ -57,7 +72,7 @@ export async function uploadToNextcloud(clientId: any, clientSecret: any, author
     const response = await fetch("http://127.0.0.1:7007/nextcloud", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' // Setzen Sie den Content-Type auf 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             clientId: clientId,

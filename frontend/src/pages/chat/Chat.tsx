@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, ChatRequest, ChatTurn, uploadFiles } from "../../api";
+import { chatApi, Response, ChatRequest, ChatTurn, uploadFiles, chatWithLLM } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -33,6 +33,8 @@ const Chat = () => {
     const [error, setError] = useState<unknown>();
     const [editText, setEditText] = useState(false);
     const [text, setText] = useState("");
+    const [file, setFile] = useState("");
+    const [question, setQuestion] = useState("");
 
     const [activeCitation, setActiveCitation] = useState<string>();
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
@@ -58,6 +60,8 @@ const Chat = () => {
             const result = await chatApi(request, user!);
             setEditText(true)
             setText(result.facts[0].text[0])
+            setFile(result.facts[0].file)
+            setQuestion(question)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -74,12 +78,12 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const saveText = (text) => {
-        setText(text)
+    const saveText = (data) => {
+        setText(data)
     }
 
     const sendText = () => {
-        
+        chatWithLLM(question, file, text)
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
