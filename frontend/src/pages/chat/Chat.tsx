@@ -30,6 +30,7 @@ const Chat = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
+    const [editText, setEditText] = useState(true);
 
     const [activeCitation, setActiveCitation] = useState<string>();
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
@@ -176,7 +177,7 @@ const Chat = () => {
                                 <div ref={chatMessageStreamEnd} />
                             </div>
                         )}
-
+                    {!editText ? (
                         <div className={styles.chatInput}>
                             <QuestionInput
                                 clearOnSend
@@ -185,6 +186,14 @@ const Chat = () => {
                                 onSend={question => makeApiRequest(question)}
                             />
                         </div>
+                    ) : (
+                        <div className={styles.promptReady}>
+                            <div className={styles.buttonGroup}>
+                            <DefaultButton>Edit Text</DefaultButton>
+                            <DefaultButton>Send</DefaultButton>
+                            </div>
+                        </div>
+                    ) }
                     </div>
                     <Panel
                         headerText="Configure answer generation"

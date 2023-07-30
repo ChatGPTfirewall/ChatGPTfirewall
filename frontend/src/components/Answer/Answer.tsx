@@ -57,7 +57,6 @@ export const Answer = ({
                     <div>
                         <span className={styles.citationLearnMore}>Fact {index + 1}:</span>
                         <div className={styles.answerText}>{fact.answer}</div>
-                        <TextField label="With auto adjusting height" borderless multiline autoAdjustHeight value={fact.answer} />
                         <span className={styles.citationLearnMore}>Citation:</span>
                         <a key={index} className={styles.citation} title={fact.file} onClick={() => onCitationClicked(getCitationFilePath(fact.file))}>
                             {fact.file}
