@@ -1,6 +1,12 @@
-from qdrant_client import QdrantClient
+from qdrant_client import QdrantClient, http
+from qdrant_client.models import Distance, VectorParams, PointStruct
+from qdrant_client.http.models import Distance, VectorParams
 import spacy
 from sentence_transformers import SentenceTransformer
+import json
+from langchain import PromptTemplate, LLMChain
+from langchain.llms import OpenAI
+import tiktoken
 
 from flask import Flask, request, jsonify, redirect, session
 from flask_cors import CORS
@@ -56,6 +62,49 @@ init_db.migrate()
 # session = boto3.Session(aws_access_key_id=os.getenv('AWS_KEY'), aws_secret_access_key=os.getenv('AWS_SECRET'), region_name='eu-west-2')
 # recognition = session.client('recognition')
 
+nlp = spacy.load("de_core_news_lg")
+model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
+
+template = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
+Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
+mit "Ich weiß es nicht".
+
+{kontext}
+
+Frage: {frage}
+
+Antwort: "" """
+
+prompt = PromptTemplate(template=template, input_variables=["kontext", "frage"])
+## ccc apikey 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
+llm = OpenAI(openai_api_key="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")
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+
+# client = QdrantClient(host="localhost", port=6333)
+client = QdrantClient(
+    url="https://e8f6b21f-1ba1-48a2-8c16-4b2db7614403.us-east-1-0.aws.cloud.qdrant.io:6333",
+    api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
+)
+
+def prepareText(content):
+    toks = nlp(content)
+    sentences = [[w.text for w in s] for s in toks.sents]
+    token = sentences
+    return token
+
+def getText(filepath):
+    # TODO postgres anbindung
+    #         CREATE TABLE IF NOT EXISTS documents (id SERIAL PRIMARY KEY, user_id INT, filename VARCHAR(255),text TEXT, CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id));
+    with open(filepath) as f:
+            text = f.read()
+    return text
+
+
+def num_tokens_from_string(userPrompt):
+    encoding = tiktoken.get_encoding("cl100k_base") #gpt3.5turbo and gpt4 
+    num_tokens = len(encoding.encode(userPrompt))
+    return num_tokens
 
 def is_scanned_pdf(file_path):
     with open(file_path, "rb") as file:
@@ -141,6 +190,23 @@ def insert_document_to_database(user_id, filename, text):
     cursor.close()
     conn.close()
 
+def insert_document_to_vectorDatabase(user_col, filename, text):
+    tokText = prepareText(text)
+    for sentence in tokText:
+        print(sentence)
+        vecSentence = model.encode([sentence])
+        print(vecSentence)
+        client.upsert(
+            collection_name=user_col,
+            points=[
+                PointStruct(
+                    id=0,
+                    vector=vecSentence[0].tolist(),
+                    payload={"file": filename, "text": sentence}
+                )
+            ]
+        )
+
 
 @app.route("/upload", methods=["POST"])
 def upload():
@@ -171,6 +237,7 @@ def upload():
  
         # Füge das Dokument und den extrahierten Text zur Datenbank hinzu
         insert_document_to_database(user[0], filename, text)
+        insert_document_to_vectorDatabase(user[1], filename, text)
 
         # Lösche das temporäre Dokument
         os.remove(temp_file_path)
@@ -416,8 +483,7 @@ def getContext():
 
     return answer
 
-
-# Eample answer JSON
+# Example answer JSON
 # {
 #   "facts": [
 #     {
@@ -459,7 +525,7 @@ def getContext():
 def getLLManswer():
     # get contet from request
     content = request.get_json()
-    print(content)
+    #print(content)
     # todo: check if request is valid
     # [...]
     
@@ -471,19 +537,21 @@ def getLLManswer():
              
     frage = content['question']
 
-    #pprint(kontext)
-    #pprint("###")
-    #pprint(frage)
+
+    #f = open("demofile2.txt", "a")
+    #f.write(prompt.format(frage=frage,kontext=kontext))
+    #f.close()
 
 
-    f = open("demofile2.txt", "a")
-    f.write(prompt.format(frage=frage,kontext=kontext))
-    f.close()
+    toks = num_tokens_from_string(prompt.format(frage=frage,kontext=kontext))
+    print(toks)
+    # max 4097 tokens!
 
-    answer = llm_chain.run({"kontext":kontext,"frage":frage})
-    print(answer)
-
-    return prompt.format(frage=frage,kontext=kontext)
+    if toks < 4098:
+        answer = llm_chain.run({"kontext":kontext,"frage":frage})
+    else:
+        answer = "Uh, die Frage war zu lang!"
+    return answer
 
 #{
 #  "contexts": [
@@ -500,7 +568,6 @@ def getLLManswer():
 #}
 
 #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
-
 
 #########################################################################################
 # GET: POST
@@ -531,7 +598,7 @@ def createCollection():
     )
 
     user_collection_name = content["user_collection_name"]
-
+    print(user_collection_name)
     try:
         status = client.get_collection(collection_name=user_collection_name)
     except http.exceptions.UnexpectedResponse as e:

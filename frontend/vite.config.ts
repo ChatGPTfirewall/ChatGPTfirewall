@@ -18,6 +18,7 @@ export default defineConfig({
         port: 5173, // you can replace this port with any port
         proxy: {
             "/api/context": "http://backend:7007",
+            "/api/createCollection": "http://backend:7007/",
             '/upload': {
                 target: "http://backend:7007", // Geben Sie hier die URL Ihres Backend-Servers an
                 changeOrigin: true,
