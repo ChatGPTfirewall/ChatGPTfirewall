@@ -1,5 +1,5 @@
 import { useId, useBoolean } from '@fluentui/react-hooks';
-import { Add24Regular, ArrowUpload24Regular, Box24Regular } from "@fluentui/react-icons";
+import { Add24Regular, ArrowUpload24Regular, Box24Regular, Spinner } from "@fluentui/react-icons";
 import styles from "./KnowledgeBaseModal.module.css";
 import {
   getTheme,
@@ -26,6 +26,8 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const hiddenFileInput = React.useRef(null);
   const { user } = useAuth0();
+  const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
+
   // State-Hooks für die Werte der Eingabefelder
   const [clientId, setClientId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
@@ -51,8 +53,16 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
 
       formData.append("user", user!.sub as string);
 
+      setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
 
       uploadFiles(formData, user!)
+        .then(() => {
+          setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
+        })
+        .catch((error) => {
+          setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn ein Fehler auftritt
+          console.error('Upload error:', error);
+        });
     }
   };
 
@@ -166,8 +176,12 @@ const handleNextcloudClick = () => {
           <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick}/>
           <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
             <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
-          </FileCard>
+            </FileCard>
+            {isLoading && <Spinner label="Uploading..." ariaLive="assertive" labelPosition="right" />}
+        
+            
         </div>
+          
       </Modal>
       <Modal
         isOpen={isNextcloudModalOpen}
