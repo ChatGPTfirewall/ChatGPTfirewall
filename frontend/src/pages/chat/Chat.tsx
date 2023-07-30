@@ -32,6 +32,7 @@ const Chat = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
     const [editText, setEditText] = useState(false);
+    const [text, setText] = useState("");
 
     const [activeCitation, setActiveCitation] = useState<string>();
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
@@ -56,6 +57,7 @@ const Chat = () => {
 
             const result = await chatApi(request, user!);
             setEditText(true)
+            setText(result.facts[0].text)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -191,7 +193,7 @@ const Chat = () => {
                         ) : (
                             <div className={styles.promptReady}>
                                 <div className={styles.buttonGroup}>
-                                    <EditTextModal text={"test"} />
+                                    <EditTextModal text={text} />
                                     <PrimaryButton>Send</PrimaryButton>
                                 </div>
                             </div>

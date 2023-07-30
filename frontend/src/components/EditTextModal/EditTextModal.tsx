@@ -46,7 +46,7 @@ export const EditTextModal = ({ buttonClassName, text }: Props) => {
           />
         </div>
         <div className={styles.modal_container}>
-        <TextField multiline autoAdjustHeight value={text}/>
+        <TextField multiline autoAdjustHeight value={text} className={contentStyles.textfield}/>
         </div>
       </Modal>
     </div>
@@ -61,6 +61,7 @@ const contentStyles = mergeStyleSets({
     display: 'flex',
     flexFlow: 'column nowrap',
     alignItems: 'stretch',
+    width: '75%'
   },
   header: [
     // eslint-disable-next-line deprecation/deprecation
@@ -91,6 +92,9 @@ const contentStyles = mergeStyleSets({
       'p:last-child': { marginBottom: 0 },
     },
   },
+  textfield: {
+    width: '100%'
+  }
 });
 const stackProps: Partial<IStackProps> = {
   horizontal: true,
