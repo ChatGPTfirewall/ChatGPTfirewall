@@ -46,6 +46,7 @@ export type Fact = {
 }
 
 export type Response = {
-    facts: Fact[];
+    facts?: Fact[];
     error?: string;
+    llm_answer?: string;
 }

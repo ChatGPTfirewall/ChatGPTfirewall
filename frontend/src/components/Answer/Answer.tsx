@@ -1,11 +1,8 @@
-import { useMemo, useState } from "react";
-import { Stack, IconButton, TextField } from "@fluentui/react";
-import DOMPurify from "dompurify";
+import { Stack, IconButton } from "@fluentui/react";
 
 import styles from "./Answer.module.css";
 
 import { Response, getCitationFilePath } from "../../api";
-import { parseAnswerToHtml } from "./AnswerParser";
 import { AnswerIcon } from "./AnswerIcon";
 
 interface Props {
@@ -23,10 +20,9 @@ export const Answer = ({
     isSelected,
     onCitationClicked,
     onThoughtProcessClicked,
-    onSupportingContentClicked,
-    onFollowupQuestionClicked,
-    showFollowupQuestions
+    onSupportingContentClicked
 }: Props) => {
+
 
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
@@ -53,19 +49,27 @@ export const Answer = ({
             </Stack.Item>
 
             <Stack.Item grow>
-                {answer.facts.map((fact, index) => (
+                {answer.facts ? (
                     <div>
-                        <span className={styles.citationLearnMore}>Fact {index + 1}:</span>
-                        <div className={styles.answerText}>{fact.answer}</div>
-                        <span className={styles.citationLearnMore}>Citation:</span>
-                        <a key={index} className={styles.citation} title={fact.file} onClick={() => onCitationClicked(getCitationFilePath(fact.file))}>
-                            {fact.file}
-                        </a>
-                        <br></br>
-                        <span className={styles.citationLearnMore}>Score:</span>
-                        <div className={styles.gap}>{fact.score}</div>
+                        {answer.facts!.map((fact, index) => (
+                            <div>
+                                <span className={styles.citationLearnMore}>Fact {index + 1}:</span>
+                                <div className={styles.answerText}>{fact.answer}</div>
+                                <span className={styles.citationLearnMore}>Citation:</span>
+                                <a key={index} className={styles.citation} title={fact.file} onClick={() => onCitationClicked(getCitationFilePath(fact.file))}>
+                                    {fact.file}
+                                </a>
+                                <br></br>
+                                <span className={styles.citationLearnMore}>Score:</span>
+                                <div className={styles.gap}>{fact.score}</div>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                ) : (
+                    <div>
+                        <div className={styles.answerText}>{answer.llm_answer!.result}</div>
+                    </div>
+                )}
 
             </Stack.Item>
 

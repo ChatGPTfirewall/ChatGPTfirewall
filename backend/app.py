@@ -65,7 +65,7 @@ init_db.migrate()
 # recognition = session.client('recognition')
 
 nlp = spacy.load("de_core_news_lg")
-transformer = SentenceTransformer('distiluse-base-multilingual-cased-v1')
+transformer = SentenceTransformer("distiluse-base-multilingual-cased-v1")
 
 template = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
 Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
@@ -89,14 +89,16 @@ client = QdrantClient(
     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
 )
 
+
 def prepareText(content):
     toks = nlp(content)
     sentences = [[w.text for w in s] for s in toks.sents]
     token = sentences
     return token
 
+
 def getText(filename, user_collection_name_):
-    #with open(filename) as f:
+    # with open(filename) as f:
     #        text = f.read()
     conn = psycopg2.connect(init_db.database_connection)
     cursor = conn.cursor()
@@ -106,18 +108,22 @@ def getText(filename, user_collection_name_):
 
     print(user)
 
-    PostgreSQL_select_Query = "select text from documents where filename = %s AND user_id = %s"
-    cursor.execute(PostgreSQL_select_Query,(filename,user))
+    PostgreSQL_select_Query = (
+        "select text from documents where filename = %s AND user_id = %s"
+    )
+    cursor.execute(PostgreSQL_select_Query, (filename, user))
     text = cursor.fetchone()
     conn.commit()
     cursor.close()
     conn.close()
     return text
 
+
 def num_tokens_from_string(userPrompt):
-    encoding = tiktoken.get_encoding("cl100k_base") #gpt3.5turbo and gpt4 
+    encoding = tiktoken.get_encoding("cl100k_base")  # gpt3.5turbo and gpt4
     num_tokens = len(encoding.encode(userPrompt))
     return num_tokens
+
 
 def is_scanned_pdf(file_path):
     with open(file_path, "rb") as file:
@@ -146,38 +152,39 @@ def extract_text_from_pdf(file_path):
 
 
 def extract_text_from_word_doc(file_path):
-    if file_path.lower().endswith('.docx'):
+    if file_path.lower().endswith(".docx"):
         doc = Document(file_path)
         paragraphs = [p.text for p in doc.paragraphs]
-        text = '\n'.join(paragraphs)
+        text = "\n".join(paragraphs)
         return text
-    #elif file_path.lower().endswith('.doc'):
-        #TODO: .doc-Documents
-    elif file_path.lower().endswith('.txt'):
+    # elif file_path.lower().endswith('.doc'):
+    # TODO: .doc-Documents
+    elif file_path.lower().endswith(".txt"):
         with open(file_path, "r", encoding="utf-8") as txt:
             text = txt.read()
         return text
-    
+
+
 def extract_text_from_rtf_html_xml_csv(file_path):
-    if file_path.lower().endswith('.rtf'):
+    if file_path.lower().endswith(".rtf"):
         with open(file_path, "r") as rtf:
             text = rtf.read()
             text = rtf_to_text(text)
         return text
-    elif file_path.lower().endswith('.html'):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            soup = BeautifulSoup(file, 'html.parser')
-            text = soup.get_text(separator='\n')
+    elif file_path.lower().endswith(".html"):
+        with open(file_path, "r", encoding="utf-8") as file:
+            soup = BeautifulSoup(file, "html.parser")
+            text = soup.get_text(separator="\n")
         return text
-    elif file_path.lower().endswith('.xml'):
+    elif file_path.lower().endswith(".xml"):
         with open(file_path, "r", encoding="utf-8") as xml:
             text = xml.read()
         return text
-    elif file_path.lower().endswith('.csv'):
+    elif file_path.lower().endswith(".csv"):
         with open(file_path, "r", encoding="utf-8") as csv:
             text = csv.read()
         return text
-    elif file_path.lower().endswith('.md'):
+    elif file_path.lower().endswith(".md"):
         with open(file_path, "r", encoding="utf-8") as md:
             text = md.read()
         return text
@@ -197,40 +204,43 @@ def extract_text_from_rtf_html_xml_csv(file_path):
 def insert_document_to_database(user_id, filename, text):
     conn = psycopg2.connect(init_db.database_connection)
     cursor = conn.cursor()
-    insert_query = "INSERT INTO documents (user_id, filename, text) VALUES (%s, %s, %s);"
+    insert_query = (
+        "INSERT INTO documents (user_id, filename, text) VALUES (%s, %s, %s);"
+    )
     cursor.execute(insert_query, (user_id, filename, text))
     conn.commit()
     cursor.close()
     conn.close()
+
 
 def insert_document_to_vectorDatabase(user_col, filename, text):
     tokText = prepareText(text)
     idx = 0
 
     for sentence in tokText:
-        #print(sentence)
+        # print(sentence)
         try:
             vecSentence = transformer.encode([sentence])
         except:
             print("Bad input")
             print(sentence)
-        #print(vecSentence)
+        # print(vecSentence)
         client.upsert(
             collection_name=user_col,
             points=[
                 PointStruct(
                     id=str(uuid.uuid4()),
-                    vector=vecSentence[0].tolist(), #numpy nparry.tolist
-                    payload={"file": filename, "text": sentence}
+                    vector=vecSentence[0].tolist(),  # numpy nparry.tolist
+                    payload={"file": filename, "text": sentence},
                 )
-            ]
+            ],
         )
-        idx=idx+1
+        idx = idx + 1
 
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    username = request.args['user_name']
+    username = request.args["user_name"]
     uploaded_files = request.files.getlist("files")
     filenames = []
     Path("temp").mkdir(parents=True, exist_ok=True)
@@ -246,15 +256,21 @@ def upload():
 
         if file_ext == ".pdf":
             text = extract_text_from_pdf(temp_file_path)
-        elif file_ext == '.docx' or file_ext == '.doc' or file_ext == '.txt':
+        elif file_ext == ".docx" or file_ext == ".doc" or file_ext == ".txt":
             text = extract_text_from_word_doc(temp_file_path)
-        elif file_ext == '.rtf' or file_ext == '.html' or file_ext == '.xml' or file_ext == '.csv' or file_ext == '.md':
+        elif (
+            file_ext == ".rtf"
+            or file_ext == ".html"
+            or file_ext == ".xml"
+            or file_ext == ".csv"
+            or file_ext == ".md"
+        ):
             text = extract_text_from_rtf_html_xml_csv(temp_file_path)
         else:
             text = ""
 
         user = get_user(username)
- 
+
         # Füge das Dokument und den extrahierten Text zur Datenbank hinzu
         insert_document_to_database(user[0], filename, text)
         insert_document_to_vectorDatabase(user[1], filename, text)
@@ -265,6 +281,7 @@ def upload():
         filenames.append(filename)
 
     return jsonify({"filenames": filenames})
+
 
 def get_user(username):
     conn = psycopg2.connect(init_db.database_connection)
@@ -317,21 +334,30 @@ def nextcloud():
     }
 
     session["clientSecret"] = clientSecret  # Speichere clientSecret in der Session
-    session["authorizationUrl"] = authorizationUrl  # Speichere die authorizationUrl in der Session
+    session[
+        "authorizationUrl"
+    ] = authorizationUrl  # Speichere die authorizationUrl in der Session
     session["clientId"] = clientId  # Speichere die clientId in der Session
     session["nextcloudUser"] = nextcloudUser  # Speichere die clientId in der Session
     session["token_url"] = TOKEN_URL  # Speichere die clientId in der Session
     session["files_url"] = FILES_URL  # Speichere die clientId in der Session
     session["redirect_uri"] = redirect_uri  # Speichere die clientId in der Session
 
-    url = AUTHORIZATION_URL + "?" + "&".join([f"{key}={value}" for key, value in data.items()])
+    url = (
+        AUTHORIZATION_URL
+        + "?"
+        + "&".join([f"{key}={value}" for key, value in data.items()])
+    )
     return redirect(url)
+
 
 @app.route("/redirect")
 def getfiles():
     code = request.args.get("code")
     clientSecret = session.get("clientSecret")  # Hole clientSecret aus der Session
-    authorizationUrl = session.get("authorizationUrl")  # Hole authorizationUrl aus der Session
+    authorizationUrl = session.get(
+        "authorizationUrl"
+    )  # Hole authorizationUrl aus der Session
     clientId = session.get("clientId")
     nextcloudUser = session.get("nextcloudUser")
     TOKEN_URL = session.get("token_url")
@@ -357,7 +383,9 @@ def getfiles():
             return "Fehler beim Abrufen der Dateien", 500
 
         root = ET.fromstring(response.content)
-        files = [elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != '/']
+        files = [
+            elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != "/"
+        ]
 
     text_content = ""
     for file in files:
@@ -368,16 +396,18 @@ def getfiles():
         temp_file_path = os.path.join(app.root_path, "temp", filename)
 
         # Datei manuell herunterladen
-        response = requests.get(download_url, headers={"Authorization": f"Bearer {access_token}"})
+        response = requests.get(
+            download_url, headers={"Authorization": f"Bearer {access_token}"}
+        )
         with open(temp_file_path, "wb") as f:
             f.write(response.content)
 
         # Text extrahieren
         if file_ext == ".pdf":
             text = extract_text_from_pdf(temp_file_path)
-        elif file_ext in ['.docx', '.doc', '.txt']:
+        elif file_ext in [".docx", ".doc", ".txt"]:
             text = extract_text_from_word_doc(temp_file_path)
-        elif file_ext in ['.rtf', '.html', '.xml', '.csv', '.md']:
+        elif file_ext in [".rtf", ".html", ".xml", ".csv", ".md"]:
             text = extract_text_from_rtf_html_xml_csv(temp_file_path)
         else:
             text = ""
@@ -410,9 +440,9 @@ def getfiles():
 # Todo:
 #
 #########################################################################################
-nlp = spacy.load('de_core_news_lg')
+nlp = spacy.load("de_core_news_lg")
 model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
-transformer = SentenceTransformer('distiluse-base-multilingual-cased-v1')
+transformer = SentenceTransformer("distiluse-base-multilingual-cased-v1")
 
 # client = QdrantClient(host="localhost", port=6333)
 client = QdrantClient(
@@ -420,8 +450,8 @@ client = QdrantClient(
     api_key="9YukVb-MQP-hAlJm58913eq4BImfEcREG58wg2cTnKJAoweChlJgvw",
 )
 
-#os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
-#os.environ["OPENAI_API_KEY"] = "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"
+# os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+# os.environ["OPENAI_API_KEY"] = "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"
 
 print("...prep")
 
@@ -440,6 +470,7 @@ prompt = PromptTemplate(template=template, input_variables=["kontext", "frage"])
 ## ccc apikey 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
 llm = OpenAI(openai_api_key="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")
 llm_chain = LLMChain(prompt=prompt, llm=llm)
+
 
 def prepareText(content):
     toks = nlp(content)
@@ -474,31 +505,34 @@ def getContext():
     content = request.args.get("content")
     print(content)
 
-    user_collection_name = request.args.get('user_collection_name') # or auth0_id in db (user table)
+    user_collection_name = request.args.get(
+        "user_collection_name"
+    )  # or auth0_id in db (user table)
     # todo: check if request is valid
     # [...]
     sentence = prepareText(content)
     vector = transformer.encode(sentence)
     print(vector[0].tolist())
-    hits = client.search (
+    hits = client.search(
         collection_name=user_collection_name,
         query_vector=vector[0].tolist(),
-        limit=3  # magic number
+        limit=3,  # magic number
     )
-    
-    #answer = '{"facts":[{"answer":1, "file":2, "score":3, "text":loremiosum}]}'
+
+    # answer = '{"facts":[{"answer":1, "file":2, "score":3, "text":loremiosum}]}'
     tmpFactArray = []
     for hit in hits:
         tmpFact = {}
         tmpFact["answer"] = hit.payload.get("text")
         tmpFact["file"] = hit.payload.get("file")
         tmpFact["score"] = hit.score
-        tmpFact["text"] = getText(hit.payload.get("file"),user_collection_name)
+        tmpFact["text"] = getText(hit.payload.get("file"), user_collection_name)
         tmpFactArray.append(tmpFact)
         print(hit)
     answer = {"facts": tmpFactArray}
 
     return answer
+
 
 # Example answer JSON
 # {
@@ -522,6 +556,7 @@ def getContext():
 #   ]
 # }
 
+
 #########################################################################################
 # POST: llmaanswer
 # -----------
@@ -542,35 +577,34 @@ def getContext():
 def getLLManswer():
     # get contet from request
     content = request.get_json()
-    #print(content)
+    # print(content)
     # todo: check if request is valid
     # [...]
-    
+
     kontext = ""
-    for context in content['contexts']:
-        print(context['file'])
+    for context in content["contexts"]:
+        print(context["file"])
         kontext = kontext + context["file"] + "\n"
         kontext = kontext + context["editedText"] + "\n\n"
-             
-    frage = content['question']
 
+    frage = content["question"]
 
-    #f = open("demofile2.txt", "a")
-    #f.write(prompt.format(frage=frage,kontext=kontext))
-    #f.close()
+    # f = open("demofile2.txt", "a")
+    # f.write(prompt.format(frage=frage,kontext=kontext))
+    # f.close()
 
-
-    toks = num_tokens_from_string(prompt.format(frage=frage,kontext=kontext))
+    toks = num_tokens_from_string(prompt.format(frage=frage, kontext=kontext))
     print(toks)
     # max 4097 tokens!
 
     if toks < 4098:
-        answer = llm_chain.run({"kontext":kontext,"frage":frage})
+        answer = llm_chain.run({"kontext": kontext, "frage": frage})
     else:
         answer = "Uh, die Frage war zu lang!"
-    return answer
+    return {"result": answer}
 
-#{
+
+# {
 #  "contexts": [
 #    {
 #      "file": "Molecule Man",
@@ -582,9 +616,10 @@ def getLLManswer():
 #    }
 #  ],
 #  "question": "this is the question?"
-#}
+# }
 
-#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
+# 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
+
 
 #########################################################################################
 # GET: POST
@@ -621,7 +656,10 @@ def createCollection():
     except http.exceptions.UnexpectedResponse as e:
         error = json.loads(e.content)["status"]["error"]
         # Collection doesnt exist
-        if error == "Not found: Collection `"+user_collection_name+"` doesn't exist!":
+        if (
+            error
+            == "Not found: Collection `" + user_collection_name + "` doesn't exist!"
+        ):
             # create collection
             print("create collection: " + user_collection_name)
             client.recreate_collection(

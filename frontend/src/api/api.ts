@@ -57,7 +57,9 @@ export async function chatWithLLM(question: string, file: string, text: string):
                 { file: file, editedText: text }
             ]
         }),
-    }).then((response) => console.log(response.json()));
+    }).then((response) => response.json())
+
+    return response
 }
 
 export async function uploadFiles(data: any, user: User): Promise<any> {

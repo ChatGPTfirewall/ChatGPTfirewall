@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, ChatRequest, ChatTurn, uploadFiles, chatWithLLM } from "../../api";
+import { chatApi, Response, ChatRequest, ChatTurn, uploadFiles, chatWithLLM, LlmResponse } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -59,8 +59,8 @@ const Chat = () => {
 
             const result = await chatApi(request, user!);
             setEditText(true)
-            setText(result.facts[0].text[0])
-            setFile(result.facts[0].file)
+            setText(result.facts![0].text[0])
+            setFile(result.facts![0].file)
             setQuestion(question)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
@@ -69,6 +69,15 @@ const Chat = () => {
             setIsLoading(false);
         }
     };
+
+    const updateChat = (llmAnswer) => {
+       const chatMessage: Response ={
+            llm_answer: llmAnswer
+       }
+
+       const shortText = text.slice(0, 300) + "..."
+        setAnswers([...answers, [shortText, chatMessage]])
+    }
 
     const clearChat = () => {
         lastQuestionRef.current = "";
@@ -83,7 +92,9 @@ const Chat = () => {
     }
 
     const sendText = () => {
-        chatWithLLM(question, file, text)
+        const llmAnswer = chatWithLLM(question, file, text)
+        llmAnswer.then((answer) => { updateChat(answer) })
+        setEditText(false)
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
@@ -205,7 +216,7 @@ const Chat = () => {
                         ) : (
                             <div className={styles.promptReady}>
                                 <div className={styles.buttonGroup}>
-                                    <EditTextModal text={text} sendToParent={saveText}/>
+                                    <EditTextModal text={text} sendToParent={saveText} />
                                     <PrimaryButton onClick={sendText}>Send</PrimaryButton>
                                 </div>
                             </div>
