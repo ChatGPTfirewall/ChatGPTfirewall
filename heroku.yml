@@ -1,5 +1,0 @@
-build:
-  docker:
-    web: ./app/Dockerfile
-run:
-  web: ./app/entrypoint.sh
