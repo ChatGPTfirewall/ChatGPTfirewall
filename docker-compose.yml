@@ -1,9 +1,10 @@
 version: '3.8'
 services:
   frontend:
-    image: node:current-bullseye-slim
+    build: 
+      context: ./frontend
+      target: dev
     container_name: frontend
-    entrypoint: ./app/entrypoint.sh
     stdin_open: true
     tty: true
     ports:
