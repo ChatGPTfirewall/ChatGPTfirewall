@@ -22,8 +22,6 @@ export const Answer = ({
     onThoughtProcessClicked,
     onSupportingContentClicked
 }: Props) => {
-
-
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
             <Stack.Item>

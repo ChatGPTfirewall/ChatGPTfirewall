@@ -48,5 +48,5 @@ export type Fact = {
 export type Response = {
     facts?: Fact[];
     error?: string;
-    llm_answer?: string;
+    llm_answer?: any;
 }

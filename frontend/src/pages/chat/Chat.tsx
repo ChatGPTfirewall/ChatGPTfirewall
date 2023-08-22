@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, ChatRequest, chatWithLLM, LLMAnswer } from "../../api";
+import { chatApi, Response, ChatRequest, chatWithLLM } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
