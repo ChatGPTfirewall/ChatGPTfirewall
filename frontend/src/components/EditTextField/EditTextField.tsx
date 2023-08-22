@@ -31,7 +31,7 @@ function CloseDefaultIcon() {
   );
 }
 
-export default function (props) {
+export default function (props:any) {
   const {
     defaultValue,
     saveText,

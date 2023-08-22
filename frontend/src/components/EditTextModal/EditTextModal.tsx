@@ -22,7 +22,7 @@ export const EditTextModal = ({ buttonClassName, text, sendToParent }: Props) =>
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [updatedText, setUpdatedText] = useState(text);
 
-  const sendTextToParent = (e) => {
+  const sendTextToParent = (e:any) => {
     setUpdatedText(e.target.value)
     sendToParent(e.target.value)
 };

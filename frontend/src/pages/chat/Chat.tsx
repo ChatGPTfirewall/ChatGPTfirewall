@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, ChatRequest, ChatTurn, uploadFiles, chatWithLLM, LlmResponse } from "../../api";
+import { chatApi, Response, ChatRequest, chatWithLLM, LLMAnswer } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -70,7 +70,7 @@ const Chat = () => {
         }
     };
 
-    const updateChat = (llmAnswer) => {
+    const updateChat = (llmAnswer:string) => {
        const chatMessage: Response ={
             llm_answer: llmAnswer
        }
@@ -87,7 +87,7 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const saveText = (data) => {
+    const saveText = (data:any) => {
         setText(data)
     }
 

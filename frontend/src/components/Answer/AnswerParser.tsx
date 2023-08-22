@@ -14,7 +14,7 @@ export function parseAnswerToHtml(answer: Fact[]): HtmlParsedAnswer {
     const scores: number[] = []
 
     for (var fact of answer) {
-        answersHtml = answersHtml + "," + fact.content
+        answersHtml = answersHtml + ","
       }
 
 
