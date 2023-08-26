@@ -4,5 +4,5 @@ from .views import (
 )
 
 urlpatterns = [
-    path('user/create', UserApiView.as_view()),
+    path('users/create', UserApiView.as_view()),
 ]

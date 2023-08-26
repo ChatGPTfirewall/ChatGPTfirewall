@@ -86,10 +86,10 @@ export async function uploadToNextcloud(clientId: any, clientSecret: any, author
 }
 
 export async function initUser(user: User, firstLoginHook: any): Promise<any> {
-    const response = await fetch("http://127.0.0.1:7007/user/create", {
+    const response = await fetch("/api/users/create", {
         method: 'POST',
         body: JSON.stringify({
-            user_sub: user.sub,
+            auth0_id: user.sub,
             username: user.nickname,
             email: user.email
         }),
