@@ -1,3 +1,16 @@
 from django.db import models
+class User(models.Model):
+    auth0_id = models.CharField(max_length=255, unique=True, null=False)
+    username = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
 
-# Create your models here.
+    def __str__(self):
+        return self.task
+    
+class Document(models.Model):
+    filename = models.CharField(max_length = 255)
+    text = models.TextField()
+    user = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = False)
+
+    def __str__(self):
+        return self.task
