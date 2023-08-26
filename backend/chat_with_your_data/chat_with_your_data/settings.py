@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=*ry+4*ufq9s=a9$ie=cm$r+&t5apb0%ld!29@)quo+&o(cpuf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ccc-backend.fly.dev']
+ALLOWED_HOSTS = ['ccc-backend.fly.dev', 'localhost']
 
 
 # Application definition
