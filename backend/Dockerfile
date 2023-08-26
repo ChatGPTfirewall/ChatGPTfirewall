@@ -14,8 +14,8 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /code
 
+COPY entrypoint.sh entrypoint.sh
+
 EXPOSE 8000
 
-CMD [ "tail", "-f", "/dev/null" ]
-
-# CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "hello_django.wsgi"]
+# ENTRYPOINT ["/app/entrypoint.sh"]

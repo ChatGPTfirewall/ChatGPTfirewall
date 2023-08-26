@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for ccc-backend on 2023-08-26T09:04:11+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "ccc-backend"
+primary_region = "ams"
+console_command = "/code/manage.py shell"
+
+[build]
+
+[env]
+  PORT = "8000"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[statics]]
+  guest_path = "/code/static"
+  url_prefix = "/static/"
