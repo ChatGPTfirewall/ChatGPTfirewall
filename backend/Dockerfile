@@ -16,10 +16,10 @@ RUN set -ex && \
     pip install --upgrade setuptools && \
     pip install -r requirements.txt && \
     rm -rf /root/.cache/
-COPY . /code
+COPY . /app
 
 COPY entrypoint.sh entrypoint.sh
 
 EXPOSE 8000
 
-# ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
