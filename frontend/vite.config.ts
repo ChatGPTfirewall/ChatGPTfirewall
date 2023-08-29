@@ -24,8 +24,7 @@ export default defineConfig({
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/upload/, ''),
               },    
-            '/api/users/create': "https://ccc-backend.fly.dev/"
-            // '/api/users/create': "http://backend:8000/"
+            '/api/users/create': "http://backend:8000/"
         }
     }
 });

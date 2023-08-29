@@ -30,9 +30,15 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev', 'backend', 'frontend']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev', 'backend', 'frontend', 'ccc-backend', 'ccc-frontend', 'ccc-backend.internal', 'ccc-frontend.internal', '.internal']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev', 'http://*.fly.dev']
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+}
 
 # Application definition
 
@@ -48,7 +54,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [ 
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,6 +66,13 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOWED_ORIGINS = [
+        'http://ccc-backend.fly.dev',
+        'https://ccc-backend.fly.dev',
+        'http://ccc-frontend.fly.dev',
+        'https://ccc-frontend.fly.dev'
+    ]
 
 ROOT_URLCONF = 'chat_with_your_data.urls'
 

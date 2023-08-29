@@ -96,7 +96,7 @@ export async function initUser(user: User, firstLoginHook: any): Promise<any> {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
+        }
     }).then((response) => response.json())
         .then(data => {
             if (!data.error) {
