@@ -17,14 +17,15 @@ export default defineConfig({
         strictPort: true,
         port: 5173, // you can replace this port with any port
         proxy: {
-            "/api/context": "http://backend:7007",
-            "/api/createCollection": "http://backend:7007/",
-            '/upload': {
-                target: "http://backend:7007", // Geben Sie hier die URL Ihres Backend-Servers an
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/upload/, ''),
-              },    
-            '/api/users/create': "http://backend:8000/"
+            // "/api/context": "http://backend:7007",
+            // "/api/createCollection": "http://backend:7007/",
+            "/api": "http://backend:8000/"
+            // '/upload': {
+            //     target: "http://backend:8000", // Geben Sie hier die URL Ihres Backend-Servers an
+            //     changeOrigin: true,
+            //     rewrite: (path) => path.replace(/^\/upload/, ''),
+            //   },    
+            // '/api/users/create': "http://backend:8000/"
         }
     }
 });

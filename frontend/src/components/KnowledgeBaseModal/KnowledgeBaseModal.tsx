@@ -62,7 +62,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
 
       setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
 
-      uploadFiles(formData, user!)
+      uploadFiles(formData)
         .then(() => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
           setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads

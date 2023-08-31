@@ -9,3 +9,9 @@ sqlparse==0.4.4
 psycopg2==2.9.7
 django-environ==0.10.0
 django-cors-headers==4.2.0
+pypdf==3.15.4
+striprtf==0.0.26
+python-docx==0.8.11
+beautifulsoup4
+textract
+ocrmypdf

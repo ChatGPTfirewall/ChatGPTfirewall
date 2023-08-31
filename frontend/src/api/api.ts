@@ -62,9 +62,9 @@ export async function chatWithLLM(question: string, file: string, text: string):
     return response
 }
 
-export async function uploadFiles(data: any, user: User): Promise<any> {
+export async function uploadFiles(data: any): Promise<any> {
 
-    const response = await fetch("http://127.0.0.1:7007/upload?user_name=" + user.nickname, {
+    const response = await fetch("/api/upload", {
         method: 'POST',
         body: data
     }).then((response) => response.json())
