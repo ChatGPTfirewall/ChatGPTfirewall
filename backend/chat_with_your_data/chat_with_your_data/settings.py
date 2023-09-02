@@ -30,9 +30,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev', 'backend', 'frontend', 'ccc-backend', 'ccc-frontend', 'ccc-backend.internal', 'ccc-frontend.internal', '.internal']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'chatgpt.enclaive.io', 'backend']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev', 'http://*.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://*.enclaive.io']
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -68,10 +68,8 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
-        'http://ccc-backend.fly.dev',
-        'https://ccc-backend.fly.dev',
-        'http://ccc-frontend.fly.dev',
-        'https://ccc-frontend.fly.dev'
+        'http://chatgpt.enclaive.io',
+        'https://chatgpt.enclaive.io'
     ]
 
 ROOT_URLCONF = 'chat_with_your_data.urls'
