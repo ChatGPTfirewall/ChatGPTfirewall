@@ -1,4 +1,4 @@
-import { AskRequest, Response, ChatRequest } from "./models";
+import { AskRequest, Response} from "./models";
 import { User } from "@auth0/auth0-react";
 
 export async function askApi(options: AskRequest): Promise<Response> {
@@ -31,9 +31,16 @@ export async function askApi(options: AskRequest): Promise<Response> {
     return parsedResponse;
 }
 
-export async function chatApi(options: ChatRequest, user: User): Promise<Response> {
-    const response = await fetch("/api/context?content=" + options.content + "&user_collection_name=" + user.sub, {
-        method: "GET",
+export async function chatApi(question: string, user: User): Promise<Response> {
+    const response = await fetch("/api/question", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            question: question,
+            user_auth0_id: user.sub
+        }),
     });
 
     const parsedResponse: Response = await response.json();
@@ -46,7 +53,7 @@ export async function chatApi(options: ChatRequest, user: User): Promise<Respons
 }
 
 export async function chatWithLLM(question: string, file: string, text: string): Promise<any> {
-    const response = await fetch("http://127.0.0.1:7007/api/llmanswer", {
+    const response = await fetch("/api/llmanswer", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

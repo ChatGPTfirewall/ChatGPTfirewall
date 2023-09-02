@@ -33,11 +33,6 @@ export type ChatTurn = {
     user: string;
     bot?: Response;
 };
-
-export type ChatRequest = {
-    content: string;
-}
-
 export type Fact = {
     answer: string;
     file: string;

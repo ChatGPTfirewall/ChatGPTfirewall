@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, ChatRequest, chatWithLLM } from "../../api";
+import { chatApi, Response, chatWithLLM } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -53,11 +53,7 @@ const Chat = () => {
         setActiveAnalysisPanelTab(undefined);
 
         try {
-            const request: ChatRequest = {
-                content: question,
-            };
-
-            const result = await chatApi(request, user!);
+            const result = await chatApi(question, user!);
             setEditText(true)
             setText(result.facts![0].text[0])
             setFile(result.facts![0].file)
