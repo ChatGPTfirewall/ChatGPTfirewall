@@ -9,6 +9,7 @@ from .serializers import UserSerializer, DocumentSerializer
 from pathlib import Path
 import os
 from .file_importer import extract_text, save_file
+from .qdrant import get_or_create_collection
 class UserApiView(APIView):
 
     # # 1. List all
@@ -74,3 +75,16 @@ class FileApiView(APIView):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         return Response(documents, status=status.HTTP_201_CREATED)
+    
+class CollectionApiView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        '''
+        Create collection in vector database.
+        '''
+        [_, id] = request.data.get('user_auth0_id').split("|")
+
+        collection = get_or_create_collection(id)
+        if collection == True:
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(collection, status=status.HTTP_400_BAD_REQUEST)

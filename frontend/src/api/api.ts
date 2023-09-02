@@ -106,10 +106,10 @@ export async function initUser(user: User, firstLoginHook: any): Promise<any> {
 }
 
 export async function initUserCollection(user: User): Promise<any> {
-    const response = await fetch("http://127.0.0.1:7007/api/createCollection", {
+    const response = await fetch("/api/collections/create", {
         method: 'POST',
         body: JSON.stringify({
-            user_collection_name: user.sub
+            user_auth0_id: user.sub
         }),
         headers: {
             'Accept': 'application/json',

@@ -1,9 +1,10 @@
 from django.urls import path
 from .views import (
-    UserApiView, FileApiView
+    UserApiView, FileApiView, CollectionApiView
 )
 
 urlpatterns = [
     path('users/create', UserApiView.as_view()),
     path('upload', FileApiView.as_view()),
+    path('collections/create', CollectionApiView.as_view())
 ]
