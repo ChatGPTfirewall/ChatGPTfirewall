@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Document
+from .models import User, Document, Section
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -9,3 +9,8 @@ class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
         fields = ["filename", "text", "user"]
+
+class SectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Section
+        fields = ["document", "content"]

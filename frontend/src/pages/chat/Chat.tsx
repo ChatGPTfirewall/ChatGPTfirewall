@@ -55,7 +55,7 @@ const Chat = () => {
         try {
             const result = await chatApi(question, user!);
             setEditText(true)
-            setText(result.facts![0].text[0])
+            setText(result.facts![0].full_text[0])
             setFile(result.facts![0].file)
             setQuestion(question)
             setAnswers([...answers, [question, result]]);

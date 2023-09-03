@@ -37,7 +37,7 @@ export type Fact = {
     answer: string;
     file: string;
     score: number;
-    text: string;
+    full_text: string;
 }
 
 export type Response = {

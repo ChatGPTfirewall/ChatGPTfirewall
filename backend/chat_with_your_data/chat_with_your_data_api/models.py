@@ -14,3 +14,10 @@ class Document(models.Model):
 
     def __str__(self):
         return self.filename
+    
+class Section(models.Model):
+    document = models.ForeignKey(Document, on_delete = models.CASCADE, blank = True, null = False)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.document.filename

@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
-from .models import User
+from .models import User, Section
 from .serializers import UserSerializer, DocumentSerializer
 from pathlib import Path
 import os
@@ -67,21 +67,23 @@ class FileApiView(APIView):
                 'user': user.id
             }
 
-            # Extract id from 'auth0 | <id>'
-            [_, id] = user.auth0_id.split("|")
-
-            # Insert text into qdrant db
-            insert_text(id, {"file": file.name}, text)
-
             # Insert text into postgres db
             serializer = DocumentSerializer(data=document)
+            
             if serializer.is_valid():
-                serializer.save()
+                result = serializer.save()
                 documents.append(serializer.data)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-        return Response(documents, status=status.HTTP_201_CREATED)
+            
+            # Insert text into qdrant db
+            [_, id] = user.auth0_id.split("|")
+            qdrant_result= insert_text(id, result)
+            if qdrant_result == True:
+                return Response(documents, status=status.HTTP_201_CREATED)
+            else:
+                return Response(qdrant_result, status=status.HTTP_400_BAD_REQUEST)
+
     
 class CollectionApiView(APIView):
 
@@ -106,9 +108,26 @@ class ChatApiView(APIView):
         question = request.data.get('question')
         [_, id] = request.data.get('user_auth0_id').split("|")
 
+        # tokenize text
         prepared_text = prepare_text(question)
-        print(prepared_text)
+        # vectorize tokens
         vector = vectorize(prepared_text)
-        print(search(id, vector, 3))
+        # similarity search
+        try: 
+            facts = search(id, vector, 3)
+        except Exception as exception:
+            return Response(exception.content, status.HTTP_400_BAD_REQUEST)
+        
+        response = []
+        for fact in facts:
+            section = Section.objects.get(id=fact.payload.get("section_id"))
+            fact = {
+                "answer": section.content,
+                "file": section.document.filename,
+                "score": fact.score,
+                "full_text":section.document.text
+            }
+            response.append(fact)
 
-        return Response(status=status.HTTP_200_OK)
+        return Response({"facts": response}, status.HTTP_200_OK)
+       
