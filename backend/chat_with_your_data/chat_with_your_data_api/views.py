@@ -9,7 +9,8 @@ from .serializers import UserSerializer, DocumentSerializer
 from pathlib import Path
 import os
 from .file_importer import extract_text, save_file
-from .qdrant import get_or_create_collection
+from .qdrant import get_or_create_collection, insert_text, search
+from .embedding import prepare_text, vectorize
 class UserApiView(APIView):
 
     # # 1. List all
@@ -66,8 +67,14 @@ class FileApiView(APIView):
                 'user': user.id
             }
 
-            serializer = DocumentSerializer(data=document)
+            # Extract id from 'auth0 | <id>'
+            [_, id] = user.auth0_id.split("|")
 
+            # Insert text into qdrant db
+            insert_text(id, {"file": file.name}, text)
+
+            # Insert text into postgres db
+            serializer = DocumentSerializer(data=document)
             if serializer.is_valid():
                 serializer.save()
                 documents.append(serializer.data)
@@ -88,3 +95,20 @@ class CollectionApiView(APIView):
         if collection == True:
             return Response(status=status.HTTP_201_CREATED)
         return Response(collection, status=status.HTTP_400_BAD_REQUEST)
+    
+class ChatApiView(APIView):
+
+    def post(self, request,  *args, **kwargs):
+        '''
+        Convert user question into qdrant db.
+        '''
+
+        question = request.data.get('question')
+        [_, id] = request.data.get('user_auth0_id').split("|")
+
+        prepared_text = prepare_text(question)
+        print(prepared_text)
+        vector = vectorize(prepared_text)
+        print(search(id, vector, 3))
+
+        return Response(status=status.HTTP_200_OK)

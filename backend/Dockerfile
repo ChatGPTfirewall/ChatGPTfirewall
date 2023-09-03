@@ -8,7 +8,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
-    apt-get install -y libpq-dev gcc
+    apt-get install -y libpq-dev gcc && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt requirements.txt
 RUN set -ex && \
@@ -17,8 +18,6 @@ RUN set -ex && \
     pip install -r requirements.txt && \
     rm -rf /root/.cache/
 COPY . /app
-
-COPY entrypoint.sh entrypoint.sh
 
 EXPOSE 8000
 

@@ -1,8 +1,10 @@
 from qdrant_client import QdrantClient, http
-from qdrant_client.http.models import Distance, VectorParams
+from qdrant_client.http.models import Distance, VectorParams, PointStruct
+from .embedding import prepare_text, vectorize
 
 import os
 import json
+import uuid
 
 __client = QdrantClient(
     url=os.getenv("QDRANT_URL"),
@@ -45,3 +47,30 @@ def get_or_create_collection(name):
 
     except Exception as exception:
         return exception.content
+
+def search(collection, vector, limit):
+    result = __client.search(
+        collection_name=collection,
+        query_vector=vector[0].tolist(),
+        limit=3
+    )
+    return result
+
+def insert_text(collection, payload, text):
+    tokens = prepare_text(text)
+    idx = 0
+
+    for sentence in tokens:
+        vecSentence = vectorize(sentence)
+
+        __client.upsert(
+            collection_name=collection,
+            points=[
+                PointStruct(
+                    id=str(uuid.uuid4()),
+                    vector=vecSentence[0].tolist(),
+                    payload=payload,
+                )
+            ],
+        )
+        idx = idx + 1
