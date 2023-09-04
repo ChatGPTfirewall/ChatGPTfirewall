@@ -19,6 +19,8 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /app
 
+COPY entrypoint.sh entrypoint.sh
+
 EXPOSE 8000
 
 ENTRYPOINT ["/app/entrypoint.sh"]

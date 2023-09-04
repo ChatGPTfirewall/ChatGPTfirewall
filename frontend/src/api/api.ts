@@ -53,7 +53,7 @@ export async function chatApi(question: string, user: User): Promise<Response> {
 }
 
 export async function chatWithLLM(question: string, file: string, text: string): Promise<any> {
-    const response = await fetch("/api/llmanswer", {
+    const response = await fetch("/api/context", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

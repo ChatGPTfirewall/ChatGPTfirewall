@@ -11,6 +11,7 @@ import os
 from .file_importer import extract_text, save_file
 from .qdrant import get_or_create_collection, insert_text, search
 from .embedding import prepare_text, vectorize
+from .llm import count_tokens, run_llm
 class UserApiView(APIView):
 
     # # 1. List all
@@ -130,4 +131,26 @@ class ChatApiView(APIView):
             response.append(fact)
 
         return Response({"facts": response}, status.HTTP_200_OK)
-       
+    
+class ContextApiView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        '''
+        Send context to chatgpt.
+        '''
+        question = request.data.get('question')
+        contexts = request.data.get('contexts')
+        content = ""
+        for context in contexts:
+            content = content + context["file"] + "\n"
+            content = content + context["editedText"] + "\n\n"
+
+        tokens = count_tokens(question, content)
+
+        # max 4097 tokens!
+
+        if tokens < 4098:
+            answer = run_llm({"context": content, "question": question})
+        else:
+            answer = "Uh, die Frage war zu lang!"
+        return Response({"result": answer}, status.HTTP_200_OK)

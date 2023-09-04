@@ -1,3 +1,6 @@
 fly.toml
 .git/
 *.sqlite3
+.backend_env/
+temp/
+.DS_Store/

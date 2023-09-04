@@ -9,6 +9,10 @@ console_command = "/code/manage.py shell"
 
 [build]
 
+[mounts]
+  source="model_space"
+  destination="/app"
+
 [env]
   PORT = "8000"
 
