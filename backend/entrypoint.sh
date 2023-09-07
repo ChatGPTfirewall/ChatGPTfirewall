@@ -1,11 +1,15 @@
 #!/bin/sh
 
 cd /app
-pip install --upgrade pip
-pip3 install -r requirements.txt
 
-cd chat_with_your_data
+export PATH="/opt/venv/bin:$PATH"
 
-gunicorn --bind [::]:8000 --workers 2 chat_with_your_data.wsgi
+cd chat_with_your_data/
+
+# tail -f /dev/null
+
+python manage.py migrate
+
+gunicorn --bind [::]:8000 --workers 1 --worker-class=eventlet chat_with_your_data.wsgi
 
 exec "$@"
