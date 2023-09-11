@@ -169,8 +169,8 @@ class NextCloudApiView(APIView):
         nextcloud_authorization_url = request.data.get("authorizationUrl")
         redirect_uri = request.data.get("redirectUri")
 
-        FILES_URL = f"{nextcloud_authorization_url}remote.php/dav/files/{nextcloud_user}/"
-        TOKEN_URL = f"{nextcloud_authorization_url}index.php/apps/oauth2/api/v1/token"
+        FILES_URL = f"{nextcloud_authorization_url}/remote.php/dav/files/{nextcloud_user}/"
+        TOKEN_URL = f"{nextcloud_authorization_url}/index.php/apps/oauth2/api/v1/token"
         AUTHORIZATION_URL = f"{nextcloud_authorization_url}/index.php/apps/oauth2/authorize"
 
         data = {
