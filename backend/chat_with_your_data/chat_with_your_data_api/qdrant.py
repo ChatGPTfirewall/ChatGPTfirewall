@@ -1,12 +1,15 @@
+import json
+import os
+import uuid
+
 from qdrant_client import QdrantClient, http
 from qdrant_client.models import PointStruct
 from qdrant_client.http.models import Distance, VectorParams
+
 from .embedding import prepare_text, vectorize
 from .serializers import SectionSerializer
 
-import os
-import json
-import uuid
+
 
 __client = QdrantClient(
     url=os.getenv("QDRANT_URL"),

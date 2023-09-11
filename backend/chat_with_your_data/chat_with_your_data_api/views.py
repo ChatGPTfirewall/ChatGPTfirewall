@@ -1,18 +1,18 @@
-from django.shortcuts import render, redirect
+import os
 
+from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from pathlib import Path
+
 from .models import User, Section
 from .serializers import UserSerializer, DocumentSerializer
-from pathlib import Path
-from xml.etree import ElementTree as ET
-import os
-import requests
 from .file_importer import extract_text, save_file
 from .qdrant import get_or_create_collection, insert_text, search
 from .embedding import prepare_text, vectorize
 from .llm import count_tokens, run_llm
+from .nextcloud import get_access_token, get_files, download_file
 class UserApiView(APIView):
 
     # # 1. List all
@@ -215,45 +215,21 @@ class NextCloudApiView(APIView):
             "client_id": nextcloud_client_id,
             "client_secret": nextcloud_client_secret,
         }
-        response = requests.post(TOKEN_URL, data=payload)
-        access_token = response.json().get("access_token")
 
-        if access_token:
-            headers = {"Authorization": f"Bearer {access_token}"}
-            response = requests.request("PROPFIND", FILES_URL, headers=headers)
+        access_token = get_access_token(TOKEN_URL, payload)
 
-            if response.status_code != 207:
-                return "Fehler beim Abrufen der Dateien", 500
-
-            root = ET.fromstring(response.content)
-            files = [
-                elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != "/"
-            ]
+        files = get_files(access_token, FILES_URL)
 
         text_content = ""
         for file in files:
             filename = file.split("/")[-1]  # Dateiname aus der URL extrahieren
-            file_ext = os.path.splitext(filename)[1].lower()
-
-            download_url = f"{nextcloud_authorization_url}{file}"
             temp_file_path = save_file("../temp", filename)
 
-            # Datei manuell herunterladen
-            response = requests.get(
-                download_url, headers={"Authorization": f"Bearer {access_token}"}
-            )
+            downloaded_file = download_file(access_token, nextcloud_authorization_url, file)
             with open(temp_file_path, "wb") as f:
-                f.write(response.content)
+                f.write(downloaded_file.content)
 
-            # Text extrahieren
-            if file_ext == ".pdf":
-                text = extract_text_from_pdf(temp_file_path)
-            elif file_ext in [".docx", ".doc", ".txt"]:
-                text = extract_text_from_word_doc(temp_file_path)
-            elif file_ext in [".rtf", ".html", ".xml", ".csv", ".md"]:
-                text = extract_text_from_rtf_html_xml_csv(temp_file_path)
-            else:
-                text = ""
+            text = extract_text(temp_file_path, file)
 
             # Text zur Textinhalt hinzufügen
             text_content += f"<h3>{filename}</h3><pre>{text}</pre>"

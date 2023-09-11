@@ -69,7 +69,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
         'http://chatgpt.enclaive.io',
-        'https://chatgpt.enclaive.io'
+        'https://chatgpt.enclaive.io',
+        'https://nextcloud27.our-servers.de',
+        'http://localhost:5173'
     ]
 
 ROOT_URLCONF = 'chat_with_your_data.urls'

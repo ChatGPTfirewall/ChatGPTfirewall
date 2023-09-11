@@ -1,10 +1,12 @@
-import os
-import textract
-import tempfile
 import ocrmypdf
+import os
 import pypdf
+import tempfile
+import textract
+
 from docx import Document
 from bs4 import BeautifulSoup
+
 from striprtf.striprtf import rtf_to_text
 
 
