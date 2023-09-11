@@ -104,7 +104,7 @@ const handleNextcloudClick = () => {
   const handleNextcloudSave = () => {
     uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
     //const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
-    const popup = window.open("http://127.0.0.1:7007/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
+    const popup = window.open(window.location.host + "/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
   
     //setTimeout(() => {
     //  if (!popup.closed) {
