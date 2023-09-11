@@ -4,7 +4,7 @@ from pprint import pprint
 import spacy
 from simple_elmo import ElmoModel
 from termcolor import colored
-from embModel import Model, Algo, embModel
+from backend_old.embModel import Model, Algo, embModel
 from langchain import PromptTemplate
 from huggingface_hub import InferenceClient
 from langchain import HuggingFaceHub, LLMChain
