@@ -1,13 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
 from .models import User, Section
 from .serializers import UserSerializer, DocumentSerializer
 from pathlib import Path
+from xml.etree import ElementTree as ET
 import os
+import requests
 from .file_importer import extract_text, save_file
 from .qdrant import get_or_create_collection, insert_text, search
 from .embedding import prepare_text, vectorize
@@ -154,3 +155,123 @@ class ContextApiView(APIView):
         else:
             answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)
+    
+class NextCloudApiView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        '''
+        Creates a connection to an nextcloud instance.
+        '''
+        session = request.session
+        nextcloud_user = request.data.get("nextCloudUserName")
+        nextcloud_client_id = request.data.get("clientId")
+        nextcloud_client_secret = request.data.get("clientSecret")
+        nextcloud_authorization_url = request.data.get("authorizationUrl")
+        redirect_uri = request.data.get("redirectUri")
+
+        FILES_URL = f"{nextcloud_authorization_url}remote.php/dav/files/{nextcloud_user}/"
+        TOKEN_URL = f"{nextcloud_authorization_url}index.php/apps/oauth2/api/v1/token"
+        AUTHORIZATION_URL = f"{nextcloud_authorization_url}/index.php/apps/oauth2/authorize"
+
+        data = {
+        "client_id": nextcloud_client_id,
+        "redirect_uri": redirect_uri,
+        "response_type": "code",
+        "scope": "read",
+        }
+        
+        session["clientSecret"] = nextcloud_client_secret  
+        session["authorizationUrl"] = nextcloud_authorization_url 
+        session["clientId"] = nextcloud_client_id  
+        session["nextcloudUser"] = nextcloud_user  
+        session["token_url"] = TOKEN_URL  
+        session["files_url"] = FILES_URL  
+        session["redirect_uri"] = redirect_uri  
+        
+        url = (
+        AUTHORIZATION_URL
+        + "?"
+        + "&".join([f"{key}={value}" for key, value in data.items()])
+        )
+        return redirect(url)
+    
+    def get(self, request, *args, **kwargs):
+        session = request.session
+        code = request.GET.get("code")
+        nextcloud_authorization_url = session.get("authorizationUrl")
+        nextcloud_client_secret = session.get("clientSecret")
+        nextcloud_client_id = session.get("clientId")
+        nextcloud_user = session.get("nextcloudUser")
+        TOKEN_URL = session.get("token_url")
+        FILES_URL = session.get("files_url")
+        REDIRECT_URI = session.get("redirect_uri")
+
+        Path("temp").mkdir(parents=True, exist_ok=True)
+
+        payload = {
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": REDIRECT_URI,
+            "client_id": nextcloud_client_id,
+            "client_secret": nextcloud_client_secret,
+        }
+        response = requests.post(TOKEN_URL, data=payload)
+        access_token = response.json().get("access_token")
+
+        if access_token:
+            headers = {"Authorization": f"Bearer {access_token}"}
+            response = requests.request("PROPFIND", FILES_URL, headers=headers)
+
+            if response.status_code != 207:
+                return "Fehler beim Abrufen der Dateien", 500
+
+            root = ET.fromstring(response.content)
+            files = [
+                elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != "/"
+            ]
+
+        text_content = ""
+        for file in files:
+            filename = file.split("/")[-1]  # Dateiname aus der URL extrahieren
+            file_ext = os.path.splitext(filename)[1].lower()
+
+            download_url = f"{nextcloud_authorization_url}{file}"
+            temp_file_path = save_file("../temp", filename)
+
+            # Datei manuell herunterladen
+            response = requests.get(
+                download_url, headers={"Authorization": f"Bearer {access_token}"}
+            )
+            with open(temp_file_path, "wb") as f:
+                f.write(response.content)
+
+            # Text extrahieren
+            if file_ext == ".pdf":
+                text = extract_text_from_pdf(temp_file_path)
+            elif file_ext in [".docx", ".doc", ".txt"]:
+                text = extract_text_from_word_doc(temp_file_path)
+            elif file_ext in [".rtf", ".html", ".xml", ".csv", ".md"]:
+                text = extract_text_from_rtf_html_xml_csv(temp_file_path)
+            else:
+                text = ""
+
+            # Text zur Textinhalt hinzufügen
+            text_content += f"<h3>{filename}</h3><pre>{text}</pre>"
+
+            # Temporäre Datei löschen
+            os.remove(temp_file_path)
+
+        return f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Nextcloud File Explorer</title>
+            </head>
+            <body>
+                <h1>Nextcloud File Explorer</h1>
+                {text_content}
+            </body>
+            </html>
+        """
+
+
