@@ -13,11 +13,10 @@ import {
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { FileCard } from '../FileCard';
-import React from 'react';
 import { uploadFiles } from '../../api';
 import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 
 interface Props {
@@ -25,11 +24,12 @@ interface Props {
 }
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
-  const hiddenFileInput = React.useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const { user } = useAuth0();
+  const emptyFileNames:any[] = []
   const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
-  const [fileNames, setFileNames] = useState([]); // Zustand für die Dateinamen hinzufügen
-
+  const [fileNames, setFileNames] = useState(emptyFileNames); // Zustand für die Dateinamen hinzufügen
+  
 
   // State-Hooks für die Werte der Eingabefelder
   const [clientId, setClientId] = useState('');
@@ -62,7 +62,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
 
       setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
 
-      uploadFiles(formData, user!)
+      uploadFiles(formData)
         .then(() => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
           setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads
@@ -79,19 +79,19 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     Popup für Nextcloud
   */
  // Handler für die Änderung der Eingabefelder
- const handleClientIdChange = (event) => {
+ const handleClientIdChange = (event:any) => {
   setClientId(event.target.value);
 };
 
-const handleClientSecretChange = (event) => {
+const handleClientSecretChange = (event:any) => {
   setClientSecret(event.target.value);
 };
 
-const handleAuthorizationUrlChange = (event) => {
+const handleAuthorizationUrlChange = (event:any) => {
   setAuthorizationUrl(event.target.value);
 };
 
-const handleUsernameChange = (event) => {
+const handleUsernameChange = (event:any) => {
   setUsername(event.target.value);
 };
 
@@ -104,7 +104,7 @@ const handleNextcloudClick = () => {
   const handleNextcloudSave = () => {
     uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
     //const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
-    const popup = window.open("http://127.0.0.1:7007/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
+    const popup = window.open("/api/upload/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
   
     //setTimeout(() => {
     //  if (!popup.closed) {

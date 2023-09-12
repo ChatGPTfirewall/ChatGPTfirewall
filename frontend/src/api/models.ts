@@ -33,18 +33,15 @@ export type ChatTurn = {
     user: string;
     bot?: Response;
 };
-
-export type ChatRequest = {
-    content: string;
-}
-
 export type Fact = {
     answer: string;
     file: string;
     score: number;
+    full_text: string;
 }
 
 export type Response = {
-    facts: Fact[];
+    facts?: Fact[];
     error?: string;
+    llm_answer?: any;
 }

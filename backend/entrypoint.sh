@@ -1,10 +1,15 @@
 #!/bin/sh
 
 cd /app
-pip install --upgrade pip
-pip3 install -r requirements.txt
-pip3 install ocrmypdf
-pip3 install striprtf
-python app.py
+
+export PATH="/opt/venv/bin:$PATH"
+
+cd chat_with_your_data/
+
+# tail -f /dev/null
+
+python manage.py migrate
+
+gunicorn --bind [::]:8000 --workers 1 --worker-class=eventlet chat_with_your_data.wsgi
 
 exec "$@"

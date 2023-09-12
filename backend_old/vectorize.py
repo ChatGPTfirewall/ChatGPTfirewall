@@ -7,7 +7,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
 from pprint import pprint
-from embModel import Model, Algo, embModel
+from backend_old.embModel import Model, Algo, embModel
 
 pprint("GO")
 

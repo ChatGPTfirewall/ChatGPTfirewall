@@ -88,6 +88,29 @@
     background: #f2f2f2;
 }
 
+.promptReady{
+    position: sticky;
+    bottom: 0;
+    flex: 0 0 100px;
+    padding-top: 12px;
+    padding-bottom: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    width: 100%;
+    max-width: 1028px;
+    background: #f2f2f2;
+    position: sticky;
+    border: 1px;
+    height: 100px;
+    gap: 2em;
+}
+
+.buttonGroup{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
 .chatAnalysisPanel {
     flex: 1;
     overflow-y: auto;

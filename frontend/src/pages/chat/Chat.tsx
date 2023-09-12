@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton } from "@fluentui/react";
+import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Modal } from "@fluentui/react";
 import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, ChatRequest, ChatTurn, uploadFiles } from "../../api";
+import { chatApi, Response, chatWithLLM } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -13,6 +13,7 @@ import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
+import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 
@@ -30,6 +31,10 @@ const Chat = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
+    const [editText, setEditText] = useState(false);
+    const [text, setText] = useState("");
+    const [file, setFile] = useState("");
+    const [question, setQuestion] = useState("");
 
     const [activeCitation, setActiveCitation] = useState<string>();
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
@@ -37,7 +42,7 @@ const Chat = () => {
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
     const [answers, setAnswers] = useState<[user: string, response: Response][]>([]);
 
-    const { isAuthenticated } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
         lastQuestionRef.current = question;
@@ -48,11 +53,11 @@ const Chat = () => {
         setActiveAnalysisPanelTab(undefined);
 
         try {
-            const request: ChatRequest = {
-                content: question,
-            };
-
-            const result = await chatApi(request);
+            const result = await chatApi(question, user!);
+            setEditText(true)
+            setText(result.facts![0].full_text)
+            setFile(result.facts![0].file)
+            setQuestion(question)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -61,12 +66,31 @@ const Chat = () => {
         }
     };
 
+    const updateChat = (llmAnswer:string) => {
+       const chatMessage: Response ={
+            llm_answer: llmAnswer
+       }
+
+       const shortText = text.slice(0, 300) + "..."
+        setAnswers([...answers, [shortText, chatMessage]])
+    }
+
     const clearChat = () => {
         lastQuestionRef.current = "";
         error && setError(undefined);
         setActiveCitation(undefined);
         setActiveAnalysisPanelTab(undefined);
         setAnswers([]);
+    };
+
+    const saveText = (data:any) => {
+        setText(data)
+    }
+
+    const sendText = () => {
+        const llmAnswer = chatWithLLM(question, file, text)
+        llmAnswer.then((answer) => { updateChat(answer) })
+        setEditText(false)
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
@@ -176,15 +200,23 @@ const Chat = () => {
                                 <div ref={chatMessageStreamEnd} />
                             </div>
                         )}
-
-                        <div className={styles.chatInput}>
-                            <QuestionInput
-                                clearOnSend
-                                placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
-                                disabled={isLoading}
-                                onSend={question => makeApiRequest(question)}
-                            />
-                        </div>
+                        {!editText ? (
+                            <div className={styles.chatInput}>
+                                <QuestionInput
+                                    clearOnSend
+                                    placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                                    disabled={isLoading}
+                                    onSend={question => makeApiRequest(question)}
+                                />
+                            </div>
+                        ) : (
+                            <div className={styles.promptReady}>
+                                <div className={styles.buttonGroup}>
+                                    <EditTextModal text={text} sendToParent={saveText} />
+                                    <PrimaryButton onClick={sendText}>Send</PrimaryButton>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <Panel
                         headerText="Configure answer generation"
@@ -244,7 +276,7 @@ const Chat = () => {
                     <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
                     <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>Login and ask anything or try an example</h2>
-                    <AuthenticationButton/>
+                    <AuthenticationButton />
                 </div>
             </div>
         </div>

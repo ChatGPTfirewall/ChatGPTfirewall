@@ -17,7 +17,10 @@ export const AuthenticationButton = () => {
                 key: 'logout',
                 text: 'Log Out',
                 iconProps: { iconName: 'DoorArrowLeft' },
-                onClick: () => logout({ logoutParams: { returnTo: window.location.origin } }),
+                onClick: (ev, item) => {
+                    logout({ logoutParams: { returnTo: window.location.origin } });
+                    return true; // oder false oder undefined, je nachdem, was Sie möchten
+                },
             }
         ],
     };
