@@ -13,10 +13,11 @@ import {
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { FileCard } from '../FileCard';
+import React from 'react';
 import { uploadFiles } from '../../api';
 import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 
 interface Props {
@@ -24,12 +25,21 @@ interface Props {
 }
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
-  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
+  const hiddenFileInput = React.useRef(null);
   const { user } = useAuth0();
-  const emptyFileNames:any[] = []
   const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
-  const [fileNames, setFileNames] = useState(emptyFileNames); // Zustand für die Dateinamen hinzufügen
-  
+  const [fileNames, setFileNames] = useState([]); // Zustand für die Dateinamen hinzufügen
+
+  const helpIcon: IIconProps = {
+    iconName: 'Help',
+    styles: {
+      root: {
+        fontSize: '20px', // Ändere die Fontgröße nach Bedarf
+      },
+    },
+  };
+  const [isHelpNoteVisible, setIsHelpNoteVisible] = useState(false);
+
 
   // State-Hooks für die Werte der Eingabefelder
   const [clientId, setClientId] = useState('');
@@ -44,6 +54,11 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
       hiddenFileInput.current.click();
     }
   };
+
+  const handleHelpClick = () => {
+    setIsHelpNoteVisible(!isHelpNoteVisible);
+  };
+  
 
   const handleFileChange = (event: any) => {
     const files = event.target.files;
@@ -62,7 +77,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
 
       setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
 
-      uploadFiles(formData)
+      uploadFiles(formData, user!)
         .then(() => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
           setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads
@@ -79,19 +94,19 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     Popup für Nextcloud
   */
  // Handler für die Änderung der Eingabefelder
- const handleClientIdChange = (event:any) => {
+ const handleClientIdChange = (event) => {
   setClientId(event.target.value);
 };
 
-const handleClientSecretChange = (event:any) => {
+const handleClientSecretChange = (event) => {
   setClientSecret(event.target.value);
 };
 
-const handleAuthorizationUrlChange = (event:any) => {
+const handleAuthorizationUrlChange = (event) => {
   setAuthorizationUrl(event.target.value);
 };
 
-const handleUsernameChange = (event:any) => {
+const handleUsernameChange = (event) => {
   setUsername(event.target.value);
 };
 
@@ -104,7 +119,7 @@ const handleNextcloudClick = () => {
   const handleNextcloudSave = () => {
     uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
     //const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
-    const popup = window.open("/api/upload/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
+    const popup = window.open("http://127.0.0.1:7007/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
   
     //setTimeout(() => {
     //  if (!popup.closed) {
@@ -119,7 +134,17 @@ const handleNextcloudClick = () => {
 
     // Inhalt des Popups für Nextcloud
     const nextcloudModalContent = (
+      
       <div className={styles.nextcloudModal}>
+        <div className={styles.helpButtonContainer}>
+  <IconButton
+    styles={iconHelpButtonStyles}
+    iconProps={helpIcon}
+    title="Help"
+    ariaLabel="Help"
+    onClick={handleHelpClick}
+  />
+</div>
         <h2>Nextcloud Configuration</h2>
         <div>
           <label htmlFor="clientId">Client ID: (Client-Identifikationsmerkmal)</label>
@@ -141,6 +166,17 @@ const handleNextcloudClick = () => {
           <button className={styles.saveButton} onClick={handleNextcloudSave}>Save</button>
           <button className={styles.cancelButton} onClick={hideNextcloudModal}>Cancel</button>
         </div>
+        {isHelpNoteVisible && (
+  <div className={styles.helpNote}>
+    <p>Kurze Beschreibung:</p>
+    <ul>
+      <li>Client-ID: von Nextcloud</li>
+      <li>Client-Secret: Geheimnis von Nextcloud</li>
+      <li>Authorization URL: URL von Nextcloud</li>
+      <li>Nextcloud username: Aktuell angemeldeten User</li>
+    </ul>
+  </div>
+)}
       </div>
     );
 
@@ -188,8 +224,9 @@ const handleNextcloudClick = () => {
           
             </FileCard>
             {isLoading && (
-            <Spinner label={`Uploading ${fileNames}`} ariaLive="assertive" labelPosition="right" />
+            <Spinner label="Uploading..." ariaLive="assertive" labelPosition="right" />
           )}
+           {isLoading && <span style={{ marginLeft: '10px', color: '#0078D4' }}> {fileNames}</span>}
         </div>
       </Modal>
       <Modal
@@ -254,6 +291,22 @@ const iconButtonStyles: Partial<IButtonStyles> = {
     marginLeft: 'auto',
     marginTop: '4px',
     marginRight: '2px',
+  },
+  rootHovered: {
+    color: theme.palette.neutralDark,
+  },
+};
+
+const iconHelpButtonStyles: Partial<IButtonStyles> = {
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '30px',
+    height: '30px',
+    backgroundColor: 'lightgrey', // Hintergrundfarbe für den runden Button
+    borderRadius: '50%', // Runde Ecken
+    cursor: 'pointer',
   },
   rootHovered: {
     color: theme.palette.neutralDark,
