@@ -1,4 +1,4 @@
-import { AskRequest, Response} from "./models";
+import { AskRequest, Response } from "./models";
 import { User } from "@auth0/auth0-react";
 
 export async function chatApi(question: string, user: User): Promise<Response> {
@@ -41,9 +41,26 @@ export async function chatWithLLM(question: string, file: string, text: string):
 
 export async function uploadFiles(data: any): Promise<any> {
 
-    const response = await fetch("/api/upload", {
+    const response = await fetch("/api/uploads", {
         method: 'POST',
         body: data
+    }).then((response) => response.json())
+}
+
+export async function deleteDocuments(documents: Document[]): Promise<any> {
+
+    const response = await fetch("/api/documents", {
+        method: 'PATCH',
+        body: JSON.stringify({
+            documents: documents
+        })
+    }).then((response) => response.json())
+}
+
+export async function getDocuments(): Promise<any> {
+
+    const response = await fetch("/api/documents", {
+        method: 'GET',
     }).then((response) => response.json())
 }
 
