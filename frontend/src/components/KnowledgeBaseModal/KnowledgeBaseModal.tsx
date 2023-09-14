@@ -243,11 +243,6 @@ const contentStyles = mergeStyleSets({
     },
   },
 });
-const stackProps: Partial<IStackProps> = {
-  horizontal: true,
-  tokens: { childrenGap: 40 },
-  styles: { root: { marginBottom: 20 } },
-};
 const iconButtonStyles: Partial<IButtonStyles> = {
   root: {
     color: theme.palette.neutralPrimary,

@@ -46,12 +46,16 @@ export type Response = {
     llm_answer?: any;
 }
 
-export type document = {
+export type Document = {
     id: number;
     name: string;
     text: string;
     user: User;
 
+}
+
+export type DocumentResponse = {
+    documents: Document[];
 }
 
 export type User = {

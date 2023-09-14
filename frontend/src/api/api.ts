@@ -1,4 +1,4 @@
-import { AskRequest, Response } from "./models";
+import { AskRequest, DocumentResponse, Response } from "./models";
 import { User } from "@auth0/auth0-react";
 
 export async function chatApi(question: string, user: User): Promise<Response> {
@@ -57,11 +57,15 @@ export async function deleteDocuments(documents: Document[]): Promise<any> {
     }).then((response) => response.json())
 }
 
-export async function getDocuments(): Promise<any> {
+export async function getDocuments(): Promise<DocumentResponse> {
 
     const response = await fetch("/api/documents", {
         method: 'GET',
-    }).then((response) => response.json())
+    })
+
+    const parsedResponse: DocumentResponse = await response.json();
+
+    return parsedResponse;
 }
 
 export async function uploadToNextcloud(clientId: any, clientSecret: any, authorizationUrl: any, nextCloudUserName: any): Promise<any> {
