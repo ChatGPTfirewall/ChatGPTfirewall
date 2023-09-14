@@ -24,6 +24,7 @@ RUN set -ex && \
     python -m spacy download de_core_news_lg && \
     rm -rf /root/.cache/
 
+ENTRYPOINT [ "/app/entrypoint.dev.sh" ]
 
 FROM python:${PYTHON_VERSION}
 

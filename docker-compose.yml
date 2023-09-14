@@ -18,7 +18,9 @@ services:
     env_file:
       - .env
   backend:
-    build: ./backend
+    build: 
+      context: ./backend
+      target: builder
     container_name: backend
     stdin_open: true
     tty: true
