@@ -10,7 +10,7 @@ from .models import User, Section
 from .serializers import UserSerializer, DocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import get_or_create_collection, insert_text, search
-from .embedding import prepare_text, vectorize
+from .embedding import prepare_text, return_ents, vectorize
 from .llm import count_tokens, run_llm
 from .nextcloud import get_access_token, get_files, download_file
 class UserApiView(APIView):
@@ -123,11 +123,18 @@ class ChatApiView(APIView):
         response = []
         for fact in facts:
             section = Section.objects.get(id=fact.payload.get("section_id"))
+            print(section.content)
+            ents = return_ents(section.document.text)
+            entities = []
+            for ent in ents:
+                #print(ent.text, ent.start_char, ent.end_char, ent.label_)
+                entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
             fact = {
                 "answer": section.content,
                 "file": section.document.filename,
                 "score": fact.score,
-                "full_text":section.document.text
+                "full_text":section.document.text,
+                "entities":entities
             }
             response.append(fact)
 
@@ -249,5 +256,4 @@ class NextCloudApiView(APIView):
             </body>
             </html>
         """
-
 
