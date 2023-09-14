@@ -3,7 +3,7 @@ from .models import User, Document, Section
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["auth0_id", "username", "email"]
+        fields = ["id", "auth0_id", "username", "email"]
 
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,6 +11,7 @@ class DocumentSerializer(serializers.ModelSerializer):
         fields = ["filename", "text", "user"]
 
 class ReadDocumentSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = Document
         fields = ["id", "filename", "user"]

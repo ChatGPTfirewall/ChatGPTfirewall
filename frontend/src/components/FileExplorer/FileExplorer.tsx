@@ -11,12 +11,13 @@ import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Folder24Regular } from '@fluentui/react-icons';
 import { getDocuments } from '../../api';
 import { TextField } from '@fluentui/react/lib/TextField';
-import { Document } from '../../api';
+import { ReadDocument } from '../../api';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { TooltipHost } from '@fluentui/react';
 import { Announced } from '@fluentui/react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import * as React from 'react';
+import { useAuth0, User } from "@auth0/auth0-react";
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -63,7 +64,7 @@ const controlStyles = {
 
 export interface FileExplorerState {
   columns: IColumn[];
-  items: Document[];
+  items: ReadDocument[];
   selectionDetails: string;
   isModalSelection: boolean;
   isCompactMode: boolean;
@@ -83,14 +84,14 @@ export interface IDocument {
   fileSize: string;
   fileSizeRaw: number;
 }
-export class FileExplorer extends React.Component<{}, FileExplorerState> {
+export class FileExplorer extends React.Component<{user: User}, FileExplorerState> {
   private _selection: Selection;
-  private _allItems: Document[];
+  private _allItems: ReadDocument[];
 
-  constructor(props: {}) {
+  constructor(props: {user: User}) {
     super(props);
-
-    this._allItems = [];
+    getDocuments(this.props.user.sub!).then((response) => this._setDocuments(response))
+    this._allItems = []
 
     const columns: IColumn[] = [
       {
@@ -105,9 +106,9 @@ export class FileExplorer extends React.Component<{}, FileExplorerState> {
         minWidth: 16,
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
-        onRender: (item: Document) => (
-          <TooltipHost content={`${item.name} file`}>
-            <img src={item.name} className={classNames.fileIconImg} alt={`${item.name} file icon`} />
+        onRender: (item: ReadDocument) => (
+          <TooltipHost content={`${item.filename} file`}>
+            <img src={item.filename} className={classNames.fileIconImg} alt={`${item.filename} file icon`} />
           </TooltipHost>
         ),
       },
@@ -227,9 +228,18 @@ export class FileExplorer extends React.Component<{}, FileExplorerState> {
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text?: string): void => {
     this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
+      items: text ? this._allItems.filter(i => i.filename.toLowerCase().indexOf(text) > -1) : this._allItems,
     });
   };
+
+  private _setDocuments = (documents: ReadDocument[]): void => {
+    console.log(documents)
+    this.setState(
+      {
+        items: documents
+      }
+    )
+  }
 
   private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns, items } = this.state;

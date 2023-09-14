@@ -47,15 +47,15 @@ export type Response = {
 }
 
 export type Document = {
-    id: number;
     name: string;
     text: string;
     user: User;
-
 }
 
-export type DocumentResponse = {
-    documents: Document[];
+export type ReadDocument = {
+    id: number,
+    filename: string,
+    user: User;
 }
 
 export type User = {

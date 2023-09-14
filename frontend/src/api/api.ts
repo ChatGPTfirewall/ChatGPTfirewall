@@ -1,4 +1,4 @@
-import { DocumentResponse, Response } from "./models";
+import { ReadDocument, Response } from "./models";
 import { User } from "@auth0/auth0-react";
 
 export async function chatApi(question: string, user: User): Promise<Response> {
@@ -57,13 +57,19 @@ export async function deleteDocuments(documents: Document[]): Promise<any> {
     }).then((response) => response.json())
 }
 
-export async function getDocuments(): Promise<DocumentResponse> {
+export async function getDocuments(auth0_id: string): Promise<ReadDocument[]> {
 
     const response = await fetch("/api/documents", {
-        method: 'GET',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            auth0_id: auth0_id
+        })
     })
 
-    const parsedResponse: DocumentResponse = await response.json();
+    const parsedResponse: ReadDocument[] = await response.json();
 
     return parsedResponse;
 }

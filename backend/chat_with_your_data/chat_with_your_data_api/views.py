@@ -41,18 +41,7 @@ class UserApiView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class FileApiView(APIView):
-
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get('user_id')
-        documents = Document.objects.filter(user_id=user_id)
-
-        serializer = ReadDocumentSerializer(documents, many=True)
-       
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    def delete(self, request, *args, **kwargs):
-        print(request)
+class UploadApiView(APIView):
 
     def post(self, request, *args, **kwargs):
         '''
@@ -96,6 +85,21 @@ class FileApiView(APIView):
                 return Response(documents, status=status.HTTP_201_CREATED)
             else:
                 return Response(qdrant_result, status=status.HTTP_400_BAD_REQUEST)
+            
+class DocumentApiView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        auth0_id = request.data.get('auth0_id')
+        user = User.objects.get(auth0_id=auth0_id)
+
+        documents = Document.objects.filter(user_id=user.id)
+
+        serializer = ReadDocumentSerializer(documents, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def delete(self, request, *args, **kwargs):
+        print(request)
 
     
 class CollectionApiView(APIView):
