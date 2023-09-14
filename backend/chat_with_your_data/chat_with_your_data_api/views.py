@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from pathlib import Path
 
-from .models import User, Section
-from .serializers import UserSerializer, DocumentSerializer
+from .models import User, Section, Document
+from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import get_or_create_collection, insert_text, search
 from .embedding import prepare_text, vectorize
@@ -43,6 +43,17 @@ class UserApiView(APIView):
 
 class FileApiView(APIView):
 
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('user_id')
+        documents = Document.objects.filter(user_id=user_id)
+
+        serializer = ReadDocumentSerializer(documents, many=True)
+       
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def delete(self, request, *args, **kwargs):
+        print(request)
+
     def post(self, request, *args, **kwargs):
         '''
         Upload files.
@@ -66,7 +77,7 @@ class FileApiView(APIView):
             document = {
                 'filename': file.name,
                 'text': text,
-                'user': user.id
+                'user': user.id,
             }
 
             # Insert text into postgres db
