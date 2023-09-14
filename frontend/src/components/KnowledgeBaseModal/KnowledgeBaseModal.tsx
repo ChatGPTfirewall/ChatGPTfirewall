@@ -20,6 +20,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
 
 
+
 interface Props {
   buttonClassName?: string;
 }
@@ -29,6 +30,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
   const [fileNames, setFileNames] = useState([]); // Zustand für die Dateinamen hinzufügen
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
 
   const helpIcon: IIconProps = {
     iconName: 'Help',
@@ -47,7 +49,10 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [authorizationUrl, setAuthorizationUrl] = useState('');
   const [nextCloudUserName, setUsername] = useState('');
   const [isNextcloudModalOpen, { setTrue: showNextCloudModal, setFalse: hideNextcloudModal }] = useBoolean(false);
-  
+
+
+
+
 
   const handleClick = () => {
     if (hiddenFileInput.current) {
@@ -58,7 +63,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const handleHelpClick = () => {
     setIsHelpNoteVisible(!isHelpNoteVisible);
   };
-  
+
 
   const handleFileChange = (event: any) => {
     const files = event.target.files;
@@ -81,6 +86,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
         .then(() => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
           setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads
+          setShowSuccessNotification(true); // Zeige die Erfolgsmeldung an
         })
         .catch((error) => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn ein Fehler auftritt
@@ -88,97 +94,99 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
           console.error('Upload error:', error);
         });
     }
+    setTimeout(() => {
+      setShowSuccessNotification(false);
+    }, 7000); // 5000 Millisekunden (5 Sekunden)
   };
 
   /*
     Popup für Nextcloud
   */
- // Handler für die Änderung der Eingabefelder
- const handleClientIdChange = (event) => {
-  setClientId(event.target.value);
-};
+  // Handler für die Änderung der Eingabefelder
+  const handleClientIdChange = (event) => {
+    setClientId(event.target.value);
+  };
 
-const handleClientSecretChange = (event) => {
-  setClientSecret(event.target.value);
-};
+  const handleClientSecretChange = (event) => {
+    setClientSecret(event.target.value);
+  };
 
-const handleAuthorizationUrlChange = (event) => {
-  setAuthorizationUrl(event.target.value);
-};
+  const handleAuthorizationUrlChange = (event) => {
+    setAuthorizationUrl(event.target.value);
+  };
 
-const handleUsernameChange = (event) => {
-  setUsername(event.target.value);
-};
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
-// Handler für das Öffnen des Popups
-const handleNextcloudClick = () => {
-  showNextCloudModal(); // showModal kann so benannt sein wie in deinem Code, um das Haupt-Modal zu öffnen
-};
+  // Handler für das Öffnen des Popups
+  const handleNextcloudClick = () => {
+    showNextCloudModal(); // showModal kann so benannt sein wie in deinem Code, um das Haupt-Modal zu öffnen
+  };
 
   // Handler für das Schließen des Popups und Speichern der eingegebenen Werte
   const handleNextcloudSave = () => {
     uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
     //const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
-    const popup = window.open("http://127.0.0.1:7007/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
-  
+    const popup = window.open("/api/upload/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
     //setTimeout(() => {
     //  if (!popup.closed) {
     //    popup.close();
     //  }
-        //uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
-  
-      // Schließen Sie das Modal
-      hideNextcloudModal();
-   // }, 100000); // 10000 Millisekunden = 10 Sekunden
+    //uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
+
+    // Schließen Sie das Modal
+    hideNextcloudModal();
+    // }, 100000); // 10000 Millisekunden = 10 Sekunden
   };
 
-    // Inhalt des Popups für Nextcloud
-    const nextcloudModalContent = (
-      
-      <div className={styles.nextcloudModal}>
-        <div className={styles.helpButtonContainer}>
-  <IconButton
-    styles={iconHelpButtonStyles}
-    iconProps={helpIcon}
-    title="Help"
-    ariaLabel="Help"
-    onClick={handleHelpClick}
-  />
-</div>
-        <h2>Nextcloud Configuration</h2>
-        <div>
-          <label htmlFor="clientId">Client ID: (Client-Identifikationsmerkmal)</label>
-          <input type="text" id="clientId" value={clientId} onChange={handleClientIdChange} />
-        </div>
-        <div>
-          <label htmlFor="clientSecret">Client Secret: (Geheimnis)</label>
-          <input type="text" id="clientSecret" value={clientSecret} onChange={handleClientSecretChange} />
-        </div>
-        <div>
-          <label htmlFor="authorizationUrl">Authorization URL: (https:example.com/)</label>
-          <input type="text" id="authorizationUrl" value={authorizationUrl} onChange={handleAuthorizationUrlChange} />
-        </div>
-        <div>
-          <label htmlFor="nextCloudUserName">Nextcloud Username:</label>
-          <input type="text" id="nextCloudUserName" value={nextCloudUserName} onChange={handleUsernameChange} />
-        </div>
-        <div className={styles.modalButtons}>
-          <button className={styles.saveButton} onClick={handleNextcloudSave}>Save</button>
-          <button className={styles.cancelButton} onClick={hideNextcloudModal}>Cancel</button>
-        </div>
-        {isHelpNoteVisible && (
-  <div className={styles.helpNote}>
-    <p>Kurze Beschreibung:</p>
-    <ul>
-      <li>Client-ID: von Nextcloud</li>
-      <li>Client-Secret: Geheimnis von Nextcloud</li>
-      <li>Authorization URL: URL von Nextcloud</li>
-      <li>Nextcloud username: Aktuell angemeldeten User</li>
-    </ul>
-  </div>
-)}
+  // Inhalt des Popups für Nextcloud
+  const nextcloudModalContent = (
+
+    <div className={styles.nextcloudModal}>
+      <div className={styles.helpButtonContainer}>
+        <IconButton
+          styles={iconHelpButtonStyles}
+          iconProps={helpIcon}
+          title="Help"
+          ariaLabel="Help"
+          onClick={handleHelpClick}
+        />
       </div>
-    );
+      <h2>Nextcloud Configuration</h2>
+      <div>
+        <label htmlFor="clientId">Client ID: (Client-Identifikationsmerkmal)</label>
+        <input type="text" id="clientId" value={clientId} onChange={handleClientIdChange} />
+      </div>
+      <div>
+        <label htmlFor="clientSecret">Client Secret: (Geheimnis)</label>
+        <input type="text" id="clientSecret" value={clientSecret} onChange={handleClientSecretChange} />
+      </div>
+      <div>
+        <label htmlFor="authorizationUrl">Authorization URL: (https:example.com/)</label>
+        <input type="text" id="authorizationUrl" value={authorizationUrl} onChange={handleAuthorizationUrlChange} />
+      </div>
+      <div>
+        <label htmlFor="nextCloudUserName">Nextcloud Username:</label>
+        <input type="text" id="nextCloudUserName" value={nextCloudUserName} onChange={handleUsernameChange} />
+      </div>
+      <div className={styles.modalButtons}>
+        <button className={styles.saveButton} onClick={handleNextcloudSave}>Save</button>
+        <button className={styles.cancelButton} onClick={hideNextcloudModal}>Cancel</button>
+      </div>
+      {isHelpNoteVisible && (
+        <div className={styles.helpNote}>
+          <p>Kurze Beschreibung:</p>
+          <ul>
+            <li>Client-ID: von Nextcloud</li>
+            <li>Client-Secret: Geheimnis von Nextcloud</li>
+            <li>Authorization URL: URL von Nextcloud</li>
+            <li>Nextcloud username: Aktuell angemeldeten User</li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
 
 
 
@@ -218,15 +226,17 @@ const handleNextcloudClick = () => {
         </div>
         <div className={styles.modal_container}>
           <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
-          <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick}/>
+          <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick} />
           <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
-              <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
-          
-            </FileCard>
-            {isLoading && (
+            <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
+
+          </FileCard>
+          {isLoading && (
             <Spinner label="Uploading..." ariaLive="assertive" labelPosition="right" />
           )}
-           {isLoading && <span style={{ marginLeft: '10px', color: '#0078D4' }}> {fileNames}</span>}
+          {isLoading && <span style={{ marginLeft: '10px', color: '#0078D4' }}> {fileNames}</span>}
+          {showSuccessNotification && <span style={{ marginLeft: '10px', color: '#0078D4' }}> Upload erfolgreich!</span>}
+      
         </div>
       </Modal>
       <Modal
@@ -235,7 +245,7 @@ const handleNextcloudClick = () => {
         isBlocking={false}
         containerClassName={contentStyles.container}
       >
-        {nextcloudModalContent} 
+        {nextcloudModalContent}
       </Modal>
     </div>
   );
