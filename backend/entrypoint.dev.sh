@@ -8,6 +8,6 @@ cd chat_with_your_data/
 
 python manage.py migrate
 
-gunicorn --bind [::]:8000 --workers 1 --worker-class=eventlet chat_with_your_data.wsgi
+python manage.py runserver 0.0.0.0:8000
 
 exec "$@"
