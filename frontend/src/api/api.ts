@@ -47,10 +47,13 @@ export async function uploadFiles(data: any): Promise<any> {
     }).then((response) => response.json())
 }
 
-export async function deleteDocuments(documents: Document[]): Promise<any> {
+export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
 
     const response = await fetch("/api/documents", {
-        method: 'PATCH',
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             documents: documents
         })

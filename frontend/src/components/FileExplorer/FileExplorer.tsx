@@ -9,15 +9,14 @@ import {
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Folder24Regular } from '@fluentui/react-icons';
-import { getDocuments } from '../../api';
+import { getDocuments, deleteDocuments } from '../../api';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { ReadDocument } from '../../api';
-import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { TooltipHost } from '@fluentui/react';
+import { TooltipHost, DefaultButton } from '@fluentui/react';
 import { Announced } from '@fluentui/react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import * as React from 'react';
-import { useAuth0, User } from "@auth0/auth0-react";
+import { User } from "@auth0/auth0-react";
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -86,12 +85,12 @@ export interface IDocument {
   fileSize: string;
   fileSizeRaw: number;
 }
-export class FileExplorer extends React.Component<{user: User}, FileExplorerState> {
+export class FileExplorer extends React.Component<{ user: User }, FileExplorerState> {
   private _selection: Selection;
 
 
 
-  constructor(props: {user: User}) {
+  constructor(props: { user: User }) {
     super(props);
 
 
@@ -112,7 +111,7 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
           const filename = item.filename;
           const fileExtension = filename.split('.').pop();
           const file_icon = `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/16/${fileExtension}.svg`
-        
+
           return (
             <TooltipHost content={`${fileExtension} file`}>
               <img src={file_icon} className={classNames.fileIconImg} alt={`${fileExtension} file icon`} />
@@ -163,8 +162,8 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
   componentDidMount(): void {
     this.setState({ isLoading: true }); // Set loading to true while fetching
     getDocuments(this.props.user.sub!).then((response) => {
-      this.setState({ items: response})
-      this.setState({ initialItems: response})
+      this.setState({ items: response })
+      this.setState({ initialItems: response })
       this.setState({ isLoading: false }); // Set loading to false when data is fetched
     });
   }
@@ -182,7 +181,6 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
           isOpen={modalState}
           onDismiss={() => {
             this._hideModal;
-            // setSelectedDocuments([]);
           }}
           isBlocking={false}
           containerClassName={contentStyles.container}
@@ -198,14 +196,19 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
               onClick={this._hideModal}
             />
           </div>
-          <div className={classNames.controlWrapper}>
-            <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
-            <Announced message={`Number of items after filter applied: ${items.length}.`} />
-          </div>
-          <div className={classNames.selectionDetails}>{selectionDetails}</div>
-          <Announced message={selectionDetails} />
-          {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
-          <MarqueeSelection selection={this._selection}>
+          <div className={styles.modal_container}>
+            <div className={classNames.controlWrapper}>
+              <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
+              <Announced message={`Number of items after filter applied: ${items.length}.`} />
+            </div>
+            <DefaultButton
+                text="Delete documents"
+                primary
+                onClick={this._handleDeleteClick}
+            />
+            <div className={classNames.selectionDetails}>{selectionDetails}</div>
+            <Announced message={selectionDetails} />
+            {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
             <DetailsList
               items={items}
               columns={columns}
@@ -220,7 +223,7 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               checkButtonAriaLabel="select row"
             />
-          </MarqueeSelection>
+          </div>
         </Modal >
       </div >
     );
@@ -252,14 +255,25 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
     });
   };
 
-  private _setDocuments = (documents: ReadDocument[]): void => {
-    console.log(documents)
-    this.setState(
-      {
-        items: documents
-      }
-    )
-  }
+  private _handleDeleteClick = () => {
+    const selectedItems = this._selection.getSelection() as ReadDocument[];
+
+    if (selectedItems.length > 0) {
+      // Call the deleteDocuments function with selected items
+      deleteDocuments(selectedItems)
+        .then(() => {
+          // Remove the deleted items from the state
+          this.setState((prevState) => ({
+            items: prevState.items.filter((item) => !selectedItems.includes(item)),
+          }));
+          // Clear the selection
+          this._selection.setAllSelected(false);
+        })
+        .catch((error) => {
+          console.error('Error deleting documents:', error);
+        });
+    }
+  };
 
   private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns, items } = this.state;

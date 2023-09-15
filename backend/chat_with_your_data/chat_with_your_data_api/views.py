@@ -99,9 +99,12 @@ class DocumentApiView(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, *args, **kwargs):
-        print(request)
+        document_data = request.data.get('documents', [])
+        document_ids = [doc['id'] for doc in document_data]
 
-    
+        Document.objects.filter(id__in=document_ids).delete()
+        return Response(status=status.HTTP_200_OK)
+        
 class CollectionApiView(APIView):
 
     def post(self, request, *args, **kwargs):
