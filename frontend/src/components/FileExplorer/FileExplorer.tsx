@@ -65,11 +65,13 @@ const controlStyles = {
 export interface FileExplorerState {
   columns: IColumn[];
   items: ReadDocument[];
+  initialItems: ReadDocument[];
   selectionDetails: string;
   isModalSelection: boolean;
   isCompactMode: boolean;
   announcedMessage?: string;
   modalState: boolean;
+  isLoading: boolean;
 }
 
 export interface IDocument {
@@ -86,12 +88,12 @@ export interface IDocument {
 }
 export class FileExplorer extends React.Component<{user: User}, FileExplorerState> {
   private _selection: Selection;
-  private _allItems: ReadDocument[];
+
+
 
   constructor(props: {user: User}) {
     super(props);
-    getDocuments(this.props.user.sub!).then((response) => this._setDocuments(response))
-    this._allItems = []
+
 
     const columns: IColumn[] = [
       {
@@ -106,16 +108,22 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
         minWidth: 16,
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
-        onRender: (item: ReadDocument) => (
-          <TooltipHost content={`${item.filename} file`}>
-            <img src={item.filename} className={classNames.fileIconImg} alt={`${item.filename} file icon`} />
-          </TooltipHost>
-        ),
+        onRender: (item: ReadDocument) => {
+          const filename = item.filename;
+          const fileExtension = filename.split('.').pop();
+          const file_icon = `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/16/${fileExtension}.svg`
+        
+          return (
+            <TooltipHost content={`${fileExtension} file`}>
+              <img src={file_icon} className={classNames.fileIconImg} alt={`${fileExtension} file icon`} />
+            </TooltipHost>
+          );
+        },
       },
       {
         key: 'column2',
         name: 'Name',
-        fieldName: 'name',
+        fieldName: 'filename',
         minWidth: 210,
         maxWidth: 350,
         isRowHeader: true,
@@ -140,14 +148,25 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
     });
 
     this.state = {
-      items: this._allItems,
+      items: [],
+      initialItems: [],
       columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: true,
       isCompactMode: false,
       announcedMessage: undefined,
       modalState: false,
+      isLoading: true
     };
+  }
+
+  componentDidMount(): void {
+    this.setState({ isLoading: true }); // Set loading to true while fetching
+    getDocuments(this.props.user.sub!).then((response) => {
+      this.setState({ items: response})
+      this.setState({ initialItems: response})
+      this.setState({ isLoading: false }); // Set loading to false when data is fetched
+    });
   }
 
   public render() {
@@ -227,8 +246,9 @@ export class FileExplorer extends React.Component<{user: User}, FileExplorerStat
 
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text?: string): void => {
+    const { initialItems } = this.state;
     this.setState({
-      items: text ? this._allItems.filter(i => i.filename.toLowerCase().indexOf(text) > -1) : this._allItems,
+      items: text ? initialItems.filter(i => i.filename.toLowerCase().includes(text.toLowerCase())) : initialItems,
     });
   };
 
@@ -339,44 +359,3 @@ const iconButtonStyles: Partial<IButtonStyles> = {
     color: theme.palette.neutralDark,
   },
 };
-
-const FILE_ICONS: { name: string }[] = [
-  { name: 'accdb' },
-  { name: 'audio' },
-  { name: 'code' },
-  { name: 'csv' },
-  { name: 'docx' },
-  { name: 'dotx' },
-  { name: 'mpp' },
-  { name: 'mpt' },
-  { name: 'model' },
-  { name: 'one' },
-  { name: 'onetoc' },
-  { name: 'potx' },
-  { name: 'ppsx' },
-  { name: 'pdf' },
-  { name: 'photo' },
-  { name: 'pptx' },
-  { name: 'presentation' },
-  { name: 'potx' },
-  { name: 'pub' },
-  { name: 'rtf' },
-  { name: 'spreadsheet' },
-  { name: 'txt' },
-  { name: 'vector' },
-  { name: 'vsdx' },
-  { name: 'vssx' },
-  { name: 'vstx' },
-  { name: 'xlsx' },
-  { name: 'xltx' },
-  { name: 'xsn' },
-];
-
-function _randomFileIcon(): { docType: string; url: string } {
-  const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
-  return {
-    docType,
-    url: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/16/${docType}.svg`,
-  };
-}
-
