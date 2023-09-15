@@ -1,6 +1,7 @@
 import os
 
 from django.shortcuts import render, redirect
+from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,25 +10,15 @@ from pathlib import Path
 from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
-from .qdrant import get_or_create_collection, insert_text, search
+from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import prepare_text, vectorize
 from .llm import count_tokens, run_llm
 from .nextcloud import get_access_token, get_files, download_file
 class UserApiView(APIView):
 
-    # # 1. List all
-    # def get(self, request, *args, **kwargs):
-    #     '''
-    #     List all the todo items for given requested user
-    #     '''
-    #     todos = Todo.objects.filter(user = request.user.id)
-    #     serializer = TodoSerializer(todos, many=True)
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
-
-    # 2. Create
     def post(self, request, *args, **kwargs):
         '''
-        Create a user.
+        Create a user and his collection.
         '''
         data = {
             'auth0_id': request.data.get('auth0_id'), 
@@ -35,10 +26,18 @@ class UserApiView(APIView):
             'email': request.data.get('email')
         }
         serializer = UserSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        try:
+            if serializer.is_valid():
+                serializer.save()
+                [_, id] = request.data.get('auth0_id').split("|")
+                create_collection(id)
 
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except IntegrityError as e:
+            # Handle the IntegrityError (duplicate key error)
+            return Response({'error': 'User with this auth0_id already exists.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Handle other validation errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UploadApiView(APIView):
@@ -50,6 +49,7 @@ class UploadApiView(APIView):
         auth0_id = request.POST.get('user')
         user = User.objects.get(auth0_id=auth0_id)
         files = request.FILES.getlist('files')
+
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
         
@@ -99,24 +99,16 @@ class DocumentApiView(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, *args, **kwargs):
-        document_data = request.data.get('documents', [])
-        document_ids = [doc['id'] for doc in document_data]
+        documents = request.data.get('documents', [])
+        document_ids = []
 
+        for document in documents:
+            document_ids.append(document['id'])
+            user = document['user']
+            [_, id] = user['auth0_id'].split("|")
+            delete_text(id, document)
         Document.objects.filter(id__in=document_ids).delete()
         return Response(status=status.HTTP_200_OK)
-        
-class CollectionApiView(APIView):
-
-    def post(self, request, *args, **kwargs):
-        '''
-        Create collection in vector database.
-        '''
-        [_, id] = request.data.get('user_auth0_id').split("|")
-
-        collection = get_or_create_collection(id)
-        if collection == True:
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(collection, status=status.HTTP_400_BAD_REQUEST)
     
 class ChatApiView(APIView):
 

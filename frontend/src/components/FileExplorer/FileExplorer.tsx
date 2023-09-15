@@ -159,15 +159,6 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
     };
   }
 
-  componentDidMount(): void {
-    this.setState({ isLoading: true }); // Set loading to true while fetching
-    getDocuments(this.props.user.sub!).then((response) => {
-      this.setState({ items: response })
-      this.setState({ initialItems: response })
-      this.setState({ isLoading: false }); // Set loading to false when data is fetched
-    });
-  }
-
   public render() {
     const { columns, isCompactMode, items, selectionDetails, isModalSelection, announcedMessage, modalState } = this.state;
 
@@ -241,10 +232,13 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
 
   private _showModal = (ev: React.MouseEvent<HTMLElement>): void => {
     this.setState({ modalState: true });
+    getDocuments(this.props.user.sub!).then((response) => {
+      this.setState({ items: response, initialItems: response, isLoading: false })
+    });
   };
 
   private _hideModal = (ev: React.MouseEvent<HTMLElement>): void => {
-    this.setState({ modalState: false });
+    this.setState({modalState: false, items: [], initialItems: []})
   };
 
 
