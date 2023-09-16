@@ -14,7 +14,7 @@ import { TextField } from '@fluentui/react/lib/TextField';
 import { ReadDocument } from '../../api';
 import { TooltipHost, DefaultButton } from '@fluentui/react';
 import { Announced } from '@fluentui/react/lib/Announced';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn} from '@fluentui/react/lib/DetailsList';
 import * as React from 'react';
 import { User } from "@auth0/auth0-react";
 
@@ -80,7 +80,6 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
   constructor(props: { user: User }) {
     super(props);
 
-
     const columns: IColumn[] = [
       {
         key: 'column1',
@@ -109,9 +108,9 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
       {
         key: 'column2',
         name: 'Name',
+        className: styles.file_name_column,
         fieldName: 'filename',
-        minWidth: 210,
-        maxWidth: 350,
+        minWidth: 580,
         isRowHeader: true,
         isResizable: true,
         isSorted: true,
@@ -192,6 +191,7 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
             <DetailsList
               items={items}
               columns={columns}
+              className={styles.details_list}
               selectionMode={SelectionMode.multiple}
               setKey="multiple"
               layoutMode={DetailsListLayoutMode.justified}
