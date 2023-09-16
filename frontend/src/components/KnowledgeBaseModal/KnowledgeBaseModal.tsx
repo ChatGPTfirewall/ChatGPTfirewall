@@ -17,7 +17,7 @@ import React from 'react';
 import { uploadFiles } from '../../api';
 import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 
 
@@ -26,7 +26,8 @@ interface Props {
 }
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
-  const hiddenFileInput = React.useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
+
   const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
   const [fileNames, setFileNames] = useState([]); // Zustand für die Dateinamen hinzufügen
@@ -69,28 +70,28 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       const formData = new FormData();
-      const newFileNames = []; // Neues Array für Dateinamen erstellen
+      const newFileNames: any = [];
 
       for (let i = 0; i < files.length; i++) {
         formData.append("files", files[i]);
-        newFileNames.push(files[i].name); // Dateinamen zum neuen Array hinzufügen
+        newFileNames.push(files[i].name);
       }
 
       formData.append("user", user!.sub as string);
 
-      setFileNames(newFileNames); // Dateinamen in den Zustand setzen
+      setFileNames(newFileNames);
 
       setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
 
-      uploadFiles(formData, user!)
+      uploadFiles(formData)
         .then(() => {
           setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
           setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads
           setShowSuccessNotification(true); // Zeige die Erfolgsmeldung an
         })
         .catch((error) => {
-          setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn ein Fehler auftritt
-          setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array bei Fehlern
+          setIsLoading(false);
+          setFileNames([]);
           console.error('Upload error:', error);
         });
     }
@@ -103,19 +104,19 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     Popup für Nextcloud
   */
   // Handler für die Änderung der Eingabefelder
-  const handleClientIdChange = (event) => {
+  const handleClientIdChange = (event: any) => {
     setClientId(event.target.value);
   };
 
-  const handleClientSecretChange = (event) => {
+  const handleClientSecretChange = (event: any) => {
     setClientSecret(event.target.value);
   };
 
-  const handleAuthorizationUrlChange = (event) => {
+  const handleAuthorizationUrlChange = (event: any) => {
     setAuthorizationUrl(event.target.value);
   };
 
-  const handleUsernameChange = (event) => {
+  const handleUsernameChange = (event: any) => {
     setUsername(event.target.value);
   };
 
@@ -128,7 +129,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const handleNextcloudSave = () => {
     uploadToNextcloud(clientId, clientSecret, authorizationUrl, nextCloudUserName);
     //const popup = window.open(authorizationUrl + "index.php/apps/oauth2/authorize?client_id=" + clientId + "&response_type=code&scope=read", "Nextcloud Auth", "width=500,height=600");
-    const popup = window.open("/api/upload/nextcloud?clientId=" +  clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName="+ nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
+    const popup = window.open("/api/upload/nextcloud?clientId=" + clientId + "&" + "clientSecret=" + clientSecret + "&" + "authorizationUrl=" + authorizationUrl + "&" + "nextCloudUserName=" + nextCloudUserName, "Nextcloud Auth", "width=500,height=600");
     //setTimeout(() => {
     //  if (!popup.closed) {
     //    popup.close();
@@ -236,7 +237,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
           )}
           {isLoading && <span style={{ marginLeft: '10px', color: '#0078D4' }}> {fileNames}</span>}
           {showSuccessNotification && <span style={{ marginLeft: '10px', color: '#0078D4' }}> Upload erfolgreich!</span>}
-      
+
         </div>
       </Modal>
       <Modal
@@ -290,11 +291,6 @@ const contentStyles = mergeStyleSets({
     },
   },
 });
-const stackProps: Partial<IStackProps> = {
-  horizontal: true,
-  tokens: { childrenGap: 40 },
-  styles: { root: { marginBottom: 20 } },
-};
 const iconButtonStyles: Partial<IButtonStyles> = {
   root: {
     color: theme.palette.neutralPrimary,

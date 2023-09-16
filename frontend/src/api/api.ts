@@ -1,4 +1,4 @@
-import { AskRequest, Response} from "./models";
+import { ReadDocument, Response } from "./models";
 import { User } from "@auth0/auth0-react";
 
 export async function chatApi(question: string, user: User): Promise<Response> {
@@ -40,11 +40,42 @@ export async function chatWithLLM(question: string, file: string, text: string):
 }
 
 export async function uploadFiles(data: any): Promise<any> {
-
-    const response = await fetch("/api/upload", {
+    const response = await fetch("/api/documents/upload", {
         method: 'POST',
         body: data
     }).then((response) => response.json())
+
+    return response
+}
+
+export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
+
+    const response = await fetch("/api/documents", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            documents: documents
+        })
+    }).then((response) => response.json())
+}
+
+export async function getDocuments(auth0_id: string): Promise<ReadDocument[]> {
+
+    const response = await fetch("/api/documents", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            auth0_id: auth0_id
+        })
+    })
+
+    const parsedResponse: ReadDocument[] = await response.json();
+
+    return parsedResponse;
 }
 
 export async function uploadToNextcloud(clientId: any, clientSecret: any, authorizationUrl: any, nextCloudUserName: any): Promise<any> {
@@ -81,20 +112,6 @@ export async function initUser(user: User, firstLoginHook: any): Promise<any> {
                 firstLoginHook()
             }
         })
-}
-
-export async function initUserCollection(user: User): Promise<any> {
-    const response = await fetch("/api/collections/create", {
-        method: 'POST',
-        body: JSON.stringify({
-            user_auth0_id: user.sub
-        }),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    })
-    return "ok"
 }
 
 export function getCitationFilePath(citation: string): string {

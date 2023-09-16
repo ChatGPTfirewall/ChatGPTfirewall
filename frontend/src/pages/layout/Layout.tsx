@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import styles from "./Layout.module.css";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
-import { initUser, initUserCollection } from "../../api";
+import { initUser } from "../../api";
 
 const Layout = () => {
     const {user, isLoading, isAuthenticated} = useAuth0();
@@ -18,7 +18,6 @@ const Layout = () => {
 
     if (isAuthenticated) {
         initUser(user!, onFirstLogin)
-        initUserCollection(user!)
     }
 
     return (

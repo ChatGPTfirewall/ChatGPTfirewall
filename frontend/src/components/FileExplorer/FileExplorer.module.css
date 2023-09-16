@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.4;
+}
+
+.modal_container {
+  display: flex;
+  padding-bottom: 15px;
+  margin: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.modal_navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* In deinem Stylesheet (z. B. KnowledgeBaseModal.module.css) */
+
+.nextcloudModal {
+  padding: 20px;
+  max-width: 400px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.nextcloudModal h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nextcloudModal label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.nextcloudModal input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveButton,
+.cancelButton {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.saveButton {
+  background-color: #0078d4;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.cancelButton {
+  background-color: #ccc;
+  color: #333;
+}
+
+.cancelButton:hover,
+.saveButton:hover {
+  background-color: #eee;
+}
+
+.commandButton {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.btn_danger {
+  background-color:#DC3545;
+  color: #fff;
+  border: none;
+}
+
+.btn_danger:hover {
+  background-color:#bb2a39;
+  color: #fff;
+}
+
+.file_name_column {
+  width: 100%;
+}
+
+.details_list {
+  width: 100%;
+}
