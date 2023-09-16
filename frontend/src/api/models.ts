@@ -45,3 +45,22 @@ export type Response = {
     error?: string;
     llm_answer?: any;
 }
+
+export type Document = {
+    name: string;
+    text: string;
+    user: User;
+}
+
+export type ReadDocument = {
+    id: number,
+    filename: string,
+    user: User;
+}
+
+export type User = {
+    id: number;
+    auth0_id: string;
+    username: string;
+    email: string;
+}

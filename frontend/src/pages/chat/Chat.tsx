@@ -12,6 +12,7 @@ import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
+import { FileExplorer } from "../../components/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -149,6 +150,7 @@ const Chat = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
+                    <FileExplorer user={user!}/>
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />

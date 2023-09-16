@@ -1,33 +1,24 @@
 import os
 
 from django.shortcuts import render, redirect
+from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from pathlib import Path
 
-from .models import User, Section
-from .serializers import UserSerializer, DocumentSerializer
+from .models import User, Section, Document
+from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
-from .qdrant import get_or_create_collection, insert_text, search
+from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import prepare_text, return_ents, vectorize
 from .llm import count_tokens, run_llm
 from .nextcloud import get_access_token, get_files, download_file
 class UserApiView(APIView):
 
-    # # 1. List all
-    # def get(self, request, *args, **kwargs):
-    #     '''
-    #     List all the todo items for given requested user
-    #     '''
-    #     todos = Todo.objects.filter(user = request.user.id)
-    #     serializer = TodoSerializer(todos, many=True)
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
-
-    # 2. Create
     def post(self, request, *args, **kwargs):
         '''
-        Create a user.
+        Create a user and his collection.
         '''
         data = {
             'auth0_id': request.data.get('auth0_id'), 
@@ -35,13 +26,21 @@ class UserApiView(APIView):
             'email': request.data.get('email')
         }
         serializer = UserSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        try:
+            if serializer.is_valid():
+                serializer.save()
+                [_, id] = request.data.get('auth0_id').split("|")
+                create_collection(id)
 
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except IntegrityError as e:
+            # Handle the IntegrityError (duplicate key error)
+            return Response({'error': 'User with this auth0_id already exists.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Handle other validation errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class FileApiView(APIView):
+class UploadApiView(APIView):
 
     def post(self, request, *args, **kwargs):
         '''
@@ -50,8 +49,11 @@ class FileApiView(APIView):
         auth0_id = request.POST.get('user')
         user = User.objects.get(auth0_id=auth0_id)
         files = request.FILES.getlist('files')
+
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
+
+        success = True
         
         for file in files:
             # Save file temporary
@@ -66,7 +68,7 @@ class FileApiView(APIView):
             document = {
                 'filename': file.name,
                 'text': text,
-                'user': user.id
+                'user': user.id,
             }
 
             # Insert text into postgres db
@@ -76,29 +78,42 @@ class FileApiView(APIView):
                 result = serializer.save()
                 documents.append(serializer.data)
             else:
+                success = False
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
             qdrant_result= insert_text(id, result)
-            if qdrant_result == True:
-                return Response(documents, status=status.HTTP_201_CREATED)
-            else:
-                return Response(qdrant_result, status=status.HTTP_400_BAD_REQUEST)
+            if qdrant_result != True:
+                success = False
 
-    
-class CollectionApiView(APIView):
+        if success:
+            return Response(documents, status=status.HTTP_201_CREATED)
+        else:
+            return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
+class DocumentApiView(APIView):
 
     def post(self, request, *args, **kwargs):
-        '''
-        Create collection in vector database.
-        '''
-        [_, id] = request.data.get('user_auth0_id').split("|")
+        auth0_id = request.data.get('auth0_id')
+        user = User.objects.get(auth0_id=auth0_id)
 
-        collection = get_or_create_collection(id)
-        if collection == True:
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(collection, status=status.HTTP_400_BAD_REQUEST)
+        documents = Document.objects.filter(user_id=user.id)
+
+        serializer = ReadDocumentSerializer(documents, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def delete(self, request, *args, **kwargs):
+        documents = request.data.get('documents', [])
+        document_ids = []
+
+        for document in documents:
+            document_ids.append(document['id'])
+            user = document['user']
+            [_, id] = user['auth0_id'].split("|")
+            delete_text(id, document)
+        Document.objects.filter(id__in=document_ids).delete()
+        return Response("", status=status.HTTP_200_OK)
     
 class ChatApiView(APIView):
 
@@ -123,11 +138,9 @@ class ChatApiView(APIView):
         response = []
         for fact in facts:
             section = Section.objects.get(id=fact.payload.get("section_id"))
-            print(section.content)
             ents = return_ents(section.document.text)
             entities = []
             for ent in ents:
-                #print(ent.text, ent.start_char, ent.end_char, ent.label_)
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
             fact = {
                 "answer": section.content,
