@@ -72,19 +72,6 @@ export interface FileExplorerState {
   modalState: boolean;
   isLoading: boolean;
 }
-
-export interface IDocument {
-  key: string;
-  name: string;
-  value: string;
-  iconName: string;
-  fileType: string;
-  modifiedBy: string;
-  dateModified: string;
-  dateModifiedValue: number;
-  fileSize: string;
-  fileSizeRaw: number;
-}
 export class FileExplorer extends React.Component<{ user: User }, FileExplorerState> {
   private _selection: Selection;
 
@@ -166,7 +153,7 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
       <div>
         <div className={`${styles.container} ${styles.commandButton ?? ""}`} onClick={this._showModal}>
           <Folder24Regular />
-          <Text>{"File Explorer"}</Text>
+          <Text>{"Files"}</Text>
         </div>
         <Modal
           isOpen={modalState}
@@ -178,7 +165,7 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
         >
           <div className={contentStyles.header}>
             <h2 className={contentStyles.heading} id={"fileExplorer"}>
-              File Explorer
+              Your uploaded files
             </h2>
             <IconButton
               styles={iconButtonStyles}
@@ -188,15 +175,17 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
             />
           </div>
           <div className={styles.modal_container}>
+            <div className={styles.modal_navigation}>
             <div className={classNames.controlWrapper}>
               <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
               <Announced message={`Number of items after filter applied: ${items.length}.`} />
             </div>
             <DefaultButton
                 text="Delete documents"
-                primary
+                className={styles.btn_danger}
                 onClick={this._handleDeleteClick}
             />
+            </div>
             <div className={classNames.selectionDetails}>{selectionDetails}</div>
             <Announced message={selectionDetails} />
             {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
@@ -300,7 +289,7 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as IDocument).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as ReadDocument).filename;
       default:
         return `${selectionCount} items selected`;
     }

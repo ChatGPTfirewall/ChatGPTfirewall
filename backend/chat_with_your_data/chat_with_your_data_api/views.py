@@ -52,6 +52,8 @@ class UploadApiView(APIView):
 
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
+
+        success = True
         
         for file in files:
             # Save file temporary
@@ -76,16 +78,19 @@ class UploadApiView(APIView):
                 result = serializer.save()
                 documents.append(serializer.data)
             else:
+                success = False
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
             qdrant_result= insert_text(id, result)
-            if qdrant_result == True:
-                return Response(documents, status=status.HTTP_201_CREATED)
-            else:
-                return Response(qdrant_result, status=status.HTTP_400_BAD_REQUEST)
-            
+            if qdrant_result != True:
+                success = False
+
+        if success:
+            return Response(documents, status=status.HTTP_201_CREATED)
+        else:
+            return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
 class DocumentApiView(APIView):
 
     def post(self, request, *args, **kwargs):
@@ -108,7 +113,7 @@ class DocumentApiView(APIView):
             [_, id] = user['auth0_id'].split("|")
             delete_text(id, document)
         Document.objects.filter(id__in=document_ids).delete()
-        return Response(status=status.HTTP_200_OK)
+        return Response("", status=status.HTTP_200_OK)
     
 class ChatApiView(APIView):
 

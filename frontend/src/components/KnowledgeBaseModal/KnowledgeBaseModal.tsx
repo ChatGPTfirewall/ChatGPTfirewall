@@ -49,27 +49,26 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       const formData = new FormData();
-      const newFileNames = []; // Neues Array für Dateinamen erstellen
+      const newFileNames = []; 
 
       for (let i = 0; i < files.length; i++) {
         formData.append("files", files[i]);
-        newFileNames.push(files[i].name); // Dateinamen zum neuen Array hinzufügen
+        newFileNames.push(files[i].name); 
       }
+      
+      formData.append("user", user.sub as string);
 
-      formData.append("user", user!.sub as string);
+      setFileNames(newFileNames); 
 
-      setFileNames(newFileNames); // Dateinamen in den Zustand setzen
-
-      setIsLoading(true); // Setzen Sie isLoading auf true, um das Ladesymbol anzuzeigen
-
+      setIsLoading(true); 
       uploadFiles(formData)
         .then(() => {
-          setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn der Upload abgeschlossen ist
-          setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array nach Abschluss des Uploads
+          setIsLoading(false); 
+          setFileNames([]); 
         })
         .catch((error) => {
-          setIsLoading(false); // Setzen Sie den Upload-Zustand auf false, wenn ein Fehler auftritt
-          setFileNames([]); // Setzen Sie den Dateinamen-Zustand auf ein leeres Array bei Fehlern
+          setIsLoading(false); 
+          setFileNames([]); 
           console.error('Upload error:', error);
         });
     }

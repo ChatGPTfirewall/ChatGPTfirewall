@@ -40,11 +40,12 @@ export async function chatWithLLM(question: string, file: string, text: string):
 }
 
 export async function uploadFiles(data: any): Promise<any> {
-
     const response = await fetch("/api/documents/upload", {
         method: 'POST',
         body: data
     }).then((response) => response.json())
+
+    return response
 }
 
 export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
