@@ -74,8 +74,7 @@ const contentStyles = mergeStyleSets({
   container: {
     display: 'flex',
     flexFlow: 'column nowrap',
-    alignItems: 'stretch',
-    width: '75%'
+    alignItems: 'stretch'
   },
   header: [
     // eslint-disable-next-line deprecation/deprecation
@@ -107,7 +106,6 @@ const contentStyles = mergeStyleSets({
     },
   },
   textfield: {
-    width: '100%',
     border: `1px solid`,
     padding: '4px'
   }
