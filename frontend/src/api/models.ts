@@ -38,6 +38,7 @@ export type Fact = {
     file: string;
     score: number;
     full_text: string;
+    entities: [[string, number, number, string]];
 }
 
 export type Response = {
@@ -64,3 +65,5 @@ export type User = {
     username: string;
     email: string;
 }
+
+
