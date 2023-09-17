@@ -173,16 +173,16 @@ class ContextApiView(APIView):
     
 class NextCloudApiView(APIView):
 
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         '''
         Creates a connection to an nextcloud instance.
         '''
         session = request.session
-        nextcloud_user = request.data.get("nextCloudUserName")
-        nextcloud_client_id = request.data.get("clientId")
-        nextcloud_client_secret = request.data.get("clientSecret")
-        nextcloud_authorization_url = request.data.get("authorizationUrl")
-        redirect_uri = request.data.get("redirectUri")
+        nextcloud_user = request.GET.get("nextCloudUserName")
+        nextcloud_client_id = request.GET.get("clientId")
+        nextcloud_client_secret = request.GET.get("clientSecret")
+        nextcloud_authorization_url = request.GET.get("authorizationUrl")
+        redirect_uri = request.GET.get("redirectUri")
 
         FILES_URL = f"{nextcloud_authorization_url}/remote.php/dav/files/{nextcloud_user}/"
         TOKEN_URL = f"{nextcloud_authorization_url}/index.php/apps/oauth2/api/v1/token"
@@ -210,7 +210,7 @@ class NextCloudApiView(APIView):
         )
         return redirect(url)
     
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         session = request.session
         code = request.GET.get("code")
         nextcloud_authorization_url = session.get("authorizationUrl")
