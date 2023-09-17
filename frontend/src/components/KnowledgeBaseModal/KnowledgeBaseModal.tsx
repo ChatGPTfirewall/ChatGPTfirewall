@@ -32,6 +32,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const [isLoading, setIsLoading] = useState(false); // Neuer Zustand für den Upload-Zustand
   const [fileNames, setFileNames] = useState([]); // Zustand für die Dateinamen hinzufügen
   const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const [showFailNotification, setShowFailNotification] = useState(false);
 
   const helpIcon: IIconProps = {
     iconName: 'Help',
@@ -92,11 +93,13 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
         .catch((error) => {
           setIsLoading(false);
           setFileNames([]);
+          setShowFailNotification(true);
           console.error('Upload error:', error);
         });
     }
     setTimeout(() => {
       setShowSuccessNotification(false);
+      setShowFailNotification(false);
     }, 7000); // 5000 Millisekunden (5 Sekunden)
   };
 
@@ -237,6 +240,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
           )}
           {isLoading && <span style={{ marginLeft: '10px', color: '#0078D4' }}> {fileNames}</span>}
           {showSuccessNotification && <span style={{ marginLeft: '10px', color: '#0078D4' }}> Upload erfolgreich!</span>}
+          {showFailNotification && <span style={{ marginLeft: '10px', color: '#F9380F' }}> Upload fehlgeschlagen!</span>}
 
         </div>
       </Modal>
