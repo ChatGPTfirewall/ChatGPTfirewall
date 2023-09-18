@@ -34,6 +34,7 @@ const Chat = () => {
     const [error, setError] = useState<unknown>();
     const [editText, setEditText] = useState(false);
     const [text, setText] = useState("");
+    const [highlights, setHighlights] = useState<[number, number][]>([]);
     const [file, setFile] = useState("");
     const [question, setQuestion] = useState("");
 
@@ -57,6 +58,8 @@ const Chat = () => {
             const result = await chatApi(question, user!);
             setEditText(true)
             setText(result.facts![0].full_text)
+            const transformedList: [number, number][] = result.facts![0].entities.map((entity) => [entity[1], entity[2]]);
+            setHighlights(transformedList)
             setFile(result.facts![0].file)
             setQuestion(question)
             setAnswers([...answers, [question, result]]);
@@ -66,13 +69,14 @@ const Chat = () => {
             setIsLoading(false);
         }
     };
+ 
 
-    const updateChat = (llmAnswer:string) => {
-       const chatMessage: Response ={
+    const updateChat = (llmAnswer: string) => {
+        const chatMessage: Response = {
             llm_answer: llmAnswer
-       }
+        }
 
-       const shortText = text.slice(0, 300) + "..."
+        const shortText = text.slice(0, 300) + "..."
         setAnswers([...answers, [shortText, chatMessage]])
     }
 
@@ -84,7 +88,7 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const saveText = (data:any) => {
+    const saveText = (data: any) => {
         setText(data)
     }
 
@@ -150,7 +154,7 @@ const Chat = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
-                    <FileExplorer user={user!}/>
+                    <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
@@ -214,7 +218,7 @@ const Chat = () => {
                         ) : (
                             <div className={styles.promptReady}>
                                 <div className={styles.buttonGroup}>
-                                    <EditTextModal text={text} sendToParent={saveText} />
+                                    <EditTextModal text={text} highlights={highlights} sendToParent={saveText} />
                                     <PrimaryButton onClick={sendText}>Send</PrimaryButton>
                                 </div>
                             </div>
