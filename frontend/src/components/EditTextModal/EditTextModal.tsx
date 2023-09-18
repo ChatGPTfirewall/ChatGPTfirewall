@@ -12,20 +12,22 @@ import {
 } from '@fluentui/react';
 import { IconButton, IButtonStyles, DefaultButton } from '@fluentui/react/lib/Button';
 import { useState } from 'react';
+import { HighlightWithinTextarea } from 'react-highlight-within-textarea'
 
 interface Props {
   buttonClassName?: string;
   text: string;
+  highlights: number[] | number[][];
   sendToParent: any;
 }
-export const EditTextModal = ({ buttonClassName, text, sendToParent }: Props) => {
+export const EditTextModal = ({ buttonClassName, text, highlights, sendToParent }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [updatedText, setUpdatedText] = useState(text);
 
-  const sendTextToParent = (e:any) => {
-    setUpdatedText(e.target.value)
-    sendToParent(e.target.value)
-};
+  const sendTextToParent = (e: any) => {
+    setUpdatedText(e)
+    sendToParent(e)
+  };
 
 
   return (
@@ -33,7 +35,7 @@ export const EditTextModal = ({ buttonClassName, text, sendToParent }: Props) =>
       <DefaultButton className={`${styles.container} ${buttonClassName ?? ""}`} onClick={showModal}>
         <Text>{"Edit Text"}</Text>
       </DefaultButton>
-      
+
       <Modal
         isOpen={isModalOpen}
         onDismiss={hideModal}
@@ -52,7 +54,13 @@ export const EditTextModal = ({ buttonClassName, text, sendToParent }: Props) =>
           />
         </div>
         <div className={styles.modal_container}>
-          <TextField id="text_value_field" multiline autoAdjustHeight value={updatedText} onChange={sendTextToParent} className={contentStyles.textfield} />
+          <div className={contentStyles.textfield}>
+            <HighlightWithinTextarea
+              value={updatedText}
+              highlight={highlights}
+              onChange={sendTextToParent}
+            />
+          </div>
         </div>
       </Modal>
     </div>
@@ -66,8 +74,7 @@ const contentStyles = mergeStyleSets({
   container: {
     display: 'flex',
     flexFlow: 'column nowrap',
-    alignItems: 'stretch',
-    width: '75%'
+    alignItems: 'stretch'
   },
   header: [
     // eslint-disable-next-line deprecation/deprecation
@@ -99,7 +106,8 @@ const contentStyles = mergeStyleSets({
     },
   },
   textfield: {
-    width: '100%'
+    border: `1px solid`,
+    padding: '4px'
   }
 });
 const stackProps: Partial<IStackProps> = {

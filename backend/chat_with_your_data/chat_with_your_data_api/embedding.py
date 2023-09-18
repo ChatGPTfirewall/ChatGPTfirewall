@@ -12,5 +12,9 @@ def prepare_text(text):
     tokens = sentences
     return tokens
 
+def return_ents(text):
+    doc = nlp(text)
+    return doc.ents
+
 def vectorize(tokens):
     return transformer.encode(tokens)

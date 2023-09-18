@@ -8,12 +8,10 @@ import {
   FontWeights,
   Text,
   Modal,
-  IIconProps,
-  IStackProps,
+  IIconProps
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { FileCard } from '../FileCard';
-import React from 'react';
 import { uploadFiles } from '../../api';
 import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
