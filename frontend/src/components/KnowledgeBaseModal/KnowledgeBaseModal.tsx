@@ -237,8 +237,8 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
             <Spinner label="Uploading..." ariaLive="assertive" labelPosition="right" />
           )}
           {isLoading && <span style={{ marginLeft: '10px', color: '#0078D4' }}> {fileNames}</span>}
-          {showSuccessNotification && <span style={{ marginLeft: '10px', color: '#0078D4' }}> Upload erfolgreich!</span>}
-          {showFailNotification && <span style={{ marginLeft: '10px', color: '#F9380F' }}> Upload fehlgeschlagen!</span>}
+          {showSuccessNotification && <span style={{ marginLeft: '10px', color: '#0078D4' }}> Upload successful!</span>}
+          {showFailNotification && <span style={{ marginLeft: '10px', color: '#F9380F' }}> Upload failed!</span>}
 
         </div>
       </Modal>
