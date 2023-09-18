@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from pathlib import Path
+import requests
 
 from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
@@ -14,6 +15,7 @@ from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import prepare_text, vectorize
 from .llm import count_tokens, run_llm
 from .nextcloud import get_access_token, get_files, download_file
+from xml.etree import ElementTree as ET
 class UserApiView(APIView):
 
     def post(self, request, *args, **kwargs):
@@ -209,8 +211,9 @@ class NextCloudApiView(APIView):
         + "&".join([f"{key}={value}" for key, value in data.items()])
         )
         return redirect(url)
-    
-    def post(self, request, *args, **kwargs):
+
+class NextCloudFilesApiView(APIView): 
+    def get(self, request, *args, **kwargs):
         session = request.session
         code = request.GET.get("code")
         nextcloud_authorization_url = session.get("authorizationUrl")
@@ -230,29 +233,36 @@ class NextCloudApiView(APIView):
             "client_id": nextcloud_client_id,
             "client_secret": nextcloud_client_secret,
         }
+        response = requests.post(TOKEN_URL, data=payload)
+        access_token = response.json().get("access_token")
+        if access_token:
+            headers = {"Authorization": f"Bearer {access_token}"}
+            response = requests.request("PROPFIND", FILES_URL, headers=headers)
 
-        access_token = get_access_token(TOKEN_URL, payload)
+            if response.status_code != 207:
+                return "Fehler beim Abrufen der Dateien", 500
 
-        files = get_files(access_token, FILES_URL)
+            root = ET.fromstring(response.content)
+            files = [
+                elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != "/"
+            ]
 
         text_content = ""
         for file in files:
             filename = file.split("/")[-1]  # Dateiname aus der URL extrahieren
-            temp_file_path = save_file("../temp", filename)
+            file_ext = os.path.splitext(filename)[1].lower()
 
-            downloaded_file = download_file(access_token, nextcloud_authorization_url, file)
+            download_url = f"{nextcloud_authorization_url}{file}"
+            temp_file_path = os.path.join('../', "temp", filename)
+
+            # Datei manuell herunterladen
+            response = requests.get(
+                download_url, headers={"Authorization": f"Bearer {access_token}"}
+            )
             with open(temp_file_path, "wb") as f:
-                f.write(downloaded_file.content)
+                f.write(response.content)
 
-            text = extract_text(temp_file_path, file)
-
-            # Text zur Textinhalt hinzufügen
-            text_content += f"<h3>{filename}</h3><pre>{text}</pre>"
-
-            # Temporäre Datei löschen
-            os.remove(temp_file_path)
-
-        return f"""
+        return Response(f"""
             <!DOCTYPE html>
             <html>
             <head>
@@ -263,6 +273,6 @@ class NextCloudApiView(APIView):
                 {text_content}
             </body>
             </html>
-        """
+        """)
 
 
