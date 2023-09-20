@@ -2,12 +2,13 @@ import { useRef, useState, useEffect } from "react";
 import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Modal } from "@fluentui/react";
 import { SparkleFilled } from "@fluentui/react-icons";
 
-import styles from "./Chat.module.css";
+import styles from "./DemoPage.module.css";
 
 import { chatApi, Response, chatWithLLM } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
+import { DemoList } from "../../components/Example";
 import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
@@ -15,12 +16,8 @@ import { ClearChatButton } from "../../components/ClearChatButton";
 import { FileExplorer } from "../../components/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
-import { useAuth0 } from "@auth0/auth0-react";
-import { AuthenticationButton } from "../../components/AuthenticationButton";
-import { DemoButton } from "../../components/DemoButton";
-import DemoPage from "../demoPage/DemoPage";
 
-const Chat = () => {
+const DemoPage = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
     const [promptTemplate, setPromptTemplate] = useState<string>("");
     const [retrieveCount, setRetrieveCount] = useState<number>(3);
@@ -46,7 +43,6 @@ const Chat = () => {
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
     const [answers, setAnswers] = useState<[user: string, response: Response][]>([]);
 
-    const { user, isAuthenticated } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
         lastQuestionRef.current = question;
@@ -151,12 +147,11 @@ const Chat = () => {
         setSelectedAnswer(index);
     };
 
-    if (isAuthenticated) {
+
 
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
-                    <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
@@ -166,9 +161,10 @@ const Chat = () => {
                         {!lastQuestionRef.current ? (
                             <div className={styles.chatEmptyState}>
                                 <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                                <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
+                                <h1 className={styles.chatEmptyStateTitle}>Demo Page - Chat with your data</h1>
                                 <h2 className={styles.chatEmptyStateSubtitle}>Ask anything or try an example</h2>
-                                <ExampleList onExampleClicked={onExampleClicked} />
+                                <DemoList onExampleClicked={onExampleClicked} />
+                                
                             </div>
                         ) : (
                             <div className={styles.chatMessageStream}>
@@ -276,21 +272,7 @@ const Chat = () => {
                 </div>
             </div>
         );
-    }
-    return (
-        <div className={styles.chatRoot}>
-            <div className={styles.chatContainer}>
-                <div className={styles.chatEmptyState}>
-                    <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                    <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
-                    <h2 className={styles.chatEmptyStateSubtitle}>Login and ask anything or try an example</h2>
-                    <AuthenticationButton />
-                    <h2 className={styles.chatEmptyStateSubtitle}>You can try the demo</h2>
-                    <DemoPage />
-                </div>
-            </div>
-        </div>
-    )
+    
 };
 
-export default Chat;
+export default DemoPage;

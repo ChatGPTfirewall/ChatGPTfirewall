@@ -9,6 +9,7 @@ import "./index.css";
 import Layout from "./pages/layout/Layout";
 import NoPage from "./pages/NoPage";
 import Chat from "./pages/chat/Chat";
+import DemoPage from './pages/demoPage/DemoPage'; 
 
 initializeIcons();
 
@@ -18,6 +19,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Chat />} />
+                    <Route path="demo" element={<DemoPage />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>

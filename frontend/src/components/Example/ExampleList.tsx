@@ -1,19 +1,32 @@
 import { Example } from "./Example";
 
 import styles from "./Example.module.css";
+import { Link } from 'react-router-dom';
 
 export type ExampleModel = {
     text: string;
-    value: string;
 };
 
 const EXAMPLES: ExampleModel[] = [
     {
-        text: "When was the Unix operating system conceived and implemented?",
-        value: "When was the Unix operating system conceived and implemented?"
+        text: "Upload your data or select it via your Cloud",
+
     },
-    { text: "Who began selling microcomputer-based Unix workstations?", value: "Who began selling microcomputer-based Unix workstations?" },
-    { text: "Who is the author of the linux kernel?", value: "Who is the author of the linux kernel?" }
+    { text: "Ask questions that your data can answer" },
+    { text: "You can try out the demo" }
+];
+
+export type DemoModel = {
+    text: string;
+    value: string;
+};
+
+const DEMOPAGE: DemoModel[] = [
+    {
+        text: "Demo", value:"Demo"
+    },
+    { text: "Demo", value:"Demo" },
+    { text: "Demo", value:"Demo"}
 ];
 
 interface Props {
@@ -22,12 +35,30 @@ interface Props {
 
 export const ExampleList = ({ onExampleClicked }: Props) => {
     return (
-        <ul className={styles.examplesNavList}>
-            {EXAMPLES.map((x, i) => (
-                <li key={i}>
-                    <Example text={x.text} value={x.value} onClick={onExampleClicked} />
-                </li>
-            ))}
-        </ul>
+      <ul className={styles.examplesNavList}>
+        {EXAMPLES.map((x, i) => (
+          <li key={i}>
+            {x.text === "You can try out the demo" ? (
+                 <Link to="/demo">
+            <Example text={x.text} value={""} onClick={onExampleClicked} />
+             </Link>
+            ) : (
+              <Example text={x.text} value={""} onClick={onExampleClicked} />
+            )}
+          </li>
+        ))}
+      </ul>
     );
-};
+  };
+
+  export const DemoList = ({ onExampleClicked }: Props) => {
+    return (
+      <ul className={styles.examplesNavList}>
+        {DEMOPAGE.map((x, i) => (
+          <li key={i}>
+              <Example text={x.text} value={x.value} onClick={onExampleClicked} />
+          </li>
+        ))}
+      </ul>
+    );
+  };
