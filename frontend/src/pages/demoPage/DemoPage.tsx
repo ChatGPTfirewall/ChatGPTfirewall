@@ -270,9 +270,9 @@ const DemoPage = () => {
                         />
                     </Panel>
                 </div>
-            </div>
+                </div>
         );
-    
+        
 };
 
 export default DemoPage;

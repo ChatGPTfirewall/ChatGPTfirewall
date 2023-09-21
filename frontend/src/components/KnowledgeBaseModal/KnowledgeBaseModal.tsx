@@ -16,13 +16,19 @@ import { uploadFiles } from '../../api';
 import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useRef } from 'react';
-
-
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   buttonClassName?: string;
 }
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
+  const location = useLocation();
+
+  // Überprüfe, ob sich die Anwendung auf der DemoPage befindet
+  const isOnDemoPage = location.pathname === '/demo';
+
+  // Wenn sich die Anwendung auf der DemoPage befindet, deaktiviere die Upload-Funktion
+  const isUploadDisabled = isOnDemoPage;
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
 
@@ -229,7 +235,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
         <div className={styles.modal_container}>
           <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
           <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick} />
-          <FileCard onClick={handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
+          <FileCard  onClick={isUploadDisabled ? undefined : hideModal} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
             <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
 
           </FileCard>
