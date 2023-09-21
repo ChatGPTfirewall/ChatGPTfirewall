@@ -235,7 +235,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
         <div className={styles.modal_container}>
           <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
           <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick} />
-          <FileCard  onClick={isUploadDisabled ? undefined : hideModal} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
+          <FileCard  onClick={isUploadDisabled ? undefined: handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
             <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
 
           </FileCard>
