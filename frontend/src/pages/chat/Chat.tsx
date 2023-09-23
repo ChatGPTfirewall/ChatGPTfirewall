@@ -28,7 +28,7 @@ const Chat = () => {
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [excludeCategory, setExcludeCategory] = useState<string>("");
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
-
+    
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
 
@@ -152,6 +152,11 @@ const Chat = () => {
     };
 
     if (isAuthenticated) {
+        
+        if (user!.email === 'demo@demo.demo') {
+            // Weiterleitung zur Demo-Seite
+           return( <DemoPage />)
+        }
 
         return (
             <div className={styles.container}>
