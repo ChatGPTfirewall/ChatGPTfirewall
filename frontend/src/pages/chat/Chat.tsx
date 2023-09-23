@@ -286,7 +286,7 @@ const Chat = () => {
                     <h2 className={styles.chatEmptyStateSubtitle}>Login and ask anything or try an example</h2>
                     <AuthenticationButton />
                     <h2 className={styles.chatEmptyStateSubtitle}>You can try the demo</h2>
-                    <DemoPage />
+                    <DemoButton />
                 </div>
             </div>
         </div>
