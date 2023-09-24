@@ -34,7 +34,7 @@ const Chat = () => {
     const [error, setError] = useState<unknown>();
     const [editText, setEditText] = useState(false);
     const [text, setText] = useState("");
-    const [highlights, setHighlights] = useState<[number, number][]>([]);
+    const [highlights, setHighlights] = useState<string[]>([]);
     const [file, setFile] = useState("");
     const [question, setQuestion] = useState("");
 
@@ -58,8 +58,8 @@ const Chat = () => {
             const result = await chatApi(question, user!);
             setEditText(true)
             setText(result.facts![0].full_text)
-            const transformedList: [number, number][] = result.facts![0].entities.map((entity) => [entity[1], entity[2]]);
-            setHighlights(transformedList)
+            const transformedList: string[] = result.facts![0].entities.map((entity) => entity[0]);
+            setHighlights(transformedList);
             setFile(result.facts![0].file)
             setQuestion(question)
             setAnswers([...answers, [question, result]]);
@@ -70,7 +70,6 @@ const Chat = () => {
         }
     };
  
-
     const updateChat = (llmAnswer: string) => {
         const chatMessage: Response = {
             llm_answer: llmAnswer

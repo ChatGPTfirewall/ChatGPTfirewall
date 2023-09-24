@@ -16,10 +16,11 @@ import { HighlightWithinTextarea } from 'react-highlight-within-textarea'
 interface Props {
   buttonClassName?: string;
   text: string;
-  highlights: number[] | number[][];
+  highlights: string[];
   sendToParent: any;
 }
 export const EditTextModal = ({ buttonClassName, text, highlights, sendToParent }: Props) => {
+  console.log(highlights)
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [updatedText, setUpdatedText] = useState(text);
 
