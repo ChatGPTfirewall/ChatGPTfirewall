@@ -16,6 +16,7 @@ import { ClearChatButton } from "../../components/ClearChatButton";
 import { FileExplorer } from "../../components/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const DemoPage = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -43,6 +44,8 @@ const DemoPage = () => {
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
     const [answers, setAnswers] = useState<[user: string, response: Response][]>([]);
 
+
+    const { user, isAuthenticated } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
         lastQuestionRef.current = question;
@@ -152,6 +155,7 @@ const DemoPage = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
+                    <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />

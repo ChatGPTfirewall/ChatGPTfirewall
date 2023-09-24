@@ -23,10 +23,10 @@ export type DemoModel = {
 
 const DEMOPAGE: DemoModel[] = [
     {
-        text: "Demo", value:"Demo"
+        text: "Welche wichtige historische Veränderung erfolgte 1961 in Berlin?", value:"Welche wichtige historische Veränderung erfolgte 1961 in Berlin?"
     },
-    { text: "Demo", value:"Demo" },
-    { text: "Demo", value:"Demo"}
+    { text: "Welche Veranstaltung aus 1920 wird in Berlin auch heute noch gefeiert?", value:"DemWelche Veranstaltung aus 1920 wird in Berlin auch heute noch gefeiert?" },
+    { text: "Welche historische Bedeutung hatte Berlin im Dreißigjährigen Krieg?", value:"Welche historische Bedeutung hatte Berlin im Dreißigjährigen Krieg?"}
 ];
 
 interface Props {
