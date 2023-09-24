@@ -19,76 +19,79 @@ from xml.etree import ElementTree as ET
 
 MAX_TOKENS = 4098
 
-class UserApiView(APIView):
 
+class UserApiView(APIView):
     def post(self, request, *args, **kwargs):
-        '''
+        """
         Create a user and his collection.
-        '''
+        """
         data = {
-            'auth0_id': request.data.get('auth0_id'), 
-            'username': request.data.get('username'), 
-            'email': request.data.get('email')
+            "auth0_id": request.data.get("auth0_id"),
+            "username": request.data.get("username"),
+            "email": request.data.get("email"),
         }
         serializer = UserSerializer(data=data)
         try:
             if serializer.is_valid():
                 serializer.save()
-                [_, id] = request.data.get('auth0_id').split("|")
+                [_, id] = request.data.get("auth0_id").split("|")
                 create_collection(id)
 
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         except IntegrityError as e:
             # Handle the IntegrityError (duplicate key error)
-            return Response({'error': 'User with this auth0_id already exists.'}, status=status.HTTP_400_BAD_REQUEST)
-        
+            return Response(
+                {"error": "User with this auth0_id already exists."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         # Handle other validation errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class UploadApiView(APIView):
 
+class UploadApiView(APIView):
     def post(self, request, *args, **kwargs):
-        '''
+        """
         Upload files.
-        '''
-        auth0_id = request.POST.get('user')
+        """
+        auth0_id = request.POST.get("user")
         user = User.objects.get(auth0_id=auth0_id)
-        files = request.FILES.getlist('files')
+        files = request.FILES.getlist("files")
 
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
 
         success = True
-        
+
         for file in files:
             # Save file temporary
             temp_file_path = save_file("../temp", file)
-            
+
             # Extract the text from the file
             text = extract_text(temp_file_path, file)
-            
+
             # Delete saved file
             os.remove(temp_file_path)
 
             document = {
-                'filename': file.name,
-                'text': text,
-                'user': user.id,
+                "filename": file.name,
+                "text": text,
+                "user": user.id,
             }
 
             # Insert text into postgres db
             serializer = DocumentSerializer(data=document)
-            
+
             if serializer.is_valid():
                 result = serializer.save()
                 documents.append(serializer.data)
             else:
                 success = False
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            
+
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
-            qdrant_result= insert_text(id, result)
+            qdrant_result = insert_text(id, result)
             if qdrant_result != True:
                 success = False
 
@@ -96,50 +99,51 @@ class UploadApiView(APIView):
             return Response(documents, status=status.HTTP_201_CREATED)
         else:
             return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
-class DocumentApiView(APIView):
 
+
+class DocumentApiView(APIView):
     def post(self, request, *args, **kwargs):
-        auth0_id = request.data.get('auth0_id')
+        auth0_id = request.data.get("auth0_id")
         user = User.objects.get(auth0_id=auth0_id)
 
         documents = Document.objects.filter(user_id=user.id)
 
         serializer = ReadDocumentSerializer(documents, many=True)
-        
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, *args, **kwargs):
-        documents = request.data.get('documents', [])
+        documents = request.data.get("documents", [])
         document_ids = []
 
         for document in documents:
-            document_ids.append(document['id'])
-            user = document['user']
-            [_, id] = user['auth0_id'].split("|")
+            document_ids.append(document["id"])
+            user = document["user"]
+            [_, id] = user["auth0_id"].split("|")
             delete_text(id, document)
         Document.objects.filter(id__in=document_ids).delete()
         return Response("", status=status.HTTP_200_OK)
-    
-class ChatApiView(APIView):
 
-    def post(self, request,  *args, **kwargs):
-        '''
+
+class ChatApiView(APIView):
+    def post(self, request, *args, **kwargs):
+        """
         Convert user question into qdrant db.
-        '''
-        question = request.data.get('question')
-        [_, id] = request.data.get('user_auth0_id').split("|")
+        """
+        question = request.data.get("question")
+        [_, id] = request.data.get("user_auth0_id").split("|")
         # tokenize text
         prepared_text = prepare_text(question)
         # vectorize tokens
         vector = vectorize(prepared_text)
         # similarity search
-        try: 
-            facts = search(id, vector, 3)
+        try:
+            search_result = search(id, vector, 3)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
-        
-        response = []
-        for fact in facts:
+
+        facts = []
+        for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))
             ents = return_ents(section.document.text)
             entities = []
@@ -149,27 +153,24 @@ class ChatApiView(APIView):
                 "answer": section.content,
                 "file": section.document.filename,
                 "score": fact.score,
-                "full_text":section.document.text,
-                "entities":entities
+                "full_text": section.document.text,
+                "entities": entities,
             }
-            response.append(fact)
+            facts.append(fact)
 
-        template = {
-            "template" : get_template()
-        }
-        response.append(template)
+        response = {"facts": facts, "prompt_template": get_template()}
 
-        return Response({"facts": response}, status.HTTP_200_OK)
-    
+        return Response(response, status.HTTP_200_OK)
+
+
 class ContextApiView(APIView):
-
     def post(self, request, *args, **kwargs):
-        '''
+        """
         Send context to chatgpt.
-        '''
-        question = request.data.get('question')
-        contexts = request.data.get('contexts')
-        template = request.data.get('template')
+        """
+        question = request.data.get("question")
+        contexts = request.data.get("contexts")
+        template = request.data.get("template")
         content = ""
         for context in contexts:
             content = content + context["file"] + "\n"
@@ -183,13 +184,13 @@ class ContextApiView(APIView):
         else:
             answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)
-    
-class NextCloudApiView(APIView):
 
+
+class NextCloudApiView(APIView):
     def get(self, request, *args, **kwargs):
-        '''
+        """
         Creates a connection to an nextcloud instance.
-        '''
+        """
         session = request.session
         nextcloud_user = request.GET.get("nextCloudUserName")
         nextcloud_client_id = request.GET.get("clientId")
@@ -197,33 +198,38 @@ class NextCloudApiView(APIView):
         nextcloud_authorization_url = request.GET.get("authorizationUrl")
         redirect_uri = request.GET.get("redirectUri")
 
-        FILES_URL = f"{nextcloud_authorization_url}/remote.php/dav/files/{nextcloud_user}/"
+        FILES_URL = (
+            f"{nextcloud_authorization_url}/remote.php/dav/files/{nextcloud_user}/"
+        )
         TOKEN_URL = f"{nextcloud_authorization_url}/index.php/apps/oauth2/api/v1/token"
-        AUTHORIZATION_URL = f"{nextcloud_authorization_url}/index.php/apps/oauth2/authorize"
+        AUTHORIZATION_URL = (
+            f"{nextcloud_authorization_url}/index.php/apps/oauth2/authorize"
+        )
 
         data = {
-        "client_id": nextcloud_client_id,
-        "redirect_uri": redirect_uri,
-        "response_type": "code",
-        "scope": "read",
+            "client_id": nextcloud_client_id,
+            "redirect_uri": redirect_uri,
+            "response_type": "code",
+            "scope": "read",
         }
-        
-        session["clientSecret"] = nextcloud_client_secret  
-        session["authorizationUrl"] = nextcloud_authorization_url 
-        session["clientId"] = nextcloud_client_id  
-        session["nextcloudUser"] = nextcloud_user  
-        session["token_url"] = TOKEN_URL  
-        session["files_url"] = FILES_URL  
-        session["redirect_uri"] = redirect_uri  
-        
+
+        session["clientSecret"] = nextcloud_client_secret
+        session["authorizationUrl"] = nextcloud_authorization_url
+        session["clientId"] = nextcloud_client_id
+        session["nextcloudUser"] = nextcloud_user
+        session["token_url"] = TOKEN_URL
+        session["files_url"] = FILES_URL
+        session["redirect_uri"] = redirect_uri
+
         url = (
-        AUTHORIZATION_URL
-        + "?"
-        + "&".join([f"{key}={value}" for key, value in data.items()])
+            AUTHORIZATION_URL
+            + "?"
+            + "&".join([f"{key}={value}" for key, value in data.items()])
         )
         return redirect(url)
 
-class NextCloudFilesApiView(APIView): 
+
+class NextCloudFilesApiView(APIView):
     def get(self, request, *args, **kwargs):
         session = request.session
         code = request.GET.get("code")
@@ -255,7 +261,9 @@ class NextCloudFilesApiView(APIView):
 
             root = ET.fromstring(response.content)
             files = [
-                elem.text for elem in root.findall(".//{DAV:}href") if elem.text[-1] != "/"
+                elem.text
+                for elem in root.findall(".//{DAV:}href")
+                if elem.text[-1] != "/"
             ]
 
         text_content = ""
@@ -264,7 +272,7 @@ class NextCloudFilesApiView(APIView):
             file_ext = os.path.splitext(filename)[1].lower()
 
             download_url = f"{nextcloud_authorization_url}{file}"
-            temp_file_path = os.path.join('../', "temp", filename)
+            temp_file_path = os.path.join("../", "temp", filename)
 
             # Datei manuell herunterladen
             response = requests.get(
@@ -273,7 +281,8 @@ class NextCloudFilesApiView(APIView):
             with open(temp_file_path, "wb") as f:
                 f.write(response.content)
 
-        return Response(f"""
+        return Response(
+            f"""
             <!DOCTYPE html>
             <html>
             <head>
@@ -284,5 +293,5 @@ class NextCloudFilesApiView(APIView):
                 {text_content}
             </body>
             </html>
-        """)
-
+        """
+        )
