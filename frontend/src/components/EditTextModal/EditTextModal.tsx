@@ -7,8 +7,7 @@ import {
   Text,
   Modal,
   IIconProps,
-  IStackProps,
-  TextField,
+  IStackProps
 } from '@fluentui/react';
 import { IconButton, IButtonStyles, DefaultButton } from '@fluentui/react/lib/Button';
 import { useState } from 'react';
