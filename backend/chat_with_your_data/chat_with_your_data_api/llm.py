@@ -23,7 +23,16 @@ llm = OpenAI(openai_api_key=os.getenv("OPEN_AI_KEY"))
 
 llm_chain = LLMChain(prompt=prompt_template, llm=llm)
 
+def get_template():
+    return prompt_template.template
 
+def set_template(template_):
+    # todo: check for keyword like context or question. (check l.33)
+    template = template_
+    # set new template
+    prompt_template = PromptTemplate(template=template, input_variables=["context", "question"])
+    # reinitialize llm_chain
+    llm_chain = LLMChain(prompt=prompt_template, llm=llm)
 
 def count_tokens(question, context):
     prompt = prompt_template.format(question=question, context=context)
