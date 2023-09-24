@@ -13,9 +13,12 @@ from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSeriali
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import prepare_text, return_ents, vectorize
-from .llm import count_tokens, run_llm
+from .llm import count_tokens, run_llm, get_template, set_template
 from .nextcloud import get_access_token, get_files, download_file
 from xml.etree import ElementTree as ET
+
+MAX_TOKENS = 4098
+
 class UserApiView(APIView):
 
     def post(self, request, *args, **kwargs):
@@ -123,10 +126,8 @@ class ChatApiView(APIView):
         '''
         Convert user question into qdrant db.
         '''
-
         question = request.data.get('question')
         [_, id] = request.data.get('user_auth0_id').split("|")
-
         # tokenize text
         prepared_text = prepare_text(question)
         # vectorize tokens
@@ -153,6 +154,11 @@ class ChatApiView(APIView):
             }
             response.append(fact)
 
+        template = {
+            "template" : get_template()
+        }
+        response.append(template)
+
         return Response({"facts": response}, status.HTTP_200_OK)
     
 class ContextApiView(APIView):
@@ -163,6 +169,7 @@ class ContextApiView(APIView):
         '''
         question = request.data.get('question')
         contexts = request.data.get('contexts')
+        template = request.data.get('template')
         content = ""
         for context in contexts:
             content = content + context["file"] + "\n"
@@ -170,9 +177,8 @@ class ContextApiView(APIView):
 
         tokens = count_tokens(question, content)
 
-        # max 4097 tokens!
-
-        if tokens < 4098:
+        if tokens < MAX_TOKENS:
+            set_template(template)
             answer = run_llm({"context": content, "question": question})
         else:
             answer = "Uh, die Frage war zu lang!"
