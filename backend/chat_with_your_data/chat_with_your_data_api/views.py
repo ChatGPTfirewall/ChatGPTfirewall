@@ -169,18 +169,14 @@ class ContextApiView(APIView):
         Send context to chatgpt.
         """
         question = request.data.get("question")
-        contexts = request.data.get("contexts")
+        context = request.data.get("context")
         template = request.data.get("template")
-        content = ""
-        for context in contexts:
-            content = content + context["file"] + "\n"
-            content = content + context["editedText"] + "\n\n"
-
-        tokens = count_tokens(question, content)
+      
+        tokens = count_tokens(question, context)
 
         if tokens < MAX_TOKENS:
             set_template(template)
-            answer = run_llm({"context": content, "question": question})
+            answer = run_llm({"context": context, "question": question})
         else:
             answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)

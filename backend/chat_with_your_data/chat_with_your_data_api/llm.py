@@ -11,7 +11,9 @@ mit "Ich weiß es nicht".
 
 {context}
 
-Frage: {question}
+Frage: 
+
+{question}
 
 Antwort: "" 
 """
