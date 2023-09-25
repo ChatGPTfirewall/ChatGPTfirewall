@@ -4,7 +4,7 @@ import { SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./DemoPage.module.css";
 
-import { chatApi, Response, chatWithLLM } from "../../api";
+import { chatApi, Response, chatWithLLM, Fact } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -33,8 +33,11 @@ const DemoPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
     const [editText, setEditText] = useState(false);
-    const [text, setText] = useState("");
-    const [highlights, setHighlights] = useState<[number, number][]>([]);
+    const [prompt, setPrompt] = useState("");
+    const [context, setContext] = useState("");
+    const [facts, setFacts] = useState<Fact[]>([]);
+    const [highlights, setHighlights] = useState<string[]>([]);
+    
     const [file, setFile] = useState("");
     const [question, setQuestion] = useState("");
 
@@ -58,9 +61,11 @@ const DemoPage = () => {
         try {
             const result = await chatApi(question, user!);
             setEditText(true)
-            setText(result.facts![0].full_text)
-            const transformedList: [number, number][] = result.facts![0].entities.map((entity) => [entity[1], entity[2]]);
-            setHighlights(transformedList)
+            setFacts(result.facts!)
+            setPromptTemplate(result.prompt_template!)
+            setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"))
+            const transformedList: string[] = result.facts![0].entities.map((entity) => entity[0]);
+            setHighlights(transformedList);
             setFile(result.facts![0].file)
             setQuestion(question)
             setAnswers([...answers, [question, result]]);
@@ -77,8 +82,9 @@ const DemoPage = () => {
             llm_answer: llmAnswer
         }
 
-        const shortText = text.slice(0, 300) + "..."
-        setAnswers([...answers, [shortText, chatMessage]])
+        console.log(prompt)
+
+        setAnswers([...answers, [prompt, chatMessage]])
     }
 
     const clearChat = () => {
@@ -89,14 +95,20 @@ const DemoPage = () => {
         setAnswers([]);
     };
 
-    const saveText = (data: any) => {
-        setText(data)
+    const setPromptAndContext = (template: string, context: string) => {
+        const builtPrompt = template
+            .replace("{context}", context)
+            .replace("{question}", question)
+        setPrompt(builtPrompt)
+        setContext(context)
     }
 
     const sendText = () => {
-        const llmAnswer = chatWithLLM(question, file, text)
-        llmAnswer.then((answer) => { updateChat(answer) })
-        setEditText(false)
+        if (context != "") {
+            const llmAnswer = chatWithLLM(question, context, promptTemplate)
+            llmAnswer.then((answer) => { updateChat(answer) })
+            setEditText(false)
+        }
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
@@ -220,7 +232,7 @@ const DemoPage = () => {
                         ) : (
                             <div className={styles.promptReady}>
                                 <div className={styles.buttonGroup}>
-                                    <EditTextModal text={text} highlights={highlights} sendToParent={saveText} />
+                                    <EditTextModal promptTemplate={promptTemplate} question={question} facts={facts} highlights={highlights} onChange={setPromptAndContext} />
                                     <PrimaryButton onClick={sendText}>Send</PrimaryButton>
                                 </div>
                             </div>
