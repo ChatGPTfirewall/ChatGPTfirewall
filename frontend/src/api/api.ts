@@ -22,7 +22,7 @@ export async function chatApi(question: string, user: User): Promise<Response> {
     return parsedResponse;
 }
 
-export async function chatWithLLM(question: string, file: string, text: string): Promise<any> {
+export async function chatWithLLM(question: string, context: string, template: string): Promise<any> {
     const response = await fetch("/api/context", {
         method: 'POST',
         headers: {
@@ -30,9 +30,8 @@ export async function chatWithLLM(question: string, file: string, text: string):
         },
         body: JSON.stringify({
             question: question,
-            contexts: [
-                { file: file, editedText: text }
-            ]
+            context: context,
+            template: template
         }),
     }).then((response) => response.json())
 

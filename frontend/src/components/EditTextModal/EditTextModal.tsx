@@ -7,26 +7,41 @@ import {
   Text,
   Modal,
   IIconProps,
-  IStackProps,
-  TextField,
+  IStackProps
 } from '@fluentui/react';
 import { IconButton, IButtonStyles, DefaultButton } from '@fluentui/react/lib/Button';
 import { useState } from 'react';
 import { HighlightWithinTextarea } from 'react-highlight-within-textarea'
+import { Fact } from '../../api';
 
 interface Props {
   buttonClassName?: string;
-  text: string;
-  highlights: number[] | number[][];
-  sendToParent: any;
+  facts: Fact[];
+  highlights: string[];
+  question: string;
+  promptTemplate: string;
+  onChange: any;
 }
-export const EditTextModal = ({ buttonClassName, text, highlights, sendToParent }: Props) => {
+export const EditTextModal = ({ buttonClassName, facts, highlights, question, promptTemplate, onChange }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
-  const [updatedText, setUpdatedText] = useState(text);
+  const [answers, setAnswers] = useState(facts.map((fact) => fact.answer));
 
-  const sendTextToParent = (e: any) => {
-    setUpdatedText(e)
-    sendToParent(e)
+  const template = promptTemplate
+    .replace("{context}", "/br")
+    .replace("{question}", "/br")
+    .trim()
+    .split("/br")
+
+  const prompt_start = template[0]
+  const prompt_question = template[1]
+  const prompt_answer = template[2]
+
+  const updatePrompt = (event: any, index: number) => {
+    const updatedAnswers = [...answers]
+    updatedAnswers[index] = event
+    setAnswers(updatedAnswers)
+   
+    onChange(promptTemplate, updatedAnswers.join("\n\n"))
   };
 
 
@@ -54,16 +69,24 @@ export const EditTextModal = ({ buttonClassName, text, highlights, sendToParent 
           />
         </div>
         <div className={styles.modal_container}>
-          <div className={contentStyles.textfield}>
-            <HighlightWithinTextarea
-              value={updatedText}
-              highlight={highlights}
-              onChange={sendTextToParent}
-            />
-          </div>
+          <span>{prompt_start}</span>
+          {answers.map((answer, index) => (
+            <div>
+              <span>Fact {index + 1}</span>
+              <div key={index} className={contentStyles.textfield} >
+                <HighlightWithinTextarea
+                  value={answer}
+                  highlight={highlights}
+                  onChange={event => updatePrompt(event, index)}
+                />
+              </div>
+            </div>
+          ))}
+          <span>{prompt_question} {question}</span>
+          <span>{prompt_answer}</span>
         </div>
-      </Modal>
-    </div>
+      </Modal >
+    </div >
   );
 };
 
