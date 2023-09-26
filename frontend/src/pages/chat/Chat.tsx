@@ -19,8 +19,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { DemoButton } from "../../components/DemoButton";
 import DemoPage from "../demoPage/DemoPage";
+import { LanguageButton } from "../../components/LanguageButton";
+import { useTranslation } from 'react-i18next';
+
+
 
 const Chat = () => {
+
+    const { t, i18n } = useTranslation();
+
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
     const [promptTemplate, setPromptTemplate] = useState<string>("");
     const [retrieveCount, setRetrieveCount] = useState<number>(3);
@@ -171,6 +178,7 @@ const Chat = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
+                    <LanguageButton />
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
@@ -181,8 +189,8 @@ const Chat = () => {
                         {!lastQuestionRef.current ? (
                             <div className={styles.chatEmptyState}>
                                 <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                                <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>Ask anything or try an example</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>{t('askTryExample')}</h2>
                                 <ExampleList onExampleClicked={onExampleClicked} />
                             </div>
                         ) : (
@@ -227,7 +235,7 @@ const Chat = () => {
                             <div className={styles.chatInput}>
                                 <QuestionInput
                                     clearOnSend
-                                    placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                                    placeholder={t('chatTextType')}
                                     disabled={isLoading}
                                     onSend={question => makeApiRequest(question)}
                                 />
@@ -297,10 +305,10 @@ const Chat = () => {
             <div className={styles.chatContainer}>
                 <div className={styles.chatEmptyState}>
                     <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                    <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
+                    <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>Login and ask anything or try an example</h2>
                     <AuthenticationButton />
-                    <h2 className={styles.chatEmptyStateSubtitle}>You can try the demo</h2>
+                    <h2 className={styles.chatEmptyStateSubtitle}>{t('card3Demo')}</h2>
                     <DemoButton />
                 </div>
             </div>

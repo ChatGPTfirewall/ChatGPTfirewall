@@ -17,12 +17,15 @@ import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 
 interface Props {
   buttonClassName?: string;
 }
 export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   // Überprüfe, ob sich die Anwendung auf der DemoPage befindet
   const isOnDemoPage = location.pathname === '/demo';
@@ -212,7 +215,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     <div>
       <div className={`${styles.container} ${buttonClassName ?? ""}`} onClick={showModal}>
         <Add24Regular />
-        <Text>{"Add Files"}</Text>
+        <Text>{t('addFiles')}</Text>
       </div>
       <Modal
         titleAriaId={titleId}
@@ -223,7 +226,7 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
       >
         <div className={contentStyles.header}>
           <h2 className={contentStyles.heading} id={titleId}>
-            Select method
+          {t('selectMethodUpload')}
           </h2>
           <IconButton
             styles={iconButtonStyles}
@@ -233,9 +236,9 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
           />
         </div>
         <div className={styles.modal_container}>
-          <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle="Scalable storage in the cloud." onClick={redirectToS3} />
+          <FileCard Icon={<Box24Regular />} title="S3 Storage" subtitle={t('s3Storage')} onClick={redirectToS3} />
           <FileCard Icon={<Box24Regular />} title="Nextcloud" onClick={handleNextcloudClick} />
-          <FileCard  onClick={isUploadDisabled ? undefined: handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle="Select a folder or a file to upload." >
+          <FileCard  onClick={isUploadDisabled ? undefined: handleClick} Icon={<ArrowUpload24Regular />} title="Upload" subtitle={t('uploadButton')} >
             <input type="file" name="files" style={{ display: 'none' }} ref={hiddenFileInput} onChange={handleFileChange} multiple accept=".pdf,.docx,.doc,.txt,.rtf,.html,.xml,.csv,.md" />
 
           </FileCard>

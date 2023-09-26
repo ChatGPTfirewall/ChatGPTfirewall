@@ -321,3 +321,7 @@ class NextCloudFilesApiView(APIView):
             </html>
         """
         )
+
+class LanguageAPI(APIView):
+    def post(self, request, *args, **kwargs):
+        return Response("de", status.HTTP_200_OK)

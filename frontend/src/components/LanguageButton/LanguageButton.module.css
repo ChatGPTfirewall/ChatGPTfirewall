@@ -1,0 +1,26 @@
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    appearance: none; /* Verhindert, dass der Standard-Pfeil im Dropdown angezeigt wird */
+  }
+  
+  /* Stil für den Pfeil im Dropdown */
+  select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  

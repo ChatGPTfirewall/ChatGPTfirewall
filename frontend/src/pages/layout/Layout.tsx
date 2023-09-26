@@ -1,5 +1,5 @@
 import { Outlet, NavLink, Link } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 const Layout = () => {
     const {user, isLoading, isAuthenticated} = useAuth0();
     const [isUserInitialized, setUserInitialized] = useState(false);
-
+    const { t } = useTranslation();
     const onFirstLogin = () => {
         // insert code for operations after the first login of a user
 
@@ -31,7 +31,7 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>Chat with your data</h3>
+                        <h3 className={styles.headerTitle}>{t('chatWithYourData')}</h3>
                     </Link>
                     <nav>
                         <ul className={styles.headerNavList}>
