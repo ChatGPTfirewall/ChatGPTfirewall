@@ -20,7 +20,9 @@ i18n.use(initReactI18next).init({
         "chatTextType": "Type a new question (e.g. does my plan cover annual eye exams?)",
         "s3Storage": "Scalable storage in the clouad.",
         "uploadButton": "Select a folder or a file to upload.",
-        "selectMethodUpload": "Select method"
+        "selectMethodUpload": "Select method",
+        "settings": "Settings",
+        "logout": "Log Out"
       },
     },
     de: {
@@ -38,7 +40,9 @@ i18n.use(initReactI18next).init({
         "chatTextType": "Geben Sie eine neue Frage ein (z. B. deckt mein Tarif jährliche Augenuntersuchungen ab?)",
         "s3Storage": "Skalierbarer Speicher in der Cloud",
         "uploadButton": "Wählen Sie einen Ordner oder eine Datei zum Hochladen",
-        "selectMethodUpload": "Methode wählen"
+        "selectMethodUpload": "Methode wählen",
+        "settings": "Einstellungen",
+        "logout": "Ausloggen"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

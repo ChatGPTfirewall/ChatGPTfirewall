@@ -1,21 +1,23 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { PrimaryButton, DefaultButton } from "@fluentui/react";
 import { IContextualMenuProps } from '@fluentui/react';
+import { useTranslation } from 'react-i18next';
 
 export const AuthenticationButton = () => {
     const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+    const { t, i18n } = useTranslation();
 
     const menuProps: IContextualMenuProps = {
         items: [
             {
                 key: 'settings',
-                text: 'Settings',
+                text: t('settings'),
                 iconProps: { iconName: 'Settings' },
                 disabled: true,
             },
             {
                 key: 'logout',
-                text: 'Log Out',
+                text: t('logout'),
                 iconProps: { iconName: 'DoorArrowLeft' },
                 onClick: (ev, item) => {
                     logout({ logoutParams: { returnTo: window.location.origin } });
