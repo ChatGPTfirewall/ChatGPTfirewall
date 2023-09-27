@@ -13,7 +13,7 @@ import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
-import { FileExplorer } from "../../components/FileExplorer";
+import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";

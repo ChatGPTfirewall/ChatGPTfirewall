@@ -47,6 +47,18 @@ export async function uploadFiles(data: any): Promise<any> {
     return response
 }
 
+export async function setLanguage(data: any): Promise<any> {
+      const response = await fetch("/api/language", {
+        method: 'POST', // Da du Daten an den Server sendest, sollte die Methode POST sein
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), // Du übergibst die ausgewählte Sprache als JSON-Daten
+      });
+      // Wenn die Anfrage erfolgreich ist, kannst du die Antwort zurückgeben
+      return response.json();
+  }  
+
 export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
 
     const response = await fetch("/api/documents", {

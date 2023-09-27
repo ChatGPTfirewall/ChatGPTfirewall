@@ -17,6 +17,7 @@ import { Announced } from '@fluentui/react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn} from '@fluentui/react/lib/DetailsList';
 import * as React from 'react';
 import { User } from "@auth0/auth0-react";
+import { withTranslation } from "react-i18next";
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -72,12 +73,12 @@ export interface FileExplorerState {
   modalState: boolean;
   isLoading: boolean;
 }
-export class FileExplorer extends React.Component<{ user: User }, FileExplorerState> {
+class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerState> {
   private _selection: Selection;
 
 
 
-  constructor(props: { user: User }) {
+  constructor(props: { user: User, t: any}) {
     super(props);
 
     const columns: IColumn[] = [
@@ -152,7 +153,7 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
       <div>
         <div className={`${styles.container} ${styles.commandButton ?? ""}`} onClick={this._showModal}>
           <Folder24Regular />
-          <Text>{"Files"}</Text>
+          <Text>{this.props.t('files')}</Text>
         </div>
         <Modal
           isOpen={modalState}
@@ -208,6 +209,7 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
       </div >
     );
   };
+  
 
   public componentDidUpdate(previousProps: any, previousState: FileExplorerState) {
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
@@ -295,6 +297,8 @@ export class FileExplorer extends React.Component<{ user: User }, FileExplorerSt
     }
   }
 }
+
+export default withTranslation()(FileExplorer);
 
 
 function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {

@@ -10,6 +10,7 @@ import Layout from "./pages/layout/Layout";
 import NoPage from "./pages/NoPage";
 import Chat from "./pages/chat/Chat";
 import DemoPage from './pages/demoPage/DemoPage'; 
+import './components/Translation/i18n'; 
 
 initializeIcons();
 
