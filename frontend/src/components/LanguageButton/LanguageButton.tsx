@@ -1,10 +1,13 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import styles from './LanguageButton.module.css';
+import { useTranslation } from 'react-i18next';import styles from './LanguageButton.module.css';
 import { setLanguage } from '../../api';
+import { useAuth0 } from "@auth0/auth0-react";
+import { User } from "@auth0/auth0-react";
+import { withTranslation } from "react-i18next";
 
-export const LanguageButton = () => {
+export const LanguageButton = ( ) => {
   const { i18n } = useTranslation();
+  const { user, } = useAuth0();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -12,7 +15,7 @@ export const LanguageButton = () => {
 
   const handleClickLanguage = (newLanguage) => {
     // Hier kannst du den ausgewählten `newLanguage` verwenden, um die Sprache im Backend zu aktualisieren
-    setLanguage({ language: newLanguage }) // Hier wird das ausgewählte newLanguage an setLanguage übergeben
+    setLanguage({ language: newLanguage, auth0_id: user!.sub}) // Hier wird das ausgewählte newLanguage an setLanguage übergeben
 
     // Optional: Hier kannst du zusätzliche Aktionen ausführen, wenn die Sprache geändert wird
     changeLanguage(newLanguage);

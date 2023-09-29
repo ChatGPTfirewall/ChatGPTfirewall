@@ -178,7 +178,7 @@ const Chat = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
-                    <LanguageButton />
+                    <LanguageButton  />
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
