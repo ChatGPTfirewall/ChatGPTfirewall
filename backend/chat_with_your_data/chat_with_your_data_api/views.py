@@ -72,7 +72,7 @@ class UserApiView(APIView):
                     result = serializer.save()
                     # Insert text into qdrant db
                     [_, id] = user.auth0_id.split("|")
-                    qdrant_result = insert_text(id, result)
+                    qdrant_result = insert_text(id, result, user.lang)
             else:
                 # Check if the document is already in the database
                 pass            
@@ -121,7 +121,7 @@ class UploadApiView(APIView):
 
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
-            qdrant_result = insert_text(id, result)
+            qdrant_result = insert_text(id, result, user.lang)
             if qdrant_result != True:
                 success = False
 
@@ -162,10 +162,12 @@ class ChatApiView(APIView):
         """
         question = request.data.get("question")
         [_, id] = request.data.get("user_auth0_id").split("|")
+        auth0 = request.data.get("user_auth0_id")
+        user = User.objects.get(auth0_id=auth0)
         # tokenize text
-        prepared_text = prepare_text(question)
+        #prepared_text = prepare_text(question, user.lang)
         # vectorize tokens
-        vector = vectorize(prepared_text)
+        vector = vectorize(question) 
         # similarity search
         try:
             search_result = search(id, vector, 3)
@@ -175,7 +177,7 @@ class ChatApiView(APIView):
         facts = []
         for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))
-            ents = return_ents(section.document.text)
+            ents = return_ents(section.document.text, user.lang)
             entities = []
             for ent in ents:
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
@@ -324,4 +326,11 @@ class NextCloudFilesApiView(APIView):
 
 class LanguageAPI(APIView):
     def post(self, request, *args, **kwargs):
-        return Response("de", status.HTTP_200_OK)
+        try:
+            lang = request.data.get("language")
+            auth0 = request.data.get("auth0_id")
+            user = User.objects.get(auth0_id=auth0)
+            user.lang = lang
+            return Response("de", status.HTTP_200_OK)
+        except:
+            return Response("Error!", status.HTTP_500_INTERNAL_SERVER_ERROR)
