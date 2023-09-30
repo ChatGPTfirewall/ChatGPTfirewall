@@ -165,7 +165,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
         >
           <div className={contentStyles.header}>
             <h2 className={contentStyles.heading} id={"fileExplorer"}>
-              Your uploaded files
+            {this.props.t('uploadedFiles')}
             </h2>
             <IconButton
               styles={iconButtonStyles}
@@ -177,11 +177,11 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
           <div className={styles.modal_container}>
             <div className={styles.modal_navigation}>
             <div className={classNames.controlWrapper}>
-              <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
+              <TextField label={this.props.t('filterByName')} onChange={this._onChangeText} styles={controlStyles} />
               <Announced message={`Number of items after filter applied: ${items.length}.`} />
             </div>
             <DefaultButton
-                text="Delete documents"
+                text={this.props.t('deleteDoc')}
                 className={styles.btn_danger}
                 onClick={this._handleDeleteClick}
             />
@@ -289,11 +289,11 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
 
     switch (selectionCount) {
       case 0:
-        return 'No items selected';
+        return this.props.t('noSelectedItems');
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as ReadDocument).filename;
+        return this.props.t('selectedItems') + (this._selection.getSelection()[0] as ReadDocument).filename;
       default:
-        return `${selectionCount} items selected`;
+        return `${selectionCount}` + this.props.t('selectedMoreItems');
     }
   }
 }
