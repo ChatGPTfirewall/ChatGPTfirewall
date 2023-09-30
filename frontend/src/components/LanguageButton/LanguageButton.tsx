@@ -6,11 +6,11 @@ import { setLanguage } from '../../api';
 export const LanguageButton = () => {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
 
-  const handleClickLanguage = (newLanguage) => {
+  const handleClickLanguage = (newLanguage : string) => {
     // Hier kannst du den ausgewählten `newLanguage` verwenden, um die Sprache im Backend zu aktualisieren
     setLanguage({ language: newLanguage }) // Hier wird das ausgewählte newLanguage an setLanguage übergeben
 
