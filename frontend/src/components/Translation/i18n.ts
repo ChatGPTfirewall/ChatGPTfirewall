@@ -30,7 +30,8 @@ i18n.use(initReactI18next).init({
         "selectMethodUpload": "Select method",
         "settings": "Settings",
         "logout": "Log Out",
-        "reloading": "Reloading..."
+        "reloading": "Reloading...",
+        "loginAndAskAnything": "Login and ask anything or try an example"
       },
     },
     de: {
@@ -58,7 +59,8 @@ i18n.use(initReactI18next).init({
         "selectMethodUpload": "Methode wählen",
         "settings": "Einstellungen",
         "logout": "Ausloggen",
-        "reloading": "Lade neu..."
+        "reloading": "Lade neu...",
+        "loginAndAskAnything": "Loggen sie sich ein und fragen Sie ihre Dokumente"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

@@ -31,7 +31,8 @@ export const LanguageButton = () => {
 
   const handleClickLanguage = (newLanguage?: IDropdownOption) => {
     // Hier kannst du den ausgewählten `newLanguage` verwenden, um die Sprache im Backend zu aktualisieren
-    setLanguage({ language: newLanguage, auth0_id: user!.sub }) // Hier wird das ausgewählte newLanguage an setLanguage übergeben
+    if (user) { setLanguage({ language: newLanguage, auth0_id: user!.sub }) }
+
     setLang(newLanguage!.key as string)
 
     // Optional: Hier kannst du zusätzliche Aktionen ausführen, wenn die Sprache geändert wird
