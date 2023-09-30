@@ -100,6 +100,19 @@ export async function getDocuments(auth0_id: string): Promise<ReadDocument[]> {
     return parsedResponse;
 }
 
+export async function reloadFiles(auth0_id: string): Promise<any> {
+
+    const response = await fetch("/api/files/reload", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            auth0_id: auth0_id
+        })
+    }).then((response) => response.json())
+}
+
 export async function uploadToNextcloud(clientId: any, clientSecret: any, authorizationUrl: any, nextCloudUserName: any): Promise<any> {
     const response = await fetch("/api/upload/nextcloud", {
         method: 'POST',

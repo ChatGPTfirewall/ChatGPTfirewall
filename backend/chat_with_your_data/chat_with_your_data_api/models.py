@@ -12,6 +12,7 @@ class Document(models.Model):
     filename = models.CharField(max_length = 255)
     text = models.TextField()
     user = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = False)
+    lang = models.CharField(max_length=2, default='en') 
 
     def __str__(self):
         return self.filename

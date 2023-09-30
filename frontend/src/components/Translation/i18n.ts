@@ -16,6 +16,7 @@ i18n.use(initReactI18next).init({
         "filterByName": "Filter by name",
         "uploadedFiles": "Your uploaded files",
         "deleteDoc": "Delete documents",
+        "reloadDoc": "Reload documents",
         "clearChat": "Clear Chat",
         "devSettings": "Developer Settings",
         "addFiles": "Add Files",
@@ -28,7 +29,8 @@ i18n.use(initReactI18next).init({
         "uploadButton": "Select a folder or a file to upload.",
         "selectMethodUpload": "Select method",
         "settings": "Settings",
-        "logout": "Log Out"
+        "logout": "Log Out",
+        "reloading": "Reloading..."
       },
     },
     de: {
@@ -40,6 +42,7 @@ i18n.use(initReactI18next).init({
         "selectedMoreItems": " Einträge ausgewählt",
         "selectedItems": "1 Eintrag ausgewählt: ",
         "deleteDoc": "Dokumente löschen",
+        "reloadDoc": "Dokumente neuladen",
         "filterByName": "Nach Dateiname suchen",
         "uploadedFiles": "Ihre hochgeladenen Dateien",
         "clearChat": "Chat löschen",
@@ -54,7 +57,8 @@ i18n.use(initReactI18next).init({
         "uploadButton": "Wählen Sie einen Ordner oder eine Datei zum Hochladen",
         "selectMethodUpload": "Methode wählen",
         "settings": "Einstellungen",
-        "logout": "Ausloggen"
+        "logout": "Ausloggen",
+        "reloading": "Lade neu..."
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

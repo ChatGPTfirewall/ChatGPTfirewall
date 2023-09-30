@@ -8,7 +8,6 @@ nlp_en = spacy.load("en_core_web_lg")
 transformer = SentenceTransformer(os.getenv("TRANSFORMER_MODEL", "distiluse-base-multilingual-cased-v1"))
 
 def prepare_text(text, lang):
-    print(lang)
     if lang == "de":
         toks = nlp_de(text)
     elif lang == "en":

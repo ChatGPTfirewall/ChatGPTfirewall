@@ -110,6 +110,7 @@ class UploadApiView(APIView):
                 "filename": file.name,
                 "text": text,
                 "user": user.id,
+                "lang": user.lang
             }
 
             # Insert text into postgres db
@@ -176,7 +177,7 @@ class ChatApiView(APIView):
             search_result = search(id, vector, 3)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
-
+        print(search_result)
         facts = []
         for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))
@@ -350,3 +351,25 @@ class LanguageAPI(APIView):
             return Response("User not found", status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class FilesApiView(APIView):
+    def post(self, request, *args, **kwargs):
+            auth0_id = request.data['auth0_id']
+            user = User.objects.get(auth0_id=auth0_id)
+            [_, id] = auth0_id.split("|")
+            create_collection(id)
+
+            documents = Document.objects.filter(user=user)
+            success = True
+            for document in documents:
+                Section.objects.filter(document=document).delete()
+               
+                qdrant_result = insert_text(id, document, document.lang)
+                if qdrant_result != True:
+                    success = False
+
+            if success:
+                return Response([], status=status.HTTP_200_OK)
+            else:
+                return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
+

@@ -4,7 +4,6 @@ from xml.etree import ElementTree as ET
 
 def get_access_token(token_url, payload):
     response = requests.post(token_url, data=payload)
-    print(response)
     #TODO:json error
     return response.json().get("access_token")
 
