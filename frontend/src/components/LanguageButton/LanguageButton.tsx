@@ -1,9 +1,6 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';import styles from './LanguageButton.module.css';
 import { setLanguage } from '../../api';
 import { useAuth0 } from "@auth0/auth0-react";
-import { User } from "@auth0/auth0-react";
-import { withTranslation } from "react-i18next";
 
 export const LanguageButton = ( ) => {
   const { i18n } = useTranslation();
