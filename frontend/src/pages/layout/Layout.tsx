@@ -8,6 +8,7 @@ import styles from "./Layout.module.css";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { initUser } from "../../api";
 import { useState, useEffect } from 'react';
+import { LanguageButton } from "../../components/LanguageButton";
 
 const Layout = () => {
     const {user, isLoading, isAuthenticated} = useAuth0();
@@ -41,7 +42,15 @@ const Layout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.headerNavLeftMargin}>
+                                <NavLink to="/Demo" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
+                                    Demo
+                                </NavLink>
+                            </li>
+                            <li className={styles.headerNavLeftMargin}>
                                 <AuthenticationButton/>
+                            </li>
+                            <li className={styles.headerNavLeftMargin}> 
+                            <LanguageButton  />
                             </li>
                         </ul>
                     </nav>

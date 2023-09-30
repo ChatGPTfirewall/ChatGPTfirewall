@@ -19,7 +19,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { DemoButton } from "../../components/DemoButton";
 import DemoPage from "../demoPage/DemoPage";
-import { LanguageButton } from "../../components/LanguageButton";
 import { useTranslation } from 'react-i18next';
 
 
@@ -178,10 +177,9 @@ const Chat = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
-                    <LanguageButton  />
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */} 
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
                 </div>
                 <div className={styles.chatRoot}>

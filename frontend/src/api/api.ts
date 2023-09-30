@@ -59,6 +59,17 @@ export async function setLanguage(data: any): Promise<any> {
       return response.json();
   }  
 
+  export async function getLanguage(auth0_id: string): Promise<any> {
+    const response = await fetch("/api/language?auth0_id=" + auth0_id , {
+      method: 'GET', // Da du Daten an den Server sendest, sollte die Methode POST sein
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    // Wenn die Anfrage erfolgreich ist, kannst du die Antwort zurückgeben
+    return response.json();
+}  
+
 export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
 
     const response = await fetch("/api/documents", {
