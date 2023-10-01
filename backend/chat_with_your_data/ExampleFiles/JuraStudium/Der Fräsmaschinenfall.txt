@@ -1,0 +1,122 @@
+Sachverhalt
+
+K kauft von V eine Fräsmaschine unter Eigentumsvorbehalt, die K auch sogleich mitnimmt. Daraufhin gerät K in finanzielle Schwierigkeiten und kann in dessen Folge den Kaufpreis nicht bezahlen. K nimmt deshalb bei der B-Bank ein Darlehen auf und übereignet zur Sicherung eines Darlehens die Fräsmaschine an die B-Bank, ohne auf die Eigentumsverhältnisse hinzuweisen. K und B vereinbaren, dass K weiterhin in Besitz der Fräsmaschine bleiben soll. Als K auch das Darlehen nicht zurück zahlen kann, übereignet die B-Bank unter Abtretung ihrer Ansprüche die Fräsmaschine an D.
+
+Wer ist Eigentümer der Fräsmaschine?
+Lösungsskizze
+
+I. Ursprüngliche Eigentumslage
+
+II. Übereignung V an K gem. §§ 929 S. 1 BGB, 158 Abs.1 BGB
+
+III. Übereignung K an die B-Bank gem. §§ 929 S. 1, 930, 933 BGB
+
+1. Einigung gem. § 929 S. 1 BGB
+
+2. Übergabesurrogat
+
+3. Berechtigung des Veräußerers
+
+4. Gutgläubiger Erwerb gem. §§ 929 S. 1, 930, 933 BGB
+
+IV. Übereignung B-Bank an D gem. §§ 929 S. 1, 931, 934 Alt. 1 BGB
+
+1. Einigung gem. § 929 S.1 BGB
+
+2. Übergabesurrogat gem. § 931 BGB
+
+3. Berechtigung des Veräußerers
+
+4. Gutgläubiger Erwerb gem. § 934 Alt. 1 BGB
+
+a.) Teile der Literatur
+
+b.) Herrschende Meinung
+
+5. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+I. Ursprüngliche Eigentumslage
+
+Ursprünglich stand die Fräsmaschine im Eigentum des V.
+
+II. Übereignung V an K gem. §§ 929 S. 1 BGB, 158 Abs.1 BGB
+
+Das Eigentum an der Fräsmaschine könnte jedoch gem. §§ 929 S. 1 BGB, 158 Abs.1 BGB auf K übergegangen sein.
+
+Voraussetzung dafür ist, dass sich beide über den Eigentumsübergang geeinigt haben. V hat sich vorliegend das Eigentum an der Fräsmaschine bis zur vollständigen Kaufpreiszahlung des K vorbehalten, gem. § 449 BGB. Damit stand die Einigung über den Eigentumsübergang unter der aufschiebende Bedingung der vollständigen Kaufpreiszahlung gem. § 158 Abs. 1 BGB. K hat jedoch aufgrund von finanziellen Schwierigkeiten den Kaufpreis nicht bezahlt, sodass die Bedingung nicht eingetreten ist.
+
+V ist weiterhin Eigentümer.
+
+III. Übereignung K an die B-Bank gem. §§ 929 S. 1, 930, 933 BGB
+
+V könnte sein Eigentum durch die Übereignung von K an die B-Bank gem. §§ 929 S. 1, 930, 933 BGB verloren haben.
+
+Dies setzt eine Einigung, die Vereinbarung eines Besitzkonstituts gem. §§ 930, 868 BGB sowie die Berechtigung des Veräußerers voraus.
+
+1. Einigung gem. § 929 S. 1 BGB
+
+K hat sich mit der B-Bank über den Eigentumsübergang an der Fräsmaschine zur Sicherung der Darlehensforderung geeinigt.
+
+2. Übergabesurrogat
+
+K und die B-Bank haben vereinbart, dass K im Besitz der Fräsmaschine bleibt, sodass eine Übergabe gem. § 929 S. 1 BGB nicht erfolgt ist. Vorliegend könnte jedoch ein Besitzkonstitut als Übergabesurrogat gem. §§ 930, 868 BGB vorliegen. Dafür müsste es sich bei der Sicherungsabrede um ein Rechtsverhältnis handeln, vermöge dessen der Erwerber den mittelbaren Besitz erlangt. Durch die Sicherungsabrede werden die Rechte und Pflichten von Sicherungsnehmer und Sicherungsgeber geregelt. Der Sicherungsgeber hat das weitere Nutzungsrecht an der Sache und eine Verwahrpflicht gegenüber dem Sicherungsnehmer. Dem Sicherungsnehmer hingegen steht bei Eintritt des Sicherungsfalls ein Herausgabeanspruch gegen den Sicherungsgeber zu. Damit hat die B-Bank mittelbaren Besitz gem. § 868 BGB erlangt. In der Sicherungsabrede liegt somit ein konkretes Besitzmittlungsverhältnis gem. § 930 BGB.
+
+3. Berechtigung des Veräußerers
+
+K müsste jedoch auch zur Veräußerung berechtigt gewesen sein. Wie unter II. dargelegt, hat er aber mangels Bedingungseintritts gerade kein Eigentum an der Fräsmaschine erworben. Eine Ermächtigung seitens V liegt ebenfalls nicht vor, sodass K Nichtberechtigter ist.
+
+4. Gutgläubiger Erwerb gem. §§ 929 S. 1, 930, 933 BGB
+
+Die B-Bank könnte jedoch das Eigentum gutgläubig gem. §§ 929 S. 1, 930, 933 BGB vom Nichtberechtigten erworben haben. Nach § 933 BGB wird der Erwerber Eigentümer, wenn ihm die Sache vom Veräußerer übergeben wird, es sei denn, dass er zu dieser Zeit nicht in gutem Glauben ist. K hat gegenüber der B-Bank die Eigentumsverhältnisse nicht offengelegt. Der B-Bank war deshalb nicht bekannt oder infolge grober Fahrlässigkeit unbekannt, das die Sache nicht dem Veräußerer gehört (vgl. § 932 Abs. 2 BGB), sodass sie bei Veräußerung gutgläubig war. Die Übergabe i.S.d. § 933 BGB erfordert die tatsächliche Übergabe und die Erlangung des unmittelbaren Besitzes auf Empfängerseite.
+
+K ist hier jedoch weiterhin unmittelbarer Besitzer der Fräsmaschine geblieben. Damit liegt keine Übergabe i.S.v. § 933 BGB vor.
+
+Die B-Bank konnte folglich nicht gutgläubig von K erwerben.
+
+IV. Übereignung B-Bank an D gem. §§ 929 S. 1, 931, 934 Alt. 1 BGB
+
+V könnte sein Eigentum aber auch durch die Übereignung von der B-Bank an D gem. §§ 929 S. 1, 931, 934 Alt. 1 BGB verloren haben. Dafür müsste sich die B-Bank mit D über den Eigentumsübergang geeinigt haben, ihren Anspruch auf Herausgabe der Fräsmaschine an D abgetreten haben und zur Eigentumsübertragung berechtigt gewesen sein.
+
+1. Einigung gem. § 929 S.1 BGB
+
+Die B-Bank hat sich mit D über den Eigentumsübergang geeinigt.
+
+2. Übergabesurrogat gem. § 931 BGB
+
+Eine Übergabe der Fräsmaschine gem. § 929 S.1 BGB hat auch in dem Verhältnis B-Bank und D nicht stattgefunden, da K weiterhin im Besitz der Maschine ist. Hier könnte jedoch die Abtretung des Herausgabeanspruchs als Übergabesurrogat gem. § 931 BGB vorliegen. Die B-Bank hat sich vorliegend mit D gem. §§ 398, 870 BGB darüber geeinigt, ihre Ansprüche aus der Sicherungsabrede mit K an D abzutreten.
+
+Fraglich ist allerdings, ob der schuldrechtlichen Sicherungsvertrag wirksam ist. Dies wäre gem. § 139 BGB nicht der Fall, wenn die Unwirksamkeit der Übereignung auch auf den schuldrechtlichen Sicherungsvertrag durchschlägt. Hiergegen spricht jedoch das Abstraktionsprinzip, wonach das Verpflichtungs- und das Verfügungsgeschäft grundsätzlich voneinander unabhängig sind. Zudem ist nach dem hypothetischen Parteiwillen davon auszugehen, dass die B-Bank zumindest das an Sicherheit bekommen wollte, was rechtlich möglich ist. Danach hat die B-Bank zumindest ein Anwartschaftsrecht an der Fräsmaschine erworben. § 139 BGB ist deshalb nicht auf den vorliegenden Fall anwendbar.
+
+Somit ist Sicherungsvertrag wirksam und die B-Bank konnte den sich daraus ergebenden Herausgabeanspruch an D abtreten.
+
+3. Berechtigung des Veräußerers
+
+Allerdings war die B-Bank hier ebenfalls Nichtberechtigte, sodass auch hier nur ein gutgläubiger Erwerb möglich ist.
+
+4. Gutgläubiger Erwerb gem. § 934 Alt. 1 BGB
+
+D könnte das Eigentum an der Fräsmaschine gem. § 934 Alt.1 BGB gutgläubig erworben haben. Mangels entgegenstehender Angaben ist davon auszugehen, dass D gutgläubig war. Wie unter IV 2. gezeigt, hat die B-Bank dem D auch ihre Ansprüche aus dem Besitzmittlungsverhältnis abgetreten, sodass die Voraussetzungen für einen gutgläubigen Erwerb gem. § 934 Alt. 1 BGB vorliegen.
+
+Dieses Ergebnis enthält jedoch einen Wertungswiderspruch: Die B-Bank konnte mangels Übergabe kein Eigentum erwerben, obwohl sie der Maschine näher steht als der noch fernere D. D hingegen wird Eigentümer allein aufgrund der Abtretung des Herausgabeanspruchs. Aus diesem Grund wird diskutiert, die Voraussetzung "mittelbarer Besitz" in § 934 Alt. 1 BGB einschränkend auszulegen.
+
+a.) Teile der Literatur
+
+Teilweise wird in der Literatur vertreten, dass der unmittelbare Besitzer (hier: K) gleichzeitig für zwei Personen besitze (hier: V und die B-Bank), ohne sich zwischen beiden zu entscheiden. Im Falle eines solchen "Doppelspiels" könne es keinen (alleinigen) mittelbares Besitz geben, sondern nur Nebenbesitz. Bei einem Nebenbesitz sei das Verhältnis zueinander nicht gestuft, sondern gleichberechtigt. Dies reiche aber für einen gutgläubigen Erwerb nicht aus, denn den Vorschriften über den gutgläubigen Erwerb liege die Wertung zugrunde, dass der Erwerber der Sache näher kommt als der Berechtigte.
+
+Dies ist vorliegend nicht der Fall, da V und die B-Bank im Bezug auf ihren Besitz an der Sache gleich nah bzw. gleich fern stünden. Folgt man dieser Ansicht, so scheidet ein gutgläubiger Erwerb des D aus.
+
+b.) Herrschende Meinung
+
+Die herrschende Meinung lehnt die Konstruktion des Nebenbesitzes ab. Das Gesetz sehe diese Figur nicht vor, es spreche nur vom "mittelbaren Besitz", aber niemals vom "Nebenbesitz". Zudem könne der Besitzmittler auch nicht gleichzeitig den Willen haben, die Sache für mehrere zu besitzen. Denn Inhalt der beiden Besitzmittlungsverhältnisse sei es ja gerade, die Sache im Sicherungsfall herauszugeben.
+
+Dies ist überzeugend. Eine Korrektur des vermeintlichen Widerspruchs zwischen § 933 BGB und § 934 Alt. 1 BGB im Wege der Rechtsfortbildung kommt nicht in Betracht.
+
+Der Gesetzgeber hat im Rahmen der Vorschriften des gutgläubigen Erwerbs gem. §§ 932 ff. BGB den mittelbaren Besitzer den unmittelbaren Besitzer gleichstellen wollen, sofern sich der mittelbare Besitzer bei der Veräußerung seines Besitzes ganz entledigt. Im Gegensatz zum Erwerb nach §§ 930, 933 BGB, bei dem der unmittelbare Besitz beim Veräußerer verbleibt, entledigt sich der Veräußerer bei §§ 931, 934 Alt. 1 BGB seines gesamten (mittelbaren) Besitzes. Aufgrund dieser gesetzlichen Wertung ist auch ein eventuell bestehender Widerspruch hinzunehmen und § 934 Alt.1 BGB uneingeschränkt anzuwenden. Ein gutgläubiger Erwerb des D ist damit möglich.
+
+5. Ergebnis
+
+D ist nach §§ 929 S.1, 931, 934 Alt.1 BGB Eigentümer der Fräsmaschine geworden.
+

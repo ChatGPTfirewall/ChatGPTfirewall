@@ -1,0 +1,207 @@
+Sachverhalt
+
+Der Kläger K kaufte für 1.382,27 € im Baustoffhandel der Beklagten V 45,36 m² polierte Bodenfliesen des italienischen Herstellers X. K holte die Fliesen bei V ab und ließ sie dann in seinem Haus verlegen. Nach dem Verlegen zeigten sich auf den Fliesen großflächige Schattierungen, die mit bloßem Auge zu erkennen waren und aussahen, als wären die Fliesen schlecht geputzt worden. Ein Gutachter stellte daraufhin fest, dass die Beseitigung der Schattierungen technisch unmöglich sei. Da es sich um feine Mikroschleifspuren in der Oberfläche handele, die sich auf einen Herstellungsfehler zurückführen lassen, könne nur durch Austausch der Bodenfliesen Abhilfe geschaffen werden. Der Austausch der Fliesen, also Neulieferung und Aus- und Einbau selbiger kostet 5.830,57 €. Die Beklagte V erkannte bei der Lieferung der Fliesen diese Mikroschleifspuren nicht und hatte auch keinen Grund, die Fliesen darauf zu überprüfen.
+Wie ist die Rechtslage?
+
+Die Fallhistorie
+
+Der Sachverhalt beruht auf einem tatsächlichen Rechtsstreit. Neben dem Fliesenfall, der 2011 vom BGH (BGH, Urt. v. 21.12.2011 - VIII ZR 70/08) entschieden wurde, hatte dieser bereits 1983 mit einem ähnlichen Rechtsstreit, der Dachziegel-Entscheidung, die Frage zu beantworten, ob bei einem wirksamen Rücktritt der Verkäufer auch die Dachziegeln wieder von dem bedeckten Dach wieder runter holen und zurücknehmen muss. Auch im Pakettfall (BGH, NJW 2008, 2837) wurde über die Fragestellung hinsichtlich der Pflichten des Verkäufers erneut aufgeworfen.
+
+Der Problemkreis
+
+Der Erfüllungsort der Nacherfüllung kann entweder im Belegenheitsort der Sache oder im ursprünglichen Erfüllungsort gesehen werden. Hierzu findet man keine Regelung in § 439 BGB, sondern § 269 BGB muss richtlinienkonform nach Art. 3 der Richtlinie 1999/44/EG ausgelegt werden.
+
+Artikel 3 der Richtlinie 1999/44/EG führt darüber hinaus dazu, dass § 439 I BGB weiter ausgelegt werden muss, sodass auch der Ausbau und Abtransport der mangelhaften Kaufsache, sowie Einbau der mangelfreien Kaufsache ihm Rahmen der Nacherfüllung geschuldet ist.
+
+Das in § 439 III BGB enthaltene Verweigerungsrecht des Verkäufers wegen unverhältnismäßig hoher Kosten der einzig möglichen Nacherfüllungsvariante ist nicht mit der Richtlinie vereinbar ist. Dies führt dazu, dass der Inhalt des § 439 III BGB richtlinienkonform dahingehend teleologisch reduziert werden muss, dass der Verkäufer sowohl Ausbau und Abtransport der mangelhaften Kaufsache, als auch Einbau der neuen schuldet, auch wenn dies mit unverhältnismäßig hohen Kosten verbunden ist. Hier kann der Verkäufer den Anspruch des Käufers jedoch auf einen Anspruch auf einen angemessenen Geldbetrag beschränken.
+
+Finde heraus, was Norton Rose Fulbright Dir als Arbeitgeber zu bieten hat
+Lösungsskizze
+
+A. Anspruch des K gegen V auf Lieferung neuer Fliesen und Ausbau der alten gem. §§ 434, 437 Nr. 1, 439 I 2. Var. BGB
+
+I. Kaufvertrag
+
+II. Anwendbarkeit der Gewährleistungsrechte
+
+1. Mangel bei Gefahrübergang
+
+a) Mangel i.S.v. § 434 BGB
+
+aa) Beschaffenheitsvereinbarung, § 434 I 1 BGB
+
+bb) fehlende Einigung zur vertraglich vorausgesetzten Verwendung, § 434 I 2 Nr. 1 BGB
+
+cc) keine übliche Beschaffenheit, § 434 I 2 Nr. 2 BGB
+
+b) bei Gefahrübergang mit Übergabe der Fliesen, § 446 BGB2. kein Ausschluss der Gewährleistungsrechte
+
+3. Zwischenergebnis
+
+III. Nacherfüllungsumfang, § 439 I BGB1. Lieferung mangelfreier Fliesen
+
+IV. Verweigerung der Nacherfüllung gem. § 439 III 1, 3 BGB
+
+V. Ergebnis
+
+B. Anspruch des K gegen V auf das Entfernen der mangelhaften und Verlegung der neuen Fliesen gem. §§ 434, 437 Nr. 1, 439 I, II BGB
+
+I. Kaufvertrag
+
+II. Anwendbarkeit der Gewährleistungsrechte
+
+III. Nacherfüllungsumfang, §§ 437 Nr.1, 439 I BGB
+
+1. Aus- und Einbau
+
+a) Auslegung der §§ 439 I und II BGB
+
+b) Rechtsprechung
+
+c) Richtlinienkonforme Auslegung
+
+2. Umfang der Kostentragung - Unverhältnismäßigkeit der Nacherfüllung
+
+a) relative Unverhältnismäßigkeit, § 439 III BGB
+
+b) absolute Unverhältnismäßigkeit, 439 III BGB
+
+3. Ergebnis
+
+C. Ansprüche auf Schadensersatz
+Auszug aus der Richtlinie 1999/44/EG vom 25.5.1999 (Verbrauchsgüterkaufrichtlinie)
+
+Artikel 3. Rechte des Verbrauchers
+
+(1) Der Verkäufer haftet dem Verbraucher für jede Vertragswidrigkeit, die zum Zeitpunkt der Lieferung des Verbrauchsgutes besteht. 
+(2) Bei Vertragswidrigkeit hat der Verbraucher entweder Anspruch auf die unentgeltliche Herstellung des vertragsgemäßen Zustands des Verbrauchsgutes durch Nachbesserung oder Ersatzlieferung nach Maßgabe des Absatzes 3 oder auf angemessene Minderung des Kaufpreises oder auf Vertragsauflösung in Bezug auf das betreffende Verbrauchsgut nach Maßgabe der Absätze 5 und 6.
+(3) Zunächst kann der Verbraucher vom Verkäufer die unentgeltliche Nachbesserung des Verbrauchsgutes oder eine unentgeltliche Ersatzlieferung verlangen, sofern dies nicht unmöglich oder unverhältnismäßig ist. Eine Abhilfe gilt als unverhältnismäßig, wenn sie dem Verkäufer Kosten verursachen würde, die
+        -  angesichts des Werts, den das Verbrauchsgut ohne die Vertragswidrigkeit hätte,  
+        -  unter Berücksichtigung der Bedeutung der Vertragswidrigkeit und  
+        -  nach Erwägung der Frage, ob auf die alternative Abhilfemöglichkeit ohne erhebliche Unannehmlichkeiten für den Verbraucher zurückgegriffen werden könnte, verglichen mit der alter-  nativen Abhilfemöglichkeit unzumutbar wären. Die Nachbesserung oder die Ersatzlieferung muss innerhalb einer angemessenen Frist und ohne erhebliche Unannehmlichkeiten für den Verbraucher erfolgen, wobei die Art des Verbrauchsgutes sowie der Zweck, für den der Verbraucher das Verbrauchsgut benötigte, zu berücksichtigen sind. 
+(4) Der Begriff „unentgeltlich“ in den Absätzen 2 und 3 umfasst die für die Herstellung des vertragsgemäßen Zustands des Verbrauchsgutes notwendigen Kosten, insbesondere Versand-, Arbeits- und Materialkosten. 
+(5) Der Verbraucher kann eine angemessene Minderung des Kaufpreises oder eine Vertragsauflösung verlangen,  
+        -  wenn der Verbraucher weder Anspruch auf Nachbesserung noch auf Ersatzlieferung hat oder  
+        -  wenn der Verkäufer nicht innerhalb einer angemessenen Frist Abhilfe geschaffen hat oder  
+        -  wenn der Verkäufer nicht ohne erhebliche Unannehmlichkeiten für den Verbraucher Abhilfe  geschaffen hat. 
+(6) Bei einer geringfügigen Vertragswidrigkeit hat der Verbraucher keinen Anspruch auf Vertragsauflösung.  
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch des K gegen V auf Lieferung neuer Fliesen und Ausbau der alten gem. §§ 434, 437 Nr. 1, 439 I 2. Var. BGB
+K könnte einen Anspruch gegen V auf Lieferung von neuen und Ausbau der alten Fliesen gem. §§ 434, 437 Nr. 1, 439 I 2. Var. BGB haben.
+
+I. Kaufvertrag
+Dazu müsste zunächst ein Kaufvertrag zwischen K und V vorliegen. K und V haben einen wirksamen Kaufvertrag geschlossen.
+
+II. Anwendbarkeit der Gewährleistungsrechte
+Die Gewährleistungsrechte müssten anwendbar sein.
+
+1. Mangel bei Gefahrübergang
+Dazu müssten die Fliesen einen Mangel, der schon bei Gefahrübergang bestanden hat, aufweisen.
+
+a) Mangel i.S.v. § 434 BGB
+Bei den Mikroschleifspuren auf den Fliesen müsste es sich um einen Mangel im Sinne des § 434 BGB handeln.
+
+aa) Beschaffenheitsvereinbarung, § 434 I 1 BGB
+Ein Mangel liegt gemäß § 434 I 1 BGB dann vor, wenn die Kaufsache nicht die vertraglich vereinbarte Beschaffenheit aufweist. Die Ist-Beschaffenheit müsste von der Soll-Beschaffenheit, also der Parteivereinbarung, abweichen. K und V haben nicht explizit über die Beschaffenheit der Fliesen gesprochen, sodass keine negative Abweichung von einem vereinbarten Zustand der Kaufsache vorliegen kann.
+
+bb) fehlende Einigung zur vertraglich vorausgesetzten Verwendung, § 434 I 2 Nr. 1 BGB
+Es könnte sich jedoch daraus ein Mangel der Fliesen ergeben, dass diese sich nicht für die vertraglich vorausgesetzte Verwendung eignen. K und V haben im Vertrag keine bestimmte Verwendung der Fliesen vereinbart.
+
+cc) keine übliche Beschaffenheit, § 434 I 2 Nr. 2 BGB
+Als mangelhaft könnten die Fliesen gem. § 434 I Nr. 2 BGB auch dann anzusehen sein, wenn sie nicht die übliche Beschaffenheit aufweisen. Die übliche Beschaffenheit richtet sich nach der üblichen Beschaffenheit von Sachen gleicher Art. Generell darf der Käufer von Bodenbelägen davon ausgehen, dass diese sich dafür eignen im Wohnhaus verlegt zu werden und dass sie einen bestimmten ästhetischen Zweck erfüllen. Schlieren auf den Fliesen sind nicht die Norm und lassen sich üblicherweise nicht auf sauberen Fliesen finden. Allerdings handelt es sich vorliegend lediglich um Mikroschleifspuren. Diese sind jedoch mit dem bloßen Auge erkennbar und lassen die Fliesen verschmutzt aussehen. Das ist üblicher Weise nicht der Fall und führt dazu, dass die Fliesen nicht in gewöhnlicher Weise verwendet werden können. Es handelt sich um mangelhafte Fliesen.
+
+b) bei Gefahrübergang mit Übergabe der Fliesen, § 446 BGB
+Der Mangel müsste bereits bei Gefahrübergang vorgelegen haben. Gemäß § 446 BGB liegt der Zeitpunkt des Gefahrübergangs grundsätzlich im Zeitpunkt der Übergabe der Kaufsache. Bei Verbrauchsgüterkäufen gilt darüber hinaus die Vermutung des § 476 BGB, dass ein Mangel, der sich innerhalb der ersten sechs Monate nach Übergabe der Sache zeigt, schon bei Gefahrübergang vorgelegen habe. Damit § 476 BGB anwendbar ist, müsste es sich bei dem Kaufgeschäft zwischen K und V um einen Verbrauchsgüterkauf handeln. Wann ein Verbrauchsgüterkauf vorliegt bestimmt § 474 I 1 BGB.
+
+K = Verbraucher, § 13 BGB
+K müsste Verbraucher sein. Wer Verbraucher im Sinne des BGB ist richtet sich nach § 13 BGB. Danach ist ein Verbraucher jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbstständigen beruflichen Tätigkeit zugerechnet werden können. K kaufte die Fliesen um sie bei sich zuhause verlegen zu lassen. Dieses Geschäft ist dem privaten Interessenbereich des K zuzuordnen und geschah nicht aus beruflichen Motiven. K ist Verbraucher i.S.d. § 13 BGB.
+
+V = Unternehmer, § 14 I BGB
+Bei V müsste es sich  um einen Unternehmer handeln. Unternehmer ist gemäß § 14 I BGB eine natürliche oder juristische Person oder eine rechtsfähige Personengesellschaft, die bei Abschluss eines Rechtsgeschäfts in Ausübung ihrer gewerblichen oder selbstständigen beruflichen Tätigkeit handelt. Durch das Verkaufen von Baustoffen verdient V ihren Lebensunterhalt. Sie schloss den Kaufvertrag aus beruflichen Motiven ab. V ist als Unternehmer i.S.d. § 14 I BGB anzusehen.
+
+Bewegliche Sache
+Bei den Fliesen müsste es sich um eine bewegliche Sache handeln. Fliesen gehören unstreitig zu beweglichen Sachen
+
+Die Voraussetzungen eines Verbrauchsgüterkaufs sind erfüllt. V kann die Vermutung des § 476 BGB auch nicht widerlegen. Hierauf könnte es jedoch nicht ankommen. Es handelt sich bei den Mikroschleifspuren um einen Herstellerfehler, sodass er von Anfang an bestanden hat. Ein Sachmangel lag bei Gefahrübergang vor.
+
+2. kein Ausschluss der Gewährleistungsrechte
+Die Gewährleistungsrechte dürften nicht ausgeschlossen sein. Es ist kein Ausschlussgrund ersichtlich.
+
+3. Zwischenergebnis
+Die Gewährleistungsrechte sind anwendbar.
+
+III.  Nacherfüllungsumfang, § 439 I BGB
+K könnte ein Recht auf Nacherfüllung aus § 439 BGB zustehen. Die Nacherfüllung richtet sich grundsätzlich nach der Wahl des Käufers, § 439 I BGB. K könnte folglich grundsätzlich zwischen Nachbesserung und Nachlieferung wählen. Da die Nachbesserung unmöglich ist, bleibt ihm jedoch nur die Möglichkeit der Nachlieferung gem. § 439 I 2. Var. BGB.
+
+1. Lieferung mangelfreier Fliesen
+Fraglich ist, ob K im Rahmen der Nacherfüllung die Lieferung mangelfreier Fliesen verlangen kann. K kaufte die Fliesen bei V im Baustoffhandel und nahm sie mit nach Hause. Das Problem liegt also in der Frage, ob die Lieferung neuer Fliesen vom Recht auf die Nacherfüllung umfasst ist. Ursprünglich war aus dem Kaufvertrag keine Lieferung von V an K geschuldet. Problematisch ist insoweit die Bestimmung des Erfüllungsortes der Nacherfüllung. Der ursprüngliche Leistungsort war bei Verkäufer V im Baustoffhandel. Der vertragsgemäße Belegenheitsort der Fliesen befindet sich indes bei K zuhause.
+
+a) Nach einer Meinung liegt der Erfüllungsort der Nacherfüllung im Ort der vertragsgemäßen Belegenheit der Kaufsache. Dies würde bedeuten K könnte die Lieferung zu sich nach Hause verlangen. Hier trägt der Verkäufer das Verbringungsrisiko (bis zu den Grenzen des § 439 III BGB).
+
+b) Nach anderer Meinung liegt der Erfüllungsort der Nacherfüllung am ursprünglichen Leistungsort. Nach dieser Meinung muss V die neuen Fliesen folglich nur in seinem Laden bereitstellen. Hier trägt der Käufer das Verbringungsrisiko.
+
+c) Streitentscheidung
+Die beiden Meinungen führen zu unterschiedlichen Ergebnissen, sodass eine Streitentscheidung von Nöten ist. Für die erste Meinung und damit für einen Anspruch auf Lieferung der neuen Fliesen spricht, dass dem K neue Kosten und ein größerer Aufwand durch den Transport der neuen Fliesen entstehen würden, die er bei vertragsgemäßer Leistung von V nicht gehabt hätte. Gegen einen Anspruch auf die Lieferung von mangelfreien Fliesen und damit für die zweite Meinung spricht, dass V im ursprünglichen Kaufvertrag dem K keine Lieferung schuldete und der Umfang des Nacherfüllungsanspruchs somit, wenn man Umfang der Nacherfüllungspflicht und Umfang der Pflichten aus dem Kaufvertrag vergleicht, über den originären Anspruch hinausgeht.
+Um diesen Streit entscheiden zu können müssen zunächst die Regelungen des BGB beachtet werden. § 439 II BGB enthält jedoch keine Aussage über den Leistungsort der Nacherfüllung, sondern lediglich über die Kostentragung. § 269 I BGB besagt unterdessen, dass im Falle eines nicht klärbaren Leistungsortes der Ort als Leistungsort gelte, an dem der Schuldner seinen Wohnsitz hat. Aus Art. 3 II und III der Richtlinie 1999/44/EG ergibt sich jedoch, dass der Käufer einer mangelhaften Sache einen Anspruch auf eine unentgeltliche Nacherfüllung ohne erhebliche Unannehmlichkeiten hat. Das Gebot der richtlinienkonformen Auslegung des BGB unterstützt die erste Meinung. Dieser folgend hat K einen Anspruch gegen V auf Lieferung mangelfreier Fliesen frei Haus gem. §§ 434, 437 Nr. 1, 439 I Var. 2 BGB.
+
+IV. Verweigerung der Nacherfüllung gem. § 439 III 1, 3 BGB
+V könnte die Lieferung gem. § 439 III 1, 3 BGB verweigern, wenn diese für sie mit unverhältnismäßig hohen Kosten verbunden ist. Besonders unter dem Aspekt, dass es einem Baustoffhandel wesentlich leichter fallen dürfte eine größere Menge Fliesen zu transportieren, als einer Privatperson, sind die Kosten der Lieferung nicht als unverhältnismäßig hoch einzustufen. Auch gibt der Sachverhalt keine Anhaltspunkte für unverhältnismäßig lange Transportwege o.ä. Die Lieferung neuer Fliesen ist nicht mit unverhältnismäßig hohen Kosten verbunden. V kann diese nicht verweigern.
+
+V. Ergebnis
+K hat einen Anspruch gegen V auf Lieferung neuer Fliesen gem. §§ 434, 437 Nr. 1, 439 I Var. 2 BGB.
+
+B. Anspruch des K gegen V auf das Entfernen der mangelhaften und Verlegung der neuen Fliesen gem. §§ 434, 437 Nr. 1, 439 I, II BGB
+K könnte gegen V einen Anspruch auf die Entfernung und Entsorgung der mangelhaften Fliesen und die Verlegung neuer Fliesen gem. §§ 434, 437 Nr. 1, 439 I, II BGB haben.
+
+I. Kaufvertrag
+Es liegt ein Kaufvertrag vor (siehe oben).
+
+II. Anwendbarkeit der Gewährleistungsrechte.
+Es liegt darüber hinaus ein Sachmangel bei Gefahrübergang vor. Die Gewährleistungsrechte sind anwendbar (siehe oben).
+
+III. Nacherfüllungsumfang, §§ 437 Nr.1, 439 I BGB
+Fraglich ist, ob K im Zuge der Nachlieferung der V auch die Entfernung der schadhaften Fliesen und die Verlegung der neu gelieferten Fliesen von V verlangen kann. Gemäß § 439 II BGB hat „der Verkäufer [...] die zum Zwecke der Nacherfüllung erforderlichen Aufwendungen, insbesondere Transport-, Wege-, Arbeits- und Materialkosten zu tragen“. Es stellt sich somit die Frage, ob die Kosten für die Entfernung und Verlegung der Fliesen, zumindest in den Grenzen de § 439 III 1 BGB, von diesen Kosten umfasst sind.
+
+1. Aus- und Einbau
+Ob der Aus- und Einbau der Fliesen von V im Rahmen des Nacherfüllungsanspruchs geschuldet wird ist streitig. Um diese Frage zu beantworten muss sowohl das deutsche, als auch das europäische Recht beachtet werden.
+
+a) Auslegung der §§ 439 I und II BGB
+Wortlaut
+Nach § 439 BGB trägt der Verkäufer der mangelhaften Sache die „zum Zwecke der Nacherfüllung erforderlichen Aufwendungen“, wobei die Nacherfüllung die Lieferung einer mangelfreien Sache meint. Der Vertragsgegenstand sind die Fliesen und nicht der fertige Fußboden. Hiernach ist kein Aus- oder Einbau geschuldet.
+
+Systematik
+Die Nacherfüllung ist als modifizierter Erfüllungsanspruch, also als Anspruch auf die vollständige Wiederholung der Leistungen, zu denen der Verkäufer durch § 433 I BGB verpflichtet war, anzusehen. Diese beinhaltet die Übergabe und Übereignung. Auch hiervon sind Aus- und Einbau nicht umfasst. Außerdem muss zwischen den verschuldensunabhängigen Gewährleistungsrechten und verschuldensabhängigen Schadensersatzvorschriften unterschieden werden. Nach den verschuldensunabhängigen Vorschriften (§§ 434, 439 BGB) wird weder Aus- noch Einbau geschuldet.
+
+b) Rechtsprechung
+Das OLG Karlsruhe (ZGS 2004, 432) ist der Meinung, dass die Herstellung des Zustandes geschuldet ist, in dem sich die Sache bei einer mangelfreien Lieferung des Verkäufers befände. Aus- und Einbau wären von V geschuldet.
+Das OLG Köln (NJW-RR 2006, 677) lehnt die Pflicht zum Einbau ab, die zum Ausbau jedoch nicht. Der Verkäufer schuldet die Kaufsache nur einmal und der Käufer sollte somit auch nur einmal die Kaufsache besitzen, um nicht auf den Kosten der Entsorgung sitzen zu bleiben. Die vertragliche Rücknahmepflicht des Verkäufers bildet das Spiegelbild zur Rückgewährverpflichtung des Käufers aus § 439 IV BGB. Nach dieser Ansicht schuldet V den Ausbau der Fliesen. Der gleichen Meinung ist das OLG Frankfurt (BeckRS 2008, 05877) und auch der BGH (NJW 2008, 2837).
+
+c) Richtlinienkonforme Auslegung
+Der Anspruch auf eine unentgeltliche Ersatzlieferung gem. Art. 3 II der Richtlinie und der Anspruch auf eine Ersatzlieferung ohne erhebliche Unannehmlichkeiten für den Verbraucher sprechen dafür, dass anzunehmen ist, dass der Verkäufer bei der Nachlieferung nach § 439 I, II BGB sowohl Aus-, als auch Einbau der Fliesen schuldet. Insbesondere die Wortwahl „Ersatz-“ Lieferung im Vergleich zu der deutschen Wortwahl „Nach-“ Lieferung lässt den Rückschluss zu, dass die schon eingebauten Fliesen beim Käufer laut der Richtlinie exakt ersetzt, also die mangelhaften ausgebaut und die mangelfreien eingebaut werden sollen. Diese weite Auslegung ist noch vom Wortlaut des § 439 I Var. 2 BGB gedeckt.
+
+2. Umfang der Kostentragung - Unverhältnismäßigkeit der Nacherfüllung
+a) relative Unverhältnismäßigkeit, § 439 III BGB
+Der Umfang der Kosten der Ersatzlieferung könnte eine relative Unverhältnismäßigkeit auslösen, sodass V sie verweigern könnte. Eine relative Unverhältnismäßigkeit liegt dann vor, wenn die vom Käufer gewählte Art der Nacherfüllung im Vergleich zur anderen Art mit unverhältnismäßig hohen Kosten für den Verkäufer einhergeht. Eine Nachbesserung ist nicht möglich, sodass die relative Unverhältnismäßigkeit in diesem Fall kein berechtigter Einwand der V sein könnte, da K kein Wahlrecht ausüben konnte.
+
+b) absolute Unverhältnismäßigkeit, 439 III BGB
+Die Nacherfüllung könnte jedoch absolut unverhältnismäßig sein. Das ist sie, wenn die gewählte oder einzig mögliche Art der Nacherfüllung nicht im Vergleich zur anderen, sondern, bewertet nach allgemeinen Maßstäben, unverhältnismäßige Kosten für den Verkäufer bedeutet.
+Es ist streitig, ab welchem Wert die Nacherfüllung absolut unverhältnismäßig ist. In der Literatur werden verschiedene Werte von 100% - 200% der Kosten der Nacherfüllung im Verhältnis zu den ursprünglichen Kosten als ausschlaggebend angesehen. Hier betragen die Nacherfüllungskosten mehr als das 4-fache des Preises für die Fliesen.
+Es lässt sich folglich eine absolute Unverhältnismäßigkeit auf Grund der Höhe der Differenz annehmen, ohne dass es einer genauen Bestimmung eines Grenzwertes bedarf. Fraglich ist jedoch, ob diese Annahme nicht einer Korrektur durch eine richtlinienkonforme Auslegung bedarf. Die Richtlinie sieht nach ihrem Wortlaut des Art. 3 III nur die relative Unverhältnismäßigkeit vor. Sie kann daher nur angewendet werden, wenn die absolute Unverhältnismäßigkeit in § 439 III BGB unter den Begriff der Unmöglichkeit der Richtlinie subsumiert werden kann.
+
+Hier kam es zur Vorlage an den EuGH – EuGH, Urt. v. 16.06.2011 – C-87, 65/09:
+Der EuGH hat entschieden, dass dem Verkäufer bei einem Verbrauchsgüterkauf kein Totalverweigerungsrecht aufgrund absoluter Unverhältnismäßigkeit zusteht, da es mit Art. 3 III der Richtlinie unvereinbar ist. Allerdings räumt er insoweit ein, dass es mit Art. 3 der Richtlinie bei der Entstehung unverhältnismäßig hoher Kosten für den Verkäufer vereinbar wäre, dass der Verkäufer den Käufer auf die Zahlung eines angemessenen Betrags verweist.
+Nach dieser Aussage lässt sich das Gebot der richtlinienkonformen Auslegung im Rahmen des § 439 III BGB jedoch nicht im Wege einer einfachen Gesetzesauslegung im engeren Sinne erzielen, denn dieser steht der eindeutige Wortlaut des BGB entgegen. Hier muss dem Gebot einer richtlinienkonformen Rechtfortbildung folgend eine teleologische Reduktion des § 439 III BGB auf einen mit Art. 3 der Richtlinie zu vereinbarenden Inhalt vorgenommen werden. Dies setzt grundsätzlich eine verdeckte Regelungslücke im Gesetz im Sinne einer planwidrigen Unvollständigkeit voraus. Dies ist hier gegeben. Zwar wollte der Gesetzgeber § 439 III BGB so ausgestalten, dass er mit Art. 3 der Richtlinie vereinbar ist, er hat diesen Artikel jedoch insoweit falsch interpretiert, als dass er herauslas, dass dieser auch die absolute Unverhältnismäßigkeit umfasse. Dass diese Interpretation falsch ist stellte der Gerichtshof in seiner Entscheidung mit Bindungswirkung fest, sodass das Gesetz planwidrig unvollständig ist und eine verdeckte Regelungslücke vorliegt.
+Folglich muss § 439 III BGB hier so angewendet werden, dass dem Verkäufer beim Verbrauchsgüterkauf kein Verweigerungsrecht zusteht, wenn von vornherein nur eine Art der Nacherfüllung möglich ist, oder die andere Art der Nacherfüllung zurecht verweigert wird.
+Da es sich vorliegend um einen Verbrauchsgüterkauf handelt, muss die Frage nach einer einheitlichen oder gespaltenen Auslegung bzgl. Verbrauchsgüterkäufen und Käufen zwischen Unternehmern und Verbrauchern nicht geklärt werden.
+
+3. Ergebnis
+K hat gegen V einen Anspruch auf Ausbau der mangelhaften Fliesen und auf Einbau der neuen mangelfreien Fliesen, sowie auf Ersatz der Nebenkosten für den Aus- und Einbau gem. §§ 434, 437 Nr. 1, 439 I, II BGB.
+V kann K jedoch die Einrede unverhältnismäßig hoher Kosten entgegenhalten, sodass der Anspruch des K auf die Zahlung eines angemessenen Geldbetrags durch V reduziert wäre.
+
+C. Ansprüche auf Schadensersatz
+Die Ansprüche aus dem Schadensersatzrecht (Ansprüche aus §§ 434, 437 Nr. 3, 280 I BGB; §§ 434, 437 Nr. 3, 284 BGB) scheitern am fehlenden Verschulden von V.
+
+

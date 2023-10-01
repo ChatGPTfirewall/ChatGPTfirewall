@@ -1,0 +1,170 @@
+Sachverhalt
+
+Das öffentliche Museum in der Stadt E eröffnet anlässlich der bevorstehenden Fußball-EM eine Sonderausstellung mit dem Thema „Helden unseres Fußballs“. Zu diesem Anlass wurde eine ca. 5 Meter hohe Statue von Franz Beckenbauer aufgestellt. Diese ist durch ein paar Säulen mit einem roten Seil räumlich abgesperrt. Davor ist ein Schild aufgebracht mit den Worten: „ Nur anschauen, bitte nicht anfassen!“.
+
+Die Satzung des Museums sieht ua. vor, dass sie sich von jeder Haftung ihrer Angestellten für vorsätzliches und jedes fahrlässiges Handeln freistellt.
+
+Der 12-Jährige Max ist ebenfalls Besucher der kostenpflichtigen Ausstellung. Als großer Fan des „Kaisers“ ist er natürlich hin und weg von dieser riesigen Statue seines Vorbilds. Als der Angestellte A den M bemerkt sagt er: „ Toll oder? Fass die Statue ruhig an, da wird schon nichts passieren. Trau Dich“. Dabei weiß A ganz genau um die Gefahren, die von der ohnehin wackeligen Statue ausgehen. M schlägt dieses Angebot natürlich nicht aus, überquert die Absperrung und fasst die Statue an. Dabei stürzt die Statue um. Der M konnte gerade so seinen Kopf retten, jedoch erwischte die massive Statue sein rechtes Bein. M erleidet einen schweren komplizierten Bruch. Ob er jemals wieder Fußball spielen kann, ist fraglich. M ist bei einer privaten Krankenkasse versichert.
+Hat M Ansprüche gegen das Museum? Vor welchem Gericht kann er mögliche Ansprüche geltend machen?
+Lösungsskizze
+
+A. Anspruch aus §§ 280 I, 241 II BGB iVm verwaltungsrechtlichen Schuldverhältnis
+
+I. Verwaltungsrechtliches Schuldverhältnis
+
+1. Zustandekommen des verwaltungsrechtlichen Schuldverhältnisses
+
+2. Nähebeziehung
+
+3. Öffentlich-rechtliche Ausgestaltung
+
+4. Obhutspflicht
+
+II. Voraussetzungen der §§ 280 I, 241 II BGB
+
+1. Pflichtverletzung
+
+2. Vertretenmüssen
+
+3. Kausaler Schaden
+
+4. Haftungsausschluss (-)
+
+(P) grobe Fahrlässigkeit
+
+5. Mitverschulden nach § 254 BGB
+
+III. Ergebnis
+
+(P) Zuständiges Gericht
+
+e.A. Verwaltungsgericht
+
+h.M. ordentliche Gerichtsbarkeit
+
+B. Amtshaftungsanspruch aus § 839 BGB i.V.m Art. 34 GG
+
+I. Jemand in Ausübung eines öffentlichen Amtes
+
+II. Verletzung einer drittbezogenen Amtspflicht
+
+(P) Drittbezogenheit
+
+III. Verschulden
+
+IV. Kausaler Schaden
+
+V. Haftungsausschluss
+
+1. Durch Satzung (-)
+
+2. Gem. § 839 I 2 BGB (-)
+
+(P) teleologische Reduktion
+
+VI. Mitverschulden gem. § 254 BGB
+
+VII. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch aus §§ 280 I, 241 II BGB i.V.m verwaltungsrechtlichen Schuldverhältnis
+
+M könnte gegen das Museum einen Anspruch aus §§ 280 I, 241 II BGB iVm dem verwaltungsrechtlichen Schuldverhältnis haben. Dafür müssten die Voraussetzungen vorliegen
+
+I. Verwaltungsrechtliches Schuldverhältnis
+
+Zunächst müsste ein verwaltungsrechtliches Schuldverhältnis vorliegen.
+
+1. Zustandekommen des verw.r. Schuldverhältnisses
+
+Fraglich ist, wie ein solches verwaltungsrechtliches Schuldverhältnis zustande kommt. Problematisch könnte sein, dass der M beschränkt geschäftsfähig ist. Dies würde allerdings nur dann eine Rolle spielen, wenn der Vertrag vorliegend als öffentlich-rechtlicher Vertrag einzustufen wäre. Hier ist der Vertrag zwar öffentlich-rechtlich ausgestaltet, jedoch handelt es sich bei dem Museumsbesuch vielmehr um eine einstufige Zulassung des Museumsbetreibers, sodass sich hier keine Probleme wegen der Geschäftsfähigkeit ergeben.
+
+2. Nähebeziehung
+
+Das verwaltungsrechtliche Schuldverhältnis setzt zunächst voraus, dass ein besonderes und enges Verhältnis zwischen dem Bürger und Staat besteht. Maßgeblich ist hier insbesondere, dass ein individueller Leistungsaustausch besteht, der zu einer gesteigerten Pflichtenstellung des Staates führt. Hier entrichtet der Besucher ein Entgelt und kann dafür die Ausstellung des öffentlichen Museums besuchen. Dadurch entsteht eine besondere Nähebeziehung zwischen Staat und Bürger.
+
+3. Öffentlich- rechtliche Ausgestaltung
+
+Ausweislich des Sachverhalts hat das Museum eine Satzung. Aufgrund des öffentlich-rechtlichen Charakters des Museums, ist daher von einer öffentlich- rechtlichen Ausgestaltung auszugehen.
+
+4. Obhutspflicht
+
+Aus dem besonderen Näheverhältnis müssten sich auch Fürsorge- und Obhutspflichten ergeben. Diese können hier dadurch hergeleitet werden, dass die Ausstellungen gerade nicht für die Allgemeinheit zugänglich sind, sondern nur einem abgegrenzten Personenkreis, mithin den Besuchern des Museums. Durch diesen besonderen Fürsorgeauftrag, der insbesondere die historische und künstlerische Bildung zum Gegenstand hat, lassen sich Fürsorge- und Obhutspflichten des Museums herleiten.
+
+II. Voraussetzungen der §§ 280 I, 241 II BGB
+
+Es müssten auch die allgemeinen Voraussetzungen der §§ 280 I, 241 II BGB vorliegen.
+
+1. Pflichtverletzung, § 241 II BGB
+
+Zunächst müsste eine Pflichtverletzung vorliegen. Das Museum könnte die Nebenpflicht verletzt haben, auf die Besucher aufzupassen und dafür Sorge zu tragen, dass eine ordnungsgemäße Aufsicht stattfindet. Dabei muss darauf geachtet werden, dass Rechtsgüter von Besuchern nicht verletzt werden.
+
+Hier hat de Aufsichtsperson A den M dazu ermuntert, die Absperrung zu überqueren und die Statue anzufassen, obwohl er über deren Gefahren wusste. Durch die Ermunterung hat er diese Gefahren noch erhöht. A ist hier auch als Erfüllungsgehilfe des Museums gem. § 278 S.1 BGB anzusehen, da er im mit Wissen und Wollen im Interessenkreis des Museums eine ihr obliegende Pflicht erfüllt. Damit muss sich das Museum das Handeln des A zurechnen lassen. Somit liegt eine Pflichtverletzung vor.
+
+2. Vertretenmüssen
+
+Dies hat das Museum auch zu vertreten. Dieses wird nach § 280 I 2 BGB vermutet. Eine Exkulpation ist nicht ersichtlich.
+
+3. Haftungsausschluss
+
+Fraglich ist, wie sich der Haftungsausschluss des Museums in der Satzung auswirkt. Vorliegend handelt es sich, wie bereits geprüft, um ein verwaltungsrechtliches Schuldverhältnis. Dabei sind jedoch die Regelungen der §§ 276, 278 BGB analog anzuwenden. Was bei privatrechtlichen Verträgen gilt, muss daher auch hier Geltung haben. Dabei ist jedoch im Gegenzug zu beachten, dass der Staat sich nicht einer Überhaftung ausgesetzt sehen darf. Der Haftungsausschluss müsste jedenfalls sachlich gerechtfertigt sein. Hier hat das Museum die Haftung bei Vorsatz und jedes fahrlässiges Handeln seiner Angestellten ausgeschlossen. Im Rahmen der Verhältnismäßigkeit ist hier eine genaue Abwägung vorzunehmen. Solch ein umfangreicher Haftungsausschluss könnte auch mit Hinblick auf § 242 BGB einen Missbrauch der Stellung als Hoheitsträger bedeuten. Auch eine Umdeutung in den Haftungsausschluss für nur „leichte Fahrlässigkeit“ kann hier nicht vorgenommen werden. Dem steht schon der Wortlaut der Satzung „jedes fahrlässige Handeln“ entgegen. Somit ist das grob fahrlässige Handeln des Angestellten hier nicht von dem Haftungsausschluss umfasst.
+
+4. Mitverschulden, § 254 I BGB
+
+Fraglich ist allerdings, ob der M sich hier ein Mitverschulden anrechnen lassen muss nach § 254 I BGB. Dabei ist auf seine Einsichtsfähigkeit abzustellen. Ausweislich des Sachverhalts ist der M 12 Jahre alt. Entsprechend der §§ 827 f BGB kann bei einem 12 Jährigen davon ausgegangen werden, dass er einsichtig genug ist zu erkennen, dass man sich in der vorliegenden Situation schon aus dem Selbstschutz heraus, Gefahren möglichst aus dem Weg gehen sollte. Dies gilt umso mehr, wenn sogar Hinweisschilder auf solche Gefahren aufmerksam machen. Hier scheint ein Mitverschulden i.H.v von 50 % daher angemessen.
+
+III. Ergebnis
+
+Damit hat M einen Anspruch gegen das Museum aus §§ 280 I, 241 II BGB iVm dem verwaltungsrechtlichen Schuldverhältnis. Fraglich ist jedoch, vor welchem Gericht er diesen Anspruch durchsetzen kann. Dies ist umstritten.
+
+Nach einer Ansicht soll hier das Verwaltungsgericht zuständig sein. Nach einer anderen Ansicht ist die ordentliche Gerichtsbarkeit zuständig.
+
+Für die zweite Ansicht spricht jedoch der § 40 II 1 VwGO, sodass wohl die ordentliche Gerichtsbarkeit zuständig ist.
+
+[Anmerkung: BGH und BVerwG differenzieren hier nach dem Begehren des Klägers. Geht es um ein Begehren aus dem ÖR-Vetrag, so bleibt das Verwaltungsgericht zuständig. Bei Schadensersatzansprüchen ist der ordentliche Gerichtsweg gegeben.]
+
+B. Amtshaftungsanspruch aus § 839 BGB i.V.m Art. 34 GG
+
+M könnte weiterhin einen Amtshaftungsanspruch gegen das Museum geltend machen gem. § 839 BGB iVm Art. 34 GG. Dafür müssten die Voraussetzungen vorliegen.
+
+I. Jemand in Ausübung eines öffentlichen Amtes
+
+Zunächst müsste Jemand in Ausübung eines öffentlichen Amtes gehandelt haben. Es müsste ein Handeln eines Amtswalters vorliegen. Nach § 839 BGB ist zwar der statusrechtliche Beamtenbegriff maßgeblich, allerdings modifiziert Art. 34 GG als haftungsüberleitende Norm diesen Begriff auf den haftungsrechtlichen Beamtenbegriff. Dabei kommt es nach einer Ansicht darauf an, ob ein Amtsträger bzw. der Handelnde in öffentlich-rechtlicher Form gehandelt hat. Eine andere Ansicht will hier vielmehr auf den Inhalt der Tätigkeit abstellen. Der Streit kann hier jedenfalls dahinstehen, da der Angestellte des Museums hier aufgrund einer öffentlich-rechtlichen Satzung gehandelt hat.
+
+Weiterhin darf die Verletzung nicht nut bei Gelegenheit stattfinden. Sie muss in Ausübung entstanden sein. Hier handelte der A gerade als Aufsichtsperson und handelte somit nicht nur bei Gelegenheit.
+
+II. Verletzung einer drittbezogenen Amtspflicht
+
+Fraglich ist, ob A auch eine drittbezogene Amtspflicht verletzt hat. Dabei ist nach Art. 20 III GG insbesondere die Pflicht zum rechtmäßigen Handeln gemeint. Darunter fallen alle Fürsorge- und Obhutspflichten. Hier hatte A die Pflicht als Aufsichtsperson die Besucher vor drohenden gefahren zu schützen und darauf zu achten, dass sie die Sicherheitsanweisungen befolgen. Damit diese Pflicht aber drittgerichtet ist, muss diese Pflicht auch gegenüber den Geschädigten bestehen. Der M ist hier Museumsbesucher. Damit bestand die Amtspflicht des A auch gerade gegenüber M, sodass die Verletzung einer drittbezogenen Amtspflicht zu bejahen ist.
+
+III. Verschulden
+
+A handelte zumindest grob fahrlässig und hat die Pflichtverletzung daher zu verschulden (s.o.)
+
+IV. Kausaler Schaden
+
+M hat sich hier einen komplizierten Bruch zugezogen. Dadurch entstehen dem M Behandlungskosten. Mithin ist ein kausaler Schaden entstanden.
+
+V. Haftungsausschluss
+
+Fraglich ist, ob ein Haftungsausschluss vorliegt.
+
+1. Durch Satzung
+
+Zunächst könnte ein Haftungsausschluss durch Satzung vorliegen (s.o.). Nach dem Wortlaut des Art. 34 GG („ grundsätzlich“) ist solch ein Haftungsausschluss grundsätzlich möglich. Auch hier ist jedoch problematisch, dass das Museum als Träger hoheitlicher Gewalt seine Rechtssetzungsbefugnis missbräuchlich verwenden könnte, sodass ein umfänglicher Haftungsausschluss unverhältnismäßig und damit unwirksam wäre. Ausweislich des Sachverhalts liegt hier grob fahrlässiges Handeln des A vor. Diese Haftung ist nicht wirksam durch die Satzung ausgeschlossen worden.
+
+2. Nach § 839 I 2 BGB
+
+Die Haftung könnte jedoch nach § 839 I 2 BGB ausgeschlossen sein. Fraglich ist jedoch, ob eine anderweitige Ersatzmöglichkeit vorliegt. Bzgl. des Anspruchs aus dem verwaltungsrechtlichen Schuldverhältnis ist dies zu verneinen. Dieser Anspruch besteht vielmehr neben dem Amtshaftungsanspruch. Auch der Anspruch gegen die private Krankenkasse ist keine anderweitige Ersatzmöglichkeit i.S.d § 839 I 2 BGB, da es sich dabei regelmäßig um Leistungen handelt, die sich der Versicherte selbst erkauft hat, indem er entsprechende Beiträge geleistet hat. Sinn und Zweck der Krankenversicherungen ist es daher nicht, dem Staat sein Haftungsrisiko abzunehmen.
+
+[Anmerkung: § 839 I 2 BGB ist wegen der nunmehr haftungsüberleitenden Norm des Art. 34 GG teleologisch zu reduzieren. Ursprünglich sollte diese Norm nämlich den persönlich haftenden Beamten schützen. In vielen Fällen ist sie daher nicht mehr anzuwenden. Dies gilt z.B. bei Ansprüchen gegen Versicherungen, im Straßenverkehr oder bei der Verletzung von Verkehrssicherungspflichten.]
+
+VI. Mitverschulden gem. § 254 BGB
+
+Zum Mitverschulden (s.o.).
+
+VII. Ergebnis
+
+Damit hat M gegen das Museum einen Amtshaftungsanspruch gem. § 839 BGB iVm Art.34 GG. Zuständig sind die ordentlichen Gerichte gem. Art. 34 S. 3 GG.

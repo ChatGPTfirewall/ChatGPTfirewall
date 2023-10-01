@@ -1,0 +1,115 @@
+Sachverhalt
+Am 27. Mai 2014 erwirbt F beim Autohaus H  privat einen PKW für 10.000 Euro. Am 26. September 2014 fängt das Fahrzeug während einer Fahrt Feuer und brennt vollständig aus. Infolge dessen wird das Fahrzeug abgeschleppt. Anfang 2015 meldet sich H bei F, die ihm erklärt, dass sie auf den Bericht der Polizei über den Brand warte. Die Polizei teilt ihr jedoch mit, dass kein technischer Bericht erstellt worden sei. Am 8. Mai 2015 wird das betreffende Fahrzeug verschrottet, nachdem H zuvor darüber informiert worden ist. Mit Schreiben vom 11. Mai 2015 teilt F dem H mit, dass sie das Autohaus H für den Schaden haftbar mache, der ihr durch den Brand entstanden sei. Der Schaden beträgt 10.000 Euro. Auch einen neuen Wagen werde H ihr nicht anbieten.
+Da das Fahrzeug inzwischen zerstört worden ist, kann kein Gutachten mehr erstellt werden. Zur Begründung ihrer Klage macht F geltend, dass das Fahrzeug nicht dem Vereinbarten entsprochen habe. H entgegnet, dass der Mangel erst später entstanden sei und er deshalb nicht für den Brand hafte.
+
+Hat F gegen H einen Anspruch auf Zahlung der 10.000 Euro?
+Lösungsskizze
+
+A. Anspruch aus §§ 437 Nr. 2 , 323 I, 346 I BGB
+
+I. Rücktrittsgrund
+
+1. Kaufvertrag
+2. Sachmangel
+3. Bei Gefahrübergang
+
+(P) Reichweite des § 476 BGB
+a) BGH : nur zeitlich wirkende Vermutung
+b) Lit./ EuGH : Grundmangel wird rückdatiert
+c) Streitentscheid
+
+4.  Ablauf einer angemessene Frist / Entbehrlichkeit
+
+II. Rücktrittserklärung, § 349 I BGB
+III. Ergebnis
+ 
+
+B. Anspruch aus §§ 437 Nr. 3 , 280 I, III, 281 I S. 1(oder 283) BGB
+
+(P) Abgrenzung SE statt der Leistung u. SE neben der Leistung
+
+I. Schuldverhältnis
+II. Pflichtverletzung
+
+à Nichtleistung der Nacherfüllung
+
+III. Vertretenmüssen
+IV. Fristsetzung
+V. Kausaler Schaden
+VI. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch aus §§ 437 Nr. 2 , 323 I, 346 I BGB
+F könnte gegen H einen Anspruch auf Zahlung von 10.000 Euro aus §§ 437 Nr. 2, 323 I, 346 I BGB haben. Dafür müssten die Voraussetzungen vorliegen.
+
+  I. Rücktrittsgrund
+Zunächst müsste ein Rücktrittsgrund bestehen. Es müssten ein Kaufvertrag, ein Sachmangel bei Gefahrübergang und eine erfolglos abgelaufene Frist vorliegen.
+
+  1. Kaufvertrag
+Es müsste ein Kaufvertrag vorliegen. Ausweislich des Sachverhalts haben F und H einen Kaufvertrag gem. § 433 I BGB abgeschlossen.
+
+  2. Sachmangel
+Es müsste auch ein Sachmangel vorliegen. Der PKW ist eine Sache gem. § 90 I BGB. Es könnte ein Mangel gem. § 434 I S.1 BGB vorliegen. Dafür müsste eine Beschaffenheitsvereinbarung vorliegen und die Ist-Beschaffenheit müsste negativ von der Soll-Beschaffenheit abweichen. Laut Sachverhalt hat der Wagen nicht der Vereinbarung entsprochen. Der Wagen hat Feuer gefangen und brannte vollständig aus. Mithin hat er sich nicht mehr zum Fahren geeignet, was jedoch vereinbart war. Damit liegt ein Sachmangel vor.
+
+  [Exkurs: Wenn eine Beschaffenheitsvereinbarung vorliegt, ist auf keinen Fall auf § 434 I S.2 Nr.1 und Nr.2 einzugehen! Siehe Wortlaut „ Soweit eine Beschaffenheit NICHT vereinbart ist..“]
+
+    3. Bei Gefahrübergang
+Fraglich ist allerdings, ob der Sachmangel schon bei Gefahrenübergang vorlag.  Das Feuer entstand nämlich erst nach der Übergabe des PKW (§ 446 S.1 BGB). Problematisch ist, ob der Wagen einen so genannten latenten Mangel (oder Grundmangel) hatte, der im weiteren Verlauf das Feuer ausgelöst hat.
+Ausweislich des Sachverhalts bestreitet dies H jedoch.
+Daher ist fraglich, wen die Beweislast dafür trifft. Grundsätzlich regelt § 363 BGB, dass der Käufer den Sachmangel zu beweisen hat, da eine Erfüllung nur eintreten kann, wenn die Sache frei von Sach- und Rechtsmängeln übergeben worden ist.
+Etwas anderes könnte allerdings wegen § 476 BGB gelten. Dafür müsste zunächst der Anwendungsbereich eröffnet sein. F kaufte den Wagen privat und war damit Verbraucherin gem. § 13 BGB. H betreibt ein Autohaus und ist damit Unternehmer gem. § 14 BGB. Damit liegt ein Verbrauchsgüterkauf vor und § 476 BGB ist mithin anwendbar.
+Nach § 476 BGB wird, wenn sich innerhalb von 6 Monaten ab Gefahrübergang ein Mangel zeigt, vermutet, dass die Sache bereits bei Gefahrübergang mangelhaft war.
+Fraglich ist jedoch, welche Reichweite der § 476 BGB hat. Dies ist umstritten.
+
+  a) BGH
+Nach einer Ansicht enthält der § 476 BGB nur eine Vermutung in zeitlicher Hinsicht. Die Vermutung geht demnach nicht so weit, dass ein möglicherweise bestehender Grundmangel schon bei Gefahrübergang vorlag. Demnach würde hier die Beweislast bei F liegen, nachzuweisen, dass bei Gefahrübergang ein Grundmangel vorlag. Mangels Gutachten wird ihr der Beweis hier jedoch nicht gelingen.
+
+  b) Literatur/ EuGH
+Die Gegenauffassung vertritt die Ansicht, dass die Reichweite von § 476 BGB viel weiter zu verstehen ist. Demnach wird ein möglicher Grundmangel, der sich innerhalb von 6 Monaten zeigt, rückdatiert auf den Zeitpunkt des Gefahrenübergangs. Hier bringt F vor, dass bereits bei der Übergabe der PKW mangelhaft war und dadurch erst der Brand entstehen konnte. Nach dieser Ansicht würde die Beweislast, dass kein latenter Mangel vorlag, bei H liegen. Mangels Gutachten könnte er sich nicht entlasten.
+
+  c) Streitentscheid
+Da beide Ansichten zu verschiedenen Ergebnissen führen, ist der Streit zu entscheiden. Für die erste Auffassung spricht zunächst der Wortlaut des § 476 BGB, der von „ zeigt sich innerhalb von 6 Monaten ein Sachmangel...“ spricht. Für eine enge Auslegung könnte auch die enge Formulierung des Art. 5 III Verbrauchsgüterkaufrichtlinie sprechen, der unter „Fristen“ steht.
+Dagegen lässt sich jedoch hervorbringen, dass der Wortlaut eine Einschränkung in zeitlicher Hinsicht nicht ausschließt. Auch wäre der Beweis für einen Verbraucher für einen latenten Mangel in der Praxis kaum zu bringen, was zu einem kaum existenten Anwendungsbereich des § 476 BGB führen würde. Auch der Wille und die Zielsetzung eines umfangreichen Verbraucherschutzes des europäischen Gesetzgebers entsprechen einer weiten Auslegung, sodass § 476 BGB vielmehr europarechtskonform ausgelegt werden muss.
+Damit sprechen die besseren Argumente für die zweite Ansicht. Diese ist vorzugswürdig.
+Damit trifft den H die Beweislast, dass kein Grundmangel vorlag. Diesen Beweis kann er laut Sachverhalt jedoch nicht bringen.
+Damit liegt der Sachmangel auch bei Gefahrübergang vor.
+
+  [Exkurs: Der EuGH hat in seiner Entscheidung keine wesentlichen Argumente gebracht, was überraschend ist. Die aufgeführten Argumente sind insoweit von der Literatur und von der Generalanwältin übernommen (Rn.88).]
+
+  4. Ablauf einer angemessenen Frist / Entbehrlichkeit
+Es müsste auch der Ablauf einer angemessenen Frist oder deren Entbehrlichkeit vorliegen. Hier hat der H die Leistung gem. § 323 II Nr.1 ernsthaft und endgültig verweigert, sodass eine Fristsetzung entbehrlich ist.
+
+  Mithin liegt ein Rücktrittsgrund vor.
+
+  II. Rücktrittserklärung
+Es müsste auch eine Rücktrittserklärung vorliegen gem. § 349 BGB. Hier hat F dem H deutlich gemacht, dass sie ihr Geld wiederhaben möchte und nicht mehr am Vertrag festhält. Dies kann als Rücktrittserklärung gedeutet werden, sodass diese vorliegt.
+
+  III. Ergebnis
+F hat gegen H einen Anspruch auf Zahlung der 10.000 Euro aus dem Rückgewährschuldverhältnis gem. §§ 437 Nr.2, 323 I, 346 I BGB.
+
+  B. Anspruch aus §§ 437 Nr. 3, 280 I, III, 281 I S. 1 (oder 283) BGB
+F könnte weiterhin einen Anspruch aus §§ 437 Nr.3, 280 I, III, 281 I 1 BGB haben.
+
+  [Vertretbar ist es auch § 283 BGB zu prüfen, wenn man annimmt, dass das Fahrzeug komplett unverwertbar zerstört und damit die Leistung unmöglich wurde.]
+
+  Fraglich könnte sein, ob ein Schadensersatz statt der Leistung oder vielmehr ein Schadensersatz neben der Leistung gem. § 280 I BGB vorliegt. Nach der dynamischen Formel liegt ein Schadensersatz statt der Leistung vor, wenn bei einer hypothetisch gedachten Nacherfüllung der Schaden entfällt. Hätte der H hier nacherfüllt, indem er die Sache repariert oder neu liefert, hätte die F keinen Schaden i.H.v 10.000 Euro. Damit handelt es sich um einen Schadensersatz statt der Leistung.
+
+  I. Schuldverhältnis
+Es müsste ein Schuldverhältnis vorliegen. Ausweislich des Sachverhalts liegt dieses vor.
+
+  II. Pflichtverletzung
+H müsste auch eine Pflicht aus dem Kaufvertrag verletzt haben. H müsste schlecht geleistet haben. Fraglich ist, auf welche Pflicht abgestellt wird. Es könnte auf die mangelhafte Lieferung des PKW oder auf die unterlassene Nacherfüllung abgestellt werden. Zumindest hat hier H jedoch durch Unterlassen die Nacherfüllungspflicht verletzt, indem er sich weigerte einen neuen Wagen zu liefern.
+
+  III. Vertretenmüssen
+H müsste die Pflichtverletzung auch zu vertreten haben. Dies wird gem. § 280 I S.2 BGB vermutet. Damit hat er die Pflichtverletzung zu vertreten.
+
+  IV. Fristsetzung
+Die Fristsetzung ist gem. § 281 II BGB entbehrlich (s.o.).
+
+  V. Kausaler Schaden
+Es liegt auch ein kausaler Vermögensschaden i.H.v. 10.000 Euro vor.
+
+  VI. Ergebnis
+F hat gegen H einen Anspruch auf Zahlung der 10.000 Euro aus §§ 437 Nr.3, 280 I, III, 281 I 1 BGB. 

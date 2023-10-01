@@ -1,0 +1,143 @@
+Sachverhalt
+
+Vermieter B und Mieter M schließen für eine Laufzeit von 15 Jahren einen Mietvertrag über eine in die Jahre gekommene Villenanlage. Nach Ablauf der 15 Jahre räumt der B dem M ein Ankaufsrecht ein. Im Gegenzug soll B die Villenanlage von Grund auf sanieren, indem er u.a. die Außenfassade erneuern lässt. Dafür würde der B dem A das Haus unter dem Marktpreis überlassen. Dieser Vertrag wurde nicht notariell beurkundet.
+
+Wie abgesprochen saniert M die Villenanlage, zieht allerdings nach 15 Jahren aus ohne an einem Kauf interessiert zu sein.
+
+M möchte nunmehr seine getätigten Ausgaben von B ersetzt haben.
+
+Zu Recht?
+
+Lösungsskizze
+
+A. Anspruch aus § 539 I BGB (-)
+
+Vertrag nach §§ 311b I S. 1, 125 S. 1, 139 BGB unwirksam.
+
+B. Anspruch aus §§ 677, 683 S.1, 670 BGB (-)
+
+Kein Fremdgeschäftsführungswille (a.A. nicht mit Willen des Geschäftsherrn).
+
+C. Anspruch aus §§ 1001 S. 1, 996 BGB
+
+I. Vorliegen eines EBV (+)
+
+B Eigentümer und M Besitzer. Auch kein Recht zum Besitz, da Vertrag formunwirksam.
+
+II. Verwendungen
+
+(P) Verwendungen auch bei grundlegender Änderung der Sache?
+
+„Enger Verwendungsbegriff“ (-)
+
+Hier: Villenanlage wird grundlegend verändert, daher keine Verwendung.
+
+III. Ergebnis (-)
+
+D. Anspruch auf Verwendungsersatz nach §§ 951 I S. 1, 812 I S.1 Alt. 2, 818 II BGB
+
+I. Anwendbarkeit (P)
+
+Sperrwirkung des EBV? (Str.)
+
+1) BGH: „Theorie der absoluten Sperrwirkung“
+
+ §§ 994 ff. schließen Anwendung des Bereicherungsrechts vollständig aus
+
+2) h.L.: Ersatz von Aufwendungen besteht
+
+3) Streitentscheid (+)
+
+Pro: - Sperrwirkung des EBV setzt voraus, dass Verwendungen überhaupt in den Anwendungsbereich fallen. Hier Aufwendungen tatbestandlich schon nicht erfasst wegen engem Verwendungsbegriff
+
+- besitzender Verwender, bei dem EBV vorliegt, wird schlechter gestellt
+
+- gerechtere Lösung durch Grundsatz der aufgedrängten Bereicherung
+
+Contra: - Bösgläubiger Besitzer könnte Verwendungsersatz fordern
+
+- Wertung der §§ 994 ff. würde umgangen
+
+II. Rechtsgrundverweis des § 951 I S. 1 BGB
+
+1) Voraussetzungen des § 951 I S.1 BGB und des § 812 I S.1 2.Alt. BGB (+)
+
+2) Vorliegen einer Verwendung (+)
+
+hier gerade kein enger Verwendungsbegriff
+
+3) auf Kosten des M (+)
+
+4) ohne Rechtsgrund (+)
+
+hier: Vertrag formunwirksam
+
+III. Ergebnis (+)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+
+Gutachten
+
+M könnte zunächst einen vertraglichen Anspruch aus § 539 I BGB haben. Dafür müsste der Vertrag jedoch wirksam sein. Ausweislich des Sachverhalts wurde der Mietvertrag inkl. des Ankaufsrechts nicht notariell beurkundet. Da dieser einem Kaufvertrag über ein Grundstück ähnelt, muss dieser jedoch zwingend beurkundet werden. Somit ist der Vertrag gem. §§ 311b I S. 1, 125 S. 1, 139 BGB unwirksam. Ein vertraglicher Anspruch scheidet aus.
+
+A. Anspruch aus § 539 I BGB
+
+B. Anspruch aus §§ 677, 683 S.1, 670 BGB (-)
+M könnte einen Anspruch aus GoA nach §§ 677, 683 S.1, 670 BGB haben. Dafür müssten die Voraussetzungen vorliegen. Ein Geschäft liegt in Form eines realen Handelns, nämlich der Sanierung, vor. Allerdings saniert der M die Villenanlage mit Blick auf sein zukünftiges Ankaufsrecht, sodass es hier zumindest am Fremdgeschäftsführungswillen fehlt (a.A. ohne Willen des Geschäftsherren).
+
+Mithin scheidet auch ein Anspruch aus Geschäftsführung ohne Auftrag aus.
+
+C. Anspruch aus §§ 1001 S. 1, 996 BGB
+M könnte gegen B einen Anspruch aus §§ 1001 S.1, 996 BGB haben. Dafür müssten ein EBV und Verwendungen vorliegen.
+
+I. Vorliegen eines EBV
+Es müsste zunächst ein EBV vorliegen. B ist Eigentümer und M ist Besitzer. M dürfte jedoch kein Recht zum Besitz haben. In Betracht kommt zunächst der geschlossene Mietvertrag. Dieser ist jedoch, wie bereits erörtert, formunwirksam, sodass M auch kein Recht zum Besitz hatte. Damit ist ein EBV zu bejahen.
+
+II. Verwendungen
+Fraglich ist, ob auch Verwendungen vorliegen. Verwendungen sind willentliche Vermögensaufwendungen, die zumindest einer Sache zugute kommen, indem sie sie wiederherstellen, erhalten oder verbessern. Hier nahm der M freiwillige Vermögensaufwendungen für die Sanierung vor, um die Villenanlage zu verbessern und zu erhalten. Problematisch ist allerdings, dass der M die Villenanlage durch die Grunderneuerung der Außenanlage und der aufwendigen Sanierung grundlegend verändert hat. Nach dem engen Verwendungsbegriff liegt jedoch durch eine grundlegende Veränderung der Sache schon keine Verwendung vor, da nach Sinn und Zweck der Vorschrift nur solche Aufwendungen ersetzt werden sollen, die die Sache in ihrem Bestand nicht verändern.
+
+Somit liegen keine Verwendungen i.S.d §§ 994 ff. BGB vor.
+
+III. Ergebnis
+Damit hat M keinen Anspruch aus §§ 1001 S.1, 996 BGB gegen B.
+
+D. Anspruch auf Verwendungsersatz nach §§ 951 I S. 1, 812 I S.1 Alt. 2, 818 II BGB
+Fraglich ist jedoch, ob M gegen B einen Verwendungsersatzanspruch nach den §§ 951 I S.1, 812 I S.1 Alt. 2, 818 II BGB hat.
+
+I. Anwendbarkeit
+Problematisch ist, dass hier ein EBV vorliegt, sodass der Anspruch gesperrt sein könnte. Ob dies vorliegend der Fall ist, wird nicht einheitlich beantwortet.
+
+1) BGH: „Theorie der absoluten Sperrwirkung“
+Nach der Theorie der absoluten Sperrwirkung (BGH) schließen die §§ 994 ff. BGB die Anwendung des Bereicherungsrechts auch aus, wenn tatbestandlich keine Verwendungen vorliegen (s.o.). Damit wäre hier der Anwendungsbereich bereits wegen der Sperrwirkung nicht eröffnet.
+
+2) h.L.: Ersatz von Aufwendungen besteht
+Nach der Gegenansicht sollen in solchen Fällen die Aufwendungen ersetzt werden können, sodass hier der Anwendungsbereich entgegen der Rechtsprechung bejaht werden könnte.
+
+3) Streitentscheid
+Da die Ansichten zu verschiedenen Ergebnissen führen, ist der Streit zu entscheiden. Für die Theorie der absoluten Sperrwirkung spricht zunächst die Wertung der §§ 994 ff. BGB. Durch die Eröffnung des Anwendungsbereiches würde das abgestufte Ausgleichssystem aus §§ 994, 996 BGB unterlaufen werden. Auch bestünde die Gefahr, dass der bösgläubige Besitzer Verwendungsersatz fordern könnte.
+
+Dagegen lässt sich jedoch hervorbringen, dass schon tatbestandlich keine Verwendungen vorliegen, was freilich eine Sperrwirkung nicht rechtfertigen könnte. Die Sperrwirkung des EBV setzt vielmehr voraus, dass die Verwendungen überhaupt tatbestandlich vorliegen, was aufgrund des engen Verwendungsbegriffs nicht gegeben ist.
+
+Überdies würde der besitzende Verwender, bei dem ein EBV vorliegt, schlechter gestellt sein, wofür auch keine Rechtfertigung ersichtlich ist. Eine Lösung über den Grundsatz der aufgedrängten Bereicherung scheint daher flexibler und gerechter.
+
+Da die besseren Argumente für die zweite Ansicht sprechen, ist diese vorzugswürdig, sodass der Anwendungsbereich eröffnet ist.
+
+II. Rechtsgrundverweis des § 951 I S. 1 BGB
+Es müssten auch die weiteren Voraussetzungen erfüllt sein. Der § 951 I S. 1 BGB stellt einen Rechtsgrundverweis dar, sodass zunächst die Voraussetzungen des § 951 I S.1 BGB und die Voraussetzungen der Verwendungskondiktion gegeben sein müssen.
+
+1) Voraussetzungen des § 951 I S.1 BGB und des § 812 I S.1 2. Alt. BGB
+B müsste das Eigentum an der sanierten Villenanlage erlangt haben. Durch die aufwendige Sanierung der Außenfassade hat B das Eigentum gem. §§ 946, 93 ff. BGB erlangt, was auch einen vermögenswerten Vorteil darstellt.
+
+2) Vorliegen einer Verwendung
+Es müssten auch Verwendungen vorliegen. Verwendungen sind freiwillige Vermögensopfer. Hier gilt der enge Verwendungsbegriff, anders als in § 994 ff. BGB, gerade nicht, sodass auch die Verwendung in Form der getätigten Sanierung zu bejahen ist.
+
+3) auf Kosten des M
+Dies geschah auch auf Kosten des M.
+
+4) ohne Rechtsgrund
+Wie bereits geschildert, war der der Mietvertrag auch formunwirksam, sodass kein Rechtsgrund bestand.
+
+III. Ergebnis
+Mithin hat M gegen B einen Verwendungsersatzanspruch gem. §§ 951 I S.1, 812 I S.1 Alt. 2, 818 II BGB.
+
+

@@ -1,0 +1,153 @@
+Sachverhalt
+
+Am 17.05.1985 ging Vater V mit seinem 1 Jahr und 10 Monate alten Sohn K auf einen öffentlichen Spielplatz der Stadt S. Am Eingang des Spielplatzes befand sich ein deutlich sichtbares Schild mit der Aufschrift: „Spielplatz für Kinder bis 12 Jahre.“ In einem von V unbewachten Moment klettert K auf ein sich in einer Höhe von 1,5 Metern befindendes Podest eines Spielgerätes. Bereits in der Vergangenheit war V bei der Beaufsichtigung des K leicht unaufmerksam. K setzt mit dem linken Bein zum Rutschen an, verliert das Gleichgewicht und stürzt rechts rücklings unter den Holm des Spielgerätes auf den mit Asphaltbeton beschichteten Boden. K erleidet durch den Sturz erhebliche körperliche Verletzungen am Kopf und an der Schulter. Das Anbringen einer Absturzsicherung oder eines anderen, aufprallhemmenden Untergrundes wäre für S zumutbar gewesen und hätte den Unfall mit an Sicherheit grenzender Wahrscheinlichkeit verhindert.
+
+Zu prüfen ist, ob K gegenüber S ein Schadensersatzanspruch i.H.v. 8.000 DM nach § 823 I BGB zusteht.
+Lösungsskizze
+
+A. Anspruch des K gegenüber S auf Schadensersatzzahlung nach § 823 I BGB i.V.m. §§ 31, 89 I BGB i.H.v. 8.000 DM
+
+I. Haftungsbegründender Tatbestand
+
+1. Rechtsgutsverletzung
+
+2. Verletzungshandlung
+
+3. Haftungsbegründende Kausalität
+
+4. Rechtswidrigkeit
+
+5. Verschulden
+
+II. Haftungsausfüllender Tatbestand
+
+1. Ersatzfähiger Schaden
+
+2. Haftungsausfüllende Kausalität
+
+3. Anspruchskürzung infolge Mitverschuldens
+
+a. Eigenes Mitverschulden des K nach § 254 I BGB
+
+b. Verschuldenszurechnung durch V nach §§ 254 II 2, 278 S. 1 BGB
+
+c. Anspruchskürzung durch den gestörten Innenausgleich unter Gesamtschuldnern
+
+(a) Vorliegen eines gestörten Gesamtschuldverhältnisses
+
+(b) Rechtliche Folge
+
+a) Ansicht 1: Gesamtkürzung des Schadens
+
+b) Ansicht 2: Fingieren einer Gesamtschuldnerschaft
+
+c) Ansicht 3: Vollständige Schadensbegleichung durch S
+
+d) Streitentscheid
+
+d. Zwischenergebnis
+
+4. Zwischenergebnis
+
+II. Ergebnis
+
+B. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch des K gegenüber S auf Schadensersatzzahlung nach § 823 I BGB i.V.m. §§ 31, 89 I BGB i.H.v. 8.000 DM
+
+K könnte gegenüber S ein Schadensersatzanspruch i.H.v. 8.000 DM nach § 823 I BGB i.V.m. §§ 31, 89 I BGB zustehen.
+
+I. Haftungsbegründender Tatbestand
+
+1. Rechtsgutsverletzung
+
+Hierzu müsste K in einem von § 823 I BGB geschützten Rechtsgut verletzt worden sein. In Betracht kommt eine Verletzung des Körpers. Für eine Körperverletzung ist ein Eingriff in die körperliche Unversehrtheit notwendig. K hat erhebliche Verletzungen an seinem Kopf und an der Schulter erlitten. Durch diese ist er in seiner körperlichen Unversehrtheit beeinträchtigt. Eine Verletzung des Körpers liegt vor. Eine Rechtsgutsverletzung ist gegeben.
+
+2. Verletzungshandlung
+
+Auch müsste S eine Verletzungshandlung begangen haben. Diese kann durch ein aktives Tun oder ein pflichtwidriges Unterlassen verwirklicht werden. Eine Abgrenzung erfolgt nach dem Schwerpunkt der Vorwerfbarkeit. Vorliegend ist die Vorwerfbarkeit nicht in dem bloßen Aufstellen, sondern in dem Unterlassen einer zu errichtenden Sicherung für das Spielgerät zu sehen.
+
+Ein Unterlassen kann dann einem aktiven Tun gleichgesetzt werden, wenn eine Pflicht für S zum Tätigwerden bestand. Wer eine Gefahrenquelle schafft oder unterhält, hat alle erforderlichen und ihm zumutbaren Sicherungsmaßnahmen zu ergreifen, um Dritte vor rechtsverletzenden Gefahren zu bewahren, die von der Gefahrenquelle ausgehen (sog. Garantenpflicht). Das Bereitstellen eines öffentlich zugänglichen Spielplatzes stellt eine Örtlichkeit dar, an welcher Kinder durch die Benutzung der Spielgeräte Gefahren für ihre körperliche Unversehrtheit ausgesetzt sind. Es ist die Aufgabe des Spielplatzbetreibers, die Anlage möglichst gefahrlos zu gestalten und zu erhalten, um auch sorglos handelnden Kleinkindern Sicherheit bei der Benutzung zu bieten. Durch das junge Alter der Kinder sind besonders strenge Anforderungen hieran zu stellen. Das Spielgerät der S befand sich in einer Fallhöhe von 1,5 Metern. Der Untergrund bestand aus Asphaltbeton. Um die Verkehrssicherungspflicht zu wahren, hätte ein anderer geeigneter aufprallhemmender Bodenbelag oder eine Absturzsicherung verwendet werden müssen. Dies hat die S unterlassen. Dadurch, dass das Spielplatz-Schild angab, dass der Spielplatz für alle Kinder bis zu 12 Jahren freigegeben sei, kommt eine Einschränkung der Verkehrssicherungspflicht für den 1 Jahr und 10 Monate alten K ebenso nicht in Betracht. Die Verkehrssicherungspflicht wurde verletzt. Eine Verletzungshandlung durch S liegt vor.
+
+3. Haftungsbegründende Kausalität
+
+Die Verletzungshandlung müsste kausal für die eingetretene Rechtsgutsverletzung sein. Nach der conditio-sine-qua-non-Formel ist das pflichtwidrige Unterlassen kausal, wenn ein pflichtgemäßes Tätigwerden den Eintritt der Rechtsgutsverletzung mit an Sicherheit grenzender Wahrscheinlichkeit verhindert hätte. Hätte die S einen aufprallhemmenden Unterboden oder eine sonstige Absturzsicherung an dem Spielgerät angebracht, wäre Ks körperliche Schädigung mit an Sicherheit grenzender Wahrscheinlichkeit nicht eingetreten. Hiernach liegt ein Kausalzusammenhang vor. Indem die eingetretene Rechtsgutsverletzung durch die Unterlassung auch nicht außerhalb aller Lebenswahrscheinlichkeit liegt, ist der Zurechnungszusammenhang kausal-adäquat. Auch dient der Schutzzweck der gebotenen Verhaltensnorm der Verhinderung der eingetretenen Rechtsgutsverletzung. Die haftungsbegründende Kausalität ist zu bejahen.
+
+4. Rechtswidrigkeit
+
+S müsste rechtswidrig gehandelt haben. Im Rahmen eines Unterlassens ist die sich aus der Verkehrssicherungspflicht ergebende Handlungspflicht positiv festzustellen (sog. Lehre vom Handlungsunrecht). Durch das Unterhalten des Spielgerätes war S dazu verpflichtet, einen geeigneten Bodenbelag oder eine sonstige Absturzsicherung zu errichten. Dieser Pflicht ist S nicht nachgekommen. S unterließ dies rechtswidrig.
+
+5. Verschulden
+
+S müsste nach § 276 BGB die unterlassene Sicherung auch zu verschulden haben. S ist Fahrlässigkeit nach § 276 II BGB vorzuwerfen. S hat die Rechtsgutsverletzung zu verschulden.
+
+II. Haftungsausfüllender Tatbestand
+
+1. Ersatzfähiger Schaden
+
+K müsste einen ersatzfähigen Schaden erlitten haben. Die Verletzung einer Person unterliegt der Schadensersatzverpflichtung aus § 249 II 1 BGB. Gemäß § 253 II BGB kann wegen der Verletzung eines Körpers auch eine billige Entschädigung in Geld gefordert werden. Ein ersatzfähiger Schaden des K besteht.
+
+2. Haftungsausfüllende Kausalität
+
+Indem der von K erlittene Schaden auf die Rechtsgutsverletzung zurückzuführen ist, ist die haftungsausfüllende Kausalität zu bejahen.
+
+3. Anspruchskürzung infolge Mitverschuldens
+
+Ks Schadensersatzanspruch könnte jedoch infolge eines Mitverschuldens anteilig gekürzt sein.
+
+a. Eigenes Mitverschulden des K nach § 254 I BGB
+
+Indem K gemäß § 828 I BGB nicht deliktsfähig ist, ist ihm ein eigenes Mitverschulden an der Schadensverursachung nicht vorzuwerfen.
+
+b. Verschuldenszurechnung durch V nach §§ 254 II 2, 278 S. 1 BGB
+
+Fraglich ist, ob sich K ein Mitverschulden des V nach §§ 254 II 2, 278 S. 1 BGB zurechnen lassen muss. Der § 254 II 2 BGB ist dabei als Absatz 3 zu lesen und findet auf die gesamte Norm Anwendung. Nach weit überwiegend vertretener Auffassung handelt es sich um eine Rechtsgrundverweisung. Eine Verschuldenszurechnung kommt nur dann in Betracht, sofern V Erfüllungsgehilfe des K wäre. Dies setzt eine rechtliche Sonderverbindung zwischen S und K voraus. Ein solches Rechtsverhältnis könnte sich aus den Benutzungsregelungen der S, aufgeführt durch das Spielplatz-Schild und der Benutzung durch K ergeben. Dagegen ist einzuwenden, dass keine besondere Interessenlage zwischen K und S besteht, die über die allgemeinen deliktischen Rechte und Pflichten hinausgeht. Eine rechtliche Sonderverbindung liegt nicht vor. Eine Verschuldenszurechnung durch V nach §§ 254 II 2, 278 S. 1 BGB ist abzulehnen.
+
+c. Anspruchskürzung durch den gestörten Innenausgleich unter Gesamtschuldnern
+
+Nach eben Genanntem würde S einem Schadensersatzanspruch in voller Höhe ausgesetzt sein. Eine Berücksichtigung von Vs Unachtsamkeit würde nicht erfolgen. Fraglich ist, ob dennoch eine Anspruchskürzung infolge eines gestörten Innenausgleichs unter Gesamtschuldnern aus Billigkeitserwägungen in Betracht kommt. Gemäß § 840 BGB haften diejenigen, die für den aus einer unerlaubten Handlung entstandenen Schaden nebeneinander verantwortlich sind, als Gesamtschuldner i.S.d. §§ 421 ff. BGB. Zwar wäre grundsätzlich S nach § 421 S. 1 BGB einer Forderungsbegleichung an K in voller Höhe ausgesetzt, etwas anderes könnte aber aus der rechtlichen Bewertung der gestörten Gesamtschuld folgen.
+
+(a) Vorliegen eines gestörten Gesamtschuldverhältnisses
+
+Dies setzt ein gestörtes Gesamtschuldverhältnis voraus. Eine gestörte Gesamtschuld ist gegeben, wenn mehrere Schuldner grundsätzlich als Gesamtschuldner haften würden, einer von ihnen durch ein Haftungsprivileg aber haftungsbefreit ist. K steht gegenüber S ein Schadensersatzanspruch aus § 823 I i.V.m. §§ 31, 89 I BGB zu.
+
+Fraglich ist, ob K gegenüber V ebenfalls Schadensersatzansprüche aus § 823 I BGB sowie § 823 II BGB i.V.m. §§ 229, 13 I StGB geltend machen kann. Problematisch hieran ist Vs Verschulden: Nach den §§ 1664 I, 1631 I, 277 BGB haben die Eltern bei der Ausübung der elterlichen Sorge dem Kind gegenüber nur für die Sorgfalt einzustehen, die sie in eigenen Angelegenheiten anzuwenden pflegen. Auch die elterliche Aufsichtspflicht ist hiervon erfasst, § 1631 I BGB. Dies entbindet sie aber nicht von einer Haftung wegen grober Fahrlässigkeit. V war bereits in der Vergangenheit leicht unaufmerksam; ebenso wie zum Zeitpunkt des Unfalls. Ein Unterlassen, bei welchem V die im Verkehr erforderliche Sorgfalt besonders stark außer Acht ließ, ist nicht feststellbar. V handelte in eigenüblicher Sorgfalt. Er hat die Rechtsgutsverletzung nicht zu verschulden. Bestünde die Haftungsprivilegierung aus §§ 1664 I , 1631 I BGB zugunsten Vs nicht, läge ein Gesamtschuldverhältnis mit der Haftung aus § 840 I BGB vor. Eine gestörte Gesamtschuld ist gegeben.
+
+(b) Rechtliche Folge
+
+Die rechtliche Folge des gestörten Gesamtschuldverhältnisses wird unterschiedlich beurteilt:
+
+a) Ansicht 1: Gesamtkürzung des Schadens
+
+Nach einer Auffassung hat durch den nicht-privilegierten Schädiger nur eine anteilige Schadensersatzzahlung, gekürzt um den Verschuldensanteil des freigestellten Schuldners, zu erfolgen. Bei einem Gesamtschaden von 8.000 DM hätte S bei unterstellten gleichen Verschuldensanteilen nur 4.000 DM, gekürzt um Vs Verschuldensanteil, an K zu zahlen.
+
+b) Ansicht 2: Fingieren einer Gesamtschuldnerschaft
+
+Eine andere Ansicht spricht sich für das Fingieren der allgemeinen Regeln über die Gesamtschuldnerschaft aus. Hiernach müsste S an K den Gesamtschaden i.H.v. 8.000 DM begleichen. Daraufhin stünden S gegenüber V Regressansprüche aus § 426 I 1 BGB und § 426 II 1 BGB zu.
+
+c) Ansicht 3: Vollständige Schadensbegleichung durch S
+
+Wieder andere plädieren für eine vollständige Schadensbegleichung des nicht-privilegierten Schuldners, ohne eine anteilige Haftungsfreistellung. Eine Anspruchskürzung erfolgt nicht. S müsste 8.000 DM an K zahlen und könnte keinen Regress gegenüber V geltend machen.
+
+d) Streitentscheid
+
+Da die Ansichten zu unterschiedlichen Ergebnissen führen, hat ein Streitentscheid zu erfolgen. Für eine Gesamtkürzung des Schadens spricht, dass S nur entsprechend des eigenen Verschuldensanteils haftbar ist. Auch bei dem Fingieren einer Gesamtschuld käme es durch den Regress faktisch nur zu einer anteiligen Haftung der S entsprechend des eigenen Verschuldensanteils. Diese Auffassungen sind jedoch widersprüchlich: Hätte V den Schaden allein verursacht, wäre er durch die Haftungsprivilegierung keinem Anspruch ausgesetzt. Bei einer vorliegend bloßen anteiligen Schadensverursachung wäre V hingegen haftbar. Auch würde eine Haftung des V dem Schutzzweck des § 1664 I BGB zuwiderlaufen: Der Gesetzgeber wollte durch die Haftungsprivilegierung den grundgesetzlich durch Art. 6 I GG geschützten Familienfrieden wahren. Teilweise wird gegen die letztgenannte Auffassung entgegengebracht, dass sich parallel hierzu ein vertraglicher Haftungsausschluss gegen den anderen Schädiger als ein unzulässiger Vertrag zulasten Dritter auswirken würde. Dagegen ist aber einzuwenden, dass ein Unterschied zwischen einer vertraglichen Abrede und einer gesetzlichen Regelung zum Schutz des Familienfriedens besteht. Die Fälle von vertraglichen und gesetzlichen Haftungsprivilegierungen sind nicht vergleichbar. Eine anteilige Haftung des V ist abzulehnen. Eine Haftungskürzung durch die gestörte Gesamtschuld erfolgt nicht.
+
+d. Zwischenergebnis
+
+Eine Anspruchskürzung ist abzulehnen.
+
+4. Zwischenergebnis
+
+Der haftungsausfüllende Tatbestand liegt vor.
+
+III. Ergebnis
+
+Der Tatbestand des § 823 I i.V.m. §§ 31, 89 I BGB ist erfüllt.
+
+B. Ergebnis
+
+K kann von S Schadensersatz in voller Höhe nach § 823 I BGB i.V.m. §§ 31, 89 I BGB verlangen.

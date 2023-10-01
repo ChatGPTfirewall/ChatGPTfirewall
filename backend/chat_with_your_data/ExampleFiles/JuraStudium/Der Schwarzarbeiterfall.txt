@@ -1,0 +1,139 @@
+Sachverhalt
+
+A beauftragt Elektriker E mit der Ausführung von Elektroinstallationsarbeiten in seinem Haus. Beide vereinbaren, dass der Werklohn i.H.v. 5.000 EUR in bar bezahlt wird und E hierfür keine Rechnung erteilt. Nach Abschluss der Arbeiten stellt A an den Elektroinstallationen Mängel fest, woraufhin er die Zahlung des Werklohns verweigert. E verlangt von A Zahlung des vereinbarten Werklohns. A hingegen fragt sich, ob er Anspruch auf Nacherfüllung hat.
+
+Wie ist die Rechtslage?
+
+Bearbeitervermerk : Es ist von der aktuellen Gesetzeslage auszugehen.
+
+Auszug aus dem Gesetz zur Bekämpfung der Schwarzarbeit und illegalen Beschäftigung (Schwarzarbeiterbekämpfungsgesetz - SchwarzArbG)
+
+§ 1 Zweck des Gesetzes
+
+(1) Zweck des Gesetzes ist die Intensivierung der Bekämpfung der Schwarzarbeit.
+
+(2) Schwarzarbeit leistet, wer Dienst- oder Werkleistungen erbringt oder ausführen lässt und dabei
+
+1. (...)
+
+2. als Steuerpflichtiger seine sich auf Grund der Dienst- oder Werkleistungen ergebenden steuerlichen Pflichten nicht erfüllt, (...)
+Lösungsskizze
+
+A. Ansprüche des E auf Zahlung des Werklohnes
+
+I. § 631 Abs. 1 BGB
+
+1. Wirksamer Werkvertrag
+
+2. Ergebnis
+
+II. §§ 677, 683 S.1, 670 BGB
+
+1. Fremdes Geschäft
+
+2. Fremdgeschäftsführungswille
+
+3. Ergebnis
+
+III. § 817 S. 1 BGB Ausschluss der Rückforderung gem. § 817 S. 2 BGB
+
+1. Erlangtes Etwas durch Leistung
+
+2. Ausschluss des Anspruchs gem. § 817 S.2 BGB
+
+a.) Frühere Rechtsprechung des BGH
+
+b.) Herrschende Literatur / Teile der Rechtsprechung/ BGH
+
+c.) Streitentscheid
+
+3. Ergebnis
+
+IV. §§ 812 Abs. 1, S.1, Alt. 1, 818 Abs. 2 BGB
+
+V. §§ 951 Abs. 1, 812 Abs. 1, S.1 Alt. 1 BGB
+
+B. Ansprüche des A auf Nacherfüllung gem. §§ 634 Nr. 1, 635 Abs. 1 BGB
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten 
+
+A. Ansprüche des E auf Zahlung des Werklohnes
+
+I. Anspruch aus E gegen A aus § 631 Abs. 1 BGB
+
+E könnte gegen A einen Anspruch auf Zahlung von Werklohn i.H.v. 5.000 EUR aus § 631 Abs. 1 BGB haben.
+
+1. Wirksamer Werkvertrag
+Voraussetzung dafür ist zunächst, dass die Parteien einen wirksamen Werkvertrag geschlossen haben. Der Werkvertrag könnte hier gegen ein gesetzliches Verbot verstoßen und deshalb nach § 134 BGB nichtig sein. Fraglich ist, ob es sich bei § 1 Abs. 2 Nr. 2 SchwarzArbG um ein Verbotsgesetz handelt. Ein Verstoß gegen ein Verbotsgesetz liegt vor, wenn dieses ausdrücklich oder konkludent eine Beschränkung des rechtlichen Dürfens enthält. Enthält das Verbotsgesetz lediglich eine Ordnungsvorschrift, so führt ein Verstoß nicht automatisch zur Nichtigkeit. Dies ist durch Auslegung des Gesetzeszweckes zu ermitteln.
+Ergibt die Auslegung nach Sinn und Zweck, dass ein wirksames Zustandekommen des Vertrages nicht gewollt ist, liegt ein Verbotsgesetz i.S.d. § 134 BGB vor.
+
+  [Exkurs: Vor der Änderung des SchwarzArbG durch das am 01.08.2004 in Kraft getretene Gesetz zur Bekämpfung der Schwarzarbeit war die Nichtabführung der Steuer bei einer sog. „Ohne- Rechnung-Abrede“ kein Fall der Schwarzarbeit, sondern lediglich eine Steuerhinterziehung nach § 370 AO. Nichtig war danach nur die „ohne Rechnung-Abrede“, nicht aber der Werkvertrag an sich. Ein geschlossener Vertrag war danach nur nichtig, wenn der Hauptzweck des Vertrages gerade die Steuerhinterziehung war.]
+
+  Nach § 1 Abs. 2 Nr. 2 SchwarzArbG leistet Schwarzarbeit, wer Werkleistungen erbringt und dabei als Steuerpflichtiger seine sich auf Grund der Werkleistungen ergebenden steuerlichen Pflichten nicht erfüllt. Ausdrücklich wird darin der Vertragsabschluss nicht beschränkt. Sinn und Zweck des Gesetzes ist jedoch eine effektive Bekämpfung von Schwarzarbeit. Dies kann nur dadurch geschehen, dass ein Leistungsaustausch verhindert oder zumindest erschwert wird. Dies wird allerdings nur mit der Rechtsfolge der Nichtigkeit erreicht. Damit handelt es sich bei § 1 Abs. 2 Nr. 2 SchwarzArbG um ein Verbotsgesetz gem. § 134 BGB. Gem. § 139 BGB ist bei Nichtigkeit eines Teils eines Vertrags der gesamte Vertrag nichtig, wenn nicht anzunehmen ist, dass er auch ohne den nichtigen Teil geschlossen worden wäre. Hier hätten die Parteien wohl den Werkvertrag in der Gestalt nicht geschlossen, wenn die Umsatzsteuer hätte abgeführt werden müssen.
+
+  Es müsste weiterhin gegen das SchwarzArbG verstoßen worden sein. Hier kommt ein Verstoß gegen § 1 Abs.2 Nr.2 SchwarzArbG in Betracht.
+E hat mit A vereinbart, dass keine Rechnung für die erbrachte Werkleistung erstellt wird und A den Werklohn bar bezahlen soll. Hierdurch wollten A und E die anfallende Umsatzsteuerpflicht umgehen. Somit liegt ein Verstoß gegen § 1 Abs. 2 Nr. 2 SchwarzArbG vor. Der Werkvertrag ist damit gem. § 134 BGB nichtig.
+
+2. Ergebnis
+
+E hat deshalb keinen Anspruch auf Werklohnzahlung gem. § 631 Abs. 1 BGB.
+
+II. Anspruch des E gegen A gem. §§ 677, 683 S.1, 670 BGB
+
+E könnte gegen A einen Anspruch auf Aufwendungsersatz aus echter, berechtigterer GoA gem. §§ 677, 683 S. 1, 670 BGB haben.
+
+1. Fremdes Geschäft
+
+E müsste ein fremdes Geschäft geführt haben. Er handelte sowohl im eigenen Rechtskreis, weil er eine Verbindlichkeit erfüllen wollte, als auch im Rechtskreis des A, da er dessen Elektroarbeiten ausführte. Damit liegt ein auch-fremdes Geschäft vor.
+
+2. Fremdgeschäftsführungswille
+
+Fraglich ist, ob E mit Fremdgeschäftsführungswille handelte. Bei einem auch-fremden Geschäft wird nach Ansicht der Rechtsprechung der Fremdgeschäftsführungswillen vermutet. Die herrschende Literatur verneint bei Vorliegen einer vertraglichen Verpflichtung den Fremdgeschäfts-führungswillen, da der Geschäftsführer allein deshalb handele, um seine eigene, vertragliche Verpflichtung zu erfüllen. Damit liege ein eigenes Geschäft gem. § 687 Abs. 1 BGB vor.
+
+Für die herrschende Literatur spricht, dass durch das Bereicherungsrecht unter anderem auch die Rückabwicklung von nichtigen Verträgen geregelt wurde. Eine Anwendung der GoA würde zu einer Umgehung dieser Sondervorschriften führen. Dem ist zu folgen.
+
+3. Ergebnis
+
+E handelt danach ohne Fremdgeschäftsführungswille, ein Anspruch aus §§ 677, 683 S. 1, 670 BGB scheidet aus.
+
+III. Anspruch des E gegen A gem. § 817 S.1 BGB
+
+Ein Anspruch auf Zahlung des Werklohnes könnte sich aus § 817 S.1 BGB ergeben. Danach ist der Empfänger einer Leistung zur Herausgabe verpflichtet, wenn der Zweck einer Leistung in der Art bestimmt war, dass der Empfänger durch die Annahme gegen ein gesetzliches Verbot verstoßen hat.
+
+1. Erlangtes Etwas durch Leistung
+
+A müsste etwas durch Leistung des E erlangt haben. Etwas Erlangtes kann jede Verbesserung der Vermögensposition bzw. jeder Vermögensvorteil sein. A hat die Werkleistung des E erlangt. E hat diese Werkleistung auch zur bewussten und zweckgerichteten Mehrung des Vermögens des A erbracht.
+
+2. Ausschluss des Anspruchs gem. § 817 S.2 BGB
+Der Anspruch könnte jedoch gem. § 817 S. 2 BGB ausgeschlossen sein. Dies ist der Fall, wenn beide Parteien gegen das gesetzliche Verbot des § 1 Abs. 2 Nr. 2 SchwarzArbG verstoßen haben. Ob ein Ausschluss gem. § 817 S.2  BGB vorliegt, ist umstritten.
+
+a.) Frühere Rechtsprechung des BGH (Urt.v. 31.05.1990 - VII ZR 336/89)
+Nach einer Ansicht wird vertreten, dass der § 817 S. 2 BGB in Fällen von Schwarzarbeit nicht anwendbar sein soll). Dies wird mit einer teleologischen Reduktion der Norm begründet, die sich auf § 242 BGB stützt.
+
+b.) H. L/ T. d. Rspr./ BGH
+
+Eine andere Ansicht vertritt hingegen, dass es sich bei dem SchwarzArbG um ein Verbotsgesetz handelt, das gerade auch den Ausschluss der bereicherungsrechtlichen Folge herbeiführen will.
+
+c.) Streitentscheid
+Da die Ansichten zu verschiedenen Ergebnissen führen ist ein Streitentscheid erforderlich.
+Für die erste Ansicht spricht, dass der in Vorleistung tretende Werkunternehmer durch einen Ausschluss des Lohnanspruchs einseitig benachteiligt wird, obwohl beide Seiten gegen das Gesetz verstoßen. Dem Werkunternehmer das Vorleistungsrisiko alleine aufzubürden widerspricht auch den Grundsätzen von Treu und Glauben. Zweck des Schwarzarbeitsbekämpfungsgesetzes könnte vielmehr die Wahrung öffentlicher Interessen, wie etwa des Interesses an Steuereinnahmen sein .Dazu genügt jedoch zur Abschreckung bereits der Ausschluss vertraglicher Ansprüche, insbesondere der Ausschluss der Mängelgewährleistungsrechte oder die Bestrafung wegen Steuerhinterziehung.
+Dagegen ist jedoch einzuwenden, dass bei einem beiderseitigen Verstoß gegen ein Verbotsgesetz kein Raum für Billigkeitserwägungen bleibt. Der Wortlaut spricht auch dafür. Darüber hinaus schadet eine teleologische Reduktion von § 817 S. 2 BGB dem Sinn und Zweck des SchwarzArbG, denn damit soll gerade der Schwarzarbeit die wirtschaftliche Grundlage entzogen werden. Der Verlust der bereicherungsrechtlichen Folge ist vom Gesetzgeber daher gerade gewollt. Da diese Ansicht eher dem gesetzgeberischen Willen entspricht ansonsten eine Durchbrechung der Gewaltenteilung drohen könnte, ist diese Ansicht vorzugswürdig.
+
+ [Exkurs : Dieser Ansicht hat sich nunmehr der BGH auch in seiner neuen Rechtsprechung (Urt. v. 10.04.2014 - VII ZR 241/13) angeschlossen. Er hält nun auch den § 817 S. 2 BGB für anwendbar, um das durch den Gesetzgeber verfolgte Ziel der effektiven Eindämmung der Schwarzarbeit besser durchzusetzen.]
+
+3. Ergebnis
+
+Mithin ist der Anspruch aus § 817 S.1 BGB wegen § 817 S.2 BGB ausgeschlossen.
+
+IV. §§ 812 Abs. 1, S.1, Alt. 1, 818 Abs. 2 BGB
+
+Ein Anspruch aus §§ 812 Abs.1, S.1, Alt. 1, 818 Abs. 2 BGB ist ebenfalls wegen § 817 S.2 BGB ausgeschlossen.
+
+V. Anspruch E gegen A aus §§ 951 Abs. 1, 812 Abs. 1, S.1 Alt. 1 BGB
+
+Bei § 951 Abs. 1 BGB handelt es sich nach herrschender Meinung um eine Rechtsgrundverweisung, sodass der Ausschluss gem. § 817 S.2 BGB auch die Ansprüche aus § 951 Abs. 1 BGB betrifft.
+
+B. Ansprüche des A auf Nacherfüllung gem. §§ 634 Nr. 1, 635 Abs. 1 BGB
+
+Mangels Vorliegens eines wirksamen Werkvertrages hat A wegen der Mängel auch keinen Anspruch auf Nacherfüllung gem. §§ 634 Nr. 1, 635 Abs. 1 BGB.

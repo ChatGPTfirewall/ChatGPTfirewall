@@ -1,0 +1,133 @@
+Sachverhalt
+
+A ist Journalist und arbeitet für einen Verlag im Bereich Landespolitik. Er will sich einen Nebenverdienst erarbeiten und hochrangigen Politikern das Schreiben deren Biografien anbieten, um diese dann in einer Buchreihe zu veröffentlichen. Nach ein paar Wochen meldet sich der mittlerweile pensionierte und zuvor lange im Landtag NRW tätige Politiker P. P, der den A bereits kennt, ist sich jedoch noch nicht sicher, ob er diesen mit der kostenpflichtigen Ausarbeitung seiner Biografie beauftragen möchte. Deshalb vereinbaren A und P zunächst, dass A unentgeltlich ein Konzept für die Biografie erstellen soll. Dazu sollen mehrere Gespräche über das private und politische Leben des P geführt werden. Im Gesprächstermin nimmt A mit Einverständnis des P das Interview mit seinem alten Tonbandgerät auf seinen eigenen Tonbändern auf. Hierbei werden die Magnetstreifen der Tonbänder physikalisch verändert. So bespielt A drei Tonbänder und nimmt diese anschließend wieder mit. Bei den Interviews wurde der P nur durch kurzzeitige Fragen des A unterbrochen. Überwiegend sprach jedoch der P.
+
+Kurze Zeit später verstirbt P bei einem Verkehrsunfall. Er hinterlässt seine Ehefrau F als Alleinerbin.
+
+F weiß um die Gesprächsfreudigkeit des P und hat Sorge, dass P brisante Details aus ihrem Privatleben erzählt haben könnte.
+
+F verlangt von A die Herausgabe der Tonbänder. Zu Recht?
+
+Bearbeitervermerk: urheberrechtliche Ansprüche sind außer Betracht zu lassen.
+Lösungsskizze
+
+A. Herausgabeanspruch aus §§ 667, 1922 BGB
+
+I. Auftragsverhältnis gem. § 662 BGB
+
+(P) Abgrenzung zu anderen Vertragstypen
+
+(P) Rechtsbindungswille
+
+II. Erlöschen des Auftrages durch Tod
+
+(-), hier: § 672 BGB
+
+III. Erlöschen durch Widerruf (-)
+
+IV. Ergebnis (+)
+
+B. Herausgabeanspruch aus § 985 BGB
+
+I. Besitz des A (+)
+
+II. Eigentum der F
+
+1. Ursprüngliches Eigentum des A
+
+2. Eigentumserwerb des P gem. § 929 S.1 BGB (-)
+
+hier: A wollte dem P kein Eigentum verschaffen
+
+3. Eigentumserwerb des P gem. § 950 I BGB
+
+a) Verarbeitung oder Umbildung o. ähnliche Bearbeitung
+
+hier: Tonbänder werden physikalisch verändert
+
+b) Herstellen einer neuen beweglichen Sache
+
+(P) neue Sache
+
+pro: überwiegend sprach P. P ist bekannter Politiker, sodass alte Tonbänder durch Aufnahme erheblich an Wert gewannen, damit neue Sache.
+
+contra: keine weitergehende Funktion des Tonbandes und keine Wesensänderung durch Aufnahme der Stimme. Schon nach allgemeinen Sprachgebrauch keine „neue Sache“.
+
+c) Ergebnis zu 3. (-) (a.A. vertretbar)
+
+4. Eigentumserwerb der F durch Universalsukzession gem. § 1922 BGB (-)
+
+hier: P nicht Eigentümer geworden. Tonbänder gehören daher nicht zum Erbnachlass.
+
+III. Endergebnis (-)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Herausgabeanspruch aus §§ 667, 1922
+F könnte gegen A einen vertraglichen Herausgabeanspruch aus § 662 BGB haben.
+
+Dafür müsste zwischen A und P ein Auftragsverhältnis bestanden haben, in das F als Alleinerbin (Universalsukzession nach § 1922 BGB) eingetreten ist.
+
+I. Auftragsverhältnis gem. § 662 BGB
+Zwischen A und P müsste ein Auftrag vorliegen. Ausweislich des Sachverhalts vereinbarten A und P für ein mögliches Buchprojekt vorher ein paar Interviews zu führen. Dies sollte der A unentgeltlich tun. Insoweit stellt sich die Abgrenzungsfrage zu anderen Vertragstypen. Zwar könnte hier an einen Dienstvertrag nach § 611 BGB gedacht werden, da hier kein Erfolg geschuldet ist, allerdings scheidet dies wegen der vereinbarten Unentgeltlichkeit aus.
+
+Auch ist problematisch, ob nicht vielmehr ein Gefälligkeitsverhältnis vorliegt.
+
+Die Abgrenzung erfolgt anhand des Rechtsbindungswillens und ist nach §§ 157, 133 BGB auszulegen.
+
+Zwar stellt der Rechtsbindungswille eine subjektive Komponente des Erklärenden dar, jedoch ist der Rechtsbindungswille als äußerer Tatbestand einer Willenserklärung regelmäßig am objektiven Beobachterhorizont zu beurteilen.
+
+Maßgeblich kann dabei das wirtschaftliche Interesse aller Beteiligten sein. Je höher das wirtschaftliche Interesse an dem Verhältnis ist, desto eher kann von einem Rechtsbindungswillen ausgegangen werden.
+
+Für den Rechtsbindungswillen spricht hier, dass der P als bedeutender Politiker private Interviews von erheblichem wirtschaftlichem Wert gibt, die in einer zukünftigen Buchreihe eingearbeitet werden sollen. Daher ist hier vielmehr von einem rechtlich bindenden Auftragsverhältnis auszugehen.
+
+II. Erlöschen des Auftrages durch Tod
+Der Auftrag könnte durch den Tod des P erloschen sein. Dagegen spricht allerdings der § 672 BGB, wonach durch den Tod des Geschäftsführers das Auftragsverhältnis im Zweifel nicht erlischt.
+
+III. Erlöschen durch Widerruf; Kündigung
+Für einen Widerruf oder eine Kündigung nach § 671 BGB sind keine Sachverhaltsangaben ersichtlich. Würde man das Herausgabeverlangen der F als Kündigung auslegen, so ergäben sich in Hinblick auf den Herausgabeanspruch allerdings keine Unterschiede.
+
+IV. Ergebnis
+Damit liegt ein Auftragsverhältnis zwischen der F und dem A nach § 662 BGB vor. A muss der F das aus dem Auftrag erlangte (die Tonbänder) herausgeben gem. §§ 667,1922 BGB.
+
+B. Herausgabeanspruch aus § 985 BGB
+F könnte gegen A einen Herausgabeanspruch aus § 985 BGB haben. Dafür müsste F Eigentümerin und A Besitzer ohne Besitzrecht sein.
+
+I. Besitz des A
+Ausweislich des Sachverhalts ist A unmittelbarer Besitzer der Tonbänder.
+
+II. Eigentum der F
+F müsste Eigentümerin sein.
+
+1. Ursprüngliches Eigentum des A
+Ursprünglicher Eigentümer der Tonbänder war A.
+
+2. Eigentumserwerb des P gem. § 929 S.1 BGB
+P könnte rechtsgeschäftlich Eigentum erlangt haben gem. § 929 S. 1 BGB.
+
+Dafür müsste jedoch eine Einigung über den Eigentumsübergang vorliegen. Hier ist nicht ersichtlich, dass der A dem P das Eigentum an den Tonbändern übertragen wollte.
+
+3. Eigentumserwerb des P gem. § 950 I BGB
+P könnte das Eigentum jedoch rechtsgeschäftlich nach § 950 I BGB erlangt haben. Dafür müsste eine Verarbeitung oder Umbildung und die Herstellung einer neuen beweglichen Sache vorliegen. Der Wert der Verarbeitung oder der Umbildung dürfte auch nicht erheblich geringer als der Wert des Stoffes sein.
+
+a) Verarbeitung oder Umbildung o. ähnliche Bearbeitung
+Hier könnte eine Verarbeitung oder Umbildung vorliegen. Ausweislich des Sachverhalts wurden die Magnetstreifen der Tonbänder durch die Aufnahme physikalisch verändert. Dies stellt zumindest eine ähnliche Bearbeitung i.S.d. § 950 I BGB dar.
+
+b) Herstellen einer neuen beweglichen Sache
+Fraglich ist jedoch, ob auch eine neue bewegliche Sache hergestellt wurde. Dies erscheint problematisch. Ob eine neue Sache hergestellt wurde ist nach der objektiven Verkehrsanschauung zu beurteilen.
+
+Für die Herstellung einer neuen beweglichen Sache spricht, dass der P ein sehr bekannter Landespolitiker ist. Durch die Aufnahme der Stimme des P haben die alten, an sich wertlosen Tonbänder, erheblich an Wert gewonnen. Auch hat überwiegend nur P gesprochen. As Stimme ist nur in Form von kurzen Frageunterbrechungen aufgezeichnet worden
+
+Gegen die Herstellung einer neuen Sache spricht allerdings, dass durch die Aufnahme keine weitergehende Funktion des Tonbandes und keine Wesensänderung eingetreten ist. Das Tonband kann weiterhin gelöscht werden oder es kann weitere Aufnahmen aufzeichnen.
+
+Auch der allgemeine Sprachgebrauch der „neuen Sache“ spricht nach der objektiven Verkehrsanschauung dafür keine neue Sache anzunehmen. Danach verlangt der Begriff vielmehr, dass eine dem Begriff entsprechende neue Eigenschaft der Sache vorliegt.
+
+c) Ergebnis 
+Damit wurde keine neue bewegliche Sache hergestellt (a.A. vertretbar). P ist kein Eigentümer geworden.
+
+4. Eigentumserwerb der F durch Universalsukzession gem. § 1922 BGB (-)
+F ist ebenfalls nicht Eigentümerin nach § 1922 BGB geworden. Der P hatte kein Eigentum an den Tonbändern, sodass diese nicht zum Erbnachlass gehörten.
+
+III. Endergebnis
+Damit hat F keinen Herausgabeanspruch gegen A nach § 985 BGB.

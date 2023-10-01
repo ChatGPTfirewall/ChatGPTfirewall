@@ -1,0 +1,89 @@
+Sachverhalt
+Auf der Autobahn kommt es zu einem Autounfall, den der A verursacht hat. In Folge dieses Unfalls überschlug sich ein Geldtransporter mehrfach und kam schließlich in einem Straßengraben zum Stehen. Daraufhin wurde der Geldtransporter zu einem nahe gelegenen Abstellhof der Polizeiwache gebracht und wurde dort rund um die Uhr bewacht. Am nächsten Tag wurde bei der Überprüfung der Ladung entdeckt, dass zwei Geldkoffer fehlten, in denen Bargeld in Höhe von 250.000 Euro deponiert war. Die Ermittlungen ergaben, dass die Täter das Geld kurz nach dem Unfall entwendet haben müssen, da der Transporter auf dem Abstellhof gut überwacht wurde.
+Das Geldtransporterunternehmen U verlangt die Summe i.H.v 250.000 Euro von dem A.
+Lösungsskizze
+
+A. Anspruch aus § 823 I BGB
+
+I. Rechtsgutsverletzung
+
+Eigentum 
+
+II. Verletzungshandlung 
+
+III. Haftungsbegründende Kausalität
+
+(P) mittelbare Verursachung
+
+IV. Rechtswidrigkeit
+
+V. Verschulden
+
+VI. Schaden
+
+VII. Haftungsausfüllende Kausalität
+
+B. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch des U gegen A aus § 823 I BGB
+
+Fraglich ist, ob U einen Anspruch aus § 823 I BGB hat. Dafür müssten die Voraussetzungen vorliegen.
+
+I. Rechtsgutsverletzung
+
+Zunächst müsste ein von § 823 I geschütztes Rechtsgut verletzt worden sein.
+
+In Betracht kommen das Eigentum und der berechtigte Besitz des U an den Geldkoffern und den darin enthaltenen Geldscheinen. Aus dem Sachverhalt lässt sich nicht entnehmen, ob U Eigentümer der Geldscheine war. Zumindest war U jedoch berechtigter Besitzer der Geldkoffer und der Geldscheine, sodass zumindest ein sonstiges Recht i.S.d § 823 I BGB in Form des berechtigten Besitzes vorliegt. Durch die Entwendung wurde dieses Recht auch entzogen und somit verletzt.
+
+II. Verletzungshandlung
+
+A hat hier einen Verkehrsunfall verursacht und durch positives Tun das Rechtsgut verletzt.
+
+III. Haftungsbegründende Kausalität
+
+Fraglich ist jedoch, ob auch die haftungsbegründende Kausalität vorliegt.
+
+Es müsste die Kausalität zwischen der Verletzungshandlung und dem Verletzungserfolg vorliegen.
+
+Nach der Äqivalenztheorie war der Autounfall ursächlich dafür, dass der Geldtransporter sich überschlagen hat und nach dem Unfall aus diesem Geld entwendet wurde. Nach der Adäquanztheorie dürfte dies auch nicht außerhalb jeglicher Lebenserfahrung liegen. Es ist jedoch nicht außerhalb jeglicher Lebenserfahrung, dass Dritte einen Unfall dahingehend ausnutzen, um leicht zu erbeutendes Geld zu stehlen.
+
+Problematisch ist allerdings, ob diese Handlung auch vom Schutzzweck der Norm erfasst werden soll, um die haftungsbegründende Kausalität zu begründen.
+
+Die Kausalität könnte nämlich durch das Hinzutreten Dritter durchbrochen worden sein.
+
+Daher ist zu fragen, welches Risiko sich durch die Entwendung der Geldkoffer realisiert hat.
+
+Man könnte zunächst vertreten, dass die Herbeiführung des Verkehrsunfalls nicht zu der Entwendung der Geldkoffer geführt hat und damit ein Zurechnungszusammenhang zu verneinen ist. Vielmehr waren es unbekannte Dritte, die den Geldtransporter fanden und daraufhin in noch unerklärtem Aufwand die Geldkoffer entwendet haben, sodass sich nur ein zufälliger Zusammenhang zwischen dem Ersteingriff und dem Zweiteingriff begründen ließe.
+
+Dagegen spricht jedoch, dass die vorliegende Fallgestaltung vielmehr nahe legt, dass gerade die typische Unfallsituation und die Überschlagung des Geldtransporters dazu führten, dass der unbemannte Geldtransporter als leichtes Ziel für den Zweiteingriff wurde. Dafür spricht auch, dass die Täter das Geld wohl kurz nach dem Unfallereignis entwendet haben, da der Transporter auf dem Abschlepphof dauernd überwacht wurde. Gegen die erste Ansicht spricht weiterhin, dass sie den Zurechnungszusammenhang viel zu eng auslegt. Etwas anderes würde nur gelten, wenn ein völlig unerwartetes Ereignis vorliegen würde, was hier jedoch abzulehnen ist (s.o.).
+
+Wegen der hinzutretenden zeitlichen Komponente und der weiteren Besonderheiten des Tatgeschehens rechtfertigt es daher die Annahme, dass sich der A durch seine mittelbare Verursachung auch den Diebstahl an den Geldkoffern zurechnen lassen muss.
+
+Die Handlung ist somit von dem Schutzzweck der Norm erfasst.
+
+VI. Rechtswidrigkeit
+
+Es müsste auch die Rechtswidrigkeit vorliegen. Nach der Lehre vom Erfolgsunrecht wird die Rechtswidrigkeit durch die Tatbestandsmäßigkeit indiziert. Damit liegt die Rechtswidrigkeit vor.
+
+V. Verschulden
+
+Den A müsste auch ein Verschulden treffen nach § 276 BGB. Hier handelte A zumindest fahrlässig und handelte somit schuldhaft.
+
+VI. Schaden
+
+Es müsste auch ein ersatzfähiger Schaden vorliegen. Hier ist dem U ein Schaden in Höhe von 250.000 Euro entstanden. Dieser ist auch ersatzfähig nach § 251 I BGB.
+
+VII. Haftungsausfüllende Kausalität
+
+Es liegt auch Kausalität zwischen der Rechtsgutsverletzung und dem Schaden vor.
+
+B. Ergebnis
+
+Damit hat U gegen A einen Schadensersatzanspruch gem. § 823 I BGB i.H.v 250.000 Euro.
+
+[Anmerkung: In der Originalentscheidung war die Haftpflichtversicherung des A die Beklagte]
+
+

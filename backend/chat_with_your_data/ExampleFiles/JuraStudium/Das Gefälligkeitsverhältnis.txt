@@ -1,0 +1,87 @@
+Sachverhalt
+T ist Mitglied in der Mädchen-Fußballmannschaft des Vereins V-  e.V. Da am nächsten Wochenende ein Turnier stattfindet, aber der Vater die T ausnahmsweise nicht fahren kann, bittet der Vater nunmehr die Oma O die T doch bitte zum Turnier zu fahren. Auch die Trainerin der E bittet O nochmals sie zum Treffpunkt und anschließend zum Turnier zu fahren. Es war auch in der Vergangenheit üblich, dass die Kinder privat zu den Spielen gefahren wurden. Auch O hat schon regelmäßig Kinder zu den Spielen gefahren, ohne etwas dafür zu bekommen. O ist einverstanden.
+Hätte O die T nicht fahren können, hätte man die Fahrt mit übrigen Vereinsmitgliedern oder Familien umorganisiert.
+
+  Am Tag des Turniers fahren T und O pünktlich los. Auf dem Weg verunfallt die O jedoch unglücklich und zieht sich schwere Verletzungen am Knie zu. O verlangt nunmehr Ersatz für die Behandlungskosten i.H.v 3000 € von dem Verein V- e.V.
+V ist nicht bereit zu zahlen. O sei nur privat tätig geworden und nicht für den Verein.
+
+Hat die O gegen V einen Anspruch auf Ersatz der Behandlungskosten?
+Lösungsskizze 
+
+A. Anspruch aus § 670 BGB
+
+I. Auftrag zwischen O und V
+
+(P) Rechtsbindungswille
+(P) Abgrenzung
+
+a.A. mit Argumenten vertretbar
+wenn (+) dann (P) § 670 BGB analog
+ 
+
+B. Anspruch aus § 280 I i.V,m. VSD (-)
+
+  C. Anspruch aus §§ 670, 677, 683 BGB
+
+I. Geschäft
+II. Eines anderen ( fremd)
+III. Fremdgeschäftsführungswille
+
+(P) drohender Wertungswiderspruch
+e.A. „Geschäft“ wird eng ausgelegt
+a.A. „Fremdgeschäftsführungswille“ wird eng ausgelegt
+à Zumindest selbes Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch aus § 670 BGB
+O könnte gegen V einen Anspruch aus § 670 BGB haben.
+
+  I. Auftrag zwischen V und O
+Dafür müsste ein Auftrag zwischen V und O bestehen.
+Dafür müssten zwei korrespondierende Willenserklärungen bzgl. eines Auftragsverhältnisses vorliegen.
+Fraglich ist hier jedoch das Vorliegen eines Rechtsbindungswillens bzgl. eines Auftrages.
+Es stellt sich somit die Frage, inwieweit die Abgrenzung zwischen einem rechtlich verbindlichen Vertrag und einem reinen Gefälligkeitsverhältnis erfolgt.
+Zwar stellt der Rechtsbindungswille eine subjektive Komponente des Erklärenden dar, jedoch ist der Rechtsbindungswille als äußerer Tatbestand einer Willenserklärung regelmäßig am objektiven Beobachterhorizont zu beurteilen.
+Maßgeblich kann dabei das wirtschaftliche Interesse aller Beteiligten sein. Je höher das wirtschaftliche Interesse an dem Verhältnis ist, desto eher kann von einem Rechtsbindungswillen ausgegangen werden.
+Ausweislich des Sachverhalts sollte die O die T zu einer Sportveranstaltung fahren. Für einen möglichen Rechtsbindungswillen kann hier sprechen, dass nicht nur der Vater der T die O um die Fahrt bat, sondern auch die Trainerin des Vereins persönlich.
+Dagegen spricht jedoch, dass in der Regel die Kinder immer privat zu den Veranstaltungen gefahren werden. Auch O hat dies unentgeltlich in der Vergangenheit mehrmals übernommen. Zudem besteht hier noch zusätzlich ein enges familiäres Verhältnis zwischen O und T. Hätte O die T nicht fahren können, wäre die Fahrt alternativ anders privat organisiert worden.
+Für einen objektiven Beobachter stellt sich daher ein üblicher Ablauf einer reinen Gefälligkeit dar. Es lässt sich aus dem Verhalten der Beteiligten nicht deuten, dass dadurch gerichtlich durchsetzbare Pflichten begründet werden sollten.
+Somit ist ein Rechtsbindungswille abzulehnen.
+
+  [Exkurs: Bearbeiter, die einen Rechtsbindungswillen annehmen, müssen konsequenterweise auch das Problem des Schadens in § 670 BGB ansprechen. Nach h.M. ist dieser nach § 670 BGB analog ersatzfähig. Abgestellt wird dabei überwiegend auf den Gedanken aus § 110 HGB. Eine andere Ansicht erweitert den Aufwendungsbegriff unmittelbar aus § 670. Es ist auch möglich an den Grundsatz von Treu und Glauben anzuknüpfen]
+
+  II. Ergebnis
+O hat gegen V keinen Anspruch aus § 670 BGB.
+
+  B. Anspruch aus § 280 I i.V,m. VSD
+O könnte gegen V einen Schadensersatzanspruch aus § 280 I i.V.m dem Vertrag mit Schutzwirkung zu Gunsten Dritter haben.
+Das Schuldverhältnis zwischen T und dem Verein (Mitgliedschaftsvertrag o.ä.) könnte Schutzwirkung gegenüber O haben. Der Anspruch scheitert hier jedoch an einer fehlenden Pflichtverletzung des V.
+
+  C. Anspruch aus §§ 670, 677, 683 BGB
+O könnte gegen V einen Aufwendungsersatzanspruch aus den §§ 670, 677, 683 BGB haben.
+Dafür müsste ein fremdes Geschäft mit Fremdgeschäftsführungswillen und ohne Auftrag vorliegen. O müsste auch im Interesse und mit Rücksicht auf den mutmaßlichen Willen des V gehandelt haben.
+
+  I. Geschäft
+Es müsste zunächst ein Geschäft vorliegen. Der Begriff des Geschäfts wird sehr weit verstanden. Hier fällt jedes tatsächliches Verhalten darunter. Ausweislich des Sachverhalts hat O die T zum Fußballspiel gefahren, sodass ein Geschäft vorliegt.
+
+  II. Für einen anderen (fremd)
+Das Geschäft müsste auch fremd gewesen sein. Dies ist regelmäßig der Fall, wenn der Geschäftsführer das Geschäft für einen anderen tätigt. Hier hat O die T für den Verein zum Fußballspiel gefahren. Somit war das Geschäft objektiv fremd.
+
+  III. Fremdgeschäftsführungswille
+Es müsste auch der Fremdgeschäftsführungswille vorliegen. Beim objektiv- fremden Geschäft wird der Fremdgeschäftsführungswille regelmäßig vermutet.
+
+  IV. Wertungswiderspruch
+Fraglich ist jedoch, ob hier aus Wertungsgesichtspunkten nicht ein anderes Ergebnis vorliegen muss.
+Es droht nämlich die Wertung des Gefälligkeitsverhältnisses ohne Rechtsbindungswillen über die Vorschriften der GoA auszuhöhlen.
+Beim Gefälligkeitsverhältnis wird, wie bereits erwähnt, der objektive Verkehrshorizont unter Berücksichtigung der Umstände des Einzelfalls berücksichtigt. Konsequenterweise muss dieser Umstand somit auch in der GoA Berücksichtigung finden. Auch hier ist insoweit die Interessenlage der Parteien objektiv zu bestimmen und zu bewerten. (s.o).
+Reine Gefälligkeiten können somit nicht den Tatbestand der §§ 677 ff. BGB erfüllen.
+
+  Fraglich ist jedoch, wie der Wertungswiderspruch zu lösen ist.
+Nach einer Ansicht kann man das Tatbestandsmerkmal des „Geschäfts“ eng auslegen, sodass die reine Gefälligkeit ohne Rechtsbindungswillen nicht darunter zu fassen ist. Damit läge hier kein Geschäft vor.
+Nach einer anderen Ansicht wird der Fremdgeschäftsführungswille eng ausgelegt, sodass hier kein Fremdgeschäftsführungswille gegeben wäre.
+Da der Streit zum selben Ergebnis führt, muss er nicht entschieden werden.
+
+  V. Ergebnis
+O hat gegen V keinen Anspruch aus §§ 670, 677, 683 BGB. 

@@ -1,0 +1,83 @@
+Sachverhalt
+
+Da der 12 Jährige Fritz das gesundheitsbewusste Essen zuhause nicht mehr erträgt, hat er beschlossen seinem Vater 10 Euro zu entwenden, um damit ein Stück Torte zu kaufen.
+
+Fritz kauft sich daher beim Konditor K, ohne Zustimmung seiner Eltern, ein großes Stück Schwarzwälder- Kirsch Torte. Dieses hat er bereits vor Ort verspeist. Die Eltern erfahren davon später, als sie die Schokoladenflecken auf seinem T-Shirt entdecken: Sie verlangen von K den Kaufpreis für die Torte zurück. K entgegnet, dass er dann Ersatz für das Stück Torte wolle.
+
+Hat der F einen Anspruch auf die Rückerstattung des Kaufpreises?
+Lösungsskizze
+
+Anspruch des F gegen K auf Herausgabe des Kaufpreises gem. § 812 I 1 1.Alt. BGB
+
+I. Etwas erlangt
+
+II. Durch Leistung
+
+III. Ohne Rechtsgrund
+
+IV. Rechtsfolge, § 818 I BGB
+
+(P) Entreicherung des F gem. § 818 III BGB
+
+1. Zweikondiktionenlehre
+
+2. Saldotheorie
+
+3. Streitentscheid
+
+(P) Saldotheorie und Wertung der §§ 106 ff. BGB
+
+4. Ausnahme von der Saldotheorie aus Wertungsgesichtspunkten
+
+V. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+Anspruch des F gegen K auf Herausgabe des Kaufpreises gem. § 812 I 1 1.Alt. BGB
+
+F könnte gegen K einen Herausgabeanspruch aus Leistungskondiktion gem. § 812 I 1 1.Alt. BGB haben. Dafür müsste K etwas durch Leistung des F ohne Rechtsgrund erlangt haben.
+
+I. Etwas erlangt
+K müsste etwas erlangt haben. Dies kann jeder vermögenswerte Vorteil sein. Hier könnte K Eigentum und Besitz an dem Geldschein erlangt haben nach §§ 929 S.1, 932 I BGB.
+
+Eine Einigung lag vor. Diese konnte der minderjährige F auch abgeben, da sie lediglich rechtlich vorteilhaft ist. Der Geldschein gehörte dem Vater des F (neutrales Geschäft). K war auch gutgläubig im Hinblick auf die Eigentümerstellung des F. Das Abhandenkommen schadet auch nicht, da die Vorschrift des § 935 I BGB gem. § 935 II BGB auf Geld keine Anwendung findet. Damit hat K Eigentum und Besitz an dem Geldschein erlangt.
+
+II. Durch Leistung
+Diesen müsste er durch Leistung erlangt haben. Leistung ist jede bewusste und zweckgerichtete Mehrung fremden Vermögens. Sie bestimmt sich durch den objektiven Empfängerhorizont. Hier wollte F wegen einer vermeintlichen Verpflichtung aus dem Kaufvertrag nach § 433 I BGB das Vermögen des K mehren. Damit liegt eine Leistung vor.
+
+III. Ohne Rechtsgrund
+Es dürfte auch kein Rechtsgrund bestehen. In Betracht könnte ein Kaufvertrag nach § 433 I BGB kommen. Dieser müsste jedoch wirksam zustande gekommen sein. Hier ist problematisch, dass der F in seiner Geschäftsfähigkeit beschränkt ist gem. § 106 BGB. Der Kaufvertrag ist als Verpflichtungsgeschäft nicht lediglich rechtlich vorteilhaft, da er den F dazu verpflichtet den Kaufpreis zu zahlen. Damit bedurfte er der Zustimmung seiner Eltern nach § 107 BGB. Hier haben die Eltern weder in das Rechtgeschäft eingewilligt, noch genehmigt, sodass der Kaufvertrag gem. § 108 I BGB endgültig unwirksam ist.
+
+Damit liegt kein Rechtsgrund vor.
+
+IV. Rechtsfolge, § 818 I BGB
+Fraglich ist, welche Rechtsfolge eintritt. F könnte von K grds. den Geldschein herausverlangen gem. § 818 I BGB. Es ist jedoch davon auszugehen, dass sich der Geldschein mit dem Kassenbestand vermengt hat, § 947 I BGB. F könnte daher Wertersatz nach § 818 II BGB verlangen.
+
+Problematisch ist hier allerdings, dass F im Gegenzug das Stück Torte schon aufgegessen hat. Damit ist F nach § 818 III BGB entreichert, sodass grds. bei F kein Vermögenswert mehr verbleibt, der abgeschöpft werden kann.
+
+Es muss jedoch berücksichtigt werden, dass mit dem Kaufvertrag hier ein synallagmatischer (gegenseitiger) Vertrag vorliegt.
+
+Fraglich ist daher, wie der zwischenzeitlich eingetretene Minderwert der Leistung im Bereicherungsausgleich zu berücksichtigen ist. Dies ist umstritten.
+
+1. Zweikondiktionenlehre
+Nach der Zweikondiktionenlehre stehen sich beide Ansprüche unabhängig voneinander gegenüber. Es findet demnach keine Aufrechnung der beiden Positionen statt. Danach kann F hier Wertersatz bzgl. des Geldscheins verlangen. K geht wegen der Entreicherung des F hingegen leer aus.
+
+2. Saldotheorie
+Nach der Saldotheorie werden die beiden bereicherungsrechtlichen Ansprüche miteinander saldiert. Es tritt eine Art Aufrechnung kraft Gesetzes ein. Es verbleibt damit letztlich nur ein einziger bereicherungsrechtlicher Anspruch. Der Wert des eigenen Vermögensverlustes wird somit zum Abzugsposten des eigenen Bereicherungsanspruchs. Damit müsste sich der F hier den Wertverlust des K anrechnen lassen, sodass er im Ergebnis keinen Wertersatzanspruch hätte.
+
+3. Streitentscheid
+Gegen die Zweikondiktionenlehre spricht insbesondere das unbillige Ergebnis, dass sich der Inhaber einer Sachforderung immer der Entreicherung entgegengesetzt sehen muss, wobei der Inhaber einer Geldforderung dies wegen dem Grundsatz „Geld hat man zu haben“ nicht tun kann.
+
+Für die Saldotheorie spricht, dass dadurch das Synallagma des Verpflichtungsgeschäfts auf die bereicherungsrechtliche Ebene übertragen werden kann, sodass ein wertungsgerechtes Ergebnis erlangt wird.
+
+Damit ist die Saldotheorie grds. vorzugswürdig.
+
+4. Ausnahme von der Saldotheorie aus Wertungsgesichtspunkten
+Fraglich ist jedoch, ob hier aus Wertungsgesichtspunkten etwas anderes gelten muss. Da die Saldotheorie selbst eine Ausnahme zum Gesetzestext darstellt, kann sie freilich nicht uneingeschränkt zur Geltung kommen, wenn höhere Wertungen des BGB diese überlagern. Vorliegend wurde bis jetzt nämlich nicht berücksichtigt, dass F minderjährig ist. Hier müssen somit die Wertungen der §§ 106 ff. BGB Berücksichtigung finden. Insofern kollidiert an dieser Stelle das Synallagma mit dem Minderjährigenschutz. Da der Minderjährigenschutz einen besonders hohen Stellenwert genießt und F sich bei der Anwendung der Saldotheorie einem „vertragsähnlichem Gefüge“ ausgesetzt sähe, ist der Minderjährigenschutz hier vorrangig.
+
+Daher ist die Saldotheorie nicht bei Minderjährigen anwendbar.
+
+V. Ergebnis
+
+Damit hat F gegen K einen Herausgabeanspruch aus § 812 I 1 1.Alt. BGB.

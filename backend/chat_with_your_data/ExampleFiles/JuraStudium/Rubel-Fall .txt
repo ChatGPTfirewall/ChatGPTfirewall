@@ -1,0 +1,162 @@
+
+
+Sachverhalt
+
+K hielt sich 1920 in Moskau auf. Dort streckte er dem Kriegsgefangenen B 30.000 Rubel vor, die dieser zur Heimreise benötigte. K und B vereinbarten, dass B nach seiner Heimkehr K das Geld in deutscher Währung zurückzahlen sollte. Beide gingen davon aus, dass der Gegenwert eines Rubels 25 Pfennig waren. Sie vereinbarten deshalb eine Rückzahlung des B von RM (Reichsmark) 7.500.- In Wahrheit war der Rubel aber nur 1 Pfennig wert.
+
+Nach der Rückkehr des B verlangt K 7.500.- RM. B ficht den Vertrag an mit der Begründung, er habe sich über den wahren Wert des Rubel getäuscht.
+
+Hat K gegen B einen Zahlungsanspruch i.H.v. 7.500 RM?
+Die Fallhistorie
+
+Den Rubel-Fall hat das Reichsgericht am 30. November 1922 entschieden. Das Reichsgericht hat sich hier mit der Frage beschäftigt, ob der sog. „offene Kalkulationsirrtum“ zu einer Anfechtung berechtigt.
+Der Problemkreis
+
+BGB AT/ Anfechtung/ offener Kalkulationsirrtum
+3rd ARQIS Innovation Day
+Lösungsskizze
+
+Anspruch aus § 488 I BGB (nach alter Fassung § 607 I BGB)
+
+I. Anspruch entstanden
+
+1. Darlehensvertrag gem. § 488 I BGB
+
+Angebot und Annahme (+)
+
+(P) Inhaltliche Abweichung
+
+a) e.A. (RG): Darlehensvertrag zustande gekommen, Möglichkeit der Anfechtung besteht
+
+b) a.A.: hier falsa demonstratio bzgl. Umtauschkurs von 25 Pfennig, da Parteien beide vom wahren Umtauschkurs ausgingen. Dieser Wille ist vielmehr entscheidend. Vertrag nur bzgl. 300 RM zustande gekommen
+
+c) Streitentscheid (+) (a.A. sehr gut vertretbar)
+
+II. Anspruch untergegangen
+
+1. Anfechtung gem. § 142 I BGB
+
+a) Anfechtungserklärung gem. § 143 I BGB (+)
+
+b) Anfechtungsgrund nach § 119 I 1. Alt. BGB
+
+(P) offener Kalkulationsirrtum
+
+aa) RG: offener Kalkulationsirrtum ist ein erweiterter Inhaltsirrtum
+
+Pro: Fehlkalkulation ist Teil der Erklärung selbst. Diese wurde auch nach außen verlautbart.
+
+bb) BGH tendiert heute: offener Kalkulationsirrtum ist nur unbeachtlicher Motivirrtum
+
+Pro: Kalkulation ist Sache des Darlehensnehmer. Vielmehr Fehler in der Willensbildung. Geschützt wird aber nur Irrtum bei der Willensäußerung.
+
+cc) Streitentscheid (-)
+
+unbeachtlicher Motivirrtum
+
+2. Störung der Geschäftsgrundlage gem. § 313 I BGB
+
+a) Vertragliches Schuldverhältnis (+)
+
+b) Geschäftsgrundlage
+
+Geschäftsgrundlage im Sinne von § 313 BGB sind Umstände, die zur Grundlage des entsprechenden Vertrages geworden sind (reales Element, hypothetisches Element, normatives Element).
+
+reales Element (P)
+
+Nachträgliche Änderung vertragswesentlicher objektiver Umstände.
+
+Hier: keine „nachträgliche Änderung“. Wechselkurs des Rubel war schon zum Zeitpunkt des Vertragsschlusses 1 Pfennig.
+
+Überdies hypothetisches Element (-)
+
+c) Ergebnis (-) (a.A. vertretbar)
+
+Keine Störung der Geschäftsgrundlage
+
+3. Zwischenergebnis (-)
+
+Anspruch ist nicht untergegangen
+
+III. Endergebnis (+)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+Anspruch aus § 488 I BGB (nach alter Fassung § 607 I BGB)
+K könnte gegen B einen Zahlungsanspruch aus dem Darlehensvertrag haben gem. § 488 I BGB.
+
+I. Anspruch entstanden
+Der Anspruch müsste entstanden sein.
+
+1. Darlehensvertrag gem. § 488 I BGB
+Ausweislich des Sachverhalts liegen zwei korrespondierende Willenserklärungen (Antrag und Annahme) vor.
+Problematisch ist allerdings, dass die Willenserklärungen des K und des B inhaltlich insoweit abweichen, als dass die Parteien bei Vertragsschluss davon ausgingen, dass der Wechselkurs des Rubels bei 25 Pfennig liegt, obwohl der wirkliche Wechselkurs 1 Pfennig beträgt.
+
+Fraglich ist daher, ob der Vertrag trotz inhaltlicher Abweichung zustande gekommen ist. Dies ist umstritten.
+
+a) e.A. Vertrag ist über 7.500 RM zustande gekommen
+Nach einer Ansicht schadet die inhaltliche Abweichung nicht und der Vertrag kommt zustande. Es bleibe die Möglichkeit der Anfechtung.
+
+b) a.A. Vertrag ist über 300 RM zustande gekommen
+Eine andere Ansicht vertritt, dass hier bzgl. des Wechselkurses von 25 Pfennig eine falsa demonstratio vorliegt, da beide Vertragspartner dachten, dass dies der richtige Wechselkurs sei. Entsprechend war der Wille der Vertragsparteien nach Auslegung ( §§133, 157 BGB) auf den wahren Wechselkurs von 1 Pfennig gerichtet, sodass nach dieser Ansicht ein Vertragsschluss bzgl. 300 RM zustande gekommen ist.
+
+c) Streitentscheid
+Da die Ansichten zu verschiedenen Ergebnissen führen, ist der Streitentscheid zu entscheiden.
+Für die zweite Ansicht spricht der Vorrang der Auslegung vor der Möglichkeit einer Anfechtung. K und B gingen beide fälschlicherweise von einem höheren Wechselkurs aus, wollten aber in Wirklichkeit, dass das Darlehen nach dem wahren objektiven Wechselkurs zurückgezahlt wird.
+Dagegen spricht jedoch, dass der K hier viel schlechter dastehen würde, da er subjektiv von einem Wechselkurs i.H.v. 25 Pfennig ausging. Die Willenserklärungen der Parteien könnten daher nach §§ 133, 157 BGB genauso dahingehend ausgelegt werden, dass der Darlehensvertrag nur über den Wechselkurs i.H.v. 25 Pfennig zustande kommen soll. Daher ist dieser Meinung der Vorzug zu geben, sodass ein Darlehensvertrag über die Summe von 7.500 RM geschlossen wurde.
+[Anmerkung: Die mittlerweile h.L. tendiert eher dazu eine falsa demonstratio anzunehmen. Hier wird jedoch allein schon aus didaktischen Gründen der Meinung des RG gefolgt, um das Problem der Anfechtung noch anzusprechen.]
+
+II. Anspruch untergegangen
+Der Anspruch könnte jedoch untergegangen sein.
+
+1. Anfechtung gem. § 142 I BGB
+Der Anspruch könnte zunächst durch eine Anfechtung ex tunc gem. § 142 I BGB untergegangen sein.
+
+a) Anfechtungserklärung gem. § 143 I BGB
+Eine Anfechtungserklärung gem. § 143 I BGB liegt ausweislich des Sachverhalts vor.
+
+b) Anfechtungsgrund nach § 119 I 1. Alt. BGB
+Fraglich ist, ob auch ein Anfechtungsgrund vorliegt. In Betracht kommt ein Inhaltsirrtum nach § 119 I 1. Alt. BGB. Ein Inhaltsirrtum (oder auch Irrtum über den Erklärungsinhalt) liegt vor, wenn zwar der äußere Tatbestand der Erklärung (also die Erklärung an sich) mit dem inneren Willen des Erklärenden übereinstimmt, der Erklärende also genau das Erklärungszeichen benutzt, dessen er sich bedienen möchte, aber dabei über dessen Bedeutung oder Tragweite irrt.
+
+Hier irrte sich B bzgl. des wahren Wechselkurses des Rubels, in Folge er sich verrechnet hat. Der Wechselkurs war auch ausdrücklich Gegenstand der Vertragsverhandlungen. Somit liegt ein so genannter offener Kalkulationsirrtum vor.
+Problematisch ist allerdings, ob der offene Kalkulationsirrtum einen tauglichen Anfechtungsgrund i.S.d. § 119 I 1. Alt. BGB darstellen kann. Dies ist umstritten.
+
+aa) e.A. (RG): offener Kalkulationsirrtum ist ein Inhaltsirrtum
+Nach einer Ansicht stellt auch der offene Kalkulationsirrtum als Ausformung eines Inhaltsirrtums einen Anfechtungsgrund dar, sodass hier ein Anfechtungsgrund vorliegen würde.
+
+bb) a.A. (BGH heute): offener Kalkulationsirrtum nur unbeachtlicher Motivirrtum
+Die Gegenansicht lehnt einen Anfechtungsgrund ab und vertritt, dass lediglich ein unbeachtlicher Motivirrtum vorliegt. Nach dieser Ansicht wäre ein Anfechtungsgrund des B abzulehnen.
+
+cc) Streitentscheid
+Da beide Ansichten zu verschiedenen Ergebnissen führen, ist der Streit zu entscheiden.
+Für die erste Ansicht spricht, dass die Fehlberechnung des Umtauschkurses Teil der Erklärung selbst geworden ist. Diese Erklärung hat der B auch nach außen verlautbart, sodass sie rechtlich bedeutend wurde.
+Gegen diese Ansicht spricht jedoch, dass das Risiko der Fehlkalkulation vielmehr in die Sphäre des Darlehensnehmers fällt. Der Kalkulationsirrtum entsteht zudem bei der Willensbildung und nicht erst bei der Willensäußerung. Nach dem Sinn und Zweck des § 119 I 1.Alt. BGB soll dieser jedoch Irrtümer bei der Willensäußerung schützen. Aus diesen Gründen ist die zweite Ansicht vorzugswürdig. Der Kalkulationsirrtum ist damit als unbeachtlicher Motivationsirrtum zu qualifizieren.
+Mithin liegen kein Inhaltsirrtum und damit kein Anfechtungsgrund vor. Somit liegen auch die Voraussetzungen der Anfechtung nicht vor.
+
+2. Störung der Geschäftsgrundlage gem. § 313 I BGB
+Der Anspruch könnte jedoch im Wege der Vertragsanpassung oder des Rücktritts wegen Störung der Geschäftsgrundlage nach § 313 I BGB untergegangen sein. Dafür müssten die Voraussetzungen vorliegen.
+
+a) Vertragliches Schuldverhältnis
+Ein vertragliches Schuldverhältnis in Form eines Darlehensvertrages liegt vor (s.o.).
+
+b) Geschäftsgrundlage
+Es müsste auch eine Geschäftsgrundlage vorliegen. Geschäftsgrundlage im Sinne von § 313 BGB sind Umstände, die zur Grundlage des entsprechenden Vertrages geworden sind (reales Element, hypothetisches Element, normatives Element).
+
+Fraglich ist schon, ob das reale Element vorliegt. Dies sind nachträgliche Änderungen vertragswesentlicher objektiver Umstände.
+
+Hier ist jedoch schon fraglich, ob durch den wahren Wechselkurs des Rubels eine „nachträgliche“ Änderung eingetreten ist. Nach dem Wortlaut der Norm könnte man dies so verstehen, dass hier der Wechselkurs bereits von vorneherein nur 1 Pfennig betrug und damit die objektiven Umstände sich nicht „nachträglich“ verändert haben. Somit fehlt es schon am realen Element.
+Überdies ist auch fraglich, ob die andere Partei den Darlehensvertrag mit diesem Wissen geschlossen hätte, sodass auch das hypothetische Element zu verneinen wäre (so etwa der BGH VII ZR 142/94).
+
+(a.A. vertretbar)
+
+c) Ergebnis
+Mangels Vorliegen der Voraussetzungen liegt auch keine Störung der Geschäftsgrundlage vor.
+
+3. Zwischenergebnis
+Damit ist der Anspruch nicht untergegangen.
+
+III. Endergebnis
+Mithin hat K gegen B einen Zahlungsanspruch aus § 488 I BGB i.H.v. 7.500 RM.
+
+(a.A. gut vertretbar s.o.)

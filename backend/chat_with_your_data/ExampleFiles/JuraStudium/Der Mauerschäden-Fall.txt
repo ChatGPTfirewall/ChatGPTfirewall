@@ -1,0 +1,172 @@
+Sachverhalt
+
+K und die Eheleute B waren Eigentümer benachbarter Grundstücke. Die Außenwand des auf dem Grundstück des K errichteten Gebäudes verläuft entlang der gemeinsamen Grundstücksgrenze, ohne diese zu überschreiten. An dieser Wand errichteten die Rechtsvorgänger der B einen Anbau ohne eigene Grenzwand. Nachdem die B das Grundstück im Jahr 1988 erworben hatten, ließen sie den Anbau durch ein Fachunternehmen abreißen, ohne die Bodenplatte zu entfernen. Nach dem Abbruch wies das Gebäude des K in dem Teilbereich der Außenwand, an den angebaut worden war, Putz- und Mauerschäden im Keller auf. Die Putz- und Mauerschäden beruhten nicht auf einem Fehlverhalten des beauftragten Unternehmens, sondern waren aufgrund der baulichen Verbindung der Gebäude eine unvermeidliche Folge des Abrisses. Dies konnte der K weder vorhersehen noch rechtzeitig abwehren.
+
+Kann K Ersatz dieser Mauerschäden von B verlangen?
+Lösungsskizze
+
+A. Schadensersatzanspruch nach § 280 I BGB i.V.m nachbarschaftlichen Gemeinschaftsverhältnis
+
+I. Schuldverhältnis (P)
+
+e.A.: Nachbarschaftliches Gemeinschaftsverhältnis (+)
+
+BGH: Nachbarschaftliches Gemeinschaftsverhältnis (-)
+
+II. Ergebnis (-)
+
+B. Anspruch aus § 14 NachbarG NRW
+
+I. Nachbarwand i.S.d § 7 NachbarG NRW
+
+Hier: vielmehr Grenzwand i.S.d. § 19 NachbarG NRW, damit keine Nachbarwand
+
+II. Ergebnis (-)
+
+C. Anspruch aus § 823 I BGB
+
+I. Rechtsgutsverletzung
+
+Hier Eigentum (+)
+
+II. Verletzungshandlung
+
+(P) Keine unmittelbare Verursachung durch B, aber Abrissunternehmen beauftragt
+
+III. Haftungsbegründende Kausalität
+
+IV. Rechtswidrigkeit
+
+V. Verschulden
+
+VI. Schaden
+
+VII. Haftungsausfüllende Kausalität
+
+VIII. Ergebnis (+)
+
+D. Anspruch aus § 823 II BGB i.V.m. § 922 S. 3 BGB
+
+I. Schutzgesetz (+)
+
+II. Verletzung des Schutzgesetzes
+
+(P) Hauswand keine Grenzanlage i.S.d. § 921 BGB
+
+III. Ergebnis (-)
+
+E. Anspruch aus § 831 I BGB
+
+(P) Verrichtungsgehilfe (-)
+
+F. Anspruch aus § 906 II 2 BGB
+
+(P) Duldungspflicht des K (-)
+
+G. Anspruch aus § 906 II 2 BGB analog
+
+(-), da subsidiär zu § 823 I BGB
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Schadensersatzanspruch nach § 280 I BGB i.V.m nachbarschaftlichen Gemeinschaftsverhältnis
+K könnte gegen B einen vertraglichen Schadensersatzanspruch aus § 280 I BGB haben.
+
+I. Schuldverhältnis
+Fraglich ist jedoch, ob ein Schuldverhältnis i.S.d. § 280 I BGB vorliegt. In Betracht könnte ein nachbarschaftliches Gemeinschaftsverhältnis kommen. Der Gedanke des nachbarschaftlichen Gemeinschaftsverhältnisses beruht auf der besonderen nachbarlichen Nähebeziehung, aus der sich besondere Rücksichtspflichten ergeben können. Umstritten ist, ob dieses Konstrukt so weit geht, dass es schadensersatzrechtliche Ansprüche begründen soll.
+
+Nach einer Ansicht soll das nachbarschaftliche Gemeinschaftsverhältnis soweit gehen, dass auch ein Schuldverhältnis nach § 280 I BGB entstehen soll.
+
+Die Gegenansicht verneint dies und vertritt, dass das nachbarschaftliche Gemeinschaftsverhältnis nur Duldungspflichten begründen soll.
+
+Da die Ansichten zu verschiedenen Ergebnissen führen, ist der Streit zu entscheiden.
+
+Gegen die erste Ansicht spricht, dass das nachbarschaftliche Gemeinschaftsverhältnis auf dem Gedanken des § 242 BGB beruht und als eine Art „ Schicksalsgemeinschaft“ lediglich dafür entwickelt wurde, um dem besonderen Näheverhältnis rechtlich Ausdruck zu verleihen. Diese wurde insbesondere mit Blick auf Duldungspflichten entwickelt.
+
+Eine Ausweitung als Schuldverhältnis i.S.d. § 280 I BGB würde viel zu weit gehen und eine Ausuferung des Schadensersatzrechts bedeuten. Es ist nicht nachzuvollziehen, weshalb ein bloßer (teils unumgänglicher) Umzug in eine Nachbarschaft vertragliche Pflichten begründen soll. Aufgrund dieser Wertung soll das nachbarschaftliche Gemeinschaftsverhältnis daher nur in ganz besonderen Ausnahmefällen ein Schuldverhältnis begründen.
+
+II. Ergebnis
+Damit scheidet ein Schadensersatzanspruch nach § 280 I BGB i.V.m dem nachbarschaftlichen Gemeinschaftsverhältnis aus.
+
+B. Anspruch aus § 14 NachbG NRW
+
+[Anmerkung: Unbekannte Normen sind im Examen äußerst beliebt. Aber mit Blick ins Gesetz kein Grund, um sich zu fürchten.]
+
+K könnte einen Anspruch aus § 14 NachbG NRW haben. Dafür müssten die Voraussetzungen vorliegen.
+
+I. Nachbarwand i.S.d § 7 NachbG NRW
+Es müsste eine Nachbarwand i.S.d. § 7 NachbG NRW vorliegen.
+
+Danach ist eine Nachbarwand die auf der Grenze zweier Grundstücke errichtete Wand, die den auf diesen Grundstücken errichteten oder zu errichtenden baulichen Anlagen als Abschlusswand oder zur Unterstützung oder Aussteifung dient oder dienen soll.
+
+Ausweislich des Sachverhalts liegt die Wand jedoch unmittelbar an der Grenze zum Nachbargrundstück, sodass keine Nachbarwand i.S.d. § 7 NachbG vorliegt. Vielmehr liegt eine Grenzwand i.S.d. § 19 NachbG NRW vor.
+
+II. Ergebnis
+Damit scheidet ein Anspruch aus § 14 NachbG NRW aus.
+
+C. Anspruch aus § 823 I BGB
+K könnte gegen B einen Schadensersatzanspruch aus § 823 I BGB haben.
+
+I. Rechtsgutsverletzung
+Zunächst müsste ein von § 823 I geschütztes Rechtsgut verletzt worden sein. Hier liegt eine Substanzverletzung am Eigentum des K vor.
+
+II. Verletzungshandlung
+Fraglich ist, durch welche Handlung diese Rechtsgutsverletzung eingetreten ist. Problematisch ist nämlich, dass die Abrissarbeiten durch ein Unternehmen durchgeführt wurden.
+
+Die Abrissarbeiten wurden jedoch von B in Auftrag gegeben, sodass diese Beauftragung eine hinreichende Verletzungshandlung darstellt.
+
+III. Haftungsbegründende Kausalität
+Fraglich ist jedoch, ob auch die haftungsbegründende Kausalität vorliegt.
+
+Es müsste die Kausalität zwischen der Verletzungshandlung und dem Verletzungserfolg vorliegen.
+
+Nach der Äqivalenztheorie war die Beauftragung der Abrissarbeiten ursächlich dafür, dass das Eigentum des K in seiner Substanz verletzt wurde. Nach der Adäquanztheorie dürfte dies auch nicht außerhalb jeglicher Lebenserfahrung liegen. Es ist jedoch nicht außerhalb jeglicher Lebenserfahrung, dass durch von Abrissarbeiten Schäden am Hauseigentum entstehen.
+
+Zudem ist diese Verletzungshandlung auch vom Schutzzweck der Norm erfasst, sodass die haftungsbegründende Kausalität zu bejahen ist.
+
+VI. Rechtswidrigkeit
+Es müsste auch die Rechtswidrigkeit vorliegen. Nach der Lehre vom Erfolgsunrecht wird die Rechtswidrigkeit durch die Tatbestandsmäßigkeit indiziert. Es könnte ein Rechtfertigungsgrund nach § 903 BGB in Betracht kommen. Dafür müsste die Wirkung des § 903 BGB soweit gehen, dass er auch Eigentumsverletzungen gestattet. Dies ist jedoch nicht der Fall.
+
+Damit liegt die Rechtswidrigkeit vor.
+
+V. Verschulden
+Die Eheleute B müsste auch ein Verschulden treffen nach § 276 BGB. Hier könnten die Eheleute B zumindest fahrlässig gehandelt haben, wenn sie die im Verkehr erforderliche Sorgfalt nicht beachtet haben. Hier hätten die B, aufgrund der baulichen Verbindung, erkennen können, dass durch einen derartigen Abriss, die dargelegten Mauerschäden entstehen können. Damit ist ein Verschulden in Form von Fahrlässigkeit zu bejahen.
+
+VI. Schaden
+Es müsste auch ein Schaden vorliegen. Ausweislich des Sachverhalts sind hier Putz- und Mauerschäden entstanden.
+
+VII. Haftungsausfüllende Kausalität
+Es liegt auch Kausalität zwischen der Rechtsgutsverletzung und dem Schaden vor.
+
+VIII. Ergebnis
+Damit hat K gegen B einen Schadensersatzanspruch nach § 823 I BGB.
+
+D. Anspruch aus § 823 II BGB i.V.m. § 922 S. 3 BGB
+K könnte einen Anspruch aus § 823 II BGB i.V.m. § 922 S. 3 BGB haben. Dafür müsste die Verletzung eines Schutzgesetzes vorliegen.
+
+I. Schutzgesetz
+Zunächst müsste ein Schutzgesetz vorliegen. Ein Schutzgesetz ist jede Rechtsnorm, die zumindest auch dazu dienen soll, den Einzelnen gegen die Verletzung eines Rechtsguts zu schützen.
+
+In Betracht kommt § 922 S. 3 BGB. Dieser regelt die Mitbenutzung an Grenzanlagen und schützt damit auch den Einzelnen gegen die Verletzung eines Rechtsguts. Somit liegt ein Schutzgesetz vor.
+
+II. Verletzung des Schutzgesetzes
+Fraglich ist, ob dieses Schutzgesetz auch verletzt wurde. Dafür müsste eine Grenzanlage i.S.d. § 921 BGB vorliegen. Eine Grenzanlage liegt vor, wenn sich die Anlage zumindest teilweise über die Grenze zweier Grundstücke erstreckt und funktionell beiden Grundstücken dient. Eine grenzscheidende Wirkung braucht der Anlage nicht zuzukommen.
+
+Hier liegt eine Substanzverletzung der Hauswand des K vor. Die Hauswand erstreckt sich jedoch nicht über die Grenzer zweier Grundstücke, sodass schon keine Grenzanlage vorliegt.
+
+III. Ergebnis
+Damit scheidet ein Anspruch nach § 823 II BGB i.V.m. § 922 S. 3 BGB aus.
+
+E. Anspruch aus § 831 I BGB
+K könnte gegen B einen Anspruch aus § 831 I BGB haben. Dafür müsste das Abriss unternehmen Verrichtungsgehilfe sein. Verrichtungsgehilfe ist, wer vom Geschäftsherrn in dessen Interesse eine Tätigkeit verrichtet den Weisungen des Geschäftsherrn abhängig ist.
+
+Zwischen B und dem Abrissunternehmen besteht jedoch keine Weisungsabhängigkeit, sodass schon kein Verrichtungsgehilfe vorliegt.
+
+Damit scheidet ein Anspruch aus § 831 I BGB aus.
+
+F. Anspruch aus § 906 II 2 BGB
+K könnte gegen B einen Ausgleichsanspruch gem. § 906 II 2 BGB haben. Ein solcher Anspruch besteht, wenn der Anspruchssteller eine Einwirkung i.S.d. § 906 II 1 BGB zu dulden hat. Hier scheitert der Anspruch an der fehlenden Duldungspflicht des K für Substanzverletzungen.
+
+G. Anspruch aus § 906 II 2 BGB analog
+Es könnte ein Anspruch analog § 906 II 2 BGB in Betracht kommen. Unabhängig vom Vorliegen der Verletzungen ist dieser Anspruch jedoch subsidiär zu verschuldensabhängigen Schadensersatzansprüchen. Hier wurde bereits § 823 I BGB bejaht (s.o.).

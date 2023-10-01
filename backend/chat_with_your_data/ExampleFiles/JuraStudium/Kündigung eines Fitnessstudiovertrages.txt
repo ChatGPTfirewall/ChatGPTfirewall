@@ -1,0 +1,184 @@
+Sachverhalt
+
+Die Klägerin K verlangt als Betreiberin eines Fitnessstudios von dem Beklagten B restliches Nutzungsentgelt für die Zeit von Oktober 2013 bis einschließlich Juli 2014. Die Parteien schlossen im Jahr 2010 einen Vertrag über die Nutzung des Fitnessstudios in Hannover für einen Zeitraum von 24 Monaten (Fitnessstudio-Vertrag). Sie vereinbarten ein monatliches Nutzungsentgelt von 65 Euro zuzüglich einer – zweimal im Jahr fälligen – Pauschale von 69,90 Euro für ein "Trainingspaket". Ferner enthält der Vertrag eine Verlängerungsklausel in den AGB um jeweils zwölf Monate für den Fall, dass er nicht bis zu drei Monate vor Ablauf gekündigt wird. Der Vertrag verlängerte sich entsprechend bis zum 31. Juli 2014.
+
+Im Oktober 2013 wurde der bis dahin in Hannover lebende Beklagte zum Soldaten auf Zeit ernannt. Ab diesem Zeitpunkt zahlte er keine Mitgliedsbeiträge mehr. Als Soldat wurde er für die Zeit von Oktober bis Dezember 2013 nach Köln und für die Zeit von Januar bis Mai 2014 nach Kiel abkommandiert; seit Juni 2014 ist er in Rostock stationiert. Am 5. November 2013 kündigte er den Fitness-Studiovertrag.
+
+K verlangt Zahlung von 719,90 €.
+
+Zu Recht?
+Lösungsskizze
+
+Anspruch auf Zahlung von 719,90 € gem. § 535 II BGB
+
+I. Wirksamer Mietvertrag gem. § 535 I BGB
+
+(P) Abgrenzung zu anderenVertragstypen/ „Fitnessstudio-Vertrag“
+
+- wohl typengemischter Vertrag aus miet- und dienstrechtlichen Elementen. Nach dem Schwerpunkt wohl Miete
+
+II. Kündigung des Mietvertrages
+
+1. Ordentliche Kündigung am 05. November 2013
+
+- Ausgeschlossen gem. § 542 II BGB
+
+- AGB wirksam?
+
+(P1) 24 monatige Vertragslaufzeit
+
+(P2) automatische Verlängerung um 12 Monate
+
+a) Anwendbarkeit der §§ 305 ff., § 310 I und IV BGB (+)
+
+b) Vorliegen von AGB, § 305 I BGB (+)
+
+c) Wirksame Einbeziehung (+)
+
+d) Inhaltskontrolle, § 307ff. BGB bzgl. 24 monatiger Laufzeit
+
+aa) Klauselverbote ohne Wertungsmöglichkeit, § 309
+
+hier: § 309 Nr. 9 lit. a BGB problematisch
+
+dagegen: § 309 Nr. 9 lit. a BGB erfasst keine Mietverträge
+
+bb) Klauselverbote mit Wertungsmöglichkeit, § 308 BGB
+
+hier nicht ersichtlich
+
+cc) Generalklausel des § 307 BGB
+
+-> § 307 II Nr. 2 BGB?
+
+(P) Wertungen aus § 309 Nr. 9 lit. a BGB
+
+aber: Laufzeit alleine noch kein Grund für unangemessen Benachteiligung
+
+e) Inhaltskontrolle, § 307 ff. BGB bzgl. automatischer Vertragsverlängerung
+
+--> § 307 II Nr. 2 BGB?
+
+Hinreichend Zeit zur Kündigung, keine unangemessene Benachteiligung
+
+f) Ergebnis
+
+AGB wirksam
+
+2. Außerordentliche Kündigung gem. § 543 I BGB
+
+(P) Berufsbedingter Umzug „wichtiger Grund“?
+
+pro: B quasi „gezwungen“ zu Ortswechsel. Beruf dient zu seiner Lebenssicherung
+
+contra: Ortswechsel aus persönlichen Gründen liegt in der Sphäre des B, sog. „Vertragsrisiko“.
+
+Wichtiger Grund (-)
+
+3. Sonderkündigungsrecht gem. § 46 Abs. 8 TKG
+
+(-) nach Wortlaut
+
+(P) § 46 Abs. 8 TKG analog?
+
+(-) keine planwidrige Regelungslücke
+
+III. Zwischenergebnis
+
+Kündigung (-), Wirksamer Mietvertrag (+)
+
+IV. Endergebnis
+
+Anspruch auf Zahlung von 719,90 € gem. § 535 II BGB (+)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+Anspruch auf Zahlung von 719,90 € gem. § 535 II BGB
+K könnte gegen B einen Zahlungsanspruch i.H.v. 719,90 € haben gem. § 535 II BGB. Dafür müsste ein wirksamer Mietvertrag bestehen.
+
+I. Wirksamer Mietvertrag gem. § 535 I BGB
+K und B schlossen im Jahr 2010 einen „Fitnessstudio-Vertrag“. Fraglich ist die Rechtsnatur dieses Vertrages. Für die Anspruchsgrundlage des § 535 II BGB müsste es sich um ein Mietverhältnis handeln.
+
+Bei einem Fitnessstudio-Vertrag werden dem Kunden die Fitnessgeräte für die eigene Nutzung zur Verfügung gestellt. Im Einzelfall sind auch Dienstleistungen, wie die Bereitstellung von „Fitnessangeboten“ oder Hilfestellungen von Trainern mit enthalten. Es handelt sich somit um einen typengemischten Vertrag aus mietrechtlichen- und dienstrechtlichen Elementen. Insoweit ist auf den Schwerpunkt des Vertrages abzustellen. Vordergründig soll dem Kunden in einem Fitnessstudio das entsprechende Equipment zur Miete bereitgestellt werden, sodass eine sportliche Betätigung ohne wesentliche Hilfe möglich ist. Vereinzelt werden zwar Hilfestellungen von Trainern angeboten, allerdings sind diese nur im Einzelfall vor Ort, um zu gewährleisten, dass sich kein Kunde durch falsche Übungen verletzt. Diese angebotenen Dienstleistungen machen daher nur einen kleinen Teil des Vertrages aus, soweit vertraglich nichts anderes vereinbart wurde. Der Schwerpunkt des Vertrages liegt hier daher im Mietrecht. Damit liegt ein wirksamer Mietvertrag nach § 535 I BGB vor.
+
+II. Kündigung des Mietvertrages
+Der Mietvertrag könnte jedoch gekündigt worden sein.
+
+1. Ordentliche Kündigung am 05. November 2013
+B könnte den Vertrag am 05. November 2013 ordentlich gekündigt haben.
+
+Ausweislich des Sachverhalts wurde der Mietvertrag jedoch auf Zeit geschlossen, sodass eine ordentliche Kündigung gem. § 542 II BGB ausgeschlossen ist.
+
+Problematisch könnten jedoch die AGB des Vertrages sein. Diese sehen eine 24 monatige Mindestlaufzeit, sowie eine automatische Verlängerung der Vertragslaufzeit um 12 Monate vor, wenn dieser nicht mind. 3 Monate im Voraus gekündigt wird.
+
+Fraglich ist daher, ob die Rechtsfolge des § 306 I BGB greift. Daher ist zu fragen, ob die vorliegenden Klauseln wirksam sind.
+
+a) Anwendbarkeit der §§ 305 ff., § 310 I und IV BGB
+Der Anwendungsbereich der §§ 305 ff. BGB ist eröffnet.
+
+b) Vorliegen von AGB, § 305 I BGB
+Es liegt auch keine Individualabrede vor. Es ist davon auszugehen, dass der Vertrag einseitig gestellt und für eine Vielzahl von Fällen vorformuliert wurde, sodass auch AGB i.S.d. § 305 I BGB vorliegen.
+
+c) Wirksame Einbeziehung
+Ausweislich anderweitiger Angaben ist davon auszugehen, dass diese auch gem. § 305 II BGB wirksam in den Vertrag einbezogen wurden.
+
+d) Inhaltskontrolle, § 307ff. BGB bzgl. 24- monatiger Laufzeit
+Fraglich ist, ob die 24- monatige Vertragslaufzeit einer Inhaltskontrolle standhält.
+
+aa) Klauselverbote ohne Wertungsmöglichkeit, § 309 BGB
+Es kommt ein Klauselverbot ohne Wertungsmöglichkeit gem. § 309 Nr. 9 lit. a BGB in Betracht. Danach ist eine AGB bei einem Vertragsverhältnis unwirksam, das die regelmäßige Lieferung von Waren oder die regelmäßige Erbringung von Dienst- oder Werkleistungen durch den Verwender zum Gegenstand hat und bei dem der andere Vertragsteil länger als zwei Jahre an den Vertrag gebunden ist.
+
+Dagegen spricht jedoch, dass vorliegend keine Dienstleistung- oder Werkleistung vorliegt. Vielmehr liegt ein Mietvertrag vor (s.o.).
+
+bb) Klauselverbote mit Wertungsmöglichkeit, § 308 BGB
+Klauselverbote mit Wertungsmöglichkeit sind nicht ersichtlich.
+
+cc) Generalklausel des § 307 BGB
+Fraglich ist, ob ein Verstoß gegen § 307 II Nr. 2 BGB vorliegt. Dafür müsste die 24 monatige Vertragslaufzeit den B unangemessen benachteiligen. Dies liegt nach § 307 II Nr. 2 BGB insbesondere dann vor, wenn eine Bestimmung wesentliche Rechte oder Pflichten, die sich aus der Natur des Vertrags ergeben, so einschränkt, dass die Erreichung des Vertragszwecks gefährdet ist.
+
+Dafür könnte sprechen, dass die Vertragslaufzeit mit 24 Monaten so hoch ist, dass der Kunde dadurch erheblich in der Planung seiner Freizeitgestaltung beeinträchtigt wird. Allerdings muss beachtet werden, dass die gesetzgeberische Wertung aus § 309 Nr. 9 lit. a BGB mit berücksichtigt werden muss. Obwohl die Dispositionsfreiheit eines Vertragspartners des Verwenders bei jeglicher Art von langfristiger Vertragsbindung eine erhebliche Einschränkung erfährt, hat der Gesetzgeber den Anwendungsbereich des § 309 Nr. 9 lit. a BGB nicht auf alle Dauerschuldverhältnisse, sondern nur auf Vertragsverhältnisse über die regelmäßige Lieferung von Waren oder die regelmäßige Erbringung von Dienst- oder Werkleistungen erstreckt und somit den Anwendungsbereich bewusst eingeengt.
+
+Diese Wertung gilt es zu berücksichtigen, sodass aus der Vertragslaufzeit alleine noch keine unangemessene Benachteiligung entnommen werden kann. Vielmehr müssen noch zusätzliche Aspekte hinzutreten. Solche sind hier jedoch nicht ersichtlich. Damit liegt auch kein Verstoß gegen § 307 BGB vor.
+
+e) Inhaltskontrolle, § 307 ff. BGB bzgl. automatischer Vertragsverlängerung
+Fraglich ist auch, ob die automatische Vertragsverlängerung um 12 Monate mit § 307 BGB vereinbar ist. Auch diesbezüglich kommt ein Verstoß gegen § 307 II Nr. 2 BGB in Betracht.
+
+Für eine unangemessene Benachteiligung könnte sprechen, dass der Vertragspartner durch ein Versäumnis regelmäßig dazu angehalten ist, sich für weitere 12 Monate vertraglich zu binden. Dagegen lässt sich jedoch hervorbringen, dass es dem Kunden obliegt, seinen Vertrag dahingehend zu überprüfen, ob er seine Kündigungsfrist einhält. Hält er diese nicht ein, so fällt dies grundsätzlich in seine eigene Risikosphäre. Auch ist hervorzubringen, dass sich der Vertrag nicht um weitere 24 Monate verlängert. Eine automatische Verlängerung um die Hälfte der ursprünglichen Vertragslaufzeit stellt daher keine unangemessene Benachteiligung dar.
+
+f) Ergebnis
+Damit sind die AGB wirksam. Eine ordentliche Kündigung liegt nicht vor.
+
+2. Außerordentliche Kündigung gem. § 543 I BGB
+Fraglich ist, ob eine außerordentliche Kündigung gem. § 543 I BGB vorliegt. Dafür müsste ein „wichtiger Grund“ vorliegen. Ein gesetzlich typisierter Fall der Unzumutbarkeit nach § 543 II Nr. 1-3 BGB ist nicht ersichtlich.
+
+Voraussetzung für das Tatbestandsmerkmal „wichtiger Grund“ ist die Unzumutbarkeit der Fortsetzung des Mietverhältnisses, die aufgrund einer umfassenden Interessenabwägung unter Berücksichtigung der Umstände des Einzelfalles im Rahmen einer wertenden Betrachtung festzustellen ist.
+
+Als wichtiger Grund könnte hier der berufsbedingte Umzug des B in Betracht kommen. Ausweislich des Sachverhalts ist B Berufssoldat und wurde im Jahr 2013 nach Köln und später nach Kiel abkommandiert. In dieser Zeit war es ihm nicht möglich die Leistungen des Fitnessstudios in Anspruch zu nehmen.
+
+Für eine Unzumutbarkeit könnte sprechen, dass B an die Weisungen unterworfen ist, die ihm während des Sonderverhältnisses bei der Bundeswehr erteilt werden. Dazu zählt naturgemäß auch der Wohnortwechsel.
+
+Dagegen lässt sich jedoch hervorbringen, dass der persönliche und berufsbedingte Wohnortwechsel in die Risikosphäre des Kunden fällt. Bevor er sich langfristig an einen Vertrag bindet, muss er sich diesen Umstand klar machen. Es leuchtet nämlich nicht ein, warum dieses Risiko dem Fitnessstudiobetreiber, also dem K aufgebürgt werden soll, der auf die Einhaltung des Vertrages vertraut („pacta sunt servanda“).
+
+Etwas anderes kann freilich bei unfreiwilligen Gründen gelten, wie z.B. bei Krankheiten. Hier lässt sich jedoch sagen, dass ein Berufsortwechsel, so wesentlich er für die Lebensgrundlage auch ist, auf freiwilliger Basis geschieht, was eine außerordentliche Kündigung nicht rechtfertigen kann.
+
+Damit liegt kein wichtiger Grund vor. Somit liegt auch keine außerordentliche Kündigung gem. § 543 I BGB vor.
+
+3. Sonderkündigungsrecht gem. § 46 Abs. 8 TKG
+Fraglich ist, ob dem B ein Sonderkündigungsrecht aus § 46 Abs. 8 TKG zustehen kann. Nach dem Wortlaut erfasst diese Vorschrift allerdings nur Telekommunikationsdienste, sodass die Vorschrift nicht auf Mietverhältnisse übertragbar ist.
+
+Die Norm könnte jedoch analog herangezogen werden. Dafür müssten jedoch eine planwidrige Regelungslücke und eine vergleichbare Interessenlage vorliegen. Für eine vergleichbare Interessenlage spricht, dass auch der Kunde eines Fitnessstudiovertrages bei einem Wohnortwechsel keine Möglichkeit hat die Leistungen in Anspruch zu nehmen.
+
+Problematisch ist allerdings die Planwidrigkeit der Regelungslücke. Der Gesetzgeber hat dieses Sonderkündigungsrecht nämlich bewusst in das TKG eingefügt und nicht im BGB geregelt.
+
+Auch liegt der Fall bei Telekommunikationsdiensten anders. Diese sind in der Regel so wesentlich, dass sie eine besondere Stellung innehaben. Auch ist die Einrichtung eines Fitnessstudios an den verschiedensten Standorten mit erheblichen Kosten verbunden und somit so gut wie ausgeschlossen für Einzelbetreiber (anders als bei Fitnessstudio-Ketten.)
+
+Daher ist auch eine analoge Anwendung des § 46 Abs. 8 TKG abzulehnen.
+
+III. Zwischenergebnis
+Damit liegt keine Kündigung vor. Es besteht ein wirksamer Mietvertrag.
+
+IV. Endergebnis
+Damit hat K gegen B einen Anspruch auf Zahlung von 719,90 € gem. § 535 II BGB.
+
+D

@@ -1,0 +1,170 @@
+Sachverhalt
+
+Die B-AG, eine Mobilfunkanbieterin, will auf dem streitgegenständlichen Grundstück, auf dem die A-AG als örtliches Versorgungsunternehmen lediglich einen Wasserhochbehälter unterhält, einen Mobilfunkmast errichten. Sie übersandte daher Anfang November 2007 der A einen noch nicht unterzeichneten schriftlichen Freiflächen-Mietvertragstext. Dieser sah eine 30-jährige Laufzeit beginnend ab Vertragsunterzeichnung durch beide Vertragsparteien vor sowie ein ordentliches Kündigungsrecht des Mieters nach Ablauf des 20. Vertragsjahres. Die ab dem Monat, in dem mit dem Aufbau des Mastes begonnen wird, zu zahlende Jahresmiete sollte 2.600 € zzgl. Umsatzsteuer betragen. A nahm im Vertragstext eine handschriftliche Änderung von drei statt der vorgesehenen zwei Freihandys vor, unterschrieb am 9. Dezember 2007 und übersandte den Vertrag per Post an B. Diese unterzeichnete am 27. Januar 2008 und reichte den Vertrag zurück. Im März 2008 erhielt B Zugang zum Grundstück.
+
+In der Folgezeit erstritt B nach über siebenjährigem Genehmigungsverfahren im September 2015 eine Baugenehmigung. Nach Prüfung ihrer Unterlagen und weil sie an einer Vermietung nun kein Interesse mehr hat, teilte A im November 2015 der B mit, den Vertrag für unwirksam zu halten, kündigte ihn vorsorglich außerordentlich und verlangt nun von B Herausgabe des Grundstücks.
+
+Zu Recht?
+Lösungsskizze
+
+[Anmerkung: Haltet immer die systematische Reihenfolge ein! Vertragliche Ansprüche vor gesetzlichen!]
+
+A. Herausgabeanspruch des A gegen B gem. § 546 I BGB
+
+I. Wirksamer Vertragsschluss gem. § 535 I BGB
+
+(P) B-AG und A-AG rechtsfähig nach § 1 I AktG, von wirksamer Stellvertretung auszugehen
+
+1. Angebot des B im November 2007 durch Textübersendung (-)
+
+(P) Rechtsbindungswille (-), überdies § 150 II BGB
+
+2. Angebot des A am 9. Dezember durch Rücksendung (+)
+
+3. Annahme des B am 27. Januar 2008 durch Unterschrift und Rücksendung (+)
+
+a) (P) Erlöschen des Angebots von A in der Zwischenzeit nach § 146 BGB
+
+(P) Gesetzliche Frist des § 147 II BGB „unter regelmäßigen Umständen erwarten darf“
+
+hier: mind. 45 Tage Überlegungszeit
+
+Dafür: Innerhalb der Weihnachtszeit, Textveränderung durch A, Vertrag hat große wirtschaftliche Bedeutung und beinhaltet lange Vertragslaufzeit
+
+Dagegen: großes Unternehmen, daher hat Weihnachtszeit keine erhebliche Auswirkung; moderne Kommunikationsmittel, nur unbedeutende Änderung des Textes durch A
+
+b) Wohl eher Dagegen. Somit § 147 II BGB (-)  § 146 I BGB (+)
+
+Somit gem. § 150 I BGB neues Angebot der B
+
+4. Konkludente Annahme der A durch Übergabe der Schlüssel im März 2008 (-)
+
+(P) objektives Erklärungsbewusstsein
+
+BGH: kein objektives Erklärungsbewusstsein, wenn von geschlossenem Vertrags ausgegangen wird (a.A. vertretbar)
+
+5. Annahme der A durch Schweigen (-)
+
+6. Zwischenergebnis
+
+Vertragsschluss (-)
+
+II. Korrektur über § 242 BGB
+
+(P) Verneinung von Vertragsschluss missbilligenswert?
+
+Dafür: A zog schon Vorteile, B hat in Genehmigungsverfahren investiert
+
+Dagegen: Wertungen des Bereicherungsrechts (§§ 812 ff. BGB) bleiben noch, Auch Haftung aus c.i.c. bleibt noch möglich.
+
+Ergebnis: Kein Raum für § 242 BGB (a.A. vertretbar)
+
+[Anmerkung: Wenn Vertragsschluss angenommen wurde, war die Kündigung zu prüfen.]
+
+III. Ergebnis
+
+Kein Herausgabeanspruch aus § 546 I BGB
+
+B. Herausgabeanspruch aus § 985 (+)
+
+C. Anspruch aus § 861 (-)
+
+Keine verbotene Eigenmacht
+
+D. Anspruch aus § 1007 I, II BGB (-)
+
+Gutgläubigkeit des B u. kein Abhandenkommen
+
+E. Anspruch aus Leistungskondiktion gem. § 812 I S. 1 1.Alt. BGB (+)
+
+I. Etwas erlangt (+)
+
+Besitz am Grundstück
+
+II. Durch Leistung (+)
+
+Vermeintlicher Mietvertrag zwischen A und B
+
+III. Ohne Rechtsgrund (+)
+
+kein Vertragsschluss (s.o.)
+
+IV. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Herausgabeanspruch des A gegen B gem. § 546 I BGB
+A könnte gegen B einen vertraglichen Herausgabeanspruch aus § 546 I BGB haben.
+
+I. Wirksamer Vertragsschluss gem. § 535 I BGB
+Dafür müsste zwischen der A-AG und der B- AG ein wirksamer Mietvertrag vorliegen. Dieser setzt zwei korrespondierende Willenserklärungen (Angebot und Annahme) voraus. Die A-AG und die B- AG müssten überdies rechtsfähig sein. Sie sind nach § 1 I 1 AktG rechtsfähig. Im Übrigen ist mangels anderweitiger Sachverhaltsangaben von einer wirksamen Stellvertretung nach § 164 I BGB auszugehen.
+
+1. Angebot des B im November 2007 durch Textübersendung
+B könnte ein Angebot abgegeben haben, indem er im November 2007 den Vertragstext abgesendet hat. Unter eine Angebot ist eine empfangsbedürftige Willenserklärung zu verstehen, die alle vertragswesentlichen Bestandteile enthält und durch die der Vertragsschluss einem anderen so angetragen wird, dass das Zustandekommen des Vertrages nur noch von dem Einverständnis des Empfängers abhängt; dieser das Angebot also mit einem einfachen "Ja" annehmen kann. Problematisch ist hier jedoch, dass B noch keine Unterschrift gesetzt hat, sodass es an einem Rechtsbindungswillen fehlen könnte. Überdies wurde der Vertragstext durch B verändert, sodass nach § 150 II BGB dieses Angebot ohnehin erlöschen würde.
+
+2. Angebot des A am 9. Dezember durch Rücksendung
+Es könnte jedoch ein Angebot des A vorliegen, indem er am 9. Dezember den Vertragstext unterschrieben zurückgesendet hat. Dieser Vertragstext kann mit einem einfachen „Ja“ angenommen werden, da er alle essentialia negotii enthält (Mietsache, Vertragsparteien, Mietzins).
+
+3. Annahme des B am 27. Januar 2008 durch Unterschrift und Rücksendung
+Die B könnte dieses Angebot am 27. Januar 2008 durch seine Unterschrift und mit der Rücksendung angenommen haben. Annahme ist eine einseitige empfangsbedürftige und vorbehaltlose Willenserklärung, aus der sich der Annahmewille des Angebots unzweifelhaft ergibt. Dies ist hier der Fall, sodass eine Annahme vorliegt.
+
+a. Erlöschen des Angebots von A in der Zwischenzeit nach § 146 BGB
+Der Antrag der A könnte jedoch zwischenzeitlich erloschen sein gem. § 146 BGB. Dafür müsste die Annahmefrist des § 147 II BGB nicht eingehalten worden sein. Danach kann ein Antrag nur bis zu dem Zeitpunkt angenommen werden, in welchem der Antragende den Eingang der Antwort unter regelmäßigen Umständen erwarten darf.
+
+Fraglich ist, wie „unter regelmäßigen Umständen erwarten darf“ zu verstehen ist. Wegen dem Sinn und Zweck des § 147 BGB muss davon ausgegangen werden, dass zumindest die Zeit für die Übermittlung und eine angemessene Überlegungszeit zu berücksichtigen sind. Dies ist nach allen Umständen des Einzelfalls zu ermitteln.
+
+Hier sind bereits 50 Tage vergangen, sodass eine Überlegungszeit von ca. 45 Tagen verbleibt, soweit man die Übermittlungzeit abzieht (3-5 Tage). Fraglich ist, ob eine Überlegungszeit von 45 Tagen hier angemessen ist.
+
+Dafür spricht hier, dass der Vertragsschluss in die Weihnachtszeit fällt, sodass auch Feiertage mitberücksichtigt werden müssen. Zudem handelt es sich um einen Vertrag mit erheblicher wirtschaftlicher Bedeutung und einer langen Laufzeit, sodass auch die Überlegenszeit entsprechend lang sein muss. Überdies enthält der Vertrag Abweichungen, die dem A zuzurechnen sind (drei statt 2 Freihandys).
+
+Dagegen spricht jedoch, dass bei solch einem großen Unternehmen auch während der Weihnachtszeit der Betrieb nicht zum Stillstand kommt. In solch einem großen Unternehmen wird regelmäßig mit modernsten Kommunikationsmitteln gearbeitet, sodass keine langen Abstimmungszeiten nötig sind. Überdies enthält der Vertrag keine wesentlichen Abweichungen. Diese sind nur unwesentlich und rechtfertigen daher keine so lange Bedenkzeit.
+
+Insgesamt sprechen die besseren Argumente für eine Ablehnung einer „angemessenen Bedenkzeit“ nach § 147 II BGB.
+
+b. Zwischenergebnis
+Somit ist § 147 II BGB zu verneinen. Damit gilt gem. § 146 I BGB, dass der Antrag bereits erloschen ist. Somit liegt gem. § 150 I BGB ein neues Angebot der B vor.
+
+4. Konkludente Annahme der A durch Übergabe der Schlüssel im März 2008
+Es könnte jedoch eine konkludente Annahme der A durch Übergabe der Schlüssel im März 2008 auf das neue Angebot der B vorliegen. Problematisch ist allerdings, ob das objektive Erklärungsbewusstsein vorliegt. Dies ist der Wille, überhaupt rechtserheblich zu handeln. Fehlt dieser, dann kann eine Willenserklärung nur bejaht werden, wenn der Erklärende die Bedeutung seines Handelns fahrlässig nicht erkannt hat („potentielles Erklärungsbewusstsein“).
+Hier erscheint das Vorliegen eines objektiven Erklärungsbewusstseins jedoch schon deshalb problematisch, da der A schon von einem wirksamen Vertragsschluss ausgegangen ist. (a.A. vertretbar)
+
+5. Annahme der A durch Schweigen
+Es ist auch keine Annahme der A durch Schweigen gem. § 151 BGB ersichtlich, da auch hier das objektive Erklärungsbewusstsein fehlt (s.o.).
+
+6. Zwischenergebnis
+Damit liegen keine zwei korrespondierenden Willenserklärungen vor. Somit wurde kein wirksamer Mietvertrag geschlossen.
+
+II. Korrektur über § 242 BGB
+Fraglich ist, ob aus Wertungsgründen etwas anderes gelten muss.
+Die Verneinung des Vertragsschlusses könnte missbilligenswert sein.
+Dafür könnte sprechen, dass A schon Vorteile zog, da er bereits Mietzins bezog und die Freihandys bekam. Zudem hat B bereits Geld und Zeit in das Genehmigungsverfahren investiert
+Dagegen spricht jedoch, dass Wertungsfragen eher im Bereicherungsrecht (§§ 812 ff. BGB) berücksichtigt werden sollen. Auch bleibt dem B noch der Anspruch aus c.i.c. ( §§ 280 I, 311 II, 241 II BGB)
+Damit bleibt kein Raum für § 242 BGB (a.A. vertretbar)
+
+III. Ergebnis
+Damit besteht kein Herausgabeanspruch nach § 546 I BGB.
+
+B. Herausgabeanspruch aus § 985 BGB
+A könnte einen Herausgabeanspruch gegen B gem. § 985 BGB haben. Dafür müsste A Eigentümer und B Besitzerin ohne Recht zum Besitz sein. Ausweislich des Sachverhalts ist A Eigentümerin des Grundstücks und B unmittelbare Besitzerin. Auch liegt kein wirksamer Mietvertrag vor, sodass B kein Recht zum Besitz hat. Damit ist der Herausgabeanspruch aus § 985 BGB zu bejahen.
+
+C. Anspruch aus § 861 BGB
+A könnte gegen B einen Herausgabeanspruch aus § 861 BGB haben. Dafür müsste allerdings eine verbotene Eigenmacht des B gem. § 858 BGB I vorliegen. Hier hat B den Besitz am Grundstück jedoch freiwillig von A eingeräumt bekommen, wegen eines vermeintlichen Mietvertrages. Damit scheidet ein Anspruch aus § 861 BGB aus.
+
+D. Anspruch aus § 1007 I, II BGB
+Es könnte ein Anspruch aus § 1007 I BGB gegeben sein. Hier war B jedoch gutgläubig in Bezug auf den Besitz. Ein Anspruch aus § 1007 II BGB scheidet ebenfalls aus, da der A den unmittelbaren Besitz nicht unfreiwillig verloren hat, sodass auch kein Abhandenkommen vorliegt.
+
+E. Anspruch aus Leistungskondiktion gem. § 812 I S. 1 1.Alt. BGB
+Der A könnte gegen B einen Herausgabeanspruch aus Leistungskondiktion gem. § 812 I S. 1 1. Alt. BGB haben. Dafür müsste er etwas durch Leistung und ohne Rechtsgrund erlangt haben.
+
+1. Etwas erlangt
+B müsste etwas erlangt haben. Dies ist jeder vermögenswerte Vorteil. Hier hat B den Besitz am Grundstück erlangt.
+
+2. Durch Leistung
+Dies müsste er durch Leistung erlangt haben. Leistung ist jede bewusste und zweckgerichtete Mehrung fremden Vermögens, welche sich nach der Sicht des Leistungsempfängers richtet. Hier wollte A aus Sicht des B eine Hauptpflicht aus dem vermeintlichen Mietvertrag nach § 535 I BGB zu erfüllen. Damit liegt das Tatbestandsmerkmal durch Leistung vor.
+
+3. Ohne Rechtsgrund
+Wie bereits geprüft, liegt kein wirksamer Mietvertrag vor, sodass B etwas ohne Rechtsgrund erlangt hat.
+
+4. Ergebnis
+Damit hat A gegen B einen Herausgabeanspruch aus § 812 I 1 1. Alt. BGB.

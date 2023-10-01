@@ -1,0 +1,87 @@
+Sachverhalt
+Der Generaldirektor E verspricht dem Angestellten C ihm ein Grundstück zu übereignen, um damit seine jahrelange gute Arbeit zu honorieren. C ist erfreut und zieht auf das Hausgrundstück. Tags darauf verlangt er von E die notarielle Beurkundung. E ist darüber erbost und meint, er sei vom Adel, da würde sein Wort als „Edelmann“ wohl genügen. Die notarielle Beurkundung könne man schließlich auch später noch nachholen, ohnehin sei dies nur reine „Formsache“. Der E hielt sein Versprechen jedoch nicht.
+Wirksamkeit des Vertrages?
+Lösungsskizze
+
+I. Wirksamkeit des Schenkungsvertrages
+
+1. Form
+
+a) notarielle Beurkundung nach § 518 I BGB (-)
+
+b) Heilung nach § 518 II BGB (+)
+
+c) notarielle Beurkundung nach 311 b I 1 BGB (-)
+
+d) Heilung (-)
+
+Rechtsfolge: § 125 S.1 BGB Nichtigkeit
+
+e) Durchbrechung des § 125 durch § 242 BGB?
+
+aa) RG (-)
+
+bb) BGH (+)
+
+cc) Streitentscheid (-)
+
+2. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+I. Wirksamkeit des Schenkungsvertrages
+
+Fraglich ist, ob der vorliegende Schenkungsvertrag überhaupt wirksam ist.
+
+Dafür müssten zwei korrespondierende Willenserklärungen vorliegen, die auf eine Schenkung gerichtet sind. Ausweislich des Sachverhalts ist dies hier zu bejahen.
+
+1. Form
+
+Der Vertrag könnte jedoch wegen nicht eingehaltener Formvorschriften unwirksam sein.
+
+a) Formvorschrift des § 518 I BGB
+
+Gem. § 518 I BGB müsste das Schenkungsversprechen notariell beurkundet werden. Dies ist hier nicht geschehen, sodass dies die Nichtigkeit gem. § 125 S.1 BGB zur Folge hätte.
+
+b) Heilung nach § 518 II BGB
+
+Dieser Formmangel kann jedoch nach § 518 II BGB geheilt werden, wenn die Schenkung bewirkt wird. Bewirken bedeutet, dass die versprochene Leistung vollzogen wird. Hier wurde dem C das Hausgrundstück überlassen und er ist auch eingezogen. Damit wurde die versprochene Leistung bewirkt und der Formmangel wurde dadurch geheilt.
+
+c) Formvorschrift des § 311b I 1 BGB
+
+Problematisch ist allerdings, ob auch die notarielle Beurkundung nach § 311b I 1 BGB eingehalten wurde. Das Verpflichtungsgeschäft über die Verfügung über ein Grundstück bedarf nämlich der notariellen Beurkundung. Hier gab E an, sein Edelmann- Wort würde genügen. Die notarielle Beurkundung ist nicht erfolgt. Damit liegt ein Formmangel vor.
+
+d) Heilung
+
+Der Formmangel könnte gem. § 311 b I S.2 geheilt werden, wenn die Auflassung und Eintragung in das Grundbuch erfolgt. Dies liegt hier jedoch nicht vor, sodass dies grundsätzlich die Rechtsfolge der Nichtigkeit gem. § 125 S.1 BGB herbeiführt und der Vertrag unwirksam wird.
+
+[Exkurs: Gem. § 311 b I S.2 BGB muss das gesamte Verpflichtungsgeschäft beurkundet werden (hier der Schenkungsvertrag). Anders aber in § 518 I BGB. Dort muss nur das Schenkungsversprechen notariell beurkundet werden!]
+
+e) Durchbrechung von § 125 S.1 BGB durch § 242 BGB
+
+Fraglich ist jedoch, ob hier aus Wertungsgesichtspunkten ein anderes Ergebnis zu vertreten ist.
+
+Die Rechtsfolge des § 125 S.1 BGB könnte aus Billigkeitsgründen zu Gunsten des C durchbrochen werden, wenn ein schlechtweg untragbares Ergebnis vorliegen würde. Dies ist vorliegend umstritten.
+
+aa) Nach einer Ansicht bleibt es bei der Unwirksamkeit des Vertrages. Danach liegt keine Ausnahme zur Formunwirksamkeit vor. Das Ergebnis sei zwar hart, würde aber noch nicht die Schwelle zu einem „untragbaren Ergebnis“ überschreiten.
+
+bb) Eine andere Ansicht bejaht hingegen die Wirksamkeit des Vertrages. Danach durchbreche der § 242 BGB nach den Grundsätzen von Treu und Glauben die Nichtigkeitsfolge gem. § 125 S.1 BGB. Hier liege ein Fall eines schlechthin untragbaren Ergebnisses vor, sodass eine Wertungskorrektur gem. § 242 BGB vorgenommen werden müsse.
+
+cc) Streitentscheid
+
+Da beide Ansichten zu verschiedenen Ergebnissen führen, ist ein Streitentscheid erforderlich.
+
+Für die erste Ansicht spricht, dass der C das Risiko der Formunwirksamkeit bewusst auf sich genommen hat, indem er sich zunächst hat „abwiegeln“ lassen. Er muss auch die Nachteile und die Rechtsfolge des § 125 S.1 BGB hinnehmen, anderenfalls hätte er den Vertrag nicht abschließen dürfen. C vertraute hier lediglich auf das Wort des E und hat somit bewusst nicht im Rahmen des geltenden Zivilrechts gehandelt. Dies kann freilich nicht ausreichen, um die strengen Formerfordernisse des BGB zu durchbrechen.
+
+Dagegen spricht, dass der E vermutlich von Anfang an arglistig gehandelt hat und nie vorhatte den Vertrag einzuhalten. Dies lässt sich jedoch nicht abschließend nachweisen. Der Fall legt nahe davon auszugehen, dass E den Entschluss der Nichteinhaltung erst viel später schloss.
+
+Die Zweitgenannte Ansicht führt zu erheblicher Rechtsunsicherheit und berücksichtigt nicht die Risikosphäre des C, der sich bewusst auf das Risiko des einfachen Wortes eingelassen hat. Dies ist jedoch mit Blick auf den gesetzgeberischen Willen nicht schutzwürdig.
+
+Damit bleibt es bei der Rechtsfolge der Nichtigkeit gem. § 125 S.1 BGB.
+
+2. Ergebnis
+
+Der Schenkungsvertrag ist mithin unwirksam.
+
+
