@@ -41,7 +41,7 @@ export const EditTextModal = ({ buttonClassName, facts, highlights, question, pr
     updatedAnswers[index] = event
     setAnswers(updatedAnswers)
    
-    onChange(promptTemplate, updatedAnswers.join("\n\n"))
+    onChange(promptTemplate, updatedAnswers.join("\n\n"), question)
   };
 
 

@@ -82,7 +82,6 @@ const DemoPage = () => {
             llm_answer: llmAnswer
         }
 
-        console.log(prompt)
 
         setAnswers([...answers, [prompt, chatMessage]])
     }

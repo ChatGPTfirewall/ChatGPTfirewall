@@ -69,11 +69,11 @@ const Chat = () => {
             setEditText(true)
             setFacts(result.facts!)
             setPromptTemplate(result.prompt_template!)
-            setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"))
+            setQuestion(question)
+            setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"), question)
             const transformedList: string[] = result.facts![0].entities.map((entity) => entity[0]);
             setHighlights(transformedList);
             setFile(result.facts![0].file)
-            setQuestion(question)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -87,8 +87,7 @@ const Chat = () => {
             llm_answer: llmAnswer
         }
 
-        console.log(prompt)
-
+        
         setAnswers([...answers, [prompt, chatMessage]])
     }
 
@@ -100,7 +99,7 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const setPromptAndContext = (template: string, context: string) => {
+    const setPromptAndContext = (template: string, context: string, question: string) => {
         const builtPrompt = template
             .replace("{context}", context)
             .replace("{question}", question)
@@ -109,6 +108,7 @@ const Chat = () => {
     }
 
     const sendText = () => {
+        
         if (context != "") {
             const llmAnswer = chatWithLLM(question, context, promptTemplate)
             llmAnswer.then((answer) => { updateChat(answer) })
