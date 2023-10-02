@@ -1,0 +1,103 @@
+Sachverhalt
+
+Der 15- Jährige A bietet dem 16-Jährigen B einen 100-Dollar-Schein an. B bietet ihm dafür 50 € an. B weiß zwar, dass der 100-Dollar-Schein mehr wert ist, erzählt dem A aber von einem immensen Wertverlust des Dollars. Den 100-Dollar-Schein hatte der A zuvor von seinem Vater K entwendet, der sich regelmäßig in den USA aufhält. B erzählt er, dass sein Vater ihm den Dollar-Schein zum Geburtstag geschenkt habe. Wie geplant wechselt A den 100-Dollar-Schein bei der örtlichen Bank in 80 € um und geht mit dem Geld in den Freizeitpark.
+Als K und auch die Eltern des B von dem Sachverhalt erfahren, machen sie deutlich, dass sie solch eine Aktion nicht dulden.
+
+Welche Ansprüche hat K gegen B?
+
+Lösungsskizze
+
+A. Anspruch aus Herausgabe der 80 € gem. §§ 985, 285 BGB
+
+(P) Anwendbarkeit des § 285
+
+B. Anspruch auf Schadensersatz gem. §§ 989, 990 I BGB
+
+I. Vindikationslage
+
+II. Bösgläubigkeit
+
+III. Schaden
+
+IV. Ergebnis
+
+C. Anspruch auf Schadensersatz gem. § 992 BGB i.V.m. § 823 II BGB, § 263 StGB
+
+D. Anspruch auf Herausgabe der 80 € gem. § 816 I 1 BGB
+
+I. Verfügung eines Nichtberechtigten
+
+II. Wirksam gegenüber Berechtigten
+
+III. Entreicherung
+
+(P) Verschärfte Haftung
+
+IV. Ergebnis
+
+E. Anspruch aus angemaßter Eigengeschäftsführung gem. §§ 687 II, 681 S. 2, 677 BGB
+
+(P) Sperrwirkung des § 682 BGB
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+
+Gutachten
+
+A. Anspruch aus Herausgabe der 80 € gem. §§ 985, 285 BGB
+K könnte gegen B einen Herausgabeanspruch bzgl. der 80 € haben gem. §§ 985, 285 BGB.
+Dafür müsste der § 285 BGB überhaupt anwendbar sein. Dagegen spricht schon, dass der § 985 BGB eine Norm aus dem EBV ist. § 285 BGB ist hingegen im allgemeinen Schuldrecht zu verorten. Eine direkte Anwendung scheidet folglich aus. Es könnte eine Analogie angedacht werden. Dafür müssten eine planwidrige Regelungslücke und eine vergleichbare Interessenlage vorliegen. Hier fehlt es schon an einer Regelungslücke. Die §§ 987 ff. BGB sind insoweit abschließend.
+Daher scheidet ein Anspruch aus §§ 985,285 BGB aus.
+
+[Anmerkung: Man kann hier auch zusätzlich die Herausgabe des 100-Dollar-Scheins anprüfen, scheidet jedoch bereits am Punkt „Besitz“ aus.]
+
+B. Anspruch auf Schadensersatz gem. §§ 989, 990 I BGB
+K könnte gegen B einen Schadensersatzanspruch gem. §§ 989, 990 I BGB haben. Dafür müssten eine Vindikationslage, die Bösgläubigkeit und ein kausaler Schaden vorliegen.
+
+I. Vindikationslage
+Zunächst müsste eine Vindikationslage vorliegen. K müsste Eigentümer und B Besitzer ohne Besitzrecht sein. Maßgeblicher Zeitpunkt ist der Zeitpunkt der Verletzungshandlung. Die Verletzungshandlung ist hier die Weitergabe des 100-Dollar-Scheins an die örtliche Bank.
+
+K müsste Eigentümer sein. Ursprünglich war K Eigentümer. Er könnte sein Eigentum jedoch durch Verfügung des A an B verloren haben gem. § 929 S.1 BGB. A konnte auch trotz Minderjährigkeit wirksam verfügen, da er fremdes Eigentum übereignen wollte (neutrales Geschäft). Dafür müsste jedoch eine wirksame dingliche Einigung vorliegen. Diese könnte durch eine Anfechtung des gesetzlichen Vertreters K im Namen des A unwirksam geworden sein gem. § 142 I BGB. Ausweislich des Sachverhalts machte K deutlich, dass er so eine „Situation“ nicht dulde. Diese Aussage kann nach §§ 133, 157 BGB laiengünstig als Anfechtungserklärung nach § 143 BGB ausgelegt werden. Auch ein Anfechtungsgrund liegt nach § 123 I BGB vor. Somit liegt eine wirksame Anfechtung nach § 142 I BGB vor. Damit war K noch Eigentümer. B war auch unmittelbarer Besitzer ohne Besitzrecht. Damit lag eine Vindikationslage vor.
+
+II. Bösgläubigkeit
+B müsste auch bösgläubig gewesen sein. Hier ist der B minderjährig gem. § 106 BGB. Fraglich ist daher, wie seine Bösgläubigkeit ermittelt wird. In Betracht kommt § 828 III BGB in analoger Anwendung. Dafür müssten eine planwidrige Regelungslücke und eine vergleichbare Interessenlage bestehen.  Für die vergleichbare  Interessenlage ist hier hervorzubringen, dass beim deliktsähnlichen Schadensersatzanspruch eine dogmatische Nähe zu den §§ 823 ff. BGB vorliegt, sodass sich die Einsichtsfähigkeit nach § 828 III BGB richtet. Dies hat der Gesetzgeber auch nicht gesehen.
+Hier wusste B nicht, dass der A den 100-Dollar-Schein gestohlen hat. B wusste aber über seine eigene Täuschung gegenüber dem A. B wusste nämlich genau, um den wahren Wechselkurs des Dollars, der in Wirklichkeit viel höher war. Damit kannte er auch die mögliche Anfechtbarkeit des dinglichen Rechtsgeschäfts (s.o.). Nach § 142 II BGB wird derjenige, der die Anfechtbarkeit kennt, so gestellt, als kenne er die Nichtigkeit. Hier ist B auch einsichtig genug, um die Anfechtbarkeit seiner Täuschung zu erkennen. Damit war B bösgläubig.
+
+III. Schaden
+K müsste ein kausaler Schaden entstanden sein. Schaden ist jeder unfreiwillige Vermögensverlust. Hier hat die Bank gutgläubig Eigentum an dem 100-Dollar-Schein erlangt gem. §§ 929 S.1, 932 II, 935 II BGB. Somit liegt ein kausaler Schaden vor.
+
+IV. Ergebnis
+Damit hat K gegen B einen Schadensersatzanspruch gem. §§ 989, 990 I BGB.
+
+C. Anspruch auf Schadensersatz gem. § 992 BGB i.V.m. § 823 II BGB, § 263 StGB
+K könnte gegen B einen Schadensersatzanspruch gem. § 992 BGB i.V.m. § 823 II BGB, § 263 StGB haben.
+Fraglich ist jedoch schon, ob hier ein Dreiecksbetrug nach § 263 I StGB in Betracht kommt. Nach der so genannten Lagertheorie müsste A hier im Lager des K stehen. Dies ist jedoch nicht der Fall. Vielmehr hat der A hier den 100-Dollar-Schein dem K eigenmächtig gestohlen. Daher scheidet ein Anspruch aus § 992 BGB i.V.m. § 823 II BGB, § 263 StGB aus.
+
+[Anmerkung: Ein umfassender Streitaufbau des Dreiecksbetrugs, wie im Strafrecht, wäre hier ein falscher Problemschwerpunkt.]
+
+D. Anspruch auf Herausgabe der 80 € gem. § 816 I 1 BGB
+K könnte einen Anspruch auf Herausgabe gem. § 816 I 1 BGB haben. Dafür müsste B als Nichtberechtigter wirksam gegenüber dem Berechtigten verfügt haben. Es dürfte auch keine Entreicherung vorliegen.
+
+I. Verfügung eines Nichtberechtigten
+B müsste als Nichtberechtigter verfügt haben. Hier hat B bzgl. des 100-Dollar-Scheins gegenüber der Bank verfügt. Durch die Anfechtung ist der B auch ex tunc Nichtberechtigter.
+Mithin hat B als Nichtberechtigter verfügt.
+
+II. Wirksam gegenüber Berechtigten
+Wie bereits geprüft, hat die Bank gutgläubig Eigentum erworben. Damit war die Verfügung gegenüber der Bank als Berechtigter wirksam.
+
+III. Entreicherung
+Fraglich ist, ob bei B Entreicherung nach § 818 III BGB vorliegt. Ausweislich des Sachverhalts ist hat B das Geld im Freizeitpark ausgegeben. Grundsätzlich ist damit Entreicherung gem. § 818 III BGB gegeben.
+Problematisch ist hier jedoch, dass B die Anfechtbarkeit des dinglichen Rechtsgeschäfts mit A kannte (s.o.). Nach § 819 I, 818 IV BGB kann sich jedoch derjenige, der den Mangel des rechtlichen Grundes positiv kennt, sich nicht auf Entreicherung berufen. Insoweit ist eine verschärfte Haftung normiert. Damit kann sich der B hier nicht auf eine Entreicherung berufen und haftet somit verschärft.
+
+IV. Ergebnis
+Mithin liegt ein Anspruch nach § 816 I 1 BGB vor.
+
+[Anmerkung: § 816 I 1 BGB ist nicht durch das EBV ausgeschlossen, weil die Herausgabe des Erlöses nicht vom EBV umfasst wird.]
+
+E. Anspruch aus angemaßter Eigengeschäftsführung gem. §§ 687 II, 681 S. 2, 677 BGB
+K könnte weiterhin einen Anspruch aus angemaßter Eigengeschäftsführung haben gem. §§ 687 II, 681 S.2, 677 BGB.
+
+Die Voraussetzungen der angemaßten Geschäftsführung liegen grundsätzlich vor. Hier weiß der B, dass er als Nichtberechtigter handelt und ein fremdes Geschäft (Geldwechsel) als sein eigenes führt. Es fehlt somit der Fremdgeschäftsführungswille.
+
+Problematisch ist allerdings hier, dass der B minderjährig ist gem. § 106 BGB. Gem. § 682 BGB wird allerdings eine Sperrwirkung entfaltet, sodass § 687 II BGB bei Geschäftsunfähigen und beschränkt Geschäftsfähigen keine Anwendung findet. Der Gesetzgeber hat damit deutlich gemacht, dass der Minderjährigenschutz grundsätzlich vorgeht.
+
+Somit scheidet ein Anspruch gem. §§ 687 II, 681 S.2, 677 BGB aus.	

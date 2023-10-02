@@ -1,0 +1,93 @@
+
+
+Sachverhalt
+Der Kaufmann V bietet dem Kaufmann K die Lieferung einer Maschine an. In dem Angebot des V verweist dieser auf seine allgemeinen Geschäftsbedingungen in denen es heißt: „ Lieferung auf Kosten und eigene Gefahr des Käufers.“ K nimmt das Angebot an und bittet um schnelle Versendung. Dabei verweist K wiederum auf seine allgemeinen Geschäftsbedingungen in denen es heißt: „ Zahlung nur bei Erhalt der Ware.“ V schickt die Ware an K.
+Aus ungeklärten Gründen trifft die Ware jedoch nicht bei K ein.
+V verlangt trotzdem Zahlung und verweist auf seine AGB. K widerspricht und meint, dass seine AGB gelten würden und verweigert die Zahlung.
+ 
+Hat V gegen K einen Anspruch auf Bezahlung des Kaufpreises?
+Die Fallhistorie
+
+Bereits das Reichsgericht beschäftigte sich mit der Frage der sich widersprechenden AGBs und entwickelte dort die Theorie des letzten Wortes. Diesem schloss sich der BGH in der Folgezeit jedoch nicht an.
+ 
+Der Problemkreis
+
+Der Fall beschäftigt sich mit dem Problem, welche AGB gelten, wenn sich diese gegenseitig widersprechen. Diese Problematik kam auch kürzlich wieder im Examen (November 2014 NRW), sodass sie zwingend zu beherrschen ist.
+ 
+Lösungsskizze
+A. Anspruch auf Kaufpreiszahlung gem. § 433 II BGB
+I. Wirksamer Kaufvertrag
+1. Angebot des V
+2. Annahme des K
+à neues Angebot § 150 II BGB
+3. Annahme durch V
+(P) Dissens ? (-)
+4. Zwischenergebnis
+Wirksamer Kaufvertrag (+)
+II. Untergang des Zahlungsanspruchs
+1. Befreiung von Gegenleistung, § 326 I BGB
+2. Abweichende Regelung in den AGB
+(P) sich kreuzende AGB
+a) e.A. Theorie des letzten Wortes
+b) a.A. Prinzip der Kongruenzgeltung
+c) Streitentscheid
+d) Zwischenergebnis
+III. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+A. Anspruch auf Kaufpreiszahlung gem. § 433 II BGB
+V könnte gegen K einen Kaufpreisanspruch gem. § 433 II BGB haben.
+ 
+I. Wirksamer Kaufvertrag
+Dafür müsste zunächst ein wirksamer Kaufvertrag vorliegen.
+Dieser setzt zwei korrespondierende Willenserklärungen (Angebot und Annahme) voraus.
+ 
+1. Angebot des V
+V müsste ein Angebot abgegeben haben. Unter einem Angebot ist eine empfangsbedürftige Willenserklärung zu verstehen, die alle vertragswesentlichen Bestandteile enthält und durch die der Vertragsschluss einem anderen so angetragen wird, dass das Zustandekommen des Vertrages nur noch von dem Einverständnis des Empfängers abhängt; dieser das Angebot also mit einem einfachen "Ja" annehmen kann. Hier hat der V gegenüber K ein Angebot zum Kauf einer Maschine abgegeben. Zudem hat er dabei seine AGB beigefügt, die somit auch Vertragsbestandteil wurden.
+ 
+2. Annahme des K
+K müsste das Angebot angenommen haben. Eine Annahme ist eine einseitige empfangsbedürftige und vorbehaltlose Willenserklärung, aus der sich der Annahmewille des Angebots unzweifelhaft ergibt. Hier wollte K das Angebot des V allerdings nur mit veränderten AGB annehmen. Dies stellt allerdings nach § 150 II BGB eine Ablehnung und die Abgabe eines erneuten Angebots dar.
+ 
+3. Annahme des V
+Dieses neue Angebot könnte der V angenommen haben, indem er widerspruchslos das Vertragsangebot entgegen genommen hat.
+Problematisch ist allerdings, dass sowohl V als auch K von unterschiedlichen AGB ausgegangen sind, die sich inhaltlich widersprechen.
+Daher könnte hier ein Dissens nach § 154 oder § 155 BGB angenommen werden. Somit wäre kein wirksamer Kaufvertrag zustande gekommen.
+Dabei ist jedoch zu beachten, dass die §§ 154, 155 BGB als Auslegungsregeln konzipiert sind und mit deren Vorliegen noch keine Nichtigkeit des gesamten Vertrages begründet werden kann. Ob ein Vertrag wirklich gewollt war, ist somit durch Auslegung zu ermitteln.
+Hier hat V die Ware bereits abgeschickt. Dies spricht dafür, dass die Vertragsparteien selbst von einem wirksamen Kaufvertrag ausgegangen sind.
+ 
+4. Zwischenergebnis
+Damit liegt ein wirksamer Kaufvertrag vor.
+ 
+II. Untergang des Zahlungsanspruch
+Fraglich ist, ob der Zahlungsanspruch untergegangen ist.
+ 
+1. Befreiung von der Gegenleistung gem. § 326 I BGB
+Der Zahlungsanspruch könnte jedoch gem. § 326 I BGB untergegangen sein. Hier kommt eine subjektive Unmöglichkeit gem. § 275 I 1.Alt. BGB in Betracht.
+Ausweislich des Sachverhalts hat der V die Maschine bereits abgeschickt, jedoch kam sie aus ungeklärten Gründen nicht an.
+Es liegt damit auch eine Konkretisierung nach § 243 II BGB vor.
+Die Unmöglichkeit der Leistung bleibt hier nicht ohne Einfluss auf das Schicksal der Gegenleistung, sodass der Zahlungsanspruch grundsätzlich erloschen sein könnte.
+ 
+2. Abweichende Regelung in den AGB
+Fraglich ist allerdings, ob nicht etwas anderes gelten würde, wenn abweichende vertragliche Bestimmungen vorliegen.
+Hier kommen die Regelungen der verschiedenen AGB der Vertragsparteien in Betracht.
+Laut den AGB des V muss der K trotz Untergang der Maschine den Kaufpreis entrichten. Nach der AGB  des K wäre der Kaufpreisanspruch allerdings erloschen.
+Damit ist fraglich, welche AGB gelten. Dies ist umstritten.
+ 
+a) Theorie des letzten Wortes
+Nach einer Ansicht sollen die Bedingungen gelten, auf welche zuletzt verwiesen wurden. Die Annahme durch den anderen Teil wird dann konkludent durch die Durchführung fingiert.
+Danach würden hier die AGB des K gelten.
+ 
+b) Prinzip der Kongruenzgeltung
+Nach einer anderen Ansicht wird der § 150 II BGB teleologisch reduziert, wenn die Gegenpartei ausdrücklich erkennen lässt, dass sie die Bedingungen der anderen Partei nicht gelten lassen will. Danach sind die AGB der beiden Parteien nur insofern zum Vertragsinhalt geworden, als sie auch übereinstimmen .Ein grundsätzlicher Dissens steht dabei nach dem Rechtsgedanken des § 306 II BGB der Wirksamkeit des Vertrags nicht entgegen, wenn die Vertragsparteien einverständlich mit der Durchführung des Vertrags begonnen haben. Dies ist hier der Fall.  Soweit sich die AGB widersprechen, gilt dann das dispositive Gesetzesrecht gem. § 306 I, II BGB analog. Demnach  würde hier § 447 I BGB zur Anwendung kommen, sodass der K trotz Untergangs der Maschine den Kaufpreis bezahlen müsste.
+ 
+c) Streitentscheid
+Da beide Ansichten zu verschiedenen Ergebnissen führen ist der Streit zu entscheiden.
+Gegen die erste Auffassung spricht, dass vom Zufall abhängen würde, wessen AGB zuletzt abgegeben wurden. Danach würde regelmäßig die AGB desjenigen gelten, der am hartnäckigsten das letzte Wort abgegeben hat. Zudem scheint es unbillig, der Gegenpartei eine konkludente Annahme zu unterstellen, obwohl sie vorher einen gegenteiligen Willen nach Außen getragen hat.
+Die zweite Ansicht ist vorzugswürdiger, da sie auch den Parteienwillen besser berücksichtigt und Widersprüche vermeidet.
+ 
+d) Zwischenergebnis
+Damit liegt zwar ein partieller Dissens vor, allerdings wird § 150 II BGB nicht angewandt in Bezug auf die essentialia negotii. Nur die sich widersprechenden Bedingungen sind ungültig und an deren Stelle tritt gem. § 306 II BGB analog die gesetzliche Regelung des § 447 I BGB (s.o.).
+ 
+III. Ergebnis
+Damit hat V gegen K einen Zahlungsanspruch gem. § 433 II BGB

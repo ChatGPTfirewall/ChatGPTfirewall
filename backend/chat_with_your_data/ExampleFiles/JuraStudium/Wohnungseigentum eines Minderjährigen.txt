@@ -1,0 +1,97 @@
+Sachverhalt
+
+Der Vater V möchte seinem Sohn S eine Eigentumswohnung schenken. Zugleich soll auch die Einigung über den Eigentumsübergang notariell beurkundet werden. Dabei wird S auch Mitglied in der WEG (Wohnungseigentümergesellschaft), in deren Gemeinschaftsordnung zahlreiche Pflichten aufgezählt sind.
+
+Ist S Eigentümer der Wohnung geworden?
+Lösungsskizze
+
+A. Eigentumsübergang gem. §§ 873, 925 BGB
+
+(P) Wohnungseigentum
+
+I. Dingliche Einigung
+
+a) Verstoß gegen § 181 BGB
+
+b) Erfüllung einer Verbindlichkeit
+
+c) Zwischenergebnis
+
+d) Korrektur über Gesamtbetrachtungslehre?
+
+e.A (+) Minderjährigenschutz
+
+a.A (-) Abstraktionsprinzip
+
+II. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Eigentumsübergang gem. §§ 873, 925 BGB
+
+Das Eigentum an der Wohnung könnte durch Verfügung gem. §§ 873,925 BGB an S übergegangen sein.
+
+Fraglich erscheint jedoch, ob auch das Wohnungseigentum gem. §§ 873,925 BGB übertragen werden kann. Nach dem Wortlaut der Normen gelten diese nur für Grundstücke.
+
+Dagegen könnte sprechen, dass die Wohnung nur wesentlicher Bestandteil des Grundstücks ist gem. § 94 I BGB. Demnach können wesentliche Bestandteile nicht sonderrechtsfähig sein.
+
+Vielmehr wird das Grundstück übertragen und das Eigentum erstreckt sich dann gem. §§ 93 und 94 auf das Gebäude.
+
+Für die Anwendung der Normen spricht allerdings das Wohnungseigentumsgesetz (WEG).
+
+Als lex specialis regelt § 4 I WEG, dass es zur Übertragung des Wohnungseigentums auch der Einigung und Eintragung in das Grundbuch bedarf. Die dingliche Einigung muss auch notariell beurkundet werden.
+
+Mithin ist das Wohnungseigentum gem. § 4 I WEG sonderrechtsfähig und die §§ 873, 925 BGB sind anwendbar.
+
+I. Dingliche Einigung
+
+Es müsste eine dingliche Einigung (Auflassung) gem. § 4 II WEG vorliegen.
+
+V und S haben sich geeinigt, dass das Eigentum an der Wohnung übergehen soll. Problematisch ist hier allerdings, dass der S minderjährig ist. Die dingliche Einigung könnte somit gegen § 181 BGB verstoßen.
+
+a) Verstoß gegen § 181 BGB
+
+Es könnte ein Verstoß gegen § 181 BGB vorliegen. Es könnte ein Insichgeschäft in Form der Selbstkontrahierung vorliegen.
+
+Hier handelte V als gesetzlicher Vertreter des S gem. §§ 1629 I, 164 I BGB. Nach § 1629 II 1 BGB ist eine Vertretung der Eltern ausgeschlossen, wenn auch ein Vormund von der Vertretung ausgeschlossen wäre. Dies regelt § 1795 BGB. § 1795 Abs.2 BGB verweist auf den § 181 BGB, sodass daraus ein Verbot des Insichgeschäfts für gesetzliche Vertreter eines Minderjährigen folgt.
+
+Hier handelte V einerseits als Vertragspartei und andererseits als gesetzlicher Vertreter des S.
+
+Mithin liegt ein verbotenes Insichgeschäft vor.
+
+b) Erfüllung einer Verbindlichkeit
+
+Es könnte hier jedoch eine Ausnahme von § 181 BGB vorliegen. Eine Ausnahme ist insbesondere vorgesehen, wenn die Erfüllung einer Verbindlichkeit vorliegt.
+
+Hier kommt die Erfüllung des Schenkungsvertrages in Betracht gem. § 516 BGB.
+
+Dieser Schenkungsvertrag müsste wirksam sein. Die Schenkung an sich (Verpflichtungsgeschäft) ist lediglich rechtlich vorteilhaft. Auch andere Unwirksamkeitsgründe sind nicht ersichtlich.
+
+c) Zwischenergebnis
+
+Damit wäre eine Ausnahme von § 181 BGB gegeben und es läge kein verbotenes Insichgeschäft vor.
+
+d) Korrektur über Gesamtbetrachtungslehre
+
+Fraglich ist jedoch, ob das vorliegende Ergebnis nicht aufgrund des Minderjährigenschutzes korrigiert werden muss.
+
+Nach einer Ansicht müssen mögliche Nachteile des Verfügungsgeschäfts bereits beim Verpflichtungsgeschäft berücksichtigt werden. Damit wäre hier der Schenkungsvertrag unwirksam und die Auflassung wäre nicht als die Erfüllung einer Verbindlichkeit zu sehen. Damit wäre auch die Auflassung gem. § 177 I BGB schwebend unwirksam.
+
+Eine andere Ansicht will § 181 BGB dahingehend teleologisch reduzieren, dass auch das Verfügungsgeschäft lediglich rechtlich vorteilhaft sein muss und kommt zum selben Ergebnis.
+
+Eine weitere Auffassung reduziert § 181 BGB auch teleologisch, vertritt jedoch, dass eine Ausnahme dann gemacht werden soll, wenn in einem fest umrissenen Rechtskreis eine Interessenkollision schlechthin ausgeschlossen ist. Das ist insbesondere dann zu bejahen, wenn der Vertretene einen rechtlichen Vorteil erlangt. Dies wäre hier der Fall, da S zwar in die Wohnungseigentümergesellschaft eintritt, jedoch nur bis zu seinem Wohnungseigentum haftet.
+
+Da mindestens eine Ansicht zu einem anderen Ergebnis kommt, muss der Streit entschieden werden.
+
+Für die letzte Ansicht und damit gegen die Gesamtbetrachtungslehre spricht das Abstraktionsprinzip. Demnach wäre dies in unzulässigerweise durchbrochen, wenn das Verfügungsgeschäft und das Verpflichtungsgeschäft anhand einer Gesamtbetrachtung vermischt werden. Dies entspricht jedoch nicht dem sachenrechtlichen Grundsatz des Trennungs- und Abstraktionsprinzips.
+
+Für die letzte Ansicht spricht zudem, dass der Minderjährige hinreichend durch § 1147 BGB analog geschützt ist, da er mit der Haftung auf das Wohnungseigentum beschränkt ist.
+
+Dagegen und für die ersten beiden Ansichten spricht allerdings, dass der Minderjährigenschutz gewichtiger zu berücksichtigen ist, als das Abstraktionsprinzip. § 1147 BGB ist auch nicht konzipiert als Minderjährigenschutz. Daher sind die möglichen Nachteile aus dem Verfügungsgeschäft bereits beim Verpflichtungsgeschäft zu berücksichtigen, damit ein umfassender Minderjährigenschutz gewährleistet wird.
+
+Damit ist der Schenkungsvertrag nicht lediglich rechtlich vorteilhaft und somit schwebend unwirksam gem. § 108 I BGB. Somit kann die Auflassung auch nicht als Erfüllung einer Verbindlichkeit gesehen werden. Mithin ist die dingliche Einigung schwebend unwirksam gem. § 177 I BGB.
+
+II. Ergebnis
+
+S ist nicht Wohnungseigentümer geworden.

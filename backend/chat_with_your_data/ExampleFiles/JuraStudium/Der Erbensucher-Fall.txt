@@ -1,0 +1,112 @@
+Sachverhalt
+
+E ist gewerblich tätiger Erbensucher. Auf die im Bundesanzeiger veröffentlichte Aufforderung des Nachlassgerichts zur Anmeldung von Erbrechten nach dem am 29. Juni 1995 verstorbenen W. ermittelte er den Beklagten B und dessen Schwester G - beide Halbgeschwister des Erblassers - als gesetzliche Erben. Mit Schreiben vom 10. Juli 1997 teilte er dem Beklagten den Erbfall mit und bot diesem nach dem Abschluss einer Honorarvereinbarung über 20 % des ihm zufallenden Nachlasses zuzüglich Mehrwertsteuer an, die Nachlassangelegenheit vollständig offen zu legen. Der Beklagte lehnte einen Vertragsschluss ab und ermittelte aufgrund der Informationen des Klägers den Nachlass selbst. Ihm fiel dadurch ein Vermögen von 50.000 Euro zu. Mit der Klage begehrt der Kläger das im Schreiben vom 10. Juli 1997 verlangte Honorar in einer Höhe von 10.000 Euro nebst Zinsen aus dem Gesichtspunkt der Geschäftsführung ohne Auftrag oder ungerechtfertigten Bereicherung. Er behauptete, ein Anteil von 20 % des Nachlassvermögens sei als Vergütung für einen Erbenermittler angemessen und üblich.
+Lösungsskizze
+
+A. Zahlungsanspruch aus § 631 I ( oder § 611, § 675) BGB
+
+I. Wirksamer Werkvertrag (-)
+
+(P) Anspruch aus § 242 BGB? (-)
+
+II. Ergebnis
+
+B. Anspruch aus §§ 683 S.1, 677, 670 BGB
+
+I. Geschäft (+)
+
+II. Fremd
+
+  (P) Interessenkollision
+
+III. Ergebnis
+
+C. Anspruch aus §§ 687 Abs. 2 S. 2, 684 S. 1 iVm. §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB
+
+I. Geschäftsanmaßung (-)
+
+II. Ergebnis
+
+D. Anspruch aus §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB
+
+I. Etwas erlangt
+
+II. Durch Leistung
+
+III. Ohne Rechtsgrund
+
+(P) Wertung der GoA
+
+IV. Ergebnis (-)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Zahlungsanspruch aus § 631 I ( oder § 611, § 675) BGB
+
+E könnte eine Anspruch auf Zahlung von 10.000 Euro haben gem. § 631 I BGB.
+
+I. Wirksamer (Werk-) Vertrag
+
+Fraglich ist, ob ein wirksamer Werkvertrag vorliegt. Je nach Schwerpunkt des Vertrages kommt hier auch ein Dienstvertrag oder ein Geschäftsbesorgungsvertrag in Betracht. Der genaue Typus des Vertrages kann jedoch dahinstehen, wenn schon keine zwei korrespondierenden Willenserklärungen (Angebot und Annahme) hinsichtlich eines rechtsverbindlichen Vertrages vorliegen. Ein Angebot des Erbensuchers liegt hier vor, indem er den Geschwistern anbot, gegen eine Vergütung die Informationen über den Erblasser herauszugeben. Es müsste jedoch auch eine Annahme vorliegen. Ausweislich des Sachverhalts lehnten die Geschwister es jedoch entschieden ab, das Angebot des E anzunehmen und die vereinbarte Vergütung zu zahlen. Somit liegt kein Vertrag vor.
+
+Problematisch ist allerdings, dass die Geschwister die von E erarbeiteten Informationen trotzdem benutzen, um die Erbschaft annehmen zu können. Fraglich ist daher, ob hier gem. § 242 BGB ein Anspruch aus Treu und Glauben herzuleiten ist. Hier könnte zwar eine Vertragsanbahnung gem. §§ 311 II Nr. 2, 241 II BGB vorliegen, allerdings ist schon höchst fraglich, ob durch die Art der Kontaktaufnahme des E hier ein Vertrauenstatbestand geschaffen werden konnte. Dies wird man hier verneinen müssen. Gegen solch einen Anspruch spricht schon die Risikoverteilung des Vertrages. Der E hat auf sein eigenes Risiko hin ermittelt, sodass er nicht darauf vertrauen durfte, dass die Erben tatsächlich das Honorar zahlen wollen.
+
+II. Ergebnis
+
+Mangels eines wirksamen Vertrages hat E keinen Vergütungsanspruch aus § 631 I BGB.
+
+B. Anspruch aus §§ 683 S.1, 677, 670 BGB
+
+Fraglich ist, ob E einen Anspruch aus berechtigter Geschäftsführung ohne Auftrag gem. §§ 683 S.1, 677, 670 BGB hat.
+
+I. Geschäft
+
+Dafür müsste E ein Geschäft besorgt haben. Geschäft wird sehr weit verstanden, sodass hier jedes tatsächliche und rechtliche Handeln darunter fällt. Vorliegend hat der E die Erben des verstorbenen W ermittelt. Darin ist ein Geschäft zu sehen.
+
+II. Fremd
+
+Dieses Geschäft müsste auch fremd gewesen sein. Fremd sind solche Geschäfte, die nach ihrem Inhalt und ihrem Erscheinungsbild nicht zum Rechts- und Interessenkreis des Geschäftsführers gezählt werden können. Zu unterscheiden sind hierbei fremde, neutrale und eigene Geschäfte. Hier hat der E die Erben einerseits ermittelt, um daraus einen erhofften Vergütungsanspruch zu begründen und andererseits hat er den Geschwistern dadurch geholfen ihr Erbanspruch geltend zu machen. Damit liegt hier das so genannte „auch- fremde (oder neutrale) Geschäft“ vor. Ob beim auch- fremden Geschäft der Geschäftsführungswille vermutet werden soll, ist vorliegend umstritten. Der Streit kann jedoch dahinstehen, wenn die GoA vorliegend schon aus anderen Gründen scheitert.
+
+Hier ist nämlich problematisch, dass der Erbensucher auf eigenes Risiko hin die Erben ermittelt hat und dadurch nicht auf einen späteren Honoraranspruch vertrauen durfte. Den Anspruch über den Umweg der GoA zu begründen, würde daher zu einem Wertungswiderspruch führen, der nicht interessengerecht wäre. Der E muss daher grundsätzlich selbst das Risiko des Forderungsausfalls übernehmen, sodass die Ermittlungsarbeiten vielmehr, als typische Vorbereitungshandlung für einen Vertrag, unvergütet bleiben müssen.
+
+III. Ergebnis
+
+Damit hat der E auch keinen Anspruch aus den §§ 683 S.1, 677, 670 BGB.
+
+C. Anspruch aus §§ 687 Abs. 2 S. 2, 684 S. 1 iVm. §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB
+
+E könnte einen Anspruch gem. aus §§ 687 Abs. 2 S. 2, 684 S. 1 iVm. §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB haben.
+
+I. Geschäftsanmaßung
+
+Dafür müsste überhaupt eine Geschäftsanmaßung vorliegen. Dies ist der Fall, wenn der Geschäftsführer ein Geschäft als sein eigenes behandelt, obwohl er weiß, dass er dazu nicht berechtigt ist. Daran scheitert es hier schon, da der E das Geschäft als „ auch-fremdes“ Geschäft geführt hat. (s.o.).
+
+II. Ergebnis
+
+Damit hat E auch keinen Anspruch aus §§ 687 Abs. 2 S. 2, 684 S. 1 iVm. §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB.
+
+D. Anspruch aus §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB
+
+Fraglich ist, ob E einen Anspruch aus Bereicherungsrecht gem. §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB hat. Dafür müssten die Erben etwas ohne Rechtsgrund und durch Leistung erlangt haben.
+
+I. Etwas erlangt
+
+Zunächst müssten die Erben etwas erlangt haben. Etwas ist jeder vermögenswerte Vorteil. Ausweislich des Sachverhalts haben die Erben die Informationen vom Erbensucher E erhalten. Dadurch war es ihnen möglich ihr Erbe geltend zu machen. Mithin stellen diese Informationen daher einen vermögenswerten Vorteil dar.
+
+II. Durch Leistung
+
+Diese müssten die Erben auch durch Leistung erlangt haben. Leistung ist jede bewusste und zweckgerichtete Mehrung fremden Vermögens, welche sich nach der Sicht des Leistungsempfängers bestimmt. Hier hat der E zumindest auch aus Sicht der Erben aufgrund eines vermeintlichen Werkvertrages (s.o.) und damit durch Leistung die Informationen ermittelt.
+
+III. Ohne Rechtsgrund
+
+Wie bereits geprüft liegt kein Vertrag und damit auch kein Rechtsgrund vor.
+
+IV. Wertungen der GoA
+
+Grundsätzlich liegen die Voraussetzungen vor. Es könnte sich jedoch aus Wertungsgesichtspunkten etwas anderes ergeben. Hier verbietet sich jede schematische Lösung. Wie bereits geprüft, muss das Forderungsausfallrisiko hier bei E verbleiben. Eine Verneinung der vertraglichen und quasivertraglichen Ansprüche muss sich wegen Vermeidung von Wertungswidersprüchen somit auch auf die bereicherungsrechtliche Ebene durchschlagen. Die bereits erörterte Wertung ist somit abschließend und darf nicht durch das Bereicherungsrecht umgangen werden.
+
+V. Ergebnis
+
+Damit scheidet auch ein bereicherungsrechtlicher Anspruch aus §§ 812 Abs. 1 S. 1 Alt. 1, 818 Abs. 2 BGB aus.
+

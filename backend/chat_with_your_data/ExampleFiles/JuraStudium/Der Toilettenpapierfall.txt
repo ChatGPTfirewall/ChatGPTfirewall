@@ -1,0 +1,174 @@
+
+Sachverhalt
+
+S ist Schulleiterin der Privatschule P. Anfang Oktober wird sie von dem Vertreter V aufgesucht, der ihr den Kauf von „25 Gros Rollen Toilettenpapier“ vorschlägt. Bei einer Bestellung in diesem Umfang könne er der S einen Mengenrabatt von 10 % einräumen. S ist damit ein-verstanden. V legt der S daraufhin ein Bestellformular über „25 Gros Rollen Toilettenpapier, die Rolle zu 1000 Blatt“ vor, das S unterzeichnet.
+
+Als zwei Wochen später vom Lieferanten L 3.600 Rollen Toilettenpapier angeliefert werden, verweigert S die Abnahme und Bezahlung der Rollen bis auf 25 Stück mit der Begründung, sie habe nur 25 große Rollen bestellt. L weist sie hingegen darauf hin, dass die Bezeichnung „Gros“ 12 Dutzend Stück bedeute. Dies hätte S wissen müssen. Im Übrigen seien ihm durch die Lieferung bereits Transportkosten i.H.v. 50 € entstanden. Des Weiteren führt der L an, dass ihm das Geschäft mit der Privatschule einen Nettogewinn von 250 € eingebracht hätte.
+
+Frage 1: Hat L Anspruch auf Zahlung des vollen Kaufpreises?
+
+Frage 2: Kann er anderenfalls seine Schäden von der Privatschule P ersetzt verlangen?
+Die Fallhistorie
+
+Der „Klassiker“ unter den Beispielsfällen für einen Inhaltsirrtums wurde vom Landgericht Hanau 1979 entschieden (NJW 1979, 721).
+Der Problemkreis
+
+Über die Voraussetzungen der Anfechtung wegen eines Inhaltsirrtums und die Unterscheidung zwischen positivem und negativem Interesse.
+Lösungsskizze
+
+A. Frage 1: Anspruch L gegen P auf Kaufpreiszahlung aus § 433 II BGB
+
+I. Vertragsschluss zwischen L und P
+
+1. Einigung zwischen L und P
+
+2. Einigung zwischen V und S
+
+a) Angebot durch V im Namen des L
+
+b) Annahme durch S im Namen der P
+
+3. Zwischenergebnis
+
+II. Wirksamkeit des Vertragsschlusses
+
+1. Vorliegen eines Anfechtungsgrundes
+
+a) Vorliegen eines Irrtums bei S
+
+b) Beachtlichkeit des Irrtums der S
+
+c) Ursächlichkeit des Irrtums für die Abgabe der Willenserklärung
+
+d) Ergebnis für das Vorliegen eines Anfechtungsgrundes
+
+2. Anfechtungserklärung, § 143 I BGB
+
+3. Anfechtungsfrist, § 121 I BGB
+
+4. Ergebnis der Voraussetzungen der Anfechtung
+
+III. Endergebnis des Anspruchs auf Kaufpreiszahlung
+
+B. Frage 2: Anspruch des L gegen P auf Schadensersatz aus § 122 I BGB
+
+I. Vertrauensschaden des L
+
+1. Transportkosten i.H.v. 50 €
+
+2. Entgangener Gewinn aus dem angefochtenen Kaufvertrag i.H.v. 250 €
+
+3. Zwischenergebnis
+
+II. Ausschluss der Ersatzpflicht bei Kenntnis oder Kennenmüssen der Anfechtbarkeit, § 122 II BGB
+
+III. Endergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Frage 1: Anspruch L gegen P auf Kaufpreiszahlung aus § 433 II BGB
+
+Der Lieferant L könnte gegen die Privatschule P einen Anspruch auf Zahlung des Kaufpreises für die von ihm gelieferten 3.600 Rollen Toilettenpapier aus einem zwischen den beiden Vertragsparteien gem. § 433 II BGB geschlossenen Kaufvertrag haben.
+
+I. Vertragsschluss zwischen L und P
+
+Dann müsste es zum Abschluss eines wirksamen Kaufvertrages zwischen L und P gekommen sein.
+
+1. Einigung zwischen L und P
+
+Zu einer Einigung unmittelbar zwischen L und P kam es vorliegend nicht. Allerdings handelte der V im Namen des L und die Schulleiterin S im Namen der P, § 164 I BGB. Es könnte hier zu einer Einigung zwischen den jeweiligen Vertretern im Namen der von ihnen vertretenen Personen gekommen sein. Eine Einigung setzt das Vorliegen zweier inhaltlich korrespondierender Willenserklärungen, Angebot und Annahme, voraus.
+Beachte: Aufgrund fehlender weiterer Angaben im Sachverhalt ist von einer wirksamen Stellvertre-tung auf beiden Vertragsseiten auszugehen.
+
+2. Einigung zwischen V und S
+
+V könnte aber im Namen der L ein wirksames Angebot abgegeben haben und S könnte dieses Angebot im Namen der P angenommen haben.
+
+a) Angebot durch V im Namen des L
+
+Das Angebot könnte hier der V im Namen des L gemacht haben. Ein Angebot ist eine emp-fangsbedürftige Willenserklärung, durch die einem anderen der Vertragsschluss in der Weise angetragen wird, dass das Zustandekommen des Vertrages nur noch von dessen Einverständnis abhängt. V schlägt der S den Kauf von 25 Gros Toilettenpapier vor. Dabei räumt er einen Mengenrabatt von 10 % ein, so dass davon auszugehen ist, dass er auch einen konkreten Preis genannt hat. Die Erklärung des V enthält damit bereits alle wesentlichen Vertragsbestandteile, so dass das Zustandekommen des Kaufvertrages nur noch vom Einverständnis auf Seiten der P abhängt. Folglich hat V im Namen des L ein Angebot abgegeben.
+
+b) Annahme durch S im Namen der P
+
+Dieses Angebot könnte S im Namen der P angenommen haben. Eine Annahme ist eine empfangsbedürftige Willenserklärung, durch die der Antragsempfänger sein vorbehaltsloses Einverständnis mit dem angebotenen Vertragsschluss zum Ausdruck bringt. S erklärt, mit dem Angebot des V einverstanden zu sein und unterschreibt die Bestellung. Damit bringt sie ihr Einverständnis mit dem von V angebotenen Vertragsschluss zum Ausdruck.
+
+Jedoch ging S davon aus eine Bestellung über 25 große Rollen Toilettenpapier zu unterschrei-ben, wohingegen ihr V den Verkauf von 25 Gros, d.h. 3.600 Stück, angeboten hat. Bei der Auslegung einer Willenserklärung (§§ 133, 157 BGB) kommt es jedoch auf den objektiven Empfängerhorizont an. Die Vorstellungen der S spielen hier keine Rolle. Entscheidend ist allein der objektive Erklärungswert der Willenserklärung der S. Das Einverständnis mit dem Kauf von 25 Gros enthält objektiv das Einverständnis mit dem Kauf von 3.600 Stück. Die S hat folglich das von V gemachte Angebot über den Verkauf von 3.600 Rollen im Namen der P angenommen.
+
+3. Zwischenergebnis
+
+V im Namen der L und S in Namen der P haben sich über den Verkauf von 3.600 Rollen Toilettenpapier geeinigt. Demnach wurde zwischen L und P ein Kaufvertrag gem. § 433 BGB geschlossen.
+
+II. Wirksamkeit des Vertragsschlusses
+
+Der Kaufvertrag müsste des Weiteren auch wirksam sein. Der Vertrag könnte durch eine An-fechtung auf Seiten der P ex tunc vernichtet worden sein, § 142 I BGB. Dann müsste P den Kaufvertrag wirksam angefochten haben. Dazu müsste ein Anfechtungsgrund vorliegen und die Anfechtung erklärt worden sein.
+
+1. Vorliegen eines Anfechtungsgrundes
+
+Für eine wirksame Anfechtung müsste zunächst ein Anfechtungsgrund bestehen. Hier könnte eine Anfechtung aufgrund des Irrtums der S über die Mengenbezeichnung „Gros“ in Betracht kommen. Dabei kommt es hinsichtlich von Willensmängeln auf die Person des Vertreters – hier also der S – an.
+
+a) Vorliegen eines Irrtums bei S
+
+Die S müsste sich bei Vertragsschluss in einem Irrtum befunden haben. Ein Irrtum liegt vor bei einem unbewussten Auseinanderfallen von objektiv Erklärtem und subjektiv Gewolltem. Vorliegend erklärte S objektiv die Annahme des Kaufs von 3.600 Rollen Toilettenpapier, ging subjektiv aber vom Kauf von nur 25 Stück aus. Die objektive Erklärung weicht also von ihrer subjektiven Vorstellung ab, so dass sie sich in einem Irrtum befand.
+
+b) Beachtlichkeit des Irrtums der S
+
+Der Irrtum der S müsste beachtlich gewesen sein. Vorliegend könnte es sich um einen Inhaltsirrtum i.S.d. § 119 I Alt. 1 BGB handeln. Ein solcher Inhaltsirrtum ist gegeben, wenn sich der Erklärende in einem Irrtum über den Erklärungsinhalt befindet, indem er über die rechtliche Bedeutung seiner Erklärung irrt. S erklärt hier, 25 Gros Rollen Toilettenpapier kaufen zu wollen und geht dabei davon aus, 25 große Rollen zu kaufen, während 25 Gros tatsächlich 12 Dutzend meint. Sie irrt also über die Bedeutung des Ausdrucks „Gros“ und damit über die Bedeutung ihrer Erklärung, befindet sich folglich in einem Inhaltsirrtum i.S.d. § 119 I Alt. 1. BGB.
+Unterscheidung zwischen Inhalts- und Erklärungsirrtum: Bei einem Erklärungsirrtum will die Person nicht die Willenserklärung abgeben, die sie tatsächlich in die Welt gesetzt hat. Die Person verschreibt, vertippt oder verspricht sich. Ein Inhaltsirrtum ist gegeben, wenn sich der Erklärende in einem Irrtum über den Erklärungsinhalt befindet, indem er über die rechtliche Bedeutung seiner Erklärung irrt. Die Person sagt genau das, was sie auch wollte, jedoch verbindet sie mit den gewählten Worten einen anderen Inhalt.
+
+c) Ursächlichkeit des Irrtums für die Abgabe der Willenserklärung
+
+Weiterhin dürfte der Erklärende seine Erklärung bei Kenntnis der Sachlage und verständiger Würdigung des Falles nicht abgegeben haben. Der Irrtum muss kausal für die Abgabe der Willenserklärung gewesen sein. Vorliegend ist im Hinblick auf die mit der Lagerhaltung einer derart großen Menge Toilettenpapier verbundenen Probleme anzunehmen, dass S bei Kenntnis von der tatsächlichen Bedeutung des Ausdrucks „Gros“ und bei verständiger Würdigung die Erklärung über den Kauf von 3.600 Rollen nicht abgegeben hätte. Der Irrtum der S war damit kausal für die im Namen der P abgegebene Annahmeerklärung.
+Hinweis: Die Notwendigkeit der Kausalität ergibt sich aus dem Wortlaut des § 119 I 1 BGB am Ende: „wenn anzunehmen ist, dass er sie bei Kenntnis der Sachlage und bei verständiger Würdigung des Falles nicht abgegeben haben würde.“.
+
+d) Ergebnis für das Vorliegen eines Anfechtungsgrundes
+
+Es besteht ein Anfechtungsgrund der P.
+
+2. Anfechtungserklärung, § 143 I BGB
+
+Nach § 143 I BGB hat die Anfechtung durch Erklärung gegenüber dem Anfechtungsgegner zu erfolgen. Vorliegend könnte S als Vertreterin der P die Anfechtung im Namen der Privatschule erklärt haben. S verweigerte bei Lieferung des Toilettenpapiers die Annahme mit Ausnahme von 25 Rollen. Mit diesem Verhalten erklärte sie konkludent die Anfechtung des mit L geschlossenen Vertrages. L als Vertragspartner war der nach § 143 II BGB richtige Anfechtungsgegner.
+
+3. Anfechtungsfrist, § 121 I BGB
+
+Die Anfechtung durch S wäre nur dann wirksam, wenn sie innerhalb des von § 121 BGB gesetzten Zeitrahmens erfolgt wäre. Nach § 121 I BGB hat die Anfechtung unverzüglich, d.h. ohne schuldhaftes Zögern, nach Kenntniserlangung von dem Anfechtungsgrund zu erfolgen.
+
+Im vorliegenden Fall erkannte S mit der Lieferung der 3.600 Rollen Toilettenpapier und den in diesem Zusammenhang durch L erfolgten Äußerungen, dass sie sich im Irrtum über die Bedeutung des Ausdrucks „Gros“ befunden hatte und erklärte umgehend, die Annahme zu verweigern. Damit erfolgte die Anfechtung unmittelbar nach Kenntniserlangung von dem Anfechtungsgrund und demnach ohne schuldhaftes Zögern. Die Anfechtungsfrist des § 121 BGB wurde von S eingehalten.
+
+4. Ergebnis der Voraussetzungen der Anfechtung
+
+Die S hat den Vertrag wirksam im Namen der P angefochten, so dass der Kaufvertrag nach § 142 I BGB ex tunc nichtig ist.
+
+III. Endergebnis des Anspruchs auf Kaufpreiszahlung L hat gegen P keinen Anspruch auf Zahlung des vollen Kaufpreises für die 3.600 Rollen Toilettenpapier.
+
+ 
+
+B. Frage 2: Anspruch des L gegen P auf Schadensersatz aus § 122 I BGB
+
+L könnte jedoch gegen P einen Anspruch auf Ersatz der bei ihm entstandenen Schäden aus § 122 I BGB haben. § 122 I BGB gibt dem Anfechtungsgegner einen Anspruch gegen den Anfechtenden auf Ersatz der ihm im Vertrauen auf die Wirksamkeit der Erklärung entstandenen Schäden.
+
+I. Vertrauensschaden des L Dem L müsste also dadurch ein Schaden entstanden sein, dass er auf die Wirksamkeit der durch S erklärten Annahme und damit auf die Wirksamkeit des mit P geschlossenen Kaufvertrages vertraut hat.
+
+1. Transportkosten i.H.v. 50 €
+
+Durch die Lieferung der 3.600 Toilettenpapierrollen entstanden dem L Transportkosten i.H.v. 40 €. Wäre L nicht davon ausgegangen, einen wirksamen Kaufvertrag mit P geschlossen zu haben, hätte er die Rollen nicht an P geliefert. Bei den Transportkosten handelt es sich folglich um einen nach § 122 I BGB ersatzfähigen Vertrauensschaden.
+
+2. Entgangener Gewinn aus dem angefochtenen Kaufvertrag i.H.v. 250 €
+
+Des Weiteren führt L an, dass ihm das Geschäft mit P einen Nettogewinn von 250 € eingebracht hätte. Jedoch handelt es sich bei dem Wert von 250 € um das sog. Erfüllungsinteresse, also dem Interesse, dass der L an der Durchführung des Vertrages hat. § 122 I BGB gibt hingegen ausschließlich einen Anspruch auf Ersatz des Vertrauensschadens. Der entgangene Gewinn stellt also keinen nach § 122 I BGB ersatzfähigen Schaden dar.
+Unterscheidung zwischen positivem und negativem Interesse:
+
+Negatives Interesse (= Vertrauensschaden): Der Verletzte ist so zu stellen, wie er stehen würde, wenn er nicht auf die Gültigkeit des Rechtsgeschäfts bzw. der Erklärung vertraut hätte.
+
+Positives Interesse (= Erfüllungsinteresse): Der Verletzte ist so zu stellen, wie er stehen würde, wenn der Vertrag ordnungsgemäß vollzogen worden wäre.
+
+3. Zwischenergebnis
+
+Ersatzfähig nach § 122 I BGB sind hier allein die dem L entstandenen Transportkosten i.H.v. 50 €.
+
+II. Ausschluss der Ersatzpflicht bei Kenntnis oder Kennenmüssen der Anfechtbarkeit, § 122 II BGB
+
+Die Ersatzpflicht der P wäre ausgeschlossen bei Kenntnis bzw. Kennenmüssen von der An-fechtbarkeit des Vertrages (vgl. § 122 II). Es ist dabei auf die Kenntnis der S als Vertreterin der P abzustellen (§ 166 I BGB). Eine solche Kenntnis oder fahrlässig Unkenntnis der S ist aus dem Sachverhalt nicht ersichtlich. Der Ausschlussgrund des § 122 II BGB greift nicht ein.
+
+III. Endergebnis
+
+L hat gegen P somit einen Anspruch auf Ersatz der ihm entstandenen Transportkosten i.H.v. 50 € aus § 122 I BGB.

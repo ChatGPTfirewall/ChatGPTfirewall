@@ -1,0 +1,77 @@
+
+
+Sachverhalt
+Der Blumenhändler B erhält von der X-Bank einen Kredit. Dafür verlangt die X eine Sicherheit. Zur Sicherung tritt der B der X-Bank daher alle „Forderungen aus künftigen Geschäften“ im Voraus ab. 
+B bekommt von seinem Lieferanten H eine Ladung von 400 Orchideen geliefert. In dem Kaufvertrag zwischen B und H ist ein Eigentumsvorbehalt vereinbart. Es wird zusätzlich auch vereinbart, dass bei der Weiterveräußerung der Blumen, die Forderungen gegen den Kunden an H im Voraus abgetreten werden soll. Dabei erteilt H dem B eine Vollmacht darüber, dass er die Forderungen im eigenen Namen einziehen kann.
+Wenige Tage später liefert der B Orchideen im Wert von 500 Euro an den Hochzeitsplaner P.
+Wie es das Schicksal will, kommt B in finanzielle Engpässe. Daher zeigt B dem P an, den Kaufpreis i.H.v. 500 Euro an die X-Bank zu zahlen.
+H erfährt von dieser Zahlung und verlangt die 500 € von X heraus.
+ 
+Kann H die 500 € von X gem. § 816 II BGB herausverlangen?
+Die Fallhistorie
+
+Der Fall wurde am 30. April 1959 vom BGH entschieden.
+ 
+Der Problemkreis
+
+Der Fall behandelt das klassische Problem der Kollision von Globalzession und verlängertem Eigentumsvorbehalt. Innerhalb der bereicherungsrechtlichen Prüfung wird sodann die „Vertragsbruchstheorie“ des BGH dargestellt. 
+ 
+Lösungsskizze
+Anspruch aus § 816 II BGB
+I. Leistung an einen Nichtberechtigten (+)
+(P) X = Nichtberechtigte ?
+(P) mehrfache Abtretung im Voraus
+P1: Vorausabtretung möglich (sachenrechtlicher Bestimmtheitsgrundsatz)
+P2: Grds. „Prioritätsprinzip“
+P3: Abtretung wirksam?
+à  BGH :§ 138 BGB Verleitung zum „Vertragsbruch“ (+)
+a.A. (Medicus): § 138 BGB (-)
+Damit Unwirksamkeit der Globalzession
+II. Wirksam gegenüber Berechtigten
+1. Wirksamkeit gem. § 408 I BGB direkt (-)
+aber: planwidrige Regelungslücke und vergleichbare Interessenlage, damit analog § 408 I BGB (+)
+2. Wirksamkeit nach § 185 BGB (+)
+konkludente Genehmigung der Leistung
+III. Ergebnis
+Anspruch aus § 816 II BGB (+)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten 
+Anspruch aus § 816 II BGB
+H könnte einen Herausgabeanspruch gegen die X- Bank gem. § 816 II BGB haben. Dafür müsste P an X als Nichtberechtigte geleistet haben. Diese Leistung müsste H gegenüber auch wirksam gewesen sein.
+ 
+I. Leistung an einen Nichtberechtigten
+P müsste hier zunächst an X als Nichtberechtigte geleistet haben. Leistung ist jede bewusste und zweckgerichtete Mehrung fremden Vermögens. Hier hat der P das Vermögen der X durch die Zahlung bewusst und zweckgerichtet gemehrt und damit geleistet.
+ 
+Fraglich ist allerdings, ob die X auch Nichtberechtigte war. Nichtberechtigt ist derjenige, dem die Forderung nicht zusteht und der auch nicht zu ihrer Einziehung ermächtigt ist.
+ 
+Problematisch ist hier, dass die Forderung des B gegen P zweimal abgetreten wurde. Zunächst an die X- Bank und später dann an den Kunden  H.
+ 
+1. Problem der Vorausabtretung
+Zunächst ist fraglich, ob die erste Abtretung  an die X wirksam ist. Sie könnte nichtig sein, wenn sie gegen den sachenrechtlichen Bestimmtheitsgrundsatz verstößt. Hier hat der B nämlich seine Forderungen an X im Voraus abgetreten. Dies ist jedoch nur dann problematisch, wenn nicht klar abgegrenzt und bestimmt werden kann, welche Forderungen abgetreten werden sollen. Ausweislich des Sachverhalts sollten „künftige Forderungen aus Geschäften“ abgetreten werden. Dabei kann hinreichend bestimmt werden, was unter die abzutretenden Forderungen fällt. Somit genügt diese Vorausabtretung dem sachenrechtlichen Bestimmtheitsgrundsatz. Gleiches gilt für die Abtretung zwischen B und H.
+  
+2. Prioritätsgrundsatz
+Fraglich ist also, welche der zwei wirksamen Abtretungen gelten. Grundsätzlich gilt der Prioritätsgrundsatz, dh. die frühere Abtretung geht der jüngeren vor. Danach wäre die Abtretung an X wirksam, die ggü. H ginge ins Leere. Somit hätte B an einen Berechtigten (X- Bank) geleistet.
+ 
+3. Unwirksamkeit der Abtretung gem. § 138 I BGB
+Die Abtretung könnte allerdings aus anderen Gründen unwirksam sein. In Betracht kommt die Unwirksamkeit nach § 138 I BGB.  Dafür müsste ein auffälliges Missverhältnis zwischen Leistung und Gegenleistung vorliegen. Zudem müsste der Begünstigte in besonders verwerflicher Gesinnung gehandelt haben. In Betracht kommt ein Fall der Übersicherung.
+Problematisch ist nämlich, dass die Globalabtretung häufig deshalb nichtig wird, weil sie den Abtretenden (B) zum Vertragsbruch gegenüber seinem Lieferanten (H) verleitet („Vertragsbruchstheorie“). Für diese Auffassung spricht, dass der Eigentumsvorbehalt im geschäftlichen Verkehr den Normalfall darstellt. Ohne diese Vereinbarung bleibt dem Händler regelmäßig keine andere Möglichkeit neue Waren zu bestellen, um so einen Umsatz zu erzielen. Eine Alternative bietet sich dem Abtretenden nur, wenn er seinen Lieferanten vortäuschen würde, dass die zweite Abtretung Erfolg habe. Diesen Umstand kennt die Bank auch regelmäßig. Den Abtretenden zu solch einem Verhalten zu veranlassen, spricht jedoch für eine verwerfliche Gesinnung der Bank und rechtfertigt daher die Annahme einer Sittenwidrigkeit nach § 138 I BGB.
+ 
+Gegen eine Unwirksamkeit nach § 138 I BGB kann jedoch hervorgebracht werden, dass die generelle Bevorzugung des Warengläubigers gegen den Finanzierungsgläubiger (hier: die X) nicht gerechtfertigt werden kann, da die Bank keine Pflicht dazu hat, den Abtretenden vor Vertragsverletzungen mit dritten Geschäftspartnern zu schützen.
+Gegen die Auffassung spricht jedoch wiederum, dass der Finanzierungsgeber in der Regel dem Warengläubiger faktisch überlegen ist, da dem Warengläubiger in der Regel keine anderen Mittel bleiben, um weitere Waren zu bestellen. Wenn diese überlegene Stellung jedoch zum Nachteil des Warengläubigers ausgenutzt wird, um ihn zum Vertragsbruch zu verleiten, so gebietet die Wertung des § 138 I BGB diese Abtretung für unwirksam zu erachten.
+[Anmerkung: Die Sittenwidrigkeit lässt sich nach dem BGH nur durch eine „dingliche Teilverzichtsklausel“ vermeiden (BGH Az.: VII ZR 54/77). Diese ist hier jedoch nicht ersichtlich]
+Somit ist die Globalzession unwirksam.
+Damit war die X- Bank Nichtberechtigte.
+ 
+II. Wirksam gegenüber Berechtigten
+Die Leistung müsste gegenüber dem Berechtigten auch wirksam gewesen sein. Wie bereits geprüft, ist hier der H Berechtigter. Die Leistung müsste also ihm gegenüber wirksam gewesen sein.
+ 
+1. Wirksamkeit gem. § 408 I BGB direkt
+In Betracht kommt zunächst eine Wirksamkeit nach § 408 I BGB. Problematisch ist allerdings, dass der § 408 I BGB nach dessen Wortlaut die Wirksamkeit gegenüber dem Zweitzessionar umfasst. Vorliegend wird jedoch an einen Ersatzzessionar geleistet.
+Es kommt jedoch eine analoge Anwendung in Betracht. Dafür müssten eine planwidrige Regelungslücke und eine vergleichbare Interessenlage vorliegen. Der Gesetzgeber scheint den vorliegenden Fall unbewusst nicht geregelt zu haben. Es besteht auch eine vergleichbare Interessenlage, da es keinen Unterschied machen kann, ob an einen Zweitzessionar oder einen Ersatzzessionar geleistet wird. Analog § 408 I BGB war die Leistung des B gegenüber H somit wirksam.
+ 
+2. Wirksamkeit gem. § 185 BGB
+Überdies kommt auch eine Wirksamkeit gem. § 185 BGB in Betracht. Ausweislich des Sachverhalts fordert der H die 500 € von X heraus. Darin kann eine konkludente Genehmigung der Leistung gesehen werden.
+ 
+III. Ergebnis
+Mithin hat H gegen X einen Herausgabeanspruch gem. § 816 II BGB.

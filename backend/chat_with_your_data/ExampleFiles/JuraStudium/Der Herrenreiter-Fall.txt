@@ -1,0 +1,181 @@
+Sachverhalt
+
+Der Kläger K, ein Angestellter aus der Stadt X, betätigt sich beim Herrenreiten (Dressurreiten). Die Beklagte B entwickelt und vertreibt potenzsteigernde Präparate. Für ihre Werbung benutzt sie ein Abbild eines Dressureiters, welches den Kläger K in Form eines Originalfotos zeigt. Dieses Foto entstand bei einem öffentlichen Reitturnier. Dieses Werbeplakat wird auch in der Stadt X benutzt. K zeigt sich schockiert, da er niemals eine Einwilligung dafür erteilt hat.
+
+K verlangt nunmehr von der B Ersatz des entstandenen Schadens. Dieser Schaden soll durch eine fiktive Lizenzgebühr entstanden sein, die der K erhalten hätte, wenn er der Verbreitung seines Bildes zugestimmt hätte.
+
+K beantragt bei Gericht die B zu verurteilen einen angemessenen Betrag als Schadensersatz zu zahlen.
+
+Hat K einen Schadensersatzanspruch gegen B?
+Lösungsskizze
+
+A. Vertragliche Ansprüche (-)
+
+B. Anspruch aus den §§ 22 ff. KUG (-)
+
+C. Schadensersatzanspruch gem. § 823 I BGB
+
+I. Rechtsgutsverletzung
+
+1. Eigentum (-)
+
+2. Vermögen (-)
+
+3. sonstiges , absolutes Recht i.S.d. § 823 I
+
+APR (+)
+
+II. Verletzungshandlung (+)
+
+III. Haftungsbegründende Kausalität ( +)
+
+IV. Rechtswidrigkeit (+)
+
+(P) Rahmenrechte
+
+V. Verschulden (+)
+
+VI. Schaden (+)
+
+(P) Ersatzanspruch aus der Verfassung
+
+VII. Haftungsausfüllende Kausalität (+)
+
+VIII. Ergebnis (+)
+
+D. Anspruch aus § 823 II BGB i.V.m. §§ 185 I , 201 a StGB (-)
+
+E. Anspruch aus § 823 II BGB i.V.m. § 22 KUG (+)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Vertragliche Ansprüche
+
+Ausweislich des Sachverhalts liegt keine Vertragsbeziehung zwischen K und B vor. Vertragliche Ansprüche kommen daher nicht in Betracht. (Diesen Punkt muss man nicht unbedingt ansprechen).
+
+B. Anspruch aus den §§ 22 ff. KUG
+
+K könnte einen Schadensersatzanspruch aus den §§ 22 ff. KUG als lex specialis zu § 823 I haben. Im KUG sind jedoch keine Schadensersatzansprüche geregelt. Damit kann K keinen Schadensersatzanspruch aus dem KUG geltend machen.
+
+C. Schadensersatzanspruch gem. § 823 I BGB
+
+Fraglich ist, ob der K einen Anspruch gem. § 823 I BGB hat. Dafür müssten die Voraussetzungen vorliegen.
+
+I. Rechtsgutsverletzung
+
+Zunächst müsste ein von § 823 I geschütztes Rechtsgut verletzt worden sein.
+
+1. Eigentum
+
+In Betracht kommt zu nächst das Eigentum. Das Foto des K könnte als dessen Eigentum verletzt worden sein. Vorliegend ist jedoch nicht ersichtlich, wer das Foto gemacht hat und wie sich die Eigentümerstellung dazu genau verhält. Daher ist das Eigentum nicht verletzt.
+
+2. Vermögen
+
+Das Vermögen des K könnte verletzt worden sein, weil der K keine Gelegenheit hatte sein Bild selbst zu Werbezwecken zu veräußern. Das reine Vermögen wird allerdings nicht vom Tatbestand des § 823 I BGB als absolutes Recht erfasst. Daher liegt keine Vermögensverletzung vor.
+
+3. Sonstiges, absolutes Recht i.S.d. § 823 I BGB
+
+Fraglich ist jedoch, ob nicht ein anderes sonstiges Recht i.S.d. § 823 I BGB vorliegt. Es müsste sich dabei um ein absolutes Recht handeln, das Ausschluss- und Nutzungsfunktion hat. ( § 903 BGB). In Betracht kommt das allgemeine Persönlichkeitsrecht, als so genanntes Rahmenrecht gem. Art. 2 I i.V.m. Art. 1 I GG.
+
+Dafür müsste, als Besonderheit der Prüfung des APR, widerrechtlich in dessen Schutzbereich eingegriffen worden sein.
+
+Der K fällt als jedermann in den Schutzbereich des Art. 2 I i.V.m Art. 1 I GG. Auch der sachliche Schutzbereich ist vorliegend durch die Verbreitung seines Bildes eröffnet. Durch die Veröffentlichung ohne seine Einwilligung wurde auch widerrechtlich in sein APR eingegriffen. Damit liegt ein sonstiges, absolutes Recht i.S.d. § 823 I BGB vor.
+
+II. Verletzungshandlung
+
+Die B hat das Bild des K zu Werbezwecken benutzt und durch ein positives Tun die Verletzungshandlung begangen.
+
+III. Haftungsbegründende Kausalität
+
+Es müsste auch Kausalität zwischen der Verletzungshandlung und dem Verletzungserfolg vorliegen. Hätte die B nicht die Bilder des K zu Werbezwecken veröffentlicht, wäre nicht in den Schutzbereich des APR eingegriffen worden. Damit liegt die haftungsbegründende Kausalität vor.
+
+VI. Rechtswidrigkeit
+
+Fraglich ist, ob auch Rechtswidrigkeit vorliegt. Bei Vorliegen von Rahmenrechten ist die Lehre vom Erfolgsunrecht nicht anwendbar. Vielmehr muss positiv festgestellt werden, dass die Handlung rechtswidrig war. Dies geschieht mittels einer allumfassenden Abwägung der sich widerstreitenden Interessen im Einzelfall.
+
+Das Foto des K wurde ausweislich des Sachverhalts bei einem öffentlichen Reitturnier geschossen. Nach der drei Sphären Theorie des BVerfG müsste zunächst von einem Eingriff in der dritten Sphäre ausgegangen werden, welcher nicht so schwerwiegend ist. Vorliegend ist jedoch zu beachten, dass das Foto des K für die Werbung von Potenzmitteln genutzt wurde, welches vielmehr die Intimsphäre des K betrifft. Ein Eingriff in die Intimsphäre ist jedoch regelmäßig nicht abwägbar und stellt immer einen schwerwiegenden Eingriff in das APR und dessen Menschenwürdegehalt dar.
+
+Für die B sprechen allenfalls wirtschaftliche Interessen, da sie sich erhoffte durch das Bild ihren Absatz für das Mittel zu steigern. Wirtschaftliche Interessen sind hingegen nicht so schutzwürdig, wie Interessen, die in der Intimsphäre münden.
+
+Nach dieser Abwägung sind die Interessen des K schutzwürdiger und überwiegen daher.
+
+Mithin ist die Rechtswidrigkeit zu bejahen.
+
+V. Verschulden
+
+Die B müsste auch ein Verschulden treffen nach § 276 BGB. Vorliegend handelte die B mit Wissen und Wollen der Veröffentlichung und damit vorsätzlich. Ein Verschulden ist gegeben.
+
+VI. Schaden
+
+Problematisch ist, ob und welcher Schaden vorliegt. Laut Sachverhalt fordert der K Ersatz des Schadens, der ihm dadurch entstanden ist, dass ihm eine fiktive Lizenzgebühr entgangen ist. Dies stellt zunächst einen entgangenen Gewinn gem. § 252 BGB dar.
+
+Hier ist allerdings nicht davon auszugehen, dass der K aus wirtschaftlichen Interessen heraus das Bild wirklich gegen Geld verkaufen wollte. Vielmehr legt der Sachverhalt nahe, dass es dem K um eine Genugtuung wegen der Verletzung seines APR geht.
+
+Dies stellt vielmehr einen immateriellen Schaden gem. § 253 BGB dar. Dieser ist allerdings nur unter den Voraussetzungen der §§ 249, 250 BGB zu ersetzen. Nur in Ausnahmefällen kann nach § 251 I BGB Ersatz in Geld verlangt werden. Vorliegend ist eine Naturalrestitution allerdings nicht möglich, sodass sich die Frage stellt, ob der vorliegende Schaden sich nicht aus der Verfassung selbst ergeben könnte.
+
+Der Schaden könnte sich aus dem Art. 2 I i.V.m Art. 1 GG ergeben.
+
+Dafür spricht hier, dass das APR in erster Linie dem Schutz ideeller Werte dient. Der Staat hat dabei die Aufgabe diese Werte auch zu schützen. Dies geschieht allerdings nicht nur alleine mit Hilfe von Abwehransprüchen, die man dem Bürger zubilligt. Es müssten für die Erfüllung dieses Schutzauftrages vielmehr auch Schadensersatzansprüche zur Verfügung stehen. Ohne einen solchen Geldanspruch würden viele Eingriffe in das APR sanktionslos werden, wodurch das APR immer mehr verkümmern würde. Dies rechtfertigt auch eine Abweichung von der Regelung des § 253 I BGB.
+
+Die Höhe eines angemessenen Geldanspruchs liegt dabei im Ermessen des Gerichts (§ 287 ZPO).
+
+Damit liegt ein ersatzfähiger Schaden vor.
+
+VII. Haftungsausfüllende Kausalität
+
+Es liegt auch Kausalität zwischen der Rechtsgutsverletzung und dem Schaden vor.
+
+VIII. Ergebnis
+
+K hat gegen B einen Schadensersatzanspruch gem. § 823 I BGB.
+
+D. Anspruch aus § 823 II BGB i.V.m. §§ 185 I , 201 a StGB
+
+Wegen mangelnder Sachverhaltsangaben ist die Verletzung von § 185 I und § 201 a StGB nicht gegeben.
+
+E. Anspruch aus § 823 II BGB i.V.m. § 22 KUG
+
+K könnte einen Anspruch aus §§ 823 II BGB i.V.m § 22 KUG haben.
+
+Dafür müssten die Voraussetzungen des § 823 II BGB vorliegen.
+
+I. Schutzgesetzverletzung
+
+Es müsste ein Schutzgesetz verletzt worden sein.
+
+1. Schutzgesetz i.S.d. § 823 II BGB
+
+Es müsste zunächst überhaupt ein Schutzgesetz vorliegen. Ein Schutzgesetz ist jede Rechtsnorm, die zumindest auch dazu dienen soll, den Einzelnen gegen die Verletzung eines Rechtsguts zu schützen.
+
+In Betracht kommt § 22 KUG. Dieser schützt zumindest auch den Einzelnen gegen die Verletzung seines Persönlichkeitsrechts.
+
+2. Verletzung des Schutzgesetzes
+
+Dieses Schutzgesetz müsste die B verletzt haben. Nach § 22 KUG ist das Recht am eigenen Bild geschützt und wird verletzt, wenn es ohne Einwilligung des Abgebildeten veröffentlicht wird. Hier hat der B das Bild des K ohne dessen Einwilligung nach § 22 S.1 KUG veröffentlicht. Damit liegt die Verletzung von § 22 KUG vor.
+
+II. Haftungsbegründende Kausalität
+
+Es liegt auch Kausalität zwischen der Verletzungshandlung und dem Verletzungserfolg vor.
+
+III. Rechtswidrigkeit
+
+Nach der Lehre vom Erfolgsunrecht wird die Rechtswidrigkeit durch die Verletzung des Schutzgesetzes tatbestandlich indiziert (anders als beim Rahmenrecht s.o.).
+
+IV. Verschulden
+
+Es müsste auch Verschulden der B vorliegen. Maßgeblich ist dabei der Tatbestand des § 22 KUG. Da der § 22 KUG kein Verschulden regelt müsste B mindestens mit Fahrlässigkeit gehandelt haben (§ 276 BGB). Vorliegend handelte sie sogar vorsätzlich, sodass ein Verschulden zu bejahen ist.
+
+V. Schaden
+
+Ein immaterieller Schaden liegt vor (s.o.).
+
+VI. Haftungsausfüllende Kausalität
+
+Es müsste auch Kausalität zwischen der Rechtsgutsverletzung und dem Schaden vorliegen. Dies ist hier zu bejahen.
+
+VII. Ergebnis
+
+K hat gegen die B einen Schadensersatzanspruch gem. § 823 II BGB i.V.m. § 22 KUG.
+
+

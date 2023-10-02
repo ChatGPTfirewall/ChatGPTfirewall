@@ -1,0 +1,145 @@
+Sachverhalt
+B stellt am 26. Juni 2014 in Rahmen einer Auktion bei e- Bay zum Startpreis von 1 € einen Jugendstil-Gussheizkörper im Wert von 4.000 € zum Verkauf ein. Die Versteigerung erfolgt auf der Grundlage der zu dieser Zeit maßgeblichen AGB von e- Bay. Dort heißt es auszugsweise:
+ 
+
+"§ 9 Nr. 11 Anbieter, die ein verbindliches Angebot auf der eBay-Website einstellen, dürfen nur dann Gebote streichen und das Angebot zurückziehen, wenn sie gesetzlich dazu berechtigt sind. Weitere Informationen. […]
+§ 10 Nr. 7 Bieter dürfen ein Gebot nur dann zurücknehmen, wenn sie gesetzlich dazu berechtigt sind. Weitere Informationen."
+ 
+
+Am 27. Juni 2014 gibt K ein Maximalgebot von 500 € ab. Am 29. Juni 2014 beendete B die Auktion vorzeitig. Er argumentiert, dass K gemeinsam mit seinem Bruder in den letzten sechs Monaten vor der Aufhebung der hier in Rede stehenden Auktion insgesamt 370 auf e- Bay abgegebene Kaufgebote zurückgenommen hatte. Geboten dürfen nach den eBay-Grundsätzen aber nur ausnahmsweise zurückgenommen werden, wenn die Eingabe des Betrages auf einem Tipp- oder Schreibfehler beruht oder sich die Beschreibung des Artikels nach der Gebotsabgabe erheblich geändert hat.
+Zum Zeitpunkt des Abbruchs war K der Höchstbietende mit einem Höchstgebot von 112 €. K verlangt nun von B Lieferung des Heizkörpers
+
+  Hat K gegen B einen Anspruch auf Lieferung?
+
+Die Fallhistorie
+
+Der vorliegende Fall ist einer von vielen e-Bay Entscheidungen. Er ist aktuell am 23.09.2015 vom BGH entschieden worden und präzisiert nochmals die Bedingungen für einen vorzeitigen e-Bay Abbruch.
+ 
+
+Der Problemkreis
+
+E -bay Fälle behandeln fast immer die Problematik des automatisierten Vertragsschlusses und damit der nötigen Willenserklärungen. Prüflinge sollten sich daher diese Problematik dringend anschauen, da ein Herleiten in der Klausur ziemlich schwierig erscheint. Auch die Einbeziehung der e-Bay AGB ist regelmäßig Gegenstand innerhalb eines möglichen Lösungsrechts von der Willenserklärung. Hier ist zusätzlich besonders, dass der Kläger so genannter „Abbruchjäger“ ist, sodass eine Auseinandersetzung mit § 242 BGB geboten scheint.
+ 
+
+3rd ARQIS Innovation Day
+Lösungsskizze
+
+A. Anspruch des K gegen B auf Lieferung gem. § 433 I 1 BGB 
+
+I. Anspruch entstanden/ Wirksamer Kaufvertrag
+
+1. Zwei korrespondierende Willenserklärungen ( Angebot und Annahme)
+
+a) Einstellen der Kaufsache des B als Angebot
+
+(P) Mechanismus des Vertragsschlusses bei Ebay
+
+e.A. Einstellen Angebot
+a.A Einstellen vielmehr antizipierte Annahme unter auflösender Bedingung
+
+b) Abgabe eines Gebots des K als Annahme
+
+(P) Rechtsbindungswille wegen „Minigeboten“ (+)
+
+2. Zeitablauf durch Abbruch (+)
+3. Ergebnis KV (+)
+
+II. Unwirksamkeit des KV
+
+1. 138 II BGB (-)
+2. 138 I BGB (-)
+
+III. Anspruch untergegangen
+
+1. Anfechtung (-)
+2. Unmöglichkeit (-)
+3.  In der Person liegende Gründe (-)
+
+(P) Einbeziehung der e-Bay AGB
+
+4. Ergebnis (-)
+
+IV. Anspruch durchsetzbar
+
+1. § 242 BGB
+
+(P) K als „Abbruchjäger“
+(P) Risiko des B ( fehlender Mindestpreis)
+
+2. Ergebnis (-)
+
+V. Endergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch des K gegen B auf Lieferung gem. § 433 I 1 BGB
+K könnte gegen B einen Anspruch auf Lieferung des Guss-Heizungskörpers gem. § 433 I 1 BGB haben.
+
+  I. Anspruch entstanden/ Wirksamer Kaufvertrag
+Dafür müsste ein wirksamer Kaufvertrag vorliegen.
+
+  1. Zwei korrespondierende Willenserklärungen ( Angebot und Annahme)
+Dieser setzt zwei korrespondierende Willenserklärungen (Angebot und Annahme) voraus.
+
+  a) Einstellen der Kaufsache des B als Angebot
+Es müsste ein Angebot vorliegen. Unter einem Angebot ist eine empfangsbedürftige Willenserklärung zu verstehen, die alle vertragswesentlichen Bestandteile enthält und durch die der Vertragsschluss einem anderen so angetragen wird, dass das Zustandekommen des Vertrages nur noch von dem Einverständnis des Empfängers abhängt; dieser das Angebot also mit einem einfachen "Ja" annehmen kann
+Das Einstellen der Kaufsache durch B könnte als Angebot gesehen werden. Abzugrenzen ist das Einstellen hier von der invitatio ad offerendum.
+Bei e- Bay Auktionen stellt der Käufer regelmäßig mit Rechtsbindungswillen Angebote ein, die dann von Mitbietern per Gebot angenommen werden sollen. Der Vertragsschluss findet insoweit automatisiert statt.
+
+  Nach einer anderen Ansicht soll das Einstellen der Kaufsache als antizipierte Annahmeerklärung unter der auflösenden Bedingung, dass kein höheres Angebot vorliegt, verstanden werden.
+
+  Der Streit kann jedoch dahinstehen, da es vorliegend nicht auf den genauen Zeitpunkt des Vertragsschlusses ankommt, sondern darauf, ob überhaupt zwei korrespondierende Willenserklärungen vorliegen. Damit liegt ein Angebot des B vor.
+
+  b) Abgabe eines Gebots des K als Annahme
+Es müsste auch eine Annahme vorliegen. Eine Annahme ist eine einseitige empfangsbedürftige und vorbehaltlose Willenserklärung, aus der sich der Annahmewille des Angebots unzweifelhaft ergibt. Durch die Abgabe eines Gebots könnte K das Angebot des B angenommen haben. Auch die Annahme erfolgt insoweit automatisiert, sodass sie unter der aufschiebenden Bedingung steht, dass der K auch bis zum Zeitablauf höchstbietender bleibt.
+
+  Fraglich ist allerdings, ob der K auch Rechtsbindungswillen bzgl. eines Kaufvertrags hatte. Ausweislich des Sachverhalts ist K Abbruchjäger. Der Rechtsbindungswille ermittelt sich durch den objektiven Verkehrshorizont. Hier hat der K zwar ständig Minigebote abgegeben, dies alleine führt jedoch noch nicht zur Verneinung eines Rechtsbindungswillens. Damit liegt eine Annahme des K vor.
+
+  2. Zeitablauf
+Es müsste auch der automatisierte Zeitablauf vorliegen. Hier ist der Zeitablauf durch den Abbruch von B eingetreten.
+
+  3. Ergebnis
+Damit liegt ein Kaufvertrag vor.
+
+  II. Unwirksamkeit des Kaufvertrages
+Fraglich ist, ob der Kaufvertrag auch wirksam ist.
+
+  1. § 138 II BGB
+Er könnte zunächst gem. § 138 II unwirksam sein. Dafür müsste zunächst ein objektiv  auffälliges Missverhältnis und subjektiv die Ausnutzung einer Zwangslage vorliegen.  Ein Missverhältnis könnte darin gesehen werden, dass der K nunmehr den Heizungskörper für 112 € erwirbt, statt für den eigentlichen Wert von 4000 €.  Problematisch ist allerdings, ob der K auch eine Zwangslage ausgenutzt hat. Vielmehr hat der B sich freiwillig für einen Startpreis von 1 € entschieden und die Kaufsache freiwillig eingestellt. Daher ist die Ausnutzung einer Zwangslage abzulehnen. Damit ist § 138 II BGB nicht einschlägig.
+
+  2. § 138 I BGB
+Der Kaufvertrag könnte jedoch gem. § 138 I BGB nichtig und damit unwirksam sein. Dafür müsste ein auffälliges Missverhältnis zwischen Leistung und Gegenleistung vorliegen. Zudem müsste der Begünstigte in besonders verwerflicher Gesinnung gehandelt haben.
+Wie bereits festgestellt, besteht ein auffälliges Missverhältnis zwischen Leistung und Gegenleistung. Dies reicht jedoch freilich nicht aus, um den Tatbestand des § 138 I BGB zu bejahen. Grundsätzlich wird zwar die verwerfliche Gesinnung vermutet, wenn ein zumindest doppelter Preis für eine Sache verlangt wird, allerdings erfolgt auch eine Betrachtung im Einzelfall unter Abwägung der widerstreitenden Interessen.
+Hier ist die Möglichkeit eines „Schnäppchens“ gerade der Anreiz für das Mitbieten bei e-Bay. Zudem hat sich B diesen Umstand zunutze gemacht, indem er einen Startpreis von 1 € eingegeben hat. Dadurch ersparte er sich auch die Einstellungsgebühr. Wer aber die Vorteile der Plattform nutzt, muss auch das Risiko tragen ein schlechtes Geschäft zu machen.
+Damit ist der Kaufvertrag nicht unwirksam.
+
+  III. Anspruch untergegangen
+Der Anspruch könnte jedoch untergegangen sein.
+
+  1. Anfechtung
+In Betracht kommt zunächst ein Untergang durch Anfechtung gem. § 142 I BGB. Dafür müsste jedoch zunächst ein Anfechtungsgrund vorliegen. In Betracht könnte ein Inhalts- oder Erklärungsirrtum gem. § 119 I BGB kommen. Hier hat der B sich jedoch nicht vertippt oder verschrieben. Vielmehr hat er die Aktion abgebrochen, da ihm der K „unseriös“ erschien.
+
+  2. Unmöglichkeit
+Auch für eine Unmöglichkeit der Leistung gem. § 275 I BGB fehlen Angaben.
+
+  [Anmerkung: Im Originalfall berief sich der Beklagte zunächst auf eine Zerstörung des Heizungskörpers und dann doch auf die Unseriösität. Der Fall wurde an das Berufungsgericht zurückverwiesen, sodass dieser nun das Vorliegen der Unmöglichkeit überprüfen wird.]
+
+  3. In der Person liegende Gründe
+Fraglich ist, ob B geltend machen kann, dass der K als Abbruchjäger und die vielen Minigebote unseriös ist und dadurch seine Willenserklärung anfechten kann. Dazu kann zunächst Bezug auf die e-Bay AGB genommen werden, die eine Art Spielregeln für das Geschäft festlegen, an die sich die Parteien auch durch ihr Verhalten binden. Die AGB enthalten hier jedoch nur den Hinweis, dass Anbieter die Auktion nur abbrechen dürfen, wenn ein „gesetzlicher Grund“ besteht. Daher ist fraglich, ob Gründe in der Person solch einen gesetzlichen Grund darstellen können.
+Dazu könnte man zunächst andenken, ob dies keinem Eigenschaftsirrtum einer Sache gem. § 119 II BGB gleichkommt. Dies ist allerdings abzulehnen, da dadurch die Anfechtungsgründe uferlos ausgeweitet würden. Dagegen spricht auch die Interessenlage bei e-Bay, wonach
+der Bieter regelmäßig vorleistungspflichtig ist und dadurch der Anbieter hinreichend geschützt ist.
+
+  IV. Anspruch durchsetzbar
+1.) § 242 BGB
+Fraglich ist, ob der Anspruch durchsetzbar ist. Er könnte wegen § 242 BGB nicht durchsetzbar sein. K könnte nämlich rechtsmissbräuchlich handeln, wenn er als Abbruchjäger seinen Lieferungsanspruch geltend macht.
+Für ein rechtsmissbräuchliches Handeln muss eine umfassende und sorgfältige Prüfung im Einzelfall erfolgen. Der Einwand des Rechtsmissbrauch soll dadurch nur in Ausnahmefällen zugelassen werden.
+Gegen den Einwand aus § 242 BGB spricht hier, dass K nur das in Anspruch genommen hat, was der B ihm eingeräumt hat. Dem B stand es dabei frei, ein Mindestgebot festzulegen, um sich hinreichend vor einem schlechten Geschäft zu schützen.  Dabei entspricht es dem regelmäßigen Wesen der Plattform e-Bay, dass die Vertragsfreiheit bewusst ausser Hände gegeben wird, um im Gegenzug eine global tätigen Bieterstamm anzusprechen.
+Aus Vertrauensschutzaspekten ist dem K deshalb im konkreten Einzelfall kein Vorwurf zu machen. Alleine aus dem Umstand, dass K 370 Minigebote abgegeben hat, kann kein rechtsmissbräuchliches Verhalten geschlossen werden.
+
+  2.) Damit ist der Anspruch auch durchsetzbar.
+
+  V. Endergebnis
+Mithin hat der K gegen B einen Anspruch auf Lieferung gem. § 433 I 1 BGB.
+
+

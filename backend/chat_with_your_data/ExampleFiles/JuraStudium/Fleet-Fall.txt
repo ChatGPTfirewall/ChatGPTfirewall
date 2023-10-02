@@ -1,0 +1,134 @@
+Sachverhalt
+
+Die BRD ist Eigentümerin eines als Bundeswasserstraße eingetragenen Fleets, das in B. eine Mühle mit dem dortigen Hafen verbindet. In das Fleet stürzte in der Nacht vom 21. zum 22. Oktober 1962 ein 3 bis 4 Meter langes Stück der Ufermauer mit einem Teil der darauf ruhenden Außenwand eines Wohnhauses. Um den weiteren Einsturz des Hauses zu verhindern, ließ dessen Eigentümer dieses Haus abstützen, und zwar in Vollzug einer baupolizeilichen Verfügung. Hierbei wurden zwei Baumstämme so angebracht, dass sie unmittelbar über der Wasseroberfläche von der einen zur anderen Seite des Fleets führten. Damit war das Fleet – bis zur vorläufigen Instandsetzung der Ufermauer Mitte 1963 – für Schiffe unpassierbar. Dies hatte zur Folge, dass das der Klägerin gehörende Motorschiff „MS Christel“ während der Zeit der Sperrung des Fleets dieses nicht verlassen konnte und an der Verladestelle der Mühle festlag. Außerdem konnte die Klägerin, die der Mühle gegenüber vertraglich gehalten war, Schiffsraum für Transporte bereit zu stellen, mit drei Schuten nicht zur Mühle fahren.
+
+Die verfassungsmäßigen Vertreter der Beklagten haben in Kenntnis des baufälligen Zustandes der Ufermauer über Jahre hinweg nichts unternommen, um durch geeignete Sicherungsmaßnahmen den drohenden Einsturz der Mauer zu verhindern, obwohl sie jederzeit mit einem Einsturz der Mauer rechnen mussten.
+
+Die Klägerin K beziffert den ihr durch die Sperrung des Fleets entstandenen Verdienstausfall auf insgesamt 31.061,10 DM und verlangt den Betrag von der beklagten Bundesrepublik ersetzt.
+Lösungsskizze
+
+A. Anspruch aus § 823 I BGB
+
+I. Rechtsgutsverletzung
+
+1. Eingerichteter und ausgeübter Gewerbebetrieb als sonstiges absolutes Recht
+
+(-), da keine Betriebsbezogenheit
+
+2. Eigentum (P)
+
+- hier : reine Nutzungsbeeinträchtigung, keine verletzte Sachsubstanz (P)
+
+e.A.: Nutzungsbeeinträchtigung keine Eigentumsverletzung
+
+Arg. : - Gesetzgeber wollte reine Vermögensschäden aus dem Anwendungsbereich des § 823 I BGB nehmen; keine uferlose Ausweitung des Deliktsrechts
+
+- keine allgemeine Fahrlässigkeitshaftung in § 823 I BGB gewollt
+
+a.A.: Nutzungsbeeinträchtigung auch Eigentumsverletzung
+
+Arg. : - Sinn und Zweck des § 903 S. 1 BGB, weitgehender Schutz des Eigentümers, der mit der Sache nach Belieben verfahren darf.
+
+- Wortlaut des § 823 I BGB, der sich nicht auf Verletzung der Sachsubstanz beschränkt
+
+BGH: Abgrenzung danach, ob eine die Eigentümerbefugnisse treffende tatsächliche Einwirkung auf die Sache erfolgt.
+
+a) Bzgl. MS Christel
+
+Eigentumsverletzung (+)
+
+Arg.: MS Christel konnte überhaupt nicht genutzt werden, somit war ihr der bestimmungsmäßige Gebrauch vollständig entzogen
+
+b) Bzgl. der ausgesperrten Schuten
+
+Eigentumsverletzung (-)
+
+Arg. : Schuten können weiterhin bestimmungsgemäß genutzt werden, damit keine vollständige Entziehung der Nutzungsmöglichkeit. Reine Einschränkung des Gemeingebrauchs wird von § 823 I BGB nicht geschützt.
+
+II. Verletzungshandlung (+)
+
+Hier: durch Unterlassen (Verkehrssicherungspflicht“)
+
+III. Haftungsbegründende Kausalität ( +)
+
+IV. Rechtswidrigkeit (+)
+
+V. Verschulden (+)
+
+VI. kausaler Schaden (+)
+
+VII. Ergebnis
+
+Anspruch besteht teilweise (s.o.)
+
+B. Anspruch aus § 823 II BGB i.V.m § 303 I StGB (-)
+
+Ausweislich des Sachverhalts kein Vorsatz ersichtlich, vgl. § 15 StGB.
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch aus § 823 I BGB
+K könnte gegen die BRD einen Schadensersatzanspruch aus § 823 I BGB haben. Dafür müssten die Voraussetzungen vorliegen.
+
+I. Rechtsgutsverletzung
+Fraglich ist, ob eine Rechtsgutsverletzung vorliegt.
+
+1. Eingerichteter und ausgeübter Gewerbebetrieb
+Zunächst kommt die Verletzung des eingerichteten und ausgeübten Gewerbebetriebs in Betracht. Dieser wird geschützt, wenn kein Spezialgesetz greift, ein Gewerbebetrieb vorliegt, dh. ein solcher, der dauerhaft auf eine Gewinnerzielung ausgerichtet ist und ein betriebsbezogener Eingriff vorliegt. Problematisch ist hier die Betriebsbezogenheit.
+
+Ein Eingriff ist dann betriebsbezogen, wenn er gegen den Betrieb als solchen gerichtet ist und sich nicht auf von ihm abtrennbare Rechtsgüter bezieht.
+
+Hier stürzte die Ufermauer ein, die in keiner unmittelbaren Beziehung zum Betrieb der K gehört. Somit fehlt es am betriebsbezogenen Eingriff. Damit liegt keine Rechtsgutverletzung des eingerichteten und ausgeübten Gewerbebetriebs vor.
+
+2. Eigentum
+Fraglich ist, ob eine Eigentumsverletzung i.S.d. § 823 I BGB vorliegt. Hier war der K es, auf Grund des Einsturzes der Ufermauer, nicht mehr möglich, die eingesperrte MS Christel und die ausgesperrten Schuten zu nutzen. Eine Verletzung der Sachsubstanz liegt daher nicht vor. Es ist daher danach zu fragen, ob die reine Entziehung der Nutzungsmöglichkeit ebenfalls eine Eigentumsverletzung i.S.d. § 823 I BGB darstellen kann. Dies ist umstritten.
+
+Nach einer Ansicht soll die reine Nutzungsbeeinträchtigung keine Eigentumsverletzung darstellen, sodass hier eine Rechtsgutsverletzung zu verneinen wäre.
+
+Die Gegenansicht bejaht eine Eigentumsverletzung auch in dem Fall, indem eine reine Nutzungsbeeinträchtigung vorliegt. Nach dieser Ansicht wäre hier auf Grund der beschränkten Nutzungsmöglichkeit der MS Christel und der Schuten eine Eigentumsverletzung anzunehmen.
+
+Die vermittelnde Ansicht (BGH) differenziert danach, ob eine die Eigentümerbefugnisse treffende tatsächliche Einwirkung auf die Sache erfolgt.
+
+Da die Ansichten zu unterschiedlichen Ergebnissen kommen, ist ein Streitentscheid erforderlich.
+
+Für die erste Ansicht spricht, dass der Gesetzgeber reine Vermögensschäden aus dem Anwendungsbereich des § 823 I BGB rausnehmen wollte. Dadurch soll einer uferlosen Ausweitung des Deliktsrechts entgegengesteuert werden. Würde man auch reine Nutzungsbeeinträchtigungen als Rechtsgutsverletzungen i.S.d. § 823 I BGB einstufen, würde man de facto eine allgemeine Fahrlässigkeitshaftung in § 823 I BGB konstruieren, was gegen den gesetzgeberischen Willen stünde.
+
+Dagegen kann man jedoch mit dem Wortlaut des § 823 I BGB argumentieren, da dieser sich nicht auf die Verletzung der Sachsubstanz beschränkt, sondern von „Verletzung des Eigentums“ spricht. Auch der Sinn und Zweck des § 903 S. 1 BGB spricht für einen weitgehenden Schutz des Eigentümers, der mit der Sache nach Belieben verfahren darf. Diesen Schutz würde man jedoch begrenzen, wenn die Nutzungsmöglichkeit nicht darunter fallen würde. Eine ähnliche Wertung ergibt sich schon aus § 906 BGB, wonach die Nutzungsbeeinträchtigung als Störung qualifiziert wird.
+
+Es spricht hier jedoch vieles dafür einer vermittelnden Ansicht zu folgen, um der Wertung des § 823 I BGB gerecht zu werden. Solange nämlich keine tatsächliche Einwirkung auf die Eigentümerbefugnisse vorliegt, gibt es keine klare Grenze zwischen einer Rechtsgutsverletzung und einer reinen Nutzungsbeeinträchtigung, die das Deliktsrecht uferlos ausweiten würde, was nach den Gesetzesbegründungen nicht gewollt war.
+
+Daher ist im Einzelfall zu entscheiden, ob auch eine Nutzungsbeeinträchtigung eine Eigentumsverletzung i.S.d. § 823 I BGB darstellen kann.
+
+Hier muss entsprechend bzgl. der Nutzung der MS Christel und der Schuten differenziert werden.
+
+[Anmerkung: Niemand verlangt von Euch genaue Kenntnisse der BGH- Rechtsprechung. Das Gutachten zeigt, dass man auch selbst Meinungsstreite „konstruieren“ kann. Nehmt immer zwei gegensätzliche Ansichten und entscheidet Euch im besten Fall mit der vermittelnden Ansicht. Denn diese ist in den meisten Fällen diejenige des BGH.]
+
+a) Bzgl. MS Christel
+Fraglich ist also, ob die Nutzungsbeeinträchtigung der MS Christel eine Eigentumsverletzung darstellt. Wie bereits dargestellt, müsste eine die Eigentümerbefugnisse treffende tatsächliche Einwirkung auf die Sache erfolgt sein.
+Dafür spricht hier, dass die MS Christel von K überhaupt nicht mehr genutzt werden konnte, da sie völlig eingesperrt war. Der bestimmungsmäßige Gebrauch des Schiffes als Transportmittel war ihr dadurch vollständig entzogen. Mithin liegt hier eine Eigentumsverletzung vor.
+
+b) Bzgl. der ausgesperrten Schuten
+Bzgl. der ausgesperrten Schuten könnte sich etwas anderes ergeben. Die ausgesperrten Schuten können nämlich im Gegensatz zur MS Christel noch bestimmungsgemäß als Transportmittel benutzt werden. Sie sind nur insoweit eingeschränkt, als dass sie das Fleet nicht überqueren können. Diese Einschränkung trifft allerdings jedermann, sodass lediglich eine Beeinträchtigung des Gemeingebrauchs vorliegt. Dieser wird jedoch nicht vom Schutz des § 823 I BGB erfasst, da dieser nur den Eigentümer an sich schützen soll. Mithin liegt keine Eigentumsverletzung bzgl. der Schuten vor.
+Damit liegt nur eine Rechtsgutsverletzung an dem Eigentum der MS Christel vor.
+
+II. Verletzungshandlung
+Es müsste auch eine Verletzungshandlung vorliegen. Ausweislich des Sachverhalts haben die verfassungsmäßigen Vertreter der BRD es unterlassen, die Ufermauer durch geeignete Sicherungsmaßnahmen vor dem Einsturz zu bewahren. Insoweit traf sie durch die Eröffnung einer Gefahrenquelle eine Verkehrssicherungspflicht, die Ufermauer Instand zu halten. Damit liegt eine Verletzungshandlung durch Unterlassen vor.
+
+III. Haftungsbegründende Kausalität
+Es liegt auch Kausalität zwischen der Verletzungshandlung und der Rechtsgutsverletzung vor.
+
+IV. Rechtswidrigkeit
+Auch die Rechtswidrigkeit ist zu bejahen.
+
+V. Verschulden
+Ausweislich des Sachverhalts handelten die Vertreter der BRD fahrlässig, indem sie es versäumten die erforderlichen Sicherheitsmaßnahmen zu treffen.
+
+VI. kausaler Schaden
+Mithin liegt auch ein kausaler Schaden vor.
+
+VII. Ergebnis
+K steht teilweise ein Schadensersatzanspruch aus § 823 I BGB zu.
+
+B. Anspruch aus § 823 II BGB i.V.m § 303 I StGB
+Ein Anspruch aus § 823 II BGB i.V.m. § 303 I StGB scheidet mangels Vorsatz aus, vgl. § 15 StGB.

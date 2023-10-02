@@ -1,0 +1,184 @@
+Lösungsskizze
+
+A. Anspruch E gegen K auf Ersatz der Behandlungskosten nach §§ 280 I, 311 II, 241 II, 249 II 1 BGB i.V.m. den Grundsätzen des Vertrages mit Schutzwirkung zugunsten Dritter auf Schadensersatz
+
+I. A als Anspruchsberechtigter
+
+II. Schuldverhältnis zwischen E und K
+
+1. Vorvertragliches Schuldverhältnis zwischen A und K
+
+a) Vertragsverhandlungen
+
+b) Anbahnung eines Vertrags
+
+2. Voraussetzungen der Einbeziehung in den Schutzbereich
+
+a) Leistungsnähe
+
+b) Gläubigernähe
+
+c) Erkennbarkeit
+
+d) Schutzbedürfnis
+
+3. Zwischenergebnis
+
+III. Schuldhafte Verletzung einer Schutzpflicht
+
+1. Inhalt des objektiven Pflichtenprogramms
+
+2. Schuldhafte Verletzung des Pflichtenprogramms
+
+a) Zurechnung der Handlungen des G
+
+b) Schuldhafte Pflichtverletzung des G
+
+c) Zwischenergebnis
+
+IV. Rechtsfolgen
+
+1. Schaden und haftungsausfüllende Kausalität
+
+2. Mitverschulden
+
+a) Rechtsgrundverweisung
+
+b) Rechtsfolgenverweisung
+
+V. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+
+Vorüberlegungen: Bei dem vorliegenden Fall handelt es sich um einen absoluten Klassiker, der so bzw. in Abwandlungen sehr häufig in Klausuren oder Hausarbeiten auftaucht. Beim Herangehen an den Fall muss man sich vor allem erst einmal darüber klar werden, dass noch überhaupt kein Vertrag zwischen den Beteiligten geschlossen wurde und dies, jedenfalls im Hinblick auf die Tochter, auch überhaupt nicht möglich ist - aufgrund der Bestimmungen des Minderjährigenrechts.
+
+Gleichwohl stellt § 311 Abs. 2 BGB drei vorvertragliche Haftungstatbestände bereit, bei denen abermals das Problem besteht, dass die Tochter keinesfalls Partei der vorvertraglichen Haftungstatbestände sein kann. Stellt man sich jedoch vor, dass genauso gut der Vater der E auf dem Salatblatt hätte ausrutschen können (genauso übrigens wie jeder andere Kunde), dann nähert man sich dem Gedanken, dass die von den §§ 311 Abs. 2, 241 Abs. 2 BGB aufgestellten vorvertraglichen Pflichten nicht notwendigerweise nur an den tatsächlich am (Vor-) Vertrag Beteiligten festgemacht werden können. Mit Ausnahme der Möglichkeit des Vertragsschlusses ist nämlich die Beziehung der Tochter zu dem Kaufhaus identisch mit der des Vaters: Genauso wie ihr Vater begibt sie sich in den Verkehrsbereich des Kaufhauses und liefert sich damit ebenso wie ihr Vater den dort aufwartenden Gefahrenquellen aus. Dass es sich bei dieser Gefahrenquelle eigentlich „nur“ um ein Salatblatt handelt, darf nicht darüber hinwegtäuschen, dass es sich de facto um eine Gefahrenquelle handelt, sei sie in der Vorstellung des Bearbeiters auch noch so lächerlich.
+
+Unter Beibehaltung dieses Gedankenganges sollte man dann ein weiteres Instrumentarium des allgemeinen Schuldrechts hinzuziehen – die Grundsätze des Vertrages mit Schutzwirkung zu Gunsten Dritter. Hier wird zu diskutieren sein, wie eine Verbindung des Vertrages mit Schutzwirkung zu Gunsten Dritter und der vorvertraglichen Haftung aussehen kann und wie eine solche dogmatisch herzuleiten ist. Hat man dies geschafft und kommt man zu dem Ergebnis, dass die Voraussetzungen des Vertrages mit Schutzwirkung zu Gunsten Dritter vorliegen, dann ist schon ordentlich Arbeit geleistet worden – gleichwohl steht man noch relativ am Anfang der Prüfung eines vertraglichen Schadensersatzanspruches. Denn letztlich hat man lediglich das hierfür notwendige Schuldverhältnis nachgewiesen.
+
+In der Folge warten also noch weitere – wohl aber etwas kleinere - Probleme, mit denen man sich auseinanderzusetzen hat. So wird zu klären sein, worin genau die Pflichtverletzung bestanden hat (bei erster Betrachtung hat es jemand Unterlassen, das Salatblatt wegzuräumen). Weiterhin muss man sich damit beschäftigen, dass eine GmbH als juristische Person natürlich nicht selbstständig handeln und dementsprechend auch originär keine Pflicht verletzen kann. Es bedarf also irgendwelcher Zurechnungskriterien. Und schließlich wird zu behandeln sein, wie sich das Telefonat des Vaters und die damit verbundene Vernachlässigung der Aufsichtspflicht auf den Schaden auswirken. Steigen wir also in die Lösung des Falles ein.
+Gutachten
+
+A. Die E könnte gegen K einen Anspruch auf Ersatz der Behandlungskosten nach §§ 280 I, 311 II, 241 II, 249 II 1 BGB i.V.m. den Grundsätzen des Vertrages mit Schutzwirkung zugunsten Dritter auf Schadensersatz haben, der von A geltend gemacht werden könnte.
+
+I. A als Anspruchsberechtigter
+
+Dazu müsste A, als Vater der E, zunächst berechtigt sein, Ansprüche der E geltend zu machen. Gem. §§ 1626, 1629 BGB sind Eltern befugt, ihr Kind nach außen hin zu vertreten, wobei diese Vertretungsmacht sämtliche Rechtshandlungen umfasst. Als Vater der E ist A also berechtigt Ansprüche für die E gerichtlich geltend zu machen.
+
+II. Schuldverhältnis zwischen E und K
+
+Sodann müsste gem. § 280 I BGB zwischen E und K ein Schuldverhältnis bestehen. Für dessen Begründung ist gem. § 311 I BGB regelmäßig ein Vertrag zwischen den Beteiligten nötig, der ein rechtsgeschäftliches Handeln, in Form der Abgabe von zwei Willenserklärungen (Angebot und Annahme), voraussetzt, die die vertragswesentlichen Bestandteile beinhalten.
+
+Derartige Willenserklärungen wurden hier jedoch von E und K nicht abgegeben. Darüber hinaus wären etwaige Erklärungen der E gem. §§ 104 Nr. 1, 105 I BGB nichtig. Tatsächlich begleitete die E lediglich ihren Vater, der bei der K einkaufen wollte. Zum Vertragsschluss ist es jedoch auch hier nicht gekommen.
+
+Ein Schuldverhältnis mit Pflichten nach § 241 II BGB entsteht gem. § 311 II BGB aber auch durch die Aufnahme von Vertragsverhandlungen (Nr. 1), die Anbahnung eines Vertrages (Nr. 2) oder durch ähnliche geschäftliche Kontakt (Nr. 3). Die sich dabei aus § 241 II BGB ergebenen Pflichten umfassen insbesondere die Pflicht den Vertragspartner und seine Rechtsgüter vor Gefahren, die aus der eigenen Sphäre stammen, zu schützen. Dabei sind jedoch die Parteien des Schuldverhältnis iSd § 311 II BGB grundsätzlich nur die Parteien des in Aussicht genommenen Vertrages. Demnach würde ein Schuldverhältnis gem. § 311 II BGB nur zwischen dem A und K entstehen können, nicht jedoch zwischen der E und K.
+
+Gleichwohl begleitete die E ihren Vater in die Geschäftsräume des K und lieferte sich somit genauso wie der A den von K geschaffenen Gefahrenquellen aus. Es erscheint daher fraglich, ob die E nicht ausnahmsweise in den Schutzbereich des vorvertraglichen Schuldverhältnisses (§ 311 II BGB) zwischen A und K mit einbezogen werden kann - sollte ein solches Schuldverhältnis überhaupt bestehen. Obschon die Einbeziehung Dritter in den Schutzbereich eines Vertrages oder eines vorvertraglichen Schuldverhältnisses unter gewissen Voraussetzungen anerkannt ist (Vertrag mit Schutzwirkung zu Gunsten Dritter), besteht Uneinigkeit über die dogmatische Begründung einer derartigen Einbeziehung:
+
+Einerseits wird versucht, über eine ergänzende Vertragsauslegung gem. §§ 133, 157 BGB den Dritten in den Schutzbereich des Vertrages mit einzubeziehen, wobei im vorvertraglichen Bereich einer ergänzenden Vertragsauslegung der Boden entzogen wäre. Zum anderen wird § 311 III 1 BGB für eine dogmatische Begründung herangezogen, wonach ein Schuldverhältnis mit Pflichten nach § 241 II BGB auch zu Personen entstehen kann, die nicht selbst Vertragspartei werden sollen. Nach dem Willen des Gesetzgebers begründet § 311 III BGB jedoch nur eine Haftung des Dritten, nicht aber eine Berechtigung. Schließlich wird angenommen, es handle sich um eine nach § 242 BGB abgesicherte Rechtsfortbildung, deren Rechtsgedanke, nämlich, dass Dritte an einem fremden Vertrag teilhaben können, durch § 311 III BGB lediglich bestätigt wird. Dabei wird vor allem auf ein gesetzliches Schuldverhältnis abgestellt, das auf der Inanspruchnahme und Gewährung von Vertrauen beruht und das seine positivrechtliche Grundlage in § 242 BGB findet. Nach der letzten, vorzugswürdigen Auffassung müssten folgende Voraussetzungen für eine Einbeziehung der E erfüllt sein:
+
+1. Vorvertragliches Schuldverhältnis zwischen A und K
+
+Es müsste zunächst ein vorvertragliches Schuldverhältnis gem. § 311 II BGB zwischen A und K vorliegen, in dessen Schutzbereich die E überhaupt einbezogen werden könnte.
+
+a) Vertragsverhandlungen
+
+Nach § 311 II Nr. 1 BGB entsteht ein solches Schuldverhältnis durch die Aufnahme von Vertragsverhandlungen. Hierbei werden rechtsgeschäftliche Kontakte erfasst, die den Abschluss eines Vertrages zwischen den Parteien zum Ziel haben, wobei auch unverbindliche Gespräche genügen. Dabei entsteht das Schuldverhältnis mit der Aufnahme der Verhandlungen. Vorliegend befindet sich der A zwar in den Geschäftsräumen der K, zu Gesprächen mit dem Verkaufspersonal oder anderen Personen ist es vorliegend jedoch noch nicht gekommen.
+
+b) Anbahnung eines Vertrags
+
+Gem. § 311 II Nr. 2 BGB entsteht ein Schuldverhältnis auch durch die Anbahnung eines Vertrages. Dies würde voraussetzen, dass sich A zumindest als potentieller Kunde in den Einflussbereich der K begeben hat und zwar mit dem Ziel, einen Vertrag abzuschließen oder zumindest einen geschäftlichen Kontakt anzubahnen. Gleichwohl ist es nicht erforderlich, dass bereits ein konkreter Vertragsschluss ins Auge gefasst worden ist – es genügt bereits ein bloßer Informationsbesuch, bei dem jedoch die Möglichkeit der Einwirkung auf die Rechte, Rechtsgüter und Interessen des anderen Teils gegeben sein muss.
+
+Der A betritt vorliegend die Geschäftsräume des K in der Absicht, die notwendigen Einkäufe zu erledigen. Mit dem Betreten dieser Räume begibt er sich in den Gefahrenquellenbereich, der durch K geschaffen wird und schafft so für K die Möglichkeit, auf seine Rechte, Rechtsgüter und Interessen einzuwirken. Ein vorvertragliches Schuldverhältnis zwischen A und K mit Pflichten nach § 241 II BGB wurde also nach § 311 II Nr. 2 BGB durch die Anbahnung eines Vertrages begründet.
+
+2. Voraussetzungen der Einbeziehung in den Schutzbereich
+
+a) Leistungsnähe
+
+Um in den Schutzbereich des vorvertraglichen Schuldverhältnisses einbezogen werden zu können, müsste die E bestimmungsgemäß mit der Leistung in Berührung gekommen sein und so den Gefahren von Schutzpflichtverletzungen ebenso ausgesetzt sein wie der A.
+
+Problematisch erscheint hierbei, dass es im vorvertraglichen Bereich noch zu keiner geschuldeten Leistung im Sinne einer Hauptleistung kommt. Fraglich ist daher, wie der Begriff der Leistung im vorvertraglichen Bereich zu verstehen ist. § 311 II BGB selbst stellt klar, dass sich die aus einem vorvertraglichen Schuldverhältnis ergebenen Pflichten solche nach § 241 II BGB sind. Dabei handelt es sich um Schutzpflichten, die unabhängig von der Existenz von Leistungspflichten bestehen. Wenn nun im vorvertraglichen Bereich lediglich Schutzpflichten nach § 241 II BGB bestehen und diese von den Hauptleistungspflichten generell getrennt sind, dann kann sich das Kriterium der Leistungsnähe, jedenfalls im vorvertraglichen Bereich, nicht auf Hauptleistungspflichten sondern muss sich auf die Schutzpflichten aus § 241 II BGB beziehen.
+
+Die sich aus § 241 II BGB ergebenen Pflichten umfassen insbesondere die Pflicht, die Gegenpartei und ihre Rechtsgüter vor Gefahren, die aus der eigenen Sphäre stammen zu schützen. Als eine solche Gefahr aus der Sphäre des A das herumliegende und nicht umgehend entfernte Salatblatt gesehen werden. E begleitete den A in das Kaufhaus und begab sich somit ebenso wie der A in den von der K geschaffenen Gefahrenbereich. Die Gefahr auf einem herumliegenden Salatblatt auszurutschen bestand hier sowohl für die E als auch für den A.
+
+b) Gläubigernähe
+
+Des Weiteren müsste der A ein schützenswertes Interesse daran haben, die E in den Schutzbereich einzubeziehen. Ein solches Interesse ist zumindest dann zu bejahen, wenn der A für das Wohl und Wehe der E verantwortlich wäre, ihr also Schutz und Fürsorge schuldete, was insbesondere bei Beziehungen mit personenrechtlichem Einschlag angenommen wird, bspw. in familienrechtlichen Beziehungen. Als Vater der E steht der A zu dieser in einer familienrechtlichen Beziehung, ist gem. § 1626 I 1 BGB berechtigt und verpflichtet für sein Kind sind zu sorgen und ist somit für das Wohl und Wehe der E verantwortlich. Der A hat also ein schützenwertes Interesse an der Einbeziehung der A in den Schutzbereich.
+
+c) Erkennbarkeit
+
+Des Weiteren muss der Kreis der geschützten Dritten für die K vorhersehbar sein: K würde nur dann haften, wenn für sie die Drittbezogenheit der Leistung und die Nähe des Dritten zum Gläubiger erkennbar gewesen wäre. Gleichwohl müssen Zahl und Namen der geschützten Personen dem Schuldner, also der K, nicht bekannt sein. K handelt vorliegend mit Lebensmitteln, die der Öffentlichkeit frei zugänglich präsentiert und zur Verfügung gestellt werden. Dass Kinder ihre Eltern regelmäßig bei einem Einkauf begleiten, wird dem K durchaus bewusst gewesen sein, insbesondere weil es täglich tausendfach geschieht und absolut üblich ist. Dass Eltern stets ein berechtigtes Interesse am Schutz ihrer Kinder haben, dürfte für K ebenso klar gewesen sein. Der Kreis der geschützten Personen war für K also vorhersehbar.
+
+d) Schutzbedürfnis
+
+Ferner müsste die E schutzbedürftig sein. Dies wär dann zu bejahen, wenn die E keinen eigenen inhaltsgleichen, also vertraglichen oder quasivertraglichen, Anspruch hätte. Andere vertragliche Ansprüche der E gegenüber dem K oder anderer Personen sind nicht ersichtlich. Ansprüche aus Vertrag würden wohl zudem generell an der Geschäftsunfähigkeit der E scheitern. Die E ist also schutzbedürftig.
+
+3. Zwischenergebnis
+
+Die Voraussetzungen eines Vertrages mit Schutzwirkung zu Gunsten Dritter sind demzufolge erfüllt. Die E kann also in die Schutzwirkung des vorvertraglichen Schuldverhältnisses nach § 311 II BGB zwischen A und K einbezogen werden.
+
+III. Schuldhafte Verletzung einer Schutzpflicht
+
+Sodann müsste die K gem. § 280 I BGB eine Pflicht aus dem vorvertraglichen Schuldverhältnis verletzt haben. Hierbei kommen gem. § 311 II BGB nur Pflichten nach § 241 II BGB in Frage, die darauf abzielen, die Rechte, Rechtsgüter und Interessen der Gegenpartei zu schützen. Für eine Verletzung solcher Pflichten genügt es, dass der Schuldner von dem objektiven Pflichtenprogramm des Schuldverhältnisses unberechtigt abgewichen ist. Dabei gelten die deliktischen Verkehrspflichten als Mindeststandard dieses Pflichtenprogramms. Ein nicht Nachkommen der Verkehrspflichten wäre demnach als Pflichtverletzung iSd §§ 280, 241 II BGB zu werten.
+
+1. Inhalt des objektiven Pflichtenprogramms
+
+Dies führt zunächst zu der Frage, welche Verkehrspflichten die K überhaupt treffen. Die Verkehrspflichten beschreiben ganz allgemein die Pflicht desjenigen, der in seinem Verantwortungsbereich eine Gefahrenquelle schafft, bei einer Verkehrsöffnung diejenigen Vorkehrungen zu treffen, die erforderlich und ihm zumutbar sind, um eine Gefährdung anderer Personen zu vermeiden. Dabei sind besonders dort hohe Sicherheitsanforderungen zu stellen, wo ein Gewerbe betrieben wird, da hier die Zahl potentiell Gefährdeter und der wirtschaftliche Nutzen des Gewerbetreibenden besonders hoch sind. Entsprechendes gilt dort wo Kinder in den Gefahrbereich gelangen können, da diese nicht die Erfahrung eines Erwachsenen besitzen und gefährliche Situationen schlechter als solche einschätzen können. Dort sind wirksame und auf Dauer angelegte Schutzmaßnahmen zu ergreifen, um Kinder vor den Folgen ihrer Unerfahrenheit und Unbesonnenheit zu schützen.
+
+Als Gewerbetreibende öffnet die K ihren Verkaufsbereich für die Öffentlichkeit. Dabei ist ihr bekannt, dass auch Kinder als Begleitung potentieller oder tatsächlicher Kunden in den Verkehrs- und Gefahrenbereich eintreten werden. Beim Verkauf von Lebensmitteln kann es durchaus geschehen, dass irgendwelche Dinge, wie Salatblätter, Flüssigkeiten oder sonstige Produkte auf den Boden fallen, auslaufen bzw. sich anderweitig verteilen. Dass von derartigen Dingen vor allem für Kinder und ältere Menschen die Gefahr ausgeht, übersehen zu werden und auf diesen Dingen auszurutschen oder sich anderweitig zu verletzen, dürfte allgemein bekannt sein. Die K muss daher dafür Sorge tragen, dass solche Gefahrenquellen umgehend beseitigt werden.
+
+2. Schuldhafte Verletzung des Pflichtenprogramms Es fragt sich, ob die K schuldhaft gegen ihr Verkehrspflichten verstoßen hat, indem das Blatt nicht rechtzeitig und umgehend entfernt wurde. Problematisch erscheint dabei jedoch, dass die K als GmbH und juristische Person (§ 13 I GmbHG) nicht selbstständig tätig werden kann und demgemäß auch nicht selbst in der Lage ist, überhaupt einer Pflicht nachzukommen oder sie zu verletzten. Es fragt sich jedoch, ob nicht das Verhalten der Angestellten der K, insbesondere das des Geschäftsführers, der K zugerechnet werden kann.
+
+a) Zurechnung der Handlungen des G
+
+Als möglich Zurechnungsnormen kommt vorliegend § 278 BGB in Betracht, nach dem der Schuldner das Verschulden seines gesetzlichen Vertreters oder seines Erfüllungsgehilfen wie eigenes Verschulden zu vertreten hat. Für eine derartige Zurechnung ist gem. § 278 BGB erforderlich, dass zwischen der K und der E eine schuldrechtliche oder schuldrechtsähnliche Sonderverbindung besteht, welche zweifelsohne durch die Einbeziehung der E in das vorvertragliche Schuldverhältnis gegeben ist gegeben ist, und dass es sich bei dem G um einen gesetzlichen Vertreter oder Erfüllungsgehilfen der K handelt.
+
+Als Geschäftsführer handelt es sich beim dem G zweifelsohne um den gesetzlichen Vertreter der K. Eine etwaige schuldhafte Pflichtverletzung des G hätte die K gem. § 278 BGB also wie eigenes Verschulden zu vertreten.
+
+(Umstritten ist die Frage, ob in diesem Fall auch § 31 BGB als mögliche Zurechnungsnorm herangezogen werden kann. Dies würde letztlich aber an der fehlenden Sonderverbindung zwischen dem Geschäftsführer und der Tochter scheitern – vgl. hierzu bspw.: Piper in JuS 2011, 492.)
+
+b) Schuldhafte Pflichtverletzung des G
+
+Wie bereits oben festgestellt hätte es zur Verkehrspflicht der K gehört das Salatblatt umgehend zu entfernen. Als gesetzlicher Vertreter der K, der für Wahrnehmung der Pflichten der K verantwortlich ist, ist der G dieser Pflicht nicht nachgekommen, was der K im Falle eines Verschuldens gem. §278 BGB zugerechnet werden würde.
+
+Der Verschuldensmaßstab bemisst sich sodann nach § 276 I 1 BGB, wonach der G zumindest Fahrlässigkeit zu vertreten hat. Fahrlässig handelt gem. § 276 II BGB, wer die im Verkehr erforderliche Sorgfalt außer Acht lässt. Dabei kommt es grundsätzlich nicht auf die Person dessen an, der die Pflichtverletzung begeht, sondern auf die durchschnittlich von einer Person seines Verkehrskreises zu fordernde Sorgfalt.
+
+Hinsichtlich des anzulegenden Sorgfaltsmaßstabs dürfte von einem Geschäftsführer zu erwarten sein, dass er, gerade auch in Anbetracht der Öffnung des Betriebes für etwaige Kunden und Kinder, ein besonderes Maß an Sorgfalt auf die Verkehrssicherung seines Betriebes legt, um Kunden, insbesondere ältere Kunden, oder den Kunden begleitende Kinder vor Schäden zu schützen und nicht zuletzt auch, um den Betrieb nicht selbst durch etwaige Klagen oder durch einen schlechten Ruf zu schädigen. Im konkreten Fall würde es genügen, die Gänge regelmäßig auf etwaige Gefahrenquellen zu kontrollieren oder einen bzw. mehrere Angestellte mit dieser Aufgabe zu betrauen. Zumindest letzteres wäre von einem durchschnittlichen Geschäftsführer zu erwarten. Der G handelte somit zumindest fahrlässig.
+
+c) Zwischenergebnis
+
+Die K muss sich demzufolge die schuldhafte Pflichtverletzung gem. § 278 BGB wie eigenes Verschulden zurechnen lassen. Der K ist mithin eine schuldhafte Pflichtverletzung zur Last zu legen.
+
+IV. Rechtsfolgen
+
+1. Schaden und haftungsausfüllende Kausalität
+
+Der E müsste sodann ein Schaden entstanden sein, der adäquat-ursächlich auf die Pflichtverletzung zurückzuführen ist. Nach der Differenzhypothese ist die Differenz zwischen dem Vermögensstand ohne das schädigende Ereignis und dem tatsächlich gegebenen Vermögensstand als Schaden anzusehen. Darüber hinaus ist gem. § 249 II 1 BGB als Form der Naturalrestitution das Integritätsinteresse zu ersetzen, wenn es zu einer Verletzung der Person gekommen ist, wobei der zur Wiederherstellung notwendige Geldbetrag verlangt werden kann, der hier in den Kosten der Heilbehandlung besteht. Die E rutschte auf dem im Gang liegenden Salatblatt aus und verletzte sich dabei. Diese Verletzung wurde daraufhin ärztlich behandelt, um den Gesundheitszustand der E wiederherzustellen. Ein Personenschaden liegt mithin auf Seiten der E vor.
+
+Fraglich ist ob dieser Personenschaden ursächlich auf die Pflichtverletzung zurückzuführen ist. Nach der Äquivalenztheorie ist eine Pflichtverletzung dann kausal, wenn die betreffende Handlung nicht hinweggedacht werden kann, ohne dass der Erfolg entfiele. Wäre vorliegend das Salatblatt umgehend entfernt worden, wäre es zu der Verletzung der E nicht gekommen und die ärztliche Heilbehandlung wäre nicht notwendig geworden. Nach der Äquivalenztheorie ist die Pflichtverletzung demnach kausal für den Schaden der E.
+
+Jedoch müsste der Schuldner im Rahmen der Äquivalenztheorie selbst für entfernteste Folgen seines Handeln einstehen, was weitere Zurechnungskriterien notwendig werden lässt: Nach der Adäquanztheorie wird schließlich ein ursächlicher Zusammenhang bejaht, wenn das zum Schaden führende Ereignis im Allgemeinen und nicht nur unter besonders eigenartigen, unwahrscheinlichen und nach dem gewöhnlichen Verlauf der Dinge außer Betracht zu lassenden Umständen geeignet ist, einen Erfolg der eingetretenen Art herbeizuführen.
+
+Hier ist nicht unwahrscheinlich, dass ein auf dem Boden liegendes Salatblatt vom Kunden und gerade evtl. herumspielenden Kindern übersehen wird und diese dann darauf ausrutschen. Ein kausal auf die Pflichtverletzung zurückgehender Personenschaden liegt demnach vor. Um den Gesundheitszustand wieder herzustellen, wurde die E ärztlich behandelt, was bestimmte – im Sachverhalt nicht genannte Kosten – verursacht, welche die E schließlich von der K verlangen kann.
+
+2. Mitverschulden
+
+Gem. § 254 I BGB wäre dieser Anspruch jedoch zu kürzen, wenn dem Geschädigten bei der Entstehung des Schadens ein eigenes Verschulden treffen sollte. Dies würde in Hinblick auf das Verschulden jedoch die Zurechnungs- bzw. Verschuldensfähigkeit der E voraussetzen. Dies erscheint angesichts des Alters der E jedoch fragwürdig. Denn gem. § 828 I BGB, der im Rahmen des § 254 BGB entsprechend angewendet wird, ist, wer das siebente Lebensjahr noch nicht vollendet hat, für einen Schaden, den er einem anderen zufügt, nicht verantwortlich. In entsprechender Anwendung würde das für die fünfjährige E bedeuten, dass sie vorliegend keine Zurechnungs- bzw. Verschuldensfähigkeit besitzt. Ein eigenes Mitverschulden der E muss demnach ausscheiden.
+
+Es könnte jedoch sein, dass sich die E ein etwaiges Aufsichtsverschulden des A zurechnen lassen muss. Dieser achtete nämlich angesichts des Telefonats nicht auf seine Tochter, woraufhin diese im Markt herumlief und auf dem Salatblatt ausrutschte. A vernachlässigte dadurch grob fahrlässig seine in § 1631 I BGB normierte Aufsichtspflicht.
+
+Es fragt sich daher, ob sich die E dieses grob fahrlässige Verhalten zurechnen lassen muss. Zwar besteht Einigkeit insofern, als dass sich § 254 II 2 BGB, der die entsprechende Anwendung des § 278 BGB normiert, nicht nur auf § 254 I 1 BGB bezieht, sondern auch auf § 254 I BGB, sodass auch ein Verschulden von Dritten zugerechnet werden kann, das bei der Entstehung des Schadens mitgewirkt hat, was hier der Fall ist. Unklarheit besteht jedoch darüber, wie genau der Verweis auf § 278 BGB zu verstehen ist.
+
+a) Rechtsgrundverweisung
+
+Nach einer Ansicht handelt es sich bei §254 II 2 BGB um eine Rechtsgrundverweisung. Demnach müssten alle Tatbestandsmerkmale des §278 BGB erfüllt sein, damit das Verhalten des A der E verschuldensmäßig zugerechnet werden kann. Es müsste also eine schuldrechtliche oder schuldrechtsähnliche Sonderverbindung zwischen der K und der E bestehen und der A müsste als gesetzlicher Vertreter der A oder als deren Erfüllungsgehilfe gehandelt haben. Eine schuldrechtliche Sonderbeziehung ist hier mit der Einbeziehung der A in das vorvertragliche Schuldverhältnis gegeben. Zudem handelt es sich bei dem A um den Vater der E und somit um ihren gesetzlichen Vertreter. Es fragt sich jedoch, ob dem A nicht eine Haftungserleichterung nach §§ 277, 1664 I BGB zugute kommt. Dies wäre dann der Fall, wenn der A zwar leicht fahrlässig gehandelt hätte, dabei jedoch aber seine übliche Sorgfalt angewandt hätte. Ob der A hier seine übliche Sorgfalt angewandt hat, lässt sich nach dem Sachverhalt nicht beurteilen. Dies kann jedoch auch dahinstehen, da der A vorliegend allgemein grob fahrlässig handelte. Ihm kommt demgemäß keine Haftungserleichterung zu Gute. Im Ergebnis müsste sich die E nach dieser Ansicht ein Verschulden des A zurechnen lassen.
+
+b) Rechtsfolgenverweisung
+
+Nach anderer Ansicht handelt es sich bei § 254 II 2 BGB um eine Rechtsfolgenverweisung, wonach sich die E ein Verschulden ihres gesetzlichen Vertreters stets zurechnen lassen müsste. Demnach müsste sich die E ebenfalls das grob fahrlässige Verhalten des A als deren gesetzlichen Vertreter zurechnen lassen.
+
+Nach beiden Ansichten müsste sich die E folglich ein Verschulden des A nach §§ 254 II 2, 278 BGB zurechnen lassen, mit der Folge, dass ihr Anspruch nach § 254 I BGB zu kürzen ist. Inwieweit der Anspruch zu kürzen ist, bemisst sich ebenfalls nach §254 I BGB, wonach der Umfang des zu leistenden Ersatzes von einer umfassenden Abwägung und Würdigung aller Umstände des Einzelfalls abhängt. Für eine rechtlich exakte Beurteilung der Quotierung gibt der Sachverhalt jedoch zu wenig Anhaltspunkte. In der Regel wird bei beidseitiger Fahrlässigkeit der Schaden aufgeteilt.
+
+V. Ergebnis
+
+Die E hat einen Schadensersatzanspruch gegen die K gem. §§ 280 I, 311 II, 241 II, 249 II 1 BGB iVm den Grundsätzen über den Vertrag mit Schutzwirkung zu Gunsten Dritter, der von A gem. §§ 1626, 1629 BGB geltend gemacht werden kann. Dieser wird jedoch nach §§ 254 I, II 2, 278 BGB gekürzt.

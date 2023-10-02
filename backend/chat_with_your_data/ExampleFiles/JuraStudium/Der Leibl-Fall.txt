@@ -1,0 +1,151 @@
+Sachverhalt
+
+V verkaufte dem K ein Ölgemälde für einen Kaufpreis von 6000 €. Die Übereignung sollte allerdings erst 2 Wochen später erfolgen, da sich das Gemälde noch zur Leihe bei einem Freund befand. Dabei gingen beide irrtümlicherweise davon aus, dass es sich bei dem Ölgemälde "Bildnis eines jungen Mannes" um ein Werk von Frank Duveneck handelt. In Wirklichkeit hat der viel berühmtere Maler Wilhelm Leibl das Ölgemälde angefertigt. V erkannte diesen Irrtum ein paar Tage nach der Übergabe, als er das Gemälde zufällig in einem Sammlerkatalog entdeckte. Hätte V dies vorher gewusst, hätte er das Gemälde niemals übereignet. Daraufhin erklärte V sofort die Anfechtung des Kaufvertrags. Nunmehr verlangt er die Herausgabe des Gemäldes von K.
+Lösungsskizze
+
+A. Anspruch auf Herausgabe gem. § 985 BGB
+
+I. Eigentum des V
+
+1. Dingliche Einigung gem. § 929 S.1 BGB
+
+2. Anfechtung nach § 142 I BGB
+
+a) Durchschlagen der Anfechtung auf dinglicher Ebene ( Anfechtungserklärung, § 143 I BGB)
+
+(P) Fehleridentität
+
+b) Anfechtungsgrund
+
+(P) Durchschlagen des Mangels auf dinglicher Ebene
+
+e.A (+), wenn Rechtsgeschäfte zeitlich zusammen fallen
+
+a.A. (+), wenn Fehleridentität vorliegt, zeitliche Komponente irrelevant
+
+c) Anfechtungsfrist
+
+II. K als Besitzer
+
+III. Kein Recht zum Besitz, § 986 BGB
+
+IV. Ergebnis (+)
+
+B. Anspruch auf Herausgabe gem. § 812 I S.1 1. Alt. BGB
+
+I. Etwas erlangt
+
+II. Durch Leistung
+
+III. Ohne Rechtsgrund
+
+1. Anfechtung des Kaufvertrages nach § 142 I BGB
+
+a) Anfechtungsgrund
+
+b) Verhältnis von § 119 II BGB und § 313 BGB
+
+(P) beidseitiger Motivirrtum
+
+aa) e.A. Anfechtung (-)
+
+bb) h.M. Anfechtung (+)
+
+cc) Streitentscheid
+
+c) Verhältnis § 119 II BGB und §§ 434 ff. BGB
+
+2. Zwischenergebnis
+
+IV. Ergebnis 
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch auf Herausgabe gem. § 985 BGB
+
+V könnte gegen K einen Anspruch auf Herausgabe des Ölgemäldes nach § 985 BGB haben.
+
+Dafür müsste der V Eigentümer sein und K müsste Besitzer ohne ein Recht zum Besitz sein.
+
+I. Eigentum des V
+Zunächst müsste V Eigentümer sein. Ursprünglich war V Eigentümer. V könnte sein Eigentum durch Verfügung gem. § 929 S.1 BGB an K verloren haben. Dafür müssten eine wirksame dingliche Einigung, die Übergabe, das Einigsein und die Berechtigung vorliegen.
+
+1. Dingliche Einigung gem. § 929 S.1 BGB
+Fraglich ist, ob eine dingliche Einigung gem. § 929 S.1 BGB vorliegt. Ursprünglich einigten sich V und K über den Eigentumsübergang am Gemälde.
+
+2. Anfechtung gem. § 142 I BGB
+Diese Einigung könnte jedoch ex tunc nichtig geworden sein, wenn eine wirksame Anfechtung nach § 142 I BGB vorliegt.
+
+a) Durchschlagen der Anfechtung auf dinglicher Ebene ( Anfechtungserklärung , § 143 I BGB)
+Problematisch ist allerdings, dass der V hier nur den Kaufvertrag angefochten hat. Die Anfechtung des Verpflichtungsgeschäfts führt jedoch wegen dem Abstraktionsprinzip nicht auch zum Wegfall des Verfügungsgeschäfts.
+Entscheidend ist insoweit, worauf sich die Anfechtung bezieht. Wenn der Anfechtungsgrund sowohl für das Verpflichtungsgeschäft, als auch für das Verfügungsgeschäft kausal war, könnte eine Fehleridentität vorliegen. Welche Rechtsgeschäfte V anfechten wollte muss somit durch Auslegung nach §§ 133, 157 BGB ermittelt werden.
+Zwar hat V ausdrücklich nur den Kaufvertrag angefochten, allerdings ist diese Erklärung wegen dem eindeutigen Herausgabeverlangen so zu verstehen, dass er damit auch das dingliche Rechtsgeschäft anfechten wollte. Dieses Verlangen muss laiengünstig ausgelegt werden, da der Laie das Abstraktionsprinzip im Zweifel nicht kennen wird. Ausweislich des Sachverhalts hätte der V das Gemälde auch niemals übereignet, wenn er um die tatsächliche Urheberschaft des Gemäldes gewusst hätte.
+Damit hat V auch die Anfechtung bzgl. des Verfügungsgeschäfts erklärt gem. § 143 I BGB.
+
+b) Anfechtungsgrund
+Es müsste auch ein Anfechtungsgrund vorliegen. In Betracht kommt ein Anfechtungsgrund nach § 119 II BGB. V dachte bei Vertragschluss, dass es sich bei dem Ölgemälde um ein Werk von Duveneck handelt. Insoweit hat sich V über den Urheber des Werkes und damit über eine verkehrswesentliche Eigenschaft geirrt. Ob das dingliche Rechtsgeschäft wegen eines solchen beachtlichen Motivirrtums angefochten werden kann, ist umstritten.
+Nach einer Ansicht ist eine Anfechtung nach § 119 II BGB nur möglich, wenn das Verpflichtungs- und das Verfügungsgeschäft zeitlich zusammen fallen. Nach dieser Ansicht wäre eine Anfechtung ausgeschlossen, da die Übereignung erst nach 2 Wochen stattfinden sollte.
+Nach der Gegenauffassung spielt die zeitliche Komponente keine Rolle. Vielmehr soll auch hier entscheidend für die Anfechtung sein, ob eine Fehleridentität vorliegt. Das heisst, dass der Irrtum nach § 119 II BGB sowohl für das Verpflichtungsgeschäft, als auch für das Verfügungsgeschäft kausal gewesen sein muss. Dies ist, wie bereits erörtert, hier der Fall.
+Die zweite Auffassung ist vorzugswürdig. Dafür spricht insbesondere, dass es keinen Unterschied machen kann, ob der Übereignungstatbestand sofort oder zeitlich auseinander fallend vollendet wird. Konsequenterweise muss darauf abgestellt werden, ob Verpflichtungs- und Verfügungsgeschäft auf derselben Fehlerquelle beruhen.
+Wie bereits geprüft, beruhte hier sowohl das Verpflichtungsgeschäft, als auch das Verfügungsgeschäft auf demselben Irrtum (Urheberschaft des Ölgemäldes). Damit liegt ein Anfechtungsgrund vor.
+
+c) Anfechtungsfrist
+Die Anfechtung erfolgte ausweislich des Sachverhalts auch ohne schuldhaftes Zögern gem. § 121 BGB.
+
+II. K als Besitzer
+K ist auch unmittelbarer Besitzer des Ölgemäldes.
+
+III. Kein Recht zum Besitz, § 986 BGB
+Durch den Kaufvertrag hatte K ursprünglich ein Recht zum Besitz. Durch die wirksame Anfechtung gem. § 142 I BGB ist dieser ex tunc weggefallen. Damit hat K kein Recht zum Besitz.
+
+IV. Ergebnis
+Damit hat V gegen K einen Herausgabeanspruch gem. § 985 BGB.
+
+B. Anspruch auf Herausgabe gem. § 812 I S.1 1. Alt. BGB
+V könnte gegen K einen Anspruch auf Herausgabe gem. § 812 I S.1 1.Alt. BGB haben. Dafür müsste der K etwas durch Leistung und ohne Rechtsgrund erlangt haben.
+
+I. Etwas erlangt
+Etwas erlangt ist jeder vermögenswerte Vorteil. Hier hat der K das Eigentum und Besitz am Ölgemälde erlangt.
+
+II. Durch Leistung
+K müsste das Eigentum und den Besitz auch durch Leistung erlangt haben. Leistung ist jede bewusste und zweckgerichtete Mehrung fremden Vermögens, welche sich aus der objektiven Empfängersicht beurteilt. Nach der Sicht des K wollte V durch die Übergabe des Gemäldes eine vermeintliche Verpflichtung aus dem Kaufvertrag erfüllen. Damit hat er das Gemälde durch Leistung erlangt.
+
+III. Ohne Rechtsgrund
+Fraglich ist, ob der K das Gemälde auch ohne einen Rechtsgrund erlangt hat. Zunächst kommt der geschlossene Kaufvertrag nach § 433 BGB als Rechtsgrund in Betracht.
+
+1. Wirksame Anfechtung gem. § 142 I BGB
+Dieser könnte jedoch durch wirksame Anfechtung ex tunc nichtig geworden sein gem. § 142 I BGB. Dafür müssten die Voraussetzungen vorliegen.
+
+a) Anfechtungsgrund
+Zunächst müsste ein Anfechtungsgrund vorliegen. In Betracht kommt ein Eigenschaftsirrtum nach § 119 II BGB. Eigenschaften einer Sache sind alle einer Sache unmittelbar und auf gewisse Dauer anhaftenden Merkmale sowie tatsächliche und rechtliche Verhältnisse und Beziehungen der Sache zur Umwelt, soweit sie nach der allgemeinen Verkehrsanschauung für die Wertermittlung von Bedeutung sind.
+
+Die Urheberschaft des Bildes könnte solch eine Eigenschaft sein. Dafür spricht insbesondere, dass sie regelmäßig dazu geeignet ist unmittelbar den Wert des Gemäldes zu beeinflussen. Danach unterscheiden sich die Werte eines Gemäldes erheblich dadurch, welchen Berühmtheitsgrad der Maler hatte. Ausweislich des Sachverhalts war Wilhelm Leibl der wahre Urheber des Gemäldes. Dieser war viel berühmter als Frank Duveneck, sodass hier ein Eigenschaftsirrtum i.S.d. § 119 II BGB zu bejahen ist. Somit liegt ein Anfechtungsgrund vor.
+[Anmerkung: Alleine der Wert der Sache ist keine Eigenschaft i.S.d § 119 II BGB!]
+
+b) Verhältnis von § 119 II BGB und § 313 BGB
+Fraglich ist vorliegend jedoch, ob nicht vielmehr die Störung der Geschäftsgrundlage nach § 313 BGB anzuwenden ist. Dafür müssten überhaupt die Voraussetzungen des § 313 I BGB vorliegen. Dies ist der Fall, wenn ein reales Element, ein hypothetisches Element sowie ein normatives Element bejaht werden kann.
+Die Voraussetzungen sind hier grds. gegeben. Die Urheberschaft des Bildes bildete hier die Geschäftsgrundlage (reales Element). Hätte der V über die tatsächliche Urheberschaft gewusst, hätte er das Bild auch nicht verkauft (hypothetisches Element). Darauf hätte sich der K auch redlicherweise einlassen müssen (normatives Element).
+Fraglich ist allerdings, in welchem Verhältnis die Anfechtung nach § 119 II BGB zu der Störung der Geschäftsgrundlage nach § 313 I BGB steht.
+Aufgrund der spezielleren Voraussetzungen des § 119 II BGB ist die Regelung des § 313 I BGB grundsätzlich als subsidiär anzusehen. Dafür spricht insbesondere auch der gesetzgeberische Wille, da der Gesetzgeber den § 313 BGB nach der Schuldrechtsreform neu eingefügt hat. Bis dato wurden die Grundsätze des § 313 I BGB über § 242 BGB hergeleitet. Dies zeigt, dass an der Subsidiarität festgehalten werden sollte.
+Problematisch ist die Anwendung des § 119 II BGB allerdings in den Fällen, in denen ein beidseitiger beachtlicher Motivirrtum vorliegt. Dies ist hier der Fall. Hier ging sowohl der V, als auch der K irrtümlicherweise davon aus, dass Frank Duveneck der Urheber des Gemäldes ist. In diesem Fall würde es jedoch vom puren Zufall abhängen, welche Partei anficht.
+Daher ist umstritten, ob eine Anfechtung hier möglich sein soll.
+
+aa) Anfechtung ausgeschlossen
+Nach einer Ansicht wird eine Anfechtung über § 119 II BGB abgelehnt. Vielmehr sei § 313 I BGB anzuwenden. Nach dieser Ansicht könnte V hier nicht anfechten.
+
+bb) Anfechtung vorrangig
+Die Gegenauffassung möchte die Anfechtung zulassen. Danach könnte V hier anfechten.
+
+cc) Streitentscheid
+Für die erste Ansicht könnte sprechen, dass es nur vom Zufall abhängen würde, wer zuerst den Kaufvertrag anficht und sich damit nur nach § 122 BGB schadensersatzpflichtig macht. Dies würde zu einem unbilligen Ergebnis führen. Dagegen kann aber hervorgebracht werden, dass nur derjenige anfechten wird, zu dessen Nachteil die Wirklichkeit von der gemeinsamen Vorstellung abweicht. In diesem Fall erscheint es jedoch nicht unbillig der anderen Partei das negative Interesse nach § 122 BGB zu ersetzen.
+Damit ist die Anfechtung nach § 119 II BGB hier vorrangig.
+
+c) Verhältnis § 119 II BGB und §§ 434 ff. BGB
+Fraglich ist, ob die Anfechtung nach § 119 II BGB nicht wegen der Vorrangigkeit der Gewährleistungsrechte nach §§ 434 ff. BGB ausgeschlossen ist. Grundsätzlich sind die Gewährleistungsrechte vorrangig. Dafür sprechen die verschiedenen Verjährungsfristen, sowie das Recht zur zweiten Andienung. Hier stellt sich jedoch das Konkurrenzproblem nicht, da der V als Verkäufer anficht und nicht der K. Der Verkäufer kann jedoch keine Gewährleistungsrechte geltend machen. Etwas anderes könnte dann gelten, wenn es dem Verkäufer durch die Anfechtung gerade darauf ankommt, sich seiner Gewährleistungspflicht zu entziehen. Dies ist hier jedoch nicht ersichtlich. Damit bleibt es bei der Anwendung des § 119 II BGB.
+
+2. Zwischenergebnis
+Die Voraussetzungen der Anfechtung, insbesondere auch die Frist nach § 121 BGB, liegen vor. Damit ist der Kaufvertrag gem. § 142 BGB ex tunc nichtig. K hat kein Recht zum Besitz.
+
+IV. Ergebnis
+Damit hat V gegen K einen Herausgabeanspruch gem. § 812 I S. 1 Alt. 1 BGB

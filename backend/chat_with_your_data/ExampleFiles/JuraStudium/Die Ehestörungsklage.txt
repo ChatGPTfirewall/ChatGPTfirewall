@@ -1,0 +1,130 @@
+Sachverhalt
+
+E und P sind seit 15 Jahren verheiratet. Es bröckelt schon länger in der Ehe, die kinderlos blieb. Dabei unterhält die P heimlich eine Affäre mit dem jüngeren D.
+
+Dabei kam es auch zu häufigeren Treffen zwischen P und D in der gemeinsamen ehelichen Wohnung.
+
+Als E davon erfährt, verlangt er sowohl von P als auch von D die sofortige Unterlassung dieser „Treffen“. Es sei unerhört, dass dies auch noch in ihrer gemeinsamen Wohnung geschehe.
+
+E will sofort die Scheidung. Überdies ist er der Ansicht, dass er von P und von D die Kosten für den Scheidungsanwalt verlangen kann, da die Ehe ja offensichtlich wegen dieser Affäre gescheitert ist.
+
+Hat E gegen P und/oder D die geltend gemachten Ansprüche?
+Lösungsskizze
+
+Unterlassungsansprüche gegen den Ehepartner
+
+A. Anspruch des E gegen P aus §§ 823 I, 1004 I BGB analog
+
+I. Störung eines Rechtsguts i.S.d. § 823 I BGB
+
+(P) Pflicht zur ehelichen Treue als absolutes Recht?
+
+Pro: absolute Wirkung durch Art. 6 GG
+
+Contra: Eheliche Pflichten wirken nur relativ zwischen Ehepartner (h.M.)
+
+Ausnahme (BGH): „räumlich- gegenständlicher Bereich“
+
+Pro: hier gerade Ausschnitt aus Persönlichkeitsrecht, damit Ausschluss- und Nutzungsfunktion
+
+Hier nur bzgl. ehelicher Wohnung (+)
+
+II. Rechtswidrigkeit
+
+(P) Rahmenrechte
+
+III. Keine Duldungspflicht nach § 1004 II BGB
+
+IV. Weitere bevorstehende Beeinträchtigungen
+
+V. Ergebnis (+)
+
+Unterlassungsansprüche gegen den Dritten
+
+Anspruch des E gegen D aus §§ 823 I, 1004 I BGB analog
+
+Wie beim Anspruch gegen den Ehepartner, gerade kein allgemeiner Unterlassungsanspruch.
+
+Schadensersatzansprüche gegen den Ehepartner
+
+A. Schadensersatzanspruch E gegen P aus § 823 I BGB
+
+(P) Anwendbarkeit
+
+e.A. (+): da eheliche Treuepflicht wegen Art. 6 GG absolutes Recht
+
+BGH/h.L. (-): familienrechtliche Regelungen sind abschließend; keine Umgehung des § 888 II ZPO
+
+B. Ergebnis (-)
+
+Schadensersatzansprüche gegen den Dritten
+
+Schadensersatzanspruch E gegen D aus § 823 I BGB
+
+wie oben
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+Unterlassungsansprüche gegen den Ehepartner
+
+A. Anspruch des E gegen P aus §§ 823 I, 1004 I BGB analog
+E könnte gegen P einen Unterlassungsanspruch aus §§ 823 I, 1004 I BGB analog haben. Dafür müssten eine planwidrige Regelungslücke und eine vergleichbare Interessenlage vorliegen.
+
+§ 1004 I BGB ist nur bzgl. Eigentumsverletzungen direkt anwendbar. Der § 823 I BGB zielt zudem nur auf eine Schadenskompensation. Dadurch besteht eine Regelungslücke, welche entgegen dem gesetzgeberischen Willen vorliegt und somit planwidrig ist.
+
+Die vergleichbare Interessenlage ist darin zu sehen, dass auch ein Unterlassungsinteresse außerhalb jeglicher Eigentumsbeeinträchtigungen vorliegen kann.
+
+I. Störung eines Rechtsguts i.S.d. § 823 I BGB
+Es müsste die Störung eines Rechtsguts i.S.d. § 823 I BGB vorliegen. In Betracht kommt ein sonstiges Recht. Dies müsste ein absolutes Recht, also ein Recht mit Ausschluss- und Nutzungsfunktion, das gegen jedermann wirkt, sein.
+
+Die Pflicht zur ehelichen Treue könnte ein sonstiges, absolutes Recht sein. Ob die eheliche Treuepflicht ein absolutes Recht i.S.d. § 823 I BGB darstellt, ist umstritten.
+
+Nach einer Ansicht wird dies bejaht. Begründet wird dies mit der Wertung des Art. 6 GG, wonach das Institut der Ehe absolute Wirkung entfalten soll. Der Anspruch wäre nach dieser Ansicht lediglich wegen § 120 III FamFG nicht vollstreckbar.
+
+Die Gegenmeinung verneint dies mit Blick auf das fehlende Ausschluss- und Nutzungsrecht.
+
+Gegen die Ausweitung des § 823 I BGB auf die eheliche Treuepflicht für einen Unterlassungsanspruch spricht schon, dass die ehelichen Pflichten als höchstpersönliche Pflichten nur relativ, d.h. zwischen den Ehepartnern, wirken.
+
+Eine Ausnahme soll nur dann gemacht werden, wenn der so genannte „räumlich- gegenständliche Bereich“ betroffen ist. Dies ist der Bereich, der als Ort des privaten und familiären Zusammenlebens gesehen wird. Dafür spricht, dass beispielsweise die eheliche Wohnung einen Auszug aus dem Persönlichkeitsrecht darstellt, welches im Gegensatz zu allgemeinen ehelichen Pflichten durchaus Ausschluss- und Nutzungsfunktion hat.
+
+Damit liegt ein sonstiges, absolutes Recht i.S.d. § 823 I BGB vor.
+
+Es müsste auch eine Störung vorliegen. Hier treffen sich P und D regelmäßig in der ehelichen Wohnung der P, sodass der räumlich- gegenständliche Bereich betroffen ist. Durch die gemeinsamen Treffen liegt auch eine Störung vor.
+
+II. Rechtswidrigkeit
+Fraglich ist, ob auch Rechtswidrigkeit vorliegt. Bei Vorliegen von Rahmenrechten ist die Lehre vom Erfolgsunrecht nicht anwendbar. Hier liegt mit dem räumlich- gegenständlichen Bereich der Ehe als Auszug des allgemeinen Persönlichkeitsrechts, solch ein Rahmenrecht vor. Somit muss positiv festgestellt werden, dass die Handlung rechtswidrig war. Dies geschieht mittels einer allumfassenden Abwägung der sich widerstreitenden Interessen im Einzelfall. Für die Rechtswidrigkeit spricht hier, dass die Treffen in der ehelichen Wohnung und damit in der Intimsphäre des E stattfinden. Als widerstreitendes Interesse kommt zwar die allgemeine Handlungsfreiheit der P in Betracht. Diese tritt allerdings hinter dem Persönlichkeitsrecht des E zurück. Damit ist die Rechtswidrigkeit zu bejahen.
+
+III. Keine Duldungspflicht nach § 1004 II BGB
+Eine Duldungspflicht nach § 1004 II BGB ist nicht ersichtlich.
+
+IV. Weitere bevorstehende Beeinträchtigungen
+Es müssten auch weitere Beeinträchtigungen bestehen. Ausweislich des Sachverhalts treffen sich die P und D regelmäßig. Es kann davon ausgegangen werden, dass sie dies innerhalb der ehelichen Wohnung auch zukünftig tun. Damit stehen weitere Beeinträchtigungen vor.
+
+V. Ergebnis
+Mithin hat E gegen P einen Anspruch auf Unterlassen der Treffen innerhalb der ehelichen Wohnung analog den §§ 823 I, 1004 I BGB. Ein allgemeiner Unterlassungsanspruch bzgl. der Treffen besteht hingegen nicht (s.o.).
+Unterlassungsansprüche gegen den Dritten
+
+Anspruch des E gegen D aus §§ 823 I, 1004 I BGB analog
+Bzgl. des Unterlassungsanspruchs gegenüber D gilt das zu P Gesagte entsprechend. Auch hier besteht kein allgemeiner Unterlassungsanspruch, sondern nur ein Anspruch auf Unterlassen innerhalb des räumlich- gegenständlichen Bereichs (s.o.).
+Schadensersatzansprüche gegen den Ehepartner
+
+A. Schadensersatzanspruch E gegen P aus § 823 I BGB
+E könnte gegen P einen Schadensersatzanspruch bzgl. der Anwaltskosten gem. § 823 I BGB haben.
+
+Fraglich ist jedoch, ob § 823 I BGB hier überhaupt Anwendung finden kann. Dies ist umstritten.
+Nach einer Ansicht soll § 823 I BGB hinsichtlich einer Rechtsgutsverletzung i.S.d. § 823 I BGB anwendbar sein, wenn die Verletzung der ehelichen Treuepflicht kausal zu einem Schaden geführt hat. Hier entschied sich E, aufgrund der Untreue von P, zu einer Scheidung. Für die Scheidung muss E Anwaltskosten tragen. Demnach wäre § 823 I BGB bzgl. dieser Kosten grds. anwendbar.
+
+Die Gegenansicht verneint eine Anwendbarkeit, wenn die Verletzung der ehelichen Treuepflicht vorliegt.
+
+Für diese Gegenansicht spricht, dass durch eine Anwendung der §§ 823 ff. BGB die Abschlussfunktion der familienrechtlichen Regelungen unbeachtet bliebe. Insbesondere droht damit eine Umgehung des § 888 II ZPO. Ein Anspruch aus § 823 I BGB würde eine Art Zwangslage für den Ehepartner schaffen. Überdies regelt das Familienrecht bereits alle vermögensrechtlichen Folgen einer Ehe abschließend, vgl. § 243 FamFG.
+
+Damit scheidet schon die Anwendbarkeit des § 823 I BGB aus.
+
+B. Ergebnis
+Damit hat E keinen Schadensersatzanspruch gegen P aus § 823 I BGB.
+
+[Anmerkung: Folgt man der ersten Ansicht, so muss man beim Punkt „haftungsbegründende Kausalität“ ansprechen, ob dies noch vom Schutzzweck der Norm umfasst sein soll. Auch der Punkt „Verschulden“ ist dann problematisch, da im Familienrecht das Verschuldensprinzip durch das Zerrüttungsprinzip ersetzt wurde.]
+Schadensersatzansprüche gegen den Dritten
+
+Schadensersatzanspruch E gegen D aus § 823 I BGB
+Hier stellt sich dieselbe Problematik wie oben.

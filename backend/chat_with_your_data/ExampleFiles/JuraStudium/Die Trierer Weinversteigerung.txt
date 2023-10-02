@@ -1,0 +1,135 @@
+
+
+Sachverhalt
+Der in Trier ortsfremde A betritt eine Weinkellerei, in der gerade eine Versteigerung stattfindet. Er winkt einem lange nicht gesehenen Freund B zu. Das Winken mit der Hand wird vom Auktionator als Abgabe eines höheren Gebotes aufgefasst. Der A erhält daraufhin den Zuschlag. Der Weinversteigerer C verlangt nun von A die Abnahme und Bezahlung des Weines.
+Die Fallhistorie
+
+Der Fall wurde von Hermann Isay in seinem Buch „Die Willenserklärung im Tatbestande des Rechtsgeschäfts“ von 1899 in die Diskussion gebracht. Isay war zur Zeit der Abfassung seines Buches Rechtsreferendar in Trier.
+Der Problemkreis
+
+Welchen Einfluss hat das Fehlen des Erklärungsbewusstseins als Bestandteil einer Willenserklärung auf die abgegebene Erklärung? – Ausreichend ist das sog. potentielle Erklärungsbewusstsein (BGHZ 91, 324), nicht mehr notwendig ist ein aktuelles Erklärungsbewusstsein.
+Lösungsskizze
+A. Pflicht des K zur Abnahme u. Kaufpreiszahlung aus Kaufvertrag gemäß § 433 II BGB
+
+I. Anspruch entstanden
+
+1. Angebot des Weinversteigerers durch Versteigern des Weines
+
+2. Angebot des K durch Heben der Hand
+
+a) Objektiver Tatbestand der Willenserklärung
+
+b) Subjektiver Tatbestand der Willenserklärung
+
+aa) Handlungswille
+
+bb) Erklärungsbewusstsein
+
+(1) Willenstheorie
+
+(2) Erklärungstheorie
+
+(3) Stellungnahme
+
+cc) Ergebnis
+
+c) Ergebnis Subjektiver Tatbestand der Willenserklärung
+
+3. Ergebnis Angebot des K durch Heben der Hand
+
+II. Endergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+A. Pflicht des K zur Abnahme u. Kaufpreiszahlung aus Kaufvertrag gemäß § 433 II BGB
+
+C könnte gegen A einen Anspruch auf Kaufpreiszahlung und Abnahme des Weins aus einem zwischen den Parteien geschlossenen Kaufvertrag gem. § 433 II BGB haben. Dazu müsste ein wirksamer Kaufvertrag i.S.d. § 433 BGB zwischen den Vertragsparteien zustande gekommen sein.
+
+I. Anspruch entstanden
+
+Der Anspruch des C gegen A müsste wirksam entstanden sein. Dies wäre der Fall, wenn C und A einen wirksamen Kaufvertrag mit dem Inhalt geschlossen haben, dass A zur Bezahlung und Abnahme des Weins verpflichtet ist. Ein solcher Vertragsschluss liegt dann vor, wenn zwei sich entsprechende Willenserklärungen, nämlich Angebot und Annahme, vorliegen.
+
+1. Angebot des Weinversteigerers durch Versteigern des Weines
+
+Das Angebot könnte darin zu sehen sein, dass C den Wein versteigern wollte. Dazu müsste es sich dabei um eine wirksame Willenserklärung handeln. Eine Willenserklärung ist eine private Willensäußerung, welche unmittelbar auf die Herbeiführung einer Rechtsfolge gerichtet ist. Der Weinversteigerer hat seinen Willen den Wein zu verkaufen, zumindest konkludent, auf die Herbeiführung eines Kaufvertrages gerichtet. Eine wirksame Willenserklärung liegt vor.
+
+
+Ferner müsste ein wirksames Angebot vorliegen. Ein Angebot muss inhaltlich so bestimmt sein, dass die Annahme durch ein einfaches „Ja“ des Annehmenden erfolgen kann. A hat seine Hand während der Versteigerung gehoben und daraufhin den Zuschlag erhalten. Ein bestimmbares Angebot durch C liegt insoweit also vor.
+
+Jedoch könnte es an dem erforderlichen Willen zur rechtlichen Bindung fehlen und so eine sog. invitatio ad offerendum, eine Aufforderung zur Abgabe eines Angebotes vorliegen. Die Abgrenzung erfolgt durch die Auslegung der Willenserklärungen (§§ 133, 157 BGB), die sich nach dem Empfängerhorizont richtet. Es ist somit zu fragen, wie der Auktionator die Erklärung des A verstehen durfte.
+
+Bei einer Versteigerung wird in der Regel das höchste abgegebene „Kaufangebot“ angenommen. Eine Verlautbarung an die Allgemeinheit durch die der Verkäufer durch eine Überzahl von Verträgen in Schwierigkeiten kommen könnte, liegt nicht vor. Demzufolge wäre ein wirksames Kaufangebot von dem Weinversteigerer abgegeben worden.
+
+Dagegen spricht jedoch der Gesetzeswortlaut des § 156 BGB. Demnach ist das Gebot des Bieters der Vertragsantrag und der Zuschlag des Versteigerers die Annahmeerklärung. Dadurch soll verhindert werden, dass der Bieter einen Anspruch auf den Zuschlag erhält. Ein Gebot erlischt daher mit einem Übergebot.
+
+Beachte: Anders verhält es sich mit Versteigerungen im Internet. Dort ist schon das Einstellen des Versteigerungsobjektes eine Angebotserklärung des Versteigerers, denn der Versteigernde möchte den Vertrag nur mit dem Höchstbietenden abschließen. (BGH NJW 2002, 363).
+
+Demzufolge hat der Weinversteigerer kein wirksames Kaufangebot, sondern nur eine Aufforderung zur Abgabe eines Angebotes abgegeben.
+
+2. Angebot des K durch Heben der Hand
+
+A könnte durch das Heben seiner Hand ein wirksames Angebot abgegeben haben. Dazu müsste eine wirksame Willenserklärung vorliegen. Eine Willenserklärung ist eine private Willensäußerung, welche unmittelbar auf die Herbeiführung einer Rechtsfolge gerichtet ist. A hat die Hand wie zum Gebot gehoben, wollte in Wirklichkeit jedoch nur einem Freund zu winken. Ob diese Handlung die Anforderungen an eine wirksame Willenserklärung erfüllt, muss anhand einer Betrachtung des objektiven und subjektiven Tatbestandes einer Willenserklärung ermittelt werden.
+
+a) Objektiver Tatbestand der Willenserklärung
+
+Der objektive Tatbestand einer Willenserklärung liegt vor, wenn sich das Verhalten des Erklärenden (A) für den objektiven Beobachter als die Äußerung eines Rechtsfolgewillens darstellt. Das Heben der Hand während einer Versteigerung gilt gemeinhin als Abgabe eines Angebotes. Ein objektiver Beobachter durfte durch das Heben der Hand davon ausgehen, dass A einen entsprechenden Rechtsfolgewillen besitzt. Folglich liegt der objektive Tatbestand der Willenserklärung des A vor.
+
+
+b) Subjektiver Tatbestand der Willenserklärung
+
+Der subjektive (innere) Tatbestand einer Willenserklärung besteht aus drei Bestandteilen: Handlungswillen, Erklärungsbewusstsein und Geschäftswillen. Dabei ist der Handlungswille konstitutiver Bestandteil einer wirksamen Willenserklärung. Der Geschäftswille ist keine zwingende Voraussetzung. Welche Anforderungen an das Erklärungsbewusstsein zu stellen sind, wird nicht einheitlich beantwortet.
+
+aa) Handlungswille
+
+A müsste Handlungswille gehabt haben. Handlungswille ist der Wille überhaupt ein als Erklärung deutbares Verhalten vorzunehmen. Er fehlt nur bei nicht willensgesteuerten Handlungen (z.B. Bewegungen im Schlaf). A hat seinem Freund bewusst gewunken. Er besaß den notwendigen Handlungswillen.
+
+bb) Erklärungsbewusstsein
+
+A müsste Erklärungsbewusstsein gehabt haben. Erklärungsbewusstsein ist das Bewusstsein etwas rechtlich Erhebliches zu äußern. A wollte nur seinem Freund zu winken, aber nichts rechtlich Erhebliches erklären. Dass an dieses Verhalten rechtliche Folgen geknüpft sind, war ihm nicht bewusst. Das Erklärungsbewusstsein liegt bei A folglich nicht vor.
+
+Fraglich ist, welche Folgen das Fehlen des Erklärungsbewusstseins hat:
+
+(1) Willenstheorie
+
+Nach der sog. Willenstheorie ist das Erklärungsbewusstsein stets notwendiger Bestandteil einer Willenserklärung. Fehlt das Erklärungsbewusstsein wird analog § 118 BGB die Nichtigkeit der Willenserklärung angenommen, da es sich um eine Verletzung der Privatautonomie handle, wertete man die ohne Erklärungsbewusstsein abgegebene Erklärung als Willenserklärung. Der Erklärende muss danach den Erklärungstatbestand mit aktuellem Erklärungsbewusstsein gesetzt haben. A müsste also das Bewusstsein gehabt haben, eine Willenserklärung abzugeben.
+
+A war sich hier nicht bewusst eine rechtserhebliche Erklärung abzugeben. Danach wäre die „Willenserklärung“ des A nichtig. Der Vertrag wäre somit nicht zustande gekommen und A müsste daher den Kaufpreis nicht zahlen und den Wein nicht abnehmen.
+
+(2) Erklärungstheorie
+
+Die Erklärungstheorie geht dagegen vom Gesichtspunkt des Vertrauensschutzes aus. Dem Erklärenden soll sein Verhalten als Willenserklärung grundsätzlich zuzurechnen sein. Auch dann, wenn das Erklärungsbewusstsein fehlt. Schließlich wurde die Erklärung von ihm bewusst abgegeben. Dass dabei das Bewusstsein fehlt etwas rechtlich Erhebliches zu erklären, weiß der Erklärungsempfänger (C) nicht.
+
+Hinweis: Wenn der Empfänger den Mangel des Erklärungsbewusstseins kannte, gilt jedoch etwas anderes. Der Empfänger ist dann nicht schützenswert, kann sich also nicht auf die Zurechnung der Willenserklärung zum Erklärenden berufen.
+
+Dem Erklärenden soll demnach das Erklärungsrisiko zugerechnet werden. Voraussetzung dafür ist jedoch, dass der Erklärende bei pflichtgemäßer Sorgfalt hätte erkennen können, dass sein Verhalten als Willenserklärung zu deuten ist („sog. potentielles Erklärungsbewusstsein“).
+
+Der BGH (BGHZ. 91, 324) führt dazu aus:
+
+„Trotz fehlenden Erklärungsbewusstseins liegt eine Willenserklärung vor, wenn der Erklärende bei Anwendung der im Verkehr erforderlichen Sorgfalt hätte erkennen und vermeiden können, dass seine Äußerung nach Treu und Glauben und der Verkehrssitte als Willenserklärung aufgefasst werden durfte, und wenn der Empfänger sie auch tatsächlich so verstanden hat.“
+
+Demnach ist das Erklärungsbewusstsein kein notweniger Bestandteil einer Willenserklärung. Als Ausgleich zum Verkehrsschutz, welcher den Empfänger schützt, kann der Erklärende analog § 119 I 2. Alt. BGB seine Erklärung anfechten, muss sich jedoch dann den einen möglichen Vertrauensschaden gemäß § 122 BGB zurechnen lassen. Dieses ergibt sich daraus, dass wenn schon bei einem Erklärungsirrtum, also in dem Fall, in dem nur der Geschäftswille fehlt, wo der Wille von dem objektiv erklärtem abweicht, eine Anfechtung möglich ist, dann muss diese Möglichkeit erst Recht dann bestehen, wenn das Bewusstsein einer rechtsgeschäftlichen Erklärung ganz fehlt.
+
+Das A ortsfremd war, kann nicht darüber hinwegtäuschen, dass allgemein bekannt ist, dass das Heben der Hand auf einer Versteigerung als Gebot bewertet wird. Danach wäre die Willenserklärung des A wirksam und der Vertrag wäre somit zustande gekommen und A müsste daher den Kaufpreis zahlen und den Wein abnehmen.
+
+(3) Stellungnahme
+
+Durch die Erklärungstheorie wird dem Prinzip des Vertrauensschutzes umfassend Rechnung getragen. Jedoch lässt sie auch Ausnahmen bei fehlender Schutzwürdigkeit des Erklärungsempfängers zu. Auch für den Fall, dass ein ohne Erklärungsbewusstsein zustande gekommenes Rechtsgeschäft für den Erklärenden günstig ist, kann der Erklärende das Geschäft gelten lassen (Wahlfreiheit zwischen Anfechtung des Vertrages, § 119 I BGB und Erfüllung des Vertrages, § 362 BGB). Diese Möglichkeit besteht bei der Willenstheorie nicht.
+
+Die Vertreter der Willenstheorie führen an, dass die Situation des fehlenden Erklärungsbewusstseins mit der des § 118 BGB vergleichbar ist. Jedoch wird dabei übersehen, dass der Erklärende bei § 118 BGB im Unterschied zum fehlenden Erklärungsbewusstsein die Nichtigkeit seiner Erklärung gewollt hat. Beim fehlenden Erklärungsbewusstsein ist dies aber gerade nicht der Fall. Es ist somit der Erklärungstheorie zu folgen.
+
+cc) Ergebnis
+
+Erklärungsbewusstsein A handelte mit dem potentiellen Erklärungsbewusstsein. Dieses Erklärungsbewusstsein ist für die Bejahung einer zurechenbaren Willenserklärung ausreichend.
+
+c) Ergebnis Subjektiver Tatbestand der Willenserklärung
+
+A hat trotz des nur potentiellen Erklärungsbewusstseins eine wirksame Willenserklärung abgegeben, welche ihm auch zuzurechnen ist. Auch konnte A leicht erkennen, dass das Heben seiner Hand auf einer Auktion „fehl gedeutet“ werden kann. C hat auch nicht arglistig gehandelt bzw. Kenntnis vom mangelnden Erklärungsbewusstsein des A besessen. 
+
+3. Ergebnis Angebot des K durch Heben der Hand
+
+A hat durch das Heben der Hand ein ihm zurechenbares Angebot auf Zahlung des Kaufpreises und Abnahme des Weins von W abgegeben.
+
+II. Endergebnis
+
+Damit liegt eine wirksame, auf den Vertragsabschluss über den Kauf des Weines gerichtete, Willenserklärung des A vor. A hat somit eine Zahlungs-und Abnahmeverpflichtung. Jedoch besteht für A eine Möglichkeit seine Willenserklärung analog § 119 I 2. Alt. BGB anzufechten. Dies müsste jedoch unverzüglich erfolgen (§ 121 I BGB). Falls er noch rechtzeitig anfechten sollte, muss er nach § 122 I BGB den Vertrauensschaden des C ersetzen.
+
