@@ -17,6 +17,7 @@ import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useTranslation } from 'react-i18next';
 
 const DemoPage = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -26,6 +27,8 @@ const DemoPage = () => {
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [excludeCategory, setExcludeCategory] = useState<string>("");
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+
+    const { t, i18n } = useTranslation();
 
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
@@ -82,6 +85,7 @@ const DemoPage = () => {
             llm_answer: llmAnswer
         }
 
+        console.log(prompt)
 
         setAnswers([...answers, [prompt, chatMessage]])
     }
@@ -168,7 +172,7 @@ const DemoPage = () => {
                 <div className={styles.commandsContainer}>
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
+                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
                 </div>
                 <div className={styles.chatRoot}>
@@ -176,8 +180,8 @@ const DemoPage = () => {
                         {!lastQuestionRef.current ? (
                             <div className={styles.chatEmptyState}>
                                 <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                                <h1 className={styles.chatEmptyStateTitle}>Demo Page - Chat with your data</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>Ask anything or try an example</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>{t('demoPageChatWithData')}</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>{t('askTryExample')}</h2>
                                 <DemoList onExampleClicked={onExampleClicked} />
                                 
                             </div>
@@ -223,7 +227,7 @@ const DemoPage = () => {
                             <div className={styles.chatInput}>
                                 <QuestionInput
                                     clearOnSend
-                                    placeholder="Type a new question (e.g. Welche wichtige historische Veränderung erfolgte 1961 in Berlin?)"
+                                    placeholder={t('chatTextType')}
                                     disabled={isLoading}
                                     onSend={question => makeApiRequest(question)}
                                 />

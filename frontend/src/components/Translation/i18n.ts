@@ -9,6 +9,7 @@ i18n.use(initReactI18next).init({
       translation: {
         // Hier kommen die englischen Übersetzungen aus deiner JSON-Datei
         "chatWithYourData": "Chat with your data",
+        "demoPageChatWithData": "Demo Page: Chat with your data",
         "files": "Files",
         "selectedMoreItems": " items selected",
         "selectedItems": "1 item selected: ",
@@ -38,6 +39,7 @@ i18n.use(initReactI18next).init({
       translation: {
         // Hier kommen die deutschen Übersetzungen aus deiner JSON-Datei
         "chatWithYourData": "Chatten Sie mit Ihren Daten",
+        "demoPageChatWithData": "Demo Seite: Chatten Sie mit Ihren Daten",
         "files": "Dateien",
         "noSelectedItems": "Keine Einträge ausgewählt",
         "selectedMoreItems": " Einträge ausgewählt",
