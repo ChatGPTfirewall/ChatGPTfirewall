@@ -33,9 +33,9 @@ class UserApiView(APIView):
         }
         serializer = UserSerializer(data=data)
 
-        UserApiView.putFilesDemoUser(
-            request.data.get("auth0_id"), request.data.get("email")
-        )
+        # UserApiView.putFilesDemoUser(
+        #     request.data.get("auth0_id"), request.data.get("email")
+        # )
 
         try:
             if serializer.is_valid():
