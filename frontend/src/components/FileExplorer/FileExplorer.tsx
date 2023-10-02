@@ -5,16 +5,17 @@ import {
   FontWeights,
   Text,
   Modal,
-  IIconProps
+  IIconProps,
+  Spinner
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Folder24Regular } from '@fluentui/react-icons';
-import { getDocuments, deleteDocuments } from '../../api';
+import { getDocuments, deleteDocuments, reloadFiles } from '../../api';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { ReadDocument } from '../../api';
 import { TooltipHost, DefaultButton } from '@fluentui/react';
 import { Announced } from '@fluentui/react/lib/Announced';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn} from '@fluentui/react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import * as React from 'react';
 import { User } from "@auth0/auth0-react";
 import { withTranslation } from "react-i18next";
@@ -72,13 +73,14 @@ export interface FileExplorerState {
   announcedMessage?: string;
   modalState: boolean;
   isLoading: boolean;
+  isReloading: boolean;
 }
 class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerState> {
   private _selection: Selection;
 
 
 
-  constructor(props: { user: User, t: any}) {
+  constructor(props: { user: User, t: any }) {
     super(props);
 
     const columns: IColumn[] = [
@@ -142,7 +144,8 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
       isCompactMode: false,
       announcedMessage: undefined,
       modalState: false,
-      isLoading: true
+      isLoading: true,
+      isReloading: false
     };
   }
 
@@ -165,7 +168,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
         >
           <div className={contentStyles.header}>
             <h2 className={contentStyles.heading} id={"fileExplorer"}>
-            {this.props.t('uploadedFiles')}
+              {this.props.t('uploadedFiles')}
             </h2>
             <IconButton
               styles={iconButtonStyles}
@@ -176,15 +179,24 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
           </div>
           <div className={styles.modal_container}>
             <div className={styles.modal_navigation}>
-            <div className={classNames.controlWrapper}>
-              <TextField label={this.props.t('filterByName')} onChange={this._onChangeText} styles={controlStyles} />
-              <Announced message={`Number of items after filter applied: ${items.length}.`} />
-            </div>
-            <DefaultButton
-                text={this.props.t('deleteDoc')}
-                className={styles.btn_danger}
-                onClick={this._handleDeleteClick}
-            />
+              <div className={classNames.controlWrapper}>
+                <TextField label={this.props.t('filterByName')} onChange={this._onChangeText} styles={controlStyles} />
+                <Announced message={`Number of items after filter applied: ${items.length}.`} />
+              </div>
+              <div className={styles.actionButtons}>
+                <DefaultButton
+                  text={this.props.t('deleteDoc')}
+                  className={styles.btn_danger}
+                  onClick={this._handleDeleteClick}
+                />
+                <DefaultButton
+                  text={this.props.t('reloadDoc')}
+                  onClick={this._reloadFiles}
+                />
+                {this.state.isReloading && (
+                  <Spinner label={this.props.t('reloading')} ariaLive="assertive" labelPosition="right" />
+                )}
+              </div>
             </div>
             <div className={classNames.selectionDetails}>{selectionDetails}</div>
             <Announced message={selectionDetails} />
@@ -209,7 +221,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
       </div >
     );
   };
-  
+
 
   public componentDidUpdate(previousProps: any, previousState: FileExplorerState) {
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
@@ -229,7 +241,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
   };
 
   private _hideModal = (ev: React.MouseEvent<HTMLElement>): void => {
-    this.setState({modalState: false, items: [], initialItems: []})
+    this.setState({ modalState: false, items: [], initialItems: [] })
   };
 
 
@@ -258,6 +270,21 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
           console.error('Error deleting documents:', error);
         });
     }
+  };
+
+  private _reloadFiles = () => {
+    const auth0_id = this.props.user.sub!;
+    this.setState(() => ({ isReloading: true }))
+    // Call the deleteDocuments function with selected items
+    reloadFiles(auth0_id)
+      .then(() => {
+        this.setState(() => ({ isReloading: false }))
+      })
+      .catch((error) => {
+        this.setState(() => ({ isReloading: false }))
+        console.error('Error deleting documents:', error);
+      });
+
   };
 
   private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {

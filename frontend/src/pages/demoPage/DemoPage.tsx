@@ -82,7 +82,6 @@ const DemoPage = () => {
             llm_answer: llmAnswer
         }
 
-        console.log(prompt)
 
         setAnswers([...answers, [prompt, chatMessage]])
     }
@@ -169,7 +168,7 @@ const DemoPage = () => {
                 <div className={styles.commandsContainer}>
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
                 </div>
                 <div className={styles.chatRoot}>
@@ -224,7 +223,7 @@ const DemoPage = () => {
                             <div className={styles.chatInput}>
                                 <QuestionInput
                                     clearOnSend
-                                    placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                                    placeholder="Type a new question (e.g. Welche wichtige historische Veränderung erfolgte 1961 in Berlin?)"
                                     disabled={isLoading}
                                     onSend={question => makeApiRequest(question)}
                                 />

@@ -19,7 +19,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { DemoButton } from "../../components/DemoButton";
 import DemoPage from "../demoPage/DemoPage";
-import { LanguageButton } from "../../components/LanguageButton";
 import { useTranslation } from 'react-i18next';
 
 
@@ -70,11 +69,11 @@ const Chat = () => {
             setEditText(true)
             setFacts(result.facts!)
             setPromptTemplate(result.prompt_template!)
-            setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"))
+            setQuestion(question)
+            setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"), question)
             const transformedList: string[] = result.facts![0].entities.map((entity) => entity[0]);
             setHighlights(transformedList);
             setFile(result.facts![0].file)
-            setQuestion(question)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -88,8 +87,7 @@ const Chat = () => {
             llm_answer: llmAnswer
         }
 
-        console.log(prompt)
-
+        
         setAnswers([...answers, [prompt, chatMessage]])
     }
 
@@ -101,7 +99,7 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const setPromptAndContext = (template: string, context: string) => {
+    const setPromptAndContext = (template: string, context: string, question: string) => {
         const builtPrompt = template
             .replace("{context}", context)
             .replace("{question}", question)
@@ -110,6 +108,7 @@ const Chat = () => {
     }
 
     const sendText = () => {
+        
         if (context != "") {
             const llmAnswer = chatWithLLM(question, context, promptTemplate)
             llmAnswer.then((answer) => { updateChat(answer) })
@@ -178,10 +177,9 @@ const Chat = () => {
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
-                    <LanguageButton />
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */} 
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
                 </div>
                 <div className={styles.chatRoot}>
@@ -306,7 +304,7 @@ const Chat = () => {
                 <div className={styles.chatEmptyState}>
                     <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
                     <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
-                    <h2 className={styles.chatEmptyStateSubtitle}>Login and ask anything or try an example</h2>
+                    <h2 className={styles.chatEmptyStateSubtitle}>{t('loginAndAskAnything')}</h2>
                     <AuthenticationButton />
                     <h2 className={styles.chatEmptyStateSubtitle}>{t('card3Demo')}</h2>
                     <DemoButton />

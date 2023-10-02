@@ -32,9 +32,11 @@ class UserApiView(APIView):
             "email": request.data.get("email"),
         }
         serializer = UserSerializer(data=data)
-        
-        UserApiView.putFilesDemoUser(request.data.get('auth0_id'), request.data.get('email'))
-        
+
+        # UserApiView.putFilesDemoUser(
+        #     request.data.get("auth0_id"), request.data.get("email")
+        # )
+
         try:
             if serializer.is_valid():
                 serializer.save()
@@ -51,32 +53,33 @@ class UserApiView(APIView):
 
         # Handle other validation errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     def putFilesDemoUser(auth0, email):
         if email == "demo@demo.demo":
             user = User.objects.get(auth0_id=auth0)
             file_path = "./DemoFiles/DemoBerlin.pdf"
             text = textract.process(file_path, method="pdfminer").decode("utf-8")
 
-            existing_document = Document.objects.filter(filename="DemoBerlin.pdf", user=user).first()
+            existing_document = Document.objects.filter(
+                filename="DemoBerlin.pdf", user=user
+            ).first()
 
             if existing_document is None:
                 document = {
-                    'filename': "DemoBerlin.pdf", 
-                    'text': text,  
-                    'user': user.id,
-                } 
+                    "filename": "DemoBerlin.pdf",
+                    "text": text,
+                    "user": user.id,
+                }
                 serializer = DocumentSerializer(data=document)
-                
+
                 if serializer.is_valid():
                     result = serializer.save()
                     # Insert text into qdrant db
                     [_, id] = user.auth0_id.split("|")
-                    qdrant_result = insert_text(id, result)
+                    qdrant_result = insert_text(id, result, user.lang)
             else:
                 # Check if the document is already in the database
-                pass            
-
+                pass
 
 
 class UploadApiView(APIView):
@@ -107,6 +110,7 @@ class UploadApiView(APIView):
                 "filename": file.name,
                 "text": text,
                 "user": user.id,
+                "lang": user.lang
             }
 
             # Insert text into postgres db
@@ -121,7 +125,7 @@ class UploadApiView(APIView):
 
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
-            qdrant_result = insert_text(id, result)
+            qdrant_result = insert_text(id, result, user.lang)
             if qdrant_result != True:
                 success = False
 
@@ -162,20 +166,22 @@ class ChatApiView(APIView):
         """
         question = request.data.get("question")
         [_, id] = request.data.get("user_auth0_id").split("|")
+        auth0 = request.data.get("user_auth0_id")
+        user = User.objects.get(auth0_id=auth0)
         # tokenize text
-        prepared_text = prepare_text(question)
+        # prepared_text = prepare_text(question, user.lang)
         # vectorize tokens
-        vector = vectorize(prepared_text)
+        vector = vectorize(question)
         # similarity search
         try:
             search_result = search(id, vector, 3)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
-
+        print(search_result)
         facts = []
         for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))
-            ents = return_ents(section.document.text)
+            ents = return_ents(section.document.text, user.lang)
             entities = []
             for ent in ents:
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
@@ -201,7 +207,7 @@ class ContextApiView(APIView):
         question = request.data.get("question")
         context = request.data.get("context")
         template = request.data.get("template")
-      
+
         tokens = count_tokens(question, context)
 
         if tokens < MAX_TOKENS:
@@ -322,6 +328,48 @@ class NextCloudFilesApiView(APIView):
         """
         )
 
+
 class LanguageAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            auth0_id = request.GET["auth0_id"]
+            user = User.objects.get(auth0_id=auth0_id)
+            return Response(user.lang, status.HTTP_200_OK)
+        except:
+            return Response("Error!", status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     def post(self, request, *args, **kwargs):
-        return Response("de", status.HTTP_200_OK)
+        try:
+            lang = request.data.get("language")
+            auth0 = request.data.get("auth0_id")
+            user = User.objects.get(auth0_id=auth0)
+            user.lang = lang['key']
+            user.save()
+
+            return Response(user.lang, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response("User not found", status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class FilesApiView(APIView):
+    def post(self, request, *args, **kwargs):
+            auth0_id = request.data['auth0_id']
+            user = User.objects.get(auth0_id=auth0_id)
+            [_, id] = auth0_id.split("|")
+            create_collection(id)
+
+            documents = Document.objects.filter(user=user)
+            success = True
+            for document in documents:
+                Section.objects.filter(document=document).delete()
+               
+                qdrant_result = insert_text(id, document, document.lang)
+                if qdrant_result != True:
+                    success = False
+
+            if success:
+                return Response([], status=status.HTTP_200_OK)
+            else:
+                return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
+

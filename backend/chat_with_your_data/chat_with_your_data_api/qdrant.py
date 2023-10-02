@@ -47,16 +47,16 @@ def create_collection(name):
 
 def search(collection_name, vector, limit):
     result = __client.search(
-        collection_name=collection_name, query_vector=vector[0].tolist(), limit=3
+        collection_name=collection_name, query_vector=vector.tolist(), limit=3
     )
     return result
 
 
-def insert_text(collection_name, document):
-    tokens = prepare_text(document.text)
+def insert_text(collection_name, document, lang):
+    tokens = prepare_text(document.text, lang)
     points = []
     for token in tokens:
-        content = "".join(token)
+        content = " ".join(token)
         section = {"document": document.id, "content": content}
         serializer = SectionSerializer(data=section)
         if serializer.is_valid():
@@ -64,10 +64,10 @@ def insert_text(collection_name, document):
         else:
             return serializer.errors
 
-        vector = vectorize(token)
+        vector = vectorize(content)
         point = PointStruct(
             id=str(uuid.uuid4()),
-            vector=vector[0].tolist(),
+            vector=vector.tolist(),
             payload={"section_id": result.id, "document_id": document.id},
         )
         points.append(point)

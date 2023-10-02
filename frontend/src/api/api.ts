@@ -59,6 +59,17 @@ export async function setLanguage(data: any): Promise<any> {
       return response.json();
   }  
 
+  export async function getLanguage(auth0_id: string): Promise<any> {
+    const response = await fetch("/api/language?auth0_id=" + auth0_id , {
+      method: 'GET', // Da du Daten an den Server sendest, sollte die Methode POST sein
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    // Wenn die Anfrage erfolgreich ist, kannst du die Antwort zurückgeben
+    return response.json();
+}  
+
 export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
 
     const response = await fetch("/api/documents", {
@@ -87,6 +98,19 @@ export async function getDocuments(auth0_id: string): Promise<ReadDocument[]> {
     const parsedResponse: ReadDocument[] = await response.json();
 
     return parsedResponse;
+}
+
+export async function reloadFiles(auth0_id: string): Promise<any> {
+
+    const response = await fetch("/api/files/reload", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            auth0_id: auth0_id
+        })
+    }).then((response) => response.json())
 }
 
 export async function uploadToNextcloud(clientId: any, clientSecret: any, authorizationUrl: any, nextCloudUserName: any): Promise<any> {

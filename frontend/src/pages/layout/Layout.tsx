@@ -8,23 +8,25 @@ import styles from "./Layout.module.css";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { initUser } from "../../api";
 import { useState, useEffect } from 'react';
+import { LanguageButton } from "../../components/LanguageButton";
 
 const Layout = () => {
-    const {user, isLoading, isAuthenticated} = useAuth0();
+    const { user, isLoading, isAuthenticated } = useAuth0();
     const [isUserInitialized, setUserInitialized] = useState(false);
     const { t } = useTranslation();
     const onFirstLogin = () => {
         // insert code for operations after the first login of a user
 
-        console.log("This was a users first login")}
+        console.log("This was a users first login")
+    }
 
-        //check if user is authenticated and if the user is initialized
-        useEffect(() => {
-            if (isAuthenticated && !isUserInitialized) {
-              initUser(user!, onFirstLogin);
-              setUserInitialized(true);
-            }
-          }, [isAuthenticated, user, isUserInitialized]);
+    //check if user is authenticated and if the user is initialized
+    useEffect(() => {
+        if (isAuthenticated && !isUserInitialized) {
+            initUser(user!, onFirstLogin);
+            setUserInitialized(true);
+        }
+    }, [isAuthenticated, user, isUserInitialized]);
 
     return (
         <div className={styles.layout}>
@@ -41,7 +43,15 @@ const Layout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <AuthenticationButton/>
+                                <NavLink to="/Demo" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
+                                    Demo
+                                </NavLink>
+                            </li>
+                            <li className={styles.headerNavLeftMargin}>
+                                <AuthenticationButton />
+                            </li>
+                            <li className={styles.headerNavLeftMargin}>
+                                <LanguageButton />
                             </li>
                         </ul>
                     </nav>
