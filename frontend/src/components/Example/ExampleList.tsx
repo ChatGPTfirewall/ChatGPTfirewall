@@ -14,11 +14,9 @@ export type DemoModel = {
 };
 
 const DEMOPAGE: DemoModel[] = [
-  {
-    text: "Welche wichtige historische Veränderung erfolgte 1961 in Berlin?", value: "Welche wichtige historische Veränderung erfolgte 1961 in Berlin?"
-  },
-  { text: "Welche Veranstaltung aus 1920 wird in Berlin auch heute noch gefeiert?", value: "DemWelche Veranstaltung aus 1920 wird in Berlin auch heute noch gefeiert?" },
-  { text: "Welche historische Bedeutung hatte Berlin im Dreißigjährigen Krieg?", value: "Welche historische Bedeutung hatte Berlin im Dreißigjährigen Krieg?" }
+  { text: "Was ist auf der Weinversteigerung in Trier passiert?", value: "Was ist auf der Weinversteigerung in Trier passiert?"},
+  { text: "Worüber ist der Edelmann E erbost?", value: "Worüber ist der Edelmann E erbost??" },
+  { text: "Warum wurde B die Einreise in die USA verweigert?", value: "Warum wurde B die Einreise in die USA verweigert?" }
 ];
 
 interface Props {
