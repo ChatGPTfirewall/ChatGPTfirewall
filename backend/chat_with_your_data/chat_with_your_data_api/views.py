@@ -5,6 +5,7 @@ from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import FileResponse
 from pathlib import Path
 import requests
 import textract
@@ -139,6 +140,29 @@ class UploadApiView(APIView):
             return Response(documents, status=status.HTTP_201_CREATED)
         else:
             return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
+        
+class DownloadApiView(APIView):
+    def post(self, request, *args, **kwargs):
+        files_path = "./ExampleFiles/JuraStudium"
+
+        file_name = request.POST.get("file_name")
+
+        # Construct the full file path
+        file_path = os.path.join(files_path, file_name)
+
+        # Check if the file exists
+        if os.path.exists(file_path):
+            # Open the file with appropriate headers for download
+            with open(file_path, 'rb') as file:
+                response = FileResponse(file)
+                # Set the content type (e.g., PDF, image, etc.)
+                response['Content-Type'] = 'text/plain'  # Change as needed
+                # Set the Content-Disposition header to specify the filename
+                response['Content-Disposition'] = f'attachment; filename="{file_name}"'
+                return response
+        else:
+            # Return a 404 Not Found response if the file doesn't exist
+            return Response("No such file", status=status.HTTP_404_NOT_FOUND)
 
 
 class DocumentApiView(APIView):
