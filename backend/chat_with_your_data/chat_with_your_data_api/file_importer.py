@@ -18,9 +18,9 @@ def save_file(folder_path, file):
     return temp_file_path
 
 
-def extract_text(file_path, file):
-    file_ext = os.path.splitext(file.name)[1].lower()
-
+def extract_text(file_path, file_name):
+    file_ext = os.path.splitext(file_name)[1].lower()
+    
     match file_ext:
         case ".pdf":
             if __is_scanned_pdf(file_path):
