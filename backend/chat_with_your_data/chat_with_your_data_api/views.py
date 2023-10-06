@@ -5,21 +5,41 @@ from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.http import FileResponse
+from django.http import HttpResponseNotFound, HttpResponse
 from pathlib import Path
 import requests
-import textract
+import mimetypes
 
 from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import prepare_text, return_ents, vectorize
+from .embedding import return_ents, vectorize
 from .llm import count_tokens, run_llm, get_template, set_template
-from .nextcloud import get_access_token, get_files, download_file
 from xml.etree import ElementTree as ET
 
 MAX_TOKENS = 4098
+
+
+def download_file(request, filename):
+    # Define the path to the directory where your files are stored
+    files_path = "./ExampleFiles/JuraStudium"
+    # Construct the full file path
+    file_path = os.path.join(files_path, filename)
+
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Determine the content type based on the file extension
+        content_type, _ = mimetypes.guess_type(filename)
+
+        # Open the file with appropriate headers for download
+        with open(file_path, "rb") as file:
+            response = HttpResponse(file, content_type=content_type)
+            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            return response
+    else:
+        # Return a 404 Not Found response if the file doesn't exist
+        return HttpResponseNotFound("File not found")
 
 
 class UserApiView(APIView):
@@ -140,29 +160,6 @@ class UploadApiView(APIView):
             return Response(documents, status=status.HTTP_201_CREATED)
         else:
             return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
-        
-class DownloadApiView(APIView):
-    def post(self, request, *args, **kwargs):
-        files_path = "./ExampleFiles/JuraStudium"
-
-        file_name = request.POST.get("file_name")
-
-        # Construct the full file path
-        file_path = os.path.join(files_path, file_name)
-
-        # Check if the file exists
-        if os.path.exists(file_path):
-            # Open the file with appropriate headers for download
-            with open(file_path, 'rb') as file:
-                response = FileResponse(file)
-                # Set the content type (e.g., PDF, image, etc.)
-                response['Content-Type'] = 'text/plain'  # Change as needed
-                # Set the Content-Disposition header to specify the filename
-                response['Content-Disposition'] = f'attachment; filename="{file_name}"'
-                return response
-        else:
-            # Return a 404 Not Found response if the file doesn't exist
-            return Response("No such file", status=status.HTTP_404_NOT_FOUND)
 
 
 class DocumentApiView(APIView):
