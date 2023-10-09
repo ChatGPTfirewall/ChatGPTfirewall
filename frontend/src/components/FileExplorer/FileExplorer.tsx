@@ -9,7 +9,7 @@ import {
   Spinner
 } from '@fluentui/react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
-import { Folder24Regular } from '@fluentui/react-icons';
+import { ArrowDownload24Regular, Folder24Regular } from '@fluentui/react-icons';
 import { getDocuments, deleteDocuments, reloadFiles } from '../../api';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { ReadDocument } from '../../api';
@@ -113,7 +113,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
         name: 'Name',
         className: styles.file_name_column,
         fieldName: 'filename',
-        minWidth: 580,
+        minWidth: 500,
         isRowHeader: true,
         isResizable: true,
         isSorted: true,
@@ -123,6 +123,27 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
         onColumnClick: this._onColumnClick,
         data: 'string',
         isPadded: true,
+      },
+      {
+        key: 'column3',
+        name: 'Download',
+        className: styles.file_name_column,
+        fieldName: 'download',
+        minWidth: 50,
+        isRowHeader: true,
+        isResizable: true,
+        data: 'string',
+        isPadded: true,
+        onRender: (item: ReadDocument) => {
+          const encodedFilename = encodeURIComponent(item.filename);
+          const file_path = `/api/documents/download/${encodedFilename}`
+        
+          return (
+            <a href={file_path} download>
+              <ArrowDownload24Regular/>
+            </a>
+          );
+        },
       }
     ];
 
@@ -215,12 +236,17 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
               ariaLabelForSelectionColumn="Toggle selection"
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               checkButtonAriaLabel="select row"
+              onItemInvoked={this._onItemInvoked}
             />
           </div>
         </Modal >
       </div >
     );
   };
+
+  private _onItemInvoked(item: any): void {
+    console.log(item)
+  }
 
 
   public componentDidUpdate(previousProps: any, previousState: FileExplorerState) {

@@ -5,20 +5,41 @@ from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import HttpResponseNotFound, HttpResponse
 from pathlib import Path
 import requests
-import textract
+import mimetypes
 
 from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import prepare_text, return_ents, vectorize
+from .embedding import return_ents, vectorize
 from .llm import count_tokens, run_llm, get_template, set_template
-from .nextcloud import get_access_token, get_files, download_file
 from xml.etree import ElementTree as ET
 
 MAX_TOKENS = 4098
+
+
+def download_file(request, filename):
+    # Define the path to the directory where your files are stored
+    files_path = "./ExampleFiles/JuraStudium"
+    # Construct the full file path
+    file_path = os.path.join(files_path, filename)
+
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Determine the content type based on the file extension
+        content_type, _ = mimetypes.guess_type(filename)
+
+        # Open the file with appropriate headers for download
+        with open(file_path, "rb") as file:
+            response = HttpResponse(file, content_type=content_type)
+            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            return response
+    else:
+        # Return a 404 Not Found response if the file doesn't exist
+        return HttpResponseNotFound("File not found")
 
 
 class UserApiView(APIView):
@@ -33,9 +54,9 @@ class UserApiView(APIView):
         }
         serializer = UserSerializer(data=data)
 
-        # UserApiView.putFilesDemoUser(
-        #     request.data.get("auth0_id"), request.data.get("email")
-        # )
+        UserApiView.putFilesDemoUser(
+            request.data.get("auth0_id"), request.data.get("email")
+        )
 
         try:
             if serializer.is_valid():
@@ -57,29 +78,35 @@ class UserApiView(APIView):
     def putFilesDemoUser(auth0, email):
         if email == "demo@demo.demo":
             user = User.objects.get(auth0_id=auth0)
-            file_path = "./DemoFiles/DemoBerlin.pdf"
-            text = textract.process(file_path, method="pdfminer").decode("utf-8")
+            files_path = "./ExampleFiles/JuraStudium"
 
-            existing_document = Document.objects.filter(
-                filename="DemoBerlin.pdf", user=user
-            ).first()
+            file_names = os.listdir(files_path)
 
-            if existing_document is None:
-                document = {
-                    "filename": "DemoBerlin.pdf",
-                    "text": text,
-                    "user": user.id,
-                }
-                serializer = DocumentSerializer(data=document)
+            for file_name in file_names:
+                file_path = os.path.join(files_path, file_name)
 
-                if serializer.is_valid():
-                    result = serializer.save()
-                    # Insert text into qdrant db
-                    [_, id] = user.auth0_id.split("|")
-                    qdrant_result = insert_text(id, result, user.lang)
-            else:
-                # Check if the document is already in the database
-                pass
+                text = extract_text(file_path, file_name)
+
+                existing_document = Document.objects.filter(
+                    filename=file_name, user=user
+                ).first()
+
+                if existing_document is None:
+                    document = {
+                        "filename": file_name,
+                        "text": text,
+                        "user": user.id,
+                    }
+                    serializer = DocumentSerializer(data=document)
+
+                    if serializer.is_valid():
+                        result = serializer.save()
+                        # Insert text into qdrant db
+                        [_, id] = user.auth0_id.split("|")
+                        insert_text(id, result, user.lang)
+                else:
+                    # Check if the document is already in the database
+                    pass
 
 
 class UploadApiView(APIView):
@@ -101,7 +128,7 @@ class UploadApiView(APIView):
             temp_file_path = save_file("../temp", file)
 
             # Extract the text from the file
-            text = extract_text(temp_file_path, file)
+            text = extract_text(temp_file_path, file.name)
 
             # Delete saved file
             os.remove(temp_file_path)
@@ -110,7 +137,7 @@ class UploadApiView(APIView):
                 "filename": file.name,
                 "text": text,
                 "user": user.id,
-                "lang": user.lang
+                "lang": user.lang,
             }
 
             # Insert text into postgres db
@@ -343,7 +370,7 @@ class LanguageAPI(APIView):
             lang = request.data.get("language")
             auth0 = request.data.get("auth0_id")
             user = User.objects.get(auth0_id=auth0)
-            user.lang = lang['key']
+            user.lang = lang["key"]
             user.save()
 
             return Response(user.lang, status=status.HTTP_200_OK)
@@ -351,25 +378,25 @@ class LanguageAPI(APIView):
             return Response("User not found", status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
+
 class FilesApiView(APIView):
     def post(self, request, *args, **kwargs):
-            auth0_id = request.data['auth0_id']
-            user = User.objects.get(auth0_id=auth0_id)
-            [_, id] = auth0_id.split("|")
-            create_collection(id)
+        auth0_id = request.data["auth0_id"]
+        user = User.objects.get(auth0_id=auth0_id)
+        [_, id] = auth0_id.split("|")
+        create_collection(id)
 
-            documents = Document.objects.filter(user=user)
-            success = True
-            for document in documents:
-                Section.objects.filter(document=document).delete()
-               
-                qdrant_result = insert_text(id, document, document.lang)
-                if qdrant_result != True:
-                    success = False
+        documents = Document.objects.filter(user=user)
+        success = True
+        for document in documents:
+            Section.objects.filter(document=document).delete()
 
-            if success:
-                return Response([], status=status.HTTP_200_OK)
-            else:
-                return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
+            qdrant_result = insert_text(id, document, document.lang)
+            if qdrant_result != True:
+                success = False
 
+        if success:
+            return Response([], status=status.HTTP_200_OK)
+        else:
+            return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
