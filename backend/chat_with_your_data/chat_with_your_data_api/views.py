@@ -14,12 +14,15 @@ from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import return_ents, vectorize
+from .embedding import return_ents, vectorize, return_context
 from .llm import count_tokens, run_llm, get_template, set_template
 from xml.etree import ElementTree as ET
 
-MAX_TOKENS = 4098
-
+LLM_MAX_TOKENS          = 4098
+CONTENT_AFTER           = "context_a"
+CONTENT_BEFORE          = "context_b"
+RANGE_CONTEXT_AFTER     = 5
+RANGE_CONTEXT_BEFORE    = 5
 
 def download_file(request, filename):
     # Define the path to the directory where your files are stored
@@ -204,19 +207,22 @@ class ChatApiView(APIView):
             search_result = search(id, vector, 3)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
-        print(search_result)
+        #print(search_result)
         facts = []
         for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))
             ents = return_ents(section.document.text, user.lang)
+            context_a = return_context(section.content, section.document.text, fact.score, user.lang, RANGE_CONTEXT_AFTER, CONTENT_AFTER)
+            context_b = return_context(section.content, section.document.text, fact.score, user.lang, RANGE_CONTEXT_BEFORE, CONTENT_BEFORE)
             entities = []
             for ent in ents:
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
             fact = {
-                "answer": section.content,
+                "answer": context_a + section.content + context_b,   # TEST!!! 
                 "file": section.document.filename,
                 "score": fact.score,
-                "full_text": section.document.text,
+                "context_A": context_a,
+                "context_B": context_b,
                 "entities": entities,
             }
             facts.append(fact)
@@ -237,7 +243,7 @@ class ContextApiView(APIView):
 
         tokens = count_tokens(question, context)
 
-        if tokens < MAX_TOKENS:
+        if tokens < LLM_MAX_TOKENS:
             set_template(template)
             answer = run_llm({"context": context, "question": question})
         else:
