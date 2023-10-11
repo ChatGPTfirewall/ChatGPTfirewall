@@ -21,8 +21,8 @@ from xml.etree import ElementTree as ET
 LLM_MAX_TOKENS          = 4098
 CONTENT_AFTER           = "context_a"
 CONTENT_BEFORE          = "context_b"
-RANGE_CONTEXT_AFTER     = 5
-RANGE_CONTEXT_BEFORE    = 5
+RANGE_CONTEXT_AFTER     = os.getenv("CONTEXT_RANGE", 5)
+RANGE_CONTEXT_BEFORE    = os.getenv("CONTEXT_RANGE", 5)
 
 def download_file(request, filename):
     # Define the path to the directory where your files are stored
