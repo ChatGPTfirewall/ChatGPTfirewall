@@ -6,4 +6,5 @@ default:
 deploy:
   script:
     - cd frontend
-    - flyctl deploy
+    - ls
+    - fly deploy
