@@ -1,10 +1,29 @@
-default:
-  image: golang:1.13
+stages:
+  - deploy_frontend
+  - deploy_backend
+
+deploy_frontend:
+  stage: deploy_frontend
+  image: node:14 # Choose an image with Node.js and necessary tools
   before_script:
     - apt-get update -qq && apt-get install -y curl
     - curl -L https://fly.io/install.sh | sh
-deploy:
   script:
     - cd frontend
-    - ls
-    - fly deploy
+    - npm install # Install frontend dependencies
+    - npm run build # Build your frontend (adjust this command according to your project)
+
+deploy_backend:
+  stage: deploy_backend
+  image: python:3.8 # Choose an image with Python and necessary tools
+  before_script:
+    - apt-get update -qq && apt-get install -y curl
+    - curl -L https://fly.io/install.sh | sh
+  script:
+    - cd backend
+    - pip install -r requirements.txt # Install backend dependencies
+
+# Add other stages and jobs as needed for your pipeline
+
+
+
