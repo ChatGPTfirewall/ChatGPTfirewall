@@ -4,14 +4,13 @@ stages:
 
 deploy_frontend:
   stage: deploy_frontend
-  image: node:14 # Choose an image with Node.js and necessary tools
+  image: node:current-bullseye-slim
   before_script:
     - apt-get update -qq && apt-get install -y curl
     - curl -L https://fly.io/install.sh | sh
   script:
     - cd frontend
-    - npm install # Install frontend dependencies
-    - npm run build # Build your frontend (adjust this command according to your project)
+    - fly deploy
 
 deploy_backend:
   stage: deploy_backend
@@ -21,7 +20,7 @@ deploy_backend:
     - curl -L https://fly.io/install.sh | sh
   script:
     - cd backend
-    - pip install -r requirements.txt # Install backend dependencies
+    - fly deploy
 
 # Add other stages and jobs as needed for your pipeline
 
