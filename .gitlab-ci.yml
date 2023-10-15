@@ -12,7 +12,7 @@ deploy_frontend:
     - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   script:
     - cd frontend
-    - fly deploy
+    - flyctl deploy
 
 deploy_backend:
   stage: deploy_backend
@@ -24,7 +24,7 @@ deploy_backend:
     - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   script:
     - cd backend
-    - fly deploy
+    - flyctl deploy
 
 # Add other stages and jobs as needed for your pipeline
 
