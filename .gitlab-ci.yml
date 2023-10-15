@@ -1,0 +1,9 @@
+default:
+  image: golang:1.13
+  before_script:
+    - apt-get update -qq && apt-get install -y curl
+    - curl -L https://fly.io/install.sh | sh
+deploy:
+  script:
+    - cd frontend
+    - flyctl deploy
