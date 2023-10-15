@@ -5,6 +5,8 @@ stages:
 deploy_frontend:
   stage: deploy_frontend
   image: node:current-bullseye-slim
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN
   before_script:
     - apt-get update -qq && apt-get install -y curl
     - curl -L https://fly.io/install.sh | sh
@@ -17,6 +19,8 @@ deploy_frontend:
 deploy_backend:
   stage: deploy_backend
   image: python:3.8 # Choose an image with Python and necessary tools
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN
   before_script:
     - apt-get update -qq && apt-get install -y curl
     - curl -L https://fly.io/install.sh | sh
