@@ -7,10 +7,10 @@ import { useState, useEffect } from 'react';
 
 const dropdownStyles = { dropdown: { width: 100 } };
 
-export const LanguageButton = () => {
+export const LanguageButton = ({ default_lang }: { default_lang: string }) => {
   const { i18n } = useTranslation();
   const { user, isAuthenticated } = useAuth0();
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState(default_lang);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -20,8 +20,10 @@ export const LanguageButton = () => {
 
   const getLang = (user: User) => {
     getLanguage(user.sub!).then((lang: string) => {
-      changeLanguage(lang)
-      setLang(lang)
+      if (lang == "de" || lang == "en") {
+        changeLanguage(lang)
+        setLang(lang)
+      }
     })
   };
 

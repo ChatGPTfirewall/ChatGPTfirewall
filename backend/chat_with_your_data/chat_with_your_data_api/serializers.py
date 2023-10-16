@@ -3,7 +3,7 @@ from .models import User, Document, Section
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "auth0_id", "username", "email"]
+        fields = ["id", "auth0_id", "username", "email", "lang"]
 
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:

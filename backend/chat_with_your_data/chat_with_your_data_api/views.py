@@ -50,7 +50,7 @@ class UserApiView(APIView):
         data = {
             "auth0_id": request.data.get("auth0_id"),
             "username": request.data.get("username"),
-            "email": request.data.get("email"),
+            "email": request.data.get("email")
         }
         serializer = UserSerializer(data=data)
 
@@ -117,7 +117,7 @@ class UploadApiView(APIView):
         auth0_id = request.POST.get("user")
         user = User.objects.get(auth0_id=auth0_id)
         files = request.FILES.getlist("files")
-
+        
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
 
@@ -361,6 +361,7 @@ class LanguageAPI(APIView):
         try:
             auth0_id = request.GET["auth0_id"]
             user = User.objects.get(auth0_id=auth0_id)
+            print(user)
             return Response(user.lang, status.HTTP_200_OK)
         except:
             return Response("Error!", status.HTTP_500_INTERNAL_SERVER_ERROR)

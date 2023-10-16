@@ -13,6 +13,7 @@ import { LanguageButton } from "../../components/LanguageButton";
 const Layout = () => {
     const { user, isLoading, isAuthenticated } = useAuth0();
     const [isUserInitialized, setUserInitialized] = useState(false);
+    const [ lang, setLang ] = useState("en")
     const { t } = useTranslation();
     const onFirstLogin = () => {
         // insert code for operations after the first login of a user
@@ -23,7 +24,7 @@ const Layout = () => {
     //check if user is authenticated and if the user is initialized
     useEffect(() => {
         if (isAuthenticated && !isUserInitialized) {
-            initUser(user!, onFirstLogin);
+            initUser(user!, onFirstLogin, setLang)
             setUserInitialized(true);
         }
     }, [isAuthenticated, user, isUserInitialized]);
@@ -51,7 +52,7 @@ const Layout = () => {
                                 <AuthenticationButton />
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <LanguageButton />
+                                <LanguageButton default_lang={lang}/>
                             </li>
                         </ul>
                     </nav>

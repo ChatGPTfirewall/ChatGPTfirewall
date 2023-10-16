@@ -48,27 +48,27 @@ export async function uploadFiles(data: any): Promise<any> {
 }
 
 export async function setLanguage(data: any): Promise<any> {
-      const response = await fetch("/api/language", {
+    const response = await fetch("/api/language", {
         method: 'POST', // Da du Daten an den Server sendest, sollte die Methode POST sein
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(data), // Du übergibst die ausgewählte Sprache als JSON-Daten
-      });
-      // Wenn die Anfrage erfolgreich ist, kannst du die Antwort zurückgeben
-      return response.json();
-  }  
-
-  export async function getLanguage(auth0_id: string): Promise<any> {
-    const response = await fetch("/api/language?auth0_id=" + auth0_id , {
-      method: 'GET', // Da du Daten an den Server sendest, sollte die Methode POST sein
-      headers: {
-        'Content-Type': 'application/json',
-      }
     });
     // Wenn die Anfrage erfolgreich ist, kannst du die Antwort zurückgeben
     return response.json();
-}  
+}
+
+export async function getLanguage(auth0_id: string): Promise<any> {
+    const response = await fetch("/api/language?auth0_id=" + auth0_id, {
+        method: 'GET', // Da du Daten an den Server sendest, sollte die Methode POST sein
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    // Wenn die Anfrage erfolgreich ist, kannst du die Antwort zurückgeben
+    return response.json();
+}
 
 export async function deleteDocuments(documents: ReadDocument[]): Promise<any> {
 
@@ -129,7 +129,7 @@ export async function uploadToNextcloud(clientId: any, clientSecret: any, author
     }).then((response) => response.json());
 }
 
-export async function initUser(user: User, firstLoginHook: any): Promise<any> {
+export async function initUser(user: User, firstLoginHook: any, setLang: any): Promise<any> {
     const response = await fetch("/api/users/create", {
         method: 'POST',
         body: JSON.stringify({
@@ -145,6 +145,7 @@ export async function initUser(user: User, firstLoginHook: any): Promise<any> {
         .then(data => {
             if (!data.error) {
                 firstLoginHook()
+                setLang(data.lang)
             }
         })
 }
