@@ -3,7 +3,7 @@ class User(models.Model):
     auth0_id = models.CharField(max_length=255, unique=True, null=False)
     username = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
-    lang = models.CharField(max_length=2)       #using ISO 639-1 codes
+    lang = models.CharField(max_length=2, default='en')       #using ISO 639-1 codes
 
     def __str__(self):
         return self.auth0_id
