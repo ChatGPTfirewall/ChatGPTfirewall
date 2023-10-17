@@ -32,12 +32,12 @@ i18n.use(initReactI18next).init({
         "settings": "Settings",
         "logout": "Log Out",
         "reloading": "Reloading...",
-        "loginAndAskAnything": "Login and ask anything or try an example"
+        "loginAndAskAnything": "Login and ask anything or try an example",
+        "fileSize": "File size",
       },
     },
     de: {
       translation: {
-        // Hier kommen die deutschen Übersetzungen aus deiner JSON-Datei
         "chatWithYourData": "Chatten Sie mit Ihren Daten",
         "demoPageChatWithData": "Demo Seite: Chatten Sie mit Ihren Daten",
         "files": "Dateien",
@@ -62,7 +62,8 @@ i18n.use(initReactI18next).init({
         "settings": "Einstellungen",
         "logout": "Ausloggen",
         "reloading": "Lade neu...",
-        "loginAndAskAnything": "Loggen sie sich ein und fragen Sie ihre Dokumente"
+        "loginAndAskAnything": "Loggen sie sich ein und fragen Sie ihre Dokumente",
+        "fileSize": "Dateigröße",
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

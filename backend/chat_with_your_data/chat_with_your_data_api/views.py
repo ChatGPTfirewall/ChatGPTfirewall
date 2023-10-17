@@ -83,6 +83,7 @@ class UserApiView(APIView):
             file_names = os.listdir(files_path)
 
             for file_name in file_names:
+                file_size = file_name.size
                 file_path = os.path.join(files_path, file_name)
 
                 text = extract_text(file_path, file_name)
@@ -90,12 +91,15 @@ class UserApiView(APIView):
                 existing_document = Document.objects.filter(
                     filename=file_name, user=user
                 ).first()
+                
 
                 if existing_document is None:
                     document = {
                         "filename": file_name,
                         "text": text,
                         "user": user.id,
+                        "lang": user.lang,
+                        "fileSize": file_size,
                     }
                     serializer = DocumentSerializer(data=document)
 
@@ -124,6 +128,7 @@ class UploadApiView(APIView):
         success = True
 
         for file in files:
+            file_size = file.size
             # Save file temporary
             temp_file_path = save_file("../temp", file)
 
@@ -138,6 +143,7 @@ class UploadApiView(APIView):
                 "text": text,
                 "user": user.id,
                 "lang": user.lang,
+                "fileSize": file_size,
             }
 
             # Insert text into postgres db
