@@ -35,7 +35,7 @@ def download_file(request, filename):
         # Open the file with appropriate headers for download
         with open(file_path, "rb") as file:
             response = HttpResponse(file, content_type=content_type)
-            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            response["Content-Disposition"] = f'attachment; filename="{filename}"'
             return response
     else:
         # Return a 404 Not Found response if the file doesn't exist
@@ -50,48 +50,47 @@ class UserApiView(APIView):
         data = {
             "auth0_id": request.data.get("auth0_id"),
             "username": request.data.get("username"),
-            "email": request.data.get("email")
+            "email": request.data.get("email"),
         }
         serializer = UserSerializer(data=data)
-
-        UserApiView.putFilesDemoUser(
-            request.data.get("auth0_id"), request.data.get("email")
-        )
 
         try:
             if serializer.is_valid():
                 serializer.save()
                 [_, id] = request.data.get("auth0_id").split("|")
                 create_collection(id)
+                response = Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                # Handle other validation errors
+                response = Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
         except IntegrityError as e:
             # Handle the IntegrityError (duplicate key error)
-            return Response(
+            response = Response(
                 {"error": "User with this auth0_id already exists."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-
-        # Handle other validation errors
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        UserApiView.putFilesDemoUser(
+            request.data.get("auth0_id"), request.data.get("email")
+        )
+  
+        return response
 
     def putFilesDemoUser(auth0, email):
         if email == "demo@demo.demo":
             user = User.objects.get(auth0_id=auth0)
             files_path = "./ExampleFiles/JuraStudium"
-
             file_names = os.listdir(files_path)
 
             for file_name in file_names:
-                file_size = file_name.size
                 file_path = os.path.join(files_path, file_name)
+                file_size = os.path.getsize(file_path)
 
                 text = extract_text(file_path, file_name)
 
                 existing_document = Document.objects.filter(
                     filename=file_name, user=user
                 ).first()
-                
 
                 if existing_document is None:
                     document = {
@@ -121,7 +120,7 @@ class UploadApiView(APIView):
         auth0_id = request.POST.get("user")
         user = User.objects.get(auth0_id=auth0_id)
         files = request.FILES.getlist("files")
-        
+
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
 
@@ -210,7 +209,6 @@ class ChatApiView(APIView):
             search_result = search(id, vector, 3)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
-        print(search_result)
         facts = []
         for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))
@@ -367,7 +365,6 @@ class LanguageAPI(APIView):
         try:
             auth0_id = request.GET["auth0_id"]
             user = User.objects.get(auth0_id=auth0_id)
-            print(user)
             return Response(user.lang, status.HTTP_200_OK)
         except:
             return Response("Error!", status.HTTP_500_INTERNAL_SERVER_ERROR)
