@@ -58,6 +58,7 @@ export type ReadDocument = {
     id: number,
     filename: string,
     user: User;
+    fileSize: number;
 }
 
 export type User = {
