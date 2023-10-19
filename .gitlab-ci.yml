@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy_frontend
+  - deploy_backend
+
+frontend_build:
+  stage: build
+  image: node:current-bullseye-slim
+  script:
+    - cd frontend
+    - npm install --no-save
+    - npm run build
+  cache:
+    key: frontend-dependencies
+    paths:
+      - frontend/node_modules/
+
+deploy_frontend:
+  stage: deploy_frontend
+  image: docker:stable
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN_FRONTEND
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+    - curl -L https://fly.io/install.sh | sh
+    - cd frontend
+    - export FLY_API_TOKEN=$FLY_API_TOKEN_FRONTEND
+  script:
+    - /root/.fly/bin/flyctl deploy
+  only:
+    - main
+
+deploy_backend:
+  stage: deploy_backend
+  image: docker:stable
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN_BACKEND
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+    - curl -L https://fly.io/install.sh | sh
+    - cd backend
+    - export FLY_API_TOKEN=$FLY_API_TOKEN_BACKEND
+  script:
+    - /root/.fly/bin/flyctl deploy
+  only:
+    - main
