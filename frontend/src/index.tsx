@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { initializeIcons } from "@fluentui/react";
 import { AuthProvider } from "./components/AuthProvider";
 
@@ -16,15 +16,15 @@ initializeIcons();
 
 export default function App() {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Chat />} />
-                    <Route path="demo" element={<DemoPage />} />
+                    <Route path="/demo" element={<DemoPage />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>
-        </HashRouter>
+        </BrowserRouter>
     );
 }
 

@@ -1,4 +1,5 @@
 import { Example } from "./Example";
+import { ExampleNoRequest } from "./ExampleNoRequest";
 
 import styles from "./Example.module.css";
 import { Link } from 'react-router-dom';
@@ -28,14 +29,14 @@ export const ExampleList = ({ onExampleClicked }: Props) => {
   return (
     <ul className={styles.examplesNavList}>
       <li>
-        <Example text={t('card1Upload')} value={""} onClick={onExampleClicked} />
+        <ExampleNoRequest text={t('card1Upload')}/>
       </li>
       <li>
-        <Example text={t('card2Ask')} value={""} onClick={onExampleClicked} />
+        <ExampleNoRequest text={t('card2Ask')}/>
       </li>
       <li>
         <Link to="/demo">
-          <Example text={t('card3Demo')} value={""} onClick={onExampleClicked} />
+          <ExampleNoRequest text={t('card3Demo')}/>
         </Link>
 
       </li>

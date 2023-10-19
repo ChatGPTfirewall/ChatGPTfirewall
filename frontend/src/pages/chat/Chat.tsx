@@ -17,7 +17,6 @@ import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
-import { DemoButton } from "../../components/DemoButton";
 import DemoPage from "../demoPage/DemoPage";
 import { useTranslation } from 'react-i18next';
 
@@ -306,8 +305,6 @@ const Chat = () => {
                     <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>{t('loginAndAskAnything')}</h2>
                     <AuthenticationButton />
-                    <h2 className={styles.chatEmptyStateSubtitle}>{t('card3Demo')}</h2>
-                    <DemoButton />
                 </div>
             </div>
         </div>
