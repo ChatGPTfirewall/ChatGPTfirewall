@@ -3,15 +3,29 @@ stages:
   - deploy_frontend
   - deploy_backend
 
-build-job:
+frontend_build:
   stage: build
   image: node:current-bullseye-slim
   script:
     - cd frontend
-    - npm install
+    - npm install --no-save
     - npm run build
+  cache:
+    key: frontend-dependencies
+    paths:
+      - frontend/node_modules/
 
-deploy_frontend-job:
+backend_build:
+  stage: build
+  image: python:3.11-slim-bullseye
+  script:
+    - cd backend
+    - pip3 install --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+    - python -m spacy download de_core_news_lg
+    - python -m spacy download en_core_web_lg
+    - python manage.py migrate
+
+deploy_frontend:
   stage: deploy_frontend
   image: docker:stable
   variables:
@@ -26,7 +40,7 @@ deploy_frontend-job:
   only:
     - main
 
-deploy_backend-job:
+deploy_backend:
   stage: deploy_backend
   image: docker:stable
   variables:
@@ -40,5 +54,3 @@ deploy_backend-job:
     - /root/.fly/bin/flyctl deploy
   only:
     - main
-
-
