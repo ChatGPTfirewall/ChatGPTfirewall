@@ -1,36 +1,39 @@
 stages:
+  - build
   - deploy_frontend
   - deploy_backend
 
-deploy_frontend:
-  stage: deploy_frontend
+build-job:
+  stage: build
   image: node:current-bullseye-slim
-  variables:
-    FLY_API_TOKEN: $FLY_API_TOKEN
-  before_script:
-    - apt-get update -qq && apt-get install -y curl
-    - curl -L https://fly.io/install.sh | sh
-    - export FLYCTL_INSTALL="/root/.fly"
-    - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   script:
     - cd frontend
-    - flyctl deploy
+    - npm install
+    - npm run build
 
-deploy_backend:
-  stage: deploy_backend
-  image: python:3.8 # Choose an image with Python and necessary tools
+deploy_frontend-job:
+  stage: deploy_frontend
+  image: docker:stable
   variables:
     FLY_API_TOKEN: $FLY_API_TOKEN
   before_script:
-    - apt-get update -qq && apt-get install -y curl
+    - apk add --update curl && rm -rf /var/cache/apk/*
     - curl -L https://fly.io/install.sh | sh
-    - export FLYCTL_INSTALL="/root/.fly"
-    - export PATH="$FLYCTL_INSTALL/bin:$PATH"
+    - cd frontend
   script:
+    - ls
+    - /root/.fly/bin/flyctl deploy
+
+deploy_backend-job:
+  stage: deploy_backend
+  image: docker:stable
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+    - curl -L https://fly.io/install.sh | sh
     - cd backend
-    - flyctl deploy
-
-# Add other stages and jobs as needed for your pipeline
-
+  script:
+    - /root/.fly/bin/flyctl deploy
 
 
