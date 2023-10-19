@@ -15,11 +15,12 @@ deploy_frontend-job:
   stage: deploy_frontend
   image: docker:stable
   variables:
-    FLY_API_TOKEN: $FLY_API_TOKEN
+    FLY_API_TOKEN: $FLY_API_TOKEN_FRONTEND
   before_script:
     - apk add --update curl && rm -rf /var/cache/apk/*
     - curl -L https://fly.io/install.sh | sh
     - cd frontend
+    - export FLY_API_TOKEN=$FLY_API_TOKEN_FRONTEND
   script:
     - /root/.fly/bin/flyctl deploy
 
@@ -32,6 +33,7 @@ deploy_backend-job:
     - apk add --update curl && rm -rf /var/cache/apk/*
     - curl -L https://fly.io/install.sh | sh
     - cd backend
+    - export FLY_API_TOKEN=$FLY_API_TOKEN_BACKEND
   script:
     - /root/.fly/bin/flyctl deploy
 
