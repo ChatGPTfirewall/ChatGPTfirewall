@@ -35,7 +35,7 @@ def download_file(request, filename):
         # Open the file with appropriate headers for download
         with open(file_path, "rb") as file:
             response = HttpResponse(file, content_type=content_type)
-            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            response["Content-Disposition"] = f'attachment; filename="{filename}"'
             return response
     else:
         # Return a 404 Not Found response if the file doesn't exist
@@ -54,36 +54,37 @@ class UserApiView(APIView):
         }
         serializer = UserSerializer(data=data)
 
-        UserApiView.putFilesDemoUser(
-            request.data.get("auth0_id"), request.data.get("email")
-        )
-
         try:
             if serializer.is_valid():
                 serializer.save()
                 [_, id] = request.data.get("auth0_id").split("|")
                 create_collection(id)
+                response = Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                # Handle other validation errors
+                response = Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
         except IntegrityError as e:
             # Handle the IntegrityError (duplicate key error)
-            return Response(
+            response = Response(
                 {"error": "User with this auth0_id already exists."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-
-        # Handle other validation errors
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        UserApiView.putFilesDemoUser(
+            request.data.get("auth0_id"), request.data.get("email")
+        )
+  
+        return response
 
     def putFilesDemoUser(auth0, email):
         if email == "demo@demo.demo":
             user = User.objects.get(auth0_id=auth0)
             files_path = "./ExampleFiles/JuraStudium"
-
             file_names = os.listdir(files_path)
 
             for file_name in file_names:
                 file_path = os.path.join(files_path, file_name)
+                file_size = os.path.getsize(file_path)
 
                 text = extract_text(file_path, file_name)
 
@@ -96,6 +97,8 @@ class UserApiView(APIView):
                         "filename": file_name,
                         "text": text,
                         "user": user.id,
+                        "lang": user.lang,
+                        "fileSize": file_size,
                     }
                     serializer = DocumentSerializer(data=document)
 
@@ -124,6 +127,7 @@ class UploadApiView(APIView):
         success = True
 
         for file in files:
+            file_size = file.size
             # Save file temporary
             temp_file_path = save_file("../temp", file)
 
@@ -138,6 +142,7 @@ class UploadApiView(APIView):
                 "text": text,
                 "user": user.id,
                 "lang": user.lang,
+                "fileSize": file_size,
             }
 
             # Insert text into postgres db
@@ -204,7 +209,6 @@ class ChatApiView(APIView):
             search_result = search(id, vector, 3)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
-        print(search_result)
         facts = []
         for fact in search_result:
             section = Section.objects.get(id=fact.payload.get("section_id"))

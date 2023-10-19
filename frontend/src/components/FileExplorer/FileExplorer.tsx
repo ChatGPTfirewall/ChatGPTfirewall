@@ -144,6 +144,33 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
             </a>
           );
         },
+      },
+      {
+        key: 'column4',
+        name: this.props.t('fileSize'),
+        className: styles.file_name_column,
+        fieldName: 'fileSize',
+        minWidth: 100,
+        isRowHeader: true,
+        isResizable: true,
+        data: 'number',
+        isPadded: true,
+        onRender: (item: ReadDocument) => {
+          const fileSizeInMB = item.fileSize / (1024 * 1024);
+          let sizeText = "";
+        
+          if (fileSizeInMB < 1) {
+            sizeText = `${(item.fileSize / 1024).toFixed(0)} KB`;
+          } else if (fileSizeInMB >= 1024) {
+            sizeText = `${(fileSizeInMB / 1024).toFixed(2)} GB`;
+          } else {
+            sizeText = `${fileSizeInMB.toFixed(2)} MB`;
+          }
+        
+          return (            
+            <span>{sizeText}</span>
+          );
+        },
       }
     ];
 

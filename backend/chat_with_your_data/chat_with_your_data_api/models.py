@@ -3,7 +3,7 @@ class User(models.Model):
     auth0_id = models.CharField(max_length=255, unique=True, null=False)
     username = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
-    lang = models.CharField(max_length=2)       #using ISO 639-1 codes
+    lang = models.CharField(max_length=2, default='en')       #using ISO 639-1 codes
 
     def __str__(self):
         return self.auth0_id
@@ -12,7 +12,8 @@ class Document(models.Model):
     filename = models.CharField(max_length = 255)
     text = models.TextField()
     user = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = False)
-    lang = models.CharField(max_length=2, default='en') 
+    lang = models.CharField(max_length=2, default='en')
+    fileSize = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.filename

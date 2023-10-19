@@ -58,6 +58,7 @@ export type ReadDocument = {
     id: number,
     filename: string,
     user: User;
+    fileSize: number;
 }
 
 export type User = {
@@ -65,6 +66,7 @@ export type User = {
     auth0_id: string;
     username: string;
     email: string;
+    lang: string;
 }
 
 
