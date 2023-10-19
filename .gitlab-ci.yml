@@ -23,6 +23,8 @@ deploy_frontend-job:
     - export FLY_API_TOKEN=$FLY_API_TOKEN_FRONTEND
   script:
     - /root/.fly/bin/flyctl deploy
+  only:
+    - main
 
 deploy_backend-job:
   stage: deploy_backend
@@ -36,5 +38,7 @@ deploy_backend-job:
     - export FLY_API_TOKEN=$FLY_API_TOKEN_BACKEND
   script:
     - /root/.fly/bin/flyctl deploy
+  only:
+    - main
 
 
