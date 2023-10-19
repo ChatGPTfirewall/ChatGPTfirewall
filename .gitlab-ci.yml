@@ -14,6 +14,7 @@ deploy_frontend:
     - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   script:
     - cd frontend
+    - echo $FLY_API_TOKEN
     - flyctl auth login -t $FLY_API_TOKEN
     - flyctl deploy
 
