@@ -14,6 +14,7 @@ deploy_frontend:
     - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   script:
     - cd frontend
+    - flyctl auth login -t $FLY_API_TOKEN
     - flyctl deploy
 
 deploy_backend:
@@ -28,6 +29,7 @@ deploy_backend:
     - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   script:
     - cd backend
+    - flyctl auth login -t $FLY_API_TOKEN
     - flyctl deploy
 
 # Add other stages and jobs as needed for your pipeline
