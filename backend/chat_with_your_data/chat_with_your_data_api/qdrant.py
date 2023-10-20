@@ -12,7 +12,7 @@ from qdrant_client.models import (
 )
 from qdrant_client.http.models import Distance, VectorParams
 
-from .embedding import prepare_text, vectorize
+from .embedding import prepare_text, vectorize, embed_text
 from .serializers import SectionSerializer
 
 
@@ -47,13 +47,14 @@ def create_collection(name):
 
 def search(collection_name, vector, limit):
     result = __client.search(
-        collection_name=collection_name, query_vector=vector.tolist(), limit=3
+        collection_name=collection_name, query_vector=vector.tolist(), limit=limit
     )
     return result
 
 
 def insert_text(collection_name, document, lang):
-    tokens = prepare_text(document.text, lang)
+    embedded_text = embed_text(document.text, lang)
+    tokens = prepare_text(embedded_text)
     points = []
     for token in tokens:
         content = " ".join(token)

@@ -14,15 +14,17 @@ from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import return_ents, vectorize, return_context
+from .embedding import return_ents, vectorize, return_context, embed_text
 from .llm import count_tokens, run_llm, get_template, set_template
 from xml.etree import ElementTree as ET
 
-LLM_MAX_TOKENS          = 4098
-CONTENT_AFTER           = "context_a"
-CONTENT_BEFORE          = "context_b"
-RANGE_CONTEXT_AFTER     = os.getenv("CONTEXT_RANGE", 5)
-RANGE_CONTEXT_BEFORE    = os.getenv("CONTEXT_RANGE", 5)
+LLM_MAX_TOKENS = 4098
+CONTENT_AFTER = "context_a"
+CONTENT_BEFORE = "context_b"
+RANGE_CONTEXT_AFTER = os.getenv("CONTEXT_RANGE", 5)
+RANGE_CONTEXT_BEFORE = os.getenv("CONTEXT_RANGE", 5)
+MAX_SEARCH_RESULTS = os.getenv("MAX_SEARCH_RESULTS", 3)
+
 
 def download_file(request, filename):
     # Define the path to the directory where your files are stored
@@ -65,7 +67,9 @@ class UserApiView(APIView):
                 response = Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
                 # Handle other validation errors
-                response = Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                response = Response(
+                    serializer.errors, status=status.HTTP_400_BAD_REQUEST
+                )
 
         except IntegrityError as e:
             # Handle the IntegrityError (duplicate key error)
@@ -76,7 +80,7 @@ class UserApiView(APIView):
         UserApiView.putFilesDemoUser(
             request.data.get("auth0_id"), request.data.get("email")
         )
-  
+
         return response
 
     def putFilesDemoUser(auth0, email):
@@ -200,29 +204,40 @@ class ChatApiView(APIView):
         Convert user question into qdrant db.
         """
         question = request.data.get("question")
-        [_, id] = request.data.get("user_auth0_id").split("|")
-        auth0 = request.data.get("user_auth0_id")
-        user = User.objects.get(auth0_id=auth0)
-        # tokenize text
-        # prepared_text = prepare_text(question, user.lang)
-        # vectorize tokens
+        auth0_id = request.data.get("user_auth0_id")
+        [_, id] = auth0_id.split("|")
+
+        user = User.objects.get(auth0_id=auth0_id)
+
         vector = vectorize(question)
-        # similarity search
+
         try:
-            search_result = search(id, vector, 3)
+            search_results = search(id, vector, MAX_SEARCH_RESULTS)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
+
         facts = []
-        for fact in search_result:
-            section = Section.objects.get(id=fact.payload.get("section_id"))
-            ents = return_ents(section.document.text, user.lang)
-            context_a = return_context(section.content, section.document.text, fact.score, user.lang, RANGE_CONTEXT_AFTER, CONTENT_AFTER)
-            context_b = return_context(section.content, section.document.text, fact.score, user.lang, RANGE_CONTEXT_BEFORE, CONTENT_BEFORE)
+        for search_result in search_results:
+            section = Section.objects.get(id=search_result.payload.get("section_id"))
+            embedded_text = embed_text(section.document.text, user.lang)
+            context_a = return_context(
+                embedded_text,
+                section.content,
+                RANGE_CONTEXT_AFTER,
+                CONTENT_AFTER,
+            )
+            context_b = return_context(
+                embedded_text,
+                section.content,
+                RANGE_CONTEXT_BEFORE,
+                CONTENT_BEFORE,
+            )
+
             entities = []
-            for ent in ents:
+            for ent in embedded_text.ents:
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
             fact = {
-                "answer": context_a + section.content + context_b,   # TEST!!! 
+                "answer": context_a + section.content + context_b,  # TEST!!!
                 "file": section.document.filename,
                 "score": fact.score,
                 "context_A": context_a,
