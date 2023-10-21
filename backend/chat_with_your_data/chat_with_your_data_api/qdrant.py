@@ -56,9 +56,9 @@ def insert_text(collection_name, document, lang):
     embedded_text = embed_text(document.text, lang)
     tokens = prepare_text(embedded_text)
     points = []
-    for token in tokens:
+    for i, token in enumerate(tokens):
         content = " ".join(token)
-        section = {"document": document.id, "content": content}
+        section = {"document": document.id, "content": content, "doc_index": i}
         serializer = SectionSerializer(data=section)
         if serializer.is_valid():
             result = serializer.save()

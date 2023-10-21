@@ -19,4 +19,4 @@ class ReadDocumentSerializer(serializers.ModelSerializer):
 class SectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Section
-        fields = ["document", "content"]
+        fields = ["document", "content", "doc_index"]

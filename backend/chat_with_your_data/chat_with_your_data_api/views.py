@@ -14,16 +14,14 @@ from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import return_ents, vectorize, return_context, embed_text
+from .embedding import vectorize, return_context, embed_text
 from .llm import count_tokens, run_llm, get_template, set_template
 from xml.etree import ElementTree as ET
 
 LLM_MAX_TOKENS = 4098
-CONTENT_AFTER = "context_a"
-CONTENT_BEFORE = "context_b"
-RANGE_CONTEXT_AFTER = os.getenv("CONTEXT_RANGE", 5)
-RANGE_CONTEXT_BEFORE = os.getenv("CONTEXT_RANGE", 5)
-MAX_SEARCH_RESULTS = os.getenv("MAX_SEARCH_RESULTS", 3)
+RANGE_CONTEXT_AFTER = int(os.getenv("CONTEXT_RANGE", 5))
+RANGE_CONTEXT_BEFORE = int(os.getenv("CONTEXT_RANGE", 5))
+MAX_SEARCH_RESULTS = int(os.getenv("MAX_SEARCH_RESULTS", 3))
 
 
 def download_file(request, filename):
@@ -220,28 +218,17 @@ class ChatApiView(APIView):
         for search_result in search_results:
             section = Section.objects.get(id=search_result.payload.get("section_id"))
             embedded_text = embed_text(section.document.text, user.lang)
-            context_a = return_context(
-                embedded_text,
-                section.content,
-                RANGE_CONTEXT_AFTER,
-                CONTENT_AFTER,
-            )
-            context_b = return_context(
-                embedded_text,
-                section.content,
-                RANGE_CONTEXT_BEFORE,
-                CONTENT_BEFORE,
-            )
+            (before_result, after_result) = return_context(embedded_text, section.doc_index, RANGE_CONTEXT_BEFORE, RANGE_CONTEXT_AFTER)
 
             entities = []
             for ent in embedded_text.ents:
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
             fact = {
-                "answer": context_a + section.content + context_b,  # TEST!!!
+                "answer": section.content,
                 "file": section.document.filename,
-                "score": fact.score,
-                "context_A": context_a,
-                "context_B": context_b,
+                "score": search_result.score,
+                "context_before": before_result,
+                "context_after": after_result,
                 "entities": entities,
             }
             facts.append(fact)
