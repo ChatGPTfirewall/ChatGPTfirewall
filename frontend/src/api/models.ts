@@ -37,7 +37,8 @@ export type Fact = {
     answer: string;
     file: string;
     score: number;
-    full_text: string;
+    context_before: string;
+    context_after: string;
     entities: [[string, number, number, string]];
 }
 

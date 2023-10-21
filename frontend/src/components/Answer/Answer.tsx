@@ -4,6 +4,7 @@ import styles from "./Answer.module.css";
 
 import { Response, getCitationFilePath } from "../../api";
 import { AnswerIcon } from "./AnswerIcon";
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     answer: Response;
@@ -22,6 +23,7 @@ export const Answer = ({
     onThoughtProcessClicked,
     onSupportingContentClicked
 }: Props) => {
+    const { t } = useTranslation();
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
             <Stack.Item>
@@ -49,17 +51,18 @@ export const Answer = ({
             <Stack.Item grow>
                 {answer.facts ? (
                     <div>
+                        <span className={styles.citationLearnMore}>{t('sendingToChatGPT')}</span>
+                        <br></br>
+                        <span className={styles.citationLearnMore}>{t('checkYourData')}</span>
+                        <div className={styles.gap}></div>
                         {answer.facts!.map((fact, index) => (
                             <div>
-                                <span className={styles.citationLearnMore}>Fact {index + 1}:</span>
-                                <div className={styles.answerText}>{fact.answer}</div>
-                                <span className={styles.citationLearnMore}>Citation:</span>
-                                <a key={index} className={styles.citation} title={fact.file} onClick={() => onCitationClicked(getCitationFilePath(fact.file))}>
-                                    {fact.file}
-                                </a>
-                                <br></br>
-                                <span className={styles.citationLearnMore}>Score:</span>
-                                <div className={styles.gap}>{fact.score}</div>
+                                <div> <span className={styles.informationText}>{t('answer')} {index + 1} {t('from')} </span>
+                                    <a key={index} href={`/api/documents/download/${encodeURIComponent(fact.file)}`} download className={styles.citation}>{fact.file}</a>
+                                    <span className={styles.informationText}> {t('at')} </span>
+                                    <span className={styles.informationText}>{(fact.score * 100).toFixed(2)}% {t('accuracy')}</span>
+                                </div>
+                                <div className={styles.answerText}>{`${fact.context_before} ${fact.answer} ${fact.context_after}`}</div>
                             </div>
                         ))}
                     </div>

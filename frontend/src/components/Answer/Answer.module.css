@@ -42,17 +42,16 @@
 .citation {
     font-weight: 500;
     line-height: 24px;
+    color: #888;
     text-align: center;
-    border-radius: 4px;
-    padding: 0px 8px;
-    background: #d1dbfa;
-    color: #123bb6;
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
 }
 
 .citation:hover {
-    text-decoration: underline;
+    border-radius: 4px;
+    background: #d1dbfa;
+    color: #123bb6;
 }
 
 .followupQuestionsList {
@@ -136,4 +135,9 @@ sup {
 
 .gap{
     margin-bottom: 32px;
+}
+
+.informationText {
+    color: #888; /* Use a light gray color */
+    font-weight: 400; /* Optionally reduce the font weight if needed */
 }

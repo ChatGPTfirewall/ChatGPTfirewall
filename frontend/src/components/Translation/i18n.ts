@@ -34,6 +34,12 @@ i18n.use(initReactI18next).init({
         "reloading": "Reloading...",
         "loginAndAskAnything": "Login and ask anything or try an example",
         "fileSize": "File size",
+        "sendingToChatGPT": "Your question is sent to ChatGPT with the following search results.",
+        "checkYourData": "Please check if there are sensitive information in the search results.",
+        "answer": "Answer",
+        "from": "from",
+        "at": "at",
+        "accuracy": "accuracy"
       },
     },
     de: {
@@ -64,6 +70,12 @@ i18n.use(initReactI18next).init({
         "reloading": "Lade neu...",
         "loginAndAskAnything": "Loggen sie sich ein und fragen Sie ihre Dokumente",
         "fileSize": "Dateigröße",
+        "sendingToChatGPT": "Deine Frage wird mit den nachfolgenden Suchergebnissen an ChatGPT gesendet.", 
+        "checkYourData": "Bitte überprüfe ob in den Suchergebnissen empfindliche Informationen enthalten sind.",
+        "answer": "Antwort",
+        "from": "aus",
+        "at": "bei",
+        "accuracy": "Genauigkeit"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen
