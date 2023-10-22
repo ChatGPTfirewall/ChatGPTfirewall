@@ -2,9 +2,10 @@ import { Stack, IconButton } from "@fluentui/react";
 
 import styles from "./Answer.module.css";
 
-import { Response, getCitationFilePath } from "../../api";
+import { Response } from "../../api";
 import { AnswerIcon } from "./AnswerIcon";
 import { useTranslation } from 'react-i18next';
+import { ReactNode } from 'react';
 
 interface Props {
     answer: Response;
@@ -14,14 +15,15 @@ interface Props {
     onSupportingContentClicked: () => void;
     onFollowupQuestionClicked?: (question: string) => void;
     showFollowupQuestions?: boolean;
+    children: ReactNode;
 }
 
 export const Answer = ({
     answer,
     isSelected,
-    onCitationClicked,
     onThoughtProcessClicked,
-    onSupportingContentClicked
+    onSupportingContentClicked,
+    children
 }: Props) => {
     const { t } = useTranslation();
     return (
@@ -65,6 +67,7 @@ export const Answer = ({
                                 <div className={styles.answerText}>{`${fact.context_before} ${fact.answer} ${fact.context_after}`}</div>
                             </div>
                         ))}
+                    {children}
                     </div>
                 ) : (
                     <div>

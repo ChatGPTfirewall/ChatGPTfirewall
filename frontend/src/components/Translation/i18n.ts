@@ -39,7 +39,9 @@ i18n.use(initReactI18next).init({
         "answer": "Answer",
         "from": "from",
         "at": "at",
-        "accuracy": "accuracy"
+        "accuracy": "accuracy",
+        "editSearchResults": "Edit Search Results",
+        "send": "Send"
       },
     },
     de: {
@@ -75,7 +77,9 @@ i18n.use(initReactI18next).init({
         "answer": "Antwort",
         "from": "aus",
         "at": "bei",
-        "accuracy": "Genauigkeit"
+        "accuracy": "Genauigkeit",
+        "editSearchResults": "Suchergebnisse überarbeiten",
+        "send": "Senden"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

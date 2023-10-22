@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Modal } from "@fluentui/react";
-import { SparkleFilled } from "@fluentui/react-icons";
+import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
@@ -34,7 +34,7 @@ const Chat = () => {
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [excludeCategory, setExcludeCategory] = useState<string>("");
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
-    
+
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
 
@@ -87,7 +87,7 @@ const Chat = () => {
             llm_answer: llmAnswer
         }
 
-        
+
         setAnswers([...answers, [prompt, chatMessage]])
     }
 
@@ -108,7 +108,7 @@ const Chat = () => {
     }
 
     const sendText = () => {
-        
+
         if (context != "") {
             const llmAnswer = chatWithLLM(question, context, promptTemplate)
             llmAnswer.then((answer) => { updateChat(answer) })
@@ -168,10 +168,10 @@ const Chat = () => {
     };
 
     if (isAuthenticated) {
-        
+
         if (user!.email === 'demo@demo.demo') {
             // Weiterleitung zur Demo-Seite
-           return( <DemoPage />)
+            return (<DemoPage />)
         }
 
         return (
@@ -179,7 +179,7 @@ const Chat = () => {
                 <div className={styles.commandsContainer}>
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */} 
+                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} />
                 </div>
                 <div className={styles.chatRoot}>
@@ -206,7 +206,12 @@ const Chat = () => {
                                                 onSupportingContentClicked={() => onToggleTab(AnalysisPanelTabs.SupportingContentTab, index)}
                                                 onFollowupQuestionClicked={q => makeApiRequest(q)}
                                                 showFollowupQuestions={useSuggestFollowupQuestions && answers.length - 1 === index}
-                                            />
+                                            >
+                                                <div className={styles.buttonGroup}>
+                                                    <EditTextModal promptTemplate={promptTemplate} question={question} facts={facts} highlights={highlights} onChange={setPromptAndContext} />
+                                                    <PrimaryButton onClick={sendText}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
+                                                </div>
+                                            </Answer>
                                         </div>
                                     </div>
                                 ))}
@@ -240,10 +245,6 @@ const Chat = () => {
                             </div>
                         ) : (
                             <div className={styles.promptReady}>
-                                <div className={styles.buttonGroup}>
-                                    <EditTextModal promptTemplate={promptTemplate} question={question} facts={facts} highlights={highlights} onChange={setPromptAndContext} />
-                                    <PrimaryButton onClick={sendText}>Send</PrimaryButton>
-                                </div>
                             </div>
                         )}
                     </div>

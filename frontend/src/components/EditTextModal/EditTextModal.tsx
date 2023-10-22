@@ -13,6 +13,7 @@ import { IconButton, IButtonStyles, DefaultButton } from '@fluentui/react/lib/Bu
 import { useState } from 'react';
 import { HighlightWithinTextarea } from 'react-highlight-within-textarea'
 import { Fact } from '../../api';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   buttonClassName?: string;
@@ -25,6 +26,7 @@ interface Props {
 export const EditTextModal = ({ buttonClassName, facts, highlights, question, promptTemplate, onChange }: Props) => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [answers, setAnswers] = useState(facts.map((fact) => fact.answer));
+  const { t } = useTranslation();
 
   const template = promptTemplate
     .replace("{context}", "/br")
@@ -48,7 +50,7 @@ export const EditTextModal = ({ buttonClassName, facts, highlights, question, pr
   return (
     <div>
       <DefaultButton className={`${styles.container} ${buttonClassName ?? ""}`} onClick={showModal}>
-        <Text>{"Edit Text"}</Text>
+        <Text>{t('editSearchResults')}</Text>
       </DefaultButton>
 
       <Modal
