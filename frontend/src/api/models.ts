@@ -43,10 +43,9 @@ export type Fact = {
 }
 
 export type Response = {
-    facts?: Fact[];
+    facts: Fact[];
     error?: string;
-    llm_answer?: any;
-    prompt_template?: string;
+    prompt_template: string;
 }
 
 export type Document = {

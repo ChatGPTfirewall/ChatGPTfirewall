@@ -1,20 +1,18 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Modal } from "@fluentui/react";
+import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
 import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, Response, chatWithLLM, Fact } from "../../api";
+import { chatApi, chatWithLLM, Fact } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
 import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
-import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
-import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { DemoButton } from "../../components/DemoButton";
@@ -25,14 +23,13 @@ import { useTranslation } from 'react-i18next';
 
 const Chat = () => {
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
     const [promptTemplate, setPromptTemplate] = useState<string>("");
     const [retrieveCount, setRetrieveCount] = useState<number>(3);
     const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
-    const [excludeCategory, setExcludeCategory] = useState<string>("");
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
 
     const lastQuestionRef = useRef<string>("");
@@ -40,41 +37,26 @@ const Chat = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
-    const [editText, setEditText] = useState(false);
-    const [prompt, setPrompt] = useState("");
-    const [context, setContext] = useState("");
-    const [facts, setFacts] = useState<Fact[]>([]);
-    const [highlights, setHighlights] = useState<string[]>([]);
-    const [file, setFile] = useState("");
     const [question, setQuestion] = useState("");
+    const [editMode, setEditMode] = useState<boolean>(false);
 
     const [activeCitation, setActiveCitation] = useState<string>();
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
 
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
-    const [answers, setAnswers] = useState<[user: string, response: Response][]>([]);
+    const [answers, setAnswers] = useState<[user: string, ai: Fact[] | string][]>([]);
 
     const { user, isAuthenticated } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
-        lastQuestionRef.current = question;
-
-        error && setError(undefined);
-        setIsLoading(true);
-        setActiveCitation(undefined);
-        setActiveAnalysisPanelTab(undefined);
+        setIsLoading(true)
 
         try {
-            const result = await chatApi(question, user!);
-            setEditText(true)
-            setFacts(result.facts!)
-            setPromptTemplate(result.prompt_template!)
+            const response = await chatApi(question, user!);
             setQuestion(question)
-            setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"), question)
-            const transformedList: string[] = result.facts![0].entities.map((entity) => entity[0]);
-            setHighlights(transformedList);
-            setFile(result.facts![0].file)
-            setAnswers([...answers, [question, result]]);
+            setPromptTemplate(response.prompt_template)
+            response.facts.map((fact) => {fact.answer = `${fact.context_before} ${fact.answer} ${fact.context_after}`})
+            setAnswers([...answers, [question, response.facts]]);
         } catch (e) {
             setError(e);
         } finally {
@@ -82,14 +64,7 @@ const Chat = () => {
         }
     };
 
-    const updateChat = (llmAnswer: string) => {
-        const chatMessage: Response = {
-            llm_answer: llmAnswer
-        }
 
-
-        setAnswers([...answers, [prompt, chatMessage]])
-    }
 
     const clearChat = () => {
         lastQuestionRef.current = "";
@@ -99,21 +74,23 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const setPromptAndContext = (template: string, context: string, question: string) => {
-        const builtPrompt = template
-            .replace("{context}", context)
-            .replace("{question}", question)
-        setPrompt(builtPrompt)
-        setContext(context)
+    const updateSearchResults = (updatedSearchResults: Fact[], answer_index: number) => {
+        const updatedAnswers = [...answers]
+        updatedAnswers[answer_index][1] = updatedSearchResults
+        setAnswers(updatedAnswers)
+    }
+
+    const changeEditMode = () => {
+        setEditMode(!editMode)
     }
 
     const sendText = () => {
-
-        if (context != "") {
-            const llmAnswer = chatWithLLM(question, context, promptTemplate)
-            llmAnswer.then((answer) => { updateChat(answer) })
-            setEditText(false)
-        }
+        // TODO: Context muss noch zusammengebaut werden (ist der text der als context ans llm geschickt werden soll)
+        // TODO: user_message muss ncoh zusammengebaut werden (ist die nachricht ans llm im chat)
+        const context = ""
+        const user_message = ""
+        const llmAnswer = chatWithLLM(question, context, promptTemplate)
+        llmAnswer.then((answer) => { setAnswers([...answers, [user_message, answer]]) })
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
@@ -134,9 +111,6 @@ const Chat = () => {
         setUseSemanticCaptions(!!checked);
     };
 
-    const onExcludeCategoryChanged = (_ev?: React.FormEvent, newValue?: string) => {
-        setExcludeCategory(newValue || "");
-    };
 
     const onUseSuggestFollowupQuestionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
         setUseSuggestFollowupQuestions(!!checked);
@@ -173,7 +147,6 @@ const Chat = () => {
             // Weiterleitung zur Demo-Seite
             return (<DemoPage />)
         }
-
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
@@ -184,7 +157,7 @@ const Chat = () => {
                 </div>
                 <div className={styles.chatRoot}>
                     <div className={styles.chatContainer}>
-                        {!lastQuestionRef.current ? (
+                        {answers.length === 0 ? (
                             <div className={styles.chatEmptyState}>
                                 <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
                                 <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
@@ -199,18 +172,31 @@ const Chat = () => {
                                         <div className={styles.chatMessageGpt}>
                                             <Answer
                                                 key={index}
-                                                answer={answer[1]}
+                                                answer_index={index}
+                                                searchResults={answer[1]}
                                                 isSelected={selectedAnswer === index && activeAnalysisPanelTab !== undefined}
                                                 onCitationClicked={c => onShowCitation(c, index)}
                                                 onThoughtProcessClicked={() => onToggleTab(AnalysisPanelTabs.ThoughtProcessTab, index)}
                                                 onSupportingContentClicked={() => onToggleTab(AnalysisPanelTabs.SupportingContentTab, index)}
                                                 onFollowupQuestionClicked={q => makeApiRequest(q)}
-                                                showFollowupQuestions={useSuggestFollowupQuestions && answers.length - 1 === index}
+                                                onChange={updateSearchResults}
+                                                editMode={editMode}
                                             >
-                                                <div className={styles.buttonGroup}>
-                                                    <EditTextModal promptTemplate={promptTemplate} question={question} facts={facts} highlights={highlights} onChange={setPromptAndContext} />
-                                                    <PrimaryButton onClick={sendText}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
-                                                </div>
+                                                {!editMode ? (
+                                                    <div className={styles.buttonGroup}>
+
+                                                        <DefaultButton onClick={changeEditMode}>
+                                                            <Text>{t('editSearchResults')}</Text>
+                                                        </DefaultButton>
+                                                        <PrimaryButton onClick={sendText}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
+                                                    </div>
+                                                ) : (
+                                                    <div className={styles.buttonGroup}>
+                                                        <DefaultButton onClick={changeEditMode}>
+                                                            <Text>{t('Okay')}</Text>
+                                                        </DefaultButton>
+                                                    </div>
+                                                )}
                                             </Answer>
                                         </div>
                                     </div>
@@ -234,19 +220,14 @@ const Chat = () => {
                                 <div ref={chatMessageStreamEnd} />
                             </div>
                         )}
-                        {!editText ? (
-                            <div className={styles.chatInput}>
-                                <QuestionInput
-                                    clearOnSend
-                                    placeholder={t('chatTextType')}
-                                    disabled={isLoading}
-                                    onSend={question => makeApiRequest(question)}
-                                />
-                            </div>
-                        ) : (
-                            <div className={styles.promptReady}>
-                            </div>
-                        )}
+                        <div className={styles.chatInput}>
+                            <QuestionInput
+                                clearOnSend
+                                placeholder={t('chatTextType')}
+                                disabled={isLoading}
+                                onSend={question => makeApiRequest(question)}
+                            />
+                        </div>
                     </div>
                     <Panel
                         headerText="Configure answer generation"
@@ -274,7 +255,6 @@ const Chat = () => {
                             defaultValue={retrieveCount.toString()}
                             onChange={onRetrieveCountChange}
                         />
-                        <TextField className={styles.chatSettingsSeparator} label="Exclude category" onChange={onExcludeCategoryChanged} />
                         <Checkbox
                             className={styles.chatSettingsSeparator}
                             checked={useSemanticRanker}
