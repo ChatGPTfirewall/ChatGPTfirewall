@@ -233,7 +233,7 @@ const Chat = () => {
                                 <QuestionInput
                                     clearOnSend
                                     placeholder={t('chatTextType')}
-                                    disabled={isLoading}
+                                    disabled={false}
                                     onSend={question => makeApiRequest(question)}
                                 />
                             </div>

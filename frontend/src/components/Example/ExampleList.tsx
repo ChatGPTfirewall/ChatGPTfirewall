@@ -31,8 +31,14 @@ export const ExampleList = ({ onExampleClicked }: Props) => {
       <li>
         <ExampleNoRequest text={t('card1Upload')}/>
       </li>
+      <li className={styles.centeredLi}>
+        <span>{t('orText')}</span>
+      </li>
       <li>
         <ExampleNoRequest text={t('card2Ask')}/>
+      </li>
+      <li className={styles.centeredLi}>
+        <span>{t('orText')}</span>
       </li>
       <li>
         <Link to="/demo">

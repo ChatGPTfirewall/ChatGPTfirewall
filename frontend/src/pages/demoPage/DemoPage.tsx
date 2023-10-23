@@ -18,6 +18,7 @@ import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from 'react-i18next';
+import { sendDemoRequest } from "../../api";
 
 const DemoPage = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -49,7 +50,7 @@ const DemoPage = () => {
 
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
     const [answers, setAnswers] = useState<[user: string, response: Response][]>([]);
-
+    const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
 
     const { user, isAuthenticated } = useAuth0();
 
@@ -164,8 +165,12 @@ const DemoPage = () => {
 
         setSelectedAnswer(index);
     };
-
-
+    useEffect(() => {
+        if (isAuthenticated && !isDemoRequestSent) {
+            sendDemoRequest(user!); 
+            setIsDemoRequestSent(true);
+        }
+    }, [isAuthenticated, user, isDemoRequestSent]);
 
         return (
             <div className={styles.container}>

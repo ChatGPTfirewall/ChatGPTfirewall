@@ -111,6 +111,10 @@ class UserApiView(APIView):
                     # Check if the document is already in the database
                     pass
 
+class DemoPageAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        return Response("", status=status.HTTP_200_OK)
+
 
 class UploadApiView(APIView):
     def post(self, request, *args, **kwargs):

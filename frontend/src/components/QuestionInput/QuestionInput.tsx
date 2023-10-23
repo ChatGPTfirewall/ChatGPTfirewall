@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Stack, TextField } from "@fluentui/react";
 import { Send28Filled } from "@fluentui/react-icons";
+import { getDocuments } from '../../api';
+import { User, useAuth0 } from "@auth0/auth0-react";
+import { useTranslation } from 'react-i18next';
 
 import styles from "./QuestionInput.module.css";
 
@@ -13,6 +16,11 @@ interface Props {
 
 export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Props) => {
     const [question, setQuestion] = useState<string>("");
+    const { user, isAuthenticated } = useAuth0();
+    const [filesExists, setFileExists] = useState(false);
+    const { t, i18n } = useTranslation();
+    const hoverText = t('uploadYourFile');
+
 
     const sendQuestion = () => {
         if (disabled || !question.trim()) {
@@ -41,12 +49,28 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
         }
     };
 
+    useEffect(() => {
+        if (isAuthenticated) {
+            checkFilesFromUser(user!);
+        }
+      }, [user, isAuthenticated]);
+
+      const checkFilesFromUser = (user: User) => {
+        getDocuments(user.sub!).then((response) => {
+            if (response.length > 0) {
+              setFileExists(false);
+            } else {
+              setFileExists(true);
+            }
+          });
+    }
+
     const sendQuestionDisabled = disabled || !question.trim();
 
     return (
         <Stack horizontal className={styles.questionInputContainer}>
             <TextField
-                className={styles.questionInputTextArea}
+                className={`${styles.questionInputTextArea}`}
                 placeholder={placeholder}
                 multiline
                 resizable={false}
@@ -54,6 +78,7 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
                 value={question}
                 onChange={onQuestionChange}
                 onKeyDown={onEnterPress}
+                disabled={filesExists}
             />
             <div className={styles.questionInputButtonsContainer}>
                 <div
