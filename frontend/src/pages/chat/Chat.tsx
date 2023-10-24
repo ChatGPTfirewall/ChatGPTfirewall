@@ -195,20 +195,26 @@ const Chat = () => {
                                                 onChange={updateSearchResults}
                                                 editMode={editMode}
                                             >
-                                                {!editMode ? (
-                                                    <div className={styles.buttonGroup}>
+                                                {(index === answers.length - 1) ? (
+                                                    <>
+                                                        {!editMode ? (
+                                                            <div className={styles.buttonGroup}>
 
-                                                        <DefaultButton onClick={changeEditMode}>
-                                                            <Text>{t('editSearchResults')}</Text>
-                                                        </DefaultButton>
-                                                        <PrimaryButton onClick={() => sendText(index)}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
-                                                    </div>
+                                                                <DefaultButton onClick={changeEditMode}>
+                                                                    <Text>{t('editSearchResults')}</Text>
+                                                                </DefaultButton>
+                                                                <PrimaryButton onClick={() => sendText(index)}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
+                                                            </div>
+                                                        ) : (
+                                                            <div className={styles.buttonGroup}>
+                                                                <DefaultButton onClick={changeEditMode}>
+                                                                    <Text>{t('Okay')}</Text>
+                                                                </DefaultButton>
+                                                            </div>
+                                                        )}
+                                                    </>
                                                 ) : (
-                                                    <div className={styles.buttonGroup}>
-                                                        <DefaultButton onClick={changeEditMode}>
-                                                            <Text>{t('Okay')}</Text>
-                                                        </DefaultButton>
-                                                    </div>
+                                                    <></>
                                                 )}
                                             </Answer>
                                         </div>
@@ -224,7 +230,7 @@ const Chat = () => {
                                 )}
                                 {isLoadingLLM && (
                                     <>
-                                      <UserLoading />
+                                        <UserLoading />
                                     </>
                                 )}
                                 {error ? (
