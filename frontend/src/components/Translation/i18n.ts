@@ -43,7 +43,9 @@ i18n.use(initReactI18next).init({
         "editSearchResults": "Edit Search Results",
         "send": "Send",
         "context": "Context",
-        "question": "Question"
+        "question": "Question",
+        "generating": "Generating answer",
+        "asking": "Asking ChatGPT"
       },
     },
     de: {
@@ -74,7 +76,7 @@ i18n.use(initReactI18next).init({
         "reloading": "Lade neu...",
         "loginAndAskAnything": "Loggen sie sich ein und fragen Sie ihre Dokumente",
         "fileSize": "Dateigröße",
-        "sendingToChatGPT": "Deine Frage wird mit den nachfolgenden Suchergebnissen an ChatGPT gesendet.", 
+        "sendingToChatGPT": "Deine Frage wird mit den nachfolgenden Suchergebnissen an ChatGPT gesendet.",
         "checkYourData": "Bitte überprüfe ob in den Suchergebnissen empfindliche Informationen enthalten sind.",
         "answer": "Antwort",
         "from": "aus",
@@ -83,7 +85,9 @@ i18n.use(initReactI18next).init({
         "editSearchResults": "Suchergebnisse überarbeiten",
         "send": "Senden",
         "context": "Kontext",
-        "question": "Frage"
+        "question": "Frage",
+        "generating": "Generiere Antwort",
+        "asking": "Frage ChatGPT"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

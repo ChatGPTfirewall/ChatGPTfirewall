@@ -18,12 +18,14 @@ import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { DemoButton } from "../../components/DemoButton";
 import DemoPage from "../demoPage/DemoPage";
 import { useTranslation } from 'react-i18next';
+import { UserLoading } from "../../components/UserChatMessage/UserLoading";
 
 
 
 const Chat = () => {
 
     const { t } = useTranslation();
+
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
     const [promptTemplate, setPromptTemplate] = useState<string>("");
@@ -36,6 +38,7 @@ const Chat = () => {
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoadingLLM, setIsLoadingLLM] = useState<boolean>(false);
     const [error, setError] = useState<unknown>();
     const [question, setQuestion] = useState("");
     const [editMode, setEditMode] = useState<boolean>(false);
@@ -49,6 +52,7 @@ const Chat = () => {
     const { user, isAuthenticated } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
+        lastQuestionRef.current = question;
         setIsLoading(true)
 
         try {
@@ -84,17 +88,25 @@ const Chat = () => {
         setEditMode(!editMode)
     }
 
-    const sendText = (index: number) => {
+    const sendText = async (index: number) => {
+        setIsLoadingLLM(true)
         const context = (answers[index][1] as Fact[]).map((fact) => fact.answer).join('\n\n');
-        const llmAnswer = chatWithLLM(question, context, promptTemplate)
-        llmAnswer.then((answer) => { setAnswers([...answers, [answers[index][1], answer.result]]) })
+
+        try {
+            const llmAnswer = await chatWithLLM(question, context, promptTemplate)
+            setAnswers([...answers, [answers[index][1], llmAnswer.result]])
+        } catch (e) {
+            setError(e);
+        } finally {
+            setIsLoadingLLM(false);
+        }
     };
 
 
 
 
 
-    useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
+    useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
     const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
         setPromptTemplate(newValue || "");
@@ -158,7 +170,7 @@ const Chat = () => {
                 </div>
                 <div className={styles.chatRoot}>
                     <div className={styles.chatContainer}>
-                        {answers.length === 0 ? (
+                        {!lastQuestionRef.current ? (
                             <div className={styles.chatEmptyState}>
                                 <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
                                 <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
@@ -208,6 +220,11 @@ const Chat = () => {
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerLoading />
                                         </div>
+                                    </>
+                                )}
+                                {isLoadingLLM && (
+                                    <>
+                                      <UserLoading />
                                     </>
                                 )}
                                 {error ? (
