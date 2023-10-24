@@ -44,7 +44,7 @@ const Chat = () => {
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
 
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
-    const [answers, setAnswers] = useState<[user: string, ai: Fact[] | string][]>([]);
+    const [answers, setAnswers] = useState<[user: Fact[] | string, ai: Fact[] | string][]>([]);
 
     const { user, isAuthenticated } = useAuth0();
 
@@ -55,7 +55,7 @@ const Chat = () => {
             const response = await chatApi(question, user!);
             setQuestion(question)
             setPromptTemplate(response.prompt_template)
-            response.facts.map((fact) => {fact.answer = `${fact.context_before} ${fact.answer} ${fact.context_after}`})
+            response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
             setAnswers([...answers, [question, response.facts]]);
         } catch (e) {
             setError(e);
@@ -84,14 +84,15 @@ const Chat = () => {
         setEditMode(!editMode)
     }
 
-    const sendText = () => {
-        // TODO: Context muss noch zusammengebaut werden (ist der text der als context ans llm geschickt werden soll)
-        // TODO: user_message muss ncoh zusammengebaut werden (ist die nachricht ans llm im chat)
-        const context = ""
-        const user_message = ""
+    const sendText = (index: number) => {
+        const context = (answers[index][1] as Fact[]).map((fact) => fact.answer).join('\n\n');
         const llmAnswer = chatWithLLM(question, context, promptTemplate)
-        llmAnswer.then((answer) => { setAnswers([...answers, [user_message, answer]]) })
+        llmAnswer.then((answer) => { setAnswers([...answers, [answers[index][1], answer.result]]) })
     };
+
+
+
+
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
 
@@ -168,7 +169,7 @@ const Chat = () => {
                             <div className={styles.chatMessageStream}>
                                 {answers.map((answer, index) => (
                                     <div key={index}>
-                                        <UserChatMessage message={answer[0]} />
+                                        <UserChatMessage answer={answer[0]} question={question} />
                                         <div className={styles.chatMessageGpt}>
                                             <Answer
                                                 key={index}
@@ -188,7 +189,7 @@ const Chat = () => {
                                                         <DefaultButton onClick={changeEditMode}>
                                                             <Text>{t('editSearchResults')}</Text>
                                                         </DefaultButton>
-                                                        <PrimaryButton onClick={sendText}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
+                                                        <PrimaryButton onClick={() => sendText(index)}><div className={styles.sendButton}><span>{t('send')}</span> <Send24Regular></Send24Regular></div> </PrimaryButton>
                                                     </div>
                                                 ) : (
                                                     <div className={styles.buttonGroup}>
@@ -203,7 +204,7 @@ const Chat = () => {
                                 ))}
                                 {isLoading && (
                                     <>
-                                        <UserChatMessage message={lastQuestionRef.current} />
+                                        <UserChatMessage answer={question} />
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerLoading />
                                         </div>
@@ -211,7 +212,7 @@ const Chat = () => {
                                 )}
                                 {error ? (
                                     <>
-                                        <UserChatMessage message={lastQuestionRef.current} />
+                                        <UserChatMessage answer={question} />
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerError error={error.toString()} onRetry={() => makeApiRequest(lastQuestionRef.current)} />
                                         </div>
@@ -294,5 +295,7 @@ const Chat = () => {
         </div>
     )
 };
+
+
 
 export default Chat;

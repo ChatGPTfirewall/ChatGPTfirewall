@@ -15,3 +15,31 @@
     white-space: pre;
     overflow-x: auto;
 }
+
+.gap {
+    margin-bottom: 32px;
+}
+
+.smallGap {
+    margin-bottom: 8px;
+}
+
+.borderTop {
+    border-top: 1px solid lightgray;
+}
+
+.answerText {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    padding-top: 8px;
+    white-space: pre-line;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.question {
+    font-weight: normal;
+}

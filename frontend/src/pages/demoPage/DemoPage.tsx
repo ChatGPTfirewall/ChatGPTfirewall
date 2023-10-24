@@ -80,15 +80,6 @@ const DemoPage = () => {
     };
  
 
-    const updateChat = (llmAnswer: string) => {
-        const chatMessage: Response = {
-            llm_answer: llmAnswer
-        }
-
-        console.log(prompt)
-
-        setAnswers([...answers, [prompt, chatMessage]])
-    }
 
     const clearChat = () => {
         lastQuestionRef.current = "";
@@ -109,7 +100,7 @@ const DemoPage = () => {
     const sendText = () => {
         if (context != "") {
             const llmAnswer = chatWithLLM(question, context, promptTemplate)
-            llmAnswer.then((answer) => { updateChat(answer) })
+            llmAnswer.then((answer) => {  })
             setEditText(false)
         }
     };
