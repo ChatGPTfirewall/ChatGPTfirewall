@@ -4,9 +4,16 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    flex: 1;
+    padding-bottom: 65px;
     justify-content: center;
 }
+
+.centeredLi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
 
 .example {
     word-break: break-word;

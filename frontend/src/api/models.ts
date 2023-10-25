@@ -37,15 +37,15 @@ export type Fact = {
     answer: string;
     file: string;
     score: number;
-    full_text: string;
+    context_before: string;
+    context_after: string;
     entities: [[string, number, number, string]];
 }
 
 export type Response = {
-    facts?: Fact[];
+    facts: Fact[];
     error?: string;
-    llm_answer?: any;
-    prompt_template?: string;
+    prompt_template: string;
 }
 
 export type Document = {

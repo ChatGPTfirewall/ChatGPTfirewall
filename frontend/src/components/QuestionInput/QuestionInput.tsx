@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Stack, TextField } from "@fluentui/react";
+import { Button, Tooltip} from "@fluentui/react-components";
 import { Send28Filled } from "@fluentui/react-icons";
+import { useTranslation } from 'react-i18next';
 
 import styles from "./QuestionInput.module.css";
 
@@ -13,6 +15,7 @@ interface Props {
 
 export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Props) => {
     const [question, setQuestion] = useState<string>("");
+    const { t } = useTranslation();
 
     const sendQuestion = () => {
         if (disabled || !question.trim()) {
@@ -41,10 +44,11 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
         }
     };
 
-    const sendQuestionDisabled = disabled || !question.trim();
+
+    const sendQuestionDisabled = disabled
 
     return (
-        <Stack horizontal className={styles.questionInputContainer}>
+        <Stack horizontal className={`${styles.questionInputContainer} ${sendQuestionDisabled ? styles.questionInputContainerDisabled : ''}`}>
             <TextField
                 className={styles.questionInputTextArea}
                 placeholder={placeholder}
@@ -54,15 +58,12 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
                 value={question}
                 onChange={onQuestionChange}
                 onKeyDown={onEnterPress}
+                disabled={sendQuestionDisabled}
             />
             <div className={styles.questionInputButtonsContainer}>
-                <div
-                    className={`${styles.questionInputSendButton} ${sendQuestionDisabled ? styles.questionInputSendButtonDisabled : ""}`}
-                    aria-label="Ask question button"
-                    onClick={sendQuestion}
-                >
-                    <Send28Filled primaryFill="rgba(115, 118, 225, 1)" />
-                </div>
+                <Tooltip content={t('uploadYourFile')} relationship="label">
+                    <Button size="large" icon={<Send28Filled primaryFill="rgba(115, 118, 225, 1)" />} disabled={sendQuestionDisabled} onClick={sendQuestion} />
+                </Tooltip>
             </div>
         </Stack>
     );

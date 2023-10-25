@@ -14,11 +14,14 @@ from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import return_ents, vectorize
+from .embedding import vectorize, return_context, embed_text
 from .llm import count_tokens, run_llm, get_template, set_template
 from xml.etree import ElementTree as ET
 
-MAX_TOKENS = 4098
+LLM_MAX_TOKENS = 4098
+RANGE_CONTEXT_AFTER = int(os.getenv("CONTEXT_RANGE", 5))
+RANGE_CONTEXT_BEFORE = int(os.getenv("CONTEXT_RANGE", 5))
+MAX_SEARCH_RESULTS = int(os.getenv("MAX_SEARCH_RESULTS", 3))
 
 
 def download_file(request, filename):
@@ -62,7 +65,9 @@ class UserApiView(APIView):
                 response = Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
                 # Handle other validation errors
-                response = Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                response = Response(
+                    serializer.errors, status=status.HTTP_400_BAD_REQUEST
+                )
 
         except IntegrityError as e:
             # Handle the IntegrityError (duplicate key error)
@@ -73,7 +78,7 @@ class UserApiView(APIView):
         UserApiView.putFilesDemoUser(
             request.data.get("auth0_id"), request.data.get("email")
         )
-  
+
         return response
 
     def putFilesDemoUser(auth0, email):
@@ -110,6 +115,10 @@ class UserApiView(APIView):
                 else:
                     # Check if the document is already in the database
                     pass
+
+class DemoPageAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        return Response("", status=status.HTTP_200_OK)
 
 
 class UploadApiView(APIView):
@@ -197,30 +206,33 @@ class ChatApiView(APIView):
         Convert user question into qdrant db.
         """
         question = request.data.get("question")
-        [_, id] = request.data.get("user_auth0_id").split("|")
-        auth0 = request.data.get("user_auth0_id")
-        user = User.objects.get(auth0_id=auth0)
-        # tokenize text
-        # prepared_text = prepare_text(question, user.lang)
-        # vectorize tokens
+        auth0_id = request.data.get("user_auth0_id")
+        [_, id] = auth0_id.split("|")
+
+        user = User.objects.get(auth0_id=auth0_id)
+
         vector = vectorize(question)
-        # similarity search
+
         try:
-            search_result = search(id, vector, 3)
+            search_results = search(id, vector, MAX_SEARCH_RESULTS)
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
+
         facts = []
-        for fact in search_result:
-            section = Section.objects.get(id=fact.payload.get("section_id"))
-            ents = return_ents(section.document.text, user.lang)
+        for search_result in search_results:
+            section = Section.objects.get(id=search_result.payload.get("section_id"))
+            embedded_text = embed_text(section.document.text, user.lang)
+            (before_result, after_result) = return_context(embedded_text, section.doc_index, RANGE_CONTEXT_BEFORE, RANGE_CONTEXT_AFTER)
+
             entities = []
-            for ent in ents:
+            for ent in embedded_text.ents:
                 entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
             fact = {
                 "answer": section.content,
                 "file": section.document.filename,
-                "score": fact.score,
-                "full_text": section.document.text,
+                "score": search_result.score,
+                "context_before": before_result,
+                "context_after": after_result,
                 "entities": entities,
             }
             facts.append(fact)
@@ -241,7 +253,7 @@ class ContextApiView(APIView):
 
         tokens = count_tokens(question, context)
 
-        if tokens < MAX_TOKENS:
+        if tokens < LLM_MAX_TOKENS:
             set_template(template)
             answer = run_llm({"context": context, "question": question})
         else:

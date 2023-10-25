@@ -199,6 +199,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
 
   public render() {
     const { columns, isCompactMode, items, selectionDetails, isModalSelection, announcedMessage, modalState } = this.state;
+    const currentURL = window.location.pathname;
 
     return (
       <div>
@@ -232,15 +233,19 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
                 <Announced message={`Number of items after filter applied: ${items.length}.`} />
               </div>
               <div className={styles.actionButtons}>
-                <DefaultButton
-                  text={this.props.t('deleteDoc')}
-                  className={styles.btn_danger}
-                  onClick={this._handleDeleteClick}
-                />
-                <DefaultButton
-                  text={this.props.t('reloadDoc')}
-                  onClick={this._reloadFiles}
-                />
+                {currentURL !== '/demo' && currentURL !== '/#/demo' && (
+                  <>
+                    <DefaultButton
+                      text={this.props.t('deleteDoc')}
+                      className={styles.btn_danger}
+                      onClick={this._handleDeleteClick}
+                    />
+                    <DefaultButton
+                      text={this.props.t('reloadDoc')}
+                      onClick={this._reloadFiles}
+                    />
+                  </>
+                )}
                 {this.state.isReloading && (
                   <Spinner label={this.props.t('reloading')} ariaLive="assertive" labelPosition="right" />
                 )}

@@ -38,6 +38,6 @@ export const AuthenticationButton = () => {
     }
 
     return (
-        <PrimaryButton onClick={() => loginWithRedirect()}> Log In </PrimaryButton>
+        <PrimaryButton onClick={() => loginWithRedirect()}> {t('logIn')} </PrimaryButton>
     );
 };
