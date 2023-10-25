@@ -181,7 +181,7 @@ const DemoPage = () => {
                 <FileExplorer user={user!} />
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                 {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
-                <KnowledgeBaseModal buttonClassName={styles.commandButton} />
+                {/* <KnowledgeBaseModal buttonClassName={styles.commandButton} /> */}
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
