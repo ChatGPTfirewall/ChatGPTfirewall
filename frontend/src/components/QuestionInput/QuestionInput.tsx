@@ -45,7 +45,7 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
     };
 
 
-    const sendQuestionDisabled = disabled || !question.trim();
+    const sendQuestionDisabled = disabled
 
     return (
         <Stack horizontal className={`${styles.questionInputContainer} ${sendQuestionDisabled ? styles.questionInputContainerDisabled : ''}`}>

@@ -118,9 +118,9 @@ const Chat = () => {
       const checkFilesFromUser = (user: User) => {
         getDocuments(user.sub!).then((response) => {
             if (response.length > 0) {
-              setFileExists(false);
-            } else {
               setFileExists(true);
+            } else {
+              setFileExists(false);
             }
           });
     }
@@ -265,7 +265,7 @@ const Chat = () => {
                             <QuestionInput
                                 clearOnSend
                                 placeholder={t('chatTextType')}
-                                disabled={filesExists}
+                                disabled={!filesExists}
                                 onSend={question => makeApiRequest(question)}
                             />
                         </div>
