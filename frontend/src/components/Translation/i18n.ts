@@ -22,8 +22,8 @@ i18n.use(initReactI18next).init({
         "devSettings": "Developer Settings",
         "addFiles": "Add Files",
         "askTryExample": "Ask anything or try an example",
-        "card1Upload": "Upload your data or select it via your Cloud",
-        "card2Ask": "Ask questions that your data can answer",
+        "card1Upload": "1. Upload your data or select it via your Cloud",
+        "card2Ask": "2. Ask questions that your data can answer",
         "card3Demo": "You can try out the demo",
         "chatTextType": "Type a new question...",
         "s3Storage": "Scalable storage in the clouad.",
@@ -45,7 +45,10 @@ i18n.use(initReactI18next).init({
         "context": "Context",
         "question": "Question",
         "generating": "Generating answer",
-        "asking": "Asking ChatGPT"
+        "asking": "Asking ChatGPT",
+        "logIn": "Log In",
+        "orText": "or",
+        "uploadYourFile": "Upload a file"
       },
     },
     de: {
@@ -64,8 +67,8 @@ i18n.use(initReactI18next).init({
         "devSettings": "Einstellungen für Entwickler",
         "addFiles": "Dateien hinzufügen",
         "askTryExample": "Fragen Sie etwas oder probieren Sie ein Beispiel aus",
-        "card1Upload": "Laden Sie Ihre Daten hoch oder wählen Sie sie über Ihre Cloud aus",
-        "card2Ask": "Stellen Sie Fragen, die Ihre Daten beantworten können",
+        "card1Upload": "1. Laden Sie Ihre Daten hoch oder wählen Sie sie über Ihre Cloud aus",
+        "card2Ask": "2. Stellen Sie Fragen, die Ihre Daten beantworten können",
         "card3Demo": "Sie können die Demo ausprobieren",
         "chatTextType": "Geben Sie eine neue Frage ein...",
         "s3Storage": "Skalierbarer Speicher in der Cloud",
@@ -87,7 +90,10 @@ i18n.use(initReactI18next).init({
         "context": "Kontext",
         "question": "Frage",
         "generating": "Generiere Antwort",
-        "asking": "Frage ChatGPT"
+        "asking": "Frage ChatGPT",
+        "logIn": "Anmelden",
+        "orText": "oder",
+        "uploadYourFile": "Laden Sie eine Datei hoch"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

@@ -13,13 +13,12 @@ import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
-import { useAuth0 } from "@auth0/auth0-react";
+import { User, useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
-import { DemoButton } from "../../components/DemoButton";
 import DemoPage from "../demoPage/DemoPage";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
-
+import { getDocuments } from '../../api';
 
 
 const Chat = () => {
@@ -33,6 +32,7 @@ const Chat = () => {
     const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+    const [filesExists, setFileExists] = useState(false);
 
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
@@ -107,6 +107,23 @@ const Chat = () => {
 
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
+
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            checkFilesFromUser(user!);
+        }
+      }, [user, isAuthenticated]);
+
+      const checkFilesFromUser = (user: User) => {
+        getDocuments(user.sub!).then((response) => {
+            if (response.length > 0) {
+              setFileExists(false);
+            } else {
+              setFileExists(true);
+            }
+          });
+    }
 
     const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
         setPromptTemplate(newValue || "");
@@ -248,7 +265,7 @@ const Chat = () => {
                             <QuestionInput
                                 clearOnSend
                                 placeholder={t('chatTextType')}
-                                disabled={isLoading}
+                                disabled={filesExists}
                                 onSend={question => makeApiRequest(question)}
                             />
                         </div>
@@ -311,8 +328,6 @@ const Chat = () => {
                     <h1 className={styles.chatEmptyStateTitle}>{t('chatWithYourData')}</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>{t('loginAndAskAnything')}</h2>
                     <AuthenticationButton />
-                    <h2 className={styles.chatEmptyStateSubtitle}>{t('card3Demo')}</h2>
-                    <DemoButton />
                 </div>
             </div>
         </div>

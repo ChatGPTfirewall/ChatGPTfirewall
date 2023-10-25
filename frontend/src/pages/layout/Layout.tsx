@@ -44,9 +44,11 @@ const Layout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <NavLink to="/Demo" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
+                                {isAuthenticated && (
+                                    <NavLink to="/demo" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
                                     Demo
-                                </NavLink>
+                                    </NavLink>
+                                )}
                             </li>
                             <li className={styles.headerNavLeftMargin}>
                                 <AuthenticationButton />
