@@ -107,7 +107,7 @@
 
 .buttonGroup{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 2em;
 }
 
@@ -136,4 +136,10 @@
 
 .commandButton {
     margin-bottom: 20px;
+}
+
+.sendButton{
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
