@@ -10,16 +10,15 @@ import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
 import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
-import { SettingsButton } from "../../components/SettingsButton";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { EditTextModal } from "../../components/EditTextModal";
-import { useAuth0 } from "@auth0/auth0-react";
+import { User, useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
 import DemoPage from "../demoPage/DemoPage";
 import { useTranslation } from 'react-i18next';
-
+import { getDocuments } from '../../api';
 
 
 const Chat = () => {
@@ -33,6 +32,7 @@ const Chat = () => {
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [excludeCategory, setExcludeCategory] = useState<string>("");
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+    const [filesExists, setFileExists] = useState(false);
     
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
@@ -44,7 +44,6 @@ const Chat = () => {
     const [context, setContext] = useState("");
     const [facts, setFacts] = useState<Fact[]>([]);
     const [highlights, setHighlights] = useState<string[]>([]);
-    const [file, setFile] = useState("");
     const [question, setQuestion] = useState("");
 
     const [activeCitation, setActiveCitation] = useState<string>();
@@ -72,7 +71,6 @@ const Chat = () => {
             setPromptAndContext(result.prompt_template!, result.facts!.map((fact) => fact.answer).join("\n\n"), question)
             const transformedList: string[] = result.facts![0].entities.map((entity) => entity[0]);
             setHighlights(transformedList);
-            setFile(result.facts![0].file)
             setAnswers([...answers, [question, result]]);
         } catch (e) {
             setError(e);
@@ -116,6 +114,23 @@ const Chat = () => {
     };
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
+
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            checkFilesFromUser(user!);
+        }
+      }, [user, isAuthenticated]);
+
+      const checkFilesFromUser = (user: User) => {
+        getDocuments(user.sub!).then((response) => {
+            if (response.length > 0) {
+              setFileExists(false);
+            } else {
+              setFileExists(true);
+            }
+          });
+    }
 
     const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
         setPromptTemplate(newValue || "");
@@ -172,7 +187,6 @@ const Chat = () => {
             // Weiterleitung zur Demo-Seite
            return( <DemoPage />)
         }
-
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
@@ -233,7 +247,7 @@ const Chat = () => {
                                 <QuestionInput
                                     clearOnSend
                                     placeholder={t('chatTextType')}
-                                    disabled={false}
+                                    disabled={filesExists}
                                     onSend={question => makeApiRequest(question)}
                                 />
                             </div>

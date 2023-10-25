@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Stack, TextField } from "@fluentui/react";
+import { Button, Tooltip} from "@fluentui/react-components";
 import { Send28Filled } from "@fluentui/react-icons";
-import { getDocuments } from '../../api';
-import { User, useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from 'react-i18next';
 
 import styles from "./QuestionInput.module.css";
@@ -16,11 +15,7 @@ interface Props {
 
 export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Props) => {
     const [question, setQuestion] = useState<string>("");
-    const { user, isAuthenticated } = useAuth0();
-    const [filesExists, setFileExists] = useState(false);
-    const { t, i18n } = useTranslation();
-    const hoverText = t('uploadYourFile');
-
+    const { t } = useTranslation();
 
     const sendQuestion = () => {
         if (disabled || !question.trim()) {
@@ -49,28 +44,13 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
         }
     };
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            checkFilesFromUser(user!);
-        }
-      }, [user, isAuthenticated]);
-
-      const checkFilesFromUser = (user: User) => {
-        getDocuments(user.sub!).then((response) => {
-            if (response.length > 0) {
-              setFileExists(false);
-            } else {
-              setFileExists(true);
-            }
-          });
-    }
 
     const sendQuestionDisabled = disabled || !question.trim();
 
     return (
-        <Stack horizontal className={styles.questionInputContainer}>
+        <Stack horizontal className={`${styles.questionInputContainer} ${sendQuestionDisabled ? styles.questionInputContainerDisabled : ''}`}>
             <TextField
-                className={`${styles.questionInputTextArea}`}
+                className={styles.questionInputTextArea}
                 placeholder={placeholder}
                 multiline
                 resizable={false}
@@ -78,16 +58,12 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend }: Pr
                 value={question}
                 onChange={onQuestionChange}
                 onKeyDown={onEnterPress}
-                disabled={filesExists}
+                disabled={sendQuestionDisabled}
             />
             <div className={styles.questionInputButtonsContainer}>
-                <div
-                    className={`${styles.questionInputSendButton} ${sendQuestionDisabled ? styles.questionInputSendButtonDisabled : ""}`}
-                    aria-label="Ask question button"
-                    onClick={sendQuestion}
-                >
-                    <Send28Filled primaryFill="rgba(115, 118, 225, 1)" />
-                </div>
+                <Tooltip content={t('uploadYourFile')} relationship="label">
+                    <Button size="large" icon={<Send28Filled primaryFill="rgba(115, 118, 225, 1)" />} disabled={sendQuestionDisabled} onClick={sendQuestion} />
+                </Tooltip>
             </div>
         </Stack>
     );
