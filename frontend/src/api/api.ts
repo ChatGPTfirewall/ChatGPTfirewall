@@ -114,6 +114,21 @@ export async function sendDemoRequest(user: User) {
       }).then((response) => response.json())
   }
 
+  export async function sendChatPageRequest(user: User) {
+    const response = await fetch('/api/chat', {
+      method: 'DELETE', 
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          auth0_id: user.sub,
+          username: user.nickname,
+          email: user.email
+      }),
+    }).then((response) => response.json())
+}
+
+
 export async function reloadFiles(auth0_id: string): Promise<any> {
 
     const response = await fetch("/api/files/reload", {

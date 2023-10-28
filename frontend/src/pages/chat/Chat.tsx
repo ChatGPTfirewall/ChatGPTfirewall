@@ -19,11 +19,13 @@ import DemoPage from "../demoPage/DemoPage";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
 import { getDocuments } from '../../api';
+import { sendChatPageRequest } from "../../api";
 
 
 const Chat = () => {
 
     const { t } = useTranslation();
+    const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
 
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -160,6 +162,13 @@ const Chat = () => {
 
         setSelectedAnswer(index);
     };
+    
+    useEffect(() => {
+        if (isAuthenticated && !isDemoRequestSent) {
+            sendChatPageRequest(user!); 
+            setIsDemoRequestSent(true);
+        }
+    }, [isAuthenticated, user, isDemoRequestSent]);
 
     const onToggleTab = (tab: AnalysisPanelTabs, index: number) => {
         if (activeAnalysisPanelTab === tab && selectedAnswer === index) {
