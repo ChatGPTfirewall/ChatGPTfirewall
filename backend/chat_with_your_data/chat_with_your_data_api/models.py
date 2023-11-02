@@ -21,6 +21,7 @@ class Document(models.Model):
 class Section(models.Model):
     document = models.ForeignKey(Document, on_delete = models.CASCADE, blank = True, null = False)
     content = models.TextField()
+    doc_index = models.IntegerField()
 
     def __str__(self):
         return self.document.filename

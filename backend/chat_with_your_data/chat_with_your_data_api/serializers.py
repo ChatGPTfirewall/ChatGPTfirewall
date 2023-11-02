@@ -8,15 +8,15 @@ class UserSerializer(serializers.ModelSerializer):
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
-        fields = ["filename", "text", "user", "fileSize"]
+        fields = ["filename", "text", "user", "fileSize", "lang"]
 
 class ReadDocumentSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     class Meta:
         model = Document
-        fields = ["id", "filename", "user", "fileSize"]
+        fields = ["id", "filename", "user", "fileSize", "lang"]
 
 class SectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Section
-        fields = ["document", "content"]
+        fields = ["document", "content", "doc_index"]

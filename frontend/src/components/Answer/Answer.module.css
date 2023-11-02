@@ -14,8 +14,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 8px;
     white-space: pre-line;
 }
 
@@ -42,17 +41,16 @@
 .citation {
     font-weight: 500;
     line-height: 24px;
+    color: #888;
     text-align: center;
-    border-radius: 4px;
-    padding: 0px 8px;
-    background: #d1dbfa;
-    color: #123bb6;
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
 }
 
 .citation:hover {
-    text-decoration: underline;
+    border-radius: 4px;
+    background: #d1dbfa;
+    color: #123bb6;
 }
 
 .followupQuestionsList {
@@ -115,15 +113,19 @@ sup {
     0% {
         content: "";
     }
+
     25% {
         content: ".";
     }
+
     50% {
         content: "..";
     }
+
     75% {
         content: "...";
     }
+
     100% {
         content: "";
     }
@@ -134,6 +136,25 @@ sup {
     animation: loading 1s infinite;
 }
 
-.gap{
+.gap {
     margin-bottom: 32px;
+}
+
+.informationText {
+    color: #888;
+    /* Use a light gray color */
+    font-weight: 400;
+    /* Optionally reduce the font weight if needed */
+}
+
+.textfield {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    white-space: pre-line;
+    border: 1px solid;
+    padding: 4px;
+    background: white;
 }
