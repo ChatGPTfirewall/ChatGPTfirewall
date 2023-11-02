@@ -75,12 +75,12 @@ export interface FileExplorerState {
   isLoading: boolean;
   isReloading: boolean;
 }
-class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerState> {
+class FileExplorer extends React.Component<{ user: User, deletedHook: () => void, t: any }, FileExplorerState> {
   private _selection: Selection;
 
 
 
-  constructor(props: { user: User, t: any }) {
+  constructor(props: { user: User, deletedHook: () => void, t: any }) {
     super(props);
 
     const columns: IColumn[] = [
@@ -323,6 +323,7 @@ class FileExplorer extends React.Component<{ user: User, t: any }, FileExplorerS
           }));
           // Clear the selection
           this._selection.setAllSelected(false);
+          this.props.deletedHook();
         })
         .catch((error) => {
           console.error('Error deleting documents:', error);

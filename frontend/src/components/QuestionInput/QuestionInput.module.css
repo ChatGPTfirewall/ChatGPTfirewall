@@ -11,14 +11,18 @@
 
 .questionInputContainerDisabled {
     @extend .questionInputContainer;
-
-    background: rgb(243, 242, 241);
-    opacity: 0.6;
+    background: rgba(243, 242, 241, 0.6); /* Adjusted background to use rgba for opacity */
 }
 
 .questionInputTextArea {
     width: 100%;
     line-height: 40px;
+    flex: 1;
+}
+
+.tooltipHostContainer {
+    display: flex;
+    width: 100%;
 }
 
 .questionInputButtonsContainer {

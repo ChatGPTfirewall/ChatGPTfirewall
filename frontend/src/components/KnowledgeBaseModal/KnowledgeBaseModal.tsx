@@ -15,15 +15,16 @@ import { FileCard } from '../FileCard';
 import { uploadFiles } from '../../api';
 import { uploadToNextcloud } from '../../api';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 
 interface Props {
   buttonClassName?: string;
+  uploadHook: () => void;
 }
-export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
+export const KnowledgeBaseModal = ({ buttonClassName, uploadHook }: Props) => {
   const location = useLocation();
   const { t, i18n } = useTranslation();
 
@@ -150,6 +151,13 @@ export const KnowledgeBaseModal = ({ buttonClassName }: Props) => {
     hideNextcloudModal();
     // }, 100000); // 10000 Millisekunden = 10 Sekunden
   };
+
+  useEffect(() => {
+    if (showSuccessNotification) {
+      // Execute your function here
+      uploadHook();
+    }
+  }, [showSuccessNotification]);
 
   // Inhalt des Popups für Nextcloud
   const nextcloudModalContent = (
