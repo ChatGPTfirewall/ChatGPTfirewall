@@ -78,45 +78,6 @@ class UserApiView(APIView):
 
         return response
 
-    def putFilesDemoUser(auth0):
-        user = User.objects.get(auth0_id=auth0)
-        files_path = "./ExampleFiles/JuraStudium"
-        file_names = os.listdir(files_path)
-
-        for file_name in file_names:
-            file_path = os.path.join(files_path, file_name)
-            file_size = os.path.getsize(file_path)
-
-            text = extract_text(file_path, file_name)
-
-            existing_document = Document.objects.filter(
-                filename=file_name, user=user
-            ).first()
-
-            if existing_document is None:
-                document = {
-                    "filename": file_name,
-                    "text": text,
-                    "user": user.id,
-                    "lang": user.lang,
-                    "fileSize": file_size,
-                }
-                serializer = DocumentSerializer(data=document)
-
-                if serializer.is_valid():
-                    result = serializer.save()
-                    # Insert text into qdrant db
-                    [_, id] = user.auth0_id.split("|")
-                    insert_text(id, result, user.lang)
-            else:
-                # Check if the document is already in the database
-                pass
-
-class DemoPageAPI(APIView):
-    def post(self, request, *args, **kwargs):
-        UserApiView.putFilesDemoUser(request.data.get("auth0_id"))
-        return Response("", status=status.HTTP_200_OK)
-
 class ChatPageAPI(APIView):
     def delete(self, request, *args, **kwargs):
         auth0_id = request.data.get("auth0_id")
