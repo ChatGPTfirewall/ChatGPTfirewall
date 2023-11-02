@@ -1,7 +1,9 @@
 import { ReadDocument, Response } from "./models";
 import { User } from "@auth0/auth0-react";
 
-export async function chatApi(question: string, user: User): Promise<Response> {
+export async function chatApi(question: string, user: User | string): Promise<Response> {
+    const user_auth0_id = typeof user === 'string' ? user : user.sub;
+
     const response = await fetch("/api/question", {
         method: "POST",
         headers: {
@@ -9,7 +11,7 @@ export async function chatApi(question: string, user: User): Promise<Response> {
         },
         body: JSON.stringify({
             question: question,
-            user_auth0_id: user.sub
+            user_auth0_id: user_auth0_id
         }),
     });
 
@@ -21,6 +23,7 @@ export async function chatApi(question: string, user: User): Promise<Response> {
 
     return parsedResponse;
 }
+
 
 export async function chatWithLLM(question: string, context: string, template: string): Promise<any> {
     const response = await fetch("/api/context", {
@@ -99,20 +102,6 @@ export async function getDocuments(auth0_id: string): Promise<ReadDocument[]> {
 
     return parsedResponse;
 }
-
-export async function sendDemoRequest(user: User) {
-      const response = await fetch('/api/demo', {
-        method: 'POST', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            auth0_id: user.sub,
-            username: user.nickname,
-            email: user.email
-        }),
-      }).then((response) => response.json())
-  }
 
   export async function sendChatPageRequest(user: User) {
     const response = await fetch('/api/chat', {

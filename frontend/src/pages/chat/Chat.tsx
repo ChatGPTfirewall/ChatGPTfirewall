@@ -15,7 +15,6 @@ import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
 import { User, useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationButton } from "../../components/AuthenticationButton";
-import DemoPage from "../demoPage/DemoPage";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
 import { getDocuments } from '../../api';
@@ -181,11 +180,6 @@ const Chat = () => {
     };
 
     if (isAuthenticated) {
-
-        if (user!.email === 'demo@demo.demo') {
-            // Weiterleitung zur Demo-Seite
-            return (<DemoPage />)
-        }
         return (
             <div className={styles.container}>
                 <div className={styles.commandsContainer}>
