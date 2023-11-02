@@ -113,16 +113,16 @@ const Chat = () => {
         if (isAuthenticated) {
             checkFilesFromUser(user!);
         }
-      }, [user, isAuthenticated]);
+    }, [user, isAuthenticated]);
 
-      const checkFilesFromUser = (user: User) => {
+    const checkFilesFromUser = (user: User) => {
         getDocuments(user.sub!).then((response) => {
             if (response.length > 0) {
-              setFileExists(true);
+                setFileExists(true);
             } else {
-              setFileExists(false);
+                setFileExists(false);
             }
-          });
+        });
     }
 
     const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
@@ -183,7 +183,7 @@ const Chat = () => {
                     <FileExplorer user={user!} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
-                    <KnowledgeBaseModal buttonClassName={styles.commandButton} />
+                    <KnowledgeBaseModal buttonClassName={styles.commandButton} uploadHook={() => { setFileExists(true) }} />
                 </div>
                 <div className={styles.chatRoot}>
                     <div className={styles.chatContainer}>
