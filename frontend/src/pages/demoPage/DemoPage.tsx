@@ -12,12 +12,9 @@ import { UserChatMessage } from "../../components/UserChatMessage";
 import { AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import FileExplorer from "../../components/FileExplorer/FileExplorer";
-import { KnowledgeBaseModal } from "../../components/KnowledgeBaseModal";
-import { User, useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from 'react-i18next';
-import { sendDemoRequest } from "../../api";
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
-import { getDocuments } from '../../api';
 
 
 
@@ -29,7 +26,6 @@ const DemoPage = () => {
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
     const { t } = useTranslation();
-    const [filesExists, setFileExists] = useState(false);
 
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
@@ -44,17 +40,17 @@ const DemoPage = () => {
     const [activeAnalysisPanelTab, setActiveAnalysisPanelTab] = useState<AnalysisPanelTabs | undefined>(undefined);
 
     const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
-    const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
     const [answers, setAnswers] = useState<[user: Fact[] | string, ai: Fact[] | string][]>([]);
 
-    const { user, isAuthenticated } = useAuth0();
+    const { user } = useAuth0();
 
     const makeApiRequest = async (question: string) => {
         lastQuestionRef.current = question;
         setIsLoading(true)
 
         try {
-            const response = await chatApi(question, user!);
+            // TODO: adjust the suffix of the user with the current language
+            const response = await chatApi(question, "auth0|demo_user_de");
             setQuestion(question)
             setPromptTemplate(response.prompt_template)
             response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
@@ -107,22 +103,6 @@ const DemoPage = () => {
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            checkFilesFromUser(user!);
-        }
-    }, [user, isAuthenticated]);
-
-    const checkFilesFromUser = (user: User) => {
-        getDocuments(user.sub!).then((response) => {
-            if (response.length > 0) {
-                setFileExists(true);
-            } else {
-                setFileExists(false);
-            }
-        });
-    }
-
     const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
         setPromptTemplate(newValue || "");
     };
@@ -168,20 +148,15 @@ const DemoPage = () => {
 
         setSelectedAnswer(index);
     };
-    useEffect(() => {
-        if (isAuthenticated && !isDemoRequestSent) {
-            sendDemoRequest(user!);
-            setIsDemoRequestSent(true);
-        }
-    }, [isAuthenticated, user, isDemoRequestSent]);
+    // TODO: summarize both hard coded users
+    const modifiedSub = "auth0|demo_user_de";
 
     return (
         <div className={styles.container}>
             <div className={styles.commandsContainer}>
-                <FileExplorer user={user!} deletedHook={() => { checkFilesFromUser(user!) }} />
+                <FileExplorer user={{ ...user, sub: modifiedSub }} deletedHook={() => { }} />
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                 {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
-                {/* <KnowledgeBaseModal buttonClassName={styles.commandButton} /> */}
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
@@ -264,7 +239,7 @@ const DemoPage = () => {
                         <QuestionInput
                             clearOnSend
                             placeholder={t('chatTextType')}
-                            disabled={!filesExists}
+                            disabled={false}
                             onSend={question => makeApiRequest(question)}
                         />
                     </div>

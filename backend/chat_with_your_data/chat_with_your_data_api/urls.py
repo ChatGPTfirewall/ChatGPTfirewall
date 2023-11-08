@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    UserApiView, UploadApiView, ChatApiView, ContextApiView, NextCloudApiView, DocumentApiView, NextCloudFilesApiView, LanguageAPI, FilesApiView, DemoPageAPI
+    UserApiView, UploadApiView, ChatPageAPI, ChatApiView, ContextApiView, NextCloudApiView, DocumentApiView, NextCloudFilesApiView, LanguageAPI, FilesApiView
 )
 from . import views
 
@@ -15,5 +15,5 @@ urlpatterns = [
     path('upload/nextcloud', NextCloudApiView.as_view()),
     path('upload/nextcloud/redirect', NextCloudFilesApiView.as_view()),
     path('language', LanguageAPI.as_view()),
-    path('demo', DemoPageAPI.as_view()),
+    path('chat', ChatPageAPI.as_view()),
 ]
