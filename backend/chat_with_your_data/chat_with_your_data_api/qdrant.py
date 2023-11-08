@@ -44,6 +44,9 @@ def create_collection(name):
         ),
     )
 
+def delete_collection(name):    
+    __client.delete_collection(collection_name=name)
+
 
 def search(collection_name, vector, limit):
     result = __client.search(
