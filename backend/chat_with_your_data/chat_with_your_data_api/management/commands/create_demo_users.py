@@ -11,6 +11,8 @@ class Command(BaseCommand):
 
     def add_demo_files(self, user):
         root_path = os.path.join("./ExampleFiles", user.lang)
+        added_files = []
+        skipped_files = []
 
         for dirpath, dirnames, filenames in os.walk(root_path):
             for file_name in filenames:
@@ -31,11 +33,22 @@ class Command(BaseCommand):
                     }
 
                     serializer = DocumentSerializer(data=document)
-
                     if serializer.is_valid():
                         result = serializer.save()
                         [_, id] = user.auth0_id.split("|")
                         insert_text(id, result, user.lang)
+                        added_files.append(file_name)
+                        self.stdout.write(self.style.SUCCESS(f'Added file: {file_name}'))
+                else:
+                    skipped_files.append(file_name)
+                    self.stdout.write(f'Skipped file: {file_name}')
+
+        if added_files:
+            self.stdout.write(self.style.SUCCESS('Added files:'))
+            for file in added_files:
+                self.stdout.write(self.style.SUCCESS(f'- {file}'))
+        else:
+            self.stdout.write(self.style.WARNING('No new files added'))
 
     def create_user(self, auth0_id, username, email, lang):
         try:
@@ -49,7 +62,6 @@ class Command(BaseCommand):
             [_, id] = auth0_id.split("|")
             create_collection(id)
 
-            # Add files for demo users
             if email == "demo@demo.de" or email == "demo@demo.com":
                 self.add_demo_files(user)
 
@@ -57,6 +69,9 @@ class Command(BaseCommand):
 
         except IntegrityError:
             self.stdout.write(self.style.WARNING(f'User with auth0_id {auth0_id} already exists: {username}'))
+            user = User.objects.get(auth0_id=auth0_id)
+            if email == "demo@demo.de" or email == "demo@demo.com":
+                self.add_demo_files(user)
 
     def handle(self, *args, **kwargs):
         # Create demo 'de' user
