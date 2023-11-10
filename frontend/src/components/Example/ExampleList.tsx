@@ -21,9 +21,9 @@ const DEMOPAGE_DE: DemoModel[] = [
 ];
 
 const DEMOPAGE_EN: DemoModel[] = [
-  { text: "Question 1", value: "Question 1" },
-  { text: "Question 2", value: "Question 2" },
-  { text: "Question 3", value: "Question 3" }
+  { text: "What did Detective Miller discover?", value: "What did Detective Miller discover?" },
+  { text: "What stories does Willow have?", value: "What stories does Willow have?" },
+  { text: "How many people were in Max's group? ", value: "How many people were in Max's group?" }
 ];
 
 interface Props {
