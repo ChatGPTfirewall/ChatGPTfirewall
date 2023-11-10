@@ -78,22 +78,6 @@ class UserApiView(APIView):
 
         return response
 
-class ChatPageAPI(APIView):
-    def delete(self, request, *args, **kwargs):
-        auth0_id = request.data.get("auth0_id")
-        user = User.objects.get(auth0_id=auth0_id)
-        
-        documents = Document.objects.filter(user_id=user.id)
-
-        files_path = "./ExampleFiles/JuraStudium"
-        file_names = os.listdir(files_path)
-        for document in documents:
-            for file_name in file_names:
-                strDocument = str(document)
-                if file_name == strDocument:
-                    Document.objects.filter(filename=file_name).delete()                    
-        return Response("", status=status.HTTP_200_OK)
-
 
 class UploadApiView(APIView):
     def post(self, request, *args, **kwargs):
@@ -172,8 +156,6 @@ class DocumentApiView(APIView):
             delete_text(id, document)
         Document.objects.filter(id__in=document_ids).delete()
         return Response("", status=status.HTTP_200_OK)
-    
-    
 
 
 class ChatApiView(APIView):
@@ -198,7 +180,12 @@ class ChatApiView(APIView):
         for search_result in search_results:
             section = Section.objects.get(id=search_result.payload.get("section_id"))
             embedded_text = embed_text(section.document.text, user.lang)
-            (before_result, after_result) = return_context(embedded_text, section.doc_index, RANGE_CONTEXT_BEFORE, RANGE_CONTEXT_AFTER)
+            (before_result, after_result) = return_context(
+                embedded_text,
+                section.doc_index,
+                RANGE_CONTEXT_BEFORE,
+                RANGE_CONTEXT_AFTER,
+            )
 
             entities = []
             for ent in embedded_text.ents:
