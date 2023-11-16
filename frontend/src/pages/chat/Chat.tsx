@@ -18,7 +18,6 @@ import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
 import { getDocuments } from '../../api';
-import { sendChatPageRequest } from "../../api";
 
 
 const Chat = () => {
@@ -164,7 +163,6 @@ const Chat = () => {
     
     useEffect(() => {
         if (isAuthenticated && !isDemoRequestSent) {
-            sendChatPageRequest(user!); 
             setIsDemoRequestSent(true);
         }
     }, [isAuthenticated, user, isDemoRequestSent]);

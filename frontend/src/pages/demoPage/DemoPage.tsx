@@ -25,7 +25,7 @@ const DemoPage = () => {
     const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
@@ -49,8 +49,7 @@ const DemoPage = () => {
         setIsLoading(true)
 
         try {
-            // TODO: adjust the suffix of the user with the current language
-            const response = await chatApi(question, "auth0|demo_user_de");
+            const response = await chatApi(question, `auth0|demo_user_${i18n.language}`);
             setQuestion(question)
             setPromptTemplate(response.prompt_template)
             response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
@@ -148,8 +147,7 @@ const DemoPage = () => {
 
         setSelectedAnswer(index);
     };
-    // TODO: summarize both hard coded users
-    const modifiedSub = "auth0|demo_user_de";
+    const modifiedSub = `auth0|demo_user_${i18n.language}`;
 
     return (
         <div className={styles.container}>
@@ -165,7 +163,7 @@ const DemoPage = () => {
                             <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
                             <h1 className={styles.chatEmptyStateTitle}>{t('demoPageChatWithData')}</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>{t('askTryExample')}</h2>
-                            <DemoList onExampleClicked={onExampleClicked} />
+                            <DemoList onExampleClicked={onExampleClicked} lang={i18n.language} />
 
                         </div>
                     ) : (

@@ -14,14 +14,21 @@ export type DemoModel = {
   value: string;
 };
 
-const DEMOPAGE: DemoModel[] = [
-  { text: "Was ist auf der Weinversteigerung in Trier passiert?", value: "Was ist auf der Weinversteigerung in Trier passiert?"},
+const DEMOPAGE_DE: DemoModel[] = [
+  { text: "Was ist auf der Weinversteigerung in Trier passiert?", value: "Was ist auf der Weinversteigerung in Trier passiert?" },
   { text: "Worüber ist der Edelmann E erbost?", value: "Worüber ist der Edelmann E erbost??" },
   { text: "Warum wurde B die Einreise in die USA verweigert?", value: "Warum wurde B die Einreise in die USA verweigert?" }
 ];
 
+const DEMOPAGE_EN: DemoModel[] = [
+  { text: "What did Detective Miller discover?", value: "What did Detective Miller discover?" },
+  { text: "What stories does Willow have?", value: "What stories does Willow have?" },
+  { text: "How many people were in Max's group? ", value: "How many people were in Max's group?" }
+];
+
 interface Props {
   onExampleClicked: (value: string) => void;
+  lang?: string;
 }
 
 export const ExampleList = ({ onExampleClicked }: Props) => {
@@ -29,17 +36,17 @@ export const ExampleList = ({ onExampleClicked }: Props) => {
   return (
     <ul className={styles.examplesNavList}>
       <li>
-        <ExampleNoRequest text={t('card1Upload')}/>
+        <ExampleNoRequest text={t('card1Upload')} />
       </li>
       <li>
-        <ExampleNoRequest text={t('card2Ask')}/>
+        <ExampleNoRequest text={t('card2Ask')} />
       </li>
       <li className={styles.centeredLi}>
         <span>{t('orText')}</span>
       </li>
       <li>
         <Link to="/demo">
-          <ExampleNoRequest text={t('card3Demo')}/>
+          <ExampleNoRequest text={t('card3Demo')} />
         </Link>
 
       </li>
@@ -47,10 +54,11 @@ export const ExampleList = ({ onExampleClicked }: Props) => {
   );
 };
 
-export const DemoList = ({ onExampleClicked }: Props) => {
+export const DemoList = ({ onExampleClicked, lang }: Props) => {
+  const demoPage = lang === "de" ? DEMOPAGE_DE : DEMOPAGE_EN;
   return (
     <ul className={styles.examplesNavList}>
-      {DEMOPAGE.map((x, i) => (
+      {demoPage.map((x, i) => (
         <li key={i}>
           <Example text={x.text} value={x.value} onClick={onExampleClicked} />
         </li>
