@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
+import { Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
 import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
@@ -18,6 +18,7 @@ import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
 import { getDocuments } from '../../api';
+import { SettingsButton } from "../../components/SettingsButton";
 
 
 const Chat = () => {
@@ -28,10 +29,9 @@ const Chat = () => {
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
     const [promptTemplate, setPromptTemplate] = useState<string>("");
-    const [retrieveCount, setRetrieveCount] = useState<number>(3);
-    const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
-    const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
-    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+    const [prePhraseCount, setPrePhraseCount] = useState<number>(2);
+    const [postPhraseCount, setPostPhraseCount] = useState<number>(2);
+    const [factCount, setFactCount] = useState<number>(3);
     const [filesExists, setFileExists] = useState(false);
 
     const lastQuestionRef = useRef<string>("");
@@ -102,10 +102,6 @@ const Chat = () => {
         }
     };
 
-
-
-
-
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
 
@@ -129,21 +125,14 @@ const Chat = () => {
         setPromptTemplate(newValue || "");
     };
 
-    const onRetrieveCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setRetrieveCount(parseInt(newValue || "3"));
+    const onPrePhraseCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
+        setPrePhraseCount(parseInt(newValue || "2"));
     };
-
-    const onUseSemanticRankerChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSemanticRanker(!!checked);
+    const onPostPhraseCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
+        setPostPhraseCount(parseInt(newValue || "2"));
     };
-
-    const onUseSemanticCaptionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSemanticCaptions(!!checked);
-    };
-
-
-    const onUseSuggestFollowupQuestionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSuggestFollowupQuestions(!!checked);
+    const onFactCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
+        setFactCount(parseInt(newValue || "2"));
     };
 
     const onExampleClicked = (example: string) => {
@@ -160,7 +149,7 @@ const Chat = () => {
 
         setSelectedAnswer(index);
     };
-    
+
     useEffect(() => {
         if (isAuthenticated && !isDemoRequestSent) {
             setIsDemoRequestSent(true);
@@ -183,7 +172,7 @@ const Chat = () => {
                 <div className={styles.commandsContainer}>
                     <FileExplorer user={user!} deletedHook={() => { checkFilesFromUser(user!) }} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
+                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} uploadHook={() => { checkFilesFromUser(user!) }} />
                 </div>
                 <div className={styles.chatRoot}>
@@ -283,38 +272,34 @@ const Chat = () => {
                         <TextField
                             className={styles.chatSettingsSeparator}
                             defaultValue={promptTemplate}
-                            label="Override prompt template"
+                            label={t('promptTemplate')}
                             multiline
                             autoAdjustHeight
                             onChange={onPromptTemplateChange}
                         />
-
                         <SpinButton
                             className={styles.chatSettingsSeparator}
-                            label="Retrieve this many documents from search:"
+                            label={t('prephrases')}
                             min={1}
-                            max={50}
-                            defaultValue={retrieveCount.toString()}
-                            onChange={onRetrieveCountChange}
+                            max={8}
+                            defaultValue={prePhraseCount.toString()}
+                            onChange={onPrePhraseCountChange}
                         />
-                        <Checkbox
+                        <SpinButton
                             className={styles.chatSettingsSeparator}
-                            checked={useSemanticRanker}
-                            label="Use semantic ranker for retrieval"
-                            onChange={onUseSemanticRankerChange}
+                            label={t('postphrases')}
+                            min={1}
+                            max={8}
+                            defaultValue={postPhraseCount.toString()}
+                            onChange={onPostPhraseCountChange}
                         />
-                        <Checkbox
+                        <SpinButton
                             className={styles.chatSettingsSeparator}
-                            checked={useSemanticCaptions}
-                            label="Use query-contextual summaries instead of whole documents"
-                            onChange={onUseSemanticCaptionsChange}
-                            disabled={!useSemanticRanker}
-                        />
-                        <Checkbox
-                            className={styles.chatSettingsSeparator}
-                            checked={useSuggestFollowupQuestions}
-                            label="Suggest follow-up questions"
-                            onChange={onUseSuggestFollowupQuestionsChange}
+                            label={t('factCount')}
+                            min={1}
+                            max={5}
+                            defaultValue={factCount.toString()}
+                            onChange={onFactCountChange}
                         />
                     </Panel>
                 </div>
