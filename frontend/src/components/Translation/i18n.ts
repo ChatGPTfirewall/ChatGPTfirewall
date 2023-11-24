@@ -49,10 +49,10 @@ i18n.use(initReactI18next).init({
         "logIn": "Log In",
         "orText": "or",
         "uploadYourFile": "Upload a file",
-        "promptTemplate": "Edit the prompt template",
-        "prephrases": "Select the number of phrases before the facts",
-        "postphrases": "Select the number of phrases after the facts",
-        "factCount": "Select the number of facts"
+        "promptTemplate": "Prompt template",
+        "prephrases": "Number of phrases before the facts",
+        "postphrases": "Number of phrases after the facts",
+        "factCount": "Number of facts"
       },
     },
     de: {
@@ -98,10 +98,10 @@ i18n.use(initReactI18next).init({
         "logIn": "Anmelden",
         "orText": "oder",
         "uploadYourFile": "Laden Sie eine Datei hoch",
-        "promptTemplate": "Bearbeite das Prompt Template",
-        "prephrases": "Wähle die Anzahl der Phrasen vor den Fakten aus",
-        "postphrases": "Wähle die Anzahl der Phrasen nach den Fakten aus",
-        "factCount": "Wähle die Anzahl der Fakten aus"
+        "promptTemplate": "Prompt Template",
+        "prephrases": "Anzahl Sätze vor den Fakten",
+        "postphrases": "Anzahl Sätze nach den Fakten",
+        "factCount": "Anzahl der Fakten"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

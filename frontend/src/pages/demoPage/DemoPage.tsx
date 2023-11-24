@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
+import { Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
 import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./DemoPage.module.css";
@@ -247,7 +247,7 @@ const DemoPage = () => {
                     <TextField
                         className={styles.chatSettingsSeparator}
                         defaultValue={promptTemplate}
-                        label="Override prompt template"
+                        label={t('promptTemplate')}
                         multiline
                         autoAdjustHeight
                         onChange={onPromptTemplateChange}
