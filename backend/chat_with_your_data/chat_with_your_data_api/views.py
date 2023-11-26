@@ -189,7 +189,14 @@ class ChatApiView(APIView):
 
             entities = []
             for ent in embedded_text.ents:
-                entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
+                entity_info = {
+                    "TEXT": ent.text,
+                    "START_CHAR": ent.start_char,
+                    "END_CHAR": ent.end_char,
+                    "LABEL": ent.label_
+                }
+                entities.append(entity_info)
+
             fact = {
                 "answer": section.content,
                 "file": section.document.filename,

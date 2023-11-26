@@ -22,6 +22,15 @@ interface Props {
     editMode: boolean;
 }
 
+
+const extractHighlights = (text, entities) => {
+    if (!entities || !text) return [];
+
+    return entities
+        .filter(entity => entity.LABEL === 'LOC' || entity.LABEL === 'PER')
+        .map(entity => entity.TEXT);
+};
+
 export const Answer = ({
     answer_index,
     searchResults,
@@ -82,6 +91,7 @@ export const Answer = ({
                                     <div className={styles.textfield} >
                                         <HighlightWithinTextarea
                                             value={fact.answer}
+                                            highlight={extractHighlights(fact.answer, fact.entities)}
                                             onChange={event => updateFact(event, index)}
                                         />
                                     </div>
