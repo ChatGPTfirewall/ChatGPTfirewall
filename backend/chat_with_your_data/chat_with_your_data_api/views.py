@@ -11,11 +11,13 @@ import requests
 import mimetypes
 
 from .models import User, Section, Document
-from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
+from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer, UserSettingsSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import vectorize, return_context, embed_text
 from .llm import count_tokens, run_llm, get_template, set_template
+from .user_settings import UserSettings
+
 from xml.etree import ElementTree as ET
 
 LLM_MAX_TOKENS = 4098
@@ -77,6 +79,34 @@ class UserApiView(APIView):
             )
 
         return response
+
+
+class UserSettingsApiView(APIView):
+    def get(self, request, user_id, *args, **kwargs):
+        try:
+            user = User.objects.get(auth0_id=user_id)
+            user_settings = UserSettings.from_dict(user.settings)
+            serializer = UserSettingsSerializer(user_settings)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def post(self, request, user_id, *args, **kwargs):
+        try:
+            user = User.objects.get(auth0_id=user_id)
+            data = JSONParser().parse(request)
+            user_settings = UserSettings.from_dict(user.settings)
+            serializer = UserSettingsSerializer(user_settings, data=data, partial=True)
+            if serializer.is_valid():
+                user_settings = serializer.update(
+                    user_settings, serializer.validated_data
+                )
+                user.settings = user_settings.to_dict()
+                user.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class UploadApiView(APIView):

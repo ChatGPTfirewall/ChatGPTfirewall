@@ -6,8 +6,9 @@ from chat_with_your_data_api.file_importer import extract_text
 from chat_with_your_data_api.qdrant import create_collection, insert_text
 import os
 
+
 class Command(BaseCommand):
-    help = 'Create demo users'
+    help = "Create demo users"
 
     def add_demo_files(self, user):
         root_path = os.path.join("./ExampleFiles", user.lang)
@@ -21,7 +22,9 @@ class Command(BaseCommand):
 
                 text = extract_text(file_path, file_name)
 
-                existing_document = Document.objects.filter(filename=file_name, user=user).first()
+                existing_document = Document.objects.filter(
+                    filename=file_name, user=user
+                ).first()
 
                 if existing_document is None:
                     document = {
@@ -38,25 +41,24 @@ class Command(BaseCommand):
                         [_, id] = user.auth0_id.split("|")
                         insert_text(id, result, user.lang)
                         added_files.append(file_name)
-                        self.stdout.write(self.style.SUCCESS(f'Added file: {file_name}'))
+                        self.stdout.write(
+                            self.style.SUCCESS(f"Added file: {file_name}")
+                        )
                 else:
                     skipped_files.append(file_name)
-                    self.stdout.write(f'Skipped file: {file_name}')
+                    self.stdout.write(f"Skipped file: {file_name}")
 
         if added_files:
-            self.stdout.write(self.style.SUCCESS('Added files:'))
+            self.stdout.write(self.style.SUCCESS("Added files:"))
             for file in added_files:
-                self.stdout.write(self.style.SUCCESS(f'- {file}'))
+                self.stdout.write(self.style.SUCCESS(f"- {file}"))
         else:
-            self.stdout.write(self.style.WARNING('No new files added'))
+            self.stdout.write(self.style.WARNING("No new files added"))
 
     def create_user(self, auth0_id, username, email, lang):
         try:
             user = User.objects.create(
-                auth0_id=auth0_id,
-                username=username,
-                email=email,
-                lang=lang
+                auth0_id=auth0_id, username=username, email=email, lang=lang
             )
 
             [_, id] = auth0_id.split("|")
@@ -65,10 +67,18 @@ class Command(BaseCommand):
             if email == "demo@demo.de" or email == "demo@demo.com":
                 self.add_demo_files(user)
 
-            self.stdout.write(self.style.SUCCESS(f'Successfully created user: {user.username} with language: {lang}'))
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"Successfully created user: {user.username} with language: {lang}"
+                )
+            )
 
         except IntegrityError:
-            self.stdout.write(self.style.WARNING(f'User with auth0_id {auth0_id} already exists: {username}'))
+            self.stdout.write(
+                self.style.WARNING(
+                    f"User with auth0_id {auth0_id} already exists: {username}"
+                )
+            )
             user = User.objects.get(auth0_id=auth0_id)
             if email == "demo@demo.de" or email == "demo@demo.com":
                 self.add_demo_files(user)
