@@ -1,6 +1,6 @@
 import os
 
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,6 +9,7 @@ from django.http import HttpResponseNotFound, HttpResponse
 from pathlib import Path
 import requests
 import mimetypes
+import json
 
 from .models import User, Section, Document
 from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer, UserSettingsSerializer
@@ -90,23 +91,25 @@ class UserSettingsApiView(APIView):
             return Response(serializer.data)
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
+        
     def post(self, request, user_id, *args, **kwargs):
         try:
-            user = User.objects.get(auth0_id=user_id)
-            data = JSONParser().parse(request)
-            user_settings = UserSettings.from_dict(user.settings)
-            serializer = UserSettingsSerializer(user_settings, data=data, partial=True)
+            user = User.objects.get(id=user_id)
+            data = json.loads(request.body)  # Hier verwenden wir das json-Modul
+            serializer = UserSettingsSerializer(data=data)
+
             if serializer.is_valid():
-                user_settings = serializer.update(
-                    user_settings, serializer.validated_data
-                )
-                user.settings = user_settings.to_dict()
+                user_settings_instance = UserSettings.from_dict(data)
+                user.settings = user_settings_instance.to_dict()
                 user.save()
                 return Response(serializer.data)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        except json.JSONDecodeError:
+            return Response({'message': 'Invalid JSON'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class UploadApiView(APIView):
