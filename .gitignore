@@ -10,6 +10,10 @@ node_modules
 __pycache__
 temp
 .env
+bin
+pyvenv.cfg
+include
+share
 # Azure az webapp deployment details
 .azure
 *_env
