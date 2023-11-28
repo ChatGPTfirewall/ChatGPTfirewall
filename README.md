@@ -6,6 +6,25 @@
 
 Forschungsprojekt-CCC is a web-based application that allows users to interact with their data through a conversational interface. This project leverages the power of vector databases and large language models to enable users to upload files, ask questions in natural language, and receive contextual answers.
 
+## Features
+
+- **Conversational Data Interaction**: Users can chat with their data by uploading files and asking questions in natural language.
+- **File Upload Support**: Manual file uploads are supported with Nextcloud integration, and S3 support is underway.
+- **Vector Database Integration**: Utilizes Qdrant for efficient similarity searches on text data.
+- **Editable Responses**: Adjust the number of facts and sentences returned from searches.
+- **Customizable Prompts**: Customize the prompts sent to ChatGPT for tailored answers.
+- **Authentication**: Secure user login with Auth0.
+- **File Management**: Easily manage, reload, or delete uploaded files.
+- **Demo Mode**: Explore the application's capabilities with preloaded files in demo mode.
+- **Multilingual**: The application supports both German and English languages.
+
+## Tech Stack
+
+- Frontend: React with TypeScript, Vite
+- Backend: Django
+- Database: PostgreSQL
+- Search Engine: Qdrant
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
