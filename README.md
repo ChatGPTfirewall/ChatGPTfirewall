@@ -63,6 +63,12 @@ Follow these steps to install and run Forschungsprojekt-CCC:
 
 After installing, you may want to set up the database or create demo users:
 
+- **Move into the `chat_with_your_data` directory:**
+  ```sh
+  cd chat_with_your_data
+  ```
+  The following commands can only be executed within this directory.
+
 - **Autogenerate database migrations:**
   ```sh
   python manage.py makemigrations
