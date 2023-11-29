@@ -22,9 +22,6 @@ from .user_settings import UserSettings
 from xml.etree import ElementTree as ET
 
 LLM_MAX_TOKENS = 4098
-RANGE_CONTEXT_AFTER = int(os.getenv("CONTEXT_RANGE", 5))
-RANGE_CONTEXT_BEFORE = int(os.getenv("CONTEXT_RANGE", 5))
-MAX_SEARCH_RESULTS = int(os.getenv("MAX_SEARCH_RESULTS", 3))
 
 
 def download_file(request, filename):
@@ -86,7 +83,7 @@ class UserSettingsApiView(APIView):
     def get(self, request, user_id, *args, **kwargs):
         try:
             user = User.objects.get(auth0_id=user_id)
-            user_settings = UserSettings.from_dict(user.settings)
+            user_settings = UserSettings.from_dict(user.settings, user.lang)
             serializer = UserSettingsSerializer(user_settings)
             return Response(serializer.data)
         except User.DoesNotExist:
@@ -99,7 +96,7 @@ class UserSettingsApiView(APIView):
             serializer = UserSettingsSerializer(data=data)
 
             if serializer.is_valid():
-                user_settings_instance = UserSettings.from_dict(data)
+                user_settings_instance = UserSettings.from_dict(data, user.lang)
                 user.settings = user_settings_instance.to_dict()
                 user.save()
                 return Response(serializer.data)

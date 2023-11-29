@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from chat_with_your_data_api.models import User, Document
 from django.db import IntegrityError
 from chat_with_your_data_api.serializers import UserSerializer, DocumentSerializer
+from chat_with_your_data_api.user_settings import UserSettings
 from chat_with_your_data_api.file_importer import extract_text
 from chat_with_your_data_api.qdrant import create_collection, insert_text
 import os
@@ -58,7 +59,11 @@ class Command(BaseCommand):
     def create_user(self, auth0_id, username, email, lang):
         try:
             user = User.objects.create(
-                auth0_id=auth0_id, username=username, email=email, lang=lang
+                auth0_id=auth0_id,
+                username=username,
+                email=email,
+                lang=lang,
+                settings=UserSettings(prompt_template_lang=lang).to_dict(),
             )
 
             [_, id] = auth0_id.split("|")

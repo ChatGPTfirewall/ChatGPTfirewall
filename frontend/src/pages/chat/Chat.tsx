@@ -26,13 +26,6 @@ const Chat = () => {
     const { t } = useTranslation();
     const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
 
-    const defaultSettings: Settings = {
-        prompt_template: "",
-        pre_phrase_count: 2,
-        post_phrase_count: 2,
-        fact_count: 3
-    };
-
     const defaultPrompt: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie mit "Ich weiß es nicht".
     
 {context}
@@ -42,6 +35,15 @@ Frage:
 {question}
     
 Antwort: "" `
+
+    const defaultSettings: Settings = {
+        prompt_template: defaultPrompt,
+        pre_phrase_count: 2,
+        post_phrase_count: 2,
+        fact_count: 3
+    };
+
+
 
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);

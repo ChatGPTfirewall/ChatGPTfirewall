@@ -4,7 +4,7 @@ import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./DemoPage.module.css";
 
-import { chatApi, chatWithLLM, Fact } from "../../api";
+import { chatApi, chatWithLLM, Fact, getSettings, Settings } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { DemoList } from "../../components/Example";
@@ -21,14 +21,28 @@ import { SettingsButton } from "../../components/SettingsButton";
 
 const DemoPage = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
-    const [promptTemplate, setPromptTemplate] = useState<string>("");
-    const [prePhraseCount, setPrePhraseCount] = useState<number>(2);
-    const [postPhraseCount, setPostPhraseCount] = useState<number>(2);
-    const [factCount, setFactCount] = useState<number>(3);
+
+    const defaultPrompt: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie mit "Ich weiß es nicht".
+    
+{context}
+    
+Frage: 
+    
+{question}
+    
+Antwort: "" `
+
+    const defaultSettings: Settings = {
+        prompt_template: "",
+        pre_phrase_count: 2,
+        post_phrase_count: 2,
+        fact_count: 3
+    };
     const { t, i18n } = useTranslation();
 
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
+    const [settings, setSettings] = useState<Settings>(defaultSettings);
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isLoadingLLM, setIsLoadingLLM] = useState<boolean>(false);
@@ -51,7 +65,6 @@ const DemoPage = () => {
         try {
             const response = await chatApi(question, `auth0|demo_user_${i18n.language}`);
             setQuestion(question)
-            setPromptTemplate(response.prompt_template)
             response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
             setAnswers([...answers, [question, response.facts]]);
         } catch (e) {
@@ -86,7 +99,7 @@ const DemoPage = () => {
         const context = (answers[index][1] as Fact[]).map((fact) => fact.answer).join('\n\n');
 
         try {
-            const llmAnswer = await chatWithLLM(question, context, promptTemplate)
+            const llmAnswer = await chatWithLLM(question, context, settings.prompt_template)
             setAnswers([...answers, [answers[index][1], llmAnswer.result]])
         } catch (e) {
             setError(e);
@@ -96,25 +109,23 @@ const DemoPage = () => {
     };
 
 
+    const getSettingsRequest = async (auth0_id: string) => {
+        try {
+            const response = await getSettings(auth0_id);
+            console.log("test")
+            setSettings(response)
+        } catch (e) {
+            setError(e);
+        }
+    }
 
 
+    useEffect(() => {
+        getSettingsRequest(`auth0|demo_user_${i18n.language}`)
+    }, []);
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
-
-    const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-        setPromptTemplate(newValue || "");
-    };
-
-    const onPrePhraseCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setPrePhraseCount(parseInt(newValue || "2"));
-    };
-    const onPostPhraseCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setPostPhraseCount(parseInt(newValue || "2"));
-    };
-    const onFactCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setFactCount(parseInt(newValue || "2"));
-    };
 
     const onExampleClicked = (example: string) => {
         makeApiRequest(example);
@@ -246,35 +257,41 @@ const DemoPage = () => {
                 >
                     <TextField
                         className={styles.chatSettingsSeparator}
-                        defaultValue={promptTemplate}
+                        defaultValue={settings.prompt_template}
                         label={t('promptTemplate')}
                         multiline
                         autoAdjustHeight
-                        onChange={onPromptTemplateChange}
+                        disabled
                     />
+                    <DefaultButton
+                        className={styles.resetButton}
+                        disabled
+                    >
+                        {t('resetToDefaultPrompt')}
+                    </DefaultButton>
                     <SpinButton
                         className={styles.chatSettingsSeparator}
                         label={t('prephrases')}
                         min={1}
                         max={8}
-                        defaultValue={prePhraseCount.toString()}
-                        onChange={onPrePhraseCountChange}
+                        defaultValue={settings.pre_phrase_count.toString()}
+                        disabled
                     />
                     <SpinButton
                         className={styles.chatSettingsSeparator}
                         label={t('postphrases')}
                         min={1}
                         max={8}
-                        defaultValue={postPhraseCount.toString()}
-                        onChange={onPostPhraseCountChange}
+                        defaultValue={settings.post_phrase_count.toString()}
+                        disabled
                     />
                     <SpinButton
                         className={styles.chatSettingsSeparator}
                         label={t('factCount')}
                         min={1}
                         max={5}
-                        defaultValue={factCount.toString()}
-                        onChange={onFactCountChange}
+                        defaultValue={settings.fact_count.toString()}
+                        disabled
                     />
                 </Panel>
             </div>
