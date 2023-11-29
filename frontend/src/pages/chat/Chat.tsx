@@ -4,7 +4,7 @@ import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, chatWithLLM, Fact } from "../../api";
+import { chatApi, chatWithLLM, Fact, getSettings, Settings, updateSettings } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -26,12 +26,17 @@ const Chat = () => {
     const { t } = useTranslation();
     const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
 
+    const defaultSettings: Settings = {
+        prompt_template: "",
+        pre_phrase_count: 2,
+        post_phrase_count: 2,
+        fact_count: 3
+    };
+
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
     const [promptTemplate, setPromptTemplate] = useState<string>("");
-    const [prePhraseCount, setPrePhraseCount] = useState<number>(2);
-    const [postPhraseCount, setPostPhraseCount] = useState<number>(2);
-    const [factCount, setFactCount] = useState<number>(3);
+    const [settings, setSettings] = useState<Settings>(defaultSettings);
     const [filesExists, setFileExists] = useState(false);
 
     const lastQuestionRef = useRef<string>("");
@@ -68,7 +73,22 @@ const Chat = () => {
         }
     };
 
+    const updateSettingsRequest = async (auth0_id: string, settings: Settings) => {
+        try {
+            const response = await updateSettings(auth0_id, settings);
+        } catch (e) {
+            setError(e);
+        }
+    };
 
+    const getSettingsRequest = async (auth0_id: string) => {
+        try {
+            const response = await getSettings(auth0_id);
+            setSettings(response)
+        } catch (e) {
+            setError(e);
+        }
+    }
 
     const clearChat = () => {
         lastQuestionRef.current = "";
@@ -102,12 +122,32 @@ const Chat = () => {
         }
     };
 
+    function handleSettingsChange<K extends keyof Settings>(key: K, newValue: Settings[K]): void {
+        setSettings(prevSettings => ({
+            ...prevSettings,
+            [key]: newValue
+        }));
+    }
+    type SettingsKeyType = keyof Settings;
+
+    function createOnChangeHandler(
+        key: SettingsKeyType,
+        transformFunction: (value: string) => any = value => value // Annahme, dass alle Eingaben ursprünglich Strings sind
+    ): (e: React.SyntheticEvent<HTMLElement>, newValue?: string) => void {
+        return (e, newValue) => {
+            const transformedValue = transformFunction(newValue || "");
+            handleSettingsChange(key, transformedValue);
+        };
+    }
+
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
 
     useEffect(() => {
         if (isAuthenticated) {
             checkFilesFromUser(user!);
+            getSettingsRequest(user!.sub!);
+
         }
     }, [user, isAuthenticated]);
 
@@ -120,20 +160,6 @@ const Chat = () => {
             }
         });
     }
-
-    const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-        setPromptTemplate(newValue || "");
-    };
-
-    const onPrePhraseCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setPrePhraseCount(parseInt(newValue || "2"));
-    };
-    const onPostPhraseCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setPostPhraseCount(parseInt(newValue || "2"));
-    };
-    const onFactCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setFactCount(parseInt(newValue || "2"));
-    };
 
     const onExampleClicked = (example: string) => {
         makeApiRequest(example);
@@ -155,6 +181,13 @@ const Chat = () => {
             setIsDemoRequestSent(true);
         }
     }, [isAuthenticated, user, isDemoRequestSent]);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            updateSettingsRequest(user!.sub!, settings);
+        }
+
+    }, [settings]);
 
     const onToggleTab = (tab: AnalysisPanelTabs, index: number) => {
         if (activeAnalysisPanelTab === tab && selectedAnswer === index) {
@@ -271,35 +304,35 @@ const Chat = () => {
                     >
                         <TextField
                             className={styles.chatSettingsSeparator}
-                            defaultValue={promptTemplate}
+                            defaultValue={settings.prompt_template}
                             label={t('promptTemplate')}
                             multiline
                             autoAdjustHeight
-                            onChange={onPromptTemplateChange}
+                            onChange={createOnChangeHandler('prompt_template')}
                         />
                         <SpinButton
                             className={styles.chatSettingsSeparator}
                             label={t('prephrases')}
                             min={1}
                             max={8}
-                            defaultValue={prePhraseCount.toString()}
-                            onChange={onPrePhraseCountChange}
+                            defaultValue={settings.pre_phrase_count.toString()}
+                            onChange={createOnChangeHandler('pre_phrase_count', parseInt)}
                         />
                         <SpinButton
                             className={styles.chatSettingsSeparator}
                             label={t('postphrases')}
                             min={1}
                             max={8}
-                            defaultValue={postPhraseCount.toString()}
-                            onChange={onPostPhraseCountChange}
+                            defaultValue={settings.post_phrase_count.toString()}
+                            onChange={createOnChangeHandler('post_phrase_count', parseInt)}
                         />
                         <SpinButton
                             className={styles.chatSettingsSeparator}
                             label={t('factCount')}
                             min={1}
                             max={5}
-                            defaultValue={factCount.toString()}
-                            onChange={onFactCountChange}
+                            defaultValue={settings.fact_count.toString()}
+                            onChange={createOnChangeHandler('fact_count', parseInt)}
                         />
                     </Panel>
                 </div>
