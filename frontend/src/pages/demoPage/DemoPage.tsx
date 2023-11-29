@@ -112,17 +112,12 @@ Antwort: "" `
     const getSettingsRequest = async (auth0_id: string) => {
         try {
             const response = await getSettings(auth0_id);
-            console.log("test")
             setSettings(response)
         } catch (e) {
             setError(e);
         }
     }
 
-
-    useEffect(() => {
-        getSettingsRequest(`auth0|demo_user_${i18n.language}`)
-    }, []);
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
@@ -158,7 +153,7 @@ Antwort: "" `
             <div className={styles.commandsContainer}>
                 <FileExplorer user={{ ...user, sub: modifiedSub }} deletedHook={() => { }} />
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                <SettingsButton className={styles.commandButton} onClick={() => { setIsConfigPanelOpen(!isConfigPanelOpen); getSettingsRequest(`auth0|demo_user_${i18n.language}`); }} />
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
@@ -257,11 +252,11 @@ Antwort: "" `
                 >
                     <TextField
                         className={styles.chatSettingsSeparator}
-                        defaultValue={settings.prompt_template}
+                        value={settings.prompt_template}
                         label={t('promptTemplate')}
                         multiline
                         autoAdjustHeight
-                        disabled
+                        readOnly
                     />
                     <DefaultButton
                         className={styles.resetButton}
