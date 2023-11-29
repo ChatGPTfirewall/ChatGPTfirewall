@@ -52,7 +52,8 @@ i18n.use(initReactI18next).init({
         "promptTemplate": "Prompt template",
         "prephrases": "Number of phrases before the facts",
         "postphrases": "Number of phrases after the facts",
-        "factCount": "Number of facts"
+        "factCount": "Number of facts",
+        "resetToDefaultPrompt": "Reset to default prompt"
       },
     },
     de: {
@@ -101,7 +102,8 @@ i18n.use(initReactI18next).init({
         "promptTemplate": "Prompt Template",
         "prephrases": "Anzahl Sätze vor den Fakten",
         "postphrases": "Anzahl Sätze nach den Fakten",
-        "factCount": "Anzahl der Fakten"
+        "factCount": "Anzahl der Fakten",
+        "resetToDefaultPrompt": "Auf Standard-Prompt zurücksetzen"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

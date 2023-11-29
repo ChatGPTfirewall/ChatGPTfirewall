@@ -33,9 +33,18 @@ const Chat = () => {
         fact_count: 3
     };
 
+    const defaultPrompt: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie mit "Ich weiß es nicht".
+    
+{context}
+    
+Frage: 
+    
+{question}
+    
+Antwort: "" `
+
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
-    const [promptTemplate, setPromptTemplate] = useState<string>("");
     const [settings, setSettings] = useState<Settings>(defaultSettings);
     const [filesExists, setFileExists] = useState(false);
 
@@ -63,7 +72,6 @@ const Chat = () => {
         try {
             const response = await chatApi(question, user!);
             setQuestion(question)
-            setPromptTemplate(response.prompt_template)
             response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
             setAnswers([...answers, [question, response.facts]]);
         } catch (e) {
@@ -113,7 +121,7 @@ const Chat = () => {
         const context = (answers[index][1] as Fact[]).map((fact) => fact.answer).join('\n\n');
 
         try {
-            const llmAnswer = await chatWithLLM(question, context, promptTemplate)
+            const llmAnswer = await chatWithLLM(question, context, settings.prompt_template)
             setAnswers([...answers, [answers[index][1], llmAnswer.result]])
         } catch (e) {
             setError(e);
@@ -128,6 +136,7 @@ const Chat = () => {
             [key]: newValue
         }));
     }
+
     type SettingsKeyType = keyof Settings;
 
     function createOnChangeHandler(
@@ -138,6 +147,10 @@ const Chat = () => {
             const transformedValue = transformFunction(newValue || "");
             handleSettingsChange(key, transformedValue);
         };
+    }
+
+    const resetToDefaultPrompt = () => {
+        handleSettingsChange('prompt_template', defaultPrompt)
     }
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
@@ -304,12 +317,18 @@ const Chat = () => {
                     >
                         <TextField
                             className={styles.chatSettingsSeparator}
-                            defaultValue={settings.prompt_template}
+                            value={settings.prompt_template}
                             label={t('promptTemplate')}
                             multiline
                             autoAdjustHeight
                             onChange={createOnChangeHandler('prompt_template')}
                         />
+                        <DefaultButton
+                            className={styles.resetButton}
+                            onClick={resetToDefaultPrompt}
+                        >
+                            {t('resetToDefaultPrompt')}
+                        </DefaultButton>
                         <SpinButton
                             className={styles.chatSettingsSeparator}
                             label={t('prephrases')}
