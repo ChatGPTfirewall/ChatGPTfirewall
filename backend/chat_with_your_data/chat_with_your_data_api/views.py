@@ -201,11 +201,10 @@ class ChatApiView(APIView):
         [_, id] = auth0_id.split("|")
 
         user = User.objects.get(auth0_id=auth0_id)
-
         vector = vectorize(question)
 
         try:
-            search_results = search(id, vector, MAX_SEARCH_RESULTS)
+            search_results = search(id, vector, user.settings.get("fact_count"))
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -216,8 +215,8 @@ class ChatApiView(APIView):
             (before_result, after_result) = return_context(
                 embedded_text,
                 section.doc_index,
-                RANGE_CONTEXT_BEFORE,
-                RANGE_CONTEXT_AFTER,
+                user.settings.get("pre_phrase_count"),
+                user.settings.get("post_phrase_count"),
             )
 
             entities = []
@@ -233,7 +232,7 @@ class ChatApiView(APIView):
             }
             facts.append(fact)
 
-        response = {"facts": facts, "prompt_template": get_template()}
+        response = {"facts": facts, "prompt_template": user.settings.get("prompt_template")}
 
         return Response(response, status.HTTP_200_OK)
 

@@ -31,8 +31,8 @@ class SectionSerializer(serializers.ModelSerializer):
 
 class UserSettingsSerializer(serializers.Serializer):
     prompt_template = serializers.CharField(allow_blank=True, default="")
-    pre_phrase_count = serializers.IntegerField(min_value=1, max_value=8, default=2)
-    post_phrase_count = serializers.IntegerField(min_value=1, max_value=8, default=2)
+    pre_phrase_count = serializers.IntegerField(min_value=0, max_value=8, default=2)
+    post_phrase_count = serializers.IntegerField(min_value=0, max_value=8, default=2)
     fact_count = serializers.IntegerField(min_value=1, max_value=5, default=3)
 
     def create(self, validated_data):

@@ -313,7 +313,7 @@ const Chat = () => {
                         <SpinButton
                             className={styles.chatSettingsSeparator}
                             label={t('prephrases')}
-                            min={1}
+                            min={0}
                             max={8}
                             defaultValue={settings.pre_phrase_count.toString()}
                             onChange={createOnChangeHandler('pre_phrase_count', parseInt)}
@@ -321,7 +321,7 @@ const Chat = () => {
                         <SpinButton
                             className={styles.chatSettingsSeparator}
                             label={t('postphrases')}
-                            min={1}
+                            min={0}
                             max={8}
                             defaultValue={settings.post_phrase_count.toString()}
                             onChange={createOnChangeHandler('post_phrase_count', parseInt)}
