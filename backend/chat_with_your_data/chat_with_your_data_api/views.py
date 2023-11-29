@@ -94,7 +94,7 @@ class UserSettingsApiView(APIView):
         
     def post(self, request, user_id, *args, **kwargs):
         try:
-            user = User.objects.get(id=user_id)
+            user = User.objects.get(auth0_id=user_id)
             data = json.loads(request.body)  # Hier verwenden wir das json-Modul
             serializer = UserSettingsSerializer(data=data)
 
