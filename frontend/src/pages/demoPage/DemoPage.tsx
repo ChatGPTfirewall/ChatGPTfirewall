@@ -258,12 +258,6 @@ Antwort: "" `
                         autoAdjustHeight
                         readOnly
                     />
-                    <DefaultButton
-                        className={styles.resetButton}
-                        disabled
-                    >
-                        {t('resetToDefaultPrompt')}
-                    </DefaultButton>
                     <SpinButton
                         className={styles.chatSettingsSeparator}
                         label={t('prephrases')}

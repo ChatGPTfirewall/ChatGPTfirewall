@@ -26,18 +26,12 @@ const Chat = () => {
     const { t } = useTranslation();
     const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
 
-    const defaultPrompt: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie mit "Ich weiß es nicht".
-    
-{context}
-    
-Frage: 
-    
-{question}
-    
-Antwort: "" `
+    const defaultPrompt_de: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die\nFrage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie\nmit \"Ich weiß es nicht\".\n\n{context}\n\nFrage: \n\n{question}\n\nAntwort: \"\"`
+
+    const defaultPrompt_en: string = `Answer the question using the context below. If the\nquestion cannot be answered with the information provided, answer with \"I don't know\".\n\n{context}\n\nQuestion: \n\n{question}\n\nAnswer: \"\"`
 
     const defaultSettings: Settings = {
-        prompt_template: defaultPrompt,
+        prompt_template: defaultPrompt_de,
         pre_phrase_count: 2,
         post_phrase_count: 2,
         fact_count: 3
@@ -151,8 +145,11 @@ Antwort: "" `
         };
     }
 
-    const resetToDefaultPrompt = () => {
-        handleSettingsChange('prompt_template', defaultPrompt)
+    const resetToDefaultPrompt_de = () => {
+        handleSettingsChange('prompt_template', defaultPrompt_de)
+    }
+    const resetToDefaultPrompt_en = () => {
+        handleSettingsChange('prompt_template', defaultPrompt_en)
     }
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
@@ -327,9 +324,15 @@ Antwort: "" `
                         />
                         <DefaultButton
                             className={styles.resetButton}
-                            onClick={resetToDefaultPrompt}
+                            onClick={resetToDefaultPrompt_de}
                         >
-                            {t('resetToDefaultPrompt')}
+                            {t('resetToDefaultPrompt_de')}
+                        </DefaultButton>
+                        <DefaultButton
+                            className={styles.resetButton}
+                            onClick={resetToDefaultPrompt_en}
+                        >
+                            {t('resetToDefaultPrompt_en')}
                         </DefaultButton>
                         <SpinButton
                             className={styles.chatSettingsSeparator}

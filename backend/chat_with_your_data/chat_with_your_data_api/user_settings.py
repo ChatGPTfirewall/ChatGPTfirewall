@@ -1,5 +1,4 @@
-template_de = """
-Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
+template_de = """Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die
 Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie
 mit "Ich weiß es nicht".
 
@@ -9,11 +8,9 @@ Frage:
 
 {question}
 
-Antwort: "" 
-"""
+Antwort: \"\""""
 
-template_en = """
-Answer the question using the context below. If the
+template_en = """Answer the question using the context below. If the
 question cannot be answered with the information provided, answer with "I don't know".
 
 {context}
@@ -22,9 +19,7 @@ Question:
 
 {question}
 
-Answer: "" 
-"""
-
+Answer: \"\""""
 
 
 # embedded model for user settings (saved as json field in the postgres db at the user)
@@ -35,7 +30,7 @@ class UserSettings:
         pre_phrase_count=2,
         post_phrase_count=2,
         fact_count=3,
-        prompt_template_lang="en"
+        prompt_template_lang="en",
     ):
         if prompt_template_lang == "de":
             self.prompt_template = template_de
@@ -56,11 +51,13 @@ class UserSettings:
     @classmethod
     def from_dict(cls, settings_dict, prompt_template_lang="en"):
         defaults = {
-            "prompt_template": template_de if prompt_template_lang == "de" else template_en,
+            "prompt_template": template_de
+            if prompt_template_lang == "de"
+            else template_en,
             "pre_phrase_count": 2,
             "post_phrase_count": 2,
             "fact_count": 3,
-            "prompt_template_lang": prompt_template_lang
+            "prompt_template_lang": prompt_template_lang,
         }
 
         if settings_dict:
