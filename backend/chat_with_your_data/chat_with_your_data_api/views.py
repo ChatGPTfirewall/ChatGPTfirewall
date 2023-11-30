@@ -16,7 +16,7 @@ from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSeriali
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import vectorize, return_context, embed_text
-from .llm import count_tokens, run_llm, get_template, set_template
+from .llm import count_tokens, run_llm
 from .user_settings import UserSettings
 
 from xml.etree import ElementTree as ET
@@ -243,11 +243,10 @@ class ContextApiView(APIView):
         context = request.data.get("context")
         template = request.data.get("template")
 
-        tokens = count_tokens(question, context)
+        tokens = count_tokens(template, question, context)
 
         if tokens < LLM_MAX_TOKENS:
-            set_template(template)
-            answer = run_llm({"context": context, "question": question})
+            answer = run_llm(template, {"context": context, "question": question})
         else:
             answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)
