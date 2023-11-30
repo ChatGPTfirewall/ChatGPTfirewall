@@ -69,4 +69,9 @@ export type User = {
     lang: string;
 }
 
-
+export type Settings = {
+    prompt_template: string;
+    pre_phrase_count: number;
+    post_phrase_count: number;
+    fact_count: number;
+}

@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
+import { Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
 import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./Chat.module.css";
 
-import { chatApi, chatWithLLM, Fact } from "../../api";
+import { chatApi, chatWithLLM, Fact, getSettings, Settings, updateSettings } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
@@ -18,6 +18,7 @@ import { AuthenticationButton } from "../../components/AuthenticationButton";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
 import { getDocuments } from '../../api';
+import { SettingsButton } from "../../components/SettingsButton";
 
 
 const Chat = () => {
@@ -25,13 +26,22 @@ const Chat = () => {
     const { t } = useTranslation();
     const [isDemoRequestSent, setIsDemoRequestSent] = useState(false);
 
+    const defaultPrompt_de: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die\nFrage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie\nmit \"Ich weiß es nicht\".\n\n{context}\n\nFrage: \n\n{question}\n\nAntwort: \"\"`
+
+    const defaultPrompt_en: string = `Answer the question using the context below. If the\nquestion cannot be answered with the information provided, answer with \"I don't know\".\n\n{context}\n\nQuestion: \n\n{question}\n\nAnswer: \"\"`
+
+    const defaultSettings: Settings = {
+        prompt_template: defaultPrompt_de,
+        pre_phrase_count: 2,
+        post_phrase_count: 2,
+        fact_count: 3
+    };
+
+
+
 
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
-    const [promptTemplate, setPromptTemplate] = useState<string>("");
-    const [retrieveCount, setRetrieveCount] = useState<number>(3);
-    const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
-    const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
-    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+    const [settings, setSettings] = useState<Settings>(defaultSettings);
     const [filesExists, setFileExists] = useState(false);
 
     const lastQuestionRef = useRef<string>("");
@@ -58,7 +68,6 @@ const Chat = () => {
         try {
             const response = await chatApi(question, user!);
             setQuestion(question)
-            setPromptTemplate(response.prompt_template)
             response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
             setAnswers([...answers, [question, response.facts]]);
         } catch (e) {
@@ -68,7 +77,22 @@ const Chat = () => {
         }
     };
 
+    const updateSettingsRequest = async (auth0_id: string, settings: Settings) => {
+        try {
+            const response = await updateSettings(auth0_id, settings);
+        } catch (e) {
+            setError(e);
+        }
+    };
 
+    const getSettingsRequest = async (auth0_id: string) => {
+        try {
+            const response = await getSettings(auth0_id);
+            setSettings(response)
+        } catch (e) {
+            setError(e);
+        }
+    }
 
     const clearChat = () => {
         lastQuestionRef.current = "";
@@ -93,7 +117,7 @@ const Chat = () => {
         const context = (answers[index][1] as Fact[]).map((fact) => fact.answer).join('\n\n');
 
         try {
-            const llmAnswer = await chatWithLLM(question, context, promptTemplate)
+            const llmAnswer = await chatWithLLM(question, context, settings.prompt_template)
             setAnswers([...answers, [answers[index][1], llmAnswer.result]])
         } catch (e) {
             setError(e);
@@ -102,9 +126,31 @@ const Chat = () => {
         }
     };
 
+    function handleSettingsChange<K extends keyof Settings>(key: K, newValue: Settings[K]): void {
+        setSettings(prevSettings => ({
+            ...prevSettings,
+            [key]: newValue
+        }));
+    }
 
+    type SettingsKeyType = keyof Settings;
 
+    function createOnChangeHandler(
+        key: SettingsKeyType,
+        transformFunction: (value: string) => any = value => value // Annahme, dass alle Eingaben ursprünglich Strings sind
+    ): (e: React.SyntheticEvent<HTMLElement>, newValue?: string) => void {
+        return (e, newValue) => {
+            const transformedValue = transformFunction(newValue || "");
+            handleSettingsChange(key, transformedValue);
+        };
+    }
 
+    const resetToDefaultPrompt_de = () => {
+        handleSettingsChange('prompt_template', defaultPrompt_de)
+    }
+    const resetToDefaultPrompt_en = () => {
+        handleSettingsChange('prompt_template', defaultPrompt_en)
+    }
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
@@ -112,6 +158,8 @@ const Chat = () => {
     useEffect(() => {
         if (isAuthenticated) {
             checkFilesFromUser(user!);
+            getSettingsRequest(user!.sub!);
+
         }
     }, [user, isAuthenticated]);
 
@@ -124,27 +172,6 @@ const Chat = () => {
             }
         });
     }
-
-    const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-        setPromptTemplate(newValue || "");
-    };
-
-    const onRetrieveCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setRetrieveCount(parseInt(newValue || "3"));
-    };
-
-    const onUseSemanticRankerChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSemanticRanker(!!checked);
-    };
-
-    const onUseSemanticCaptionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSemanticCaptions(!!checked);
-    };
-
-
-    const onUseSuggestFollowupQuestionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSuggestFollowupQuestions(!!checked);
-    };
 
     const onExampleClicked = (example: string) => {
         makeApiRequest(example);
@@ -160,12 +187,19 @@ const Chat = () => {
 
         setSelectedAnswer(index);
     };
-    
+
     useEffect(() => {
         if (isAuthenticated && !isDemoRequestSent) {
             setIsDemoRequestSent(true);
         }
     }, [isAuthenticated, user, isDemoRequestSent]);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            updateSettingsRequest(user!.sub!, settings);
+        }
+
+    }, [settings]);
 
     const onToggleTab = (tab: AnalysisPanelTabs, index: number) => {
         if (activeAnalysisPanelTab === tab && selectedAnswer === index) {
@@ -183,7 +217,7 @@ const Chat = () => {
                 <div className={styles.commandsContainer}>
                     <FileExplorer user={user!} deletedHook={() => { checkFilesFromUser(user!) }} />
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
+                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                     <KnowledgeBaseModal buttonClassName={styles.commandButton} uploadHook={() => { checkFilesFromUser(user!) }} />
                 </div>
                 <div className={styles.chatRoot}>
@@ -282,39 +316,47 @@ const Chat = () => {
                     >
                         <TextField
                             className={styles.chatSettingsSeparator}
-                            defaultValue={promptTemplate}
-                            label="Override prompt template"
+                            value={settings.prompt_template}
+                            label={t('promptTemplate')}
                             multiline
                             autoAdjustHeight
-                            onChange={onPromptTemplateChange}
+                            onChange={createOnChangeHandler('prompt_template')}
                         />
-
+                        <DefaultButton
+                            className={styles.resetButton}
+                            onClick={resetToDefaultPrompt_de}
+                        >
+                            {t('resetToDefaultPrompt_de')}
+                        </DefaultButton>
+                        <DefaultButton
+                            className={styles.resetButton}
+                            onClick={resetToDefaultPrompt_en}
+                        >
+                            {t('resetToDefaultPrompt_en')}
+                        </DefaultButton>
                         <SpinButton
                             className={styles.chatSettingsSeparator}
-                            label="Retrieve this many documents from search:"
+                            label={t('prephrases')}
+                            min={0}
+                            max={8}
+                            defaultValue={settings.pre_phrase_count.toString()}
+                            onChange={createOnChangeHandler('pre_phrase_count', parseInt)}
+                        />
+                        <SpinButton
+                            className={styles.chatSettingsSeparator}
+                            label={t('postphrases')}
+                            min={0}
+                            max={8}
+                            defaultValue={settings.post_phrase_count.toString()}
+                            onChange={createOnChangeHandler('post_phrase_count', parseInt)}
+                        />
+                        <SpinButton
+                            className={styles.chatSettingsSeparator}
+                            label={t('factCount')}
                             min={1}
-                            max={50}
-                            defaultValue={retrieveCount.toString()}
-                            onChange={onRetrieveCountChange}
-                        />
-                        <Checkbox
-                            className={styles.chatSettingsSeparator}
-                            checked={useSemanticRanker}
-                            label="Use semantic ranker for retrieval"
-                            onChange={onUseSemanticRankerChange}
-                        />
-                        <Checkbox
-                            className={styles.chatSettingsSeparator}
-                            checked={useSemanticCaptions}
-                            label="Use query-contextual summaries instead of whole documents"
-                            onChange={onUseSemanticCaptionsChange}
-                            disabled={!useSemanticRanker}
-                        />
-                        <Checkbox
-                            className={styles.chatSettingsSeparator}
-                            checked={useSuggestFollowupQuestions}
-                            label="Suggest follow-up questions"
-                            onChange={onUseSuggestFollowupQuestionsChange}
+                            max={5}
+                            defaultValue={settings.fact_count.toString()}
+                            onChange={createOnChangeHandler('fact_count', parseInt)}
                         />
                     </Panel>
                 </div>
