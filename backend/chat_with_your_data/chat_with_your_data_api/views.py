@@ -203,10 +203,9 @@ class ChatApiView(APIView):
         vector = vectorize(question)
 
         try:
-            search_results = search(id, vector, MAX_SEARCH_RESULTS)
+            search_results = search(id, vector, user.settings.get("fact_count"))
             tagger = SequenceTagger.load("flair/ner-german")
             tagger_en = SequenceTagger.load("flair/ner-english")
-            search_results = search(id, vector, user.settings.get("fact_count"))
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
