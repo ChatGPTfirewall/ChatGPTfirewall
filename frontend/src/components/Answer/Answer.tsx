@@ -41,13 +41,42 @@ export const Answer = ({
     onChange,
     editMode
 }: Props) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(); 
     const updateFact = (event: any, index: number) => {
         if (typeof searchResults !== 'string') {
             const tempSearchResults = [...searchResults]
             tempSearchResults[index].answer = event;
             onChange(tempSearchResults, answer_index);
         }
+    };
+    const [remapping, setRemapping] = useState<{ [key: string]: string }>({});
+
+    const handleCheckboxChange = (factIndex: number, entity: { pseudo: string, realName: string }) => {
+        setRemapping(prev => {
+            const newRemapping = { ...prev };
+            if (newRemapping[entity.pseudo]) {
+                // Wenn das Pseudonym bereits einem echten Namen zugeordnet ist, entfernen Sie das Mapping.
+                delete newRemapping[entity.pseudo];
+            } else {
+                // Andernfalls fügen Sie das Mapping hinzu.
+                newRemapping[entity.pseudo] = entity.realName;
+            }
+
+            // Ersetzen Sie die Pseudonyme im Antworttext.
+            const newSearchResults = searchResults.map((fact, index) => {
+                if (index === factIndex) {
+                    let newAnswer = fact.answer;
+                    Object.entries(newRemapping).forEach(([pseudo, realName]) => {
+                        newAnswer = newAnswer.replace(new RegExp(pseudo, 'g'), realName);
+                    });
+                    return { ...fact, answer: newAnswer };
+                }
+                return fact;
+            });
+
+            onChange(newSearchResults);
+            return newRemapping;
+        });
     };
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
@@ -88,12 +117,30 @@ export const Answer = ({
                                     <span className={styles.informationText}>{(fact.score * 100).toFixed(2)}% {t('accuracy')}</span>
                                 </div>
                                 {editMode ? (
-                                    <div className={styles.textfield} >
+                                    <div className={styles.textfield}>
                                         <HighlightWithinTextarea
                                             value={fact.answer}
                                             highlight={extractHighlights(fact.answer, fact.entities)}
                                             onChange={event => updateFact(event, index)}
                                         />
+                                        {/* Checkboxen für das Remapping rendern */}
+                                        <div>
+                                            {fact.original_entities && Object.entries(fact.original_entities).map(([realName, pseudo]) => (
+                                                <div key={pseudo}>
+                                                    
+                                                    <input
+                                                        type="checkbox"
+                                                        
+                                                        checked={!!remapping[pseudo]}
+                                                        onChange={() => handleCheckboxChange(index, entity)}
+                                                        
+                                                    /> {remapping[pseudo] ? realName : pseudo}
+                                                    <span> = {realName} </span>
+                                                   
+                                                </div>
+                                            ))}
+                                        
+                                        </div>
                                     </div>
                                 ) : (
                                     <div className={styles.answerText}>{fact.answer}</div>
@@ -103,9 +150,7 @@ export const Answer = ({
                         {children}
                     </div>
                 ) : (
-                    <div>
-                        <div className={styles.answerText}>{searchResults}</div>
-                    </div>
+                    <div className={styles.answerText}>{searchResults}</div>
                 )}
 
             </Stack.Item>

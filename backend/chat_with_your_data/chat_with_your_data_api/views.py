@@ -226,14 +226,16 @@ class ChatApiView(APIView):
 
             # Den restlichen Teil des Textes hinzufügen
             modified_text += text[prev_end:]
+            print(entity_mapping)
 
             fact = {
-                "answer": modified_text,
+                "answer": modified_text + " ",
                 "file": section.document.filename,
                 "score": search_result.score,
                 "context_before": " ",
                 "context_after": " ",
                 "entities": entities,
+                "original_entities": entity_mapping,
             }
             facts.append(fact)
 
