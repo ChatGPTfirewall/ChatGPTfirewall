@@ -79,9 +79,15 @@ const Chat = () => {
     };
 
     const updateSearchResults = (updatedSearchResults: Fact[], answer_index: number) => {
-        const updatedAnswers = [...answers]
-        updatedAnswers[answer_index][1] = updatedSearchResults
-        setAnswers(updatedAnswers)
+        // Sicherstellen, dass 'answers' richtig initialisiert ist und die erwartete Struktur hat
+        const updatedAnswers = answers.map((item, index) => {
+            if (index === answer_index) {
+                // Angenommen, jedes 'answers'-Element ist ein Array und der zweite Eintrag soll aktualisiert werden
+                return [item[0], updatedSearchResults];
+            }
+            return item;
+        });
+        setAnswers(updatedAnswers);
     }
 
     const changeEditMode = () => {

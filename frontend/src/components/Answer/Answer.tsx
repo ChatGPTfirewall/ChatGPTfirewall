@@ -49,35 +49,50 @@ export const Answer = ({
             onChange(tempSearchResults, answer_index);
         }
     };
-    const [remapping, setRemapping] = useState<{ [key: string]: string }>({});
+    
 
-    const handleCheckboxChange = (factIndex: number, entity: { pseudo: string, realName: string }) => {
-        setRemapping(prev => {
-            const newRemapping = { ...prev };
-            if (newRemapping[entity.pseudo]) {
-                // Wenn das Pseudonym bereits einem echten Namen zugeordnet ist, entfernen Sie das Mapping.
-                delete newRemapping[entity.pseudo];
-            } else {
-                // Andernfalls fügen Sie das Mapping hinzu.
-                newRemapping[entity.pseudo] = entity.realName;
-            }
-
-            // Ersetzen Sie die Pseudonyme im Antworttext.
-            const newSearchResults = searchResults.map((fact, index) => {
-                if (index === factIndex) {
-                    let newAnswer = fact.answer;
-                    Object.entries(newRemapping).forEach(([pseudo, realName]) => {
-                        newAnswer = newAnswer.replace(new RegExp(pseudo, 'g'), realName);
-                    });
-                    return { ...fact, answer: newAnswer };
-                }
-                return fact;
-            });
-
-            onChange(newSearchResults);
-            return newRemapping;
+    const handleCheckboxChange = (factIndex, { pseudo, realName }) => {
+        setRemapping(prevRemapping => {
+          const newRemapping = { ...prevRemapping };
+          const isMapped = newRemapping[pseudo];
+      
+          // Update the mapping state
+          newRemapping[pseudo] = !isMapped;
+      
+          // Now we need to update the fact.answer text
+          const newSearchResults = [...searchResults];
+          let newText = newSearchResults[factIndex].answer;
+      
+          // Replace all occurrences of the pseudo or real name
+          if (isMapped) {
+            // If it was mapped, replace the real name with the pseudo
+            newText = newText.split(realName).join(pseudo);
+          } else {
+            // If it wasn't mapped, replace the pseudo with the real name
+            newText = newText.split(pseudo).join(realName);
+          }
+      
+          newSearchResults[factIndex].answer = newText;
+      
+          // Call the onChange provided by parent component to update the state there as well
+          onChange(newSearchResults);
+      
+          return newRemapping;
         });
-    };
+      };
+
+      const [remapping, setRemapping] = useState(() => {
+        const initialRemapping = {};
+        searchResults.forEach((fact) => {
+          if (fact.original_entities) {
+            Object.values(fact.original_entities).forEach((pseudo) => {
+              initialRemapping[pseudo] = false;
+            });
+          }
+        });
+        return initialRemapping;
+      });
+
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
             <Stack.Item>
@@ -132,7 +147,7 @@ export const Answer = ({
                                                         type="checkbox"
                                                         
                                                         checked={!!remapping[pseudo]}
-                                                        onChange={() => handleCheckboxChange(index, entity)}
+                                                        onChange={() => handleCheckboxChange(index, { pseudo, realName })}
                                                         
                                                     /> {remapping[pseudo] ? realName : pseudo}
                                                     <span> = {realName} </span>
