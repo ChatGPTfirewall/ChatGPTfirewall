@@ -83,15 +83,19 @@ export const Answer = ({
 
       const [remapping, setRemapping] = useState(() => {
         const initialRemapping = {};
-        searchResults.forEach((fact) => {
-          if (fact.original_entities) {
-            Object.values(fact.original_entities).forEach((pseudo) => {
-              initialRemapping[pseudo] = false;
+    
+        if (Array.isArray(searchResults)) {
+            searchResults.forEach((fact) => {
+                if (fact.original_entities) {
+                    Object.values(fact.original_entities).forEach((pseudo) => {
+                        initialRemapping[pseudo] = false;
+                    });
+                }
             });
-          }
-        });
+        }
+    
         return initialRemapping;
-      });
+    });
 
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
