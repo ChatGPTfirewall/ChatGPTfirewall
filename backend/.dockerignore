@@ -4,3 +4,4 @@ fly.toml
 .backend_env/
 temp/
 .DS_Store/
+bin

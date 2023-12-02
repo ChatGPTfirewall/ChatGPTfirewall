@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import { Checkbox, Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
+import { Panel, DefaultButton, TextField, SpinButton, PrimaryButton, Text } from "@fluentui/react";
 import { Send24Regular, SparkleFilled } from "@fluentui/react-icons";
 
 import styles from "./DemoPage.module.css";
 
-import { chatApi, chatWithLLM, Fact } from "../../api";
+import { chatApi, chatWithLLM, Fact, getSettings, Settings } from "../../api";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { DemoList } from "../../components/Example";
@@ -15,20 +15,34 @@ import FileExplorer from "../../components/FileExplorer/FileExplorer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from 'react-i18next';
 import { UserLoading } from "../../components/UserChatMessage/UserLoading";
+import { SettingsButton } from "../../components/SettingsButton";
 
 
 
 const DemoPage = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
-    const [promptTemplate, setPromptTemplate] = useState<string>("");
-    const [retrieveCount, setRetrieveCount] = useState<number>(3);
-    const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
-    const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
-    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+
+    const defaultPrompt: string = `Beantworten Sie die Frage anhand des unten stehenden Kontextes. Wenn die Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworten Sie mit "Ich weiß es nicht".
+    
+{context}
+    
+Frage: 
+    
+{question}
+    
+Antwort: "" `
+
+    const defaultSettings: Settings = {
+        prompt_template: "",
+        pre_phrase_count: 2,
+        post_phrase_count: 2,
+        fact_count: 3
+    };
     const { t, i18n } = useTranslation();
 
     const lastQuestionRef = useRef<string>("");
     const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
+    const [settings, setSettings] = useState<Settings>(defaultSettings);
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isLoadingLLM, setIsLoadingLLM] = useState<boolean>(false);
@@ -51,7 +65,6 @@ const DemoPage = () => {
         try {
             const response = await chatApi(question, `auth0|demo_user_${i18n.language}`);
             setQuestion(question)
-            setPromptTemplate(response.prompt_template)
             response.facts.map((fact) => { fact.answer = `${fact.context_before}\n${fact.answer}\n${fact.context_after}` })
             setAnswers([...answers, [question, response.facts]]);
         } catch (e) {
@@ -86,7 +99,7 @@ const DemoPage = () => {
         const context = (answers[index][1] as Fact[]).map((fact) => fact.answer).join('\n\n');
 
         try {
-            const llmAnswer = await chatWithLLM(question, context, promptTemplate)
+            const llmAnswer = await chatWithLLM(question, context, settings.prompt_template)
             setAnswers([...answers, [answers[index][1], llmAnswer.result]])
         } catch (e) {
             setError(e);
@@ -96,32 +109,18 @@ const DemoPage = () => {
     };
 
 
-
+    const getSettingsRequest = async (auth0_id: string) => {
+        try {
+            const response = await getSettings(auth0_id);
+            setSettings(response)
+        } catch (e) {
+            setError(e);
+        }
+    }
 
 
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading, isLoadingLLM]);
 
-
-    const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-        setPromptTemplate(newValue || "");
-    };
-
-    const onRetrieveCountChange = (_ev?: React.SyntheticEvent<HTMLElement, Event>, newValue?: string) => {
-        setRetrieveCount(parseInt(newValue || "3"));
-    };
-
-    const onUseSemanticRankerChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSemanticRanker(!!checked);
-    };
-
-    const onUseSemanticCaptionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSemanticCaptions(!!checked);
-    };
-
-
-    const onUseSuggestFollowupQuestionsChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-        setUseSuggestFollowupQuestions(!!checked);
-    };
 
     const onExampleClicked = (example: string) => {
         makeApiRequest(example);
@@ -154,7 +153,7 @@ const DemoPage = () => {
             <div className={styles.commandsContainer}>
                 <FileExplorer user={{ ...user, sub: modifiedSub }} deletedHook={() => { }} />
                 <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
+                <SettingsButton className={styles.commandButton} onClick={() => { setIsConfigPanelOpen(!isConfigPanelOpen); getSettingsRequest(`auth0|demo_user_${i18n.language}`); }} />
             </div>
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
@@ -253,39 +252,35 @@ const DemoPage = () => {
                 >
                     <TextField
                         className={styles.chatSettingsSeparator}
-                        defaultValue={promptTemplate}
-                        label="Override prompt template"
+                        value={settings.prompt_template}
+                        label={t('promptTemplate')}
                         multiline
                         autoAdjustHeight
-                        onChange={onPromptTemplateChange}
+                        readOnly
                     />
-
                     <SpinButton
                         className={styles.chatSettingsSeparator}
-                        label="Retrieve this many documents from search:"
+                        label={t('prephrases')}
                         min={1}
-                        max={50}
-                        defaultValue={retrieveCount.toString()}
-                        onChange={onRetrieveCountChange}
+                        max={8}
+                        defaultValue={settings.pre_phrase_count.toString()}
+                        disabled
                     />
-                    <Checkbox
+                    <SpinButton
                         className={styles.chatSettingsSeparator}
-                        checked={useSemanticRanker}
-                        label="Use semantic ranker for retrieval"
-                        onChange={onUseSemanticRankerChange}
+                        label={t('postphrases')}
+                        min={1}
+                        max={8}
+                        defaultValue={settings.post_phrase_count.toString()}
+                        disabled
                     />
-                    <Checkbox
+                    <SpinButton
                         className={styles.chatSettingsSeparator}
-                        checked={useSemanticCaptions}
-                        label="Use query-contextual summaries instead of whole documents"
-                        onChange={onUseSemanticCaptionsChange}
-                        disabled={!useSemanticRanker}
-                    />
-                    <Checkbox
-                        className={styles.chatSettingsSeparator}
-                        checked={useSuggestFollowupQuestions}
-                        label="Suggest follow-up questions"
-                        onChange={onUseSuggestFollowupQuestionsChange}
+                        label={t('factCount')}
+                        min={1}
+                        max={5}
+                        defaultValue={settings.fact_count.toString()}
+                        disabled
                     />
                 </Panel>
             </div>

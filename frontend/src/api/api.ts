@@ -1,4 +1,4 @@
-import { ReadDocument, Response } from "./models";
+import { ReadDocument, Response, Settings } from "./models";
 import { User } from "@auth0/auth0-react";
 
 export async function chatApi(question: string, user: User | string): Promise<Response> {
@@ -99,6 +99,40 @@ export async function getDocuments(auth0_id: string): Promise<ReadDocument[]> {
     })
 
     const parsedResponse: ReadDocument[] = await response.json();
+
+    return parsedResponse;
+}
+
+export async function updateSettings(auth0_id: string, settings: Settings): Promise<Settings> {
+
+    const response = await fetch(`/api/users/${auth0_id}/settings`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            prompt_template: settings.prompt_template,
+            pre_phrase_count: settings.pre_phrase_count,
+            post_phrase_count: settings.post_phrase_count,
+            fact_count: settings.fact_count
+        })
+    })
+
+    const parsedResponse: Settings = await response.json();
+
+    return parsedResponse;
+}
+
+export async function getSettings(auth0_id: string): Promise<Settings> {
+
+    const response = await fetch(`/api/users/${auth0_id}/settings`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const parsedResponse: Settings = await response.json();
 
     return parsedResponse;
 }

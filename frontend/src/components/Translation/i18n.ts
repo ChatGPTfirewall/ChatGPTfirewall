@@ -48,7 +48,13 @@ i18n.use(initReactI18next).init({
         "asking": "Asking ChatGPT",
         "logIn": "Log In",
         "orText": "or",
-        "uploadYourFile": "Upload a file"
+        "uploadYourFile": "Upload a file",
+        "promptTemplate": "Prompt template",
+        "prephrases": "Number of phrases before the facts",
+        "postphrases": "Number of phrases after the facts",
+        "factCount": "Number of facts",
+        "resetToDefaultPrompt_de": "Reset to german default prompt",
+        "resetToDefaultPrompt_en": "Reset to english default prompt"
       },
     },
     de: {
@@ -93,7 +99,13 @@ i18n.use(initReactI18next).init({
         "asking": "Frage ChatGPT",
         "logIn": "Anmelden",
         "orText": "oder",
-        "uploadYourFile": "Laden Sie eine Datei hoch"
+        "uploadYourFile": "Laden Sie eine Datei hoch",
+        "promptTemplate": "Prompt Template",
+        "prephrases": "Anzahl Sätze vor den Fakten",
+        "postphrases": "Anzahl Sätze nach den Fakten",
+        "factCount": "Anzahl der Fakten",
+        "resetToDefaultPrompt_de": "Auf deutschen Standard-Prompt zurücksetzen",
+        "resetToDefaultPrompt_en": "Auf englischen Standard-Prompt zurücksetzen"
       },
     },
     // Weitere Sprachen und Übersetzungen hier hinzufügen

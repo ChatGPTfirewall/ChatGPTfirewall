@@ -1,6 +1,6 @@
 import os
 
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.db import IntegrityError
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,21 +9,21 @@ from django.http import HttpResponseNotFound, HttpResponse
 from pathlib import Path
 import requests
 import mimetypes
+import json
 
 from .models import User, Section, Document
-from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer
+from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer, UserSettingsSerializer
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
 from .embedding import vectorize, return_context, embed_text
-from .llm import count_tokens, run_llm, get_template, set_template
+from .llm import count_tokens, run_llm
+from .user_settings import UserSettings
+
 from xml.etree import ElementTree as ET
 from flair.data import Sentence
 from flair.models import SequenceTagger
 
 LLM_MAX_TOKENS = 4098
-RANGE_CONTEXT_AFTER = int(os.getenv("CONTEXT_RANGE", 5))
-RANGE_CONTEXT_BEFORE = int(os.getenv("CONTEXT_RANGE", 5))
-MAX_SEARCH_RESULTS = int(os.getenv("MAX_SEARCH_RESULTS", 3))
 
 
 def download_file(request, filename):
@@ -79,6 +79,36 @@ class UserApiView(APIView):
             )
 
         return response
+
+
+class UserSettingsApiView(APIView):
+    def get(self, request, user_id, *args, **kwargs):
+        try:
+            user = User.objects.get(auth0_id=user_id)
+            user_settings = UserSettings.from_dict(user.settings, user.lang)
+            serializer = UserSettingsSerializer(user_settings)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    def post(self, request, user_id, *args, **kwargs):
+        try:
+            user = User.objects.get(auth0_id=user_id)
+            data = json.loads(request.body)  # Hier verwenden wir das json-Modul
+            serializer = UserSettingsSerializer(data=data)
+
+            if serializer.is_valid():
+                user_settings_instance = UserSettings.from_dict(data, user.lang)
+                user.settings = user_settings_instance.to_dict()
+                user.save()
+                return Response(serializer.data)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        except json.JSONDecodeError:
+            return Response({'message': 'Invalid JSON'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class UploadApiView(APIView):
@@ -170,13 +200,13 @@ class ChatApiView(APIView):
         [_, id] = auth0_id.split("|")
 
         user = User.objects.get(auth0_id=auth0_id)
-
         vector = vectorize(question)
 
         try:
             search_results = search(id, vector, MAX_SEARCH_RESULTS)
             tagger = SequenceTagger.load("flair/ner-german")
             tagger_en = SequenceTagger.load("flair/ner-english")
+            search_results = search(id, vector, user.settings.get("fact_count"))
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -187,8 +217,8 @@ class ChatApiView(APIView):
             (before_result, after_result) = return_context(
                 embedded_text,
                 section.doc_index,
-                RANGE_CONTEXT_BEFORE,
-                RANGE_CONTEXT_AFTER,
+                user.settings.get("pre_phrase_count"),
+                user.settings.get("post_phrase_count"),
             )
 
             entities = []
@@ -243,7 +273,7 @@ class ChatApiView(APIView):
             }
             facts.append(fact)
 
-        response = {"facts": facts, "prompt_template": get_template()}
+        response = {"facts": facts, "prompt_template": user.settings.get("prompt_template")}
 
         return Response(response, status.HTTP_200_OK)
     
@@ -259,11 +289,10 @@ class ContextApiView(APIView):
         context = request.data.get("context")
         template = request.data.get("template")
 
-        tokens = count_tokens(question, context)
+        tokens = count_tokens(template, question, context)
 
         if tokens < LLM_MAX_TOKENS:
-            set_template(template)
-            answer = run_llm({"context": context, "question": question})
+            answer = run_llm(template, {"context": context, "question": question})
         else:
             answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)
