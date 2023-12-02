@@ -176,6 +176,7 @@ class ChatApiView(APIView):
         try:
             search_results = search(id, vector, MAX_SEARCH_RESULTS)
             tagger = SequenceTagger.load("flair/ner-german")
+            tagger_en = SequenceTagger.load("flair/ner-english")
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -204,7 +205,10 @@ class ChatApiView(APIView):
             #print(section.content + before_result + after_result)
             text = section.content + before_result + after_result
             sentence = Sentence(text)
-            tagger.predict(sentence)
+            if(user.lang == "de"):
+                tagger.predict(sentence)
+            elif(user.lang == "en"):
+                tagger_en.predict(sentence)
 
             entity_mapping = {}
             modified_text = ""
