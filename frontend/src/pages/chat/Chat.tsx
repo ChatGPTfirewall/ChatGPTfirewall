@@ -102,16 +102,14 @@ const Chat = () => {
         setAnswers([]);
     };
 
-    const updateSearchResults = (updatedSearchResults: Fact[], answer_index: number) => {
-        // Sicherstellen, dass 'answers' richtig initialisiert ist und die erwartete Struktur hat
+    const updateSearchResults = (updatedSearchResults: Fact[], answer_index?: number) => {
         const updatedAnswers = answers.map((item, index) => {
             if (index === answer_index) {
-                // Angenommen, jedes 'answers'-Element ist ein Array und der zweite Eintrag soll aktualisiert werden
-                return [item[0], updatedSearchResults];
+                return [item[0] as string | Fact[], updatedSearchResults];
             }
-            return item;
+            return item as [string | Fact[], string | Fact[]];
         });
-        setAnswers(updatedAnswers);
+        setAnswers(updatedAnswers as [string | Fact[], string | Fact[]][]);
     }
 
     const changeEditMode = () => {

@@ -84,9 +84,9 @@ Antwort: "" `
         setAnswers([]);
     };
 
-    const updateSearchResults = (updatedSearchResults: Fact[], answer_index: number) => {
+    const updateSearchResults = (updatedSearchResults: Fact[], answer_index?: number) => {
         const updatedAnswers = [...answers]
-        updatedAnswers[answer_index][1] = updatedSearchResults
+        updatedAnswers[answer_index!][1] = updatedSearchResults
         setAnswers(updatedAnswers)
     }
 
