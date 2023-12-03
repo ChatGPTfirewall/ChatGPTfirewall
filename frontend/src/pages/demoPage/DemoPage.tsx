@@ -85,10 +85,15 @@ Antwort: "" `
     };
 
     const updateSearchResults = (updatedSearchResults: Fact[], answer_index?: number) => {
-        const updatedAnswers = [...answers]
-        updatedAnswers[answer_index!][1] = updatedSearchResults
-        setAnswers(updatedAnswers)
+        const updatedAnswers = answers.map((item, index) => {
+            if (index === answer_index) {
+                return [item[0] as string | Fact[], updatedSearchResults];
+            }
+            return item as [string | Fact[], string | Fact[]];
+        });
+        setAnswers(updatedAnswers as [string | Fact[], string | Fact[]][]);
     }
+
 
     const changeEditMode = () => {
         setEditMode(!editMode)
