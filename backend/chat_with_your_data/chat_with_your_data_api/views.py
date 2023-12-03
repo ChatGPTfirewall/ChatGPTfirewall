@@ -189,6 +189,8 @@ class DocumentApiView(APIView):
         Document.objects.filter(id__in=document_ids).delete()
         return Response("", status=status.HTTP_200_OK)
 
+tagger = SequenceTagger.load("flair/ner-german")
+tagger_en = SequenceTagger.load("flair/ner-english")
 
 class ChatApiView(APIView):
     def post(self, request, *args, **kwargs):
@@ -204,8 +206,7 @@ class ChatApiView(APIView):
 
         try:
             search_results = search(id, vector, user.settings.get("fact_count"))
-            tagger = SequenceTagger.load("flair/ner-german")
-            tagger_en = SequenceTagger.load("flair/ner-english")
+
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
