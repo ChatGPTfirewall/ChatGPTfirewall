@@ -39,7 +39,8 @@ export type Fact = {
     score: number;
     context_before: string;
     context_after: string;
-    entities: [[string, number, number, string]];
+    entities: [{TEXT: string, START_CHAR: number, END_CHAR: number, LABEL: string}];
+    original_entities: string[];
 }
 
 export type Response = {

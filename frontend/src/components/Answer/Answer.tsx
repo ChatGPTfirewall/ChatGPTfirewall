@@ -18,12 +18,15 @@ interface Props {
     onFollowupQuestionClicked?: (question: string) => void;
     showFollowupQuestions?: boolean;
     children: ReactNode;
-    onChange: any;
+    onChange: (searchResults: Fact[], answerIndex?: number) => void;
     editMode: boolean;
 }
 
+interface Remapping {
+    [key: string]: boolean;
+}
 
-const extractHighlights = (text, entities) => {
+const extractHighlights = (text: string, entities: [{ TEXT: string, START_CHAR: number, END_CHAR: number, LABEL: string }]): string[] => {
     if (!entities || !text) return [];
 
     return entities
@@ -41,7 +44,7 @@ export const Answer = ({
     onChange,
     editMode
 }: Props) => {
-    const { t } = useTranslation(); 
+    const { t } = useTranslation();
     const updateFact = (event: any, index: number) => {
         if (typeof searchResults !== 'string') {
             const tempSearchResults = [...searchResults]
@@ -49,41 +52,41 @@ export const Answer = ({
             onChange(tempSearchResults, answer_index);
         }
     };
-    
 
-    const handleCheckboxChange = (factIndex, { pseudo, realName }) => {
+
+    const handleCheckboxChange = (factIndex: number, { pseudo, realName }: { pseudo: string; realName: string }) => {
         setRemapping(prevRemapping => {
-          const newRemapping = { ...prevRemapping };
-          const isMapped = newRemapping[pseudo];
-      
-          // Update the mapping state
-          newRemapping[pseudo] = !isMapped;
-      
-          // Now we need to update the fact.answer text
-          const newSearchResults = [...searchResults];
-          let newText = newSearchResults[factIndex].answer;
-      
-          // Replace all occurrences of the pseudo or real name
-          if (isMapped) {
-            // If it was mapped, replace the real name with the pseudo
-            newText = newText.split(realName).join(pseudo);
-          } else {
-            // If it wasn't mapped, replace the pseudo with the real name
-            newText = newText.split(pseudo).join(realName);
-          }
-      
-          newSearchResults[factIndex].answer = newText;
-      
-          // Call the onChange provided by parent component to update the state there as well
-          onChange(newSearchResults);
-      
-          return newRemapping;
-        });
-      };
+            const newRemapping = { ...prevRemapping };
+            const isMapped = newRemapping[pseudo];
 
-      const [remapping, setRemapping] = useState(() => {
-        const initialRemapping = {};
-    
+            // Update the mapping state
+            newRemapping[pseudo] = !isMapped;
+
+            // Now we need to update the fact.answer text
+            const newSearchResults = [...searchResults as Fact[]];
+            let newText = newSearchResults[factIndex].answer;
+
+            // Replace all occurrences of the pseudo or real name
+            if (isMapped) {
+                // If it was mapped, replace the real name with the pseudo
+                newText = newText.split(realName).join(pseudo);
+            } else {
+                // If it wasn't mapped, replace the pseudo with the real name
+                newText = newText.split(pseudo).join(realName);
+            }
+
+            newSearchResults[factIndex].answer = newText;
+
+            // Call the onChange provided by parent component to update the state there as well
+            onChange(newSearchResults);
+
+            return newRemapping;
+        });
+    };
+
+    const [remapping, setRemapping] = useState<Remapping>(() => {
+        const initialRemapping: Remapping = {};
+
         if (Array.isArray(searchResults)) {
             searchResults.forEach((fact) => {
                 if (fact.original_entities) {
@@ -93,7 +96,7 @@ export const Answer = ({
                 }
             });
         }
-    
+
         return initialRemapping;
     });
 
@@ -146,19 +149,19 @@ export const Answer = ({
                                         <div>
                                             {fact.original_entities && Object.entries(fact.original_entities).map(([realName, pseudo]) => (
                                                 <div key={pseudo}>
-                                                    
+
                                                     <input
                                                         type="checkbox"
-                                                        
+
                                                         checked={!!remapping[pseudo]}
                                                         onChange={() => handleCheckboxChange(index, { pseudo, realName })}
-                                                        
+
                                                     /> {remapping[pseudo] ? realName : pseudo}
                                                     <span> = {realName} </span>
-                                                   
+
                                                 </div>
                                             ))}
-                                        
+
                                         </div>
                                     </div>
                                 ) : (
