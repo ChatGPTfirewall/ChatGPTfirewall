@@ -20,6 +20,8 @@ from .llm import count_tokens, run_llm
 from .user_settings import UserSettings
 
 from xml.etree import ElementTree as ET
+from flair.data import Sentence
+from flair.models import SequenceTagger
 
 LLM_MAX_TOKENS = 4098
 
@@ -187,6 +189,8 @@ class DocumentApiView(APIView):
         Document.objects.filter(id__in=document_ids).delete()
         return Response("", status=status.HTTP_200_OK)
 
+tagger = SequenceTagger.load("flair/ner-german")
+tagger_en = SequenceTagger.load("flair/ner-english")
 
 class ChatApiView(APIView):
     def post(self, request, *args, **kwargs):
@@ -202,6 +206,7 @@ class ChatApiView(APIView):
 
         try:
             search_results = search(id, vector, user.settings.get("fact_count"))
+
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -218,21 +223,62 @@ class ChatApiView(APIView):
 
             entities = []
             for ent in embedded_text.ents:
-                entities.append([ent.text, ent.start_char, ent.end_char, ent.label_])
+                entity_info = {
+                    "TEXT": ent.text,
+                    "START_CHAR": ent.start_char,
+                    "END_CHAR": ent.end_char,
+                    "LABEL": ent.label_
+                }
+                entities.append(entity_info)
+
+            
+            #print(section.content + before_result + after_result)
+            text = section.content + before_result + after_result
+            sentence = Sentence(text)
+            if(user.lang == "de"):
+                tagger.predict(sentence)
+            elif(user.lang == "en"):
+                tagger_en.predict(sentence)
+
+            entity_mapping = {}
+            modified_text = ""
+            prev_end = 0
+            counter = {"PER": 0, "LOC": 0}
+            for entity in sentence.get_spans('ner'):
+                if entity.get_label('ner').value in ["PER", "LOC"]:  # Filter für Personen (PER) und Orte (LOC)
+                    start, end = entity.start_position, entity.end_position
+                    original_value = text[start:end]
+                    # Erstellen oder Abrufen des Pseudowerts
+                    pseudo_value = entity_mapping.get(original_value)
+                    if not pseudo_value:
+                        pseudo_value = generate_pseudo(entity.get_label('ner').value, counter[entity.get_label('ner').value])
+                        counter[entity.get_label('ner').value] += 1
+                        entity_mapping[original_value] = pseudo_value
+                    # Text zusammenfügen
+                    modified_text += text[prev_end:start] + pseudo_value
+                    prev_end = end
+
+            # Den restlichen Teil des Textes hinzufügen
+            modified_text += text[prev_end:]
+            print(entity_mapping)
+
             fact = {
-                "answer": section.content,
+                "answer": modified_text + " ",
                 "file": section.document.filename,
                 "score": search_result.score,
-                "context_before": before_result,
-                "context_after": after_result,
+                "context_before": " ",
+                "context_after": " ",
                 "entities": entities,
+                "original_entities": entity_mapping,
             }
             facts.append(fact)
 
         response = {"facts": facts, "prompt_template": user.settings.get("prompt_template")}
 
         return Response(response, status.HTTP_200_OK)
-
+    
+def generate_pseudo(entity_type, counter):
+    return f"{entity_type[:3]}_{counter}"
 
 class ContextApiView(APIView):
     def post(self, request, *args, **kwargs):
