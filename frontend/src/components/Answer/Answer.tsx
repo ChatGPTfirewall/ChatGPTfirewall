@@ -30,7 +30,7 @@ const extractHighlights = (text: string, entities: [{ TEXT: string, START_CHAR: 
     if (!entities || !text) return [];
 
     return entities
-        .filter(entity => entity.LABEL === 'LOC' || entity.LABEL === 'PER')
+        .filter(entity => entity.LABEL === 'LOC' || entity.LABEL === 'PER' || entity.LABEL === 'PERSON' || entity.LABEL === 'GPE')
         .map(entity => entity.TEXT);
 };
 
