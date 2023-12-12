@@ -139,13 +139,15 @@ export const Answer = ({
                                     <span className={styles.informationText}>{(fact.score * 100).toFixed(2)}% {t('accuracy')}</span>
                                 </div>
                                 {editMode ? (
-                                    <div className={styles.textfield}>
-                                        <HighlightWithinTextarea
-                                            value={fact.answer}
-                                            highlight={extractHighlights(fact.answer, fact.entities)}
-                                            onChange={event => updateFact(event, index)}
-                                        />
-                                        {/* Checkboxen für das Remapping rendern */}
+                                    <div>
+                                        <div className={styles.textfield}>
+                                            <HighlightWithinTextarea
+                                                value={fact.answer}
+                                                highlight={extractHighlights(fact.answer, fact.entities)}
+                                                onChange={event => updateFact(event, index)}
+                                            />
+                                            {/* Checkboxen für das Remapping rendern */}
+                                        </div>
                                         <div>
                                             {fact.original_entities && Object.entries(fact.original_entities).map(([realName, pseudo]) => (
                                                 <div key={pseudo}>

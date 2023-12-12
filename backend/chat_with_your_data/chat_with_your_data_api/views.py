@@ -12,10 +12,22 @@ import mimetypes
 import json
 
 from .models import User, Section, Document
-from .serializers import UserSerializer, DocumentSerializer, ReadDocumentSerializer, UserSettingsSerializer
+from .serializers import (
+    UserSerializer,
+    DocumentSerializer,
+    ReadDocumentSerializer,
+    UserSettingsSerializer,
+)
 from .file_importer import extract_text, save_file
 from .qdrant import create_collection, insert_text, search, delete_text
-from .embedding import vectorize, return_context, embed_text
+from .embedding import (
+    vectorize,
+    return_context,
+    embed_text,
+    detect_entities,
+    map_entities,
+    anonymize_text,
+)
 from .llm import count_tokens, run_llm
 from .user_settings import UserSettings
 
@@ -90,7 +102,7 @@ class UserSettingsApiView(APIView):
             return Response(serializer.data)
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        
+
     def post(self, request, user_id, *args, **kwargs):
         try:
             user = User.objects.get(auth0_id=user_id)
@@ -105,10 +117,13 @@ class UserSettingsApiView(APIView):
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist:
-            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response(
+                {"message": "User not found"}, status=status.HTTP_404_NOT_FOUND
+            )
         except json.JSONDecodeError:
-            return Response({'message': 'Invalid JSON'}, status=status.HTTP_400_BAD_REQUEST)
-
+            return Response(
+                {"message": "Invalid JSON"}, status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class UploadApiView(APIView):
@@ -189,8 +204,6 @@ class DocumentApiView(APIView):
         Document.objects.filter(id__in=document_ids).delete()
         return Response("", status=status.HTTP_200_OK)
 
-tagger = SequenceTagger.load("flair/ner-german")
-tagger_en = SequenceTagger.load("flair/ner-english")
 
 class ChatApiView(APIView):
     def post(self, request, *args, **kwargs):
@@ -206,7 +219,6 @@ class ChatApiView(APIView):
 
         try:
             search_results = search(id, vector, user.settings.get("fact_count"))
-
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -227,39 +239,19 @@ class ChatApiView(APIView):
                     "TEXT": ent.text,
                     "START_CHAR": ent.start_char,
                     "END_CHAR": ent.end_char,
-                    "LABEL": ent.label_
+                    "LABEL": ent.label_,
                 }
                 entities.append(entity_info)
 
-            
-            #print(section.content + before_result + after_result)
             text = section.content + before_result + after_result
             sentence = Sentence(text)
-            if(user.lang == "de"):
-                tagger.predict(sentence)
-            elif(user.lang == "en"):
-                tagger_en.predict(sentence)
 
-            entity_mapping = {}
-            modified_text = ""
-            prev_end = 0
+            # Anonymisierung des Textes
+            ner_entities = detect_entities(sentence, user.lang)
             counter = {"PER": 0, "LOC": 0}
-            for entity in sentence.get_spans('ner'):
-                if entity.get_label('ner').value in ["PER", "LOC"]:  # Filter für Personen (PER) und Orte (LOC)
-                    start, end = entity.start_position, entity.end_position
-                    original_value = text[start:end]
-                    # Erstellen oder Abrufen des Pseudowerts
-                    pseudo_value = entity_mapping.get(original_value)
-                    if not pseudo_value:
-                        pseudo_value = generate_pseudo(entity.get_label('ner').value, counter[entity.get_label('ner').value])
-                        counter[entity.get_label('ner').value] += 1
-                        entity_mapping[original_value] = pseudo_value
-                    # Text zusammenfügen
-                    modified_text += text[prev_end:start] + pseudo_value
-                    prev_end = end
+            entity_mapping = map_entities(ner_entities, text, counter)
+            modified_text = anonymize_text(text, ner_entities, entity_mapping)
 
-            # Den restlichen Teil des Textes hinzufügen
-            modified_text += text[prev_end:]
             print(entity_mapping)
 
             fact = {
@@ -273,12 +265,13 @@ class ChatApiView(APIView):
             }
             facts.append(fact)
 
-        response = {"facts": facts, "prompt_template": user.settings.get("prompt_template")}
+        response = {
+            "facts": facts,
+            "prompt_template": user.settings.get("prompt_template"),
+        }
 
         return Response(response, status.HTTP_200_OK)
-    
-def generate_pseudo(entity_type, counter):
-    return f"{entity_type[:3]}_{counter}"
+
 
 class ContextApiView(APIView):
     def post(self, request, *args, **kwargs):
