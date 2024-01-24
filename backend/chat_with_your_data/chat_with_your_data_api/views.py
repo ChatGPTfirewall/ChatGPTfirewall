@@ -29,6 +29,7 @@ from .embedding import (
     anonymize_text,
 )
 from .llm import count_tokens, run_llm
+from .llmManager import LLM, llmManager
 from .user_settings import UserSettings
 
 from xml.etree import ElementTree as ET
@@ -36,6 +37,12 @@ from flair.data import Sentence
 from flair.models import SequenceTagger
 
 LLM_MAX_TOKENS = 4098
+
+# initialize llm engine
+myLLM = LLM("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")
+
+# initialize LLM Manager
+myllmManager = llmManager(myLLM) 
 
 
 def download_file(request, filename):
@@ -71,12 +78,17 @@ class UserApiView(APIView):
         }
         serializer = UserSerializer(data=data)
 
+
+
         try:
             if serializer.is_valid():
                 serializer.save()
                 [_, id] = request.data.get("auth0_id").split("|")
                 create_collection(id)
                 response = Response(serializer.data, status=status.HTTP_201_CREATED)
+
+                #create first Room when user is created
+                myllmManager.addRoom(id, "Initial Room")
             else:
                 # Handle other validation errors
                 response = Response(
@@ -252,7 +264,7 @@ class ChatApiView(APIView):
             entity_mapping = map_entities(ner_entities, text, counter)
             modified_text = anonymize_text(text, ner_entities, entity_mapping)
 
-            print(entity_mapping)
+            #print(entity_mapping)
 
             fact = {
                 "answer": modified_text + " ",
@@ -281,11 +293,20 @@ class ContextApiView(APIView):
         question = request.data.get("question")
         context = request.data.get("context")
         template = request.data.get("template")
+        roomID = request.data.get("roomID") 
+        userID = request.data.get("userID")
+
+        # DEBUG !!
+        roomID = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+        userID = "65b014e6f364a182af7fd006"
+
+        myRoom = myllmManager.getRoom(userID, roomID)[:1].get()
 
         tokens = count_tokens(template, question, context)
 
         if tokens < LLM_MAX_TOKENS:
-            answer = run_llm(template, {"context": context, "question": question})
+            #answer = run_llm(template, {"context": context, "question": question})
+            answer = myllmManager.llm.run(myRoom, context, question)
         else:
             answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)

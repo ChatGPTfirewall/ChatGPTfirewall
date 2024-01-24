@@ -34,3 +34,46 @@ class Section(models.Model):
 
     def __str__(self):
         return self.document.filename
+
+class Room(models.Model):
+    userID = models.CharField(max_length=255, null=False)    # owner
+    roomID = models.CharField(max_length=255, unique=True, null=False)    # identifier
+    roomName = models.CharField(max_length=255, default="Room")
+    anonymizeCompleteContext= models.BooleanField('Anonymize Switch', default=True)
+    prompt = models.TextField(default="Beantworte die folgende Frage ausschließlich mit folgenden Informationen:")
+    # TODO prompt per Room in Settings
+    
+    def __str__(self):
+        return self.userID +" + " + self.roomID
+
+    def appendContext(self, room, role, content):
+        myContext = ContextEntry(roomID=room,role=role,content=content)
+        myContext.save()
+
+    def createFullMessage(self, room):
+        context = ContextEntry.objects.all()
+
+        fullMessage: List[Dict] = []
+
+        systemLine = {"role": "system", "content": room.prompt}
+        fullMessage.append(systemLine)
+
+        for line in context:
+            messageLine = {"role": line.role, "content": line.content}
+            fullMessage.append(messageLine)
+
+        return fullMessage
+
+
+class ContextEntry(models.Model):
+    roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
+    role = models.CharField(max_length=255)
+    content = models.TextField()
+
+class AnonymizeEntitie(models.Model):
+    roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
+    anonymized = models.CharField(max_length=255, null=False)
+    deanonymized = models.CharField(max_length=255, unique=True, null=False)
+    entityType = models.CharField(max_length=255, null=False)
+
+
