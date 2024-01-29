@@ -146,6 +146,7 @@ class UploadApiView(APIView):
         auth0_id = request.POST.get("user")
         user = User.objects.get(auth0_id=auth0_id)
         files = request.FILES.getlist("files")
+        room_id = request.data.get("room_id") 
 
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
@@ -181,9 +182,12 @@ class UploadApiView(APIView):
                 success = False
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+            # DEBUG !!
+            room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
-            qdrant_result = insert_text(id, result, user.lang)
+            qdrant_result = insert_text(id, room_id, result, user.lang)
             if qdrant_result != True:
                 success = False
 
@@ -225,12 +229,16 @@ class ChatApiView(APIView):
         question = request.data.get("question")
         auth0_id = request.data.get("user_auth0_id")
         [_, id] = auth0_id.split("|")
+        room_id = request.data.get("room_id") 
 
         user = User.objects.get(auth0_id=auth0_id)
         vector = vectorize(question)
 
+        # DEBUG !!
+        room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+
         try:
-            search_results = search(id, vector, user.settings.get("fact_count"))
+            search_results = search(id, room_id, vector, user.settings.get("fact_count"))
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -293,14 +301,14 @@ class ContextApiView(APIView):
         question = request.data.get("question")
         context = request.data.get("context")
         template = request.data.get("template")
-        roomID = request.data.get("roomID") 
-        userID = request.data.get("userID")
+        room_id = request.data.get("room_id") 
+        user_id = request.data.get("user_id")
 
         # DEBUG !!
-        roomID = "da4a935f-0852-4ac1-abf8-0944ce65913d"
-        userID = "65b014e6f364a182af7fd006"
+        room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+        user_id = "65b014e6f364a182af7fd006"
 
-        myRoom = myllmManager.getRoom(userID, roomID)[:1].get()
+        myRoom = myllmManager.getRoom(user_id, room_id)[:1].get()
 
         tokens = count_tokens(template, question, context)
 
