@@ -11,7 +11,7 @@ import requests
 import mimetypes
 import json
 
-from .models import User, Section, Document
+from .models import User, Section, Document, RoomDocuments, Room
 from .serializers import (
     UserSerializer,
     DocumentSerializer,
@@ -148,6 +148,10 @@ class UploadApiView(APIView):
         files = request.FILES.getlist("files")
         room_id = request.data.get("room_id") 
 
+        # DEBUG !!
+        room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+
+        room = Room.objects.get(roomID=room_id)
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
 
@@ -178,12 +182,13 @@ class UploadApiView(APIView):
             if serializer.is_valid():
                 result = serializer.save()
                 documents.append(serializer.data)
+
+                roomDocEntry = RoomDocuments(room=room,document=result) # save room and doc id
+                roomDocEntry.save()
             else:
                 success = False
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-            # DEBUG !!
-            room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
 
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
@@ -196,11 +201,26 @@ class UploadApiView(APIView):
         else:
             return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
 
+class RoomsApiView(APIView):
+    # get all Rooms
+    def get(self, request, *args, **kwargs):
+        auth0_id = request.GET.get("user_auth0_id")
+        user = User.objects.get(auth0_id=auth0_id)
+
+        docs = Document.objects.filter(user_id=user.id)
+
+        roomDocs = RoomDocuments.objects.filter(document__in=docs)
+
+        print(roomDocs)
+
+        return Response(rooms, status=status.HTTP_201_CREATED)
+
 
 class DocumentApiView(APIView):
     def post(self, request, *args, **kwargs):
         auth0_id = request.data.get("auth0_id")
         user = User.objects.get(auth0_id=auth0_id)
+        # TODO room filter 
 
         documents = Document.objects.filter(user_id=user.id)
 

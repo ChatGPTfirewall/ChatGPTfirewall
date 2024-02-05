@@ -24,7 +24,6 @@ class Document(models.Model):
     def __str__(self):
         return self.filename
 
-
 class Section(models.Model):
     document = models.ForeignKey(
         Document, on_delete=models.CASCADE, blank=True, null=False
@@ -40,7 +39,8 @@ class Room(models.Model):
     roomID = models.CharField(max_length=255, unique=True, null=False)    # identifier
     roomName = models.CharField(max_length=255, default="Room")
     anonymizeCompleteContext= models.BooleanField('Anonymize Switch', default=True)
-    prompt = models.TextField(default="Beantworte die folgende Frage ausschließlich mit folgenden Informationen:")
+    prompt = models.TextField(default="Beantworte die folgende Frage ausschließlich mit folgenden Informationen:") # TODO get prompt from user settings
+    created_at = models.DateTimeField(auto_now_add=True)
     # TODO prompt per Room in Settings
     
     def __str__(self):
@@ -51,7 +51,8 @@ class Room(models.Model):
         myContext.save()
 
     def createFullMessage(self, room):
-        context = ContextEntry.objects.all()
+        #context = ContextEntry.objects.all()
+        context = ContextEntry.objects.filter(roomID=room).order_by('created_at')
 
         fullMessage: List[Dict] = []
 
@@ -69,6 +70,7 @@ class ContextEntry(models.Model):
     roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
     role = models.CharField(max_length=255)
     content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class AnonymizeEntitie(models.Model):
     roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
@@ -76,4 +78,6 @@ class AnonymizeEntitie(models.Model):
     deanonymized = models.CharField(max_length=255, unique=True, null=False)
     entityType = models.CharField(max_length=255, null=False)
 
-
+class RoomDocuments(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    document = models.ForeignKey(Document, on_delete=models.CASCADE)
