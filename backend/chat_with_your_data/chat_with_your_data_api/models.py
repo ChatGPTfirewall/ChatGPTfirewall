@@ -1,7 +1,15 @@
 from django.db import models
 from django.db.models import JSONField
 from .user_settings import UserSettings
+import tiktoken
+from langchain.llms import OpenAI
+import os
 
+LLM_MAX_TOKENS = 4098
+
+token_encoder = "cl100k_base"  # used for ChatGPT 3.5 Turbo and ChatGPT 4
+llm = OpenAI(openai_api_key=os.getenv("OPEN_AI_KEY"))
+encoder = tiktoken.get_encoding(token_encoder)
 
 class User(models.Model):
     auth0_id = models.CharField(max_length=255, unique=True, null=False)
@@ -52,16 +60,26 @@ class Room(models.Model):
 
     def createFullMessage(self, room):
         #context = ContextEntry.objects.all()
-        context = ContextEntry.objects.filter(roomID=room).order_by('created_at')
+        context = ContextEntry.objects.filter(roomID=room).order_by('-created_at')
 
         fullMessage: List[Dict] = []
+        msg_lenght = 0
+
+        for line in context:
+            messageLine = {"role": line.role, "content": line.content}
+            token_size = len(encoder.encode(str(messageLine)))
+            msg_lenght = msg_lenght + token_size
+            print(msg_lenght)
+            if msg_lenght < LLM_MAX_TOKENS:
+                fullMessage.append(messageLine)
+            else:
+                break
 
         systemLine = {"role": "system", "content": room.prompt}
         fullMessage.append(systemLine)
 
-        for line in context:
-            messageLine = {"role": line.role, "content": line.content}
-            fullMessage.append(messageLine)
+        fullMessage.reverse()
+
 
         return fullMessage
 
