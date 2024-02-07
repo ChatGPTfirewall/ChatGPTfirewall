@@ -12,6 +12,7 @@ import mimetypes
 import json
 
 from .models import User, Section, Document, RoomDocuments, Room
+from django.core import serializers
 from .serializers import (
     UserSerializer,
     DocumentSerializer,
@@ -211,9 +212,50 @@ class RoomsApiView(APIView):
 
         roomDocs = RoomDocuments.objects.filter(document__in=docs)
 
-        print(roomDocs)
+        roomList = []
+        for line in roomDocs:
+            if line.room not in roomList:
+                roomList.append(line.room)
 
-        return Response(rooms, status=status.HTTP_201_CREATED)
+        return Response(serializers.serialize('json',roomList), status=status.HTTP_201_CREATED)
+    
+    # create room
+    def post(self, request, *args, **kwargs):
+        auth0_id = request.data.get("user_auth0_id")
+        print(auth0_id)
+        user = User.objects.get(auth0_id=auth0_id)
+        room_name = request.data.get("room_name")
+ 
+        myllmManager.addRoom(user.auth0_id, room_name)
+
+        return Response("ok", status=status.HTTP_200_OK)
+
+class RoomApiView(APIView):
+    # get Room
+    def get(self, request,room_id, *args, **kwargs):
+        room = Room.objects.get(roomID=room_id)
+
+        return Response(serializers.serialize('json',[ room,]), status=status.HTTP_200_OK)
+
+    # delete room
+    def delete(self, request,room_id, *args, **kwargs):
+        room = Room.objects.get(roomID=room_id)
+        room.delete()
+
+        return Response("ok", status=status.HTTP_200_OK)
+
+    #update room
+    def put(self, request,room_id, *args, **kwargs):
+        room = Room.objects.get(roomID=room_id)
+        # update room_name
+        room.roomName = request.data.get("room_name")
+        # nothing else to update atm
+        room.save()
+
+        return Response("ok", status=status.HTTP_200_OK)
+
+
+
 
 
 class DocumentApiView(APIView):
