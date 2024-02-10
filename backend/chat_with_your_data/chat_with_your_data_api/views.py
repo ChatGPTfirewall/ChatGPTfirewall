@@ -150,9 +150,9 @@ class UploadApiView(APIView):
         room_id = request.data.get("room_id") 
 
         # DEBUG !!
-        room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+        room_id = "1"
 
-        room = Room.objects.get(roomID=room_id)
+        room = Room.objects.get(id=room_id)
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
 
@@ -233,20 +233,25 @@ class RoomsApiView(APIView):
 class RoomApiView(APIView):
     # get Room
     def get(self, request,room_id, *args, **kwargs):
-        room = Room.objects.get(roomID=room_id)
+        answer = []
+        room = Room.objects.get(id=room_id)
+        answer.append(serializers.serialize('json',[ room,]))
+        msgs = room.createFullMessage(room, True)
+        answer.append(msgs)
 
-        return Response(serializers.serialize('json',[ room,]), status=status.HTTP_200_OK)
+
+        return Response(json.dumps(answer), status=status.HTTP_200_OK)
 
     # delete room
     def delete(self, request,room_id, *args, **kwargs):
-        room = Room.objects.get(roomID=room_id)
+        room = Room.objects.get(id=room_id)
         room.delete()
 
         return Response("ok", status=status.HTTP_200_OK)
 
     #update room
     def put(self, request,room_id, *args, **kwargs):
-        room = Room.objects.get(roomID=room_id)
+        room = Room.objects.get(id=room_id)
         # update room_name
         room.roomName = request.data.get("room_name")
         # nothing else to update atm
@@ -297,7 +302,7 @@ class ChatApiView(APIView):
         vector = vectorize(question)
 
         # DEBUG !!
-        room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+        room_id = "1"
 
         try:
             search_results = search(id, room_id, vector, user.settings.get("fact_count"))
@@ -367,18 +372,13 @@ class ContextApiView(APIView):
         user_id = request.data.get("user_id")
 
         # DEBUG !!
-        room_id = "da4a935f-0852-4ac1-abf8-0944ce65913d"
+        room_id = "1"
         user_id = "65b014e6f364a182af7fd006"
 
         myRoom = myllmManager.getRoom(user_id, room_id)[:1].get()
 
-        tokens = count_tokens(template, question, context)
+        answer = myllmManager.llm.run(myRoom, context, question)
 
-        if tokens < LLM_MAX_TOKENS:
-            #answer = run_llm(template, {"context": context, "question": question})
-            answer = myllmManager.llm.run(myRoom, context, question)
-        else:
-            answer = "Uh, die Frage war zu lang!"
         return Response({"result": answer}, status.HTTP_200_OK)
 
 
