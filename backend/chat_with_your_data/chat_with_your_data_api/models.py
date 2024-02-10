@@ -44,7 +44,7 @@ class Section(models.Model):
 
 class Room(models.Model):
     userID = models.CharField(max_length=255, null=False)    # owner
-    roomID = models.CharField(max_length=255, unique=True, null=False)    # identifier
+    #roomID = models.CharField(max_length=255, unique=True, null=False) 
     roomName = models.CharField(max_length=255, default="Room")
     anonymizeCompleteContext= models.BooleanField('Anonymize Switch', default=True)
     prompt = models.TextField(default="Beantworte die folgende Frage ausschließlich mit folgenden Informationen:") # TODO get prompt from user settings
@@ -52,13 +52,13 @@ class Room(models.Model):
     # TODO prompt per Room in Settings
     
     def __str__(self):
-        return self.userID +" + " + self.roomID
+        return self.userID +" + " + self.id
 
     def appendContext(self, room, role, content):
         myContext = ContextEntry(roomID=room,role=role,content=content)
         myContext.save()
 
-    def createFullMessage(self, room):
+    def createFullMessage(self, room, get_all):
         #context = ContextEntry.objects.all()
         context = ContextEntry.objects.filter(roomID=room).order_by('-created_at')
 
@@ -69,17 +69,19 @@ class Room(models.Model):
             messageLine = {"role": line.role, "content": line.content}
             token_size = len(encoder.encode(str(messageLine)))
             msg_lenght = msg_lenght + token_size
-            print(msg_lenght)
-            if msg_lenght < LLM_MAX_TOKENS:
-                fullMessage.append(messageLine)
+            
+            if not get_all:
+                if msg_lenght < LLM_MAX_TOKENS:
+                    fullMessage.append(messageLine)
+                else:
+                    break # stop
             else:
-                break
+                fullMessage.append(messageLine)
 
         systemLine = {"role": "system", "content": room.prompt}
         fullMessage.append(systemLine)
 
         fullMessage.reverse()
-
 
         return fullMessage
 

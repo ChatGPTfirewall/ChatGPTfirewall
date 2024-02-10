@@ -21,9 +21,8 @@ class Room_:
         TODO
             implement persistent memory (db)
     """
-    def __init__(self, userID, roomID):
+    def __init__(self, userID):
         self.userID: str = userID    # owner
-        self.roomID: str = roomID    # identifier
         self.anonymizeCompleteContext: bool = False
         self.anonymizeMap: List[Dict] = []
         self.context: List[ContextEntry] = []
@@ -52,10 +51,10 @@ class LLM:
         room.appendContext(room, "user", context + "; Frage: " + question)
        
 
-        pprint(room.createFullMessage(room))
+        pprint(room.createFullMessage(room, False))
         response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=room.createFullMessage(room)
+                messages=room.createFullMessage(room, False)
                 )
 
         room.appendContext(room, "assistant", response["choices"][0]["message"]["content"])
@@ -67,13 +66,12 @@ class llmManager:
 
     def addRoom(self, userID_, roomName_):
         #self.roomList[room.roomID] = room
-        roomID = uuid.uuid4()
-        myRoom = Room(userID = userID_, roomID = roomID, roomName = roomName_ )
+        myRoom = Room(userID = userID_, roomName = roomName_ )
         myRoom.save()
 
     def getRoom(self, userID, roomID):
         myRoom = Room.objects.filter(
             userID=userID,
-            roomID=roomID
+            id=roomID
         )
         return myRoom
