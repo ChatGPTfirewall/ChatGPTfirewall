@@ -11,7 +11,8 @@ import requests
 import mimetypes
 import json
 
-from .models import User, Section, Document
+from .models import User, Section, Document, RoomDocuments, Room
+from django.core import serializers
 from .serializers import (
     UserSerializer,
     DocumentSerializer,
@@ -29,6 +30,7 @@ from .embedding import (
     anonymize_text,
 )
 from .llm import count_tokens, run_llm
+from .llmManager import LLM, llmManager
 from .user_settings import UserSettings
 
 from xml.etree import ElementTree as ET
@@ -36,6 +38,12 @@ from flair.data import Sentence
 from flair.models import SequenceTagger
 
 LLM_MAX_TOKENS = 4098
+
+# initialize llm engine
+myLLM = LLM("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")
+
+# initialize LLM Manager
+myllmManager = llmManager(myLLM) 
 
 
 def download_file(request, filename):
@@ -71,12 +79,17 @@ class UserApiView(APIView):
         }
         serializer = UserSerializer(data=data)
 
+
+
         try:
             if serializer.is_valid():
                 serializer.save()
                 [_, id] = request.data.get("auth0_id").split("|")
                 create_collection(id)
                 response = Response(serializer.data, status=status.HTTP_201_CREATED)
+
+                #create first Room when user is created
+                myllmManager.addRoom(id, "Initial Room")
             else:
                 # Handle other validation errors
                 response = Response(
@@ -134,7 +147,12 @@ class UploadApiView(APIView):
         auth0_id = request.POST.get("user")
         user = User.objects.get(auth0_id=auth0_id)
         files = request.FILES.getlist("files")
+        room_id = request.data.get("room_id") 
 
+        # DEBUG !!
+        room_id = "1"
+
+        room = Room.objects.get(id=room_id)
         documents = []
         Path("../temp").mkdir(parents=True, exist_ok=True)
 
@@ -165,13 +183,17 @@ class UploadApiView(APIView):
             if serializer.is_valid():
                 result = serializer.save()
                 documents.append(serializer.data)
+
+                roomDocEntry = RoomDocuments(room=room,document=result) # save room and doc id
+                roomDocEntry.save()
             else:
                 success = False
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
             # Insert text into qdrant db
             [_, id] = user.auth0_id.split("|")
-            qdrant_result = insert_text(id, result, user.lang)
+            qdrant_result = insert_text(id, room_id, result, user.lang)
             if qdrant_result != True:
                 success = False
 
@@ -180,11 +202,72 @@ class UploadApiView(APIView):
         else:
             return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
 
+class RoomsApiView(APIView):
+    # get all Rooms
+    def get(self, request, *args, **kwargs):
+        auth0_id = request.GET.get("user_auth0_id")
+        user = User.objects.get(auth0_id=auth0_id)
+
+        docs = Document.objects.filter(user_id=user.id)
+
+        roomDocs = RoomDocuments.objects.filter(document__in=docs)
+
+        roomList = []
+        for line in roomDocs:
+            if line.room not in roomList:
+                roomList.append(line.room)
+
+        return Response(serializers.serialize('json',roomList), status=status.HTTP_201_CREATED)
+    
+    # create room
+    def post(self, request, *args, **kwargs):
+        auth0_id = request.data.get("user_auth0_id")
+        print(auth0_id)
+        user = User.objects.get(auth0_id=auth0_id)
+        room_name = request.data.get("room_name")
+ 
+        myllmManager.addRoom(user.auth0_id, room_name)
+
+        return Response("ok", status=status.HTTP_200_OK)
+
+class RoomApiView(APIView):
+    # get Room
+    def get(self, request,room_id, *args, **kwargs):
+        answer = []
+        room = Room.objects.get(id=room_id)
+        answer.append(serializers.serialize('json',[ room,]))
+        msgs = room.createFullMessage(room, True)
+        answer.append(msgs)
+
+
+        return Response(json.dumps(answer), status=status.HTTP_200_OK)
+
+    # delete room
+    def delete(self, request,room_id, *args, **kwargs):
+        room = Room.objects.get(id=room_id)
+        room.delete()
+
+        return Response("ok", status=status.HTTP_200_OK)
+
+    #update room
+    def put(self, request,room_id, *args, **kwargs):
+        room = Room.objects.get(id=room_id)
+        # update room_name
+        room.roomName = request.data.get("room_name")
+        # nothing else to update atm
+        room.save()
+
+        return Response("ok", status=status.HTTP_200_OK)
+
+
+
+
 
 class DocumentApiView(APIView):
     def post(self, request, *args, **kwargs):
         auth0_id = request.data.get("auth0_id")
         user = User.objects.get(auth0_id=auth0_id)
+        # TODO room filter 
 
         documents = Document.objects.filter(user_id=user.id)
 
@@ -213,12 +296,16 @@ class ChatApiView(APIView):
         question = request.data.get("question")
         auth0_id = request.data.get("user_auth0_id")
         [_, id] = auth0_id.split("|")
+        room_id = request.data.get("room_id") 
 
         user = User.objects.get(auth0_id=auth0_id)
         vector = vectorize(question)
 
+        # DEBUG !!
+        room_id = "1"
+
         try:
-            search_results = search(id, vector, user.settings.get("fact_count"))
+            search_results = search(id, room_id, vector, user.settings.get("fact_count"))
         except Exception as exception:
             return Response(exception.content, status.HTTP_400_BAD_REQUEST)
 
@@ -252,7 +339,7 @@ class ChatApiView(APIView):
             entity_mapping = map_entities(ner_entities, text, counter)
             modified_text = anonymize_text(text, ner_entities, entity_mapping)
 
-            print(entity_mapping)
+            #print(entity_mapping)
 
             fact = {
                 "answer": modified_text + " ",
@@ -281,13 +368,17 @@ class ContextApiView(APIView):
         question = request.data.get("question")
         context = request.data.get("context")
         template = request.data.get("template")
+        room_id = request.data.get("room_id") 
+        user_id = request.data.get("user_id")
 
-        tokens = count_tokens(template, question, context)
+        # DEBUG !!
+        room_id = "1"
+        user_id = "65b014e6f364a182af7fd006"
 
-        if tokens < LLM_MAX_TOKENS:
-            answer = run_llm(template, {"context": context, "question": question})
-        else:
-            answer = "Uh, die Frage war zu lang!"
+        myRoom = myllmManager.getRoom(user_id, room_id)[:1].get()
+
+        answer = myllmManager.llm.run(myRoom, context, question)
+
         return Response({"result": answer}, status.HTTP_200_OK)
 
 

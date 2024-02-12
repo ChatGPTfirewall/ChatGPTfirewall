@@ -1,7 +1,15 @@
 from django.db import models
 from django.db.models import JSONField
 from .user_settings import UserSettings
+import tiktoken
+from langchain.llms import OpenAI
+import os
 
+LLM_MAX_TOKENS = 4098
+
+token_encoder = "cl100k_base"  # used for ChatGPT 3.5 Turbo and ChatGPT 4
+llm = OpenAI(openai_api_key=os.getenv("OPEN_AI_KEY"))
+encoder = tiktoken.get_encoding(token_encoder)
 
 class User(models.Model):
     auth0_id = models.CharField(max_length=255, unique=True, null=False)
@@ -24,7 +32,6 @@ class Document(models.Model):
     def __str__(self):
         return self.filename
 
-
 class Section(models.Model):
     document = models.ForeignKey(
         Document, on_delete=models.CASCADE, blank=True, null=False
@@ -34,3 +41,63 @@ class Section(models.Model):
 
     def __str__(self):
         return self.document.filename
+
+class Room(models.Model):
+    userID = models.CharField(max_length=255, null=False)    # owner
+    #roomID = models.CharField(max_length=255, unique=True, null=False) 
+    roomName = models.CharField(max_length=255, default="Room")
+    anonymizeCompleteContext= models.BooleanField('Anonymize Switch', default=True)
+    prompt = models.TextField(default="Beantworte die folgende Frage ausschließlich mit folgenden Informationen:") # TODO get prompt from user settings
+    created_at = models.DateTimeField(auto_now_add=True)
+    # TODO prompt per Room in Settings
+    
+    def __str__(self):
+        return self.userID +" + " + self.id
+
+    def appendContext(self, room, role, content):
+        myContext = ContextEntry(roomID=room,role=role,content=content)
+        myContext.save()
+
+    def createFullMessage(self, room, get_all):
+        #context = ContextEntry.objects.all()
+        context = ContextEntry.objects.filter(roomID=room).order_by('-created_at')
+
+        fullMessage: List[Dict] = []
+        msg_lenght = 0
+
+        for line in context:
+            messageLine = {"role": line.role, "content": line.content}
+            token_size = len(encoder.encode(str(messageLine)))
+            msg_lenght = msg_lenght + token_size
+            
+            if not get_all:
+                if msg_lenght < LLM_MAX_TOKENS:
+                    fullMessage.append(messageLine)
+                else:
+                    break # stop
+            else:
+                fullMessage.append(messageLine)
+
+        systemLine = {"role": "system", "content": room.prompt}
+        fullMessage.append(systemLine)
+
+        fullMessage.reverse()
+
+        return fullMessage
+
+
+class ContextEntry(models.Model):
+    roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
+    role = models.CharField(max_length=255)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class AnonymizeEntitie(models.Model):
+    roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
+    anonymized = models.CharField(max_length=255, null=False)
+    deanonymized = models.CharField(max_length=255, unique=True, null=False)
+    entityType = models.CharField(max_length=255, null=False)
+
+class RoomDocuments(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    document = models.ForeignKey(Document, on_delete=models.CASCADE)

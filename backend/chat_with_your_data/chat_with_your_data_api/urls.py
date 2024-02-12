@@ -10,6 +10,8 @@ from .views import (
     LanguageAPI,
     FilesApiView,
     UserSettingsApiView,
+    RoomsApiView,
+    RoomApiView
 )
 from . import views
 
@@ -27,4 +29,6 @@ urlpatterns = [
     path("upload/nextcloud/redirect", NextCloudFilesApiView.as_view()),
     path("language", LanguageAPI.as_view()),
     path("users/<str:user_id>/settings", UserSettingsApiView.as_view()),
+    path("rooms", RoomsApiView.as_view()),
+    path("rooms/<str:room_id>/", RoomApiView.as_view()),
 ]

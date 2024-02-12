@@ -122,7 +122,7 @@ const Chat = () => {
 
         try {
             const llmAnswer = await chatWithLLM(question, context, settings.prompt_template)
-            setAnswers([...answers, [answers[index][1], llmAnswer.result]])
+            setAnswers([...answers, [answers[index][1], JSON.stringify(llmAnswer.result.choices[0].message.content)]])
         } catch (e) {
             setError(e);
         } finally {

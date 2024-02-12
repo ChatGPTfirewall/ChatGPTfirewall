@@ -48,14 +48,14 @@ def delete_collection(name):
     __client.delete_collection(collection_name=name)
 
 
-def search(collection_name, vector, limit):
+def search(collection_name, room_id, vector, limit):
     result = __client.search(
         collection_name=collection_name, query_vector=vector.tolist(), limit=limit
     )
     return result
 
 
-def insert_text(collection_name, document, lang):
+def insert_text(collection_name, room_id, document, lang):
     embedded_text = embed_text(document.text, lang)
     tokens = prepare_text(embedded_text)
     points = []
@@ -72,7 +72,7 @@ def insert_text(collection_name, document, lang):
         point = PointStruct(
             id=str(uuid.uuid4()),
             vector=vector.tolist(),
-            payload={"section_id": result.id, "document_id": document.id},
+            payload={"section_id": result.id, "document_id": document.id, "room_id": room_id},
         )
         points.append(point)
     __insert_points(collection_name, points)
