@@ -1,0 +1,97 @@
+Sachverhalt
+
+Die drei Kläger, O, L und der Beklagte B hatten sich zu einer Lottospielgemeinschaft zusammengeschlossen, die jede Woche mit einem Einsatz von insgesamt 50 DM bestimmte festliegende Zahlenreihen „tippte”. Die Beiträge - pro Teilnehmer wöchentlich 10 DM - wurden beim Beklagten eingezahlt. Dieser hatte die Aufgabe, die Lottozettel im eigenen Namen auszufüllen und sie bei der Annahmestelle abzugeben.
+
+Vor der Ausspielung am 23. 10. 1971 versäumte es der Beklagte, die Lottozettel mit den verabredeten Zahlenreihen auszufüllen. Dadurch entgingen der Lottogemeinschaft Gewinne von insgesamt 10 550 DM. Die Kläger verlangen deswegen vom Beklagten anteiligen Schadensersatz, jeder Kläger 2 110 DM nebst Zinsen.
+
+Der Beklagte ist der Auffassung, dass ihm ein schuldhaftes Verhalten nicht vorgeworfen werden könne. Er sei, so behauptet er, am letzten Tag, an dem die Lottoscheine abgegeben werden konnten, aus beruflichen Gründen nicht in der Lage gewesen, die Lottozettel wie verabredet auszufüllen. Wider Erwarten habe er an diesem Tage seine Arbeitsstelle erst um 17.45 verlassen können. Da die Lottoannahmestellen bereits um 18.30 geschlossen
+
+hätten und das Ausfüllen der Lottoscheine jeweils etwa eine Stunde in Anspruch genommen habe, habe er, statt die Lottozettel in der bisherigen Form auszufüllen, andere Wettscheine für Rechnung der Tippgemeinschaft eingereicht, einen Toto-Systemschein A und einen Lotto-Systemschein B mit einem Einsatz von insgesamt 45 DM.
+
+Die Kläger O und L verlangen nunmehr von B Schadensersatz i.H.d. entgangenen anteiligen Lottogewinns. Zu Recht?
+Die Fallhistorie
+
+Diesen Original-Fall hatte der BGH am 16.5.1974 zu entscheiden.Wie auch die Vorinstanzen (wenn auch mit anderer Begründung) lehnte der BGH hier einen Schadensersatzanspruch ab.
+Der Problemkreis
+
+Behandelt wird zunächst die Rechtsbeziehung der Parteien. In Betracht kommt zwar die Tippgemeinschaft als eine Außen-GbR, dies ist im Ergebnis für die Lösung allerdings irrelevant. Auch wird diskutiert, ob § 762 I BGB hier dem Anspruch von vorneherein entgegensteht. Im weiteren Verlauf der Lösung wird schwerpunktmäßig die Frage erörtert, ob bzgl. der Verpflichtung die Lottoscheine abzugeben hier überhaupt ein Rechtsbindungswille besteht. Diese Konstellationen rund um den Rechtsbindungswillen kommen im Rahmen des BGB AT immer noch gerne im Examen dran, da sich hier die Chance einer argumentativen Auseinandersetzung bietet.
+Lösungsskizze
+
+A. Anspruch auf Schadensersatz aus §§ 280 I, 708 BGB i.V.m. Gesellschaftsvertrag
+
+I. Schuldverhältnis
+
+- Entgegenstehen von § 762 I BGB?
+
+(P) nach Sinn und Zweck (-), da hier staatlich genehmigtes Lottospiel; auch analoge Anwendung (-)
+
+(P) Pflicht Lottoschein abzugeben?
+
+- Nur wenn Rechtsbindungswille (+)
+
+Abgrenzung RBW/ Gefälligkeit nach Treu und Glauben; Auslegungshilfen:
+
+- Entgeltlichkeit
+
+hier: unentgeltlicher Auftrag
+
+- Drohende wirtschaftliche Schäden
+
+hier: bei Haftung von Lottospielern existenzgefährdende Schäden möglich
+
+- wollten Parteien gerichtlich einklagbare Ansprüche begründen?
+
+Hier: Dies würde dem Gedanken des gemeinsamen Spiels widersprechen
+
+Zwischenergebnis: RBW (-)
+
+II. Ergebnis (-)
+
+B. Anspruch aus § 823 I BGB
+
+(-) reine Vermögensschäden nicht geschützt
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch auf Schadensersatz aus §§ 280 I, 708 BGB i.V.m. Gesellschaftsvertrag
+O und L könnten einen Schadensersatzanspruch gegen B aus §§ 280 I, 708 BGB i.V.m. dem Gesellschaftsvertrag haben. Dafür müssten die Voraussetzungen vorliegen.
+
+I. Schuldverhältnis
+Fraglich ist zunächst, ob ein Schuldverhältnis zwischen den Parteien besteht. Ausweislich des Sachverhalts haben die Parteien sich zu einer so genannten „Tippgemeinschaft“ zusammengeschlossen. Diese könnte eine (Außen-) GbR darstellen. Dafür müssten mindestens zwei Personen vorliegen, die auf Grund eines Vertrages einen gemeinsamen Zweck verfolgen und ihre Beiträge dazu leisten. Hier haben sich O, L und B zusammengeschlossen, um gemeinsam Lotto zu spielen und so bei niedrigeren Beträgen ihre Gewinnchancen zu steigern. Dazu leisteten alle wöchentlich einen Beitrag in Geld i.H.v. 10 DM. Damit liegt grds. eine (Außen-) GbR vor. B könnte gegen Pflichten des Gesellschaftsvertrages verstoßen und sich so schadensersatzpflichtig gemacht haben.
+
+[Hinweis: Die genaue Einordnung der Gesellschaft ist nicht so entscheidend, da es letztendlich nur auf das Schuldverhältnis im Innenverhältnis ankommt. Allerdings schadet auch eine kurze Darstellung aus Verständlichkeitsgründen nicht. Zu weit sollte man an dieser Stelle aber nicht ausholen.]
+
+Einem möglichen Anspruch könnte jedoch zunächst § 762 I BGB entgegenstehen. Danach wird eine Verbindlichkeit bei einem Spiel und einer Wette nicht begründet.
+
+Nach dem Sinn und Zweck dieser Vorschrift sollen Ansprüche, die durch staatlich nicht genehmigte Spiele und Wetten entstehen, nicht gerichtlich durchsetzbar sein, sodass sie zu Gunsten der Suchtprävention an Attraktivität verlieren.
+
+Fraglich ist, ob dies hier der Fall ist. Ausweislich des Sachverhalts spielten die beteiligten Parteien nur das staatlich genehmigte Lotto, welches unter der Aufsicht des Staates steht, der die Suchtprävention auch selbst übernimmt.
+
+Überdies ist die Übernahme des Spieleinsatzes für eine Lottospielgemeinschaft nicht selbst ein Spiel, sondern ein Nebengeschäft, das der Durchführung des Spieles dient. Etwas anderes würde zwar gelten, wenn jemand beauftrag wird ein staatlich nicht genehmigtes Glücksspiel zu spielen, allerdings liegt dies in diesem Fall nicht vor (s.o.).
+
+Damit kann § 762 I BGB hier nicht angewendet werden.
+
+Es könnte eine analoge Anwendung des § 762 I BGB in Betracht gezogen werden. Dafür müssten jedoch eine planwidrige Regelungslücke und eine vergleichbare Interessenlage vorliegen. Für die vergleichbare Interessenlage könnte sprechen, dass der B hier genau wie bei einem staatlich nicht genehmigten Glücksspiel ein erhebliches „Spielrisiko“ auf sich nimmt, in dem er sich u.U. existenzgefährdend schadensersatzpflichtig machen würde, würde er die Lottoscheine nicht abgeben. Daher könnte man meinen, dass er genauso schutzbedürftig sei. Allerdings lassen sich beide Fälle nicht miteinander vergleichen, da der Spieler bewusst das Risiko des Einsatzverlustes eingeht, um im Gegenzug seine Gewinnchance zu steigern. Der Beauftragte hingegen würde jedoch zwar ein hohes Haftungsrisiko eingehen, hätte aber kein vergleichbares Äquivalent, wie etwa eine gesteigerte Gewinnchance.
+
+Damit ist auch eine analoge Anwendung des § 762 I BGB abzulehnen, sodass dies der grundsätzlichen Anwendbarkeit nicht entgegensteht.
+
+Problematisch ist allerdings, ob auch innerhalb dieses Vertrages neben der Beitragspflicht (als Zweckförderungspflicht) die Abgabe des Lottoscheins bei der Annahmestelle seitens des B ebenfalls geschuldet war. Dafür müsste diesbezüglich auch eine rechtlich bindende Vereinbarung im mündlich geschlossenen Gesellschaftsvertrag vorliegen.
+
+Es könnte jedoch auch ein bloßes Gefälligkeitsverhältnis vorliegen, sodass eine Abgrenzung erforderlich ist.
+
+Ob bzgl. der Verpflichtung den Lottoschein abzugeben ein Rechtsbindungswille bestand, ist anhand aller Umstände des Einzelfalles nach Treu und Glauben mit Rücksicht auf die Verkehrssitte auszulegen.
+
+Als Auslegungshilfe können dabei die Entgeltlichkeit des Geschäfts, das wirtschaftliche Risiko drohender Schäden sowie der Wille der Parteien, ob gerichtlich durchsetzbare Ansprüche entstehen sollen, herangezogen werden.
+
+Gegen einen diesbezüglichen Rechtbindungswillen spricht, dass der B den Auftrag die Lottoscheine bei der Annahmestelle abzugeben unentgeltlich übernommen hat. Zu berücksichtigen ist auch, dass bei der Bejahung eines Rechtsbindungswillens immense wirtschaftliche Schäden entstehen können, die für den Beauftragten zum Teil existenzbedrohende Dimensionen einnehmen kann. Bei Lottogewinnen handelt es sich i.d.R. um hohe Beträge. Mit Blick auf die Verkehrssitte kann auch nicht angenommen werden, dass die Parteien bei Vertragsschluss wirklich gerichtlich durchsetzbare Ansprüche begründen wollten, da jedem klar sein konnte, dass bei Nichtabgabe horrende Schäden entstehen können und die Gefahr, dass der beauftragte Spieler gegen die von den Mitspielern getroffene Abrede verstößt, verhältnismäßig groß ist. Es kann daher leicht vorkommen, dass er das Ausfüllen der Wettscheine wegen anderweitiger Verpflichtungen unterlässt, es vergisst oder versehentlich andere Zahlen ankreuzt als vereinbart, daher steht dieses Schadensrisiko in keinem Verhältnis zur Beauftragung (so der BGH). Auch mit Blick auf den Gedanken des „gemeinsamen Spiels“ kann angebracht werden, dass die Spieler sich in gemeinsamer Motivation zusammenschließen, um ihre Gewinnchancen zu steigern und nicht etwa in dem Gedanken zukünftig wegen eines einfachen menschlichen Fehlers sich schadensersatzpflichtig zu machen.
+
+Mithin ist ein Rechtsbindungswille bzgl. der Pflicht die Lottoscheine zur Annahmestelle zu bringen abzulehnen.
+
+Damit liegt auch kein Schuldverhältnis vor.
+
+II. Ergebnis
+Mithin ist ein Schadensersatzanspruch aus §§ 280 I, 708 BGB i.V.m. dem Gesellschaftsvertrag abzulehnen.
+
+B. Anspruch aus § 823 I BGB
+Ein Anspruch aus § 823 I BGB ist deshalb abzulehnen, da reine Vermögensschäden durch § 823 I BGB nicht erfasst werden.

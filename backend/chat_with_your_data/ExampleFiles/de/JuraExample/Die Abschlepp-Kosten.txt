@@ -1,0 +1,203 @@
+Sachverhalt
+
+Der B hat sein Fahrzeug unberechtigt auf einem als solchen gekennzeichneten Kundenparkplatz eines Supermarktes abgestellt. Der Abschleppunternehmer U war aufgrund eines Rahmenvertrags mit dem Eigentümer des Supermarktes E damit beauftragt unbefugt parkende Fahrzeuge vom Grundstück des E zu entfernen. Hierfür war vertraglich ein Pauschalbetrag von 200 Euro vereinbart. Der E hat aus dem unberechtigten Parken herrührende Ersatzansprüche an den U abgetreten. B weigert sich zu zahlen.
+
+Hat U einen Zahlungsanspruch gegen B?
+
+Bearbeitervermerk: Von einer wirksamen Abtretung der Ersatzansprüche von E an U ist auszugehen.
+Lösungsskizze
+
+A. Eigener Zahlungsanspruch des U gegen B
+
+I. Anspruch gem. §§ 683 S. 1,  670 BGB
+
+1. Geschäft (+)
+
+2. Fremd (+)
+
+3. Ohne Auftrag (+)
+
+4. Fremdgeschäftsführungswille (-)
+
+(P) FGW wird zwar vermutet, aber widerlegbar. Hier eigene Vertragserfüllung gewollt.
+
+II. Keine eigenen Ansprüche, insbesondere nicht aus Deliktsrecht.
+
+B. Ansprüche aus abgetretenem Recht 
+
+I. Anspruch aus §§ 683 S.1, 670 BGB
+
+1. Fremdes Geschäft ohne Auftrag (+)
+
+hier : auch fremdes Geschäft.
+
+2. Fremdgeschäftsführungswille (-)
+
+(P) Vermutungswirkung bei auch fremden Geschäft
+
+a) BGH / t.d.L: FGW wird vermutet
+
+b) Lit. /BGH in diesem Fall: FGW muss positiv begründet werden
+
+c) Streitentscheid
+
+3. Ergebnis (-)
+
+II. Anspruch aus § 823 I BGB
+
+1. Anwendbarkeit (+)
+
+hier: kein EBV
+
+2. Rechtsgutsverletzung (+)
+
+a) Eigentum (-)
+
+b) sonstiges absolutes Recht (+)
+
+hier : berechtigter Besitz 
+
+3. Haftungsbegründende Kausalität (+)
+
+4. Rechtswidrigkeit (+)
+
+5. Verschulden (+)
+
+6. Schaden (+)
+
+7. Haftungsausfüllende Kausalität (+)
+
+(P) Abschleppkosten durch E verursacht
+
+hier aber : § 859 III BGB, daher Schaden zurechenbar an B
+
+8. Zwischenergebnis (+)
+
+III. Anspruch aus § 823 II BGB i.V.m. § 858 I BGB
+
+1. Verletzung eines Schutzgesetzes
+
+a) Schutzgesetz (+)
+
+(P) § 858 I BGB als Schutzgesetz
+
+b) Verletzung des Schutzgesetzes (+)
+
+2. Verschulden (+)
+
+3. Kausaler Schaden (+)
+
+4. Ergebnis (+)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Eigener Zahlungsanspruch des U gegen B
+U könnte gegen B einen eigenen Zahlungsanspruch haben.
+
+I. Anspruch gem. §§ 683 S. 1,  670 BGB
+In Betracht kommt ein Anspruch aus den §§ 683 S. 1, 670 BGB. Dafür müssten die Voraussetzungen der berechtigten Geschäftsführung ohne Auftrag vorliegen.
+
+1. Geschäft
+U müsste ein Geschäft besorgt haben. Unter Geschäft i.S.d. § 677 BGB ist jedes Handeln mit wirtschaftlichen Folgen zu verstehen. Der Begriff ist weit zu verstehen und umfasst demnach auch reales Handeln. Hier hat der U das Fahrzeug des B abgeschleppt und mithin ein Geschäft besorgt.
+
+2. Fremd
+Diese Geschäftsbesorgung müsste auch fremd gewesen sein. Fremd ist das Geschäft, wenn es dem Rechts- oder Interessenkreis eines Dritten angehört. Hier hat der U das rechtswidrig geparkte Fahrzeug des B abgeschleppt. Dies ist dem Rechtskreis des B zuzurechnen. Damit war das Geschäft objektiv fremd.
+
+3. Ohne Auftrag
+Ausweislich des Sachverhalts liegt auch kein Auftrag des B vor.
+
+4. Fremdgeschäftsführungswille
+U müsste auch mit Fremdgeschäftsführungswillen gehandelt haben. Grundsätzlich wird der Fremdgeschäftsführungswille beim objektiv fremden Geschäft vermutet. Diese Vermutung ist allerdings widerlegbar. Dazu müssten besondere Umstände vorliegen, die auf eine Eigengeschäftsführung deuten lassen. Problematisch ist hier, dass der U, aufgrund eines Vertrages mit E, das Fahrzeug abgeschleppt hat. Vordergründig ging es dem U nicht darum ein fremdes Geschäft zu führen, sondern seiner primären vertraglichen Verpflichtung gegenüber E nachzukommen. Etwas anderes würde freilich gelten, wenn von dem rechtswidrig geparkten Fahrzeug eine Gefahr ausgehen würde. Dies ist mangels Angaben im Sachverhalt jedoch nicht der Fall. Damit handelte der U nicht mit Fremdgeschäftsführungswillen.
+
+II. Damit hat U keinen eigenen Anspruch gegen den B. 
+ 
+
+B. Ansprüche aus abgetretenem Recht 
+U könnte jedoch Ansprüche gegen B aus abgetretenem Recht haben. Ausweislich des Sachverhalts hat E alle seine Ersatzansprüche gegen B an U abgetreten. Von der Wirksamkeit dieser Abtretung nach § 398 BGB ist nach dem Bearbeitervermerk auszugehen. Sodann ist danach zu fragen, ob der E Ansprüche gegen B hätte.
+
+I. Anspruch aus §§ 683 S.1, 670 BGB
+Es könnte ein Anspruch aus §§ 683 S.2, 670 BGB vorliegen, wenn die Voraussetzungen der berechtigten GoA vorliegen.
+
+1. Fremdes Geschäft ohne Auftrag
+Wie bereits geprüft, liegt in dem Abschleppen des Fahrzeugs ein fremdes Geschäft ohne Auftrag. Hier wollte E einerseits seine Besitzstörung beseitigen und andererseits im Interesse des B handeln, indem er dessen Störungsbeseitungspflicht erfüllte. Somit liegt zumindest ein auch fremdes Geschäft vor.
+
+2. Fremdgeschäftsführungswille
+Fraglich ist, ob bei E auch ein Fremdgeschäftsführungswille vorlag. Ob bei einem auch fremden Geschäft der Fremdgeschäftsführungswille vermutet wird, ist umstritten.
+
+a) BGH/ t.d.L.
+Nach einer Ansicht soll der Fremdgeschäftsführungswille beim auch fremden Geschäft ebenfalls vermutet werden, sodass hier der Fremdgeschäftsführungswille vorliegen würde.
+
+b) Lit./ BGH in diesem Fall
+Nach der Gegenauffassung muss der Fremdgeschäftsführungswille beim auch fremden Geschäft positiv begründet werden. Dies kann vorliegend nicht geschehen, da der E vordergründig sein Besitzrecht durchsetzen wollte, sodass der Fremdgeschäftsführungswille fehlen würde.
+
+c) Streitentscheid
+Da die Ansichten zu verschiedenen Ergebnissen führen, ist der Streit zu entscheiden. Für die zweite Auffassung  spricht insbesondere, dass derjenige der eigene Verbindlichkeiten erfüllt grundsätzlich im eigenen Interesse tätig wird. Durch die Anwendung der GoA- Regeln entstünde zudem ein Interessenkonflikt, da der Geschäftsführer nunmehr zwei Gläubiger hätte. Es ist daher interessengerechter den Fremdgeschäftsführungswillen positiv zu begründen. Somit handelte E nicht mit Fremdgeschäftsführungswillen.
+
+3. Ergebnis
+Damit hätte E keinen Anspruch gegen B aus §§ 683 Abs. 1, 670 BGB, sodass auch U keinen Anspruch aus abgetretenem Recht nach §§ 683 Abs. 1,  670, 398 BGB hat.
+
+II. Anspruch aus § 823 I BGB
+E könnte gegen B einen Anspruch aus § 823 I BGB haben.
+
+1. Anwendbarkeit
+Das Deliktsrecht könnte nach § 993 I a. E. BGB ausgeschlossen sein. Dafür müsste jedoch ein EBV vorliegen. Hier scheidet ein EBV allerdings aus, da der B kein Besitz am ganzen Grundstück erlangt. Damit ist § 823 I BGB anwendbar.
+
+2. Rechtsgutsverletzung
+Es müsste eine Rechtsgutsverletzung vorliegen.
+
+a) Eigentum
+In Betracht kommt die Verletzung des Eigentums. Hier hat der B sein Fahrzeug widderrechtlich auf dem Grundstück des E abgestellt. Dieses Grundstück ist im Eigentum des E. Eine Substanzverletzung scheidet hier vorliegend jedoch aus, da die Substanz an dem Grundstück nicht tangiert wurde.
+
+Fraglich ist, ob eine Nutzungsentziehung vorliegt. Dafür müsste eine auf gewisse Dauer angelegte Besitzstörung vorliegen. Hier liegen jedoch keine Anhaltspunkte dafür vor, dass der E seinen Parkplatz nicht mehr nutzen konnte. Dagegen könnte zwar sprechen, dass jedenfalls der eine Parkplatz nicht genutzt werden konnte, jedoch reicht dies für eine Nutzungsentziehung des gesamten Eigentums nicht aus. 
+
+b) Sonstiges absolutes Recht
+Es kommt die Verletzung eines sonstigen absoluten Rechts i.S.d. § 823 I BGB in Betracht. Dies muss ein absolutes Recht mit Ausschluss- und Nutzungsfunktion sein, das gegen jedermann wirkt (§ 903 BGB). In Betracht kommt der berechtigte Besitz. Auch dieser hat Ausschluss- und Nutzungsfunktion und wirkt gegen jedermann. Dieser Besitz wurde durch das widerrechtliche Parken des B auch verletzt. Damit liegt die Verletzung eines sonstigen absoluten Rechts vor.
+
+3. Haftungsbegründende Kausalität 
+Es liegt auch Kausalität zwischen der Verletzungshandlung und der Rechtsgutsverletzung vor.
+
+4. Rechtswidrigkeit 
+Nach der Lehre vom Erfolgsunrecht wird die Rechtswidrigkeit tatbestandlich indiziert.
+
+5. Verschulden 
+B müsste dies auch zu verschulden haben gem. § 276 I BGB. Hier handelte E mit Eventualvorsatz. Damit ist das Verschulden zu bejahen.
+
+6. Schaden 
+Dem E ist auch ein Vermögensschaden in Form der Abschleppkosten i.H.v. 200 Euro entstanden.
+
+7. Haftungsausfüllende Kausalität
+Fraglich ist, ob auch die haftungsausfüllende Kausalität vorliegt. Der Schaden müsste kausal auf der Rechtsgutsverletzung beruhen. Nach der Äquivalenztheorie war die Rechtsgutsverletzung ursächlich für den Schaden. Nach der Adäquanztheorie lag es auch nicht außerhalb jeglicher Lebenserfahrung, dass dieser Schaden eintritt.
+
+Fraglich ist, ob nach dem Schutzzweck der Norm, dieser Schaden dem B auch zugerechnet werden muss. Problematisch ist vorliegen nämlich, dass der Schaden auf dem Handeln des E beruht, da dieser den Abschleppunternehmer U gerufen hat. Hier ist jedoch zu berücksichtigen, dass der E seinen gestörten Besitz im Wege der Selbsthilfe gem. §  859 BGB beseitigen wollte. Hier lag eine solche Besitzstörung des Grundstücks nach § 859 III BGB vor. Nach der Wertung des § 859 III BGB ist die Selbsthilfe jedoch auch dann erlaubt, wenn diese Kosten verursacht. Diese Kosten sind dem B dann zurechenbar, wenn sie erforderlich waren. Für E gab es kein milderes Mittel, um seine Besitzstörung zu beseitigen. Demnach war das Rufen des U hier erforderlich und ist als Schaden dem B sodann auch zurechenbar. 
+
+Mithin liegt auch die haftungsausfüllende Kausalität vor.
+
+8. Ergebnis
+E hätte damit einen Anspruch gegen B aus § 823 I BGB.
+Damit hat U einen Anspruch aus abgetretenem Recht gegen B aus §§ 823 I, 398 BGB.
+
+III. Anspruch aus § 823 II BGB i.V.m. § 858 I BGB
+Es könnte auch ein Anspruch aus § 823 II BGB i.V.m § 858 I BGB vorliegen. 
+
+1. Verletzung eines Schutzgesetzes
+Dafür müsste zunächst ein Schutzgesetz verletzt worden sein.
+
+a) Schutzgesetz
+Es müsste überhaupt ein Schutzgesetz vorliegen. Gesetz im Sinne eines Schutzgesetzes in § 823 II ist jede Rechtsnorm unabhängig von dem Rechtsgebiet, die den Charakter einer Ge- oder Verbotsnorm hat und dem Individualschutz dient. Fraglich ist, ob § 858 I BGB als Schutzgesetz in Betracht kommt. 
+Nach einer Auffassung dient § 858 I BGB in erster Linie dem Schutz des Rechtsfriedens und kommt nicht als Schutzgesetz i.S.d. § 858 I BGB in Betracht. 
+Nach der Gegenauffassung ist § 858 I BGB als Schutzgesetz einzuordnen. Für die zweite Auffassung spricht insbesondere, dass die Norm bzgl. des berechtigten Besitzes auch den Besitzer vor verbotener Eigenmacht schützen will. Diese Ansicht ist vorzugswürdig. Damit liegt ein Schutzgesetz vor.
+
+b) Verletzung des Schutzgesetzes
+Indem der B sein Fahrzeug widerrechtlich auf dem Grundstück des E geparkt hat, hat er eine verbotene Eigenmacht gem. § 858 I BGB vorgenommen, sodass das Schutzgesetz verletzt ist.
+
+2. Verschulden 
+Es müsste auch das Verschulden vorliegen. Hier ist primär der Verschuldensmaßstab des Schutzgesetzes von Bedeutung. Wie bereits geprüft, handelte B jedoch mit Eventualvorsatz.
+
+3. Kausaler Schaden 
+Es liegt auch ein kausaler Vermögensschaden i.H.v. 200 Euro vor.
+
+4. Ergebnis 
+E hätte gegen B einen Anspruch aus § 823 II i.V.m. § 858 I BGB.
+
+Damit hat U einen Anspruch aus abgetretenem Recht gegen B gem. §§ 823 II, 858 I, 398 BGB.

@@ -1,0 +1,80 @@
+stages:
+  - build
+  - deploy_frontend
+  - deploy_backend
+  - build_and_push_backend
+  - build_and_push_frontend
+
+frontend_build:
+  stage: build
+  image: node:current-bullseye-slim
+  script:
+    - cd frontend
+    - npm install --no-save
+    - npm run build
+  cache:
+    key: frontend-dependencies
+    paths:
+      - frontend/node_modules/
+
+deploy_frontend:
+  stage: deploy_frontend
+  image: docker:stable
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN_FRONTEND
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+    - curl -L https://fly.io/install.sh | sh
+    - cd frontend
+    - export FLY_API_TOKEN=$FLY_API_TOKEN_FRONTEND
+  script:
+    - /root/.fly/bin/flyctl deploy
+  only:
+    - main
+
+deploy_backend:
+  stage: deploy_backend
+  image: docker:stable
+  variables:
+    FLY_API_TOKEN: $FLY_API_TOKEN_BACKEND
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+    - curl -L https://fly.io/install.sh | sh
+    - cd backend
+    - export FLY_API_TOKEN=$FLY_API_TOKEN_BACKEND
+  script:
+    - /root/.fly/bin/flyctl deploy
+  only:
+    - main
+
+
+
+build_and_push_backend:
+  stage: build_and_push_backend
+  image: docker:19.03.12
+  services:
+    - docker:19.03.12-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_ACCESS_TOKEN
+  script:
+    - docker build -t $DOCKER_HUB_USERNAME/backend:$CI_COMMIT_REF_SLUG -f backend/Dockerfile .
+    - docker push $DOCKER_HUB_USERNAME/backend:$CI_COMMIT_REF_SLUG
+  when: manual
+
+build_and_push_frontend:
+  stage: build_and_push_frontend
+  image: docker:19.03.12
+  services:
+    - docker:19.03.12-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_ACCESS_TOKEN
+  script:
+    - docker build -t $DOCKER_HUB_USERNAME/frontend:$CI_COMMIT_REF_SLUG -f frontend/Dockerfile .
+    - docker push $DOCKER_HUB_USERNAME/frontend:$CI_COMMIT_REF_SLUG
+  when: manual

@@ -1,0 +1,245 @@
+Sachverhalt
+
+B, 17 Jahre, flog mit einem entsprechendem Flugticket mit einer Linienmaschine der L von München nach Hamburg. Dort gelang es ihm, mit anderen Passagieren, dasselbe Flugzeug wieder zu besteigen und an dem Weiterflug nach New York teilzunehmen, ohne dass er im Besitz eines Flugtickets für diese Strecke gewesen wäre. Im Flugzeug waren noch etliche Plätze frei. In New York wurde B die Einreise in die USA verweigert, da er kein Visum besaß. Die L beförderte ihn daraufhin noch am selben Tag zurück nach München. Sie verlangt nun von B unter anderem Zahlung des tariflichen Flugpreises für die Strecke Hamburg - New York.
+Lösungsskizze
+
+Teil 1 - Der Flug Hamburg – New York
+
+A. Zahlungsanspruch aus Werkvertrag, §§ 631, 632 II BGB
+
+I. ausdrücklicher Vertragsschluss
+
+II. konkludenter Vertragsschluss
+
+III. Vertragsschluss durch sozialtypisches Verhalten
+
+IV. Ergebnis
+
+B. Zahlungsanspruch aus §§ 670, 683 S. 1, 677 BGB
+
+I. Geschäftsführung
+
+II. für einen anderen
+
+III. Ergebnis
+
+C. Anspruch aus §§ 987, 990 BGB
+
+D. Anspruch auf Zahlung des Flugpreises aus § 823 I BGB
+
+E. Anspruch auf Zahlung aus § 823II BGB iVm § 265a StGB
+
+I. § 265 a StGB als Schutzgesetz
+
+II. Prüfung des § 265 a StGB
+
+1. Tatbestandsmäßigkeit
+
+2. Rechtswidrigkeit
+
+3. Schuld
+
+IV. Rechtsfolge
+
+1. Differenzhypothese
+
+2. Normative Korrektur
+
+V. Ergebnis
+
+F. Anspruch auf Zahlung des Flugpreises aus § 812 I 1 Fall 1 BGB
+
+I. etwas erlangt
+
+II. durch Leistung
+
+III. ohne Rechtsgrund
+
+IV. Rechtsfolge
+
+G. Anspruch auf Zahlung des Flugpreises aus § 812 I 1 Fall 2 BGB
+
+I. Etwas erlangt
+
+II. in sonstiger Weise auf Kosten der L
+
+III. ohne Rechtsgrund
+
+IV. Rechtsfolge
+
+H. Ergebnis
+
+Teil 2 - Der Flug New York – Berlin
+
+A. Ein vertraglicher Anspruch scheidet aus, da F den K im Bewusstsein, dass sie mit ihm keinen Vertrag geschlossen hat, beförderte.
+
+B. Anspruch auf Flugpreiszahlung aus §§ 670, 683 S. 1, 677 BGB
+
+I. Geschäftsführung
+
+II. für einen anderen
+
+III. Ergebnis
+
+C. Anspruch auf Flugpreiszahlung aus §§ 823 II BGB, 265a StGB
+
+D. Anspruch auf Flugpreiszahlung aus § 812 I 1 Fall 2 BGB
+
+E.  Gesamtergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+Teil 1 - Der Flug Hamburg – New York
+
+A. L könnte einen Zahlungsanspruch aus Werkvertrag, §§ 631, 632 II BGB haben.
+
+I. Ausdrücklicher Vertragsschluss
+
+Dann müsste ein ausdrücklicher Vertragsschluss vorliegen. Dieser ist nicht ersichtlich. Der B hat sich ohne Wissen der L in das Flugzeug geschlichen.
+
+II. Konkludenter Vertragsschluss
+
+Ein konkludenter Vertragsschluss durch Bereitstellen des Flugzeugs seitend des L und Einsteigen des B liegt ebenfalls nicht vor, da weder im Bereitstellen des Flugzeugs, noch im Einsteigen in das Flugzeug eine Willenserklärung gesehen werden kann: Zudem kommt ein Beförderungsvertrag im Flugverkehr erst durch den Erwerb des Tickets zustande.
+
+III. Vertragsschluss durch solzialtypisches Verhalten
+
+Ein Vertragsschluss durch sozialtypisches Verhalten liegt ebenfalls nicht vor, da das Bereitstellen eines Flugzeugs keine anonyme Leistung der Daseinsvorsorge im Massenverkehr darstellt.
+
+IV. Ergebnis
+
+Ein Vertrag zwischen L  und B wurde nicht geschlossen. Daher besteht kein Anspruch aus Werkvertrag gem. §§ 631, 632 II BGB.
+
+B. L könnte einen Zahlungsanspruch aus §§ 670, 683 S. 1, 677 BGB haben.
+
+I. Geschäftsführung
+
+Dann müsste eine Geschäftsführung durch Luftbeförderung des B von Hamburg nach New York vorliegen. Dies ist hier der Fall.
+
+II. Für einen anderen
+
+Die Geschäftsführung müsste für einen anderen vorliegen. Der Wechsel des Aufenthaltsortes des B ist dem Interessenkreis des B zuzuordnen, daher handelt es sich um ein „auch-fremdes“ Geschäft. Allerdings fehlt der L vorliegend der Fremdgeschäftsführungswillen, da sie entweder mit der Beförderung des B gar kein Geschäft führen wollte, denn sie wusste davon nichts, ein genereller Geschäftsführungswille kann daher nicht angenommen werden,  oder aber nur ein eigenes – nämlich durch Erfüllung eines vermeintlich bestehenden Luftbeförderungsvertrages.
+
+III. Ergebnis
+
+Damit liegt keine GoA vor. Somit hat L hat keinen Anspruch aus §§ 670, 683 S. 1, 677 BGB.
+
+C. Ein Anspruch aus §§ 987, 990 BGB ist ebenfalls nicht gegeben, da L zwar Eigentümerin des Flugzeugs und damit des Sitzes des B war, dieser aber zumindest  keinen Besitz daran hatte oder es nicht auf den Besitz ankommt, sondern auf das Erschleichen der Beförderungsleistung.
+
+D. L könnte einen Anspruch auf Zahlung des Flugpreises aus § 823 I BGB haben.
+
+Dann müsste jedoch ein von § 823 I BGB geschütztes Rechtsgut verletzt worden sein. Es kommt allenfalls eine Eigentumsverletzung hinsichtlich des Sitzplatzes und dadurch des Flugzeugs durch Einwirkung auf eine Sache, die deren Gebrauch verhindert oder erschwert oder die sonst in die Disposition oder Dispositionsbefugnis des Eigentümers störend eingreift, in Frage. Die Nutzung des Flugzeugs wurde aber durch die Inanspruchnahme des einen Sitzplatzes nicht erschwert, so dass es hier an einer Eigentumsverletzung fehlt. Es fehlt darüber hinaus auch an einer Erheblichkeit des Eingriffs. Ein Anspruch aus § 823 I scheidet daher aus.
+
+E. L könnte einen Anspruch auf Zahlung aus § 823IIi BGB iVm § 265 a StGB haben.
+
+I. § 265 a StGB als Schutzgesetz
+
+Dann müsste § 265 a StGB ein Schutzgesetz sein. Schutzgesetze sind Normen, die neben dem Schutz der Allgemeinheit auch dem Schutz eines bestimmten Personenkreises dienen. § 265 a I 3. Alt. StGB schützt nicht nur die Allgemeinheit, sondern auch die vermögensrechtlichen Interessen des Beförderungsunternehmens L.  Damit ist § 265a StGB ein Schutzgesetz im Sinn des § 823 II BGB.
+
+II. Prüfung des § 265 a StGB
+1. Tatbestandsmäßigkeit
+
+Das Erschleichen der Beförderung gem. § 265 a StGB setzt ein Verhalten voraus, das entweder auf das Suggerieren von Ordnungsmäßigkeit abzielt oder die vorhandenen Kontrollmaßnahmen umgeht oder ausschaltet. B nimmt im Flugzeug Platz und suggeriert er sei im Besitz eines Tickets. B wusste, dass die Beförderung nur gegen Entgelt erfolgt und handelte in der Absicht, den Flugpreis nicht zu errichten.
+
+2. Rechtswidrigkeit
+
+Rechtfertigungsgründe zugunsten des B sind nicht ersichtlich, wodurch die Tatbestandsmäßigkeit die Rechtswidrigkeit indiziert.
+
+3. Schuld
+Es müsste eine Verschuldensfähigkeit gemäß § 828 III BGB oder § 3 S. 1 JGG vorliegen, nach dem es nicht nur auf die Fähigkeit ankommt, das Unrecht zu erkennen, sondern auch auf die, nach dieser Einsicht zu handeln. Der 17-jährige B wusste, dass er  die Maschine nicht ohne ein gültiges Ticket benutzen darf und hätte ohne weiteres nach dieser Einsicht auch handeln können.
+
+IV. Rechtsfolge
+
+Die L hat Anspruch auf Schadensersatz gem. §§ 249 ff. BGB. Es müsste zunächst festgestellt werden, ob ein Schaden überhaupt vorliegt.
+
+1. Differenzhypothese
+
+Nach der Differenzhypothese gilt der Unterschied zwischen dem tatsächlichen Vermögen und dem Vermögen, dass der Geschädigte hypothetisch gehabt hätte, wenn das schädigende Ereignis nicht eingetreten wäre, als Schaden. Vorliegend war die Maschine nicht ausgebucht, es musste als kein zahlender Fluggast abgewiesen werden und zudem wäre die Maschine auch ohne den B geflogen. Demnach liegt kein Schaden vor.
+
+2. Normative Korrektur
+
+Vorliegend kann mittels der Differenzhypothese allein ein Schaden nicht hergeleitet werden. Daher ist unter Berücksichtigung des Schutzzwecks der Norm eine normative Korrektur vorzunehmen. Dann müsste L gleichwohl geltend machen, ihr sei ein Schaden in Höhe des gewöhnlichen Flugpreises entstanden. Vorliegend ist jedoch unter Berücksichtigung des § 106 BGB eine solche Korrektur abzulehnen, da hier auch keine gesetzliche Schadensverlagerung erfolgt.
+
+V. Daher besteht mangels Schaden kein Anspruch aus § 823 II BGB iVm § 265 a StGB.
+
+F. L könnte gegen B einen Anspruch auf Zahlung des Flugpreises aus § 812 I 1 Fall 1 BGB haben.
+
+I. Dann müsste B etwas erlangt haben. „Etwas“ ist jeder vermögenswerte Vorteil. Bei unkörperlichen Leistungen ist umstritten, in welchen Fällen etwas „erlangt“ wird.
+
+Nach einer Ansicht (BGH) hat B mit der unkörperlichen Leistung in Form der Flugbeförderung nicht „etwas“ erlangt. Wenn der Empfänger eine nichtgegenständliche Leistung  erlangt, die er nicht mehr herausgeben kann. Auch eine Verpflichtung zum Wertersatz nach § 818 II BGB scheitert, weil keine ersparte Aufwendung vorliegt, sodass schon der Tatbestand des § 818 I BGB zu verneinen ist. In diesem Fall wendet der BGH jedoch § 819 BGB analog an. Danach könne sich der Bereicherte nicht auf ein Nichtvorhandensein der Bereicherung berufen, wenn er von  vornherein weiß, dass kein Rechtsgrund vorliegt.  Die h.L. erkennt dagegen auch nichtgegenständliche Leistungen als
+„etwas“ an. Nach dieser Ansicht muss zwischen dem Begriff „etwas“ und der „Bereicherung“ nach § 818 BGB, die später herausgegeben werden muss, unterschieden werden.
+Für die h.M. spricht, dass der Gesetzgeber zwischen der Frage, ob der Anspruchsgegner etwas erlangt hat auf der Tatbestandsseite und einer Bereicherung auf der  Rechtsfolgenseite differenzieren wollte. B hat mit dem Flug von Hamburg nach New York also etwas erlangt.
+
+II. Der B müsste etwas durch Leistung erlangt haben.
+Leistung ist die bewusste und zweckgerichtete Mehrung fremden Vermögens. Fraglich ist, ob L bewusst geleistet hat. Dies bestimmt sich nach der objektiven Empfängersicht. Es genügt das rein tatsächliche Bewusstsein, das Empfängervermögen zu vermehren. Bei der Beurteilung kommt es stets auf die Umstände des Einzelfalles an. Hätte B sich im Flugzeug versteckt und wäre er als blinder Passagier gereist, müsste das Leistungsbewusstsein verneint werden. Anders könnte es sein, wenn er das Flugzeug, wie die anderen Fluggäste auch, betreten und einen Platz eingenommen hat. Dann ließe sich angesichts des Systems der Bodenabfertigung und Zugangsgewährung, insbesondere der Kontrolle der Bordkarte, ein generelles Leistungsbewusstsein der Fluggesellschaft bzgl. aller Passagiere, die im Flugzeug Platz genommen haben, annehmen. Da der B sich in das Flugzeug geschlichen hat, ist er zumindest nicht als blinder Passagier geflogen. Die L als Fluggesellschaft will die Beförderungsleistung jedoch nur gegenüber denjenigen erbringen, die ein Flugticket haben. Denn diese Fluggäste haben mit ihr einen Beförderungsvertrag abgeschlossen. Anders als im öffentlichen Nahverkehr hat die L hier kein generelles Leistungsbewusstein. Es liegt damit keine Leistung vor.
+
+III. Ergebnis
+L hat gegen B keinen Anspruch auf Zahlung des Flugpreises aus § 812 I 1 Fall 1 BGB.
+
+G. L könnte gegen B einen Anspruch auf Zahlung des Flugpreises aus § 812 I 1 Fall 2 BGB haben.
+
+I. Etwas erlangt
+
+B hat die Beförderung von Hamburg nach New York erlangt.
+
+II. Auf sonstige Weise
+
+Diese Beförderung müsste B in sonstiger Weise auf Kosten der L erlangt haben.  Da B den Flug nicht durch Leistung der L erlangt hat, kommt nur eine Bereicherung in sonstiger Weise in Betracht. Hier könnte ein Eingriff des B vorliegen. Eingriff bedeutet, nach der Lehre vom Zuweisungsgehalt, die Nutzung von Gebrauchs-, Nutzungs- und Verwertungsmöglichkeiten einer Rechtsposition, die nach der Rechtsordnung einem anderen zugewiesen ist.  Zu denken ist zunächst an einen Eingriff in das Eigentum. Der L als Halterin des Flugzeugs steht es zu, die Plätze nach ihren Bedingungen mit Fluggästen zu besetzen ( § 906 BGB). B hat sich möglicherweise eigenmächtig die tatsächliche Herrschaft am Sitzplatz verschafft. Der Zuweisungsgehalt lässt sich hier als die Gesamtheit der mit der Beförderung zusammenhängenden Dienstleistungen verstehen. Inhaber der Rechtsposition der  Beförderungsleistung war die L, der Eingriff erfolgte damit auch auf ihre Kosten.
+
+III. Ohne Rechtsgrund
+
+Der B müsste die Beförderung ohne Rechtsgrund erlangt haben. B hatte kein Recht zum Erhalten und auch nicht zum Behalten der Beförderungsleistung. Denn es lag keine Einwilligung seitens der L vor.
+
+IV. Rechtsfolge
+
+Damit hat der B die Beförderungsleistung herauszugeben.
+Die Herausgabe des Erlangten, hier der Flugreise, ist jedoch nicht möglich. Es gibt auch kein Surrogat im Vermögen des B. Daher hat der B  gem. § 818 Abs. 2 BGB Wertersatz zu leisten. Die Wertbestimmung erfolgt hier nach dem objektiven Verkehrswert. Es kommt daher auf den Preis an, der für die Beförderung eines 17-jährigen von Hamburg nach New York üblicherweise zu zahlen ist.
+
+a) Entreicherung gem. § 818 III BGB
+
+Es könnte jedoch eine Entreicherung gem. § 818 III BGB vorliegen. Fraglich ist, ob dies überhaupt möglich ist bei nichtkörperlichen Leistungen, da sie schon durch die Entgegennahme endgültig ins Vermögen einverleibt sind. Dagegen spricht, dass etwa die Ortsveränderung als solche sich nicht zwangsläufig als Bereicherung darstellt; die Bereicherung muss vielmehr aus anderen Umständen geschlossen werden, nämlich danach, ob eine bleibende Vermögensmehrung eingetreten ist oder entsprechende Aufwendungen erspart werden. B hat nach der Beförderung keinen Vermögenszuwachs zu verzeichnen und da der Flug eine Luxusreise war, hat er auch keine Aufwendungen erspart, sodass sich B auf eine Entreicherung berufen kann.
+
+b) Ausschluss gem. § 818 III BGB durch die §§ 819 I, 818 IV BGB
+
+Möglicherweise liegt ein Ausschluss des § 818 III BGB durch die §§ 819 I, 818 IV BGB vor.Dann müsste B bösgläubig gewesen sein, gem. §§ 819 I, 818 IV BGB. B wusste genau, dass er die Beförderung nicht zu beanspruchen hatte. Er kannte daher den Mangel des rechtlichen Grundes. Es ist jedoch fraglich, ob hier auf diese Kenntnis des beschränkt geschäfts- bzw. deliktsfähigen B abzustellen ist.
+
+(1) Eine Meinung stellt,in Entsprechung zu den §§ 106ff.BGB , allein auf die Kenntnis des gesetzlichen Vertreters ab. Der Minderjährige dürfe im Bereicherungsrecht nicht schlechter stehen bzw. bedürfe des gleichen Schutzes und der gleichen Kontrolle wie im Vertragsrecht. Damit dränge sich beim bösgläubigen Bereicherungsschuldner eine Parallele zu §687 II BGB auf, dessen Haftung jedoch gerade für beschränkt Geschäftsfähige gem. § 682 BGB nicht gelte. Allerdings verweist § 682 BGB explizit auch auf das Bereicherungsrecht; deshalb birgt die Ableitung aus § 682 BGB die Gefahr eines Zirkelschlusses in sich. Allenfalls kann dieser Norm der Wille des Gesetzgebers zum besonderen Schutz des beschränkt Geschäftsfähigen auch im Bereich der nicht-deliktischen gesetzlichen Schuldverhältnisse entnommen werden.
+
+(2) Eine andere Meinung stellt demgegenüber allein auf die §§ 827 – 829 BGB ab. Sie zieht diese heran, da es sich bei §§ 818 IV, 819 I BGB um eine quasi- deliktische Haftung handele. Jedoch entsteht durch einen Eingriff oder die bewusst rechtsgrundlose Entgegennahme einer Leistung nicht notwendig ein Schaden, wie vorliegend, damit fehlt die Gefahr der Schadensentstehung. Jedoch erfordert der adäquate Minderjährigenschutz in bestimmten rechtsgeschäftsnahen  Fällen eine Kontrolle durch den gesetzlichen Vertreter, zumal die Wertungen der §§ 106ff.BGB sonst durch das Bereicherungsrecht weithin umgangen werden können.
+
+(3) Der BGH hat die genaue Abgrenzung offengelassen, will jedoch in Fällen wie dem vorliegenden, in denen der Minderjährige eine vorsätzliche unerlaubte Handlung begangen hat, insoweit jedenfalls die §§ 827ff. BGB anwenden, da der Minderjährige dann des Schutzes hinsichtlich der bereicherungsrechtlichen Folgen nicht bedürfe. Liegt ein vorsätzlicher deliktischer Eingriff in fremde Rechtsgüter vor, so kann die Kenntnis des Minderjährigen nicht mehr unbeachtlich sein. Allerdings ist das Kriterium der vorsätzlichen unerlaubten Handlung hochgradig beliebig; auch hier mag die Abgrenzung zudem im Einzelfall schwerfallen.
+
+(4) Angesichts der Tatsache, dass der Bereicherungsgläubiger in Ermangelung eines Schadens nicht besonders schutzwürdig ist, verdient die erste, minderjährigenschützende Ansicht Zustimmung. Der B haftet daher nicht verschärft, er kann sich mangels Kenntnis seines gesetzlichen Vertreters auf § 818 III BGB berufen.
+
+Anmerkung: An dieser Stelle kann entweder die Ansicht gewählt werden die dem Minderjährigenschutz Rechnung trägt - wie oben gemacht, oder aber der Ansicht die auf die Busgläubigkeit und die Einsichtsfähigkeit des B abstellt. Mit 17 Jahren ist dieser einsichtsfähig und wusste, dass er den Flug nicht hätte antreten dürfen ohne ein gültiges Ticket zu haben. Folgt man dieser Ansicht, so hat die L einen Anspruch gem. § 812 I 1 Fall 2 BGB gegen den B!
+
+H. Ergebnis: L hat gegen B keinen Anspruch auf Zahlung für den Hinflug.
+
+
+Teil 2 - Der Flug New York – Hamburg
+
+A. Ein vertraglicher Anspruch scheidet aus, da L den B im Bewusstsein, dass sie mit ihm keinen Vertrag geschlossen hat, beförderte.
+
+B. F könnte einen Anspruch auf Flugpreiszahlung aus §§ 670, 683 S. 1, 677 BGB haben.
+
+I. Geschäftsführung
+
+Dann müsste eine Geschäftsführung vorliegen. Unter der Besorgung eines Geschäfts iSd § 677 BGB ist nicht nur eine Geschäftsbesorgung im engeren Sinn zu verstehen, sondern prinzipiell die Besorgung jeder Angelegenheit, gleich welcher Art sie ist. Dies ist vorliegend der Fall, denn die L befördert den B zurück nach Hamburg.
+
+II. Für einen anderen
+
+Die Geschäftsführung müsste für den B vorliegen.
+Bei dem Rücktransport handelt es sich um ein „auch-fremdes-Geschäft“, da einerseits wiederum die Ortsveränderung zum Interessenkreis des B gehört, andererseits aber die L verpflichtet ist, Passagiere ohne gültige Einreisedokumente wieder zurückzutransportieren. Fraglich ist daher erneut, ob sie mit Fremdgeschäftsführungswillen gehandelt hat. Dieser kann beim pflichtgebundenen Geschäftsführer nicht unterstellt werden. In erster Linie handelte die L sicherlich, um ihren Pflichten gegenüber den USA zu genügen.
+
+III. Ergebnis
+
+Damit liegt ein Anspruch aus §§ 670, 683 S. 1, 677 BGB nicht vor.
+
+C. F könnte einen Anspruch auf Flugpreiszahlung aus §§ 823 II, 265a StGB haben.
+Der Aufwand für den Rückflug stellt sich zwar noch als Folgeschaden des erschlichenen Hinflugs dar, jedoch ist der Rücktransport gegenüber B freiwillig erfolgt, so dass sich die L  letztlich selbst schädigt.
+
+D. F könnte einen Anspruch auf Flugpreiszahlung aus § 812 I 1 Fall 2 BGB haben.
+
+Es liegt der Tatbestand einer Rückgriffskondiktion vor (L verfolgte gegenüber dem B keinen Leistungszweck, deshalb keine condictio indebiti). Es dürfte jedoch auch bezüglich des Rückfluges eine Entreicherung des B gem. § 818 III BGB anzunehmen sein, da Hin- und Rückflug als Einheit mit Null zu bewerten sind. Auf diese Entreicherung kann sich B berufen.
+
+E. Im Ergebnis hat L daher für den Rückflug keinen Anspruch gegen B.

@@ -1,0 +1,116 @@
+
+
+Sachverhalt
+
+Der bettlägerige Pfarrer P übergibt einige Tage vor seinem Tod dem Pfarrkuranten D seine Wertpapiere,  mit der Bitte diese dem Bonifatiusverein zu überbringen. Gegenüber D erklärt P: "Ich schenke meine Wertpapiere dem Bonifatiusverin. Es ist Geld von der Kirche und soll auch wieder für die Kirche verwendet werden, wenn ich nicht mehr da bin. Ich übergebe es Ihnen, damit Sie es dem Weihbischof  bei Gelegenheit geben." Daraufhin verstirbt P. Erbin von P wird dessen Schwester E. D überbringt einige Tage nach dem Tod des P die Wertpapiere dem Bonifatiusverein.
+Als die E davon erfährt, verlangt sie die Wertpapiere vom Bonifatiusverein heraus. Zu Recht?
+Die Fallhistorie
+
+Die Fallgestaltung beruht auf einen Rechtsstreit, den das Reichsgericht am 28. Oktober 1913 zu entscheiden hatte.
+Der Problemkreis
+
+Im Mittelpunkt des Falles steht die Frage der Wirksamkeit der Schenkung beweglicher Sachen, die nach dem Tode des Schenkers durch einen Boten des Verstorbenen dem Beschenkten überbracht werden; Abgrenzung §§ 516, 518 BGB zu §§ 2301, 2276 BGB.
+Lösungsskizze
+A. Anspruch gem. §§ 1922 Abs. 1, 985 BGB ( Chronologisch)
+I.   Besitzer
+II.  Eigentümerin
+1. Eigentumsübergang vor dem Tod des P an D
+2. Eigentumsübergang an B vor dem Tod des P ?
+3. Gesamtrechtsnachfolge (Universalsukzession) gem. § 1922 Abs. 1 BGB
+4. Eigentumsübertragung an den Bonifatiusverein
+a) Einigung
+b) Übergabe
+c) Einigsein zum Zeitpunkt der Übergabe
+d) Berechtigung
+III. Ergebnis
+B. Anspruch gem. §§ 1922 Abs. 1, 812 Abs. 1 S.1 Alt. 1 BGB
+I. Erlangtes Etwas
+II. Durch Leistung
+III. Ohne Rechtsgrund
+Abgrenzung §§ 516, 518 BGB zu § 2301 BGB
+(P) Formunwirksamkeit
+(P) Anforderungen an „Vollzug“ zu Lebzeiten
+IV. Ergebnis
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+A. Anspruch gem. §§ 1922 Abs. 1, 985 BGB
+Erbin E könnte gegen den Bonifatiusverein gem. §§ 1922 Abs. 1, 985 BGB einen Anspruch auf Herausgabe der Wertpapiere haben. Voraussetzung dafür ist, dass E Eigentümerin der Wertpapiere geworden ist und der Bonifatiusverein Besitzer ohne Recht zum Besitz ist.
+
+I. Besitzer
+Der Bonifatiusverein müsste Besitzer der Wertpapiere sein. Besitzer ist nach  § 854 Abs. 1 BGB derjenige, der die tatsächliche Gewalt über einer Sache erworben hat. Mit Übergabe der Wertpapiere von D erhielt der Bonifatiusverein die tatsächliche Sachherrschaft. Mithin hat der Bonifatiusverein gem. §§ 21, 26 BGB „Organbesitz“.
+
+II.  Eigentum der E
+E müsste auch Eigentümerin sein. Ursprünglich war P Eigentümer der Wertpapiere.
+
+1. Eigentumsübergang vor dem Tod an D
+P könnte sein Eigentum durch Verfügung an D zu Lebzeiten gem. § 929 S.1 BGB verloren haben. Dafür müsste jedoch die Einigung zur Eigentumsübertragung vorliegen. Hier wollte P jedoch zu keiner Zeit das Eigentum an D übertragen. Vielmehr sollte D als Bote dienen, um die Eigentumsübertragung des P and B zu vollziehen.
+Damit hat P das Eigentum nicht schon zu Lebzeiten durch Verfügung an D verloren.
+
+2. Eigentumsübergang an B vor dem Tod des P ?
+P könnte sein Eigentum durch Verfügung an B gem. § 929 S.1 BGB schon zu Lebzeiten verloren haben. Dafür müsste zunächst eine Einigung über den Eigentumsübergang vorliegen. Dies wäre nur dann denkbar, wenn D Stellvertreter des P wäre (dann wäre WE des P sofort dem B zugegangen nach § 164 III BGB).
+Hier ist aber D offensichtlich kein Vertreter des P. Damit scheidet eine Eigentumsübertragung aus.
+ 
+3. Gesamtrechtsnachfolge (Universalsukzession) gem. § 1922 Abs. 1 BGB
+Durch den Tod des P hat E das Eigentum an den Wertpapieren im Wege der Gesamtrechtsnachfolge gem. § 1922 Abs. 1 BGB erlangt. (Universalsukzession).
+
+4. Eigentumsübertragung an den Bonifatiusverein
+E könnte ihr Eigentum jedoch durch die Verfügung des P an B nach dessen Tod gem. § 929 S. 1 BGB an den Bonifatiusverein verloren haben. Dafür müssten eine Einigung, die Übergabe, das Einigsein zum Zeitpunkt der Übergabe, sowie die Berechtigung vorliegen.
+
+a) Einigung
+Es müsste zunächst eine Einigung vorliegen. Diese besteht aus zwei korrespondierenden Willenserklärungen über den Eigentumsübergang.
+Die Willenserklärung des P, die der D als Bote überbringen sollte, war trotz dessen Tod gem. § 130 II BGB wirksam. Auch ist hier ein Widerruf gem. § 130 I 2 BGB nicht ersichtlich.
+B müsste die Willenserklärung auch angenommen haben. Dies war hier trotz des Todes des P gem. § 153 BGB möglich. D sollte die Willenserklärung auch gerade nach dem Tod des P and B überbringen. Fraglich ist, ob die Willenserklärung des B dem P zugehen musste. Nach § 151 1 BGB kann konkludent auf den Zugang der Willenserklärung verzichtet werden. Dies haben die Parteien hier konkludent so gewollt.
+Mithin liegt die dingliche Einigung mit Wirkung für und gegen die Rechtsnachfolgerin E vor.
+
+b) Übergabe
+Es müsste auch eine Übergabe vorliegen. Hier sind die Wertpapiere durch den Besitzdiener D (§ 855 BGB) übergeben worden. B erhielt damit unmittelbaren Besitz auf Veranlassung des P, was über den Tod des P hinaus wirkt. Auch die übrigen Voraussetzungen liegen vor.
+
+c) Einigsein im Zeitpunkt der Übergabe
+Nach § 929 S. 1 BGB ist ein Einigsein im Zeitpunkt der Übergabe erforderlich. Fraglich ist, ob diese hier vorliegt.
+Einer Ansicht zufolge muss die Übergabehandlung Ausdruck des Übergabewillens sein. Nach herrschender Meinung liegt eine Bindungswirkung eines einmal geäußerten Übereignungswille vor, es sei denn es wurde ein Widerruf erklärt. Eine Streitentscheidung kann hier jedoch dahinstehen, da weder von P noch von E ein Widerruf erklärt worden ist.
+
+d) Berechtigung
+Auch die Berechtigung ist aus der Eigentümerstellung des P zu bejahen.
+
+III. Ergebnis
+E hat damit das Eigentum an den Wertpapieren durch Übereignung an den Bonifatiusverein verloren. Mithin besteht kein Anspruch der E gegen den Bonifatiusverein auf  Herausgabe der Wertpapiere nach §§ 1922 Abs. 1, 985 BGB.
+
+B. Anspruch gem. §§ 1922 Abs. 1, 812 Abs. 1 S.1 Alt. 1 BGB (condictio indebiti)
+Erbin E könnte gegen den Bonifatiusverein gem. §§ 1922 Abs. 1, 812 Abs. 1 S.1, Alt.1 BGB einen Anspruch auf  Herausgabe der Wertpapiere haben. Voraussetzung dafür ist, dass der Bonifatiusverein etwas durch Leistung und ohne Rechtsgrund erlangt hat.
+
+I. Erlangtes Etwas
+Der Bonifatiusverein müsste etwas erlangt haben. Unter etwas Erlangtem ist jeder vermögenswerte Vorteil zu verstehen. Durch die Übergabe hat der Bonifatiusverein Eigentum und Besitz an den Wertpapieren erlangt.
+
+II. Durch Leistung
+Dies müsste auch durch Leistung der E geschehen sein. Leistung ist die bewusste, zweckgerichtete Mehrung fremden Vermögens. D übergab dem Bonifatiusverein die Wertpapiere, um dessen Vermögen zu mehren. Dieses Botenhandeln wird nach dem Tod des P, der E zugerechnet. Damit liegt eine Leistung vor.
+
+III. Ohne Rechtsgrund
+Fraglich ist, ob ein wirksamer Rechtsgrund vorliegt. Es könnte ein wirksamer Schenkungsvertrag zwischen P und B gem. § 516 BGB geschlossen worden sein.
+
+a) Dafür müssten zwei korrespondierende Willenserklärungen bzgl. eines Schenkungsvertrages vorliegen (Angebot und Annahme). Dies liegt hier vor (s.o.)
+
+b) Fraglich ist, ob der Schenkungsvertrag auch formwirksam ist.
+
+aa) Es könnte eine Formunwirksamkeit gem. §§ 125 S.1, 518 I 1 BGB in Betracht kommen. Gem. § 518 II wurde hier die Schenkung jedoch durch die Übergabe bereits bewirkt, sodass ein etwaiger Formmangel geheilt wäre.
+
+bb) Weiterhin könnte ein Formverstoß gem. § 2276 I 1 BGB vorliegen. Dafür müsste die notarielle Beurkundung fehlen. Nach einer anderen Ansicht soll auch die Form des § 2247 ausreichen. Die notarielle Beurkundung fehlt hier. Vorraussetzung ist allerdings, dass gem. § 2301 I BGB die Formvorschriften über Verfügungen von Todes wegen Anwendung finden.
+Dafür müsste jedoch ein Schenkungsversprechen vorliegen, das unter der Bedingung erteilt worden ist, dass der Beschenkte den Schenker überlebt. Dies ist hier problematisch. Eine Schenkung unter Lebenden würde sich nach den §§ 516 ff. BGB richten, wobei eine Schenkung von Todes wegen dem § 2301 BGB unterliegt.
+Die Bestimmung dieser Abgrenzung kann dabei durch Auslegung gem. § 133 BGB ermittelt werden, wenn ausdrücklich nichts vereinbart wurde.
+Hier könnte vielmehr eine Überlebensbedingung vorliegen. Diese liegt insbesondere dann vor, wenn der Schenker den Gegenstand gerade nur dem Beschenkten zuwenden will. Demnach liegt der Schenkungszweck gerade in der Person des Schenkungsempfängers. Hier wollte der P gerade, dass die Wertpapiere an den Bonifatiusverein gehen, da P meinte, dass diese auch von der Kirche kämen.
+Mithin liegt ein Fall des § 2301 I BGB vor. Die Schenkung wäre unwirksam gem. §§ 125 S.1, 2301 BGB.
+ 
+cc) Nach dem § 2301 II BGB würden die Formvorschriften der §§ 2274 ff. BGB allerdings keine Anwendung finden, wenn die Schenkung schon zu Lebzeiten vollzogen wäre.
+Fraglich ist jedoch, welche Vorraussetzungen an den Vollzugsbegriff zu stellen sind.
+ 
+Nach einer Ansicht soll es dabei genügen, wenn der Schenker zu Lebzeiten alles Erforderliche getan hat, dass nach seinem Tod die Schenkung zum Abschluss kommt. Hier hat der P noch im Sterbebett die Wertpapiere an den D ausgehändigt. Danach wäre hier ein Vollzug zu bejahen.
+ 
+Eine andere Ansicht lässt dies nicht genügen. Danach müsste der Bedachte bereits eine gesicherte Rechtsposition, sprich ein Anwartschaftsrecht erhalten haben, sodass ohne weiteres Zutun des Schenkers bereits die Eigentumsübertragung stattfinden kann. Hier müsste der D die Sache jedoch noch an B übergeben, wofür es keine Garantie gibt. Demnach scheidet ein Vollzug aus.
+ 
+Da beide Ansichten zu verschiedenen Ergebnissen führen, muss der Streit entschieden werden.
+Für die zweite Ansicht spricht, dass die B zu Lebzeiten des P noch gar keine gesicherte Rechtsposition erlangt hat und es somit vom Zufall abhängt, ob ihr der Schenkungsgegenstand vom Boten übergeben wird. Damit fehlt es insbesondere an der Zeitlichen Komponente, um einen Vollzug annehmen zu können.
+Mithin liegt kein Vollzug vor ( a.A. vertretbar).
+Aus oben genannten Gründen liegt somit kein Rechtsgrund in Form des Schenkungsvertrages vor.
+
+IV. Ergebnis
+Der Bonifatiusverein hat die Wertpapiere ohne Rechtsgrund erlangt. E kann deshalb Herausgabe gem. §§ 1922 Abs. 1, 812 Abs. 1 S.1, Alt. 1 BGB verlangen. 

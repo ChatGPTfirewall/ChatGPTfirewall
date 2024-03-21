@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  frontend:
+    build: 
+      context: ./frontend
+      target: dev
+    container_name: frontend
+    stdin_open: true
+    tty: true
+    ports:
+      - "5173:5173"
+      - "80:80"
+      - "443:443"
+    volumes:
+        - type: bind
+          source: ./frontend
+          target: /app
+    depends_on:
+      - backend
+    env_file:
+      - .env
+  backend:
+    build: 
+      context: ./backend
+      target: development
+    container_name: backend
+    stdin_open: true
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./backend
+        target: /app
+    env_file:
+      - .env
+  postgres:
+    image: postgres:15.3-bullseye
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    ports:
+      - '6333:6333'
+volumes:
+  postgres:
+    driver: local

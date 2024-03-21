@@ -1,0 +1,37 @@
+{
+  "1": {
+    " Upload your data or select it via your Cloud": ""
+  },
+  "2": {
+    " Ask questions that your data can answer": ""
+  },
+  "You can try out the demo": "",
+  "loginAndAskAnything": "",
+  "Logout": "",
+  "Login": "",
+  "Login and ask anything": "",
+  "card1Upload": "",
+  "card2Ask": "",
+  "orText": "",
+  "card3Demo": "",
+  "logout": "Logout",
+  "File": "",
+  "Language": "",
+  "File Size": "",
+  "tutorialCardStep1": "1. Upload your data or select it via your Cloud",
+  "tutorialCardStep2": "2. Ask questions that your data can answer",
+  "tutorialCardDemoLink": "You can try out the demo",
+  "or": "or",
+  "guideCardDemoTitle": "Try the Demo",
+  "guideCardDemoContent": "Use the demo page to see a pre-selected example with files and questions.",
+  "guideCardDemoText": "",
+  "uploading": "Loading...",
+  "uploadSuccess": "Upload successful",
+  "uploadError": "Upload failed",
+  "demoPageChatWithData": "Demo Page: Chat with your data",
+  "errorNoRoomSelected": "",
+  "errorNoFilesSelected": "",
+  "updatingRoomDocumentsSuccessfully": "",
+  "saveEditResultsButton": "Save",
+  "saveSettings": ""
+}

@@ -1,0 +1,38 @@
+/* LandingPage.css */
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.landing-content {
+  text-align: center;
+  max-width: 600px; /* Maximale Breite des Inhalts */
+  padding: 0 20px; /* Abstand zu den Seiten */
+}
+
+.landing-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.landing-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}

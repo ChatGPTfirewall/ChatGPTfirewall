@@ -1,0 +1,107 @@
+Sachverhalt
+
+F ist mit seinem PKW in der Innenstadt unterwegs. Er fährt mit erlaubter Geschwindigkeit von 45 km/h. Etwa 100 m vor ihm fährt der Mopedfahrer M mit ebenfalls erlaubter Geschwindigkeit. Als sich F wenige Meter an M nähert, schert dieser plötzlich nach links aus, da M während der Fahrt sein Smartphone bedient hat. F kann im letzten Moment noch ausweichen und fährt mit seinem PKW gegen eine Leitplanke. F ist zwar unverletzt, jedoch erleidet sein PKW einen erheblichen Schaden. Die Reparaturkosten belaufen sich auf etwa 5000 €.
+Kann F von M Ersatz der Reparaturkosten verlangen?
+Lösungsskizze
+
+A. Anspruch des F gegen M gem. §§ 683 S.1, 670 BGB
+
+I. Geschäft (+)
+
+II. Fremd (-)
+
+(P) Selbstaufopferung im Straßenverkehr / Wertung des § 7 II StVG
+
+III. Ergebnis (-)
+
+B. Anspruch aus § 823 I BGB
+
+I. Rechtsgutsverletzung (+)
+
+Hier: Substanzsverletzung des Eigentums.
+
+II. Haftungsbegründende Kausalität (+)
+
+(P) Herausforderungsfall
+
+III. Rechtswidrigkeit (+)
+
+IV. Verschulden (+)
+
+Hier : Fahrlässigkeit gem. § 276 BGB
+
+V. Schaden (+)
+
+VI. Haftungsausfüllende Kausalität (+)
+
+VII. Ergebnis (+)
+
+C. Anspruch aus § 823 II i.V.m. § 303 StGB (-)
+
+§ 303 StGB zwar Schutzgesetz, aber kein Vorsatz bei M.
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch des F gegen M gem. §§ 683 S.1, 670 BGB
+F könnte gegen M einen Aufwendungsersatzanspruch gem. §§ 683 S.1, 670 BGB haben. Dafür müssten die Voraussetzungen der berechtigten GoA vorliegen.
+
+I. Geschäft
+F müsste ein Geschäft besorgt haben. Unter Geschäft i.S.d. § 677 BGB ist jedes Handeln mit wirtschaftlichen Folgen zu verstehen. Der Begriff ist weit zu verstehen und umfasst demnach auch reales Handeln. Hier ist der F dem M ausgewichen. Darin ist eine Geschäftsbesorgung zu sehen.
+
+II. Fremd
+Fraglich ist, ob die Geschäftsbesorgung auch fremd war. Fremd ist das Geschäft, wenn es dem Rechts- oder Interessenkreis eines Dritten angehört. Hier hat der F das Lenkrad einerseits herumgerissen, um sich selbst vor Schaden zu bewahren und andererseits, um die Gesundheit des M zu schützen. Insoweit könnte hier ein auch fremdes Geschäft vorliegen.
+
+Zu beachten ist jedoch, dass sich die Beteiligten hier im Straßenverkehr befanden und deshalb die Wertungen des Straßenverkehrsgesetzes (StVG) zu berücksichtigen sind.
+
+Wegen der Wertung § 7 I StVG ist das fremde Geschäft daher so zu verstehen, dass dieses ausscheidet, wenn es dem Geschäftsführer vornehmlich darum ging, sich bzgl. einer verschuldensunabhängigen Haftung des § 7 I StVG zu befreien. Der Gedanke des § 7 I StVG ist der, dass schon allein für das Führen eines KFZ im Straßenverkehr ein Betriebsrisiko auf sich genommen wird. Insoweit liegt immer ein eigenes Geschäft vor, wenn der Geschäftsführer ausweicht, damit er nicht nach § 7 I StVG verschuldensunabhängig haftet.
+
+Etwas anderes gilt nur, wenn der Geschäftsführer sich nach § 7 II StVG entlasten kann. Dann soll eine Fremdgeschäftsführung vorliegen.
+
+Die Entlastung nach § 7 II StVG greift freilich aber nur, wenn höhere Gewalt vorliegt. Höhere Gewalt ist ein betriebsfremdes, von außen durch elementare Naturkräfte oder Handlungen Dritter herbeigeführtes Ereignis, das unvorhersehbar ist und weder bei größter Sorgfalt, noch wegen seiner Häufigkeit in Kauf zu nehmen ist.
+
+Das plötzliche Ausscheren nach links ist zwar überraschend für F gewesen, allerdings stellt dieses Ausscheren kein von außen dringendes Ereignis dar.
+
+Damit kann sich F nicht nach § 7 II StVG entlasten. Mithin hat er ein eigenes Geschäft geführt. Damit liegt die Tatbestandsvoraussetzung des fremden Geschäfts nicht vor.
+
+[Anmerkung: Damit scheidet die GoA nahezu völlig bei der Selbstaufopferung aus.]
+
+III. Ergebnis
+Damit hat F keinen Anspruch gegen M aus §§ 683 S.1, 670 BGB.
+
+B. Anspruch aus § 823 I BGB
+F könnte jedoch einen Anspruch nach § 823 I BGB haben.
+
+I. Rechtsgutsverletzung
+Dafür müsste zunächst eine Rechtsgutsverletzung vorliegen. In Betracht kommt die Verletzung des Eigentums. Hier wurde der PKW des F erheblich in der Substanz geschädigt, indem der M ausgeschert ist und der F in der Folge ausweichen musste. Damit liegt eine Rechtsgutsverletzung vor. 
+
+II. Haftungsbegründende Kausalität
+Es müsste auch Kausalität zwischen der Verletzungshandlung und der Rechtsgutsverletzung vorliegen. Nach der Äquivalenztheorie war das Handeln des M kausal dafür, dass der F ausweichen musste und er in der Folge einen Schaden erlitt. Dies lag auch nicht außerhalb jeglicher Lebenserfahrung, sodass auch die Adäquanz bejaht werden kann. Problematisch könnte der Schutzzweck der Norm sein. Hier hat sich nämlich der F vielmehr selbst geschädigt, indem er ausgewichen und in die Leitplanke gefahren ist. 
+
+Der § 823 I BGB ist aber vielmehr für den Fall konzipiert, dass eine Fremdschädigung vorliegt. Dies könnte jedoch einen Herausforderungsfall für den F darstellen. Liegt ein solcher vor, dann kann diese Selbstschädigung dem M zugerechnet werden.
+
+Um einen Herausforderungsfall anzunehmen, müsste der F tatsächlich herausgefordert worden sein. Er müsste sich nach den Umständen auch tatsächlich herausgefordert gefühlt haben. Des Weiteren dürfte nicht das allgemeine Lebensrisiko verwirklicht worden sein.
+
+Hier ist der F durch das Ausscheren des M tatsächlich herausgefordert worden. Er fühlte sich auch tatsächlich herausgefordert, da ihm gar keine andere Möglichkeit blieb, um sich und den M vor einem Personenschaden zu schützen. Die Eigentumsverletzung beruhte auch auf dem gesteigerten Risiko der Herausforderung, sodass kein allgemeines Lebensrisiko verwirklicht wurde. Damit liegen die Voraussetzungen des Herausforderungsfalls vor. Mithin kann der Schaden dem M zugerechnet werden, sodass die haftungsbegründende Kausalität zu bejahen ist.
+
+III. Rechtswidrigkeit 
+Nach der Lehre vom Erfolgsunrecht wird die Rechtswidrigkeit tatbestandlich indiziert. Damit ist die Rechtswidrigkeit zu bejahen.
+
+IV. Verschulden
+Es müsste auch Verschulden vorliegen. M müsste vorsätzlich oder fahrlässig nach § 276 BGB gehandelt haben. Für ein vorsätzliches Handeln ist nichts ersichtlich. M könnte jedoch fahrlässig gehandelt haben. Fahrlässigkeit liegt vor, wenn die im Verkehr erforderliche Sorgfalt in gebotener Weise nicht beachtet wird. Hier war der M während der Fahrt mit dem Bedienen seines Smartphones beschäftigt. Dies entspricht nicht der im Verkehr erforderlichen Sorgfalt, was auch § 1 StVO normiert. Damit ist das Verschulden zu bejahen.
+
+V. Schaden 
+Es müsste auch ein Schaden vorliegen. Schäden sind unfreiwillige Vermögensopfer. Hier ist dem F ausweislich ein Vermögensschaden i.H.v. 5000 Euro entstanden.
+
+VI. Haftungsausfüllende Kausalität 
+Der Schaden beruht auch kausal auf der Rechtsgutsverletzung, sodass die haftungsausfüllende Kausalität zu bejahen ist.
+
+VII. Ergebnis
+Damit hat der F gegen M einen Anspruch aus § 823 I BGB.
+
+C. Anspruch aus § 823 II i.V.m. § 303 StGB
+F könnte gegen M auch einen Anspruch aus § 823 II i.V.m § 303 StGB haben
+
+Dafür müsste der M ein Schutzgesetz verletzt haben. Gesetz im Sinne eines Schutzgesetzes in § 823 II ist jede Rechtsnorm unabhängig von dem Rechtsgebiet, die den Charakter einer Ge- oder Verbotsnorm hat und dem Individualschutz dient. § 303 StGB dient dem Individualschutz und ist ein Schutzgesetz. Fraglich ist, ob dieses auch verletzt wurde. Maßgeblich ist hier der Verschuldensmaßstab des Schutzgesetzes. Nach §§ 303,15 StGB setzt die Norm jedoch vorsätzliches Verhalten voraus. Hier hat der M jedoch nur fahrlässig gehandelt. Damit scheidet die Verletzung von § 303 StGB aus.
+
+Damit hat F keinen Anspruch gegen M aus § 823 II i.V.m. § 303 StGB.

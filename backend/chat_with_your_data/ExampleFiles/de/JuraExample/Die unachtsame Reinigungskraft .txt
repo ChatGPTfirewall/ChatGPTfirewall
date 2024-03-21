@@ -1,0 +1,178 @@
+Sachverhalt
+
+Der K betreibt als Facharzt eine Arztpraxis für radiologische Diagnostik und Nuklearmedizin. Etwa 2/3 des durchschnittlichen Umsatzes der Praxis werden mit einem Magnetresonanztomographen (MRT) erwirtschaftet. Die P ist dort seit Jahren als Reinigungskraft beschäftigt und verdient monatlich ca. 400 € brutto.
+
+An einem Wochenende besuchte die P ihre über den Praxisräumen der K wohnende Arbeitskollegin B. Bei Besuchsende hörten die beiden Frauen auf dem Weg zur Haustür in der Praxis einen Alarmton. Die P ging in die nicht verschlossenen Praxisräume und stellte fest, dass der Alarm vom MRT ausging und wollte an der Steuereinheit des Geräts den Alarmton ausschalten. Die fest an der Wand montierte Steuereinheit besitzt fünf Schaltknöpfe, vier davon sind in blauer Farbe gehalten und mit „host standby", „alarm silence", „system off" und „system on" überschrieben. Oberhalb von diesen im Quadrat angeordneten blauen Schaltknöpfen befindet sich ein deutlich größerer roter Schaltknopf, der mit der weißen Aufschrift „magnet stop" versehen ist. Dieser rote Schalter ist hinter einer durchsichtigen Plexiglasklappe, die vor der Betätigung des Schalters angehoben werden muss, angebracht.
+
+Um den Alarm auszuschalten, drückte die P statt des hierfür vorgesehenen blauen Knopfes „alarm silence" den roten Schaltknopf „magnet stop" und löste hierdurch einen so genannten MRT-Quench aus. Dabei wird das im Gerät als Kühlmittel eingesetzte Helium in wenigen Sekunden ins Freie abgeleitet, was das elektromagnetische Feld des Gerätes zusammenbrechen lässt.
+
+Die nach dieser Notabschaltung fällige Reparatur kostete 30.000 €. Der K bringt vor, der rote Knopf für die Notabschaltung sei zusätzlich durch zwei über dem Plexiglasdeckel angebrachte Klebestreifen gesichert gewesen, die beschriftet gewesen seien. Auf dem oberen Streifen habe „bei Alarm alarm silence drücken" und auf dem unteren habe „nicht magnet stop. Es wird teuer!" gestanden.
+
+K verlangt von P Schadensersatz i.H.v. 30.000 Euro. Zu Recht?
+Lösungsskizze
+
+A. Anspruch aus §§ 280 I, 611 I BGB
+
+I. Schuldverhältnis (+)
+
+Hier: Arbeitsvertrag
+
+II. Pflichtverletzung (+)
+
+Drücken des Schalters „Stop magnet“ als Nebenpflichtverletzung nach § 241 II BGB
+
+III. Vertretenmüssen (+)
+
+(P) Beweistlastumkehr nach § 619 a BGB
+
+ausweislich des SV waren Knöpfe hinreichend beschriftet, P wusste, dass sie keine hinreichende Qualifikation hat MRT zu bedienen. Wohl grobe Fahrlässigkeit (a.A. vertretbar).
+
+IV. Kausaler Schaden (+)
+
+Reparaturkosten i.H.v. 30.000 Euro
+
+V. Anspruchskürzung nach Grundsätzen des innerbetrieblichen Schadensausgleichs analog § 254 BGB
+
+1. Anwendbarkeit (P)
+
+(P) betrieblich veranlasste Tätigkeit
+
+2. Haftungsquotelung nach BAG
+
+„leichte“ Fahrlässigkeit = keine Haftung des AN
+
+normale Fahrlässigkeit = Haftungsquotelung (str., ob auf 3 Bruttomonatsgehälter reduziert)
+
+grobe Fahrlässigkeit und Vorsatz = grds. volle Haftung, in Ausnahmefällen aber Quotelung nicht ausgeschlossen
+
+Hier: grds. grobe Fahrlässigkeit, aber Abwägung der Gesamtumstände (Gefahrgeneigtheit, Gehaltshöhe, Versicherbarkeit des Schadens, Stellung des AN im Betrieb etc.)
+
+Vertretbar: Haftungsbeschränkung auf ein Jahresgehalt, aufgrund des niedrigen Verdienstes i.H.v. 4800 €.
+
+VI. Ergebnis
+
+B. Anspruch aus § 823 I BGB
+
+I. Rechtsgutsverletzung (+)
+
+II. Verletzungshandlung (+)
+
+III. Haftungsbegründende Kausalität ( +)
+
+IV. Rechtswidrigkeit (+)
+
+V. Verschulden (+)
+
+Grobe Fahrlässigkeit (s.o.)
+
+VI. Schaden (+)
+
+VII. Haftungsausfüllende Kausalität (+)
+
+VIII. Anspruchskürzung analog § 254 BGB (s.o.) und Ergebnis (+)
+
+Wertungen aus §§ 280 I, 611 I BGB gelten auch hier.
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch aus §§ 280 I, 611 I BGB
+K könnte gegen P einen Schadensersatzanspruch aus §§ 280 I, 611 I BGB haben.
+
+I. Schuldverhältnis
+Ein Schuldverhältnis in Form eines Arbeitsvertrages liegt ausweislich des Sachverhalts vor.
+
+II. Pflichtverletzung
+P müsste eine vertragliche Pflicht verletzt haben. In Betracht kommt das Falsche Bedienen des MRT und das Drücken des „ magnet Stop“ Knopfes. Problematisch ist allerdings, dass die P keine Hauptleistung verletzt hat. Die Bedienung des MRT gehörte nicht in ihren Aufgabenbereich. P war zuständig für Reinigungsarbeiten. Sie könnte vielmehr eine Nebenpflicht nach § 241 II BGB verletzt haben.
+
+Nach dem Arbeitsvertrag besteht die Nebenpflicht, den Arbeitgeber nicht zu schädigen und Rücksicht auf dessen Rechte und Rechtsgüter zu nehmen.
+
+Durch das fälschliche Betätigen des „magnet stop“ Knopfes hat P diese Pflicht verletzt.
+
+III. Vertretenmüssen
+Dies müsste P auch zu vertreten haben. Nach dem Wortlaut des § 280 I 2 BGB wird das Vertretenmüssen i.d.R. vermutete. Etwas anderes ergibt sich hier jedoch aus § 619a BGB. Danach trägt der Arbeitgeber die Beweislast für Pflichtverletzungen des Arbeitnehmers.
+
+Überdies gilt die arbeitsrechtliche Besonderheit, dass sich das Verschuldensmaß nicht nur bzgl. der Verletzungshandlung, sondern auch bzgl. des Schadens ermittelt werden muss.
+
+Hier bringt der K jedoch glaubhaft vor, dass die P den Knopf fälschlich betätigt hat.
+
+Fraglich ist, welchen Verschuldensgrad die P zu vertreten hat. P könnte grob fahrlässig gehandelt haben. Grob fahrlässig handelt, wer die im Verkehr erforderliche Sorgfalt im groben Maße missachtet.
+
+Ausweislich des Sachverhalts handelt es sich bei dem MRT um ein sehr teures Gerät, welches sich ohne spezielle Qualifikation nicht gefahrlos bedienen lässt. Dies war der P auch bewusst.
+
+Zudem hätte P bemerken müssen, dass der Knopf besonders durch ein Plexiglas gesichert war. Zudem war ein Zettel angebracht, indem stand „nicht drücken, es wird teuer“. Ein wahlloses Betätigen des Knopfes trotz dieser Vorkehrungen stellt hingegen eine besonders grobe Missachtung der im Verkehr erforderlichen Sorgfalt dar. Auch war P bewusst, dass es sich um ein äußerst wertvolles Gerät handelt, an dem durch falsche Bedienung ein großer Schaden entstehen kann.
+
+Somit handelte P insgesamt grob fahrlässig (a.A. vertretbar).
+
+IV. Kausaler Schaden
+Es entstand auch ein kausaler Schaden in Form von Reparaturkosten i.H.v. 30.000 Euro.
+
+V. Anspruchskürzung nach Grundsätzen des innerbetrieblichen Schadensausgleichs analog § 254 BGB
+Fraglich ist, ob der Anspruch nach den Grundsätzen des innerbetrieblichen Schadensausgleichs analog § 254 BGB gekürzt werden kann.
+
+Dieses Konstitut wurde mit dem Gedanken entwickelt, dass der Arbeitnehmer in eine fremde Arbeitsorganisation eingegliedert ist, strukturell dem Arbeitgeber unterlegen ist und überdies kein Mensch 100 % fehlerlos eine Arbeit verrichten kann.
+
+Abgeleitet wird die Kürzung aus § 254 BGB analog. Nach einer anderen Ansicht solle vielmehr § 276 I BGB einschlägig sein. Ein Streitentscheid ist aufgrund der fehlenden Relevanz hier jedoch entbehrlich.
+
+Liegen die Voraussetzungen vor, wird eine Haftungsquotelungen nach Grad des Verschuldensmaßstabs vorgenommen.
+
+1. Anwendbarkeit
+Fraglich ist, ob die Grundsätze des innerbetrieblichen Schadensausgleichs hier überhaupt anwendbar sind. Die P müsste dafür eine betrieblich veranlasste Tätigkeit ausgeführt haben.
+
+Als betrieblich veranlasst gelten in Anlehnung an § 105 I SGB VII solche Tätigkeiten, die arbeitsvertraglich übertragen worden sind oder die der Arbeitnehmer im Interesse des Arbeitgebers für den Betrieb ausführt. Das Handeln braucht dabei nicht zum eigentlichen Aufgabengebiet des Beschäftigten gehören. Ausreichend ist, wenn er im wohl verstandenen Interesse des Arbeitgebers tätig wird.
+
+Eine betriebliche Veranlassung liegt zudem auch dann vor, wenn das Verhalten des Schädigers nach dem objektiven Verkehrshorizont sich nicht als untypisch darstellt und aus Sicht des Schädigers das Handeln im Interesse des Arbeitgebers geboten war.
+
+Problematisch ist hier, dass die P den MRT während eines privaten Besuches bei B bedient hat, da sie vorher Alarmgeräusche wahrgenommen hat. Nach Sicht des P wollte sie jedoch nur, dass das MRT diesen verdächtigen Ton nicht mehr von sich gibt und eventuell Nachbarn im Interesse des K nicht belästigt. Fraglich könnte die betrieblich veranlasste Tätigkeit jedoch dadurch sein, dass P hier grob fahrlässig gehandelt hat (s.o.).
+
+Bei der Bestimmung der betrieblich veranlassten Tätigkeit steht jedoch vielmehr der Charakter der Handlung unter Berücksichtigung aller Umstände des Einzelfalles im Vordergrund. Ein vorsätzliches oder grob fahrlässiges Handeln lässt den Gesamtcharakter als betrieblich veranlasste Tätigkeit daher nicht entfallen.
+
+Wie bereits dargelegt ist hier davon auszugehen, dass die P im Interesse des K den Alarmton des MRT ausschalten wollte. Damit liegt eine betrieblich veranlasste Tätigkeit vor.
+
+Somit sind auch die Grundsätze des innerbetrieblichen Schadensausgleichs anwendbar.
+
+2. Haftungsquotelung nach BAG
+Es könnte hier eine Haftungsquotelung vorgenommen werden. Nach den Grundsätzen des BAG unterteilt sich die Quotelung grob in drei Gruppen. Dabei ist besonders, dass der Verschuldensmaßstab der Fahrlässigkeit selbst wiederum in zwei Gruppen unterteilt wird. Bei „leichter“ Fahrlässigkeit entfällt die Haftung des Arbeitnehmers komplett. Bei normaler Fahrlässigkeit wird eine angemessene Quotelung vorgenommen. Bei Vorsatz und grober Fahrlässigkeit haftet der Arbeitnehmer grundsätzlich voll, allerdings wird aus Billigkeitsgründen auch eine Quotelung in Einzelfällen vorgenommen. Dies bestimmt sich nach den Gesamtumständen im Einzelfall.
+
+Wie bereits geprüft, handelte die P hier grob fahrlässig. Grundsätzlich müsste die P hier voll haften. Es könnte sich jedoch etwas anderes aus den Gesamtumständen ergeben.
+
+Berücksichtigung muss vorliegen finden, ob die Tätigkeit besonders Gefahrgeneigt ist, ob der Schaden versicherbar ist und wie hoch das Arbeitsentgelt der P ist.
+
+Die Bedienung eines MRT ist grds. keine besonders gefahrgeneigte Tätigkeit für die P. Auch ist zu berücksichtigen, dass P hier aufgrund der besonderen Vorrichtung des Knopfes hätte erkennen müssen, dass sie den Knopf nicht wahllos drücken darf. Für eine Quotelung spricht jedoch, dass der Schaden grds. für den K versicherbar ist und er insoweit ein gewisses Betriebsrisiko trägt.
+
+Dafür spricht insbesondere auch das niedrige Gehalt der P von monatlich 400 Euro. Eine Haftung i.H.v. 30.000 Euro wäre nicht zumutbar.
+
+Mithin ist daher eine Quotelung erforderlich. Zumutbar ist eine Quotelung i.H.v. einem Jahresgehalt von 4800 Euro.
+
+VI. Ergebnis
+
+K hat gegen P einen Schadensersatzanspruch i.H.v. 4800 Euro aus §§ 280 I, 611 I BGB.
+
+B. Anspruch aus § 823 I BGB
+K könnte gegen P auch einen Schadensersatzanspruch aus § 823 I BGB haben.
+
+I. Rechtsgutsverletzung
+Das Rechtsgut Eigentum ist betroffen.
+
+II. Verletzungshandlung
+Dieses Recht hat P durch das Betätigen des Knopfes auch durch aktives Tun verletzt.
+
+III. Haftungsbegründende Kausalität
+Es liegt auch Kausalität zwischen der Verletzungshandlung und der Rechtsgutsverletzung vor.
+
+IV. Rechtswidrigkeit
+Die Rechtswidrigkeit wird nach der Lehre vom Erfolgsunrecht indiziert.
+
+V. Verschulden
+Ein Verschulden in Form von grober Fahrlässigkeit liegt vor (s.o.)
+
+VI. Schaden
+Es liegt auch ein Schaden i.H.v. 30.000 Euro vor.
+
+VII. Haftungsausfüllende Kausalität
+Die Kausalität zwischen der Rechtsgutsverletzung und dem Schaden ist ebenfalls zu bejahen.
+
+VIII. Anspruchskürzung analog § 254 BGB (s.o.) und Ergebnis
+Die Wertungen des innerbetrieblichen Schadensausgleiches analog § 254 BGB schlagen auch ins Deliktsrecht durch, sodass auch hier der Anspruch auf ein Jahresgehalt beschränkt wird.
+
+Damit hat K gegen P auch einen Schadensersatzanspruch i.H.v. 4800 Euro gem. § 823 I BGB.

@@ -1,0 +1,122 @@
+Sachverhalt
+
+Fischgroßhändler G verkauft dem Fischhändler F 124 Fass „Haakjöringsköd“, die sich auf dem Dampfer der Jessica befinden, der den Zielhafen Hamburg ansteuert. Beide Parteien sind der Auffassung, dass es sich um Walfleisch handelt und dieses mit „Haakjöringsköd“ richtig bezeichnet ist. Der norwegische Begriff „Haakjöringsköd“ bedeutet aber in Wirklichkeit Haifischfleisch.
+
+Im Hamburger Hafen wird die Ware beschlagnahmt, weil es sich tatsächlich um Haifischfleisch handelt, dessen Einfuhr verboten ist. F macht aufgrund der Beschlagnahme gegen G kaufrechtliche Gewährleistungsrechte geltend. G beruft sich darauf, dass vertragsgerecht „Haakjöringsköd“ geliefert worden sei.
+Lösungsskizze
+
+A. Anspruch F gegen G auf Nacherfüllung aus §§ 433, 437 Nr. 1, 434, 439 BGB
+
+I. Kaufvertrag zwischen F und G
+
+1. Einigung zwischen F und G
+
+2. Ergebnis der Einigung
+
+II. Mangel der Kaufsache, § 434 BGB
+
+III. Vorliegen des Mangels bei Gefahrübergang
+
+IV. Kein Ausschluss der Mängelgewährleistungsrechte
+
+1. Anwendbarkeit des HGB
+
+2. Ablieferung der Ware
+
+3. Untersuchung
+
+4. Rüge
+
+5. Rechtzeitigkeit der Rüge
+
+6. Schutzwürdigkeit des Verkäufers
+
+7. Rechtsfolge
+
+V. Ergebnis des Anspruchs
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten 
+
+A. Anspruch F gegen G auf Nacherfüllung aus §§ 433, 437 Nr. 1, 434, 439 BGB
+
+F könnte gegen G einen Anspruch auf Nacherfüllung gemäß §§ 433, 437 Nr. 1, 434, 439 BGB haben.
+
+I. Kaufvertrag zwischen F und G
+
+Dazu müsste zuallererst ein wirksamer Kaufvertrag zwischen den Parteien zustande gekommen sein. Dazu müssten sich die Parteien über die wesentlichen Vertragsinhalte geeinigt haben.
+
+1. Einigung zwischen F und G
+
+F und G waren sich einig, dass „Haakjöringsköd“ geliefert wird, worunter beide Walfleisch verstanden. Fraglich ist, wie es sich auswirkt, dass „Haakjöringsköd“ in Wirklichkeit Haifischfleisch ist. Dazu muss gefragt werden, was genau Vertragsinhalt zwischen den Parteien geworden ist. Dies ist durch Auslegung der Willenserklärungen nach §§ 133, 157 BGB zu ermitteln.
+
+Hinweis: Empfangsbedürftige Willenserklärungen sind grundsätzlich nach dem objektiven Empfängerhorizont auszulegen, d.h. danach, wie ein sorgfältiger Dritter in der Rolle des Erklärungsempfängers die Erklärung nach Treu und Glauben unter Berücksichtigung der Verkehrssitte und der Umstände des Einzelfalles verstehen durfte, §§ 133, 157 BGB
+
+Die Erklärungen von F und G sind somit danach auszulegen, wie ein objektiver Dritter den Inhalt verstehen durfte. Aufgrund der objektiven Wortbedeutung von „Haakjöringsköd“ wäre also eigentlich die Lieferung von 124 Fass mit Haifischfleisch vereinbart gewesen.
+
+Die Auslegung nach dem objektiven Empfängerhorizont dient dem Schutz des Erklärungsempfängers und wird daher durch dessen Schutzbedürftigkeit begrenzt. Nicht schutzbedürftig ist der Erklärungsempfänger, wenn er trotz der vom Willen des Erklärenden abweichenden Erklärung richtig erkennt, was der Erklärende tatsächlich gewollt hat. In diesem Fall gilt das Gewollte. Ebenfalls nicht schutzbedürftig ist der Erklärungsempfänger dann, wenn beide Parteien die konkrete Erklärung in gleicher Weise verstanden haben.
+
+Für den Fall, dass beide Parteien dasselbe meinen, obwohl sie übereinstimmend das Falsche gesagt haben, ist eine Falschbezeichnung somit nicht schädlich und es gilt das übereinstimmend Gewollte. → „Falsa demonstratio non nocet“
+
+Um einen solchen Fall der übereinstimmenden Falschbezeichnung handelt es sich auch hier: F und G haben zum Zeitpunkt des Vertragsschlusses bei dem Wort „Haakjöringsköd“ übereinstimmend an Walfleisch gedacht, obwohl der Begriff tatsächlich Haifischfleisch bedeutet.
+
+2. Ergebnis der Einigung
+
+Unabhängig von der objektiven Wortbedeutung haben die beiden damit einen Vertrag über die Lieferung von 124 Fass mit Walfleisch abgeschlossen. Ein wirksamer Kaufvertrag liegt zwischen den Vertragsparteien vor.
+ 
+
+II. Mangel der Kaufsache, § 434 BGB
+
+In der Lieferung von Haifischfleisch müsste ein Mangel zu sehen sein. Ein Mangel liegt dann vor, wenn eine negative Abweichung der Ist- von der Sollbeschaffenheit festzustellen ist. Hier wurde Haifischfleisch statt dem geschuldeten Walfleisch geliefert. Darin ist ein Sachmangel i.S.d. § 434 I BGB zu sehen. Durch die Beschlagnahme wird aus dem Sachmangel aber kein Rechtsmangel i.S.d. § 435 BGB.
+
+Man könnte hier zudem thematisieren, dass mit der Aussonderung und Verschiffung der Ware Konkretisierung (§ 243 II BGB) eingetreten ist, sich die Schuld des G also auf genau die fraglichen Fässer konkretisiert hat (sog. Stückkauf). Eine Nachlieferung kommt bei einem Stückkauf nur dann in Betracht, wenn es sich um eine vertretbare Sache handelt. Was vertretbare Sachen sind regelt § 91 BGB. Waren sind danach dann vertretbar, wenn sie gleichwertig beschaffen und gegeneinander austauschbar sind. Dies ist vorliegend bei Walfleisch der Fall. G könnte unproblematisch weiteres Walfleisch besorgen und verschiffen.
+
+III. Vorliegen des Mangels bei Gefahrübergang
+
+Der Mangel müsste auch schon bei Gefahrübergang vorgelegen haben, §§ 446, 447 BGB. Da wir vorliegend nicht wissen, ob die Ware auf Verlangen des F versandt wurde (dann wäre Gefahrübergang nach § 447 BGB mit der Übergabe der Fässer mit Walfleisch an den Frachtführer eingetreten) oder G die Waren von sich aus an F verschifft hat (dann wäre Gefahrübergang nach § 446 BGB mit der Aushändigung bzw. Zugang des F zu den Fässern mit dem Walfleisch eingetreten), ist aber trotzdem nach beiden Vorschriften der Gefahrübergang schon eingetreten, sodass sich vorliegend nicht entschieden werden muss.
+
+IV. Kein Ausschluss der Mängelgewährleistungsrechte
+
+Die Mangelgewährleistungsrechte dürften für F nicht ausgeschlossen sein. F müsste seiner Rügeobliegenheit aus § 377 HGB nachgekommen sein.
+
+1. Anwendbarkeit des HGB
+
+Das Handelsrecht müsste überhaupt auf den vorliegenden Fall Anwendung finden. Nach § 377 I HGB muss es sich zur Anwendung dieser Vorschrift bei beiden Vertragsparteien um ein Handelsgeschäft handeln. F ist Fischhändler und G ist Fischgroßhändler. Somit handelt es sich bei beiden Vertragsparteien um Kaufmänner i.S.d. § 1 I HGB.
+
+2. Ablieferung der Ware
+
+Die Fässer sind – wie bereits oben festgestellt – an F übergeben worden, sodass dieser die Möglichkeit hatte, die Ware zu untersuchen und festzustellen, um was für Fisch es sich genau handelt.
+
+3. Untersuchung
+
+F müsste die Ware unverzüglich untersucht haben. Nachdem F die Fässer mit dem vermeintlichen Walfleisch entgegengenommen hat, stellte er fest, dass es sich um Haifischfleisch handelt. Es handelt sich hier um einen offensichtlichen Mangel, bei dem keine lange Untersuchung der Ware notwendig ist. F hat den Mangel somit durch eine Inaugenscheinnahme der Ware festgestellt.
+
+4. Rüge
+
+F müsste den G gerügt haben. Dazu müsste er dem G so genau wie möglich die Mängel mitteilen bzw. aufzeigen. Diese Rüge ist an keine Form gebunden und geht nach § 130 BGB analog zu. Hier hat F seine Mängelgewährleistungsrechte aus dem Kaufvertrag mit G geltend gemacht und somit zum Ausdruck gebracht, dass die Ware nicht dem geschuldeten Leistungsgegenstand entspricht und somit einen Mangel aufweist. Eine wirksame Rüge liegt somit auch vor.
+
+5. Rechtzeitigkeit der Rüge
+
+F müsste den G rechtzeitig gerügt haben. Nach dem Wortlaut des § 377 HGB hat die Rüge „unverzüglich“ zu erfolgen. Nach § 121 I BGB heißt „unverzüglich“, dass die Rüge ohne schuldhaftes Zögern vorgenommen worden sein müsste. Dies ist vorliegend aber umgehend geschehen.
+
+Beachte: Es handelt sich vorliegend um eine „doppelte Frist“:
+
+1. Pflicht des Käufers die Ware unverzüglich zu untersuchen
+
+und
+
+2. Pflicht des Käufers die festgestellten Mängel der Untersuchung gegenüber dem Verkäufer unverzüglich zu rügen.
+
+6. Schutzwürdigkeit des Verkäufers
+
+G müsste auch schutzwürdig sein. Dies ist nicht der Fall, wenn er den Mangel der Sache arglistig gegenüber F verschwiegen hätte, § 377 V HGB. Davon ist im Sachverhalt aber nichts zu erkennen, zumal der G mit der verschifften Sache davon ausging den Kaufvertrag wirksam zu erfüllen.
+
+7. Rechtsfolge
+
+Da F dem G rechtzeitig den Mangel mitgeteilt hat, behält F seine Mangelgewährleistungsrechte aus dem Kaufvertrag (§§ 433 ff. BGB).
+
+Beachte: Hätte F die Ware nicht unverzüglich untersucht und dem G den Mangel mitgeteilt, könnte F sich nicht mehr auf die Mängelgewährleistungsrechte berufen. Die Ware dann als genehmigt anzusehen, § 377 II, III HGB. Dies soll gerade im Handelsverkehr für eine schnelle und möglichst reibungslose Abwick-lung der dort geschlossenen Verträge sorgen.
+
+V. Ergebnis des Anspruchs
+
+F hat gegen G einen Anspruch auf Nacherfüllung gemäß §§ 433, 437 Nr. 1, 434, 439 BGB.

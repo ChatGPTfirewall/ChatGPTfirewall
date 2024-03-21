@@ -1,0 +1,133 @@
+Sachverhalt
+
+Die Klägerin E ist seit April 1977 bei der Beklagten und deren Rechtsvorgängerinnen als Verkäuferin mit Kassentätigkeit beschäftigt.
+
+Die Beklagte ist ein überregional vertretenes Einzelhandelsunternehmen. In einigen ihrer Filialen, so auch in der Beschäftigungsfiliale der Klägerin, besteht die Möglichkeit, Leergut an einem Automaten gegen Ausstellung eines Leergutbons zurückzugeben. Wird ein solcher Bon an der Kasse eingelöst, ist er von der Kassiererin/dem Kassierer abzuzeichnen. Mitarbeiter der Filiale sind angewiesen, mitgebrachtes Leergut beim Betreten des Markts dem Filialleiter vorzuzeigen und einen am Automaten erstellten Leergutbon durch den Leiter gesondert abzeichnen zu lassen, bevor sie den Bon an der Kasse einlösen. Dort wird er wie ein Kundenbon ein weiteres Mal abgezeichnet. Diese Regelungen, die Manipulationen beim Umgang mit Leergut ausschließen sollen, sind der Klägerin bekannt.
+
+Am 12. Januar 2008 fand eine Mitarbeiterin im Kassenbereich einer separaten Backtheke zwei nicht abgezeichnete Leergutbons im Wert von 0,48 Euro und 0,82 Euro. Sie trugen das Datum des Tages und waren im Abstand von ca. einer Dreiviertelstunde am Automaten erstellt worden. Die Mitarbeiterin legte die Bons dem Filialleiter vor. Dieser reichte sie an die Klägerin mit der Maßgabe weiter, sie im Kassenbüro aufzubewahren für den Fall, dass sich noch ein Kunde melden und Anspruch darauf erheben würde; andernfalls sollten sie als „Fehlbons“ verbucht werden. Die Klägerin legte die Bons auf eine - für alle Mitarbeiter zugängliche und einsehbare - Ablage im Kassenbüro.
+
+Am 22. Januar 2008 kaufte die Klägerin in der Filiale außerhalb ihrer Arbeitszeit privat ein. An der Kasse überreichte sie ihrer Kollegin zwei nicht abgezeichnete Leergutbons. Laut Kassenjournal wurden diese mit Werten von 0,48 Euro und 0,82 Euro registriert. Beim Kassieren war auch die Kassenleiterin und Vorgesetzte der Klägerin anwesend.
+
+Zur Klärung der Herkunft der eingereichten Bons führte die Beklagte mit der Klägerin ab dem 25. Januar 2008 insgesamt vier Gespräche, an denen - außer am ersten Gespräch - jeweils zwei Mitglieder des Betriebsrats teilnahmen. Sie hielt ihr vor, die eingelösten Bons seien nicht abgezeichnet gewesen und stimmten hinsichtlich Wert und Ausgabedatum mit den im Kassenbüro aufbewahrten Bons überein. Es bestehe der dringende Verdacht, dass sie - die Klägerin E - die dort abgelegten „Kundenbons“ an sich genommen und zu ihrem Vorteil verwendet habe. Die Klägerin E bestritt dies und erklärte, selbst wenn die Bons übereinstimmten, bestehe die Möglichkeit, dass ihr entsprechende Bons durch eine ihrer Töchter oder durch Dritte zugesteckt worden seien.
+
+Mit Schreiben vom 18. Februar 2008 hörte die Beklagte den Betriebsrat zu einer beabsichtigten außerordentlichen, hilfsweise ordentlichen Kündigung, gestützt auf den Verdacht der Einlösung der Bons, an. Der Betriebsrat äußerte Bedenken gegen die fristlose Kündigung, einer ordentlichen Kündigung widersprach er und verwies auf die Möglichkeit einer gegen die Klägerin gerichteten Intrige.
+
+Mit Schreiben vom 22. Februar 2008 kündigte die Beklagte das Arbeitsverhältnis außerordentlich fristlos, hilfsweise fristgemäß zum 30. September 2008.
+
+Dagegen erhebt E eine Kündigungsschutzklage.
+
+Hat diese zulässige Kündigungsschutzklage Aussicht auf Erfolg?
+Lösungsskizze
+
+Begründetheit der Kündigungsschutzklage
+
+(Spezialfall der Feststellungsklage; sog. „punktueller Streitgegenstandsbegriff“)
+
+Begründet, wenn Arbeitsverhältnis nicht zum 23. Februar 2008, hilfsweise zum 30. September 2008 beendet wurde.
+
+A. Wirksames Arbeitsverhältnis (+)
+
+I. Beendigung durch außerordentliche Kündigung gem. § 626 I BGB
+
+1) Wirksame Kündigungserklärung (+)
+
+Schriftform, Zugang (+)
+
+2) Ausschluss der Präklusion gem. §§ 626 II BGB,4, 5, 7 KSchG (+)
+
+3) Kündigungsfrist gem. § 622 BGB (+)
+
+4) Allgemeine Unwirksamkeitsgründe und Kündigungsverbote (-)
+
+5) Betriebsratsanhörung gem. § 102 I 1 BetrVG (+)
+
+6) Wichtiger Grund i.S.d. § 626 I BGB (P)
+
+a) Vorliegen eines Sachverhalts, der generell geeignet ist, einen wichtigen Grund abzugeben (+)
+
+hier: vermeintliche Unterschlagung von Pfandbons
+
+b) Umfassende Interessenabwägung im Einzelfall/ Ultima- Ratio- Prinzip/ Prognose-Prinzip (-)
+
+pro wichtiger Grund: Vertrauensbruch ggü. Arbeitgeber, mögliche Straftat (§ 246 I StGB), auf den Bonwert kommt es somit nicht an.
+
+contra wichtiger Grund: Bagatelldelikt, E seit 31 Jahren angestellt und nur eine Pflichtverletzung, keine Pflichtverletzung einer Kerntätigkeit, § 246 I StGB scheidet aus, da Beklagte nicht Eigentümer der Pfandbons geworden ist, „Ultima-ratio- Prinzip“ verletzt, da keine Abmahnung erfolgte.
+
+Zwischenergebnis: Es hätte einer Abmahnung bedurft, damit wichtiger Grund (-)
+
+7) Ergebnis
+
+Außerordentliche Kündigung (-)
+
+II. Ordentliche Kündigung (-)
+
+Auch hier gilt Ultima- Ratio- Prinzip bei verhaltensbedingter Kündigung. Auch Prognoseprinzip erhält hier größeres Gewicht als bei der außerordentlichen Kündigung.
+
+B. Endergebnis
+
+Damit wurde Arbeitsverhältnis nicht zum 23. Februar 2008, hilfsweise zum 30. September 2008 beendet.
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+Begründetheit der Kündigungsschutzklage
+Die Kündigungsschutzklage müsste begründet sein.
+Die Kündigungsschutzklage stellt einen Spezialfall der Feststellungsklage dar (sog. „punktueller Streitgegenstandsbegriff“).
+Die Kündigungsschutzklage ist daher begründet, wenn das Arbeitsverhältnis nicht zum 23. Februar 2008 oder hilfsweise zum 30. September 2008 beendet wurde.
+
+A. Wirksames Arbeitsverhältnis
+Ausweislich des Sachverhalts bestand seit 1977 ein wirksames Arbeitsverhältnis zwischen E und der Beklagten.
+
+I. Beendigung durch außerordentliche Kündigung gem. § 626 I BGB
+Das Arbeitsverhältnis könnte durch eine außerordentliche Kündigung beendet worden sein. Dafür müssten die Voraussetzungen vorliegen.
+
+1) Wirksame Kündigungserklärung
+Eine wirksame Kündigungserklärung liegt vor. Mangels anderweitiger Sachverhaltsangaben ist auch von der Einhaltung der Schriftform (§ 623 BGB) auszugehen. Es liegt auch der Zugang (§130 BGB) vor.
+
+2) Ausschluss der Präklusion gem. §§ 626 II BGB,4, 5, 7 KSchG
+Auch von der Einhaltung der Klagefrist von 3 Wochen ist auszugehen.
+
+3) Kündigungsfrist gem. § 622 BGB
+Die Kündigungsfrist nach § 622 BGB wurde eingehalten.
+
+4) Allgemeine Unwirksamkeitsgründe und Kündigungsverbote
+Allgemeine Unwirksamkeitsgründe (z.B. aus § 138 BGB) und Kündigungsverbote sind nicht ersichtlich.
+
+5) Betriebsratsanhörung gem. § 102 I 1 BetrVG
+Ausweislich des Sachverhalts wurde der Betriebsrat ordnungsgemäß gem. § 102 I 1 BetrVG angehört.
+
+6) Wichtiger Grund i.S.d. § 626 I BGB
+Fraglich ist allerdings, ob auch ein wichtiger Grund i.S.d. § 626 I BGB vorliegt. Dies ist der Fall, wenn ein Sachverhalt vorliegt, der generell geeignet ist, einen wichtigen Grund abzugeben und eine umfassende Interessenabwägung im Einzelfall stattgefunden hat, die ua. das Ultima- Ratio- Prinzip berücksichtigt hat.
+
+a) Vorliegen eines Sachverhalts, der generell geeignet ist, einen wichtigen Grund abzugeben
+Hier hat E vermeintlich zwei Pfandbons mit Werten von 0,48 Euro und 0,82 Euro unterschlagen. Solche Pfandbons müssen jedoch als „Fehlbons“ registriert werden. E soll diese jedoch entgegen der Anweisung privat verwendet haben. Dies stellt eine Pflichtverletzung des Arbeitsvertrages und damit auch einen Sachverhalt dar, der generell geeignet ist, einen wichtigen Grund darzustellen.
+
+b) Umfassende Interessenabwägung im Einzelfall/ Ultima- Ratio- Prinzip/ Prognose-Prinzip
+Es müsste jedoch auch eine umfassende Interessenabwägung stattgefunden haben. Eine Kündigung muss immer das letzte Mittel darstellen („Ultima- Ratio- Prinzip“). Bei verhaltensbedingten Kündigungen ist daher grds. eine vorherige Abmahnung erforderlich, damit der Arbeitnehmer Gelegenheit bekommt sein Verhalten in Zukunft einzustellen.
+
+Nur wenn die Pflichtverletzung von solch erheblichen Maße ist, dass ein besonderer Vertrauensbruch vorliegt oder der Arbeitnehmer womöglich in Zukunft wieder solch eine Pflichtverletzung begehen wird, kann der Arbeitgeber davon absehen und sofort kündigen (sog. „Prognoseprinzip“).
+
+Um diesen Prinzipien gerecht zu werden, ist eine Abwägung unter Berücksichtigung aller Umstände des Einzelfalles vorzunehmen.
+
+Für die Entbehrlichkeit einer Abmahnung könnte sprechen, dass E durch die Unterschlagung der Pfandbons das Vertrauen ihres Arbeitgebers unwiderruflich zerstört hat. Dabei ist der Wert der Bons unerheblich. Eine Wertung, wie die von § 248a StGB, dass bei geringfügigen Sachen der Staat nur bei Vorliegen eines Strafantrags Ermittlungen anstrengt, ist dem Schuldrecht fremd. Im Schuldrecht geht es nur um einen störungsfreien Austausch von Leistungsinteressen. Es käme freilich nur darauf an, ob es dem Arbeitgeber zumutbar ist auch in Zukunft ein auf Vertrauen basiertes Arbeitsverhältnis mit E aufrecht zu erhalten.
+
+Dagegen sprechen jedoch zahlreiche Argumente. Insbesondere ist schon fraglich, ob E eine Straftat i.S.d. § 246 I StGB begangen hat. Dieser kann nur verwirklicht werden, wenn die Pfandbons im Eigentum des Beklagten standen. Ausweislich des Sachverhalts hat jedoch eine Kundin diese dort vergessen, was noch keine Herrenlosigkeit der Pfandbons begründet (siehe dazu den interessanten Beitrag von Dr. Schlösser in: Höchstrichterliche Rechtsprechung im Strafrecht, S. 509–515, Heft 11/2009).
+
+Auch arbeitet E seit mehr als 31 Jahren in dem Unternehmen der Beklagten. In dieser Zeit hat sie durch ein tadelloses Verhalten soviel Vertrauen erworben, dass dieses durch eine einmalige Pflichtverletzung nicht ausgezehrt werden darf. Dies gilt umso mehr, als dass der Wert der Pfandbons an der Grenze zur Bagatelle anzusetzen ist.
+
+Es wurde auch überhaupt nicht berücksichtigt, wie hoch die Wahrscheinlichkeit ist, dass E diese Pflichtverletzung in Zukunft wiederholen wird („Prognoseprinzip“).
+
+Damit war es dem Beklagten durchaus zumutbar vorher eine Abmahnung auszusprechen, bevor er die Kündigung erklärt.
+
+Mithin ist ein wichtiger Grund i.S.d. § 626 I BGB zu verneinen.
+
+7) Ergebnis
+Damit wurde das Arbeitsverhältnis nicht durch eine außerordentliche Kündigung beendet.
+
+II. Ordentliche Kündigung
+Auch eine ordentliche Kündigung kommt nicht in Betracht. Auch hier gilt das Ultima- Ratio- Prinzip gleichermaßen bei verhaltensbedingter Kündigung. Zudem erhält das Prognoseprinzip hier größeres Gewicht als bei der außerordentlichen Kündigung
+
+B. Endergebnis
+Damit wurde Arbeitsverhältnis nicht zum 23. Februar 2008 oder zum 30. September 2008 beendet.
+
+Die Kündigungsschutzklage ist mithin begründet.

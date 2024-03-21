@@ -1,0 +1,114 @@
+Sachverhalt
+
+Der K betreibt einen kleinen Computerladen, indem er selbst Heimrechner zusammenbaut und repariert. Er ist Kaufmann und regelmäßig Kunde bei Großhändler H, der ihm die Computerersatzteile ebenfalls als Kaufmann verkauft.
+
+Da K wieder Ersatzteile braucht, verhandelt er mit H über die Lieferung von 20 PC- Kühlern. H versucht jedoch den K zu überreden, 50 Kühler zu kaufen, damit sich das Geschäft „lohnt“.
+
+K erwidert, dass er momentan aber nur 20 Stück brauche, da dies den momentanen Kundenwünschen entspricht. Daraufhin einigen sich beide auf 20 PC- Kühler zu einem Stückpreis von 15 Euro.
+
+3 Tage später geht bei K ein Schreiben ein, indem der H die Lieferung von 30 PC- Kühlern „bestätigt“. H hofft, dass der K nunmehr nachgibt oder durch Unachtsamkeit, trotz vorheriger Absprache, 10 Kühler mehr kauft.
+
+K ist zwar überrascht über das Schreiben, sieht jedoch keinen Anlass darauf zu antworten.
+
+H liefert sodann „30 PC- Kühler“ und verlangt Zahlung von 450 Euro. K ist erbost und meint, soviel hätte er nie bestellt.
+
+Hat H einen Zahlungsanspruch in Höhe von 450 Euro gegen K?
+Lösungsskizze
+
+A. Anspruch aus Kaufvertrag gem. § 433 II BGB (-)
+
+Kein Vertrag über 30 PC- Kühler
+
+B. Anspruch aus § 433 II BGB i.V.m. den Grundsätzen des kaufmännischen Bestätigungsschreibens
+
+I. Rechtsgrundlage
+
+§ 346 HGB oder Gewohnheitsrecht (kann dahinstehen)
+
+II. Voraussetzungen
+
+1. Persönlicher Anwendungsbereich
+
+a) Empfänger ist Kaufmann
+
+b) Absender ist zumindest geschäftserfahren (streitig)
+
+2. Sachlicher Anwendungsbereich
+
+a) Handelsgeschäft i.S.d. § 343 I HGB
+
+b) Vorausgegangene mündliche Vertragsverhandlungen
+
+c) Vermeintlicher Vertragsabschluss aus Sicht des Absenders
+
+d) Zeitliche Unmittelbarkeit
+
+e) keine wesentliche Abweichung
+
+(P) Stückzahl von 10 Ersatzteilen mehr wesentliche Abweichung?
+
+f) Redlichkeit des Absenders
+
+(P) Bewusste Abweichung von H
+
+III. Ergebnis (-)
+
+Du hast noch Fragen zu diesem Fall? Dann lass Dir das Thema vom Profi erklären - und das kostenlos für drei Tage auf Jura Online
+Gutachten
+
+A. Anspruch aus Kaufvertrag gem. § 433 II BGB
+H könnte einen Zahlungsanspruch aus Kaufvertrag haben gem. § 433 II BGB. Dafür müsste jedoch ein Kaufvertrag über 30 PC- Kühler zu je 15 Euro entstanden sein. Ausweislich des Sachverhalts einigten sich K und H jedoch auf die Lieferung von lediglich 20 PC- Kühlern. Damit ist kein Kaufvertrag über 30 PC kühler zustande gekommen. H kann lediglich Zahlung von 300 Euro verlangen.
+
+B. Anspruch aus § 433 II BGB i.V.m. den Grundsätzen des kaufmännischen Bestätigungsschreibens
+H könnte gegen K einen Zahlungsanspruch aus § 433 II BGB i.V.m den Grundsätzen des kaufmännischen Bestätigungsschreibens haben. Läge ein Kaufmännisches Bestätigungsschreiben vor, auf das der K nicht geantwortet hat, müsste er gegen sich gelten lassen, dass der Inhalt des KBS als vereinbart gilt.
+
+I. Rechtsgrundlage
+Fraglich ist zunächst, aus welcher Rechtsgrundlage sich das kaufmännische Bestätigungsschreiben ergibt. Dies ist umstritten. Nach einer Ansicht handelt es sich um einen Handelsbrauch, der seine Rechtsgrundlage in § 346 HGB findet. Nach einer anderen Ansicht sind die Grundsätze über das KBS gewohnheitsrechtlich anerkannt. Damit kann der Streit dahinstehen.
+
+II. Voraussetzungen
+Es müssten auch die Voraussetzungen vorliegen, damit das Schweigen ausnahmsweise einer Willenserklärung gleichkommen kann.
+
+1. Persönlicher Anwendungsbereich
+Zunächst müsste der persönliche Anwendungsbereich eröffnet sein.
+
+a) Empfänger ist Kaufmann
+K ist ausweislich des Sachverhalts Kaufmann und Empfänger des Schreibens.
+
+b) Absender ist zumindest geschäftserfahren
+H müsste zumindest geschäftserfahren sein. Eine Gegenansicht fordert, dass auch der Absender Kaufmann sein muss. Da der H hier jedoch auch Kaufmann ist, kann der Streit dahinstehen.
+
+2. Sachlicher Anwendungsbereich
+Es müsste auch der sachliche Anwendungsbereich eröffnet sein.
+
+a) Handelsgeschäft i.S.d. § 343 I HGB
+Es müsste zunächst ein Handelsgeschäft i.S.d. § 343 I HGB vorliegen. Handelsgeschäfte sind alle Geschäfte eines Kaufmanns, die zum Betrieb seines Handelsgewerbes gehören. Hier kaufen und verkaufen die Parteien gerade für ihren Handelsbetrieb, sodass ein Handelsgeschäft vorliegt.
+
+b) Vorausgegangene mündliche Vertragsverhandlungen
+Es müssten auch mündliche Vertragsverhandlungen dem Schreiben vorausgegangen sein. Ausweislich des Sachverhalts verhandelten H und K über den Verkauf von PC- Kühlern, sodass mündliche Vertragsverhandlungen vorausgegangen sind.
+
+c) Vermeintlicher Vertragsabschluss aus Sicht des Absenders
+Aus Sicht des Absenders H müsste ein vermeintlicher Vertragsabschluss vorliegen. Dem Absender muss es subjektiv nur noch darauf ankommen, das bereits Verhandelte schriftlich zu fixieren und so zum letzten Abschluss zu bringen. Wird bereits bei den Verhandlungen der Vertragsschluss unmittelbar herbeigeführt, so entfällt die konstitutive Wirkung des KBS und es verbleibt nur noch eine rein deklaratorische Wirkung. Hier ist das KBS von der Auftragsbestätigung abzugrenzen. Liegt aus Sicht des Absenders bereits ein Vertragsschluss vor, so will er diesen nur noch bestätigen.
+
+Hier liegt aus Sicht des H ein „vermeintlicher Vertragsabschluss“ vor.
+
+d) Zeitliche Unmittelbarkeit
+Das Schreiben müsste den Vertragsverhandlungen auch zeitlich unmittelbar folgen. Fehlt diese zeitliche Unmittelbarkeit, ist das Schweigen auf ein KBS nicht mehr ausreichend, um eine Willenserklärung zu fingieren. Dies ist anhand des Einzelfalles unter dem Gesichtspunkt des Vertragsgegenstandes zu ermitteln.
+
+Hier erfolgte das Schreiben 3 Tage nach den Vertragsverhandlungen, sodass eine zeitliche Unmittelbarkeit bejaht werden kann.
+
+e) keine wesentliche Abweichung
+Der Inhalt des Schreibens dürfte keine wesentlichen Abweichungen enthalten. Der Bestätigende müsste noch verständigerweise damit rechnen können, dass der Empfänger mit dem Inhalt einverstanden ist.
+
+Hier weicht das Schreiben in der zu liefernden Stückzahl von 10 PC- Kühlern ab. Fraglich ist, ob dies eine wesentliche Abweichung darstellt. Dagegen spricht, dass eine geringe Abweichung der Stückzahl im Handelsverkehr nicht unüblich ist und der Absender in der Regel darauf vertraut, dass der Empfänger seine Meinung bzgl. dieser einfachen Abweichungen geändert haben kann. Dies wird auch dem Grundsatz der Schnelligkeit des Handelsverkehrs gerecht. Damit liegt keine wesentliche Abweichung vor.
+
+f) Redlichkeit des Absenders
+Der H müsste auch redlich sein. Dies ist hier problematisch. Redlichkeit liegt vor, wenn aus der Sicht des Absenders, der Inhalt des Schreibens der Vereinbarung entspricht oder nur solche Abweichungen enthält, die der Empfänger als solches billigt.
+
+Hier wusste der H, dass der K nicht an einer größeren Menge an Ersatzteilen interessiert war. Die Abweichung nahm H jedoch trotzdem vor, weil er arglistig darauf vertraute, dass der K die Abweichung überliest oder ihr nachgibt.
+
+Somit fehlt es an der Redlichkeit des H.
+
+III. Ergebnis
+Mithin liegen die Voraussetzungen des KBS nicht vor.
+
+Damit hat der H keinen Zahlungsanspruch i.H.v. 450 Euro aus § 433 II BGB i.V.m den Grundsätzen des kaufmännisches Bestätigungsschreibens gegen K. Er kann lediglich Zahlung von 300 Euro verlangen.
