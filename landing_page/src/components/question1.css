@@ -1,0 +1,13 @@
+.question1-container {
+  gap: var(--dl-space-space-unit);
+  flex: 1;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.question1-text {
+  font-weight: 700;
+}
