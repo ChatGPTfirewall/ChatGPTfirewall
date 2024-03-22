@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ChatGPTfirewall/static/css/main.d51ea101.css",
+    "main.js": "/ChatGPTfirewall/static/js/main.cc6213a1.js",
+    "index.html": "/ChatGPTfirewall/index.html",
+    "main.d51ea101.css.map": "/ChatGPTfirewall/static/css/main.d51ea101.css.map",
+    "main.cc6213a1.js.map": "/ChatGPTfirewall/static/js/main.cc6213a1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d51ea101.css",
+    "static/js/main.cc6213a1.js"
+  ]
+}
