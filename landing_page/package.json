@@ -15,6 +15,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "build2": "react-scripts build && cp build/index.html build/404.html",
     "test": "craco test --env=jsdom",
     "eject": "craco eject",
     "predeploy": "npm run build",
