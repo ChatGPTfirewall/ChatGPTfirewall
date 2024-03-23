@@ -1,5 +1,19 @@
 FROM node:current-bullseye-slim as dev
 
+WORKDIR /app
+
+COPY ./package.json .
+COPY ./package-lock.json .
+
+RUN npm install
+
+COPY entrypoint.sh ./entrypoint.sh
+
+RUN ["chmod", "+x", "entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+FROM node:current-bullseye-slim as prod
+
 ARG VITE_AUTH0_DOMAIN
 ARG VITE_AUTH0_CLIENT_ID
 
