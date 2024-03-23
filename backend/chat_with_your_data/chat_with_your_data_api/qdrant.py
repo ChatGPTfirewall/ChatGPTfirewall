@@ -13,6 +13,7 @@ from .serializers import SectionSerializer
 __client = QdrantClient(
     url=os.getenv("QDRANT_URL"),
     api_key=os.getenv("QDRANT_SECRET"),
+    prefer_grpc=True
 )
 
 
