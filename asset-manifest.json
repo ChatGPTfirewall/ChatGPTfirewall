@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ChatGPTfirewall/static/css/main.d51ea101.css",
-    "main.js": "/ChatGPTfirewall/static/js/main.b1f9e2eb.js",
+    "main.css": "/ChatGPTfirewall/static/css/main.991b4305.css",
+    "main.js": "/ChatGPTfirewall/static/js/main.7bd42fe3.js",
     "index.html": "/ChatGPTfirewall/index.html",
-    "main.d51ea101.css.map": "/ChatGPTfirewall/static/css/main.d51ea101.css.map",
-    "main.b1f9e2eb.js.map": "/ChatGPTfirewall/static/js/main.b1f9e2eb.js.map"
+    "main.991b4305.css.map": "/ChatGPTfirewall/static/css/main.991b4305.css.map",
+    "main.7bd42fe3.js.map": "/ChatGPTfirewall/static/js/main.7bd42fe3.js.map"
   },
   "entrypoints": [
-    "static/css/main.d51ea101.css",
-    "static/js/main.b1f9e2eb.js"
+    "static/css/main.991b4305.css",
+    "static/js/main.7bd42fe3.js"
   ]
 }
