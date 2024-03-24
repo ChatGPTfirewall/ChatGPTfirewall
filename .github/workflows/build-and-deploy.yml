@@ -13,7 +13,7 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            github.actions.createWorkflowDispatch({
+            github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'frontend-build.yml',
@@ -28,7 +28,7 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            github.actions.createWorkflowDispatch({
+            github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'backend-build.yml',
@@ -43,7 +43,7 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            github.actions.createWorkflowDispatch({
+            github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'deployment.yml',
