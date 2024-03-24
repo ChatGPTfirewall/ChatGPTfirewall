@@ -7,6 +7,9 @@ COPY ./package-lock.json .
 
 RUN npm install
 
+RUN echo "VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN" > .env.local && \
+    echo "VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID" >> .env.local
+
 COPY entrypoint.sh ./entrypoint.sh
 
 RUN ["chmod", "+x", "entrypoint.sh"]
