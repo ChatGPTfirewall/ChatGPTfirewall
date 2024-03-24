@@ -12,6 +12,7 @@ jobs:
       - name: Trigger Frontend Build and Push
         uses: actions/github-script@v5
         with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
@@ -27,6 +28,7 @@ jobs:
       - name: Trigger Backend Build and Push
         uses: actions/github-script@v5
         with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
@@ -42,6 +44,7 @@ jobs:
       - name: Trigger Deployment
         uses: actions/github-script@v5
         with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
