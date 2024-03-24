@@ -6,33 +6,109 @@ on:
       - main
 
 jobs:
-  trigger-frontend:
-    runs-on: ubuntu-latest
+  build-and-push-frontend:
+    runs-on: ubuntu-latest  
     steps:
-      - name: Trigger Frontend Build and Push
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          script: |
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'frontend-build.yml',
-              ref: 'main',
-            });
+      - name: Check Out Repo
+        uses: actions/checkout@v2
 
-  trigger-backend:
-    needs: trigger-frontend
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Extract metadata (tags, labels) for Frontend Docker Image
+        id: meta_frontend
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/frontend
+
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./frontend 
+          file: ./frontend/Dockerfile
+          push: true  
+          tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+          labels: ${{ steps.meta_backend.outputs.labels }}
+          no-cache: true
+          build-args: |
+            VITE_AUTH0_DOMAIN=${{ secrets.VITE_AUTH0_DOMAIN }}
+            VITE_AUTH0_CLIENT_ID=${{ secrets.VITE_AUTH0_CLIENT_ID }}
+
+  free-disk-space-build-docker:
+      needs: build-and-push-frontend
+      runs-on: ubuntu-latest
+      steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+  build-and-push-backend:
+    needs: free-disk-space-build-docker
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Extract metadata (tags, labels) for Frontend Docker Image
+        id: meta_backend
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/backend
+
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./backend 
+          file: ./backend/Dockerfile
+          push: true  
+          tags: ${{ secrets.DOCKER_USERNAME }}/backend:latest
+          labels: ${{ steps.meta_backend.outputs.labels }}
+          no-cache: true
+  deploy:
+    needs: build-and-push-backend
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Backend Build and Push
-        uses: actions/github-script@v5
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
         with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'backend-build.yml',
-              ref: 'main',
-            });
+            export DB_USER=${{ secrets.DB_USER }}
+            export DB_NAME=${{ secrets.DB_NAME }}
+            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            export SECRET_KEY='${{ secrets.SECRET_KEY }}'
+            export DATABASE_URL=${{ secrets.DATABASE_URL }}
+            export QDRANT_URL=${{ secrets.QDRANT_URL }}
+            export QDRANT_SECRET=${{ secrets.QDRANT_SECRET }}
+            export SPACY_NLP_MODEL=${{ secrets.SPACY_NLP_MODEL }}
+            export TRANSFORMER_MODEL=${{ secrets.TRANSFORMER_MODEL }}
+            export OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}
+            export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+            export DEBUG=${{ secrets.DEBUG }}
+            docker compose pull
+            docker compose up -d
