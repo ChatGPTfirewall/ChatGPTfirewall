@@ -44,7 +44,7 @@ RUN rm -rf ./*
 
 RUN mkdir -p /etc/nginx/ssl
 
-COPY --from=dev /app/dist .
+COPY --from=prod /app/dist .
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
