@@ -1,0 +1,51 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Frontend Build and Push
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'frontend-build.yml',
+              ref: 'main',
+            });
+
+  trigger-backend:
+    needs: trigger-frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Backend Build and Push
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'backend-build.yml',
+              ref: 'main',
+            });
+
+  trigger-deployment:
+    needs: trigger-backend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Deployment
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deployment.yml',
+              ref: 'main',
+            });
