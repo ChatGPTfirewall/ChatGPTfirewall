@@ -32,7 +32,7 @@ const Sidebar = () => {
     <div className={styles.sidebarContainer}>
       <InlineDrawer
         separator
-        open={collapsed}
+        open={!collapsed}
         position={'start'}
         className={styles.drawer}
       >
@@ -45,7 +45,7 @@ const Sidebar = () => {
         </DrawerBody>
       </InlineDrawer>
       <div className={styles.toggleArea}>
-        {collapsed ? (
+        {!collapsed ? (
           <ChevronLeft24Regular
             className={styles.toggleIcon}
             onClick={toggleSidebar}
