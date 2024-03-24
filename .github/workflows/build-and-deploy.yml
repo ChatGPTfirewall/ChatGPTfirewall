@@ -36,19 +36,3 @@ jobs:
               workflow_id: 'backend-build.yml',
               ref: 'main',
             });
-
-  trigger-deployment:
-    needs: trigger-backend
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Deployment
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          script: |
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'deployment.yml',
-              ref: 'main',
-            });
