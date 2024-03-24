@@ -4,11 +4,11 @@ Public organization profile
 # Roadmap to success
 development
 - [ ] cosecutive prompting
-- [ ] new channel
+- [x] new channel
 - [ ] testing, testing, testing
 
 deployment
-- [ ] github deployment pipeline on confidential cloud
+- [x] github deployment pipeline on confidential cloud
 - [ ] code documentation
 
 docs
