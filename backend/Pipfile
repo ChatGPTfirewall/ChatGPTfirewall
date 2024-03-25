@@ -32,6 +32,9 @@ textract = "*"
 ocrmypdf = "*"
 flair = "*"
 gevent = "*"
+drf-jwt = "*"
+pyjwt = "*"
+cryptography = "==42.0.3"
 
 [dev-packages]
 
