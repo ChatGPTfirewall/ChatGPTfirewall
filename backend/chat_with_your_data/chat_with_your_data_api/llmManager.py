@@ -74,7 +74,7 @@ class llmManager:
         self.llm: LLM = llm
 
     def addRoom(self, user_, name_):
-        room_settings = RoomSettings(prompt_template_lang=user_.lang)
+        room_settings = RoomSettings(prompt_template_lang="en")
         new_room = Room(user=user_, name=name_, settings=room_settings.to_dict())
         new_room.save()
 

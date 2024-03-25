@@ -31,6 +31,8 @@ from .qdrant import create_collection, delete_text, insert_text, search
 from .serializers import (AnonymizationMappingSerializer, DocumentSerializer,
                           ReadDocumentSerializer, RoomSerializer,
                           UserSerializer)
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny
 
 LLM_MAX_TOKENS = 4098
 
@@ -40,6 +42,35 @@ myLLM = LLM(os.getenv("OPEN_AI_KEY"))
 # initialize LLM Manager
 myllmManager = llmManager(myLLM)
 
+def get_token_auth_header(request):
+    """Obtains the Access Token from the Authorization Header
+    """
+    auth = request.META.get("HTTP_AUTHORIZATION", None)
+    parts = auth.split()
+    token = parts[1]
+
+    return token
+
+def requires_scope(required_scope):
+    """Determines if the required scope is present in the Access Token
+    Args:
+        required_scope (str): The scope required to access the resource
+    """
+    def require_scope(f):
+        @wraps(f)
+        def decorated(*args, **kwargs):
+            token = get_token_auth_header(args[0])
+            decoded = jwt.decode(token, verify=False)
+            if decoded.get("scope"):
+                token_scopes = decoded["scope"].split()
+                for token_scope in token_scopes:
+                    if token_scope == required_scope:
+                        return f(*args, **kwargs)
+            response = JsonResponse({'message': 'You don\'t have access to this resource'})
+            response.status_code = 403
+            return response
+        return decorated
+    return require_scope
 
 def download_file(request, filename):
     # Define the path to the directory where your files are stored
@@ -63,6 +94,7 @@ def download_file(request, filename):
 
 
 class UserApiView(APIView):
+    @permission_classes([AllowAny])
     def get(self, request, auth0_id, *args, **kwargs):
         try:
             user = User.objects.get(auth0_id=auth0_id)
@@ -71,6 +103,7 @@ class UserApiView(APIView):
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         """
         Create a user and his collection.
@@ -106,6 +139,7 @@ class UserApiView(APIView):
 
         return response
 
+    @permission_classes([AllowAny])
     def put(self, request, auth0_id, *args, **kwargs):
         try:
             user = User.objects.get(auth0_id=auth0_id)
@@ -119,6 +153,7 @@ class UserApiView(APIView):
 
 
 class UploadApiView(APIView):
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         auth0_id = request.POST.get("user")
         user = User.objects.get(auth0_id=auth0_id)
@@ -165,6 +200,7 @@ class UploadApiView(APIView):
 
 
 class RoomNamesApiView(APIView):
+    @permission_classes([AllowAny])
     def get(self, request, *args, **kwargs):
         auth0_id = request.GET.get("user_auth0_id")
 
@@ -175,6 +211,7 @@ class RoomNamesApiView(APIView):
 
 class RoomsApiView(APIView):
     # get all Rooms
+    @permission_classes([AllowAny])
     def get(self, request, *args, **kwargs):
         auth0_id = request.GET.get("user_auth0_id")
 
@@ -185,6 +222,7 @@ class RoomsApiView(APIView):
         return Response(room_serializer.data, status=status.HTTP_200_OK)
 
     # create room
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         user_auth0_id = request.data.get("user_auth0_id")
         room_name = request.data.get("room_name")
@@ -204,6 +242,7 @@ class RoomsApiView(APIView):
 
 class RoomApiView(APIView):
     # get Room
+    @permission_classes([AllowAny])
     def get(self, request, room_id, *args, **kwargs):
         try:
             room = Room.objects.get(id=room_id)
@@ -215,6 +254,7 @@ class RoomApiView(APIView):
             )
 
     # delete room
+    @permission_classes([AllowAny])
     def delete(self, request, room_id, *args, **kwargs):
         try:
             room = Room.objects.get(id=room_id)
@@ -231,6 +271,7 @@ class RoomApiView(APIView):
             )
 
     # update room
+    @permission_classes([AllowAny])
     def put(self, request, room_id, *args, **kwargs):
         try:
             room = Room.objects.get(id=room_id)
@@ -253,6 +294,7 @@ class RoomApiView(APIView):
 
 
 class DocumentApiView(APIView):
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         auth0_id = request.data.get("auth0_id")
         user = User.objects.get(auth0_id=auth0_id)
@@ -263,6 +305,7 @@ class DocumentApiView(APIView):
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    @permission_classes([AllowAny])
     def delete(self, request, *args, **kwargs):
         file_ids = request.data if isinstance(request.data, list) else []
 
@@ -279,6 +322,7 @@ class DocumentApiView(APIView):
 
 
 class UpdateRoomDocumentsView(APIView):
+    @permission_classes([AllowAny])
     def post(self, request, room_id):
         document_ids = request.data.get("document_ids", [])
 
@@ -306,6 +350,7 @@ class UpdateRoomDocumentsView(APIView):
 
 
 class MessagesApiView(APIView):
+    @permission_classes([AllowAny])
     def post(self, request, recipient, *args, **kwargs):
         current_time = timezone.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         auth0_id = request.data.get("user", {}).get("auth0_id")
@@ -469,6 +514,7 @@ class MessagesApiView(APIView):
 
 
 class NextCloudApiView(APIView):
+    @permission_classes([AllowAny])
     def get(self, request, *args, **kwargs):
         """
         Creates a connection to an nextcloud instance.
@@ -512,6 +558,7 @@ class NextCloudApiView(APIView):
 
 
 class NextCloudFilesApiView(APIView):
+    @permission_classes([AllowAny])
     def get(self, request, *args, **kwargs):
         session = request.session
         code = request.GET.get("code")
@@ -580,6 +627,7 @@ class NextCloudFilesApiView(APIView):
 
 
 class LanguageAPI(APIView):
+    @permission_classes([AllowAny])
     def get(self, request, *args, **kwargs):
         try:
             auth0_id = request.GET["auth0_id"]
@@ -588,6 +636,7 @@ class LanguageAPI(APIView):
         except:
             return Response("Error!", status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         try:
             lang = request.data.get("language")
@@ -604,6 +653,7 @@ class LanguageAPI(APIView):
 
 
 class FilesApiView(APIView):
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         auth0_id = request.data["auth0_id"]
         user = User.objects.get(auth0_id=auth0_id)
