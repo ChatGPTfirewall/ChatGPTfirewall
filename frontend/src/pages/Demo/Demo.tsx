@@ -16,6 +16,7 @@ import {
 } from '../../api/messageApi';
 import FileSelector from '../../components/common/FileSelector/FileSelector';
 import ExampleCards from '../../components/common/Cards/ExampleCards/ExampleCards';
+import { AnonymizationMapping } from '../../models/AnonymizationMapping';
 
 const demoUserIdDE = 'auth0|demo_user_de';
 const demoUserIdEN = 'auth0|demo_user_en';
@@ -27,6 +28,20 @@ const Demo = () => {
   const [room, setRoom] = useState<Room | null>(null);
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
+
+  const anonymizeContent = useCallback((content: string, anonymizationMappings: AnonymizationMapping[], anonymize: boolean) => {
+    const anonymizeString = (inputString: string) => {
+      const sortedMappings = [...anonymizationMappings].sort((a, b) => b.deanonymized.length - a.deanonymized.length);
+      return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
+        const target = anonymize ? deanonymized : anonymized;
+        const replacement = anonymize ? anonymized : deanonymized;
+        const regex = new RegExp(`\\b${target}\\b`, 'g');
+        return acc.replace(regex, replacement);
+      }, inputString);
+    };
+
+    return anonymizeString(content);
+  }, []);
 
   useEffect(() => {
     const fetchDemoUser = (auth0_id: string) => {
@@ -45,6 +60,27 @@ const Demo = () => {
       ? fetchDemoUser(demoUserIdEN)
       : fetchDemoUser(demoUserIdDE);
   }, [i18n.language, showToast, t]);
+
+  useEffect(() => {
+    setRoom(prevRoom => {
+      if (!prevRoom) return null;
+
+      const updatedMessages = prevRoom.messages.map(message => {
+        let updatedContent = message.content;
+        if (message.role === 'system' && Array.isArray(message.content)) {
+          updatedContent = message.content.map(contentObj => ({
+            ...contentObj,
+            content: anonymizeContent(contentObj.content, prevRoom.anonymizationMappings, anonymized)
+          }));
+        } else if (typeof message.content === 'string') {
+          updatedContent = anonymizeContent(message.content, prevRoom.anonymizationMappings, anonymized);
+        }
+        return { ...message, content: updatedContent };
+      });
+
+      return { ...prevRoom, messages: updatedMessages };
+    });
+  }, [anonymized, anonymizeContent]);
 
   const toggleAnonymization = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
@@ -84,6 +120,7 @@ const Demo = () => {
       return;
     }
 
+
     const newMessage: Message = {
       user: room.user,
       room: room,
@@ -102,6 +139,12 @@ const Demo = () => {
 
     setIsMessageLoading(true);
 
+    const updatedRoomWithoutTemp = {
+      ...room,
+      messages: [...room.messages, newMessage]
+    };
+    setRoom(updatedRoomWithoutTemp);
+
     const updatedRoom = {
       ...room,
       messages: [...room.messages, newMessage, tempMessage]
@@ -110,17 +153,29 @@ const Demo = () => {
 
     createSearchMessage(newMessage)
       .then((createdMessage) => {
-        const updatedMessages = updatedRoom.messages
-          .slice(0, -1)
-          .concat(createdMessage);
-        setRoom({
-          ...updatedRoom,
-          messages: updatedMessages
+        if (Array.isArray(createdMessage.content)) {
+          createdMessage.content.forEach((contentObj: Result) => {
+            if (anonymized) {
+              contentObj.content = anonymizeContent(contentObj.content, createdMessage.room.anonymizationMappings, anonymized);
+            }
+          });
+        }
+
+        setRoom(prevRoom => {
+          if (!prevRoom) return null;
+
+          const filteredMessages = prevRoom.messages.filter(msg => msg.role !== 'system');
+          const newMessages = [...filteredMessages, createdMessage];
+
+          return {
+            ...prevRoom,
+            messages: newMessages,
+            anonymizationMappings: createdMessage.room.anonymizationMappings
+          };
         });
       })
       .catch((error) => {
-        const errorMessage =
-          error.response?.data?.error || t('unexpectedErrorOccurred');
+        const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
         showToast(`${t('errorSendingMessage')}: ${errorMessage}`, 'error');
       })
       .finally(() => setIsMessageLoading(false));
