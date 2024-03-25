@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq-dev gcc python3-dev tesseract-ocr ghostscript && \
+    libpq-dev libssl-dev gcc python3-dev tesseract-ocr ghostscript && \
     pip install --upgrade pip && pip install pipenv && \
     rm -rf /var/lib/apt/lists/*
 

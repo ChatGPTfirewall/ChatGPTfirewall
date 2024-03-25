@@ -40,6 +40,8 @@ jobs:
           build-args: |
             VITE_AUTH0_DOMAIN=${{ secrets.VITE_AUTH0_DOMAIN }}
             VITE_AUTH0_CLIENT_ID=${{ secrets.VITE_AUTH0_CLIENT_ID }}
+            VITE_JWT_ISSUER=${{ secrets.VITE_JWT_ISSUER }}
+            VITE_JWT_AUDIENCE=${{ secrets.VITE_JWT_AUDIENCE }}
 
   free-disk-space-build-docker:
       needs: build-and-push-frontend
@@ -110,5 +112,7 @@ jobs:
             export OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}
             export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
             export DEBUG=${{ secrets.DEBUG }}
+            export JWT_ISSUER=${{ secrets.JWT_ISSUER }}
+            export JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}
             docker compose pull
             docker compose up -d

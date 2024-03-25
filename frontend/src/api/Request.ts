@@ -2,6 +2,13 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 async function Request<T>(config: AxiosRequestConfig): Promise<T> {
   try {
+    // Accessing token for subsequent requests
+    const token = localStorage.getItem('userToken');  
+    if (token == null) {
+      console.group("get token")
+    } else {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
     const response: AxiosResponse<T> = await axios(config);
     return response.data;
   } catch (error) {

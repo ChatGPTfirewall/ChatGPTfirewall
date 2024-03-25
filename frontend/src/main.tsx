@@ -47,6 +47,7 @@ darkTheme.colorBrandForeground1 = chatGPTfirewall[110];
 darkTheme.colorBrandForeground2 = chatGPTfirewall[120];
 
 const rootElement = document.getElementById('root')!;
+const audience = import.meta.env.VITE_JWT_AUDIENCE as string;
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
@@ -54,7 +55,8 @@ ReactDOM.createRoot(rootElement).render(
       domain={import.meta.env.VITE_AUTH0_DOMAIN}
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin,
+        audience: audience
       }}
       cacheLocation="localstorage"
     >

@@ -31,5 +31,7 @@ jobs:
             export OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}
             export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
             export DEBUG=${{ secrets.DEBUG }}
+            export JWT_ISSUER=${{ secrets.JWT_ISSUER }}
+            export JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}
             docker compose pull
             docker compose up -d

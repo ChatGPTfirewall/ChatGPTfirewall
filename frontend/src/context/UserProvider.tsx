@@ -33,11 +33,19 @@ export const UserProvider: FunctionComponent<{ children: ReactNode }> = ({
   const { i18n } = useTranslation();
   const [user, setUser] = useState<User | null>(null);
   const { user: auth0User, isAuthenticated, isLoading } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const fetchUserFromBackend = async () => {
       if (!isLoading && isAuthenticated && auth0User?.sub) {
         try {
+          const audience = import.meta.env.VITE_JWT_AUDIENCE as string;
+          const accessToken = await getAccessTokenSilently({
+            authorizationParams: {
+              audience
+            },
+          });
+          localStorage.setItem('userToken', accessToken);
           const fetchedUser = await getUser(auth0User.sub);
           setUser(fetchedUser);
         } catch (error) {
