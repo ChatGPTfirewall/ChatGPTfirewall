@@ -39,9 +39,10 @@ export const UserProvider: FunctionComponent<{ children: ReactNode }> = ({
     const fetchUserFromBackend = async () => {
       if (!isLoading && isAuthenticated && auth0User?.sub) {
         try {
+          const audience = import.meta.env.VITE_JWT_AUDIENCE as string;
           const accessToken = await getAccessTokenSilently({
             authorizationParams: {
-              audience: {import.meta.env.VITE_AUTH0_DOMAIN},  // TODO env Error
+              audience
             },
           });
           localStorage.setItem('userToken', accessToken);
