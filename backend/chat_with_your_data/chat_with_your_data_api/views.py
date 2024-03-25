@@ -337,7 +337,6 @@ class MessagesApiView(APIView):
             counter = {"PER": 0, "LOC": 0}
             actual_entities = []
             for search_result in search_results:
-                pprint("for###")
                 section = Section.objects.get(
                     id=search_result.payload.get("section_id")
                 )
@@ -410,7 +409,6 @@ class MessagesApiView(APIView):
                     # "original_entities": entity_mapping,
                 }
                 facts.append(fact)
-                pprint("for###end!!")
 
             user_serialized = UserSerializer(user).data
             room_serialized = RoomSerializer(room).data
@@ -437,9 +435,6 @@ class MessagesApiView(APIView):
             user_data = request.data.get("user")
 
             room_id = room_data.get("id")
-            print("TEST")
-            print(request.query_params)
-            print(request.query_params.get("demo"))
             is_demo = request.query_params.get("demo", "false").lower() == "true"
 
             try:

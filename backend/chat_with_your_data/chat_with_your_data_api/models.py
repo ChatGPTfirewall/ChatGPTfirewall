@@ -81,8 +81,6 @@ class Room(models.Model):
             for line in context:
                 content = line.content
                 for entry in anonymizationMappings:
-                    # pprint(entry.anonymized)
-                    # pprint(entry.deanonymized)
                     content = content.replace(entry.deanonymized, entry.anonymized)
                 messageLine = {"role": line.role, "content": content}
                 token_size = len(encoder.encode(str(messageLine)))
@@ -99,8 +97,6 @@ class Room(models.Model):
             fullMessage.append(systemLine)
 
         fullMessage.reverse()
-
-        print(fullMessage)
         return fullMessage
 
 
