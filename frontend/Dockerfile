@@ -8,7 +8,9 @@ COPY ./package-lock.json .
 RUN npm install
 
 RUN echo "VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN" > .env.local && \
-    echo "VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID" >> .env.local
+    echo "VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID" >> .env.local && \
+    echo "VITE_JWT_AUDIENCE=$VITE_JWT_AUDIENCE" >> .env.local && \
+    echo "VITE_JWT_ISSUER=$VITE_JWT_ISSUER" >> .env.local
 
 COPY entrypoint.sh ./entrypoint.sh
 
@@ -19,9 +21,14 @@ FROM node:current-bullseye-slim as prod
 
 ARG VITE_AUTH0_DOMAIN
 ARG VITE_AUTH0_CLIENT_ID
+ARG VITE_JWT_AUDIENCE
+ARG VITE_JWT_ISSUER
 
 ENV VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN \
-    VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID
+    VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID \
+    VITE_JWT_AUDIENCE=$VITE_JWT_AUDIENCE \
+    VITE_JWT_ISSUER=$VITE_JWT_ISSUER
+
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -29,7 +36,9 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 RUN echo "VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN" > .env.production.local && \
-    echo "VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID" >> .env.production.local
+    echo "VITE_AUTH0_CLIENT_ID=$VITE_AUTH0_CLIENT_ID" >> .env.production.local && \
+    echo "VITE_JWT_AUDIENCE=$VITE_JWT_AUDIENCE" >> .env.production.local && \
+    echo "VITE_JWT_ISSUER=$VITE_JWT_ISSUER" >> .env.production.local
 
 COPY . .
 
