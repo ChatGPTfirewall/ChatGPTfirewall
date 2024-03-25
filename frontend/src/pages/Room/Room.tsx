@@ -23,6 +23,7 @@ import {
   createSearchMessage
 } from '../../api/messageApi';
 import FileSelector from '../../components/common/FileSelector/FileSelector';
+import { AnonymizationMapping } from '../../models/AnonymizationMapping';
 
 const Room = () => {
   const styles = RoomStyles();
@@ -34,50 +35,56 @@ const Room = () => {
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
 
-  const anonymizeContent = (content: any, anonymizationMappings: any , anonymize: any) => {
-    let processedContent = content;
-  
-    const sortedMappings = [...anonymizationMappings].sort((a, b) => b.deanonymized.length - a.deanonymized.length);
-  
-    sortedMappings.forEach(mapping => {
-      const { anonymized, deanonymized } = mapping;
-      const target = anonymize ? deanonymized : anonymized;
-      const replacement = anonymize ? anonymized : deanonymized;
-      const regex = new RegExp(`\\b${target}\\b`, 'g');
-      processedContent = processedContent.replace(regex, replacement);
-    });
-  
-    return processedContent;
-  };
-  
+  const anonymizeContent = useCallback((content: string, anonymizationMappings: AnonymizationMapping[], anonymize: boolean) => {
+    const anonymizeString = (inputString: string) => {
+      const sortedMappings = [...anonymizationMappings].sort((a, b) => b.deanonymized.length - a.deanonymized.length);
+      return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
+        const target = anonymize ? deanonymized : anonymized;
+        const replacement = anonymize ? anonymized : deanonymized;
+        const regex = new RegExp(`\\b${target}\\b`, 'g');
+        return acc.replace(regex, replacement);
+      }, inputString);
+    };
+
+    return anonymizeString(content);
+  }, []);
+
+
   useEffect(() => {
     if (id) {
       getRoom(id)
-        .then((fetchedRoom) => {
-
-          const anonymizationMappings = fetchedRoom.anonymizationMappings.map(mapping => ({
-            deanonymized: mapping.deanonymized,
-            anonymized: mapping.anonymized,
-          }));
-  
-
-          const updatedMessages = fetchedRoom.messages.map(message => {
-            const content = anonymized
-  ? anonymizeContent(message.content, anonymizationMappings, true)
-  : anonymizeContent(message.content, anonymizationMappings, false);
-            return { ...message, content };
-          });
-  
-          setRoom({ ...fetchedRoom, messages: updatedMessages });
+        .then(fetchedRoom => {
+          setRoom(fetchedRoom);
         })
-        .catch((error) => {
+        .catch(error => {
           const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
           showToast(`${t('errorFetchingRoom')}: ${errorMessage}`, 'error');
           navigate('/');
         });
     }
-  }, [id, showToast, navigate, anonymized]);
-  
+  }, [id, showToast, navigate]);
+
+  useEffect(() => {
+    setRoom(prevRoom => {
+      if (!prevRoom) return null;
+
+      const updatedMessages = prevRoom.messages.map(message => {
+        let updatedContent = message.content;
+        if (message.role === 'system' && Array.isArray(message.content)) {
+          updatedContent = message.content.map(contentObj => ({
+            ...contentObj,
+            content: anonymizeContent(contentObj.content, prevRoom.anonymizationMappings, anonymized)
+          }));
+        } else if (typeof message.content === 'string') {
+          updatedContent = anonymizeContent(message.content, prevRoom.anonymizationMappings, anonymized);
+        }
+        return { ...message, content: updatedContent };
+      });
+
+      return { ...prevRoom, messages: updatedMessages };
+    });
+  }, [anonymized, anonymizeContent]);
+
 
   const toggleAnonymization = useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -124,39 +131,33 @@ const Room = () => {
     setRoom(updatedRoom);
 
     createSearchMessage(newMessage)
-    .then((createdMessage) => {
-      const anonymizationMappings = createdMessage.room.anonymizationMappings.map(mapping => ({
-        deanonymized: mapping.deanonymized,
-        anonymized: mapping.anonymized,
-      }));
-
-    if (Array.isArray(createdMessage.content)) {
-      createdMessage.content.forEach((contentObj: any) => {
-        if (anonymized) {
-          contentObj.content = anonymizeContent(contentObj.content, anonymizationMappings, anonymized);
+      .then((createdMessage) => {
+        if (Array.isArray(createdMessage.content)) {
+          createdMessage.content.forEach((contentObj: Result) => {
+            if (anonymized) {
+              contentObj.content = anonymizeContent(contentObj.content, createdMessage.room.anonymizationMappings, anonymized);
+            }
+          });
         }
-      });
-    }
 
-      //const updatedMessages = updatedRoom.messages.concat(createdMessage);
+        setRoom(prevRoom => {
+          if (!prevRoom) return null;
 
-      setRoom(prevRoom => {
-        if (!prevRoom) return null;
-      
-        const filteredMessages = prevRoom.messages.filter(msg => msg.role !== 'system');
-        const newMessages = [...filteredMessages, createdMessage];
-        
-        return {
-          ...prevRoom,
-          messages: newMessages
-        };
-      });
-    })
-    .catch((error) => {
-      const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
-      showToast(`${t('errorSendingMessage')}: ${errorMessage}`, 'error');
-    })
-    .finally(() => setIsMessageLoading(false));
+          const filteredMessages = prevRoom.messages.filter(msg => msg.role !== 'system');
+          const newMessages = [...filteredMessages, createdMessage];
+
+          return {
+            ...prevRoom,
+            messages: newMessages,
+            anonymizationMappings: createdMessage.room.anonymizationMappings
+          };
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
+        showToast(`${t('errorSendingMessage')}: ${errorMessage}`, 'error');
+      })
+      .finally(() => setIsMessageLoading(false));
   };
   // Doc-Hint: Should be a different solution where message should be grouped together with question and context.
   const messageToChatGPT = (room: RoomType) => {
@@ -286,6 +287,7 @@ const Room = () => {
   const closeSettingsDrawer = () => {
     setSettingsDrawerOpenState(false);
   };
+
   // Empty files list state
   if (!room || room.files.length === 0) {
     return (

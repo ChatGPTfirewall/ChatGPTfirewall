@@ -54,7 +54,6 @@ def delete_collection(name):
 def search(collection_name, vector, document_ids):
     # Konvertiere die Liste der Dokument-IDs in eine Liste von MatchValue Bedingungen
     document_id_conditions = [MatchValue(value=doc_id) for doc_id in document_ids]
-    print(document_id_conditions)
     # Erstelle einen Filter, der nur Punkte zurückgibt, deren document_id in der Liste der ausgewählten Dokument-IDs enthalten ist
     filter = Filter(
         should=[

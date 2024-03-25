@@ -58,8 +58,6 @@ class LLM:
 
         room.appendContext(room, "user", question, is_demo)
 
-        # pprint(room.createFullMessage(room, False, is_demo, question))
-
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=room.createFullMessage(room, False, is_demo, question),
