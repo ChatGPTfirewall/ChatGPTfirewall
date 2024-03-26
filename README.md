@@ -1,28 +1,3 @@
-# .github
-Public organization profile
-
-# Roadmap to success
-development
-- [ ] cosecutive prompting
-- [x] new channel
-- [ ] testing, testing, testing
-
-deployment
-- [x] github deployment pipeline on confidential cloud
-- [ ] code documentation
-
-docs
-- [ ] gitbook
-- [ ] web/solution page
-- [ ] organization profile
-- [ ] readme
-
-
-launch
-- [ ] product hunt
-- [ ] huggingfaces
-  
-
 # ChatGPTFirewall
 
 ![Logo](images/android-chrome-192x192.png)
@@ -43,13 +18,6 @@ ChatGPTFirewall is a web-based application that allows users to interact with th
 - **Demo Mode**: Explore the application's capabilities with preloaded files in demo mode.
 - **Multilingual**: The application supports both German and English languages.
 
-## Tech Stack
-
-- Frontend: React with TypeScript, Vite
-- Backend: Django
-- Database: PostgreSQL
-- Search Engine: Qdrant
-
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
@@ -60,14 +28,22 @@ Before you begin, ensure you have met the following requirements:
 
 Follow these steps to install and run ChatGPTFirewall:
 
-1. **Clone the repository:**
+1. **Clone this repository:**
+   ##### SSH
+
    ```sh
-   git clone https://gitlab.hs-flensburg.de/forschungsprojekt/confidential-cloud-computing.git
+   git clone git@github.com:ChatGPTfirewall/ChatGPTfirewall.git
+   ```
+
+   ##### HTTPS
+
+   ```sh
+   git clone https://github.com/ChatGPTfirewall/ChatGPTfirewall.git
    ```
 
 2. **Navigate to the project directory:**
    ```sh
-   cd confidential-cloud-computing
+   cd ChatGPTfirewall
    ```
 
 3. **Create and configure the `.env` file:**
@@ -80,44 +56,24 @@ Follow these steps to install and run ChatGPTFirewall:
    ```sh
    docker compose up --build
    ```
-   The `--build` flag ensures that Docker builds the images before starting the containers. Use this command especially after making changes to the `.env` file or updating dependencies in `requirements.txt`.
-
-5. **The application should now be running at [http://localhost:5173/](http://localhost:5173/).**
+   The application should now be running at [http://localhost:5173/](http://localhost:5173/).
 
 ## Further Configuration and Commands
+Go into the backend container with `docker exec -it backend /bin/bash` and move into the `/chat_with_your_data` Folder. You can execute the following commands in there:
+- **Set up the database and manage demo users with the following commands:**
+  - Autogenerate database migrations: `python manage.py makemigrations`
+  - Apply migrations to the database: `python manage.py migrate`
+  - Create demo users: `python manage.py create_demo_users`
+  - Delete demo users: `python manage.py delete_demo_users`
 
-After installing, you may want to set up the database or create demo users:
+## Acknowledgments
 
-- **Move into the `chat_with_your_data` directory:**
-  ```sh
-  cd chat_with_your_data
-  ```
-  The following commands can only be executed within this directory.
+This application was developed as part of a research project for our Master's degree in Applied Computer Science by Robert Pfeiffer, Jens-Uwe Hennings, and Mats Klein, under the guidance of Professor Sebastian Gajek. We are grateful for the support and resources provided by Sebastian Gajek and Hochschule Flensburg, which made this project possible.
 
-- **Autogenerate database migrations:**
-  ```sh
-  python manage.py makemigrations
-  ```
-  Run this after creating a new database model.
+## License
 
-- **Apply migrations to the database:**
-  ```sh
-  python manage.py migrate
-  ```
-  This will update the database schema.
+[Placeholder for License Information]
 
-- **Create demo users:**
-  ```sh
-  python manage.py create_demo_users
-  ```
-  This will create a German and an English demo user with demo files.
+## Contact Information
 
-- **Delete demo users:**
-  ```sh
-  python manage.py delete_demo_users
-  ```
-  Use this to clean up the demo data.
-
-## Further Information
-
-For additional details 
+For further information, queries, or suggestions, please contact us at [placeholder for contact information].
