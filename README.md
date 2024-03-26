@@ -9,14 +9,15 @@ ChatGPTFirewall is a web-based application that allows users to interact with th
 ## Features
 
 - **Conversational Data Interaction**: Users can chat with their data by uploading files and asking questions in natural language.
-- **File Upload Support**: Manual file uploads are supported with Nextcloud integration, and S3 support is underway.
+- **File Upload Support**: Manual file uploads.
 - **Vector Database Integration**: Utilizes Qdrant for efficient similarity searches on text data.
-- **Editable Responses**: Adjust the number of facts and sentences returned from searches.
+- **Editable Responses**: Adjust the number of sentences returned from searches.
 - **Customizable Prompts**: Customize the prompts sent to ChatGPT for tailored answers.
 - **Authentication**: Secure user login with Auth0.
-- **File Management**: Easily manage, reload, or delete uploaded files.
+- **File Management**: Easily manage, your uploaded files.
 - **Demo Mode**: Explore the application's capabilities with preloaded files in demo mode.
 - **Multilingual**: The application supports both German and English languages.
+- **Rooms**: Create different rooms for different contexts.
 
 ## Prerequisites
 
@@ -68,7 +69,7 @@ Go into the backend container with `docker exec -it backend /bin/bash` and move 
 
 ## Acknowledgments
 
-This application was developed as part of a research project for our Master's degree in Applied Computer Science by Robert Pfeiffer, Jens-Uwe Hennings, and Mats Klein, under the guidance of Professor Sebastian Gajek. We are grateful for the support and resources provided by Sebastian Gajek and Hochschule Flensburg, which made this project possible.
+This application was developed as part of a research project for our Master's degree in Applied Computer Science by Robert Pfeiffer, Jens-Uwe Hennings and Mats Klein, under the guidance of Professor Sebastian Gajek. We are grateful for the support and resources provided by Sebastian Gajek and Hochschule Flensburg, which made this project possible.
 
 ## License
 
