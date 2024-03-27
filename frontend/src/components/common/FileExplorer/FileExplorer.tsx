@@ -142,6 +142,7 @@ export const FileExplorer = () => {
                 appearance="subtle"
                 size="small"
                 secondaryContent={t('nextCloudButtonSub')}
+                disabled
               >
                 {t('nextCloudButton')}
               </CompoundButton>
