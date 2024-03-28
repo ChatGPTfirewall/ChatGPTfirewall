@@ -32,6 +32,7 @@ class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=False)
     lang = models.CharField(max_length=2, default="en")
     fileSize = models.PositiveIntegerField(default=0)
+    uploadedAt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.filename
