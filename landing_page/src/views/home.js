@@ -21,7 +21,7 @@ const Home = (props) => {
           <a href="https://chatgptfirewall.github.io/ChatGPTfirewall/">
             <img
               alt="image"
-              src="/android-chrome-512x5121-200h.png"
+              src={`${process.env.PUBLIC_URL}/android-chrome-512x5121-200h.png`}
               className="home-image"
             />
           </a>
@@ -135,7 +135,7 @@ const Home = (props) => {
       <div className="home-hero">
         <div className="heroContainer home-hero1">
           <img
-            src="/android-chrome-512x5121-200h.png"
+            src={`${process.env.PUBLIC_URL}/android-chrome-512x5121-200h.png`}
             alt="image"
             className="home-image1"
           />
@@ -252,7 +252,7 @@ const Home = (props) => {
                 <div className="home-container10">
                   <img
                     alt="image"
-                    src="/android-chrome-512x5121-200h.png"
+                    src={`${process.env.PUBLIC_URL}/android-chrome-512x5121-200h.png`}
                     className="home-image2"
                   />
                   <span className="logo">ChatGPTFIREWALL</span>

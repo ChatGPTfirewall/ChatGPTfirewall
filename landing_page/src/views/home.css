@@ -30,9 +30,9 @@
   flex: 1;
   display: flex;
   align-items: center;
-  margin-left: var(--dl-space-space-fourunits);
+  margin-left: 0px;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .home-nav12 {
   width: auto;
