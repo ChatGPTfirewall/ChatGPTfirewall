@@ -21,7 +21,7 @@ const Home = (props) => {
           <a href="https://chatgptfirewall.github.io/ChatGPTfirewall/">
             <img
               alt="image"
-              src="/external/android-chrome-512x512-200h.png"
+              src="/android-chrome-512x5121-200h.png"
               className="home-image"
             />
           </a>
@@ -34,8 +34,18 @@ const Home = (props) => {
               >
                 Home
               </a>
-              <span className="home-nav22 bodySmall">Documentation</span>
-              <a href="#faq" className="home-nav221 bodySmall">
+              <a
+                href="https://chatgptfirewall.gitbook.io/chatgptfirewall/"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="home-nav22 bodySmall"
+              >
+                Documentation
+              </a>
+              <a href="#features" className="home-nav221 bodySmall">
+                Features
+              </a>
+              <a href="#faq" className="home-nav222 bodySmall">
                 FAQ
               </a>
               <a
@@ -89,7 +99,7 @@ const Home = (props) => {
               </div>
               <nav className="home-links1">
                 <span className="home-nav121 bodySmall">Home</span>
-                <span className="home-nav222 bodySmall">How It Works</span>
+                <span className="home-nav223 bodySmall">How It Works</span>
                 <span className="home-nav321 bodySmall">Security</span>
                 <span className="home-nav42 bodySmall">FAQ</span>
                 <span className="home-nav52 bodySmall">Contact</span>
@@ -125,78 +135,14 @@ const Home = (props) => {
       <div className="home-hero">
         <div className="heroContainer home-hero1">
           <img
+            src="/android-chrome-512x5121-200h.png"
             alt="image"
-            src="/external/android-chrome-512x512-200h.png"
             className="home-image1"
           />
           <div className="home-container02">
             <h1 className="home-hero-heading heading1">
               Secure File-Based Chatting with ChatGPTFirewall
             </h1>
-            <span className="home-hero-sub-heading bodyLarge">
-              <span>
-                <span>
-                  <span>Your Confidential Chat Security Solution</span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                </span>
-                <span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                </span>
-              </span>
-              <span>
-                <span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                </span>
-                <span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                  <span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: ' ',
-                      }}
-                    />
-                  </span>
-                </span>
-              </span>
-            </span>
             <div className="home-btn-group">
               <a
                 href="https://chatgpt.enclaive.io/"
@@ -206,14 +152,21 @@ const Home = (props) => {
               >
                 Get Started Now
               </a>
-              <button className="buttonFlat">Learn More →</button>
+              <a
+                href="https://chatgptfirewall.gitbook.io/chatgptfirewall/"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="home-hero-button2 buttonFlat"
+              >
+                Learn More →
+              </a>
             </div>
           </div>
         </div>
       </div>
       <div className="home-features">
         <div className="featuresContainer">
-          <div className="home-features1">
+          <div id="features" className="home-features1">
             <div className="home-container03">
               <span className="overline">
                 <span>features</span>
@@ -222,72 +175,6 @@ const Home = (props) => {
               <h2 className="home-features-heading heading2">
                 Advanced Security Features
               </h2>
-              <span className="home-features-sub-heading bodyLarge">
-                <span>
-                  <span>
-                    <span>
-                      Experience a new level of security with ChatGPTFirewall
-                    </span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                  </span>
-                </span>
-                <span>
-                  <span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                    <span>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: ' ',
-                        }}
-                      />
-                    </span>
-                  </span>
-                </span>
-              </span>
             </div>
             <div className="home-container04">
               <FeatureCard
@@ -295,132 +182,63 @@ const Home = (props) => {
                 subHeading="ChatGPTFirewall ensures secure communication between the user and ChatGPT"
               ></FeatureCard>
               <FeatureCard
-                heading="Confidential Cloud Environment"
-                subHeading="Operates in a confidential cloud environment to protect user data"
-              ></FeatureCard>
-              <FeatureCard
                 heading="File-Based Chatting"
                 subHeading="Chat with your files by uploading them and asking questions about their content"
               ></FeatureCard>
               <FeatureCard
                 heading="Pseudonymized Data"
-                subHeading="Sensitive data is pseudonymized to ensure privacy and security"
+                subHeading="Sensitive data is pseudonymized to ensure privacy and security between you and ChatGPT"
+              ></FeatureCard>
+              <FeatureCard
+                heading="Secure Data Processing"
+                subHeading="Ensuring user data protection through operation in a secure enclave of confidential computing"
               ></FeatureCard>
             </div>
           </div>
         </div>
       </div>
-      <div className="home-pricing"></div>
       <div className="home-banner">
         <div className="bannerContainer home-banner1">
           <h1 className="home-banner-heading heading2">
             Chat with your files securely without exposing sensitive information
             to ChatGPT
           </h1>
-          <span className="home-banner-sub-heading bodySmall">
-            <span>
-              <span>
-                <span>
-                  ChatGPTFirewall provides a secure environment for chatting
-                  with your files. Safeguard your conversations and data privacy
-                  with our confidential cloud-based solution. Upload your files,
-                  ask questions, and receive answers without compromising
-                  sensitive information. Experience peace of mind with
-                  ChatGPTFirewall.
-                </span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-              </span>
-              <span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-              </span>
-            </span>
-            <span>
-              <span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-              </span>
-              <span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-              </span>
-            </span>
-          </span>
-          <button className="buttonFilled">Learn More</button>
+          <a
+            href="https://chatgptfirewall.gitbook.io/chatgptfirewall/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="home-banner-button buttonFilled"
+          >
+            Learn More
+          </a>
         </div>
       </div>
       <div className="home-faq">
         <div className="faqContainer">
           <div id="faq" className="home-faq1">
             <div className="home-container05">
-              <span className="overline">
-                <span>FAQ</span>
-                <br></br>
-              </span>
-              <h2 className="home-text48 heading2">Common questions</h2>
-              <span className="home-text49 bodyLarge">
+              <h2 className="home-text3 heading2">FAQ</h2>
+              <span className="home-text4 bodyLarge">
                 <span>Here are some of the most common questions.</span>
                 <br></br>
               </span>
             </div>
             <div className="home-container06">
               <Question1
-                answer="ChatGPTFirewall is a web application that acts as a secure layer between the user and ChatGPT, ensuring confidentiality and data security."
+                answer="ChatGPTFirewall is a web application designed to enable secure, private interactions with data. It facilitates a conversational interface for users to handle their data with enhanced confidentiality."
                 question="What is ChatGPTFirewall?"
               ></Question1>
               <Question1
-                answer="ChatGPTFirewall runs in a confidential cloud environment, pseudonymizes sensitive data, and ensures that ChatGPT never has access to any user-related information."
-                question="How does ChatGPTFirewall enhance security?"
+                answer="ChatGPTFirewall operates within a secure enclave of a confidential computing environment. It anonymizes sensitive information through pseudonymization, ensuring that the actual content remains inaccessible even during processing."
+                question="How does ChatGPTFirewall ensure data security?"
               ></Question1>
               <Question1
-                answer="Users can upload files, ask questions about the content of their files, and receive answers from ChatGPT based on the context of the uploaded files."
-                question="What can users do with ChatGPTFirewall?"
+                answer="ChatGPTFirewall allows users to upload documents, manage these in separate rooms, and ask questions about the content. The application provides responses from a large language model, taking context from the uploaded documents into account."
+                question="What functionalities does ChatGPTFirewall offer?"
               ></Question1>
               <Question1
-                answer="No, ChatGPT does not have access to any user-related data as sensitive information is pseudonymized before being processed."
-                question="Can ChatGPT access my personal information?"
+                answer="Yes, ChatGPTFirewall prioritizes the safety of your personal data. It employs specific techniques like named entity recognition to identify and pseudonymize personal information, replacing it with neutral placeholders before any processing occurs, effectively safeguarding your privacy."
+                question="Is my personal data safe with ChatGPTFirewall?"
               ></Question1>
             </div>
           </div>
@@ -434,7 +252,7 @@ const Home = (props) => {
                 <div className="home-container10">
                   <img
                     alt="image"
-                    src="/external/android-chrome-512x512-200h-200h.png"
+                    src="/android-chrome-512x5121-200h.png"
                     className="home-image2"
                   />
                   <span className="logo">ChatGPTFIREWALL</span>
@@ -446,8 +264,18 @@ const Home = (props) => {
                   >
                     Home
                   </a>
-                  <span className="home-nav223 bodySmall">Documentation</span>
-                  <a href="#faq" className="home-nav224 bodySmall">
+                  <a
+                    href="https://chatgptfirewall.gitbook.io/chatgptfirewall/"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="home-nav224 bodySmall"
+                  >
+                    Documentation
+                  </a>
+                  <a href="#features" className="home-nav225 bodySmall">
+                    Features
+                  </a>
+                  <a href="#faq" className="home-nav226 bodySmall">
                     FAQ
                   </a>
                   <a
@@ -471,12 +299,6 @@ const Home = (props) => {
             </div>
           </div>
           <div className="home-separator"></div>
-          <div className="home-container12">
-            <span className="bodySmall home-text52">
-              © 2023 ChatGPTFirewall, All Rights Reserved.
-            </span>
-            <div className="home-icon-group1"></div>
-          </div>
         </footer>
       </div>
     </div>
