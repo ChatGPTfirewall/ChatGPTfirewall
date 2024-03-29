@@ -43,7 +43,7 @@ export const UserProvider: FunctionComponent<{ children: ReactNode }> = ({
           const accessToken = await getAccessTokenSilently({
             authorizationParams: {
               audience
-            },
+            }
           });
           localStorage.setItem('userToken', accessToken);
           const fetchedUser = await getUser(auth0User.sub);

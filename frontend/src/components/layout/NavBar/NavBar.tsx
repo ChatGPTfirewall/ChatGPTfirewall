@@ -9,6 +9,7 @@ const NavBar = () => {
   const styles = NavBarStyles();
   const location = useLocation();
   const { isAuthenticated } = useAuth0();
+  const logoPath = '/images/android-chrome-512x512.png';
 
   const isChatActive = location.pathname.startsWith('/chat');
   const isDemoActive = location.pathname.startsWith('/demo');
@@ -17,6 +18,7 @@ const NavBar = () => {
     <header className={styles.header} role={'banner'}>
       <div className={styles.headerContainer}>
         <Link to="/" className={styles.headerTitleContainer}>
+          <img src={logoPath} alt="Logo" className={styles.appLogo} />
           <h3 className={styles.headerTitle}>ChatGPTfirewall</h3>
         </Link>
         <nav>
