@@ -15,14 +15,14 @@ const LandingPageStyles = makeStyles({
   },
   header: {
     fontSize: '2.5rem',
-    marginBottom: '1rem'
+    marginBottom: '2rem'
   },
   subHeader: {
     fontSize: '1.2rem',
     marginBottom: '2rem'
   },
   appLogo: {
-    marginBottom: '0.5rem',
+    marginBottom: '-2rem',
     width: '300px'
   },
   links: {
