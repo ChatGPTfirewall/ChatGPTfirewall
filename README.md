@@ -24,6 +24,22 @@ ChatGPTFirewall provides a secure platform for users to upload text documents an
 - **Multilingual**: The application supports both German and English languages.
 - **Rooms**: Create different rooms for different contexts.
 
+## Quick Links
+
+Get started with ChatGPTFirewall quickly by accessing the following resources:
+
+- **Try the Application**: Jump straight into the action and experience ChatGPTFirewall firsthand by visiting our [application](https://chatgpt.enclaive.io/). Here, you can interact with your data through our conversational interface.
+
+- **Explore the Landing Page**: Learn more about what ChatGPTFirewall has to offer on our [Landing Page](https://chatgptfirewall.github.io/ChatGPTfirewall/). Discover the features and the technology behind our secure data interaction platform.
+
+- **Read the Documentation**: For a comprehensive guide on how to use ChatGPTFirewall, including setup, features, and tips, check out our [Documentation](https://chatgptfirewall.gitbook.io/chatgptfirewall/).
+
+These links provide everything you need to start using ChatGPTFirewall and make the most out of your data.
+
+## Installation
+
+Setting up ChatGPTFirewall is straightforward, whether you're looking to deploy it for personal use or within an organizational environment. This section provides a comprehensive guide to get ChatGPTFirewall up and running on your system. From cloning the repository to configuring your environment, follow these steps to begin interacting with your data through our secure, conversational interface. Let's embark on the journey to streamline your data interaction experience with ChatGPTFirewall.
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
