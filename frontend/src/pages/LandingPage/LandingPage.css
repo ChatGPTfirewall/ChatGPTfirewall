@@ -3,13 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .landing-content {
   text-align: center;
   max-width: 600px; /* Maximale Breite des Inhalts */
   padding: 0 20px; /* Abstand zu den Seiten */
+  margin-top: 40px;
 }
 
 .landing-content h1 {
@@ -35,4 +36,21 @@
 
 .login-button:hover {
   background-color: #0056b3;
+}
+
+.app-logo {
+  margin-bottom: 1rem;
+  /* Add logo styling here */
+}
+
+.links a {
+  display: inline-block;
+  margin: 0 10px;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #0056b3;
 }

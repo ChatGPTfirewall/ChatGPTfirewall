@@ -47,7 +47,6 @@ const SearchMessageItem = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { user: auth0User } = useAuth0();
 
-
   const [, setMaxApiCalls] = useState<number | null>(null);
 
   useEffect(() => {
@@ -72,7 +71,6 @@ const SearchMessageItem = ({
     };
 
     fetchUserFromBackend();
-    
   }, [message.content]);
 
   const handleEditClick = () => {
@@ -153,11 +151,15 @@ const SearchMessageItem = ({
                       <HighlightWithinTextarea
                         value={result.content}
                         highlight={[]}
-                        onChange={(value: string) => handleContentChange(i, value)}
+                        onChange={(value: string) =>
+                          handleContentChange(i, value)
+                        }
                       />
                     </div>
                   ) : (
-                    <Text className={styles.resultContent}>{result.content}</Text>
+                    <Text className={styles.resultContent}>
+                      {result.content}
+                    </Text>
                   )}
                 </div>
               ))

@@ -35,29 +35,38 @@ const Room = () => {
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
 
-  const anonymizeContent = useCallback((content: string, anonymizationMappings: AnonymizationMapping[], anonymize: boolean) => {
-    const anonymizeString = (inputString: string) => {
-      const sortedMappings = [...anonymizationMappings].sort((a, b) => b.deanonymized.length - a.deanonymized.length);
-      return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
-        const target = anonymize ? deanonymized : anonymized;
-        const replacement = anonymize ? anonymized : deanonymized;
-        const regex = new RegExp(`\\b${target}\\b`, 'g');
-        return acc.replace(regex, replacement);
-      }, inputString);
-    };
+  const anonymizeContent = useCallback(
+    (
+      content: string,
+      anonymizationMappings: AnonymizationMapping[],
+      anonymize: boolean
+    ) => {
+      const anonymizeString = (inputString: string) => {
+        const sortedMappings = [...anonymizationMappings].sort(
+          (a, b) => b.deanonymized.length - a.deanonymized.length
+        );
+        return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
+          const target = anonymize ? deanonymized : anonymized;
+          const replacement = anonymize ? anonymized : deanonymized;
+          const regex = new RegExp(`\\b${target}\\b`, 'g');
+          return acc.replace(regex, replacement);
+        }, inputString);
+      };
 
-    return anonymizeString(content);
-  }, []);
-
+      return anonymizeString(content);
+    },
+    []
+  );
 
   useEffect(() => {
     if (id) {
       getRoom(id)
-        .then(fetchedRoom => {
+        .then((fetchedRoom) => {
           setRoom(fetchedRoom);
         })
-        .catch(error => {
-          const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
+        .catch((error) => {
+          const errorMessage =
+            error.response?.data?.error || t('unexpectedErrorOccurred');
           showToast(`${t('errorFetchingRoom')}: ${errorMessage}`, 'error');
           navigate('/');
         });
@@ -65,18 +74,26 @@ const Room = () => {
   }, [id, showToast, navigate]);
 
   useEffect(() => {
-    setRoom(prevRoom => {
+    setRoom((prevRoom) => {
       if (!prevRoom) return null;
 
-      const updatedMessages = prevRoom.messages.map(message => {
+      const updatedMessages = prevRoom.messages.map((message) => {
         let updatedContent = message.content;
         if (message.role === 'system' && Array.isArray(message.content)) {
-          updatedContent = message.content.map(contentObj => ({
+          updatedContent = message.content.map((contentObj) => ({
             ...contentObj,
-            content: anonymizeContent(contentObj.content, prevRoom.anonymizationMappings, anonymized)
+            content: anonymizeContent(
+              contentObj.content,
+              prevRoom.anonymizationMappings,
+              anonymized
+            )
           }));
         } else if (typeof message.content === 'string') {
-          updatedContent = anonymizeContent(message.content, prevRoom.anonymizationMappings, anonymized);
+          updatedContent = anonymizeContent(
+            message.content,
+            prevRoom.anonymizationMappings,
+            anonymized
+          );
         }
         return { ...message, content: updatedContent };
       });
@@ -84,7 +101,6 @@ const Room = () => {
       return { ...prevRoom, messages: updatedMessages };
     });
   }, [anonymized, anonymizeContent]);
-
 
   const toggleAnonymization = useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +114,6 @@ const Room = () => {
       showToast(t('errorNoRoom'), 'error');
       return;
     }
-
 
     const newMessage: Message = {
       user: room.user,
@@ -135,15 +150,21 @@ const Room = () => {
         if (Array.isArray(createdMessage.content)) {
           createdMessage.content.forEach((contentObj: Result) => {
             if (anonymized) {
-              contentObj.content = anonymizeContent(contentObj.content, createdMessage.room.anonymizationMappings, anonymized);
+              contentObj.content = anonymizeContent(
+                contentObj.content,
+                createdMessage.room.anonymizationMappings,
+                anonymized
+              );
             }
           });
         }
 
-        setRoom(prevRoom => {
+        setRoom((prevRoom) => {
           if (!prevRoom) return null;
 
-          const filteredMessages = prevRoom.messages.filter(msg => msg.role !== 'system');
+          const filteredMessages = prevRoom.messages.filter(
+            (msg) => msg.role !== 'system'
+          );
           const newMessages = [...filteredMessages, createdMessage];
 
           return {
@@ -154,7 +175,8 @@ const Room = () => {
         });
       })
       .catch((error) => {
-        const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
+        const errorMessage =
+          error.response?.data?.error || t('unexpectedErrorOccurred');
         showToast(`${t('errorSendingMessage')}: ${errorMessage}`, 'error');
       })
       .finally(() => setIsMessageLoading(false));
