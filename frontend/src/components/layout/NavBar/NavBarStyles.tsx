@@ -46,6 +46,10 @@ const NavBarStyles = makeStyles({
   },
   headerNavLeftMargin: {
     marginLeft: tokens.spacingHorizontalL
+  },
+  appLogo: {
+    marginRight: '-12px',
+    width: '42px'
   }
 });
 

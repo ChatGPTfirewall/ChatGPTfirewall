@@ -13,10 +13,17 @@ const Layout = () => {
   const showSidebar =
     isAuthenticated && !hideSidebarRoutes.includes(location.pathname);
 
+  if (!isAuthenticated) {
+    return (
+      <div className={styles.layout}>
+        <NavBar />
+        <LandingPage />
+      </div>
+    );
+  }
   return (
     <div className={styles.layout}>
       <NavBar />
-      {!isAuthenticated && <LandingPage />}
       <div className={styles.container}>
         {showSidebar && <Sidebar />}
         <Outlet />

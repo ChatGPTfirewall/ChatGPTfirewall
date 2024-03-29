@@ -1,41 +1,51 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@fluentui/react-components';
-import './LandingPage.css';
+import { Button, Link } from '@fluentui/react-components';
+import LandingPageStyles from './LandingPageStyles';
 
 const LandingPage = () => {
+  const styles = LandingPageStyles();
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   const { t } = useTranslation();
-  const logoPath = '/images/android-chrome-192x192.png';
+  const logoPath = '/images/android-chrome-512x512.png';
 
   if (isAuthenticated) {
     return null;
   }
 
   return (
-    <div className="landing-page">
-      <div className="landing-content">
-        <img src={logoPath} alt="Logo" className="app-logo" />
-        <h1>{t('headerText')}</h1> {/* Header text */}
-        <p>{t('subheaderText')}</p> {/* Subheader text */}
+    <div className={styles.landingPage}>
+      <div className={styles.landingContent}>
+        <img src={logoPath} alt="Logo" className={styles.appLogo} />
+        <h1 className={styles.header}>{t('headerText')}</h1>
+        <p className={styles.subHeader}>{t('subheaderText')}</p>
         <Button
-          className="login-button"
           appearance="primary"
           size="large"
           onClick={() => loginWithRedirect()}
         >
           {t('login')}
         </Button>
-        <div className="links">
-          <a href="https://chatgptfirewall.github.io/ChatGPTfirewall/">
+
+        <div className={styles.links}>
+          <Link
+            href="https://chatgptfirewall.github.io/ChatGPTfirewall/"
+            appearance="subtle"
+          >
             {t('landingPage')}
-          </a>
-          <a href="https://chatgptfirewall.gitbook.io/chatgptfirewall">
+          </Link>
+          <Link
+            href="https://chatgptfirewall.gitbook.io/chatgptfirewall/"
+            appearance="subtle"
+          >
             {t('documentation')}
-          </a>
-          <a href="https://github.com/ChatGPTfirewall/ChatGPTfirewall">
+          </Link>
+          <Link
+            href="https://github.com/ChatGPTfirewall/ChatGPTfirewall"
+            appearance="subtle"
+          >
             {t('githubRepo')}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
