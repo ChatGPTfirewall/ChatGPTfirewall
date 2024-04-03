@@ -11,6 +11,8 @@ services:
     environment:
       VITE_AUTH0_DOMAIN: ${VITE_AUTH0_DOMAIN}
       VITE_AUTH0_CLIENT_ID: ${VITE_AUTH0_CLIENT_ID}
+      VITE_JWT_AUDIENCE: ${VITE_JWT_AUDIENCE}
+      VITE_JWT_ISSUER: ${VITE_JWT_ISSUER}
     depends_on:
       - backend
     platform: linux/amd64
@@ -32,6 +34,8 @@ services:
       QDRANT_SECRET: ${QDRANT_SECRET}
       TRANSFORMER_MODEL: ${TRANSFORMER_MODEL}
       OPEN_AI_KEY: ${OPEN_AI_KEY}
+      JWT_AUDIENCE: ${JWT_AUDIENCE}
+      JWT_ISSUER: ${JWT_ISSUER}
 
   postgres:
     image: postgres:15.3-bullseye
