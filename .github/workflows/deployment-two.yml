@@ -24,8 +24,8 @@ jobs:
             export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
             export SECRET_KEY='${{ secrets.SECRET_KEY }}'
             export DATABASE_URL=${{ secrets.DATABASE_URL }}
-            export QDRANT_URL=${{ secrets.QDRANT_URL }}
-            export QDRANT_SECRET=${{ secrets.QDRANT_SECRET }}
+            export QDRANT_URL=${{ secrets.QDRANT_URL_TWO }}
+            export QDRANT_SECRET=${{ secrets.QDRANT_SECRET_TWO }}
             export SPACY_NLP_MODEL=${{ secrets.SPACY_NLP_MODEL }}
             export TRANSFORMER_MODEL=${{ secrets.TRANSFORMER_MODEL }}
             export OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}
