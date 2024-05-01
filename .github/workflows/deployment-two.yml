@@ -33,6 +33,8 @@ jobs:
             export DEBUG=${{ secrets.DEBUG }}
             export JWT_ISSUER=${{ secrets.JWT_ISSUER }}
             export JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}
-            git clone https://github.com/ChatGPTfirewall/ChatGPTfirewall.git
+            git -C ChatGPTfirewall pull || git clone https://github.com/ChatGPTfirewall/ChatGPTfirewall.git ChatGPTfirewall
             cd ChatGPTfirewall
-            docker compose -f docker-compose-prod.yml up
+            mkdir -p cert/
+            echo "dns_cloudflare_api_token =$CLOUDFLARE_API_TOKEN" > ./cert/cloudflare.ini 
+            docker compose -f docker-compose.yml up -d
