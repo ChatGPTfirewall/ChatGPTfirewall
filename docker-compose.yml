@@ -1,0 +1,68 @@
+version: '3.8'
+services:
+  certbot:
+    image: certbot/dns-cloudflare
+    volumes:
+      - ./cert:/etc/letsencrypt
+      - ./cloudflare.ini:/etc/letsencrypt/cloudflare.ini
+    command: >-
+      certonly 
+      --dns-cloudflare
+      --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini
+      --agree-tos --no-eff-email
+      --force-renewal
+      -d chatgpt.enclaive.io
+  frontend:
+    image: ${DOCKER_USERNAME}/frontend:latest
+    container_name: frontend
+    stdin_open: true
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      VITE_AUTH0_DOMAIN: ${VITE_AUTH0_DOMAIN}
+      VITE_AUTH0_CLIENT_ID: ${VITE_AUTH0_CLIENT_ID}
+      VITE_JWT_AUDIENCE: ${VITE_JWT_AUDIENCE}
+      VITE_JWT_ISSUER: ${VITE_JWT_ISSUER}
+    depends_on:
+      - backend
+    platform: linux/amd64
+    volumes:
+      - ./cert/live/chatgpt.enclaive.io/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+      - ./cert/live/chatgpt.enclaive.io/privkey.pem:/etc/nginx/ssl/privkey.pem
+  backend:
+    image: ${DOCKER_USERNAME}/backend:latest
+    container_name: backend
+    stdin_open: true
+    tty: true
+    ports:
+      - "8000:8000"
+    environment:
+      DEBUG: ${DEBUG}
+      SECRET_KEY: ${SECRET_KEY}
+      DATABASE_URL: ${DATABASE_URL}
+      QDRANT_URL: ${QDRANT_URL}
+      QDRANT_SECRET: ${QDRANT_SECRET}
+      TRANSFORMER_MODEL: ${TRANSFORMER_MODEL}
+      OPEN_AI_KEY: ${OPEN_AI_KEY}
+      JWT_AUDIENCE: ${JWT_AUDIENCE}
+      JWT_ISSUER: ${JWT_ISSUER}
+
+  postgres:
+    image: postgres:15.3-bullseye
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:
+    driver: local
+
+
