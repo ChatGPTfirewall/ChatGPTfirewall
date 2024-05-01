@@ -4,7 +4,7 @@ services:
     image: certbot/dns-cloudflare
     volumes:
       - ./cert:/etc/letsencrypt
-      - ./cloudflare.ini:/etc/letsencrypt/cloudflare.ini
+      - ./cert/cloudflare.ini:/etc/letsencrypt/cloudflare.ini
     command: >-
       certonly 
       --dns-cloudflare
