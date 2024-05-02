@@ -19,9 +19,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            export DB_USER=${{ secrets.DB_USER }}
-            export DB_NAME=${{ secrets.DB_NAME }}
-            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            export DB_USER=${{ secrets.DB_USER_TWO }}
+            export DB_NAME=${{ secrets.DB_NAME_TWO }}
+            export DB_PASSWORD=${{ secrets.DB_PASSWORD_TWO }}
             export SECRET_KEY='${{ secrets.SECRET_KEY }}'
             export DATABASE_URL=${{ secrets.DATABASE_URL }}
             export QDRANT_URL=${{ secrets.QDRANT_URL_TWO }}
