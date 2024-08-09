@@ -1,6 +1,8 @@
 import os
 
 import spacy
+from spacy.language import Language
+from spacy.tokens import Doc
 from flair.data import Sentence
 from flair.models import SequenceTagger
 from sentence_transformers import SentenceTransformer
@@ -9,6 +11,44 @@ from sentence_transformers import SentenceTransformer
 nlp_de = spacy.load("de_core_news_lg")
 # https://spacy.io/models/de#en_core_web_lg
 nlp_en = spacy.load("en_core_web_lg")
+
+# Custom component to detect various text structures
+@Language.component("custom_segmenter")
+def custom_segmenter(doc: Doc) -> Doc:
+    for i, token in enumerate(doc[:-1]):
+        # Detect section headers like "Section 434" and start a new segment
+        if token.text.lower() == "section" and doc[i + 1].is_digit:
+            if i > 0:
+                doc[i].is_sent_start = True
+
+        # Start a new segment before numbered points like "(1)" or "1."
+        elif token.text in ["(", "1", "2", "3", "4", "5", "6", "7", "8", "9"] and doc[i + 1].text in [".", ")"]:
+            if i > 0:
+                doc[i].is_sent_start = True
+            doc[i].is_sent_start = True
+            if doc[i + 1].text == ")" and i + 2 < len(doc):
+                doc[i + 2].is_sent_start = False  # Keep the content together with the subsection number
+            elif doc[i + 1].text == "." and i + 2 < len(doc):
+                doc[i + 2].is_sent_start = False  # Keep the content together with the number
+
+        # Ensure that points like "1." "2." etc., stay intact with the following text
+        elif token.text.isdigit() and doc[i + 1].text == ".":
+            if i > 0:
+                doc[i].is_sent_start = True
+            if i + 2 < len(doc):
+                doc[i + 2].is_sent_start = False
+
+        # Handle cases like "(1)" and keep the text together
+        elif token.text.startswith("(") and token.text.endswith(")"):
+            if token.text[1:-1].isdigit() and i > 0:
+                doc[i].is_sent_start = True
+            if i + 1 < len(doc):
+                doc[i + 1].is_sent_start = False
+
+    return doc
+
+# Add the custom component before the parser
+nlp_en.add_pipe("custom_segmenter", before="parser")
 
 taggers = {
     "de": SequenceTagger.load("flair/ner-german"),

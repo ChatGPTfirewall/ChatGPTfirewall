@@ -27,7 +27,7 @@ RUN pip install --extra-index-url https://download.pytorch.org/whl/cpu torch && 
     python -m spacy download en_core_web_lg
 
 EXPOSE 8000
-ENTRYPOINT ["/app/entrypoint.dev.sh"]
+# ENTRYPOINT ["/app/entrypoint.dev.sh"]
 
 # Production Environment
 FROM base as production

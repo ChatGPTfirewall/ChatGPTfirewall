@@ -403,7 +403,7 @@ class MessagesApiView(APIView):
                     }
                     entities.append(entity_info)
 
-                text = section.content + before_result + after_result
+                text = section.content
                 sentence = Sentence(text)
 
                 # Anonymisierung des Textes
@@ -448,8 +448,8 @@ class MessagesApiView(APIView):
                     "content": text + " ",
                     "fileName": section.document.filename,
                     "accuracy": search_result.score,
-                    "context_before": " ",
-                    "context_after": " ",
+                    "context_before": before_result + " ",
+                    "context_after":  after_result + " ",
                     # "entities": "",
                     # "original_entities": entity_mapping,
                 }
