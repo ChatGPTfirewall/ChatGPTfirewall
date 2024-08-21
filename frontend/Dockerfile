@@ -14,8 +14,8 @@ RUN echo "VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN" > .env.local && \
 
 COPY entrypoint.sh ./entrypoint.sh
 
-# RUN ["chmod", "+x", "entrypoint.sh"]
-# ENTRYPOINT ["/app/entrypoint.sh"]
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 FROM node:current-bullseye-slim as prod
 
