@@ -45,6 +45,10 @@ def custom_segmenter(doc: Doc) -> Doc:
             if i + 1 < len(doc):
                 doc[i + 1].is_sent_start = False
 
+        # Avoid segmenting very short tokens like "(" or "2" as a separate sentence
+        if len(token.text.strip()) < 2:
+            doc[i].is_sent_start = False
+
     return doc
 
 # Add the custom component before the parser
