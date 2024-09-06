@@ -41,6 +41,10 @@ const Room = () => {
       anonymizationMappings: AnonymizationMapping[],
       anonymize: boolean
     ) => {
+      // Function to escape special characters in a string
+      const escapeRegExp = (string: string) => {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+      };
       const anonymizeString = (inputString: string) => {
         const sortedMappings = [...anonymizationMappings].sort(
           (a, b) => b.deanonymized.length - a.deanonymized.length
@@ -48,7 +52,13 @@ const Room = () => {
         return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
           const target = anonymize ? deanonymized : anonymized;
           const replacement = anonymize ? anonymized : deanonymized;
-          const regex = new RegExp(`${target}`, 'gmi');
+          //when target ends with "."
+          let regex
+          if (target.endsWith('.')) {
+            regex = new RegExp(`\\b${target}`, 'gmi');
+          } else {
+            regex = new RegExp(`\\b${target}\\b`, 'gmi');
+          }
           return acc.replace(regex, " "+replacement);
         }, inputString);
       };

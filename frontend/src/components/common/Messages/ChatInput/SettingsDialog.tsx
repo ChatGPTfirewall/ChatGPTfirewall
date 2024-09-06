@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dialog, DialogSurface, DialogBody, DialogTitle, DialogActions, Checkbox, Button, } from '@fluentui/react-components';
+import { Dialog, DialogSurface, DialogTitle, DialogActions, Checkbox, Button, } from '@fluentui/react-components';
 
 interface SettingsDialogProps {
   isOpen: boolean;

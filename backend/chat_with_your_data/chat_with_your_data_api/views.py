@@ -13,8 +13,6 @@ from django.db.models import Q
 from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
 from django.shortcuts import redirect
 from django.utils import timezone
-from flair.data import Sentence
-from flair.models import SequenceTagger
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -38,6 +36,9 @@ LLM_MAX_TOKENS = 4098
 
 # initialize llm engine
 myLLM = LLM(os.getenv("OPEN_AI_KEY"))
+
+# Labels for Labellist
+labellist = ["CARDINAL", "DATE", "EVENT", "FAC", "GPE", "LANGUAGE", "LAW", "LOC", "MONEY", "NORP", "ORDINAL", "ORG", "PERCENT", "PERSON", "PRODUCT", "QUANTITY", "TIME", "WORK_OF_ART", "PER", "MISC"]
 
 # initialize LLM Manager
 myllmManager = llmManager(myLLM)
@@ -379,7 +380,7 @@ class MessagesApiView(APIView):
                 return Response("Search Error", status.HTTP_400_BAD_REQUEST)
 
             facts = []
-            counter = {"PER": 0, "LOC": 0}
+            counter = {}
             actual_entities = []
             for search_result in search_results:
                 section = Section.objects.get(
@@ -393,6 +394,7 @@ class MessagesApiView(APIView):
                     room.settings.get("post_phrase_count"),
                 )
 
+                # Detect entities using Spacy
                 entities = []
                 for ent in embedded_text.ents:
                     entity_info = {
@@ -404,38 +406,35 @@ class MessagesApiView(APIView):
                     entities.append(entity_info)
 
                 text = section.content
-                sentence = Sentence(text)
 
-                # Anonymisierung des Textes
-                ner_entities = detect_entities(sentence, user.lang)
-                # get actual counters from db
-                precounter_per_query = AnonymizeEntitie.objects.filter(
-                    entityType="PER", roomID=room
-                ).order_by("-counter")[:1]
-                precounter_loc_query = AnonymizeEntitie.objects.filter(
-                    entityType="LOC", roomID=room
-                ).order_by("-counter")[:1]
+                # Detect entities using Spacy
+                ner_entities = detect_entities(embedded_text, user.lang)
+                
+                # Get actual counters from db
+                for label in labellist:
+                    precounter_query = AnonymizeEntitie.objects.filter(
+                        entityType=label, roomID=room
+                    ).order_by("-counter")[:1]
 
-                if len(precounter_per_query) == 0:
-                    precounter_per_value = 0
-                else:
-                    precounter_per_value = precounter_per_query[0].counter + 1
+                    if len(precounter_query) == 0:
+                        precounter_value = 0
+                    else:
+                        precounter_value = precounter_query[0].counter + 1
 
-                if len(precounter_loc_query) == 0:
-                    precounter_loc_value = 0
-                else:
-                    precounter_loc_value = precounter_loc_query[0].counter + 1
+                    counter[label] = precounter_value
 
-                counter = {"PER": precounter_per_value, "LOC": precounter_loc_value}
+                
+
                 entity_mapping = map_entities(ner_entities, text, counter)
+                
                 for entry in entity_mapping:
-                    # check if mapping already exists
+                    # Check if mapping already exists
                     try:
                         go = AnonymizeEntitie.objects.get(
                             deanonymized=entry, roomID=room
                         )
                     except AnonymizeEntitie.DoesNotExist:
-                        # create model if no already existing
+                        # Create model if not already existing
                         AnonymizeEntitie.objects.create(
                             roomID=room,
                             anonymized=entity_mapping[entry],
@@ -450,15 +449,13 @@ class MessagesApiView(APIView):
                     "accuracy": search_result.score,
                     "context_before": before_result + " ",
                     "context_after":  after_result + " ",
-                    # "entities": "",
-                    # "original_entities": entity_mapping,
                 }
                 facts.append(fact)
 
             user_serialized = UserSerializer(user).data
             room_serialized = RoomSerializer(room).data
 
-            # TODO create anon JSON answer obj
+            # Create anonymized JSON answer object
             entries = AnonymizeEntitie.objects.filter(roomID=room)
             actual_entities = AnonymizationMappingSerializer(entries, many=True).data
 
@@ -472,6 +469,7 @@ class MessagesApiView(APIView):
             }
 
             return Response(response, status.HTTP_200_OK)
+
 
         # message for llm
         elif recipient == "chatgpt":
