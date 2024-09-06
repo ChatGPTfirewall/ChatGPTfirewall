@@ -32,6 +32,13 @@ const ChatInputStyles = makeStyles({
     bottom: '10px',
     right: '15px'
   },
+  settingsButton: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    color: tokens.colorBrandBackground,
+    position: 'absolute',
+    top: '10px',
+    right: '15px'
+  },
   inputContainer: {
     position: 'relative',
     display: 'inline-block',

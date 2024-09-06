@@ -1,7 +1,9 @@
+// ChatInput.tsx
 import React, { useState } from 'react';
 import { Button, Textarea } from '@fluentui/react-components';
 import ChatInputStyles from './ChatInputStyles';
-import { Send24Filled } from '@fluentui/react-icons';
+import { Send24Filled, Settings24Filled } from '@fluentui/react-icons';
+import SettingsDialog from './SettingsDialog'; // Import the new component
 
 interface ChatInputProps {
   onSendMessage: (value: string) => void;
@@ -10,6 +12,7 @@ interface ChatInputProps {
 
 const ChatInput = ({ onSendMessage, demo = false }: ChatInputProps) => {
   const [input, setInput] = useState('');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const styles = ChatInputStyles();
 
   const handleSubmit = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -26,6 +29,19 @@ const ChatInput = ({ onSendMessage, demo = false }: ChatInputProps) => {
     }
   };
 
+  const handleSettingsClick = () => {
+    setIsSettingsOpen(true);
+  };
+
+  const handleSettingsClose = () => {
+    setIsSettingsOpen(false);
+  };
+
+  const handleSettingsApply = (settings: Record<string, boolean>) => {
+    console.log('Applied settings:', settings);
+    // Handle the applied settings as needed
+  };
+
   return (
     <div className={demo ? styles.demoContainer : styles.container}>
       <div className={styles.inputContainer}>
@@ -34,7 +50,7 @@ const ChatInput = ({ onSendMessage, demo = false }: ChatInputProps) => {
           className={styles.textArea}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Schreibe eine Nachricht..."
+          placeholder="Write a Message..."
           onKeyDown={handleKeyPress}
         />
         <Button
@@ -43,7 +59,19 @@ const ChatInput = ({ onSendMessage, demo = false }: ChatInputProps) => {
           className={styles.sendButton}
           onClick={() => handleSubmit}
         />
+        <Button
+          appearance="subtle"
+          icon={<Settings24Filled />}
+          className={styles.settingsButton}
+          onClick={handleSettingsClick}
+        />
       </div>
+
+      <SettingsDialog
+        isOpen={isSettingsOpen}
+        onClose={handleSettingsClose}
+        onApply={handleSettingsApply}
+      />
     </div>
   );
 };

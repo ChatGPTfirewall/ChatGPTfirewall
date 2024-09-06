@@ -48,8 +48,8 @@ const Room = () => {
         return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
           const target = anonymize ? deanonymized : anonymized;
           const replacement = anonymize ? anonymized : deanonymized;
-          const regex = new RegExp(`\\b${target}\\b`, 'g');
-          return acc.replace(regex, replacement);
+          const regex = new RegExp(`${target}`, 'gmi');
+          return acc.replace(regex, " "+replacement);
         }, inputString);
       };
 
