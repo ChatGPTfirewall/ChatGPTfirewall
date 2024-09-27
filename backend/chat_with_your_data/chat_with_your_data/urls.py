@@ -18,9 +18,15 @@ Including another URLconf
 from chat_with_your_data_api import urls as chat_with_your_data_urls
 from django.contrib import admin
 from django.urls import include, path
+from django.http import HttpResponse
+
+# Simple health check function defined inline
+def health_check(request):
+    return HttpResponse("ok", status=200)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include(chat_with_your_data_urls)),
+    path("healthcheck/", health_check),
 ]
