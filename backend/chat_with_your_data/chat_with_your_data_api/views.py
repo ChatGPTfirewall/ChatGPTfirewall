@@ -439,7 +439,7 @@ class MessagesApiView(APIView):
                             roomID=room,
                             anonymized=entity_mapping[entry],
                             deanonymized=entry,
-                            entityType=str(entity_mapping[entry])[0:3],
+                            entityType=str(entity_mapping[entry]).split("_")[0],
                             counter=str(entity_mapping[entry]).split("_")[1],
                         )
 

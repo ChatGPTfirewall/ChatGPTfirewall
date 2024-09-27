@@ -105,7 +105,7 @@ def map_entities(entities, text, counter):
     return entity_mapping
 
 def generate_pseudo(entity_type, counter):
-    return f"{entity_type[:3]}_{counter+1}"
+    return f"{entity_type}_{counter+1}"
 
 def anonymize_text(text, entities, entity_mapping):
     parts = []
