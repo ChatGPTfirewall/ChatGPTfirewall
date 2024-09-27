@@ -34,7 +34,7 @@
   "resultRoleName": "Answers",
   "searchMessageIntroText": "Below are excerpts from your documents that may potentially answer your question.",
   "searchMessageStatText": "Result {{index}} from \"{{filename}}\" with {{accuracy}}% accuracy.",
-  "searchMessageIntroHint": "Please ensure that all sensitive data have been identified and appropriately pseudonymized before proceeding.",
+  "searchMessageIntroHint": "Please ensure that all sensitive data has been identified and appropriately pseudonymized before proceeding.",
   "cancelEditResultsButton": "Discard",
   "save": "Save",
   "editResultsButton": "Edit",
