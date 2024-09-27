@@ -39,23 +39,32 @@ const Room = () => {
     (
       content: string,
       anonymizationMappings: AnonymizationMapping[],
-      anonymize: boolean
+      anonymize: boolean,
+      room: RoomType | null,
     ) => {
       const anonymizeString = (inputString: string) => {
         const sortedMappings = [...anonymizationMappings].sort(
           (a, b) => b.deanonymized.length - a.deanonymized.length
         );
-        return sortedMappings.reduce((acc, { anonymized, deanonymized }) => {
+        return sortedMappings.reduce((acc, { anonymized, deanonymized, entityType }) => {
+        // Only process if entityType is in room.settings.active_anonymization_types
+        if (room?.settings.active_anonymization_types.includes(entityType)) {
           const target = anonymize ? deanonymized : anonymized;
           const replacement = anonymize ? anonymized : deanonymized;
-          //when target ends with "."
-          let regex
+          
+          // Create a regex to match target with or without ending period (.)
+          let regex;
           if (target.endsWith('.')) {
             regex = new RegExp(`\\b${target}`, 'gmi');
           } else {
             regex = new RegExp(`\\b${target}\\b`, 'gmi');
           }
-          return acc.replace(regex, " "+replacement);
+
+          return acc.replace(regex, ` ${replacement}`);
+        }
+        
+        // If entityType is not in the active_anonymization_types, skip this mapping
+        return acc;
         }, inputString);
       };
 
@@ -91,24 +100,28 @@ const Room = () => {
             content: anonymizeContent(
               contentObj.content,
               prevRoom.anonymizationMappings,
-              anonymized
+              anonymized,
+              room
             ),
             context_after: anonymizeContent(
               contentObj.context_after,
               prevRoom.anonymizationMappings,
-              anonymized
+              anonymized,
+              room
             ),
             context_before: anonymizeContent(
               contentObj.context_before,
               prevRoom.anonymizationMappings,
-              anonymized
+              anonymized,
+              room
             )
           }));
         } else if (typeof message.content === 'string') {
           updatedContent = anonymizeContent(
             message.content,
             prevRoom.anonymizationMappings,
-            anonymized
+            anonymized,
+            room
           );
         }
         return { ...message, content: updatedContent };
@@ -169,17 +182,20 @@ const Room = () => {
               contentObj.content = anonymizeContent(
                 contentObj.content,
                 createdMessage.room.anonymizationMappings,
-                anonymized
+                anonymized,
+                room
               );
               contentObj.context_before = anonymizeContent(
                 contentObj.context_before,
                 createdMessage.room.anonymizationMappings,
-                anonymized
+                anonymized,
+                room
               );
               contentObj.context_after = anonymizeContent(
                 contentObj.context_after,
                 createdMessage.room.anonymizationMappings,
-                anonymized
+                anonymized,
+                room
               );
             }
           });
