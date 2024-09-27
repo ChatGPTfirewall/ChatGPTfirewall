@@ -41,10 +41,6 @@ const Room = () => {
       anonymizationMappings: AnonymizationMapping[],
       anonymize: boolean
     ) => {
-      // Function to escape special characters in a string
-      const escapeRegExp = (string: string) => {
-        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-      };
       const anonymizeString = (inputString: string) => {
         const sortedMappings = [...anonymizationMappings].sort(
           (a, b) => b.deanonymized.length - a.deanonymized.length
@@ -94,6 +90,16 @@ const Room = () => {
             ...contentObj,
             content: anonymizeContent(
               contentObj.content,
+              prevRoom.anonymizationMappings,
+              anonymized
+            ),
+            context_after: anonymizeContent(
+              contentObj.context_after,
+              prevRoom.anonymizationMappings,
+              anonymized
+            ),
+            context_before: anonymizeContent(
+              contentObj.context_before,
               prevRoom.anonymizationMappings,
               anonymized
             )
@@ -162,6 +168,16 @@ const Room = () => {
             if (anonymized) {
               contentObj.content = anonymizeContent(
                 contentObj.content,
+                createdMessage.room.anonymizationMappings,
+                anonymized
+              );
+              contentObj.context_before = anonymizeContent(
+                contentObj.context_before,
+                createdMessage.room.anonymizationMappings,
+                anonymized
+              );
+              contentObj.context_after = anonymizeContent(
+                contentObj.context_after,
                 createdMessage.room.anonymizationMappings,
                 anonymized
               );
