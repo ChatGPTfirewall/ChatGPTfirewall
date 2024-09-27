@@ -57,6 +57,7 @@
   "promptTemplateOptionDE": "Prompt Template German",
   "promptTemplateOptionEN": "Prompt Template English",
   "resultSentenceCountLabel": "Number of sentences before and after the result",
+  "activeAnonymizationTypesLabel": "Anonymization Active for:",
   "actionSuccessful": "Action successful",
   "actionFailed": "Action failed",
   "actionWarning": "Warning",
