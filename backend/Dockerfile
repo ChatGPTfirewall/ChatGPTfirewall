@@ -9,7 +9,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev gcc curl python3-dev tesseract-ocr ghostscript && \
-    pip install --upgrade pip && pip install pipenv && \
+    pip install --upgrade "pip<24.1" && pip install pipenv && \
+    pip install textract && \
     rm -rf /var/lib/apt/lists/*
 
 COPY Pipfile Pipfile.lock ./
