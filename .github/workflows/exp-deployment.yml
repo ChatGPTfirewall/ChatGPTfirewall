@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.EXP_SERVER_HOST }}
           username: ${{ secrets.EXP_SERVER_USER }}
-          key: ${{ secrets.EXP_SERVER_SSH_KEY }}
+          password: ${{ secrets.EXP_SERVER_SSH_KEY }}
           script: |
             export DB_USER=${{ secrets.DB_USER }}
             export DB_NAME=${{ secrets.DB_NAME }}
