@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
     "chatgpt.enclaive.io",
     "backend",
     "185.112.181.192",
-    "54.194.129.26"
+    "52.166.116.113"
 ]
 
 CSRF_TRUSTED_ORIGINS = [

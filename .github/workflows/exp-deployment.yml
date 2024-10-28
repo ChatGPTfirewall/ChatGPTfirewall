@@ -6,7 +6,7 @@ on:
 env:
   SERVER_HOST: ${{ secrets.EXP_SERVER_HOST }}
   SERVER_USER: ${{ secrets.EXP_SERVER_USER }}
-  SERVER_SSH_KEY: ${{ secrets.EXP_SERVER_SSH_KEY }}
+  SERVER_SSH_PASSWORD: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
 
 jobs:
   deploy:
@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.EXP_SERVER_HOST }}
           username: ${{ secrets.EXP_SERVER_USER }}
-          password: ${{ secrets.EXP_SERVER_SSH_KEY }}
+          password: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
           script: |
             export DB_USER=${{ secrets.DB_USER }}
             export DB_NAME=${{ secrets.DB_NAME }}
