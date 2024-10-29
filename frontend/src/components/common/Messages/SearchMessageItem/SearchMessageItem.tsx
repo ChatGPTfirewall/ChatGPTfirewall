@@ -149,7 +149,7 @@ const SearchMessageItem = ({
                   {editable ? (
                     <div className={styles.textarea}>
                       <HighlightWithinTextarea
-                        value={result.content}
+                        value={`${result.context_before} ${result.content} ${result.context_after}`}
                         highlight={[]}
                         onChange={(value: string) =>
                           handleContentChange(i, value)
@@ -158,11 +158,14 @@ const SearchMessageItem = ({
                     </div>
                   ) : (
                     <Text className={styles.resultContent}>
-                      {result.content}
+                      {result.context_before}{' '}
+                      <strong>{result.content}</strong>{' '}
+                      {result.context_after}{' '}
                     </Text>
                   )}
                 </div>
               ))
+              
             )}
           </>
         )}

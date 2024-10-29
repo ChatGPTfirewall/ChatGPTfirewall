@@ -5,6 +5,9 @@ WORKDIR /app
 COPY ./package.json .
 COPY ./package-lock.json .
 
+# Install curl in case it's missing
+RUN apt-get update && apt-get install -y curl
+
 RUN npm install
 
 RUN echo "VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN" > .env.local && \
@@ -14,7 +17,7 @@ RUN echo "VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN" > .env.local && \
 
 COPY entrypoint.sh ./entrypoint.sh
 
-RUN ["chmod", "+x", "entrypoint.sh"]
+RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 FROM node:current-bullseye-slim as prod
@@ -32,6 +35,9 @@ ENV VITE_AUTH0_DOMAIN=$VITE_AUTH0_DOMAIN \
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+
+# Install curl in case it's missing
+RUN apt-get update && apt-get install -y curl
 
 RUN npm install
 

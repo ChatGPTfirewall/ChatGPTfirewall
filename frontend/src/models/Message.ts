@@ -14,8 +14,8 @@ export type Result = {
   fileName: string;
   accuracy: number;
   content: string;
-  contextBefore?: string;
-  contextAfter?: string;
+  context_before: string;
+  context_after: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   entities?: any[];
   original_entities?: any[];

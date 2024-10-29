@@ -16,7 +16,8 @@ services:
           source: ./frontend
           target: /app
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     env_file:
       - .env
   backend:
@@ -34,6 +35,11 @@ services:
         target: /app
     env_file:
       - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthcheck"]
+      interval: 20s
+      timeout: 10s
+      retries: 15
   postgres:
     image: postgres:15.3-bullseye
     container_name: postgres

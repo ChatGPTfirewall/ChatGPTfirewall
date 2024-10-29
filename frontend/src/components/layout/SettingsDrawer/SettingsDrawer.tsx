@@ -8,7 +8,8 @@ import {
   OverlayDrawer,
   Select,
   SpinButton,
-  Textarea
+  Textarea,
+  Checkbox, // New import for the checkboxes
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
@@ -32,18 +33,33 @@ const SettingsDrawer = ({
 }: SettingsDrawerProps) => {
   const styles = SettingsDrawerStyles();
   const { t } = useTranslation();
-  const [promptTemplate, setPromptTemplate] = useState(
-    room.settings.prompt_template
-  );
-  const [phraseCount, setPhraseCount] = useState(
-    room.settings.pre_phrase_count
-  );
+  
+  // State management for various settings
+  const [promptTemplate, setPromptTemplate] = useState(room.settings.prompt_template);
+  const [phraseCount, setPhraseCount] = useState(room.settings.pre_phrase_count);
 
-  const handleTemplateChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  // State for the active anonymization types
+  const [activeAnonymizationTypes, setActiveAnonymizationTypes] = useState<string[]>(room.settings.active_anonymization_types || []);
+
+  // List of all possible anonymization types (unchanged)
+  const allAnonymizationTypes = [
+    'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC',
+    'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON', 'PRODUCT',
+    'QUANTITY', 'TIME', 'WORK_OF_ART', 'PER', 'MISC'
+  ];
+
+  const handleTemplateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const templateKey = event.target.value as LanguageKey;
     setPromptTemplate(room.settings.templates?.[templateKey] ?? '');
+  };
+
+  const handleAnonymizationTypeChange = (type: string) => {
+    // Toggle the active status of the anonymization type
+    setActiveAnonymizationTypes((prev) =>
+      prev.includes(type)
+        ? prev.filter((t) => t !== type)  // Remove type if already active
+        : [...prev, type]  // Add type if not active
+    );
   };
 
   const handleSaveClick = () => {
@@ -51,7 +67,8 @@ const SettingsDrawer = ({
       ...room.settings,
       prompt_template: promptTemplate,
       pre_phrase_count: phraseCount,
-      post_phrase_count: phraseCount
+      post_phrase_count: phraseCount,
+      active_anonymization_types: activeAnonymizationTypes // Include the new setting
     };
 
     onSave(updatedSettings);
@@ -61,6 +78,7 @@ const SettingsDrawer = ({
     if (!open) {
       setPromptTemplate(room.settings.prompt_template);
       setPhraseCount(room.settings.pre_phrase_count);
+      setActiveAnonymizationTypes(room.settings.active_anonymization_types || []);
     }
   }, [open, room.settings]);
 
@@ -116,6 +134,24 @@ const SettingsDrawer = ({
                 max={4}
               />
             </Field>
+
+            <Field label={t('activeAnonymizationTypesLabel')}>
+              <div className={styles.checkboxGroup}>
+                {allAnonymizationTypes.map((type, index) => {
+                  const checkboxId = `anonymization-type-${index}`; // Unique id for each checkbox
+                  return (
+                    <Checkbox
+                      key={type}
+                      id={checkboxId}  // Assign a unique id to each checkbox
+                      label={type}  // Use the label prop for displaying the text
+                      checked={activeAnonymizationTypes.includes(type)}
+                      onChange={() => handleAnonymizationTypeChange(type)}
+                    />
+                  );
+                })}
+              </div>
+            </Field>
+            
             <Button
               appearance="primary"
               className={styles.saveButton}

@@ -57,6 +57,7 @@
   "promptTemplateOptionDE": "Prompt Template Deutsch",
   "promptTemplateOptionEN": "Prompt Template Englisch",
   "resultSentenceCountLabel": "Anzahl der Sätze vor und nach einem Ergebnis",
+  "activeAnonymizationTypesLabel": "Anonymisierung aktiv für:",
   "actionSuccessful": "Aktion erfolgreich",
   "actionFailed": "Aktion fehlgeschlagen",
   "actionWarning": "Warnung",

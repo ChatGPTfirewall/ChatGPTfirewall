@@ -31,9 +31,20 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "chatgpt.enclaive.io", "backend", "185.112.181.192"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "garnet.enclaive.cloud",
+    "chatgpt.enclaive.io",
+    "backend",
+    "185.112.181.192",
+    "52.166.116.113"
+]
 
-CSRF_TRUSTED_ORIGINS = ["https://*.enclaive.io"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.enclaive.io",  # Original
+    "https://*.enclaive.cloud"  # Add new domain
+]
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
@@ -98,6 +109,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://chatgpt.enclaive.io",
     "https://nextcloud27.our-servers.de",
     "http://localhost:5173",
+    "http://garnet.enclaive.cloud",
+    "https://garnet.enclaive.cloud",
 ]
 
 ROOT_URLCONF = "chat_with_your_data.urls"

@@ -1,6 +1,7 @@
 import json
 import os
 import uuid
+import re
 
 from qdrant_client import QdrantClient, http
 from qdrant_client.http.models import Distance, VectorParams
@@ -78,7 +79,7 @@ def insert_text(collection_name, document, lang):
     tokens = prepare_text(embedded_text)
     points = []
     for i, token in enumerate(tokens):
-        content = " ".join(token)
+        content = clean_join(token)
         section = {"document": document.id, "content": content, "doc_index": i}
         serializer = SectionSerializer(data=section)
         if serializer.is_valid():
@@ -100,6 +101,13 @@ def insert_text(collection_name, document, lang):
 def __insert_points(collection_name, points):
     __client.upsert(collection_name=collection_name, points=points)
 
+
+def clean_join(tokens):
+    text = " ".join(tokens)
+    # Remove spaces before punctuation marks (commas, periods, etc.)
+    text = re.sub(r"\s([,.?!)])", r"\1", text)
+    text = re.sub(r"(\()\s", r"\1", text)
+    return text
 
 def delete_text(collection_name, document):
     filter = Filter(

@@ -1,3 +1,4 @@
+// ChatInput.tsx
 import React, { useState } from 'react';
 import { Button, Textarea } from '@fluentui/react-components';
 import ChatInputStyles from './ChatInputStyles';
@@ -34,7 +35,7 @@ const ChatInput = ({ onSendMessage, demo = false }: ChatInputProps) => {
           className={styles.textArea}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Schreibe eine Nachricht..."
+          placeholder="Write a Message..."
           onKeyDown={handleKeyPress}
         />
         <Button

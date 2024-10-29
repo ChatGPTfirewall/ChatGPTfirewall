@@ -22,6 +22,10 @@ const SettingsDrawerStyles = makeStyles({
   saveButton: {
     width: '160px',
     alignSelf: 'end'
+  },
+  checkboxGroup: {
+    Gap: '8px',
+    Padding: '8px',
   }
 });
 
