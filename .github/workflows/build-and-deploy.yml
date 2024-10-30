@@ -28,7 +28,7 @@ jobs:
           context: ./frontend 
           file: ./frontend/Dockerfile
           push: true  
-          tags: garnet/frontend:latest
+          tags: harbor.enclaive.cloud/garnet/frontend:latest
           no-cache: true
           build-args: |
             VITE_AUTH0_DOMAIN=${{ secrets.VITE_AUTH0_DOMAIN }}
@@ -73,7 +73,7 @@ jobs:
           context: ./backend 
           file: ./backend/Dockerfile
           push: true  
-          tags: garnet/backend:latest
+          tags: harbor.enclaive.cloud/garnet/backend:latest
           no-cache: true
   deploy:
     needs: build-and-push-backend
