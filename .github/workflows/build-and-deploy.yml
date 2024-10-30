@@ -103,5 +103,5 @@ jobs:
             docker compose pull
             docker compose up -d
 	    docker exec -it backend cd /chat_with_your_data && python manage.py makemigrations
-	    docker exec -it backend cd /chat_with_your_data && python manage.py migrate
-            docker exec -it backend cd /chat_with_your_data && python manage.py create_demo_users
+            docker exec -it backend cd /chat_with_your_data && python manage.py migrate
+	    docker exec -it backend cd /chat_with_your_data && python manage.py create_demo_users
