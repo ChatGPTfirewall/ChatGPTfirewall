@@ -13,7 +13,7 @@ services:
       --force-renewal
       -d chatgpt.enclaive.io
   frontend:
-    image: ${DOCKER_USERNAME}/frontend:latest
+    image: harbor.enclaive.cloud/frontend:latest
     container_name: frontend
     stdin_open: true
     tty: true
@@ -32,7 +32,7 @@ services:
       - ./cert/live/chatgpt.enclaive.io/fullchain.pem:/etc/nginx/ssl/fullchain.pem
       - ./cert/live/chatgpt.enclaive.io/privkey.pem:/etc/nginx/ssl/privkey.pem
   backend:
-    image: ${DOCKER_USERNAME}/backend:latest
+    image: harbor.enclaive.cloud/backend:latest
     container_name: backend
     stdin_open: true
     tty: true
