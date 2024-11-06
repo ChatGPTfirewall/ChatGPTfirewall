@@ -90,3 +90,76 @@ Here are some useful commands you can run:
   python manage.py create_demo_users
   python manage.py delete_demo_users
   ```
+
+### Deployment
+For this to work it's assumed you're connected to a ubuntu machine via ssh using root and you're in the root directory.
+
+#### 1.Check and Update
+##### 1.1 Confirm wether port 80 is open or not:
+```sh
+sudo python3 -m http.server 80
+```
+(then try to connect to it using a browser and http (not https))
+
+##### 1.2 Update system:
+```sh
+sudo apt update
+sudo apt upgrade
+```
+
+#### 2.Key Auth (optional)
+##### 2.1 Create key file:
+```sh
+mkdir -p ~/.ssh
+touch ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
+##### 2.2 Transfer key:
+```sh
+nano ~/.ssh/authorized_keys
+```
+(then use paste to transfer the key - it should be the .pub key)
+
+##### 2.3 Change config:
+```sh
+nano /etc/ssh/sshd_config
+```
+(change PubkeyAuthentication to yes)
+
+#### 3.Setup Docker
+##### 3.1 Install docker:
+Follow the [Official Instructions](https://docs.docker.com/engine/install/ubuntu/)
+
+##### 3.2 Create and transfer docker compose
+```sh
+nano docker-compose.yml
+```
+(then paste the contents of the docker-compose-prod.yml into it)
+
+#### 4.Setup Certbot
+##### 4.1 Install Certbot:
+```sh
+apt install certbot python3-certbot-nginx
+```
+##### 4.2 Run certbot:
+```sh
+certbot --nginx
+```
+for the nginx setup or
+```sh
+certbot certonly --standalone
+```
+if you want to run it without having the nginx service started
+(then follow the on screen instructions from certbot)
+if completed it should show something like:
+Certificate is saved at: /etc/letsencrypt/live/<yourdomain.com>/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/<yourdomain.com>/privkey.pem
+
+##### 4.3 Create dir and mount key:
+```sh
+mkdir -p /home/deploy/letsencrypt/ssl
+ln -s /etc/letsencrypt/live/<yourdomain.com>/fullchain.pem /home/deploy/letsencrypt/ssl/fullchain.pem
+ln -s /etc/letsencrypt/live/<yourdomain.com>/privkey.pem /home/deploy/letsencrypt/ssl/privkey.pem
+```
