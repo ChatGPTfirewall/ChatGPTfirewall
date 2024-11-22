@@ -51,7 +51,7 @@ nlp_de.add_pipe("custom_segmenter", before="parser")
 
 # Initialize the transformer model
 transformer = SentenceTransformer(
-    os.getenv("TRANSFORMER_MODEL", "distiluse-base-multilingual-cased-v1")
+    os.getenv("TRANSFORMER_MODEL", "paraphrase-multilingual-mpnet-base-v2")
 )
 
 def embed_text(text, lang):

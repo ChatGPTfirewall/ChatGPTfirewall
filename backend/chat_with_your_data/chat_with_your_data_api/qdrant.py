@@ -28,7 +28,7 @@ def __get_vec_distance():
             return Distance.EUCLIDEAN
 
 
-__collection_vec_size = os.getenv("VEC_SIZE", 512)
+__collection_vec_size = os.getenv("VEC_SIZE", 768)
 __collection_vec_distance = __get_vec_distance()
 
 
