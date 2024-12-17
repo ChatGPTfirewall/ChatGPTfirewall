@@ -83,5 +83,6 @@
   "errorSavingSettings": "Error while saving settings",
   "emptyStateBodyTextStrong": "No Files Selected",
   "emptyStateBodyText": "Please select the files you wish to use for chatting.",
-  "addFilesEmptyPage": "Select Files"
+  "addFilesEmptyPage": "Select Files",
+  "textDetailDrawerTitle": "Contents of the selected files:"
 }

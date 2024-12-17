@@ -5,8 +5,17 @@ import ChatInput from '../../components/common/Messages/ChatInput/ChatInput';
 import { Body1, Body1Strong, Button, Switch } from '@fluentui/react-components';
 import {
   AddRegular,
+  Document10016Regular,
+  Document10024Filled,
+  Document32Filled,
+  Document32Regular,
   DocumentAdd48Regular,
   DocumentBulletListMultiple24Regular,
+  DocumentContract16Regular,
+  DocumentMultiple24Regular,
+  DocumentPageBreak24Regular,
+  DocumentSearch24Regular,
+  DocumentSearch32Filled,
   Settings32Regular
 } from '@fluentui/react-icons';
 import { File } from '../../models/File';
@@ -16,6 +25,7 @@ import { Message, Result } from '../../models/Message';
 
 import { t } from 'i18next';
 import SettingsDrawer from '../../components/layout/SettingsDrawer/SettingsDrawer';
+import TextDetailDrawer from '../../components/layout/TextDetailDrawer/TextDetailDrawer';
 import { useToast } from '../../context/ToastProvider';
 import { getRoom, updateRoom, updateRoomFiles } from '../../api/roomsApi';
 import {
@@ -31,6 +41,7 @@ const Room = () => {
   const { showToast } = useToast();
   const navigate = useNavigate();
   const [room, setRoom] = useState<RoomType | null>(null);
+  const [fileDetailDrawerOpen, setFileDetailDrawerOpenState] = useState(false);
   const [settingsDrawerOpen, setSettingsDrawerOpenState] = useState(false);
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
@@ -344,6 +355,14 @@ const Room = () => {
     closeSettingsDrawer();
   };
 
+  const openFileDetailDrawer = () => {
+    setFileDetailDrawerOpenState(true);
+  };
+
+  const closeFileDetailDrawer = () => {
+    setFileDetailDrawerOpenState(false);
+  };
+
   const openSettingsDrawer = () => {
     setSettingsDrawerOpenState(true);
   };
@@ -390,6 +409,17 @@ const Room = () => {
           label={anonymized ? t('isAnonymizedText') : t('isNotAnonymizedText')}
         />
         <div className={styles.actions}>
+        <Button
+            size="large"
+            appearance="subtle"
+            icon={<DocumentSearch32Filled />}
+            onClick={openFileDetailDrawer}
+          />
+          <TextDetailDrawer
+            open={fileDetailDrawerOpen}
+            closeDrawer={closeFileDetailDrawer}
+            room={room}
+          />
           <Button
             size="large"
             appearance="subtle"

@@ -9,7 +9,7 @@ import {
   Select,
   SpinButton,
   Textarea,
-  Checkbox, // New import for the checkboxes
+  Checkbox,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';

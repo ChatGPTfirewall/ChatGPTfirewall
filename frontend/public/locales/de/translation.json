@@ -83,5 +83,6 @@
   "errorSavingSettings": "Fehler beim Speichern der Einstellungen",
   "emptyStateBodyTextStrong": "Keine Dateien ausgewählt",
   "emptyStateBodyText": "Bitte wählen Sie die Dateien aus, die Sie für den Chat verwenden möchten.",
-  "addFilesEmptyPage": "Dateien auswählen"
+  "addFilesEmptyPage": "Dateien auswählen",
+  "textDetailDrawerTitle": "Inhalt der ausgewählten Dateien:"
 }
