@@ -51,38 +51,43 @@ const Room = () => {
       content: string,
       anonymizationMappings: AnonymizationMapping[],
       anonymize: boolean,
-      room: RoomType | null,
+      room: RoomType | null
     ) => {
       const anonymizeString = (inputString: string) => {
+        const escapeRegex = (str: string) =>
+          str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escapes special regex characters
+  
         const sortedMappings = [...anonymizationMappings].sort(
           (a, b) => b.deanonymized.length - a.deanonymized.length
         );
+  
         return sortedMappings.reduce((acc, { anonymized, deanonymized, entityType }) => {
-        // Only process if entityType is in room.settings.active_anonymization_types
-        if (room?.settings.active_anonymization_types.includes(entityType)) {
-          const target = anonymize ? deanonymized : anonymized;
-          const replacement = anonymize ? anonymized : deanonymized;
-          
-          // Create a regex to match target with or without ending period (.)
-          let regex;
-          if (target.endsWith('.')) {
-            regex = new RegExp(`\\b${target}`, 'gmi');
-          } else {
-            regex = new RegExp(`\\b${target}\\b`, 'gmi');
+          // Only process if entityType is in room.settings.active_anonymization_types
+          if (room?.settings.active_anonymization_types.includes(entityType)) {
+            const target = anonymize ? deanonymized : anonymized;
+            const replacement = anonymize ? anonymized : deanonymized;
+  
+            // Create a regex to match target with or without ending period (.)
+            let regex;
+            if (target.endsWith('.')) {
+              regex = new RegExp(`\\b${escapeRegex(target)}`, 'gmi');
+            } else {
+              regex = new RegExp(`\\b${escapeRegex(target)}\\b`, 'gmi');
+            }
+  
+            return acc.replace(regex, ` ${replacement}`);
           }
-
-          return acc.replace(regex, ` ${replacement}`);
-        }
-        
-        // If entityType is not in the active_anonymization_types, skip this mapping
-        return acc;
+  
+          // If entityType is not in the active_anonymization_types, skip this mapping
+          return acc;
         }, inputString);
       };
-
+  
       return anonymizeString(content);
     },
     []
   );
+  
 
   useEffect(() => {
     if (id) {
