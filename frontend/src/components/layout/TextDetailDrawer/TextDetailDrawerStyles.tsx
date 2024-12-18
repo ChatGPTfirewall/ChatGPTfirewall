@@ -21,6 +21,28 @@ const TextDetailDrawerStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
   },
+  actionContainer: {
+    ...shorthands.margin(tokens.spacingVerticalM, 0, tokens.spacingVerticalM),
+    display: 'flex',
+    alignItems: 'center',
+  },
+  textBox: {
+    flexGrow: 1,
+    fontSize: tokens.fontSizeBase200,
+  },
+  chaptersContainer: {
+    ...shorthands.margin(tokens.spacingVerticalM, 0),
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  chapterList: {
+    ...shorthands.padding(0),
+  },
+  chapterItem: {
+    marginBottom: tokens.spacingVerticalXS,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightRegular,
+  },
 });
 
 export default TextDetailDrawerStyles;

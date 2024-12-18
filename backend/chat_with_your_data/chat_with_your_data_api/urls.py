@@ -4,7 +4,7 @@ from . import views
 from .views import (DocumentApiView, FilesApiView, LanguageAPI,
                     MessagesApiView, NextCloudApiView, NextCloudFilesApiView,
                     RoomApiView, RoomsApiView, UpdateRoomDocumentsView,
-                    UploadApiView, UserApiView)
+                    UploadApiView, UserApiView, CategorizeApiView)
 
 urlpatterns = [
     path("user/", UserApiView.as_view()),
@@ -17,6 +17,7 @@ urlpatterns = [
         UpdateRoomDocumentsView.as_view(),
         name="update_room_documents",
     ),
+    path("categorize", CategorizeApiView.as_view()),
     path("documents/upload", UploadApiView.as_view()),
     path(
         "documents/download/<str:filename>/", views.download_file, name="download_file"

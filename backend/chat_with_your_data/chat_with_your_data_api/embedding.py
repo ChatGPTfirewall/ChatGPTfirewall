@@ -88,6 +88,38 @@ def return_context(embedded_text_, fact_index, range_before_, range_after_):
 def vectorize(tokens):
     return transformer.encode(tokens)
 
+def categorize(text: str):
+    """
+    Categorize the input text into chapters/headings.
+
+    Args:
+        text (str): The input text to analyze.
+
+    Returns:
+        List[Tuple[str, int]]: A list of tuples where each tuple contains a heading (str) 
+                               and its line number (int) in the text.
+    """
+    headings = []
+    lines = text.splitlines()
+
+    for i, line in enumerate(lines):
+        line = line.strip()  # Remove leading/trailing whitespace
+        if len(line) == 0:  # Skip empty lines
+            continue
+        
+        # Check if the line meets the heading criteria
+        if (
+            len(line.split()) <= 5  # Line is under 5 words
+            and line[0].isupper()  # First letter of the first word is capitalized
+            and i + 1 < len(lines)  # There is a next line
+            and lines[i + 1].strip()  # Next line is not empty
+            and lines[i + 1].strip()[0].isupper()  # Next line starts with a capital letter
+            and not line.endswith((".", "!", "?"))  # Current line does not end with a sentence-ending char
+        ):
+            headings.append((line, i + 1))
+
+    return headings
+
 def detect_entities(text, lang):
     nlp = nlp_de if lang == "de" else nlp_en
     doc = nlp(text)

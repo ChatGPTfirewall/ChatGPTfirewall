@@ -19,7 +19,7 @@ from rest_framework.views import APIView
 
 from .apiRateLimit import check_api_ratelimit
 from .embedding import (anonymize_text, detect_entities, embed_text,
-                        map_entities, return_context, vectorize)
+                        map_entities, return_context, vectorize, categorize)
 from .file_importer import extract_text, save_file
 from .llm import count_tokens, run_llm
 from .llmManager import LLM, llmManager
@@ -152,6 +152,43 @@ class UserApiView(APIView):
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+class CategorizeApiView(APIView):
+    @permission_classes([AllowAny])
+    def post(self, request, *args, **kwargs):
+        """
+        POST method to process input text and return chapters/headings with their line numbers.
+        Input:
+            JSON with "text" field containing the input text.
+        Response:
+            JSON with a list of detected headings and their line numbers.
+        """
+        # Extract input text from the request
+        input_text = request.data.get("text")
+        
+        # Validate input
+        if not input_text:
+            return Response(
+                {"error": "No text provided. Please include a 'text' field in the request."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        
+        try:
+            # Call the categorize method to detect headings
+            headings = categorize(input_text)
+            
+            # Prepare the response data
+            response_data = {
+                "headings": [{"line": line, "heading": heading} for heading, line in headings]
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            # Handle any unexpected errors
+            return Response(
+                {"error": f"An error occurred: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
 
 class UploadApiView(APIView):
     @permission_classes([AllowAny])
