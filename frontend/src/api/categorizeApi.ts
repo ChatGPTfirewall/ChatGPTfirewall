@@ -1,19 +1,16 @@
 import Request from './Request';
 
-interface CategorizedHeading {
-  line: number;
-  heading: string;
+interface CategorizeTextResponse {
+  headings: { line: number; heading: string }[];
 }
 
-export async function categorizeText(text: string): Promise<CategorizedHeading[]> {
-  return Request<CategorizedHeading[]>({
+export async function categorizeText(text: string): Promise<CategorizeTextResponse> {
+  return Request<CategorizeTextResponse>({
     url: '/api/categorize',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    data: JSON.stringify({
-      text: text
-    })
+    data: JSON.stringify({ text }),
   });
 }

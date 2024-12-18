@@ -111,10 +111,10 @@ def categorize(text: str):
         if (
             len(line.split()) <= 5  # Line is under 5 words
             and line[0].isupper()  # First letter of the first word is capitalized
-            and i + 1 < len(lines)  # There is a next line
-            and lines[i + 1].strip()  # Next line is not empty
-            and lines[i + 1].strip()[0].isupper()  # Next line starts with a capital letter
             and not line.endswith((".", "!", "?"))  # Current line does not end with a sentence-ending char
+            #and i + 1 < len(lines)  # There is a next line
+            #and lines[i + 1].strip()  # Next line is not empty
+            #and lines[i + 1].strip()[0].isupper()  # Next line starts with a capital letter
         ):
             headings.append((line, i + 1))
 
