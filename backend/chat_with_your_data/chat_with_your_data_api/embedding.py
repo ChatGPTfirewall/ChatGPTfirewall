@@ -1,5 +1,6 @@
 import os
 import spacy
+import re
 from spacy.language import Language
 from spacy.tokens import Doc
 from sentence_transformers import SentenceTransformer
@@ -88,6 +89,14 @@ def return_context(embedded_text_, fact_index, range_before_, range_after_):
 def vectorize(tokens):
     return transformer.encode(tokens)
 
+def is_first_alpha_uppercase(line):
+    # This function will return True if the first alphabetic character is uppercase, ignoring numbers or symbols.
+    match = re.search(r'[a-zA-Z]', line)  # Find the first alphabetic character
+    if match:
+        first_alpha = match.group(0)
+        return first_alpha.isupper()  # Check if the first alphabetic character is uppercase
+    return False  # No alphabetic character found
+
 def categorize(text: str):
     """
     Categorize the input text into chapters/headings.
@@ -109,12 +118,16 @@ def categorize(text: str):
         
         # Check if the line meets the heading criteria
         if (
-            len(line.split()) <= 5  # Line is under 5 words
-            and line[0].isupper()  # First letter of the first word is capitalized
+            len(line.split()) <= 8  # Line is under 8 words
+            and is_first_alpha_uppercase(line)  # First letter of the first word is capitalized
             and not line.endswith((".", "!", "?"))  # Current line does not end with a sentence-ending char
-            #and i + 1 < len(lines)  # There is a next line
-            #and lines[i + 1].strip()  # Next line is not empty
-            #and lines[i + 1].strip()[0].isupper()  # Next line starts with a capital letter
+            and (
+                i + 1 == len(lines)  # There is no next line
+                or len(lines[i + 1].strip()) == 0  # Next line is empty
+                or i + 1 < len(lines)  # There is a next line
+                and lines[i + 1].strip()  # Next line is not empty
+                and is_first_alpha_uppercase(lines[i + 1])  # Next line starts with a capital letter
+            )
         ):
             headings.append((line, i + 1))
 
