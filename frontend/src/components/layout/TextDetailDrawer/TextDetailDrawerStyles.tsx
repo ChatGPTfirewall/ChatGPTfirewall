@@ -43,6 +43,32 @@ const TextDetailDrawerStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
   },
+  fileTextWithLineNumbers: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalM),
+    backgroundColor: tokens.colorNeutralBackground1,
+    overflowX: 'auto',
+    whiteSpace: 'pre-wrap',
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+  },
+  line: {
+    display: 'grid',
+    gridTemplateColumns: '50px 1fr', // Fixed-width column for line numbers and remaining space for text
+    alignItems: 'start',
+  },
+  lineNumber: {
+    textAlign: 'right',
+    paddingRight: tokens.spacingHorizontalXS,
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground3,
+    userSelect: 'none', // Prevent highlighting line numbers
+  },
+  lineText: {
+    whiteSpace: 'pre-wrap', // Allow text to wrap without breaking lines
+    wordBreak: 'break-word', // Prevent long words from overflowing
+  },  
 });
 
 export default TextDetailDrawerStyles;

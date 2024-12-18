@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TextDetailDrawerStyles from './TextDetailDrawerStyles';
 import {
   Button,
@@ -17,15 +17,6 @@ interface TextDetailDrawerProps {
   open: boolean;
   closeDrawer: () => void;
   room: Room;
-}
-
-interface CategorizedHeading {
-  line: number;
-  heading: string;
-}
-
-interface CategorizeTextResponse {
-  headings: { line: number; heading: string }[];
 }
 
 const TextDetailDrawer = ({ open, closeDrawer, room }: TextDetailDrawerProps) => {
@@ -96,9 +87,18 @@ const TextDetailDrawer = ({ open, closeDrawer, room }: TextDetailDrawerProps) =>
               validFiles.map((file, index) => (
                 <div key={index} className={styles.fileContainer}>
                   <h3 className={styles.fileTitle}>{file.filename}</h3>
-                  <p className={styles.fileText}>{file.text}</p>
+                  <div className={styles.fileTextWithLineNumbers}>
+                    {file.text?.split('\n').map((line, lineIndex) => (
+                      <div key={lineIndex} className={styles.line}>
+                        <span className={styles.lineNumber}>{lineIndex + 1}</span>
+                        <span className={styles.lineText}>
+                          {line.trim() === '' ? '\u00A0' : line} {/* Non-breaking space for empty lines */}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))
+              ))         
             )}
           </div>
 
