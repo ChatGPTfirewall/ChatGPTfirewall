@@ -26,6 +26,7 @@ COPY chat_with_your_data/ ./chat_with_your_data
 COPY entrypoint.dev.sh ./entrypoint.dev.sh
 
 RUN pip install --extra-index-url https://download.pytorch.org/whl/cpu torch && \
+    pip install transformers && \
     python -m spacy download de_core_news_lg && \
     python -m spacy download en_core_web_lg
 
@@ -42,6 +43,7 @@ COPY chat_with_your_data/ ./chat_with_your_data
 COPY entrypoint.sh ./entrypoint.sh
 
 RUN pip install --extra-index-url https://download.pytorch.org/whl/cpu torch && \
+    pip install transformers && \
     python -m spacy download de_core_news_lg && \
     python -m spacy download en_core_web_lg
 
