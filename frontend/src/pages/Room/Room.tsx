@@ -5,16 +5,8 @@ import ChatInput from '../../components/common/Messages/ChatInput/ChatInput';
 import { Body1, Body1Strong, Button, Switch } from '@fluentui/react-components';
 import {
   AddRegular,
-  Document10016Regular,
-  Document10024Filled,
-  Document32Filled,
-  Document32Regular,
   DocumentAdd48Regular,
   DocumentBulletListMultiple24Regular,
-  DocumentContract16Regular,
-  DocumentMultiple24Regular,
-  DocumentPageBreak24Regular,
-  DocumentSearch24Regular,
   DocumentSearch32Filled,
   Settings32Regular
 } from '@fluentui/react-icons';
