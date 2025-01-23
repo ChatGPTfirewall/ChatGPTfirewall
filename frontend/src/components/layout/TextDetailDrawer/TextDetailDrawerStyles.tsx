@@ -68,6 +68,18 @@ const TextDetailDrawerStyles = makeStyles({
   lineText: {
     whiteSpace: 'pre-wrap', // Allow text to wrap without breaking lines
     wordBreak: 'break-word', // Prevent long words from overflowing
+  },
+  summarizeButton: {
+    marginLeft: tokens.spacingHorizontalS,
+    fontSize: tokens.fontSizeBase200,
+    backgroundColor: tokens.colorBrandForeground1,
+    color: "white",
+    fontWeight: "bold",
+  },
+  summaryText: {
+    marginTop: tokens.spacingVerticalS,
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground2,
   },  
 });
 
