@@ -1,4 +1,4 @@
-FROM node:current-bullseye-slim as dev
+FROM node:current-bullseye-slim AS dev
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-FROM node:current-bullseye-slim as prod
+FROM node:current-bullseye-slim AS prod
 
 ARG VITE_AUTH0_DOMAIN
 ARG VITE_AUTH0_CLIENT_ID
