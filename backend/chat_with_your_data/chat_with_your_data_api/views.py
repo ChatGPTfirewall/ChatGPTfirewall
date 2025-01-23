@@ -19,7 +19,7 @@ from rest_framework.views import APIView
 
 from .apiRateLimit import check_api_ratelimit
 from .embedding import (anonymize_text, detect_entities, embed_text,
-                        map_entities, return_context, vectorize, categorize)
+                        map_entities, return_context, vectorize, categorize, summarize_text)
 from .file_importer import extract_text, save_file
 from .llm import count_tokens, run_llm
 from .llmManager import LLM, llmManager
@@ -180,6 +180,42 @@ class CategorizeApiView(APIView):
             response_data = {
                 "headings": [{"line": line, "heading": heading} for heading, line in headings]
             }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            # Handle any unexpected errors
+            return Response(
+                {"error": f"An error occurred: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+        
+class SummarizeApiView(APIView):
+    @permission_classes([AllowAny])
+    def post(self, request, *args, **kwargs):
+        """
+        POST method to summarize the input text.
+        Input:
+            JSON with "text" field containing the input text.
+        Response:
+            JSON with the summarized text.
+        """
+        # Extract input text from the request
+        input_text = request.data.get("text")
+
+        # Validate input
+        if not input_text:
+            return Response(
+                {"error": "No text provided. Please include a 'text' field in the request."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        
+        try:
+            # Call the summarize_text function to generate the summary
+            summary = summarize_text(input_text)
+            
+            # Prepare the response data
+            response_data = {"summary": summary}
 
             return Response(response_data, status=status.HTTP_200_OK)
         

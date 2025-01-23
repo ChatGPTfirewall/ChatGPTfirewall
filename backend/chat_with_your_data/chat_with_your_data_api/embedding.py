@@ -4,6 +4,12 @@ import re
 from spacy.language import Language
 from spacy.tokens import Doc
 from sentence_transformers import SentenceTransformer
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+
+# Check if GPU is available
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Load spaCy models
 nlp_de = spacy.load("de_core_news_lg")
@@ -54,6 +60,10 @@ nlp_de.add_pipe("custom_segmenter", before="parser")
 transformer = SentenceTransformer(
     os.getenv("TRANSFORMER_MODEL", "paraphrase-multilingual-mpnet-base-v2")
 )
+
+# Load the summarization model and tokenizer
+bart_tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
+bart_model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn").to(device)
 
 def embed_text(text, lang):
     if lang == "de":
@@ -132,6 +142,28 @@ def categorize(text: str):
             headings.append((line, i + 1))
 
     return headings
+
+def summarize_text(text: str) -> str:
+    """
+    Summarizes the input text using the facebook/bart-large-cnn model.
+
+    Args:
+        text (str): The input text to summarize.
+
+    Returns:
+        str: The summarized text.
+    """
+    # Ensure the input does not exceed the maximum length allowed by the model
+    max_input_length = bart_tokenizer.model_max_length
+    inputs = bart_tokenizer([text], max_length=min(1024, max_input_length), truncation=True, return_tensors="pt").to(device)
+
+    # Generate summary
+    try:
+        summary_ids = bart_model.generate(inputs["input_ids"], num_beams=4, max_length=150, early_stopping=True)
+        return bart_tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    except IndexError as e:
+        print(f"Error generating summary: {e}")
+        return "An error occurred during summarization. Please check input length and formatting."
 
 def detect_entities(text, lang):
     nlp = nlp_de if lang == "de" else nlp_en
