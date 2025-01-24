@@ -83,5 +83,11 @@
   "errorSavingSettings": "Fehler beim Speichern der Einstellungen",
   "emptyStateBodyTextStrong": "Keine Dateien ausgewählt",
   "emptyStateBodyText": "Bitte wählen Sie die Dateien aus, die Sie für den Chat verwenden möchten.",
-  "addFilesEmptyPage": "Dateien auswählen"
+  "addFilesEmptyPage": "Dateien auswählen",
+  "textDetailDrawerTitle": "Inhalt der ausgewählten Dateien:",
+  "noFilesToDisplay": "Keine Dateien zum anzeigen.",
+  "enterTextToCategorize": "Vorschau Text zu kategorisieren",
+  "categorize": "Kategorisiere",
+  "line": "Zeile",
+  "noChaptersFound": "Keine Kapitel gefunden."
 }

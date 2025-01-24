@@ -7,6 +7,7 @@ import {
   AddRegular,
   DocumentAdd48Regular,
   DocumentBulletListMultiple24Regular,
+  DocumentSearch32Filled,
   Settings32Regular
 } from '@fluentui/react-icons';
 import { File } from '../../models/File';
@@ -16,6 +17,7 @@ import { Message, Result } from '../../models/Message';
 
 import { t } from 'i18next';
 import SettingsDrawer from '../../components/layout/SettingsDrawer/SettingsDrawer';
+import TextDetailDrawer from '../../components/layout/TextDetailDrawer/TextDetailDrawer';
 import { useToast } from '../../context/ToastProvider';
 import { getRoom, updateRoom, updateRoomFiles } from '../../api/roomsApi';
 import {
@@ -31,6 +33,7 @@ const Room = () => {
   const { showToast } = useToast();
   const navigate = useNavigate();
   const [room, setRoom] = useState<RoomType | null>(null);
+  const [fileDetailDrawerOpen, setFileDetailDrawerOpenState] = useState(false);
   const [settingsDrawerOpen, setSettingsDrawerOpenState] = useState(false);
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
@@ -40,38 +43,43 @@ const Room = () => {
       content: string,
       anonymizationMappings: AnonymizationMapping[],
       anonymize: boolean,
-      room: RoomType | null,
+      room: RoomType | null
     ) => {
       const anonymizeString = (inputString: string) => {
+        const escapeRegex = (str: string) =>
+          str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escapes special regex characters
+  
         const sortedMappings = [...anonymizationMappings].sort(
           (a, b) => b.deanonymized.length - a.deanonymized.length
         );
+  
         return sortedMappings.reduce((acc, { anonymized, deanonymized, entityType }) => {
-        // Only process if entityType is in room.settings.active_anonymization_types
-        if (room?.settings.active_anonymization_types.includes(entityType)) {
-          const target = anonymize ? deanonymized : anonymized;
-          const replacement = anonymize ? anonymized : deanonymized;
-          
-          // Create a regex to match target with or without ending period (.)
-          let regex;
-          if (target.endsWith('.')) {
-            regex = new RegExp(`\\b${target}`, 'gmi');
-          } else {
-            regex = new RegExp(`\\b${target}\\b`, 'gmi');
+          // Only process if entityType is in room.settings.active_anonymization_types
+          if (room?.settings.active_anonymization_types.includes(entityType)) {
+            const target = anonymize ? deanonymized : anonymized;
+            const replacement = anonymize ? anonymized : deanonymized;
+  
+            // Create a regex to match target with or without ending period (.)
+            let regex;
+            if (target.endsWith('.')) {
+              regex = new RegExp(`\\b${escapeRegex(target)}`, 'gmi');
+            } else {
+              regex = new RegExp(`\\b${escapeRegex(target)}\\b`, 'gmi');
+            }
+  
+            return acc.replace(regex, ` ${replacement}`);
           }
-
-          return acc.replace(regex, ` ${replacement}`);
-        }
-        
-        // If entityType is not in the active_anonymization_types, skip this mapping
-        return acc;
+  
+          // If entityType is not in the active_anonymization_types, skip this mapping
+          return acc;
         }, inputString);
       };
-
+  
       return anonymizeString(content);
     },
     []
   );
+  
 
   useEffect(() => {
     if (id) {
@@ -344,6 +352,14 @@ const Room = () => {
     closeSettingsDrawer();
   };
 
+  const openFileDetailDrawer = () => {
+    setFileDetailDrawerOpenState(true);
+  };
+
+  const closeFileDetailDrawer = () => {
+    setFileDetailDrawerOpenState(false);
+  };
+
   const openSettingsDrawer = () => {
     setSettingsDrawerOpenState(true);
   };
@@ -390,6 +406,17 @@ const Room = () => {
           label={anonymized ? t('isAnonymizedText') : t('isNotAnonymizedText')}
         />
         <div className={styles.actions}>
+        <Button
+            size="large"
+            appearance="subtle"
+            icon={<DocumentSearch32Filled />}
+            onClick={openFileDetailDrawer}
+          />
+          <TextDetailDrawer
+            open={fileDetailDrawerOpen}
+            closeDrawer={closeFileDetailDrawer}
+            room={room}
+          />
           <Button
             size="large"
             appearance="subtle"

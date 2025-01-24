@@ -1,8 +1,15 @@
 import os
 import spacy
+import re
 from spacy.language import Language
 from spacy.tokens import Doc
 from sentence_transformers import SentenceTransformer
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+
+# Check if GPU is available
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Load spaCy models
 nlp_de = spacy.load("de_core_news_lg")
@@ -54,6 +61,10 @@ transformer = SentenceTransformer(
     os.getenv("TRANSFORMER_MODEL", "paraphrase-multilingual-mpnet-base-v2")
 )
 
+# Load the summarization model and tokenizer
+bart_tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
+bart_model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn").to(device)
+
 def embed_text(text, lang):
     if lang == "de":
         return nlp_de(text)
@@ -87,6 +98,72 @@ def return_context(embedded_text_, fact_index, range_before_, range_after_):
 
 def vectorize(tokens):
     return transformer.encode(tokens)
+
+def is_first_alpha_uppercase(line):
+    # This function will return True if the first alphabetic character is uppercase, ignoring numbers or symbols.
+    match = re.search(r'[a-zA-Z]', line)  # Find the first alphabetic character
+    if match:
+        first_alpha = match.group(0)
+        return first_alpha.isupper()  # Check if the first alphabetic character is uppercase
+    return False  # No alphabetic character found
+
+def categorize(text: str):
+    """
+    Categorize the input text into chapters/headings.
+
+    Args:
+        text (str): The input text to analyze.
+
+    Returns:
+        List[Tuple[str, int]]: A list of tuples where each tuple contains a heading (str) 
+                               and its line number (int) in the text.
+    """
+    headings = []
+    lines = text.splitlines()
+
+    for i, line in enumerate(lines):
+        line = line.strip()  # Remove leading/trailing whitespace
+        if len(line) == 0:  # Skip empty lines
+            continue
+        
+        # Check if the line meets the heading criteria
+        if (
+            len(line.split()) <= 8  # Line is under 8 words
+            and is_first_alpha_uppercase(line)  # First letter of the first word is capitalized
+            and not line.endswith((".", "!", "?"))  # Current line does not end with a sentence-ending char
+            and (
+                i + 1 == len(lines)  # There is no next line
+                or len(lines[i + 1].strip()) == 0  # Next line is empty
+                or i + 1 < len(lines)  # There is a next line
+                and lines[i + 1].strip()  # Next line is not empty
+                and is_first_alpha_uppercase(lines[i + 1])  # Next line starts with a capital letter
+            )
+        ):
+            headings.append((line, i + 1))
+
+    return headings
+
+def summarize_text(text: str) -> str:
+    """
+    Summarizes the input text using the facebook/bart-large-cnn model.
+
+    Args:
+        text (str): The input text to summarize.
+
+    Returns:
+        str: The summarized text.
+    """
+    # Ensure the input does not exceed the maximum length allowed by the model
+    max_input_length = bart_tokenizer.model_max_length
+    inputs = bart_tokenizer([text], max_length=min(1024, max_input_length), truncation=True, return_tensors="pt").to(device)
+
+    # Generate summary
+    try:
+        summary_ids = bart_model.generate(inputs["input_ids"], num_beams=4, max_length=150, early_stopping=True)
+        return bart_tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    except IndexError as e:
+        print(f"Error generating summary: {e}")
+        return "An error occurred during summarization. Please check input length and formatting."
 
 def detect_entities(text, lang):
     nlp = nlp_de if lang == "de" else nlp_en
