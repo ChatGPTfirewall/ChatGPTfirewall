@@ -72,11 +72,14 @@ export const FileList = ({
         return t('file');
       },
       renderCell: (file) => {
-        const [fileName, fileExtension] = file.filename.split('.');
+        const dotIndex = file.filename.lastIndexOf('.');
+        const fileName = file.filename.substring(0, dotIndex);
+        const fileExtension = file.filename.substring(dotIndex + 1);
+
         const file_icon = `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/16/${fileExtension}.svg`;
 
         return (
-          <TableCellLayout truncate className={styles.fileCell}>
+          <TableCellLayout className={styles.fileCell}>
             <img
               src={file_icon}
               className={styles.fileIcon}
