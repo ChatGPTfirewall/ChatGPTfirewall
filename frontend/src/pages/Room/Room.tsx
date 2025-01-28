@@ -25,6 +25,7 @@ import {
   createSearchMessage
 } from '../../api/messageApi';
 import FileSelector from '../../components/common/FileSelector/FileSelector';
+import InfoHover from '../../components/common/Dialogs/InfoHover';
 import { AnonymizationMapping } from '../../models/AnonymizationMapping';
 
 const Room = () => {
@@ -399,12 +400,60 @@ const Room = () => {
     <div className={styles.roomContainer}>
       <div className={styles.header}>
         <span className={styles.headerTitle}>{room.name}</span>
-        <Switch
-          className={styles.anonSwitch}
-          checked={anonymized}
-          onChange={toggleAnonymization}
-          label={anonymized ? t('isAnonymizedText') : t('isNotAnonymizedText')}
-        />
+        <div>
+        <InfoHover>
+          <div style={{ padding: '8px', width: "35rem" }}>
+            <strong>{t('entityTokensHeading')}</strong>
+            <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: '8px' }}>
+              <thead>
+                <tr>
+                  <th style={{ textAlign: 'left', paddingLeft: "3rem", borderBottom: '1px solid #ddd', paddingBottom: '2px' }}>
+                    {t('tokenColumn')}
+                  </th>
+                  <th style={{ textAlign: 'right', paddingRight: "11rem", borderBottom: '1px solid #ddd', paddingBottom: '2px' }}>
+                    {t('explanationColumn')}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { token: 'CARDINAL', explanation: t('cardinalExplanation') },
+                  { token: 'DATE', explanation: t('dateExplanation') },
+                  { token: 'EVENT', explanation: t('eventExplanation') },
+                  { token: 'FAC', explanation: t('facExplanation') },
+                  { token: 'GPE', explanation: t('gpeExplanation') },
+                  { token: 'LANGUAGE', explanation: t('languageExplanation') },
+                  { token: 'LAW', explanation: t('lawExplanation') },
+                  { token: 'LOC', explanation: t('locExplanation') },
+                  { token: 'MONEY', explanation: t('moneyExplanation') },
+                  { token: 'MISC', explanation: t('miscExplanation') },
+                  { token: 'NORP', explanation: t('norpExplanation') },
+                  { token: 'ORDINAL', explanation: t('ordinalExplanation') },
+                  { token: 'ORG', explanation: t('orgExplanation') },
+                  { token: 'PERCENT', explanation: t('percentExplanation') },
+                  { token: 'PERSON, PER', explanation: t('personExplanation') },
+                  { token: 'PRODUCT', explanation: t('productExplanation') },
+                  { token: 'QUANTITY', explanation: t('quantityExplanation') },
+                  { token: 'TIME', explanation: t('timeExplanation') },
+                  { token: 'WORK_OF_ART', explanation: t('workOfArtExplanation') },
+                ].map((item, index) => (
+                  <tr key={index}>
+                    <td style={{ padding: '4px', borderBottom: '1px solid #ddd' }}>{item.token}</td>
+                    <td style={{ padding: '4px', borderBottom: '1px solid #ddd' }}>{item.explanation}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </InfoHover>
+
+          <Switch
+            className={styles.anonSwitch}
+            checked={anonymized}
+            onChange={toggleAnonymization}
+            label={anonymized ? t('isAnonymizedText') : t('isNotAnonymizedText')}
+          />
+        </div>
         <div className={styles.actions}>
         <Button
             size="large"
