@@ -552,6 +552,7 @@ class MessagesApiView(APIView):
 
             room_id = room_data.get("id")
             is_demo = request.query_params.get("demo", "false").lower() == "true"
+            selected_model = request.data.get("model", "gpt-3.5-turbo")
 
             try:
                 myRoom = Room.objects.get(id=room_id)
@@ -569,7 +570,10 @@ class MessagesApiView(APIView):
                     {"error": "User not found"}, status=status.HTTP_404_NOT_FOUND
                 )
 
-            answer = myllmManager.llm.run(myRoom, question, is_demo)
+            try:
+                answer = myllmManager.llm.run(myRoom, question, model=selected_model, is_demo=is_demo)
+            except ValueError as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
             user_serialized = UserSerializer(user).data
             room_serialized = RoomSerializer(myRoom).data
@@ -580,6 +584,7 @@ class MessagesApiView(APIView):
                 "role": "assistant",
                 "content": answer,
                 "created_at": current_time,
+                "model": selected_model,  # Include model in response for transparency
             }
             return Response(response, status.HTTP_200_OK)
 

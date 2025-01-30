@@ -1,11 +1,10 @@
 # Import the openai package
 import os
-import uuid
 from pprint import pprint
 
 import openai
 
-from .models import AnonymizeEntitie, ContextEntry, Room, RoomSettings, User
+from .models import ContextEntry, Room, RoomSettings, User
 
 # Set openai.api_key to the OPENAI environment variable
 openai.api_key = os.getenv("OPEN_AI_KEY")
@@ -54,19 +53,33 @@ class LLM:
         self.apiKey = apiKey
         openai.api_key = self.apiKey
 
-    def run(self, room: Room, question: str, is_demo: bool = False):
+    def run(self, room: Room, question: str, model: str, is_demo: bool = False):
+        """
+        Run a chat request to the selected OpenAI model.
+
+        :param room: Room object containing chat context.
+        :param question: The user's question.
+        :param model: The OpenAI model to use ("gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini").
+        :param is_demo: Flag to indicate if it's a demo mode.
+        :return: The assistant's response.
+        """
+        # Ensure the selected model is valid and not injected by malicious users
+        valid_models = ["gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini"]
+        if model not in valid_models:
+            raise ValueError(f"Invalid model '{model}'. Choose from {valid_models}")
 
         room.appendContext(room, "user", question, is_demo)
 
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model=model,
             messages=room.createFullMessage(room, False, is_demo, question),
         )
+        print(room.createFullMessage(room, False, is_demo, question))
 
-        response = response["choices"][0]["message"]["content"]
+        response_content = response["choices"][0]["message"]["content"]
+        room.appendContext(room, "assistant", response_content, is_demo)
 
-        room.appendContext(room, "assistant", response, is_demo)
-        return response
+        return response_content
 
 
 class llmManager:
