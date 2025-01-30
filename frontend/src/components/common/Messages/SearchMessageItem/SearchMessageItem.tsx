@@ -24,6 +24,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import { HighlightWithinTextarea } from 'react-highlight-within-textarea';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Dropdown, Option, OptionOnSelectData } from '@fluentui/react-components';
+import { OpenAIModel } from '../../../../models/Message';
 
 interface SearchMessageItemProps {
   message: Message;
@@ -48,6 +50,30 @@ const SearchMessageItem = ({
   const { user: auth0User } = useAuth0();
 
   const [, setMaxApiCalls] = useState<number | null>(null);
+
+  const availableModels = [
+    { key: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: t('gpt35turbo_description') },
+    { key: 'gpt-4o', label: 'GPT-4o', description: t('gpt4o_description') },
+    { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') }
+  ];
+  
+  
+  const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
+  
+  // Handle model selection change
+  const handleModelChange = (_event: React.SyntheticEvent, data: OptionOnSelectData) => {
+    if (data.optionValue) {
+      setSelectedModel(data.optionValue);
+      message.model = data.optionValue as OpenAIModel;
+
+    }
+  };
+
+  useEffect(() => {
+    if (!message.model) {
+      message.model = selectedModel as OpenAIModel;
+    }
+  }, [message, selectedModel]);
 
   useEffect(() => {
     const fetchUserFromBackend = async () => {
@@ -194,6 +220,25 @@ const SearchMessageItem = ({
               >
                 {t('editResultsButton')}
               </Button>
+              <div style={{ display: 'flex', fontWeight: 'bold', gap: '12px' }}>
+                <label style={{ display: 'block', fontWeight: 'bold', alignContent: 'center' }}>
+                  {t('aiModelLabel')}:
+                </label>
+                <Dropdown
+                  value={selectedModel}
+                  onOptionSelect={handleModelChange}
+                  aria-label="Select AI Model"
+                >
+                  {availableModels.map((model) => (
+                    <Option key={model.key} value={model.key} text={model.label}>
+                      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                        <strong>{model.label}</strong>
+                        <span style={{ opacity: 0.7 }}>{model.description}</span>
+                      </div>
+                    </Option>
+                  ))}
+                </Dropdown>
+              </div>
               <div>
                 <Button
                   iconPosition="after"
