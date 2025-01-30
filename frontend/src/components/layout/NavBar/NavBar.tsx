@@ -3,6 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../../common/LoginButton/LoginButton';
 import LanguageSelector from '../../common/LanguageSelector/LanguageSelector';
 import NavBarStyles from './NavBarStyles';
+import InfoHover from '../../common/Dialogs/InfoHover';
+import { useTranslation } from 'react-i18next';
 import { Divider } from '@fluentui/react-components';
 
 const NavBar = () => {
@@ -13,6 +15,7 @@ const NavBar = () => {
 
   const isChatActive = location.pathname.startsWith('/chat');
   const isDemoActive = location.pathname.startsWith('/demo');
+  const { t } = useTranslation();
 
   return (
     <header className={styles.header} role={'banner'}>
@@ -20,6 +23,15 @@ const NavBar = () => {
         <Link to="/" className={styles.headerTitleContainer}>
           <img src={logoPath} alt="Logo" className={styles.appLogo} />
           <h3 className={styles.headerTitle}>ChatGPTfirewall</h3>
+          {isAuthenticated && (<div className={styles.headerTitle}>{t('DemoHeading')}</div>)}
+          {isAuthenticated && (
+            <InfoHover>
+              <div style={{ width: '15rem' }}>
+                <strong>{t('DemoHeading')}:</strong>
+                <p>{t('DemoExplanation')}</p>
+              </div>
+            </InfoHover>
+          )}
         </Link>
         <nav>
           <div className={styles.headerNavList}>

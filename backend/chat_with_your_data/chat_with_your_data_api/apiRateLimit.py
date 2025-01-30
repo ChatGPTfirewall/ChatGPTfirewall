@@ -3,7 +3,7 @@ from django.db import transaction
 from django.db.models import F
 
 
-def check_api_ratelimit(user):
+def check_and_decrement_api_ratelimit(user):
     with transaction.atomic():
         user_api_calls = User.objects.select_for_update().get(auth0_id=user)
         if user_api_calls.max_api_calls == 0:

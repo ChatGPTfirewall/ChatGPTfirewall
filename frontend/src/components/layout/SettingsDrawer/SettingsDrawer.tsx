@@ -44,8 +44,8 @@ const SettingsDrawer = ({
   // List of all possible anonymization types (unchanged)
   const allAnonymizationTypes = [
     'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC',
-    'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON', 'PRODUCT',
-    'QUANTITY', 'TIME', 'WORK_OF_ART', 'PER', 'MISC'
+    'MONEY', 'MISC', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON','PER', 
+    'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'
   ];
 
   const handleTemplateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -107,7 +107,7 @@ const SettingsDrawer = ({
           <div className={styles.settingsBody}>
             <Field label={t('promptTemplateLabel')}>
               <Textarea
-                textarea={{ className: styles.textArea }}
+                textarea={{ className: styles.textArea, style: { height: '10rem' } }}
                 appearance="outline"
                 resize="vertical"
                 value={promptTemplate}

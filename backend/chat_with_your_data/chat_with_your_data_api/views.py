@@ -17,7 +17,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .apiRateLimit import check_api_ratelimit
+from .apiRateLimit import check_and_decrement_api_ratelimit
 from .embedding import (anonymize_text, detect_entities, embed_text,
                         map_entities, return_context, vectorize, categorize, summarize_text)
 from .file_importer import extract_text, save_file
@@ -428,7 +428,7 @@ class MessagesApiView(APIView):
     def post(self, request, recipient, *args, **kwargs):
         current_time = timezone.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         auth0_id = request.data.get("user", {}).get("auth0_id")
-        if check_api_ratelimit(auth0_id) == 0:
+        if check_and_decrement_api_ratelimit(auth0_id) == 0:
             return Response("Trial is over.", status.HTTP_429_TOO_MANY_REQUESTS)
 
         # message for vDB (get facts from data)

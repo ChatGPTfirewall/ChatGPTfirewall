@@ -13,7 +13,11 @@ const FileListStyles = makeStyles({
     maxWidth: '16px'
   },
   fileCell: {
-    display: 'flex'
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    whiteSpace: 'nowrap',
+    overflowX: 'hidden'
   },
   fileCellText: {
     width: '100%'
