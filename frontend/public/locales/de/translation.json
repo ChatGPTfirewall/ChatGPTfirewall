@@ -123,5 +123,14 @@
   "gpt35turbo_description": "Älter, schnell, günstig und weit verbreitet",
   "gpt4o_description": "Neu, langsamer, teuer, aber am genauesten",
   "gpt4o_mini_description": "Neu, schnell, günstig und genau",
-  "aiModelLabel": "KI-Modell"
+  "aiModelLabel": "KI-Modell",
+  "loadingChapters": "Lade Kapitel...",
+  "summary": "Zusammenfassung",
+  "summarize": "Zusammenfassen",
+  "summarizing": "Erstelle Zusammenfassung...",
+  "reCategorizationWarning" : "Warnung: Die Re-Kategorisierung wird alle bisherigen Kategorisierungen und die erstellten Zusammenfassungen löschen. Möchten Sie fortfahren?",
+  "reCategorize" : "Re-Kategorisieren",
+  "confirmReCategorization": "Re-Kategorisierung bestätigen",
+  "confirm" : "Bestätigen",
+  "cancel" : "Abbrechen"
 }

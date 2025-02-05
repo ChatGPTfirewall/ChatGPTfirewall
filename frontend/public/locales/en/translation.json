@@ -123,5 +123,14 @@
   "gpt35turbo_description": "Older, fast, cheap, and widely used",
   "gpt4o_description": "New, slower, expensive, but most accurate",
   "gpt4o_mini_description": "New, fast, cheap, and accurate",
-  "aiModelLabel": "AI Model"
+  "aiModelLabel": "AI Model",
+  "loadingChapters": "Loading chapters...",
+  "summary": "Summary",
+  "summarize": "Summarize",
+  "summarizing": "Creating summary...",
+  "reCategorizationWarning" : "Warning: This will re-categorize the text and delete all the created summaries. Are you sure you want to proceed?",
+  "reCategorize" : "Re-categorize",
+  "confirmReCategorization": "Confirm Re-categorization",
+  "confirm" : "Confirm",
+  "cancel" : "Cancel"
 }
