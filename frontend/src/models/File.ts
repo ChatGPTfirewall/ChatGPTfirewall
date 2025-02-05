@@ -9,6 +9,7 @@ export type File = {
   fileSize: number;
   uploadedAt?: Date;
   isUploading?: boolean;
+  headings?: { line: number; heading: string; summary?: string }[];
 };
 
 export type FileResponse = {
