@@ -13,7 +13,7 @@ import {
 import { File } from '../../models/File';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
-import { Message, Result } from '../../models/Message';
+import { Message, Result, OpenAIModel } from '../../models/Message';
 
 import { t } from 'i18next';
 import SettingsDrawer from '../../components/layout/SettingsDrawer/SettingsDrawer';
@@ -255,6 +255,14 @@ const Room = () => {
     return `${promptTemplate}\n\n${t('question')}:\n${question}\n\n${t('context')}:\n${context}`;
   };
 
+  const getModelFromRoom = (room: RoomType) => {
+    if (room.messages && room.messages.length >= 2) {
+      const lastIndex = room.messages.length - 1;
+      let model = room.messages[lastIndex].model as OpenAIModel;
+      return model;
+    }
+  };
+
   const onSendToChatGPT = () => {
     if (!room) {
       showToast(t('errorNoRoom'), 'error');
@@ -266,7 +274,8 @@ const Room = () => {
       room: room,
       role: 'user',
       content: messageToChatGPT(room),
-      created_at: new Date().toISOString()
+      created_at: new Date().toISOString(),
+      model: getModelFromRoom(room),
     };
 
     const tempMessage: Message = {

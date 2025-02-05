@@ -119,5 +119,9 @@
   "username": "Username",
   "email": "Email",
   "remainingMessages": "Available Messages remaining",
-  "UserInfoButtonLabel": "User Info"
+  "UserInfoButtonLabel": "User Info",
+  "gpt35turbo_description": "Older, fast, cheap, and widely used",
+  "gpt4o_description": "New, slower, expensive, but most accurate",
+  "gpt4o_mini_description": "New, fast, cheap, and accurate",
+  "aiModelLabel": "AI Model"
 }
