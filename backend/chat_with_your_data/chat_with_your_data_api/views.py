@@ -394,6 +394,37 @@ class DocumentApiView(APIView):
 
         return Response({"deletedCount": deleted_count}, status=status.HTTP_200_OK)
 
+    @permission_classes([AllowAny])
+    def put(self, request, *args, **kwargs):
+        """
+        Update headings and summaries for a document.
+        """
+        document_id = request.data.get("document_id")
+        headings = request.data.get("headings")  # Expecting a list of {"line": int, "heading": str, "summary": str (optional)}
+
+        if not document_id:
+            return Response({"error": "document_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        document = Document.objects.filter(id=document_id).first()
+
+        if not document:
+            return Response({"error": "Document not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Ensure headings is a list of dictionaries
+        if not isinstance(headings, list):
+            return Response({"error": "headings must be a list"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Validate each heading structure
+        for heading in headings:
+            if not isinstance(heading, dict) or "line" not in heading or "heading" not in heading:
+                return Response({"error": "Each heading must have 'line' and 'heading' fields"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Update the document with new headings
+        document.headings = headings
+        document.save()
+
+        return Response({"message": "Headings updated successfully", "document_id": document.id}, status=status.HTTP_200_OK)
+
 
 class UpdateRoomDocumentsView(APIView):
     @permission_classes([AllowAny])
