@@ -1,6 +1,6 @@
 ARG PYTHON_VERSION=3.11-slim-bullseye
 
-FROM python:${PYTHON_VERSION} as base
+FROM python:${PYTHON_VERSION} AS base
 
 WORKDIR /app
 
@@ -8,14 +8,17 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq-dev gcc python3-dev tesseract-ocr ghostscript && \
-    pip install --upgrade pip && pip install pipenv && \
+    libpq-dev gcc curl python3-dev tesseract-ocr ghostscript && \
+    pip install --upgrade "pip<24.1" && pip install pipenv && \
+    pip install textract && \
     rm -rf /var/lib/apt/lists/*
 
 COPY Pipfile Pipfile.lock ./
 
 # Development Environment
-FROM base as development
+FROM base AS development
+
+RUN apt-get update && apt-get install -y curl
 
 RUN pipenv install --dev --system
 
@@ -27,13 +30,15 @@ RUN pip install --extra-index-url https://download.pytorch.org/whl/cpu torch && 
     python -m spacy download en_core_web_lg
 
 EXPOSE 8000
+RUN chmod +x entrypoint.dev.sh
 ENTRYPOINT ["/app/entrypoint.dev.sh"]
 
 # Production Environment
-FROM base as production
+FROM base AS production
 
 RUN pipenv install --system
 
+RUN apt-get update && apt-get install -y curl
 COPY chat_with_your_data/ ./chat_with_your_data
 COPY entrypoint.sh ./entrypoint.sh
 
