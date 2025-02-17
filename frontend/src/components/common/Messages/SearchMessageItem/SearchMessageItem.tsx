@@ -31,12 +31,14 @@ interface SearchMessageItemProps {
   message: Message;
   onSendToChatGPT: () => void;
   isLoading: boolean;
+  onSaveMessage: (updatedMessage: Message) => void;
 }
 
 const SearchMessageItem = ({
   message,
   onSendToChatGPT,
-  isLoading = false
+  isLoading = false,
+  onSaveMessage
 }: SearchMessageItemProps) => {
   const styles = SearchMessageItemStyles();
   const { t } = useTranslation();
@@ -57,7 +59,6 @@ const SearchMessageItem = ({
     { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') }
   ];
   
-  
   const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
   
   // Handle model selection change
@@ -65,7 +66,6 @@ const SearchMessageItem = ({
     if (data.optionValue) {
       setSelectedModel(data.optionValue);
       message.model = data.optionValue as OpenAIModel;
-
     }
   };
 
@@ -102,10 +102,42 @@ const SearchMessageItem = ({
   const handleEditClick = () => {
     setEditable(true);
     setTempResults(structuredClone(results));
+    // Store the combined value as the new value for editing
+    setResults((prevResults) =>
+      prevResults.map((result) => ({
+        ...result,
+        content: `${result.context_before} ${result.content} ${result.context_after}`,
+      }))
+    );
   };
 
   const handleSaveClick = () => {
     setEditable(false);
+  
+    const updatedResults = results.map((result, index) => {
+      const prevResult = tempResults[index];
+  
+      // Check if the result content has changed
+      const isChanged =
+        result.content !== `${prevResult.context_before} ${prevResult.content} ${prevResult.context_after}`;
+  
+      if (isChanged) {
+        // Only update if there's a change
+        return {
+          ...result,
+          context_before: '',
+          content: result.content,
+          context_after: ''
+        };
+      }
+  
+      // If no change, return the result as-is
+      return prevResult;
+    });
+
+    setResults(updatedResults);
+    message.content = updatedResults;
+    onSaveMessage(message); // Call the onSaveMessage prop with the updated message
   };
 
   const handleDiscardClick = () => {
@@ -175,11 +207,9 @@ const SearchMessageItem = ({
                   {editable ? (
                     <div className={styles.textarea}>
                       <HighlightWithinTextarea
-                        value={`${result.context_before} ${result.content} ${result.context_after}`}
+                        value={result.content}
                         highlight={[]}
-                        onChange={(value: string) =>
-                          handleContentChange(i, value)
-                        }
+                        onChange={(value: string) => handleContentChange(i, value)}
                       />
                     </div>
                   ) : (
@@ -191,7 +221,6 @@ const SearchMessageItem = ({
                   )}
                 </div>
               ))
-              
             )}
           </>
         )}
