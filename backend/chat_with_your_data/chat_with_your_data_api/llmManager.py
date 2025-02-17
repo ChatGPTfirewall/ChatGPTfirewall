@@ -74,7 +74,6 @@ class LLM:
             model=model,
             messages=room.createFullMessage(room, False, is_demo, question),
         )
-        print(room.createFullMessage(room, False, is_demo, question))
 
         response_content = response["choices"][0]["message"]["content"]
         room.appendContext(room, "assistant", response_content, is_demo)
