@@ -77,13 +77,10 @@ class Room(models.Model):
             fullMessage.append(question_line)
             fullMessage.append(system_line)
         else:
-            context = ContextEntry.objects.filter(roomID=room).order_by("-created_at")
-            anonymizationMappings = AnonymizeEntitie.objects.filter(roomID=room)
-
+            context = ContextEntry.objects.filter(roomID=room).order_by("-created_at")    
+            
             for line in context:
                 content = line.content
-                for entry in anonymizationMappings:
-                    content = content.replace(entry.deanonymized, entry.anonymized)
                 messageLine = {"role": line.role, "content": content}
                 token_size = len(encoder.encode(str(messageLine)))
                 msg_length = msg_length + token_size

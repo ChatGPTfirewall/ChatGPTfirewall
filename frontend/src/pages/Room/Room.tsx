@@ -240,20 +240,31 @@ const Room = () => {
       room.settings && room.settings.prompt_template
         ? room.settings.prompt_template
         : '';
-
+  
     if (room.messages && room.messages.length >= 2) {
       const lastIndex = room.messages.length - 1;
-
+  
       question = room.messages[lastIndex - 1].content as string;
-
+  
       const contextResults = room.messages[lastIndex].content as Result[];
-      context = contextResults.map((result) => result.content).join('\n');
+      context = contextResults
+        .map((result) => {
+          // Collect context parts conditionally
+          const parts = [];
+          if (result.context_before) parts.push(result.context_before);
+          parts.push(result.content);
+          if (result.context_after) parts.push(result.context_after);
+  
+          // Join them with a space and return
+          return parts.join(' ');
+        })
+        .join('\n');
     } else {
       showToast(t('errorNotEnoughMessages'), 'error');
     }
-
+  
     return `${promptTemplate}\n\n${t('question')}:\n${question}\n\n${t('context')}:\n${context}`;
-  };
+  };  
 
   const getModelFromRoom = (room: RoomType) => {
     if (room.messages && room.messages.length >= 2) {
