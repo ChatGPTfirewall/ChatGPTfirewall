@@ -11,7 +11,9 @@ const Layout = () => {
   const { isAuthenticated } = useAuth0();
   const hideSidebarRoutes = ['/demo', '/chat'];
   const showSidebar =
-    isAuthenticated && !hideSidebarRoutes.includes(location.pathname);
+    isAuthenticated &&
+    !hideSidebarRoutes.includes(location.pathname) &&
+    !location.pathname.startsWith('/files');  
 
   if (!isAuthenticated) {
     return (

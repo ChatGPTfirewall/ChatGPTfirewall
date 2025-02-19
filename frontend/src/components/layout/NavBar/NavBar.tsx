@@ -14,6 +14,7 @@ const NavBar = () => {
   const logoPath = '/images/android-chrome-512x512.png';
 
   const isChatActive = location.pathname.startsWith('/chat');
+  const isFilesActive = location.pathname.startsWith('/files');
   const isDemoActive = location.pathname.startsWith('/demo');
   const { t } = useTranslation();
 
@@ -48,6 +49,18 @@ const NavBar = () => {
                   >
                     Chat
                   </NavLink>
+                </div>
+                <div  className={styles.headerNavLeftMargin}>
+                  <NavLink
+                      to="/files"
+                      className={({ isActive }) =>
+                        isActive || isFilesActive
+                          ? styles.headerNavPageLinkActive
+                          : styles.headerNavPageLink
+                      }
+                    >
+                      Files
+                    </NavLink>
                 </div>
                 <div className={styles.headerNavLeftMargin}>
                   <NavLink
