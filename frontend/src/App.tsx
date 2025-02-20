@@ -7,7 +7,7 @@ import Room from './pages/Room/Room';
 import Files from './pages/Files/Files';
 import Page404 from './pages/Page404/Page404';
 import ProtectedRoute from './components/common/ProtectedRoute/ProtectedRoute';
-import FileDetailPage from './pages/Files/Files'; // Import the file detail page
+import FileDetailPage from './pages/Files/Files';
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
               <Route index element={<Chat />} />
               <Route path="room/:id" element={<Room />} />
             </Route>
-            <Route path="files/*" element={<Files />} />
-            <Route path="files/:id" element={<FileDetailPage />} /> {/* Add this route */}
+            <Route path="files" element={<Files />} />
+            <Route path="files/:id" element={<FileDetailPage />} />
           </Route>
           <Route path="*" element={<Page404 />} />
         </Route>

@@ -1,73 +1,190 @@
 import { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import { getFiles } from '../../api/fileApi';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getFileDetails, updateFileHeadings } from '../../api/fileApi';
 import { useUser } from '../../context/UserProvider';
 import { File } from '../../models/File';
 import { Button } from '@fluentui/react-components';
-import { ArrowLeft20Regular } from '@fluentui/react-icons';
-import FileSidebar from '../../components/layout/FilesSideBar/FileSideBar'; // Import your new sidebar
+import { ArrowLeft20Regular, ArrowLeft24Regular, Add20Regular, People20Regular } from '@fluentui/react-icons';
+import { tokens } from '@fluentui/react-components';
+import FileSidebar from '../../components/layout/FilesSideBar/FileSideBar';
+import { categorizeText } from '../../api/categorizeApi';
+import { summarizeText, SummarizeTextResponse } from '../../api/summarizeApi';
+import { createRoom, updateRoomFiles } from '../../api/roomsApi';
+import { useTranslation } from 'react-i18next';
 
 const FileDetailPage = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const { t } = useTranslation();
     const [file, setFile] = useState<File | null>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const summaryRef = useRef<HTMLDivElement>(null);
     const { user } = useUser();
-    
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
-        if (!user) return;
-      console.log("id is: ", id); // Debugging output
-      setFile(null);
-      if (id) {
-        getFiles(user.auth0_id).then((files) => {
-          const selectedFile = files.find((f) => f.id === id);
-          if (selectedFile) setFile(selectedFile);
-        });
-      }
+        if (!user || !id) return;
+
+        console.log("Fetching file details for ID:", id);
+        setFile(null);
+
+        getFileDetails(id)
+            .then((fileDetails) => {
+                console.log("Fetched file details:", fileDetails);
+                setFile(fileDetails);
+            })
+            .catch((error) => {
+                console.error("Error fetching file details:", error);
+            });
     }, [id]);
 
-  const scrollToMatch = (targetRef: React.RefObject<HTMLDivElement>, line: number) => {
-    if (targetRef.current) {
-      const elements = targetRef.current.querySelectorAll('[data-line]');
-      const targetElement = Array.from(elements).find((el) =>
-        el.getAttribute('data-line') === String(line)
-      );
-      if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
+    const scrollToMatch = (targetRef: React.RefObject<HTMLDivElement>, line: number) => {
+      if (targetRef.current) {
+          const elements = targetRef.current.querySelectorAll('[data-line]');
+          const targetElement = Array.from(elements).find((el) =>
+              el.getAttribute('data-line') === String(line)
+          );
+  
+          if (targetElement) {
+              targetElement.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center',
+              });
+          }
+      }
+  };  
 
-  return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
-      <FileSidebar /> {/* Add the new sidebar here */}
+  const handleCreateRoom = async () => {
+    if (!user || !file) return;
 
-      {/* Content Panel */}
-      <div ref={contentRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text' }}>
-        {file ? (
-          file.text?.split('\n').map((line, index) => (
-            <p key={index} data-line={index + 1}>{line}</p>
-          ))
-        ) : (
-          <p>Select a file from the sidebar.</p>
-        )}
-      </div>
+    setLoading(true);
+        try {
+            if (!file.id) return;
+            // Step 1: Create the room
+            const newRoom = await createRoom(user.auth0_id, `${file.filename}`);
 
-      {/* Divider */}
-      <div style={{ width: '5px', background: '#ccc', cursor: 'col-resize' }} />
+            // Step 2: Add the document to the room
+            await updateRoomFiles(newRoom.id, [file.id]);
 
-      {/* Chapters & Summaries Panel */}
-      {file && (
-        <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text' }}>
-          {file.headings?.map((chapter, index) => (
-            <div key={index} data-line={chapter.line}>
-              <h3>{chapter.heading}</h3>
-              <p>{chapter.summary}</p>
-              <Button icon={<ArrowLeft20Regular />} onClick={() => scrollToMatch(contentRef, chapter.line)} />
+            // Step 3: Navigate to the room
+            navigate(`/chat/room/${newRoom.id}`);
+        } catch (error) {
+            console.error("Error creating room and adding file:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGenerateHeadings = async () => {
+        if (!file || !file.text) return;
+        setLoading(true);
+        
+        try {
+            const response = await categorizeText(file.text);
+            if (response?.headings) {
+                const newHeadings = response.headings.map((heading: { line: number; heading: string }) => ({
+                    line: heading.line,
+                    heading: heading.heading,
+                    summary: undefined,
+                }));
+
+                setFile((prev) => prev ? { ...prev, headings: newHeadings } : prev);
+                if (file.id) await updateFileHeadings(file.id, newHeadings);
+            }
+        } catch (error) {
+            console.error("Error generating headings:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div style={{ display: 'flex', height: 'calc(100vh - 55px)', overflow: 'hidden' }}>
+            <FileSidebar />
+
+            {/* Main Content */}
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh' }}>
+                {/* Pinned Header */}
+                <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff' }}>
+                    <Button icon={<ArrowLeft24Regular />} onClick={() => navigate(-1)} style={{ background: tokens.colorBrandBackground, color: "white" }} />
+                    <h2 style={{ marginLeft: '10px', flexGrow: 1 }}>{file?.filename || "Document"}</h2>
+                    <Button 
+                    icon={<People20Regular />} 
+                    onClick={handleCreateRoom} 
+                    disabled={loading} 
+                    style={{ marginLeft: '10px' }}
+                    >
+                        {loading ? t('loading') : t('createRoomFileButton')}
+                    </Button>
+                    </div>
+                {/* New Room Button */}
+
+                {/* Scrollable Content */}
+                <div ref={contentRef} style={{
+                  flex: 1,
+                  overflowY: 'auto',
+                  padding: '20px',
+                  userSelect: 'text',
+                  maxHeight: 'calc(100vh - 60px)'
+              }}>
+                    {file ? (
+                        file.text?.split('\n').map((line, index) => (
+                          <div key={index} style={{
+                              display: 'grid',
+                              gridTemplateColumns: '50px auto',
+                              alignItems: 'start'
+                          }}>
+                              <span style={{
+                                  textAlign: 'right',
+                                  paddingRight: '10px',
+                                  fontSize: '14px',
+                                  color: '#888',
+                                  userSelect: 'none'
+                              }}>
+                                  {index + 1}
+                              </span>
+                              <p data-line={index + 1} style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{line}</p>
+                          </div>
+                      ))                    
+                    ) : (
+                        <p>{t('FileSelectorTitle')}</p>
+                    )}
+                </div>
             </div>
-          ))}
+
+            {/* Divider */}
+            <div style={{ width: '5px', background: '#ccc',}} />
+
+            {/* Chapters & Summaries Panel */}
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh' }}>
+                {/* Pinned Header */}
+                <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff' }}>
+                    <h3 style={{ flexGrow: 1 }}>Headings & Summaries</h3>
+                    <Button icon={<Add20Regular />} onClick={handleGenerateHeadings} disabled={loading}>
+                        {loading ? "Generating..." : "Generate"}
+                    </Button>
+                </div>
+
+                {/* Scrollable Summaries */}
+                <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text' }}>
+                    {file?.headings?.length ? (
+                        file.headings.map((chapter, index) => (
+                            <div key={index} data-line={chapter.line} style={{ marginBottom: '20px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <Button icon={<ArrowLeft20Regular />} onClick={() => scrollToMatch(contentRef, chapter.line)} />
+                                    <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
+                                    <p style={{ marginLeft: '10px' }}>{chapter.line}</p>
+                                </div>
+                                <p><strong>{t('summary')}:</strong> {chapter.summary || "-"}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>{t('noChaptersFound')}</p>
+                    )}
+                </div>
+            </div>
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default FileDetailPage;
