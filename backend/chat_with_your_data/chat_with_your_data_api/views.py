@@ -321,6 +321,8 @@ class RoomApiView(APIView):
         try:
             room = Room.objects.get(id=room_id)
             serializer = RoomSerializer(room)
+            if room.user.auth0_id.replace("|", ".") != str(request.user):
+                return Response({"error": "You do not have permission to access this room"}, status=status.HTTP_403_FORBIDDEN)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Room.DoesNotExist:
             return Response(
@@ -333,6 +335,8 @@ class RoomApiView(APIView):
         try:
             room = Room.objects.get(id=room_id)
             room_data = RoomSerializer(room).data
+            if room.user.auth0_id.replace("|", ".") != str(request.user):
+                    return Response({"error": "You do not have permission to delete this room"}, status=status.HTTP_403_FORBIDDEN)
             room.delete()
             return Response(room_data, status=status.HTTP_200_OK)
         except Room.DoesNotExist:
@@ -378,10 +382,13 @@ class DocumentApiView(APIView):
         if not document:
             return Response({"error": "Document not found"}, status=status.HTTP_404_NOT_FOUND)
 
+        if document.user.auth0_id.replace("|", ".") != str(request.user):
+            return Response({"error": "You do not have permission to access this document"}, status=status.HTTP_403_FORBIDDEN)
+
         document_data = {
             "id": document.id,
             "filename": document.filename,
-            "text": document.text,  # Assuming `text` is a field in the Document model
+            "text": document.text,
             "headings": document.headings,
             "lang": document.lang,
             "fileSize": document.fileSize,
@@ -572,6 +579,7 @@ class MessagesApiView(APIView):
                 fact = {
                     "content": text + " ",
                     "fileName": section.document.filename,
+                    "fileId": section.document.id,
                     "accuracy": search_result.score,
                     "context_before": before_result + " ",
                     "context_after":  after_result + " ",
