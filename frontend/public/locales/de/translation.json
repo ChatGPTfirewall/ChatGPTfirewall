@@ -132,5 +132,7 @@
   "reCategorize" : "Re-Kategorisieren",
   "confirmReCategorization": "Re-Kategorisierung bestätigen",
   "confirm" : "Bestätigen",
-  "cancel" : "Abbrechen"
+  "cancel" : "Abbrechen",
+  "viewFileButton": "Datei genauer untersuchen",
+  "createRoomFileButton": "Neuen Raum mit dieser Datei erstellen"
 }

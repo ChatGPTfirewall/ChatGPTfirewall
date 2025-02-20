@@ -132,5 +132,7 @@
   "reCategorize" : "Re-categorize",
   "confirmReCategorization": "Confirm Re-categorization",
   "confirm" : "Confirm",
-  "cancel" : "Cancel"
+  "cancel" : "Cancel",
+  "viewFileButton": "View File in Detail",
+  "createRoomFileButton": "Create a new Room with this File"
 }
