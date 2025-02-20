@@ -26,6 +26,7 @@ import { HighlightWithinTextarea } from 'react-highlight-within-textarea';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Dropdown, Option, OptionOnSelectData } from '@fluentui/react-components';
 import { OpenAIModel } from '../../../../models/Message';
+import { useNavigate } from 'react-router-dom';
 
 interface SearchMessageItemProps {
   message: Message;
@@ -42,6 +43,7 @@ const SearchMessageItem = ({
 }: SearchMessageItemProps) => {
   const styles = SearchMessageItemStyles();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [editable, setEditable] = useState(false);
   const [visible, setVisible] = useState(false);
   // displayed results
@@ -197,13 +199,19 @@ const SearchMessageItem = ({
             ) : (
               results.map((result: Result, i: number) => (
                 <div key={i} className={styles.resultContainer}>
-                  <Caption1Strong className={styles.statText}>
-                    {t('searchMessageStatText', {
-                      index: i + 1,
-                      filename: result.fileName,
-                      accuracy: (result.accuracy * 100).toFixed(2)
-                    })}
-                  </Caption1Strong>
+                  {/* Left Section: Filename & Accuracy */}
+                  <div className={styles.resultHeader}>
+                    <Caption1Strong className={styles.statText}>
+                      {t('searchMessageStatText', {
+                        index: i + 1,
+                        filename: String(result.fileName), // Bold filename
+                        accuracy: (result.accuracy * 100).toFixed(2)
+                      })}
+                    </Caption1Strong>
+                    <Button onClick={() => navigate(`/files/${result.fileId}`)}>
+                      {t('viewFileButton')}
+                    </Button>
+                  </div>
                   {editable ? (
                     <div className={styles.textarea}>
                       <HighlightWithinTextarea
@@ -214,9 +222,7 @@ const SearchMessageItem = ({
                     </div>
                   ) : (
                     <Text className={styles.resultContent}>
-                      {result.context_before}{' '}
-                      <strong>{result.content}</strong>{' '}
-                      {result.context_after}{' '}
+                      {result.context_before} <strong>{result.content}</strong> {result.context_after}
                     </Text>
                   )}
                 </div>
