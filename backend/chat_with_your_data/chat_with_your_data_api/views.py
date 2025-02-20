@@ -369,6 +369,28 @@ class RoomApiView(APIView):
 
 class DocumentApiView(APIView):
     @permission_classes([AllowAny])
+    def get(self, request, document_id, *args, **kwargs):
+        """
+        Retrieve document details including full text, headings, and summaries.
+        """
+        document = Document.objects.filter(id=document_id).first()
+
+        if not document:
+            return Response({"error": "Document not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        document_data = {
+            "id": document.id,
+            "filename": document.filename,
+            "text": document.text,  # Assuming `text` is a field in the Document model
+            "headings": document.headings,
+            "lang": document.lang,
+            "fileSize": document.fileSize,
+            "uploadedAt": document.uploadedAt
+        }
+
+        return Response(document_data, status=status.HTTP_200_OK)
+
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         auth0_id = request.data.get("auth0_id")
         user = User.objects.get(auth0_id=auth0_id)
