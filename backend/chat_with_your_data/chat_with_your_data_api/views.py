@@ -568,12 +568,13 @@ class MessagesApiView(APIView):
                         )
                     except AnonymizeEntitie.DoesNotExist:
                         # Create model if not already existing
+                        type, count = str(entity_mapping[entry]).rsplit("_", 1)  # Split at the last "_"
                         AnonymizeEntitie.objects.create(
                             roomID=room,
                             anonymized=entity_mapping[entry],
                             deanonymized=entry,
-                            entityType=str(entity_mapping[entry]).split("_")[0],
-                            counter=str(entity_mapping[entry]).split("_")[1],
+                            entityType=type,
+                            counter=count,
                         )
 
                 fact = {
