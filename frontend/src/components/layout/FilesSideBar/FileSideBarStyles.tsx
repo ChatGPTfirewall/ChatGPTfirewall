@@ -2,7 +2,7 @@ import { makeStyles, tokens } from '@fluentui/react-components';
 
 const FilesSideBarStyles = makeStyles({
   drawer: {
-    width: '35rem'
+    width: 'auto',
   },
   divider: {
     marginTop: tokens.spacingVerticalS,

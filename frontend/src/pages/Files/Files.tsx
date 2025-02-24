@@ -99,89 +99,89 @@ const FileDetailPage = () => {
     };
 
     return (
-        <div style={{ display: 'flex', height: 'calc(100vh - 55px)', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', height: "calc(100vh - 55px)", width: navigator.userAgent.includes('Firefox') ? '-moz-available' : '-webkit-fill-available' }}>
             <FileSidebar />
 
-            {/* Main Content */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh' }}>
-                {/* Pinned Header */}
-                <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff' }}>
-                    <Button icon={<ArrowLeft24Regular />} onClick={() => navigate(-1)} style={{ background: tokens.colorBrandBackground, color: "white" }} />
-                    <h2 style={{ marginLeft: '10px', flexGrow: 1 }}>{file?.filename || "Document"}</h2>
-                    <Button 
-                    icon={<People20Regular />} 
-                    onClick={handleCreateRoom} 
-                    disabled={loading} 
-                    style={{ marginLeft: '10px' }}
-                    >
-                        {loading ? t('loading') : t('createRoomFileButton')}
-                    </Button>
-                    </div>
-                {/* New Room Button */}
-
-                {/* Scrollable Content */}
-                <div ref={contentRef} style={{
-                  flex: 1,
-                  overflowY: 'auto',
-                  padding: '20px',
-                  userSelect: 'text',
-                  maxHeight: 'calc(100vh - 60px)'
-              }}>
-                    {file ? (
-                        file.text?.split('\n').map((line, index) => (
-                          <div key={index} style={{
-                              display: 'grid',
-                              gridTemplateColumns: '50px auto',
-                              alignItems: 'start'
-                          }}>
-                              <span style={{
-                                  textAlign: 'right',
-                                  paddingRight: '10px',
-                                  fontSize: '14px',
-                                  color: '#888',
-                                  userSelect: 'none'
-                              }}>
-                                  {index + 1}
-                              </span>
-                              <p data-line={index + 1} style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{line}</p>
-                          </div>
-                      ))                    
-                    ) : (
-                        <p>{t('FileSelectorTitle')}</p>
-                    )}
+            {/* Left Panel w/ Text */}
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto' }}>
+            {/* Pinned Header */}
+            <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem', maxWidth: "50vw" }}>
+                <Button icon={<ArrowLeft24Regular />} onClick={() => navigate(-1)} style={{ background: tokens.colorBrandBackground, color: "white" }} />
+                <h2 style={{ marginLeft: '10px', flexGrow: 1, wordBreak: "break-all",  overflow: "hidden", paddingBottom: ".25rem", paddingTop: ".25rem",  maxHeight: "5rem"}}>{file?.filename || t('document')}</h2>
+                <Button 
+                icon={<People20Regular />} 
+                onClick={handleCreateRoom} 
+                disabled={loading} 
+                style={{ marginLeft: '10px', minWidth: "9rem"}}
+                >
+                {loading ? t('loading') : t('createRoomFileButton')}
+                </Button>
                 </div>
+            {/* New Room Button */}
+
+            {/* Scrollable Content */}
+            <div ref={contentRef} style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '20px',
+              userSelect: 'text',
+              maxHeight: 'auto',
+              }}>
+                {file ? (
+                file.text?.split('\n').map((line, index) => (
+                  <div key={index} style={{
+                      display: 'grid',
+                      gridTemplateColumns: '50px auto',
+                      alignItems: 'start'
+                  }}>
+                      <span style={{
+                      textAlign: 'right',
+                      paddingRight: '10px',
+                      fontSize: '14px',
+                      color: '#888',
+                      userSelect: 'none'
+                      }}>
+                      {index + 1}
+                      </span>
+                      <p data-line={index + 1} style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{line}</p>
+                  </div>
+                  ))                    
+                ) : (
+                <p>{t('FileSelectorTitle')}</p>
+                )}
+            </div>
             </div>
 
             {/* Divider */}
             <div style={{ width: '5px', background: '#ccc',}} />
 
-            {/* Chapters & Summaries Panel */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh' }}>
-                {/* Pinned Header */}
-                <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff' }}>
-                    <h3 style={{ flexGrow: 1 }}>Headings & Summaries</h3>
-                    <Button icon={<Add20Regular />} onClick={handleGenerateHeadings} disabled={loading}>
-                        {loading ? "Generating..." : "Generate"}
-                    </Button>
-                </div>
+            {/* Right Panel w/ Chapters & Summaries */}
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto', maxHeight: "" }}>
+            {/* Pinned Header */}
+            <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem' }}>
+                <h3 style={{ flexGrow: 1 }}>Headings & Summaries</h3>
+                <Button icon={<Add20Regular />} onClick={handleGenerateHeadings} disabled={loading}>
+                {loading ? "Generating..." : "Generate"}
+                </Button>
+            </div>
 
-                {/* Scrollable Summaries */}
-                <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text' }}>
-                    {file?.headings?.length ? (
-                        file.headings.map((chapter, index) => (
-                            <div key={index} data-line={chapter.line} style={{ marginBottom: '20px' }}>
-                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <Button icon={<ArrowLeft20Regular />} onClick={() => scrollToMatch(contentRef, chapter.line)} />
-                                    <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
-                                    <p style={{ marginLeft: '10px' }}>{chapter.line}</p>
-                                </div>
-                                <p><strong>{t('summary')}:</strong> {chapter.summary || "-"}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>{t('noChaptersFound')}</p>
-                    )}
-                </div>
+            {/* Scrollable Summaries */}
+            <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text', maxHeight: 'auto' }}>
+                {file?.headings?.length ? (
+                file.headings.map((chapter, index) => (
+                    <div key={index} data-line={chapter.line} style={{ marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <Button icon={<ArrowLeft20Regular />} onClick={() => scrollToMatch(contentRef, chapter.line)} />
+                        <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
+                        <p style={{ marginLeft: '10px' }}>{t('line')+ ": " + chapter.line}</p>
+                    </div>
+                    <p><strong>{t('summary')}:</strong> {chapter.summary || "-"}</p>
+                    </div>
+                ))
+                ) : (
+                <p>{t('noChaptersFound')}</p>
+                )}
+            </div>
             </div>
         </div>
     );

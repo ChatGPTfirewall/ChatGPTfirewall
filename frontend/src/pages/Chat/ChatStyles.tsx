@@ -7,7 +7,6 @@ import {
 const ChatStyles = makeStyles({
   chatRoot: {
     display: 'flex',
-    overflowY: 'auto',
     marginTop: tokens.spacingVerticalXL,
     width: '100%'
   },

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronRight24Regular, ChevronLeft24Regular } from '@fluentui/react-icons';
 import { Divider, DrawerBody, DrawerHeader, InlineDrawer } from '@fluentui/react-components';
-import CompactFileList from '../../common/CompactFileList/CompctFileList';
+import CompactFileList from '../../common/CompactFileList/CompactFileList';
 import { getFiles } from '../../../api/fileApi';
 import FilesSideBarStyles from './FileSideBarStyles';
 import { File } from '../../../models/File';

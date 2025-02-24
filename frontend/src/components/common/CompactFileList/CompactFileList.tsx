@@ -12,11 +12,11 @@ import {
   TableColumnDefinition,
   createTableColumn
 } from '@fluentui/react-components';
-import FileListStyles from '../FileList/FileListStyles';
+import CompactFileListStyles from './CompactFileListStyles';
 import { File } from '../../../models/File';
 import { useTranslation } from 'react-i18next';
 import ReactCountryFlag from 'react-country-flag';
-import { format } from 'date-fns';
+import { format, max } from 'date-fns';
 import { KeyboardEvent, MouseEvent } from 'react';
 
 const langToCountryCode = (lang: string) => {
@@ -50,19 +50,10 @@ export const CompactFileList = ({
   selectedFileIds,
   onSelectionChange
 }: FileListProps) => {
-  const styles = FileListStyles();
+  const styles = CompactFileListStyles();
   const { t } = useTranslation();
 
   const columns: TableColumnDefinition<File>[] = [
-    createTableColumn<File>({
-      columnId: 'isUploading',
-      renderHeaderCell: () => {
-        return '';
-      },
-      renderCell: (file) => {
-        return file.isUploading ? <Spinner size="tiny" /> : null;
-      }
-    }),
     createTableColumn<File>({
       columnId: 'file',
       compare: (a, b) => {
@@ -85,7 +76,7 @@ export const CompactFileList = ({
               className={styles.fileIcon}
               alt={`${fileExtension} file icon`}
             />
-            <span className={styles.fileCellText}>{fileName}</span>
+            <span>{fileName}</span>
           </TableCellLayout>
         );
       }
@@ -146,31 +137,27 @@ export const CompactFileList = ({
   ];
 
   const columnSizingOptions = {
-    isUploading: {
-      defaultWidth: 1,
-      minWidth: 1,
-      idealWidth: 1
-    },
     file: {
-      defaultWidth: 500,
+      defaultWidth: 250,
       minWidth: 60,
-      idealWidth: 800
+      idealWidth: 250
     },
     lang: {
-      defaultWidth: 80,
+      defaultWidth: 50,
       minWidth: 60,
-      idealWidth: 80
+      idealWidth: 50
     },
     size: {
-      defaultWidth: 50,
+      defaultWidth: 55,
       minWidth: 50,
-      idealWidth: 90
+      idealWidth: 55
     },
     uploadedAt: {
-      defaultWidth: 120,
-      minWidth: 120,
-      idealWidth: 120
-    }
+      defaultWidth: 10,
+      minWidth: 10,
+      idealWidth: 10,
+      maxWidth: 10
+    },
   };
 
   return (
