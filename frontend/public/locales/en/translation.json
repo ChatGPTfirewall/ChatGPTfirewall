@@ -134,5 +134,6 @@
   "confirm" : "Confirm",
   "cancel" : "Cancel",
   "viewFileButton": "View File in Detail",
-  "createRoomFileButton": "Create a new Room with this File"
+  "createRoomFileButton": "Create a new Room with this File",
+    "document": "Document"
 }

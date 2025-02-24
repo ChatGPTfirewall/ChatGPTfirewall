@@ -134,5 +134,6 @@
   "confirm" : "Bestätigen",
   "cancel" : "Abbrechen",
   "viewFileButton": "Datei genauer untersuchen",
-  "createRoomFileButton": "Neuen Raum mit dieser Datei erstellen"
+  "createRoomFileButton": "Neuen Raum mit dieser Datei erstellen",
+  "document": "Dokument"
 }
