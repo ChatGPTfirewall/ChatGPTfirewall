@@ -6,8 +6,8 @@ import { Body1, Body1Strong, Button, Switch } from '@fluentui/react-components';
 import {
   AddRegular,
   DocumentAdd48Regular,
-  DocumentBulletListMultiple24Regular,
-  DocumentSearch32Filled,
+  DocumentQueueAddRegular,
+  BookSearchRegular,
   Settings32Regular
 } from '@fluentui/react-icons';
 import { File } from '../../models/File';
@@ -478,7 +478,7 @@ const Room = () => {
         <Button
             size="large"
             appearance="subtle"
-            icon={<DocumentSearch32Filled />}
+            icon={<BookSearchRegular />}
             onClick={openFileDetailDrawer}
           />
           <TextDetailDrawer
@@ -506,7 +506,7 @@ const Room = () => {
                 {...triggerProps}
                 size="large"
                 appearance="subtle"
-                icon={<DocumentBulletListMultiple24Regular />}
+                icon={<DocumentQueueAddRegular />}
               />
             )}
           />
