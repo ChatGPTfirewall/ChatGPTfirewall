@@ -135,5 +135,6 @@
   "cancel" : "Abbrechen",
   "viewFileButton": "Datei genauer untersuchen",
   "createRoomFileButton": "Neuen Raum mit dieser Datei erstellen",
-  "document": "Dokument"
+  "document": "Dokument",
+  "headingsAndSummaries": "Überschriften und Zusammenfassungen"
 }

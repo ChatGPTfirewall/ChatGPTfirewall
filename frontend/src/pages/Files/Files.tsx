@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getFileDetails, updateFileHeadings } from '../../api/fileApi';
 import { useUser } from '../../context/UserProvider';
 import { File } from '../../models/File';
-import { Button } from '@fluentui/react-components';
+import { Button, Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle } from '@fluentui/react-components';
 import { ArrowLeft20Regular, ArrowLeft24Regular, Add20Regular, People20Regular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-components';
 import FileSidebar from '../../components/layout/FilesSideBar/FileSideBar';
@@ -21,6 +21,41 @@ const FileDetailPage = () => {
     const summaryRef = useRef<HTMLDivElement>(null);
     const { user } = useUser();
     const [loading, setLoading] = useState(false);
+
+    const [summarizingIndex, setSummarizingIndex] = useState<{ fileId: string; index: number } | null>(null);
+
+    const handleSummarize = async (file: File, chapterIndex: number) => {
+        if (!file.text || !file.headings || file.headings.length === 0) return;
+    
+        const chapters = file.headings;
+        const chapter = chapters[chapterIndex];
+        const lines = file.text.split('\n');
+    
+        const startLine = chapter.line - 1;
+        const endLine = chapterIndex + 1 < chapters.length ? chapters[chapterIndex + 1].line - 1 : lines.length;
+        const textToSummarize = lines.slice(startLine, endLine).join('\n');
+    
+        setSummarizingIndex({ fileId: file.id ?? '', index: chapterIndex });
+    
+        try {
+            const response: SummarizeTextResponse = await summarizeText(textToSummarize);
+    
+            if (response?.summary) {
+                const updatedHeadings = [...chapters];
+                updatedHeadings[chapterIndex] = { ...chapter, summary: response.summary };
+    
+                setFile((prev) => (prev ? { ...prev, headings: updatedHeadings } : prev));
+    
+                if (file.id) {
+                    await updateFileHeadings(file.id, updatedHeadings);
+                }
+            }
+        } catch (error) {
+            console.error("Error summarizing text:", error);
+        } finally {
+            setSummarizingIndex(null);
+        }
+    };    
 
     useEffect(() => {
         if (!user || !id) return;
@@ -75,6 +110,34 @@ const FileDetailPage = () => {
         }
     };
 
+    const handleConfirmReCategorize = async () => {
+        if (!confirmReCategorizeFile || !confirmReCategorizeFile.text) return;
+    
+        setLoading(true);
+        
+        try {
+            const response = await categorizeText(confirmReCategorizeFile.text);
+            if (response?.headings) {
+                const newHeadings = response.headings.map((heading: { line: number; heading: string }) => ({
+                    line: heading.line,
+                    heading: heading.heading,
+                    summary: undefined,
+                }));
+    
+                setFile((prev) => (prev ? { ...prev, headings: newHeadings } : prev));
+    
+                if (confirmReCategorizeFile.id) {
+                    await updateFileHeadings(confirmReCategorizeFile.id, newHeadings);
+                }
+            }
+        } catch (error) {
+            console.error("Error re-categorizing headings:", error);
+        } finally {
+            setConfirmReCategorizeFile(null);
+            setLoading(false);
+        }
+    };    
+
     const handleGenerateHeadings = async () => {
         if (!file || !file.text) return;
         setLoading(true);
@@ -97,6 +160,8 @@ const FileDetailPage = () => {
             setLoading(false);
         }
     };
+
+    const [confirmReCategorizeFile, setConfirmReCategorizeFile] = useState<File | null>(null);
 
     return (
         <div style={{ display: 'flex', height: "calc(100vh - 55px)", width: navigator.userAgent.includes('Firefox') ? '-moz-available' : '-webkit-fill-available' }}>
@@ -153,35 +218,74 @@ const FileDetailPage = () => {
             </div>
 
             {/* Divider */}
-            <div style={{ width: '5px', background: '#ccc',}} />
+            <div style={{ width: '3px', background: '#ccc',}} />
 
             {/* Right Panel w/ Chapters & Summaries */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto', maxHeight: "" }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto' }}>
             {/* Pinned Header */}
             <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem' }}>
-                <h3 style={{ flexGrow: 1 }}>Headings & Summaries</h3>
-                <Button icon={<Add20Regular />} onClick={handleGenerateHeadings} disabled={loading}>
-                {loading ? "Generating..." : "Generate"}
+                <h3 style={{ flexGrow: 1 }}>{t('headingsAndSummaries')}</h3>
+                <Button
+                icon={<Add20Regular />}
+                onClick={() => (file?.headings?.length ? setConfirmReCategorizeFile(file) : handleGenerateHeadings())}
+                disabled={loading}
+                >
+                {loading
+                    ? t('loading')
+                    : file?.headings?.length
+                    ? t('reCategorize')
+                    : t('Categorize')}
                 </Button>
             </div>
 
             {/* Scrollable Summaries */}
-            <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text', maxHeight: 'auto' }}>
+            <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text' }}>
                 {file?.headings?.length ? (
                 file.headings.map((chapter, index) => (
                     <div key={index} data-line={chapter.line} style={{ marginBottom: '20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <Button icon={<ArrowLeft20Regular />} onClick={() => scrollToMatch(contentRef, chapter.line)} />
                         <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
-                        <p style={{ marginLeft: '10px' }}>{t('line')+ ": " + chapter.line}</p>
+                        <p style={{ marginLeft: '10px' }}>{t('line') + ": " + chapter.line}</p>
                     </div>
-                    <p><strong>{t('summary')}:</strong> {chapter.summary || "-"}</p>
+                    <div style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
+                        <Button
+                        appearance="primary"
+                        onClick={() => handleSummarize(file, index)}
+                        disabled={summarizingIndex?.fileId === file.id && summarizingIndex?.index === index}
+                        >
+                        {summarizingIndex?.fileId === file.id && summarizingIndex?.index === index
+                            ? t('summarizing')
+                            : t('summarize')}
+                        </Button>
+                    </div>
+                    {chapter.summary && (
+                        <p>
+                        <strong>{t('summary')}:</strong> {chapter.summary}
+                        </p>
+                    )}
                     </div>
                 ))
                 ) : (
                 <p>{t('noChaptersFound')}</p>
                 )}
             </div>
+
+            {/* Confirmation Dialog for Re-Categorization */}
+            {confirmReCategorizeFile && (
+                <Dialog modalType="alert" open={confirmReCategorizeFile !== null}>
+                <DialogSurface>
+                    <DialogBody>
+                    <DialogTitle>{t('confirmReCategorization')}</DialogTitle>
+                    <DialogContent>{t('reCategorizationWarning')}</DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setConfirmReCategorizeFile(null)}>{t('cancel')}</Button>
+                        <Button appearance="primary" onClick={handleConfirmReCategorize}>{t('confirm')}</Button>
+                    </DialogActions>
+                    </DialogBody>
+                </DialogSurface>
+                </Dialog>
+            )}
             </div>
         </div>
     );
