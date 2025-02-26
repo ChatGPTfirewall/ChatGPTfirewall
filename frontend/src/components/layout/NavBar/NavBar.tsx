@@ -59,7 +59,7 @@ const NavBar = () => {
                           : styles.headerNavPageLink
                       }
                     >
-                      Files
+                      {t('files')}
                     </NavLink>
                 </div>
                 <div className={styles.headerNavLeftMargin}>

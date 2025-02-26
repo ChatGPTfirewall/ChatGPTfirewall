@@ -128,7 +128,7 @@ export const FileExplorer = () => {
           size="large"
           className={styles.triggerButton}
         >
-          {t('fileExplorerDialogButton')}
+          {t('files')}
         </Button>
       </DialogTrigger>
       <DialogSurface className={styles.surface}>

@@ -4,7 +4,7 @@ import { getFileDetails, updateFileHeadings } from '../../api/fileApi';
 import { useUser } from '../../context/UserProvider';
 import { File } from '../../models/File';
 import { Button, Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle } from '@fluentui/react-components';
-import { ArrowLeft20Regular, ArrowLeft24Regular, Add20Regular, People20Regular } from '@fluentui/react-icons';
+import { ArrowLeft20Regular, ArrowLeft24Regular, TextBulletListSquareSparkleRegular, ChatAddRegular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-components';
 import FileSidebar from '../../components/layout/FilesSideBar/FileSideBar';
 import { categorizeText } from '../../api/categorizeApi';
@@ -174,7 +174,7 @@ const FileDetailPage = () => {
                 <Button icon={<ArrowLeft24Regular />} onClick={() => navigate(-1)} style={{ background: tokens.colorBrandBackground, color: "white" }} />
                 <h2 style={{ marginLeft: '10px', flexGrow: 1, wordBreak: "break-all",  overflow: "hidden", paddingBottom: ".25rem", paddingTop: ".25rem",  maxHeight: "5rem"}}>{file?.filename || t('document')}</h2>
                 <Button 
-                icon={<People20Regular />} 
+                icon={<ChatAddRegular/>} 
                 onClick={handleCreateRoom} 
                 disabled={loading} 
                 style={{ marginLeft: '10px', minWidth: "9rem"}}
@@ -212,7 +212,7 @@ const FileDetailPage = () => {
                   </div>
                   ))                    
                 ) : (
-                <p>{t('FileSelectorTitle')}</p>
+                <p>{t('SelectFilesDialog')}</p>
                 )}
             </div>
             </div>
@@ -226,7 +226,7 @@ const FileDetailPage = () => {
             <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem' }}>
                 <h3 style={{ flexGrow: 1 }}>{t('headingsAndSummaries')}</h3>
                 <Button
-                icon={<Add20Regular />}
+                icon={<TextBulletListSquareSparkleRegular/>}
                 onClick={() => (file?.headings?.length ? setConfirmReCategorizeFile(file) : handleGenerateHeadings())}
                 disabled={loading}
                 >
@@ -234,7 +234,7 @@ const FileDetailPage = () => {
                     ? t('loading')
                     : file?.headings?.length
                     ? t('reCategorize')
-                    : t('Categorize')}
+                    : t('categorize')}
                 </Button>
             </div>
 
@@ -267,7 +267,11 @@ const FileDetailPage = () => {
                     </div>
                 ))
                 ) : (
-                <p>{t('noChaptersFound')}</p>
+                    file ? (
+                        <p>{t('GenerateChaptersDialog')}</p>
+                    ) : (
+                        <p>{t('emptyStateBodyTextStrong')}</p>
+                    )
                 )}
             </div>
 

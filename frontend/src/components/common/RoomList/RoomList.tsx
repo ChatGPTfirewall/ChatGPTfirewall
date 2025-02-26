@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import RoomItem from './RoomItem';
 import { Room } from '../../../models/Room';
 import { Button, Input } from '@fluentui/react-components';
+import { ChatAddRegular } from '@fluentui/react-icons';
 import RoomListStyles from './RoomListStyles';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../../../context/UserProvider';
@@ -110,6 +111,7 @@ const RoomList = () => {
         appearance="secondary"
         className={styles.createRoomButton}
         onClick={handleShowCreateInput}
+        icon={<ChatAddRegular/>}
       >
         {t('createRoomButton')}
       </Button>

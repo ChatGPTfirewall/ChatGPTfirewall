@@ -19,7 +19,8 @@ import {
   DatabaseSearchRegular,
   Edit24Regular,
   Info20Regular,
-  Send24Regular
+  Send24Regular,
+  DocumentSearchRegular
 } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
 import { HighlightWithinTextarea } from 'react-highlight-within-textarea';
@@ -208,8 +209,8 @@ const SearchMessageItem = ({
                         accuracy: (result.accuracy * 100).toFixed(2)
                       })}
                     </Caption1Strong>
-                    <Button onClick={() => navigate(`/files/${result.fileId}`)}>
-                      {t('viewFileButton')}
+                    <Button icon={<DocumentSearchRegular/>} onClick={() => navigate(`/files/${result.fileId}`)}>
+                    {t('viewFileButton')}
                     </Button>
                   </div>
                   {editable ? (
