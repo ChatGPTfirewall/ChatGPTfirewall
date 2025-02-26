@@ -128,7 +128,7 @@ def categorize(text: str):
         
         # Check if the line meets the heading criteria
         if (
-            len(line.split()) <= 8  # Line is under 8 words
+            len(line.split()) <= 10  # Line is under 10 words
             and is_first_alpha_uppercase(line)  # First letter of the first word is capitalized
             and not line.endswith((".", "!", "?"))  # Current line does not end with a sentence-ending char
             and (
@@ -141,7 +141,35 @@ def categorize(text: str):
         ):
             headings.append((line, i + 1))
 
-    return headings
+    # filter empty chapters
+    filtered_headings = []
+    skip_next = False
+    for j, (heading, line_num) in enumerate(headings):
+        if skip_next:
+            skip_next = False
+            continue
+
+        if j + 1 < len(headings):
+            next_heading_line_num = headings[j + 1][1]
+            if all(len(lines[k].strip()) == 0 for k in range(line_num, next_heading_line_num - 1)):
+                skip_next = True  # Mark to skip the next chapter and take heading of higher level
+        elif all(len(lines[k].strip()) == 0 for k in range(line_num, len(lines))):
+            continue  # Skip empty chapter at the end
+        filtered_headings.append((heading, line_num))
+
+    # Additional check if chapter content meets requirements (at least 15 words or a sentence-ending char)
+    final_headings = []
+    for j, (heading, line_num) in enumerate(filtered_headings):
+        if j + 1 < len(filtered_headings):
+            next_heading_line_num = filtered_headings[j + 1][1]
+            chapter_content = " ".join(lines[line_num:next_heading_line_num])
+        else:
+            chapter_content = " ".join(lines[line_num:])
+
+        if len(chapter_content.split()) >= 15 or any(char in chapter_content for char in [".", "!", "?"]):
+            final_headings.append((heading, line_num))
+
+    return final_headings
 
 def summarize_text(text: str) -> str:
     """
