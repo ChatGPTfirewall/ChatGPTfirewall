@@ -12,7 +12,6 @@
   "errorUploadingFiles": "Error uploading files",
   "filesDeletedSuccess": "Files deleted successfully",
   "errorDeletingFiles": "Error deleting files",
-  "fileExplorerDialogButton": "Files",
   "fileExplorerTitle": "Your Files",
   "nextCloudButtonSub": "Connect with Nextcloud",
   "nextCloudButton": "Nextcloud",
@@ -22,6 +21,7 @@
   "uploadButtonSub": "Upload files manually",
   "uploadButton": "Upload",
   "file": "File",
+  "files": "Files",
   "language": "Language",
   "fileSize": "File Size",
   "uploadedAt": "Uploaded at",
@@ -136,5 +136,7 @@
   "viewFileButton": "View File in Detail",
   "createRoomFileButton": "Create a new Room with this File",
   "document": "Document",
-  "headingsAndSummaries": "Headings and Summaries"
+  "headingsAndSummaries": "Headings and Summaries",
+  "SelectFilesDialog": "Select a file from the list on the left to view it in detail or create a new room with this file.",
+  "GenerateChaptersDialog": "Click the 'Categorize' button to categorize the text and generate chapters."
 }
