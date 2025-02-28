@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {
-  ChevronRight24Regular,
-  ChevronLeft24Regular
+  ChevronRight24Filled,
+  ChevronLeft24Filled
 } from '@fluentui/react-icons';
 import RoomList from '../../common/RoomList/RoomList';
 import {
@@ -13,15 +13,16 @@ import {
 import FileExplorer from '../../common/FileExplorer/FileExplorer';
 import SideBarStyles from './SideBarStyles';
 
-const Sidebar = () => {
+interface SidebarProps {
+  collapsed: boolean;
+  onCollapsedChange: (collapsed: boolean) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ collapsed, onCollapsedChange }) => {
   const styles = SideBarStyles();
-  const [collapsed, setCollapsed] = useState<boolean>(() => {
-    const isCollapsed = localStorage.getItem('sidebarCollapsed');
-    return isCollapsed === 'true';
-  });
 
   const toggleSidebar = () => {
-    setCollapsed(!collapsed);
+    onCollapsedChange(!collapsed);
   };
 
   useEffect(() => {
@@ -46,12 +47,12 @@ const Sidebar = () => {
       </InlineDrawer>
       <div className={styles.toggleArea}>
         {!collapsed ? (
-          <ChevronLeft24Regular
+          <ChevronLeft24Filled
             className={styles.toggleIcon}
             onClick={toggleSidebar}
           />
         ) : (
-          <ChevronRight24Regular
+          <ChevronRight24Filled
             className={styles.toggleIcon}
             onClick={toggleSidebar}
           />

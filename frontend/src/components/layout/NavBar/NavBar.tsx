@@ -27,7 +27,7 @@ const NavBar = () => {
           {isAuthenticated && (<div className={styles.headerTitle}>{t('DemoHeading')}</div>)}
           {isAuthenticated && (
             <InfoHover>
-              <div style={{ width: '15rem' }}>
+              <div style={{ width: '15rem', padding: '.5rem' }}>
                 <strong>{t('DemoHeading')}:</strong>
                 <p>{t('DemoExplanation')}</p>
               </div>

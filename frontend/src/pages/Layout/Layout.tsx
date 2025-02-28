@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import NavBar from '../../components/layout/NavBar/NavBar';
 import LayoutStyles from './LayoutStyles';
@@ -15,6 +16,18 @@ const Layout = () => {
     !hideSidebarRoutes.includes(location.pathname) &&
     !location.pathname.startsWith('/files');  
 
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
+    return localStorage.getItem('sidebarCollapsed') === 'true';
+  });
+
+  // If on the main page, always uncollapse the sidebar
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setSidebarCollapsed(false);
+      localStorage.setItem('sidebarCollapsed', String(false));
+    }
+  }, [location.pathname]);
+
   if (!isAuthenticated) {
     return (
       <div className={styles.layout}>
@@ -27,7 +40,9 @@ const Layout = () => {
     <div className={styles.layout}>
       <NavBar />
       <div className={styles.container}>
-        {showSidebar && <Sidebar />}
+        {showSidebar && (
+          <Sidebar collapsed={sidebarCollapsed} onCollapsedChange={setSidebarCollapsed} />
+        )}
         <Outlet />
       </div>
     </div>

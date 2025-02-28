@@ -4,7 +4,7 @@ import { getFileDetails, updateFileHeadings } from '../../api/fileApi';
 import { useUser } from '../../context/UserProvider';
 import { File } from '../../models/File';
 import { Button, Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle } from '@fluentui/react-components';
-import { ArrowLeft20Regular, ArrowLeft24Regular, TextBulletListSquareSparkleRegular, ChatAddRegular } from '@fluentui/react-icons';
+import { LocationAddLeftFilled, ArrowLeft24Regular, TextBulletListSquareSparkleRegular, ChatAddRegular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-components';
 import FileSidebar from '../../components/layout/FilesSideBar/FileSideBar';
 import { categorizeText } from '../../api/categorizeApi';
@@ -23,6 +23,17 @@ const FileDetailPage = () => {
     const [loading, setLoading] = useState(false);
 
     const [summarizingIndex, setSummarizingIndex] = useState<{ fileId: string; index: number } | null>(null);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(localStorage.getItem('sidebarCollapsed') === 'true');
+
+    const [fullSummarizationState, setFullSummarizationState] = useState({
+        isOpen: false,
+        isPaused: false,
+        currentIndex: 0,
+        totalChapters: 0,
+        summarizedCount: 0,
+        startTime: 0,
+        estimatedTimeLeft: '',
+    });    
 
     const handleSummarize = async (file: File, chapterIndex: number) => {
         if (!file.text || !file.headings || file.headings.length === 0) return;
@@ -58,20 +69,19 @@ const FileDetailPage = () => {
     };    
 
     useEffect(() => {
+        if (location.pathname === '/files') {
+            setIsSidebarCollapsed(false);
+          }
         if (!user || !id) return;
-
-        console.log("Fetching file details for ID:", id);
         setFile(null);
-
         getFileDetails(id)
             .then((fileDetails) => {
-                console.log("Fetched file details:", fileDetails);
                 setFile(fileDetails);
             })
             .catch((error) => {
                 console.error("Error fetching file details:", error);
             });
-    }, [id]);
+    }, [id, location.pathname]);
 
     const scrollToMatch = (targetRef: React.RefObject<HTMLDivElement>, line: number) => {
       if (targetRef.current) {
@@ -136,7 +146,78 @@ const FileDetailPage = () => {
             setConfirmReCategorizeFile(null);
             setLoading(false);
         }
-    };    
+    };  
+    
+    const handleStartFullSummarization = async () => {
+        if (!file || !file.headings) return;
+        const chaptersToSummarize = file.headings.filter(ch => !ch.summary);
+        if (chaptersToSummarize.length === 0) return;
+        
+        setFullSummarizationState({
+            isOpen: true,
+            isPaused: false,
+            currentIndex: 0,
+            totalChapters: chaptersToSummarize.length,
+            summarizedCount: 0,
+            startTime: Date.now(),
+            estimatedTimeLeft: chaptersToSummarize.length * 20 + " s",
+        });
+        
+        for (let i = 0; i < chaptersToSummarize.length; i++) {
+            if (fullSummarizationState.isPaused) {
+                await new Promise(resolve => {
+                    const checkInterval = setInterval(() => {
+                        if (!fullSummarizationState.isPaused) {
+                            clearInterval(checkInterval);
+                            resolve(undefined);
+                        }
+                    }, 500);
+                });
+            }
+    
+            await handleSummarize(file, file.headings.indexOf(chaptersToSummarize[i]));
+    
+            const elapsedTime = fullSummarizationState.startTime ? ((Date.now() - fullSummarizationState.startTime) / 1000) : 0;
+            const avgTimePerChapter = elapsedTime / (i + 1);
+            const estimatedTimeLeft = avgTimePerChapter * (chaptersToSummarize.length - (i + 1));
+            console.log("start Time ")
+            console.log("Elapsed time:", elapsedTime);
+            console.log("Estimated time left:", estimatedTimeLeft);
+            console.log("chaptersToSummarize.length:", chaptersToSummarize.length);
+            console.log("average time per chapter:", avgTimePerChapter);
+    
+            setFullSummarizationState(prev => ({
+                ...prev,
+                summarizedCount: i + 1,
+                estimatedTimeLeft: estimatedTimeLeft.toFixed(2),
+            }));
+        }
+    };
+    
+    const togglePauseSummarization = () => {
+        setFullSummarizationState(prev => ({ ...prev, isPaused: !prev.isPaused }));
+    };
+    
+    const FullSummarizationDialog = () => (
+        <Dialog modalType="alert" open={fullSummarizationState.isOpen}>
+            <DialogSurface>
+                <DialogBody>
+                    <DialogTitle>{t('fullSummarizationInProgress')}</DialogTitle>
+                    <DialogContent>
+                        <p>{t('progress')}: {fullSummarizationState.summarizedCount} / {fullSummarizationState.totalChapters}</p>
+                        <progress value={fullSummarizationState.summarizedCount} max={fullSummarizationState.totalChapters} style={{ width: '100%' }}></progress>
+                        <p>{t('percentage')}: {((fullSummarizationState.summarizedCount / fullSummarizationState.totalChapters) * 100).toFixed(2)}%</p>
+                        <p>{t('elapsedTime')}: {fullSummarizationState.startTime ? ((Date.now() - fullSummarizationState.startTime) / 1000).toFixed(2) : '0.00'}s</p>
+                        <p>{t('estimatedTimeLeft')}: {fullSummarizationState.estimatedTimeLeft}s</p>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={togglePauseSummarization}>{fullSummarizationState.isPaused ? t('resume') : t('pause')}</Button>
+                        <Button onClick={() => setFullSummarizationState(prev => ({ ...prev, isOpen: false }))}>{t('close')}</Button>
+                    </DialogActions>
+                </DialogBody>
+            </DialogSurface>
+        </Dialog>
+    );
 
     const handleGenerateHeadings = async () => {
         if (!file || !file.text) return;
@@ -165,8 +246,7 @@ const FileDetailPage = () => {
 
     return (
         <div style={{ display: 'flex', height: "calc(100vh - 55px)", width: navigator.userAgent.includes('Firefox') ? '-moz-available' : '-webkit-fill-available' }}>
-            <FileSidebar />
-
+            <FileSidebar collapsed={isSidebarCollapsed} onCollapsedChange={setIsSidebarCollapsed} />
             {/* Left Panel w/ Text */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto' }}>
             {/* Pinned Header */}
@@ -225,6 +305,15 @@ const FileDetailPage = () => {
             {/* Pinned Header */}
             <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem' }}>
                 <h3 style={{ flexGrow: 1 }}>{t('headingsAndSummaries')}</h3>
+                {file?.headings?.length ? (
+                    <Button
+                        icon={<TextBulletListSquareSparkleRegular />}
+                        onClick={handleStartFullSummarization}
+                        disabled={loading}
+                    >
+                        {t('fullSummarize')}
+                    </Button>
+                ) : null}
                 <Button
                 icon={<TextBulletListSquareSparkleRegular/>}
                 onClick={() => (file?.headings?.length ? setConfirmReCategorizeFile(file) : handleGenerateHeadings())}
@@ -244,7 +333,7 @@ const FileDetailPage = () => {
                 file.headings.map((chapter, index) => (
                     <div key={index} data-line={chapter.line} style={{ marginBottom: '20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <Button icon={<ArrowLeft20Regular />} onClick={() => scrollToMatch(contentRef, chapter.line)} />
+                        <Button icon={<LocationAddLeftFilled />} style={{color: tokens.colorBrandForeground1}} onClick={() => scrollToMatch(contentRef, chapter.line)} />
                         <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
                         <p style={{ marginLeft: '10px' }}>{t('line') + ": " + chapter.line}</p>
                     </div>
@@ -290,6 +379,8 @@ const FileDetailPage = () => {
                 </DialogSurface>
                 </Dialog>
             )}
+            {/* Render the Full Summarization Dialog */}
+            <FullSummarizationDialog />
             </div>
         </div>
     );

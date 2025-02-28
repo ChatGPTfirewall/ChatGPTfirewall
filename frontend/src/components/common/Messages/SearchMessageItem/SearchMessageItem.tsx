@@ -209,9 +209,17 @@ const SearchMessageItem = ({
                         accuracy: (result.accuracy * 100).toFixed(2)
                       })}
                     </Caption1Strong>
-                    <Button icon={<DocumentSearchRegular/>} onClick={() => navigate(`/files/${result.fileId}`)}>
-                    {t('viewFileButton')}
-                    </Button>
+                    {!editable && (
+                        <Button
+                        icon={<DocumentSearchRegular />}
+                        onClick={() => {
+                          localStorage.setItem('sidebarCollapsed', String(true));
+                          navigate(`/files/${result.fileId}`);
+                        }}
+                        >
+                        {t('viewFileButton')}
+                        </Button>
+                    )}
                   </div>
                   {editable ? (
                     <div className={styles.textarea}>

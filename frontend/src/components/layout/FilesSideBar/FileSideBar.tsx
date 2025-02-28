@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight24Regular, ChevronLeft24Regular } from '@fluentui/react-icons';
+import { ChevronRight24Filled, ChevronLeft24Filled } from '@fluentui/react-icons';
 import { Divider, DrawerBody, DrawerHeader, InlineDrawer } from '@fluentui/react-components';
 import CompactFileList from '../../common/CompactFileList/CompactFileList';
 import { getFiles } from '../../../api/fileApi';
@@ -9,41 +9,89 @@ import { File } from '../../../models/File';
 import { useUser } from '../../../context/UserProvider';
 import FileExplorer from '../../common/FileExplorer/FileExplorer';
 
-
 type SelectionItemId = string | number;
 
-const FileSidebar = () => {
+interface FileSidebarProps {
+  collapsed?: boolean;
+  onCollapsedChange?: (collapsed: boolean) => void;
+}
+
+const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed, onCollapsedChange }) => {
   const styles = FilesSideBarStyles();
   const { user } = useUser();
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState<boolean>(() => {
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileChanged, setFileChanged] = useState(false);
+
+  // Internal state management
+  const [internalCollapsed, setInternalCollapsed] = useState<boolean>(() => {
     const isCollapsed = localStorage.getItem('sidebarCollapsed');
     return isCollapsed === 'true';
   });
-  const [files, setFiles] = useState<File[]>([]);
+
+  // If external control is provided, use it; otherwise, fallback to internal state
+  const collapsed = externalCollapsed ?? internalCollapsed;
+
+  // Sync externalCollapsed to localStorage whenever it changes
+  useEffect(() => {
+    if (externalCollapsed !== undefined) {
+      localStorage.setItem('sidebarCollapsed', String(externalCollapsed));
+      setInternalCollapsed(externalCollapsed); // Ensure internal state stays in sync
+    }
+  }, [externalCollapsed]);
 
   useEffect(() => {
     if (!user) return;
     getFiles(user.auth0_id).then(setFiles);
-  }, []);
+  }, [user]);
 
   const toggleSidebar = () => {
-    setCollapsed(!collapsed);
-    localStorage.setItem('sidebarCollapsed', String(!collapsed));
+    const newCollapsed = !collapsed;
+
+    if (externalCollapsed === undefined) {
+      setInternalCollapsed(newCollapsed);
+    }
+
+    // Notify parent if provided
+    if (onCollapsedChange) {
+      onCollapsedChange(newCollapsed);
+    }
+    localStorage.setItem('sidebarCollapsed', String(newCollapsed));
   };
 
   const handleFileSelection = (_e: any, data: { selectedItems: Set<SelectionItemId> }) => {
     const selectedFileId = Array.from(data.selectedItems)[0]; // Get first selected file
     if (selectedFileId) {
+      setFileChanged(true);
       navigate(`/files/${selectedFileId}`);
     }
   };
 
+  const handleFileExplorerClose = () => {
+    if (user) {
+      getFiles(user.auth0_id).then(setFiles);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setFileChanged(false);
+  };
+
+  const handleMouseLeave = () => {
+    if (fileChanged) {
+      toggleSidebar();
+    }
+  };
+
   return (
-    <div className={styles.sidebarContainer}>
+    <div
+      className={styles.sidebarContainer}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <InlineDrawer separator open={!collapsed} position="start" className={styles.drawer}>
         <DrawerHeader>
-          < FileExplorer />
+          <FileExplorer onClose={handleFileExplorerClose} />
         </DrawerHeader>
         <DrawerBody>
           <CompactFileList files={files} onSelectionChange={handleFileSelection} />
@@ -52,9 +100,9 @@ const FileSidebar = () => {
       </InlineDrawer>
       <div className={styles.toggleArea}>
         {collapsed ? (
-          <ChevronRight24Regular className={styles.toggleIcon} onClick={toggleSidebar} />
+          <ChevronRight24Filled className={styles.toggleIcon} onClick={toggleSidebar} />
         ) : (
-          <ChevronLeft24Regular className={styles.toggleIcon} onClick={toggleSidebar} />
+          <ChevronLeft24Filled className={styles.toggleIcon} onClick={toggleSidebar} />
         )}
       </div>
     </div>
