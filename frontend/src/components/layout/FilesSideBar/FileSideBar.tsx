@@ -86,18 +86,21 @@ const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed,
   return (
     <div
       className={styles.sidebarContainer}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
-      <InlineDrawer separator open={!collapsed} position="start" className={styles.drawer}>
-        <DrawerHeader>
-          <FileExplorer onClose={handleFileExplorerClose} />
-        </DrawerHeader>
-        <DrawerBody>
-          <CompactFileList files={files} onSelectionChange={handleFileSelection} />
-          <Divider className={styles.divider} />
-        </DrawerBody>
-      </InlineDrawer>
+      <div
+      className={styles.sidebarContainer}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
+        <InlineDrawer separator open={!collapsed} position="start" className={styles.drawer}>
+          <DrawerHeader>
+            <FileExplorer onClose={handleFileExplorerClose} />
+          </DrawerHeader>
+          <DrawerBody>
+            <CompactFileList files={files} onSelectionChange={handleFileSelection} />
+            <Divider className={styles.divider} />
+          </DrawerBody>
+        </InlineDrawer>
+      </div>
       <div className={styles.toggleArea}>
         {collapsed ? (
           <ChevronRight24Filled className={styles.toggleIcon} onClick={toggleSidebar} />
