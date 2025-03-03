@@ -176,7 +176,6 @@ const FileDetailPage = () => {
     
         for (let i = 0; i < chaptersToSummarize.length; i++) {
             while (isAbortedRef.current) {
-                console.log("Summarization aborted...");
                 setFullSummarizationState(prev => ({
                     ...prev,
                     isAborted: true,
