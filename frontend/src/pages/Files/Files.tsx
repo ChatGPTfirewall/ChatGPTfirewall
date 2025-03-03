@@ -27,13 +27,16 @@ const FileDetailPage = () => {
 
     const [fullSummarizationState, setFullSummarizationState] = useState({
         isOpen: false,
-        isPaused: false,
+        isAborted: false,
         currentIndex: 0,
         totalChapters: 0,
         summarizedCount: 0,
         startTime: 0,
         estimatedTimeLeft: '',
+        avgTimePerChapter: 0,
     });    
+
+    const isAbortedRef = useRef(fullSummarizationState.isAborted);
 
     const handleSummarize = async (file: File, chapterIndex: number) => {
         if (!file.text || !file.headings || file.headings.length === 0) return;
@@ -52,6 +55,8 @@ const FileDetailPage = () => {
             const response: SummarizeTextResponse = await summarizeText(textToSummarize);
     
             if (response?.summary) {
+                const chapters = file.headings;
+                const chapter = chapters[chapterIndex];
                 const updatedHeadings = [...chapters];
                 updatedHeadings[chapterIndex] = { ...chapter, summary: response.summary };
     
@@ -150,55 +155,99 @@ const FileDetailPage = () => {
     
     const handleStartFullSummarization = async () => {
         if (!file || !file.headings) return;
-        const chaptersToSummarize = file.headings.filter(ch => !ch.summary);
+    
+        let latestFile = file;
+        const chaptersToSummarize = latestFile.headings?.filter(ch => !ch.summary) || [];
         if (chaptersToSummarize.length === 0) return;
-        
-        setFullSummarizationState({
+    
+        setFullSummarizationState(prev => ({
+            ...prev,
             isOpen: true,
-            isPaused: false,
+            isAborted: false,
             currentIndex: 0,
             totalChapters: chaptersToSummarize.length,
             summarizedCount: 0,
             startTime: Date.now(),
-            estimatedTimeLeft: chaptersToSummarize.length * 20 + " s",
-        });
-        
+            estimatedTimeLeft: "0",
+            avgTimePerChapter: 0, 
+        }));
+    
+        isAbortedRef.current = false;
+    
         for (let i = 0; i < chaptersToSummarize.length; i++) {
-            if (fullSummarizationState.isPaused) {
-                await new Promise(resolve => {
-                    const checkInterval = setInterval(() => {
-                        if (!fullSummarizationState.isPaused) {
-                            clearInterval(checkInterval);
-                            resolve(undefined);
-                        }
-                    }, 500);
-                });
+            while (isAbortedRef.current) {
+                console.log("Summarization aborted...");
+                setFullSummarizationState(prev => ({
+                    ...prev,
+                    isAborted: true,
+                    isOpen: false,
+                }));
+                return;
             }
     
-            await handleSummarize(file, file.headings.indexOf(chaptersToSummarize[i]));
+            if (latestFile.headings) {
+                await handleSummarize(latestFile, latestFile.headings.indexOf(chaptersToSummarize[i]));
+            }
     
-            const elapsedTime = fullSummarizationState.startTime ? ((Date.now() - fullSummarizationState.startTime) / 1000) : 0;
-            const avgTimePerChapter = elapsedTime / (i + 1);
-            const estimatedTimeLeft = avgTimePerChapter * (chaptersToSummarize.length - (i + 1));
-            console.log("start Time ")
-            console.log("Elapsed time:", elapsedTime);
-            console.log("Estimated time left:", estimatedTimeLeft);
-            console.log("chaptersToSummarize.length:", chaptersToSummarize.length);
-            console.log("average time per chapter:", avgTimePerChapter);
+            // Ensure latest file state is updated after summarization
+            await new Promise(resolve => setTimeout(resolve, 0)); 
+            setFile(prev => {
+                if (!prev) return prev;
+                latestFile = prev;
+                return prev;
+            });
     
-            setFullSummarizationState(prev => ({
-                ...prev,
-                summarizedCount: i + 1,
-                estimatedTimeLeft: estimatedTimeLeft.toFixed(2),
-            }));
+            setFullSummarizationState(prev => {
+                const elapsedTime = (Date.now() - prev.startTime) / 1000;
+                const avgTimePerChapter = elapsedTime / (i + 1); // Compute only on completion
+                const estimatedTimeLeft = avgTimePerChapter * (chaptersToSummarize.length - (i + 1));
+    
+                return {
+                    ...prev,
+                    summarizedCount: i + 1,
+                    avgTimePerChapter, // Store the correct average time
+                    estimatedTimeLeft: estimatedTimeLeft.toFixed(2),
+                };
+            });
         }
+    
+        setFullSummarizationState(prev => ({
+            ...prev,
+            isOpen: false,
+        }));
     };
     
-    const togglePauseSummarization = () => {
-        setFullSummarizationState(prev => ({ ...prev, isPaused: !prev.isPaused }));
-    };
+
+const abortSummarization = () => {
+    setFullSummarizationState(prev => {
+        const newAbortedState = true;
+        isAbortedRef.current = newAbortedState;
+        return { ...prev, isAborted: newAbortedState };
+    });
+};
     
-    const FullSummarizationDialog = () => (
+const FullSummarizationDialog = () => {
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const [estimatedTimeLeft, setEstimatedTimeLeft] = useState(0);
+
+    useEffect(() => {
+        if (!fullSummarizationState.isOpen || !fullSummarizationState.startTime) return;
+
+        const interval = setInterval(() => {
+            const newElapsedTime = ((Date.now() - fullSummarizationState.startTime) / 1000);
+            setElapsedTime(newElapsedTime);
+
+            if (fullSummarizationState.summarizedCount > 0) {
+                setEstimatedTimeLeft(parseFloat(fullSummarizationState.estimatedTimeLeft));
+            } else {
+                setEstimatedTimeLeft(0);
+            }
+        }, 250);
+
+        return () => clearInterval(interval);
+    }, [fullSummarizationState.isOpen, fullSummarizationState.summarizedCount]);
+
+    return (
         <Dialog modalType="alert" open={fullSummarizationState.isOpen}>
             <DialogSurface>
                 <DialogBody>
@@ -207,17 +256,23 @@ const FileDetailPage = () => {
                         <p>{t('progress')}: {fullSummarizationState.summarizedCount} / {fullSummarizationState.totalChapters}</p>
                         <progress value={fullSummarizationState.summarizedCount} max={fullSummarizationState.totalChapters} style={{ width: '100%' }}></progress>
                         <p>{t('percentage')}: {((fullSummarizationState.summarizedCount / fullSummarizationState.totalChapters) * 100).toFixed(2)}%</p>
-                        <p>{t('elapsedTime')}: {fullSummarizationState.startTime ? ((Date.now() - fullSummarizationState.startTime) / 1000).toFixed(2) : '0.00'}s</p>
-                        <p>{t('estimatedTimeLeft')}: {fullSummarizationState.estimatedTimeLeft}s</p>
+                        <p>{t('timePer')}: {fullSummarizationState.avgTimePerChapter.toFixed(2)}s</p>
+                        <p>{t('elapsedTime')}: {elapsedTime.toFixed(2)}s</p>
+                        <p>{t('estimatedTimeLeft')}: {estimatedTimeLeft}s</p>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={togglePauseSummarization}>{fullSummarizationState.isPaused ? t('resume') : t('pause')}</Button>
-                        <Button onClick={() => setFullSummarizationState(prev => ({ ...prev, isOpen: false }))}>{t('close')}</Button>
+                        <Button 
+                            onClick={abortSummarization} 
+                            disabled={fullSummarizationState.isAborted}
+                        >
+                            {fullSummarizationState.isAborted ? t('waitingToAbort') : t('abort')}
+                        </Button>
                     </DialogActions>
                 </DialogBody>
             </DialogSurface>
         </Dialog>
     );
+};
 
     const handleGenerateHeadings = async () => {
         if (!file || !file.text) return;

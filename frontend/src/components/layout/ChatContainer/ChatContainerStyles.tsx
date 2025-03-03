@@ -11,7 +11,7 @@ const ChatContainerStyles = makeStyles({
     paddingBottom: tokens.spacingVerticalL,
     marginLeft: tokens.spacingHorizontalXL,
     marginRight: tokens.spacingHorizontalXL,
-    height: '66vh',
+    height: 'calc(-244px + 100vh)',
     overflowY: 'auto'
   }
 });

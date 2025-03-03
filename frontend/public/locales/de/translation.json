@@ -139,5 +139,13 @@
   "headingsAndSummaries": "Überschriften und Zusammenfassungen",
   "SelectFilesDialog": "Wähle eine Datei aus der Liste auf der linken Seite aus, um sie genauer zu untersuchen oder einen neuen Raum mit dieser Datei zu erstellen.",
   "GenerateChaptersDialog": "Klicken Sie auf die Schaltfläche \"Kategorisiere\", um den Text zu kategorisieren und Kapitel zu generieren.",
-  "fullSummarize": "Alle Kapitel zusammenfassen"
+  "fullSummarize": "Alle Kapitel zusammenfassen",
+  "progress": "Fortschritt",
+  "percentage": "Prozent",
+  "elapsedTime": "Vergangene Zeit",
+  "estimatedTimeLeft": "Verbleibende Zeit",
+  "fullSummarizationInProgress": "Alle Kapitel zusammenfassen...",
+  "timePer": "Zeit pro Datei",
+  "waitingToAbort": "Warte auf Abbruch...",
+  "abort": "Abbrechen"
 }

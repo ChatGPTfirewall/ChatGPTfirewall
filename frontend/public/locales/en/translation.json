@@ -139,5 +139,13 @@
   "headingsAndSummaries": "Headings and Summaries",
   "SelectFilesDialog": "Select a file from the list on the left to view it in detail or create a new room with this file.",
   "GenerateChaptersDialog": "Click the 'Categorize' button to categorize the text and generate chapters.",
-  "fullSummarize": "Summarize all Chapters"
+  "fullSummarize": "Summarize all Chapters",
+  "progress": "Progress",
+  "percentage": "Percentage",
+  "elapsedTime": "Elapsed Time",
+  "estimatedTimeLeft": "Estimated Time Left",
+  "fullSummarizationInProgress": "Summarizing all chapters...",
+  "timePer": "Time spent per File",
+  "waitingToAbort": "Waiting to abort...",
+  "abort": "Abort"
 }
