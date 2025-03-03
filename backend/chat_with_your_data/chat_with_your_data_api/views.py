@@ -113,32 +113,28 @@ class UserApiView(APIView):
             "auth0_id": request.data.get("auth0_id"),
             "username": request.data.get("username"),
             "email": request.data.get("email"),
+            "lang": request.data.get("lang"),
         }
         serializer = UserSerializer(data=data)
 
         try:
             if serializer.is_valid():
-                serializer.save()
+                user = serializer.save()  # Save and get the User instance
                 [_, id] = request.data.get("auth0_id").split("|")
                 create_collection(id)
-                response = Response(serializer.data, status=status.HTTP_201_CREATED)
 
-                # create first Room when user is created
-                myllmManager.addRoom(id, "Initial Room")
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
             else:
                 # Handle other validation errors
-                response = Response(
-                    serializer.errors, status=status.HTTP_400_BAD_REQUEST
-                )
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        except IntegrityError as e:
+        except IntegrityError:
             # Handle the IntegrityError (duplicate key error)
-            response = Response(
+            return Response(
                 {"error": "User with this auth0_id already exists."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-
-        return response
 
     @permission_classes([AllowAny])
     def put(self, request, auth0_id, *args, **kwargs):
