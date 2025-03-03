@@ -38,6 +38,7 @@ const RoomStyles = makeStyles({
     marginRight: tokens.spacingHorizontalL
   },
   emptyContainer: {
+    height: '80vh',
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
