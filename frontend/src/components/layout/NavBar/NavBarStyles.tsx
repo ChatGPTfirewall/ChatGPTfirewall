@@ -4,7 +4,7 @@ const NavBarStyles = makeStyles({
   header: {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
-    height: '55px'
+    minHeight: '55px'
   },
   headerContainer: {
     display: 'flex',

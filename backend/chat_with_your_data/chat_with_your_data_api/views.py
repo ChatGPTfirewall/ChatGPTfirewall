@@ -321,6 +321,8 @@ class RoomApiView(APIView):
         try:
             room = Room.objects.get(id=room_id)
             serializer = RoomSerializer(room)
+            if room.user.auth0_id.replace("|", ".") != str(request.user):
+                return Response({"error": "You do not have permission to access this room"}, status=status.HTTP_403_FORBIDDEN)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Room.DoesNotExist:
             return Response(
@@ -333,6 +335,8 @@ class RoomApiView(APIView):
         try:
             room = Room.objects.get(id=room_id)
             room_data = RoomSerializer(room).data
+            if room.user.auth0_id.replace("|", ".") != str(request.user):
+                    return Response({"error": "You do not have permission to delete this room"}, status=status.HTTP_403_FORBIDDEN)
             room.delete()
             return Response(room_data, status=status.HTTP_200_OK)
         except Room.DoesNotExist:
@@ -368,6 +372,31 @@ class RoomApiView(APIView):
 
 
 class DocumentApiView(APIView):
+    @permission_classes([AllowAny])
+    def get(self, request, document_id, *args, **kwargs):
+        """
+        Retrieve document details including full text, headings, and summaries.
+        """
+        document = Document.objects.filter(id=document_id).first()
+
+        if not document:
+            return Response({"error": "Document not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        if document.user.auth0_id.replace("|", ".") != str(request.user):
+            return Response({"error": "You do not have permission to access this document"}, status=status.HTTP_403_FORBIDDEN)
+
+        document_data = {
+            "id": document.id,
+            "filename": document.filename,
+            "text": document.text,
+            "headings": document.headings,
+            "lang": document.lang,
+            "fileSize": document.fileSize,
+            "uploadedAt": document.uploadedAt
+        }
+
+        return Response(document_data, status=status.HTTP_200_OK)
+
     @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         auth0_id = request.data.get("auth0_id")
@@ -539,17 +568,19 @@ class MessagesApiView(APIView):
                         )
                     except AnonymizeEntitie.DoesNotExist:
                         # Create model if not already existing
+                        type, count = str(entity_mapping[entry]).rsplit("_", 1)  # Split at the last "_"
                         AnonymizeEntitie.objects.create(
                             roomID=room,
                             anonymized=entity_mapping[entry],
                             deanonymized=entry,
-                            entityType=str(entity_mapping[entry]).split("_")[0],
-                            counter=str(entity_mapping[entry]).split("_")[1],
+                            entityType=type,
+                            counter=count,
                         )
 
                 fact = {
                     "content": text + " ",
                     "fileName": section.document.filename,
+                    "fileId": section.document.id,
                     "accuracy": search_result.score,
                     "context_before": before_result + " ",
                     "context_after":  after_result + " ",
