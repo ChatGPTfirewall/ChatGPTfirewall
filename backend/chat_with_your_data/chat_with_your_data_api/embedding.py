@@ -1,6 +1,7 @@
 import os
 import spacy
 import re
+import math
 from spacy.language import Language
 from spacy.tokens import Doc
 from sentence_transformers import SentenceTransformer
@@ -95,6 +96,38 @@ def return_context(embedded_text_, fact_index, range_before_, range_after_):
             context_after += sent.text
 
     return (context_before, context_after)
+
+def return_embed_to_line(embedded_text_, fact_index, raw_text):
+    # Split the raw text into lines
+    raw_lines = raw_text.splitlines()
+    
+    # Get the sentence at the fact_index from the embedded text
+    text_sents = list(embedded_text_.sents)
+    if fact_index >= len(text_sents):
+        raise ValueError("fact_index is out of range")
+    
+    target_sentence = text_sents[fact_index]
+    target_sentence_text = target_sentence.text.strip()  # Get the text of the target sentence
+    
+    # Concatenate the raw text lines into a single string with line breaks
+    concatenated_raw_text = "\n".join(raw_lines)
+    
+    # Find the starting and ending positions of the target sentence in the concatenated raw text
+    start_pos = concatenated_raw_text.find(target_sentence_text)
+    if start_pos == -1:
+        raise ValueError("Target sentence not found in raw text")
+    
+    end_pos = start_pos + len(target_sentence_text)
+    
+    # Map the starting and ending positions back to line numbers
+    # Count the number of line breaks before the starting and ending positions
+    start_line = concatenated_raw_text.count("\n", 0, start_pos) + 1
+    end_line = concatenated_raw_text.count("\n", 0, end_pos) + 1
+    
+    # Calculate the middle line number and round it up
+    middle_line = math.ceil((start_line + end_line) / 2)
+    
+    return middle_line
 
 def vectorize(tokens):
     return transformer.encode(tokens)

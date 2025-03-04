@@ -1,15 +1,11 @@
-import json
 import mimetypes
 import os
 from functools import wraps
 from pathlib import Path
-from pprint import pprint
 from xml.etree import ElementTree as ET
 
 import requests
-from django.core import serializers
 from django.db import IntegrityError
-from django.db.models import Q
 from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
 from django.shortcuts import redirect
 from django.utils import timezone
@@ -18,10 +14,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .apiRateLimit import check_and_decrement_api_ratelimit
-from .embedding import (anonymize_text, detect_entities, embed_text,
+from .embedding import (return_embed_to_line, detect_entities, embed_text,
                         map_entities, return_context, vectorize, categorize, summarize_text)
 from .file_importer import extract_text, save_file
-from .llm import count_tokens, run_llm
 from .llmManager import LLM, llmManager
 from .models import (AnonymizeEntitie, Document, Room, RoomDocuments, Section,
                      User)
@@ -573,13 +568,46 @@ class MessagesApiView(APIView):
                             counter=count,
                         )
 
+                # Extract headings from the document
+                headings = section.document.headings or []
+
+                # Get the exact line number of the embedded section
+                line_number = return_embed_to_line(embedded_text, section.doc_index, section.document.text)
+
+                # Find the most relevant heading
+                relevant_heading = None
+
+                # Sort headings by line number to ensure correct order
+                sorted_headings = sorted(headings, key=lambda h: h["line"])
+
+                for i, heading in enumerate(sorted_headings):
+                    heading_line = heading["line"]
+                    next_heading_line = sorted_headings[i + 1]["line"] if i + 1 < len(sorted_headings) else float('inf')
+
+                    # Check if the section line number falls between this heading and the next one
+                    if heading_line <= line_number < next_heading_line:
+                        relevant_heading = heading
+                        break  # Stop once the correct heading is found
+
+                # Construct the additional heading information
+                heading_text = ""
+                if relevant_heading:
+                    if section.document.lang == "de":
+                        heading_text = f'\n\nDieser Text wurde aus dem Kapitel "{relevant_heading["heading"]}" extrahiert.'
+                        if "summary" in relevant_heading and relevant_heading["summary"]:
+                            heading_text += f'\nHier ist eine kurze Zusammenfassung dieses Kapitels: {relevant_heading["summary"]}.'
+                    else:
+                        heading_text = f'\n\nThis text was extracted from the chapter "{relevant_heading["heading"]}".'
+                        if "summary" in relevant_heading and relevant_heading["summary"]:
+                            heading_text += f'\nHere is a quick summary of this chapter: {relevant_heading["summary"]}.'
+
                 fact = {
                     "content": text + " ",
                     "fileName": section.document.filename,
                     "fileId": section.document.id,
                     "accuracy": search_result.score,
                     "context_before": before_result + " ",
-                    "context_after":  after_result + " ",
+                    "context_after": after_result + " " + heading_text,
                 }
                 facts.append(fact)
 
