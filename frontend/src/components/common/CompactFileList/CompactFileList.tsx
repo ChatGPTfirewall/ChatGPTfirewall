@@ -15,7 +15,7 @@ import CompactFileListStyles from './CompactFileListStyles';
 import { File } from '../../../models/File';
 import { useTranslation } from 'react-i18next';
 import ReactCountryFlag from 'react-country-flag';
-import { format } from 'date-fns';
+import { format, max } from 'date-fns';
 import { KeyboardEvent, MouseEvent } from 'react';
 
 const langToCountryCode = (lang: string) => {
@@ -137,14 +137,14 @@ export const CompactFileList = ({
 
   const columnSizingOptions = {
     file: {
-      defaultWidth: 250,
+      defaultWidth: 350,
       minWidth: 60,
-      idealWidth: 250
+      idealWidth: 350
     },
     lang: {
-      defaultWidth: 50,
+      defaultWidth: 60,
       minWidth: 60,
-      idealWidth: 50
+      idealWidth: 60
     },
     size: {
       defaultWidth: 55,
@@ -152,14 +152,14 @@ export const CompactFileList = ({
       idealWidth: 55
     },
     uploadedAt: {
-      defaultWidth: 10,
-      minWidth: 10,
-      idealWidth: 10,
-      maxWidth: 10
+      defaultWidth: 105,
+      minWidth: 35,
+      idealWidth: 105,
     },
   };
 
   return (
+    <div style={{ maxWidth: '50vw', width: 'fit-content' }}>
     <DataGrid
       items={files}
       columns={columns}
@@ -190,6 +190,7 @@ export const CompactFileList = ({
         )}
       </DataGridBody>
     </DataGrid>
+    </div>
   );
 };
 
