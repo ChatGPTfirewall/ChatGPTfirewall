@@ -55,6 +55,10 @@ const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed,
     // Notify parent if provided
     if (onCollapsedChange) {
       onCollapsedChange(newCollapsed);
+      // Reset fileChanged state when sidebar is expanded
+      if (!newCollapsed) {
+        setFileChanged(false);
+      }
     }
     localStorage.setItem('sidebarCollapsed', String(newCollapsed));
   };

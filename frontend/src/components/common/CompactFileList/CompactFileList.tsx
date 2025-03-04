@@ -121,15 +121,15 @@ export const CompactFileList = ({
     createTableColumn<File>({
       columnId: 'uploadedAt',
       compare: (a, b) => {
-        const dateA = a.uploadedAt ? a.uploadedAt.getTime() : 0;
-        const dateB = b.uploadedAt ? b.uploadedAt.getTime() : 0;
+        const dateA = a.uploadedAt ? new Date(a.uploadedAt).getTime() : 0;
+        const dateB = b.uploadedAt ? new Date(b.uploadedAt).getTime() : 0;
         return dateB - dateA;
       },
       renderHeaderCell: () => t('uploadedAt'),
       renderCell: (file) =>
         file.uploadedAt ? (
           <TableCellLayout>
-            {format(file.uploadedAt, 'dd.MM.yyyy HH:mm')}
+            {format(new Date(file.uploadedAt), 'dd.MM.yyyy HH:mm')}
           </TableCellLayout>
         ) : null
     })
@@ -137,14 +137,14 @@ export const CompactFileList = ({
 
   const columnSizingOptions = {
     file: {
-      defaultWidth: 250,
+      defaultWidth: 350,
       minWidth: 60,
-      idealWidth: 250
+      idealWidth: 350
     },
     lang: {
-      defaultWidth: 50,
+      defaultWidth: 60,
       minWidth: 60,
-      idealWidth: 50
+      idealWidth: 60
     },
     size: {
       defaultWidth: 55,
@@ -152,14 +152,14 @@ export const CompactFileList = ({
       idealWidth: 55
     },
     uploadedAt: {
-      defaultWidth: 10,
-      minWidth: 10,
-      idealWidth: 10,
-      maxWidth: 10
+      defaultWidth: 105,
+      minWidth: 35,
+      idealWidth: 105,
     },
   };
 
   return (
+    <div style={{ maxWidth: '50vw', width: 'fit-content' }}>
     <DataGrid
       items={files}
       columns={columns}
@@ -190,6 +190,7 @@ export const CompactFileList = ({
         )}
       </DataGridBody>
     </DataGrid>
+    </div>
   );
 };
 
