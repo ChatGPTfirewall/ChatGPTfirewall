@@ -131,15 +131,15 @@ export const FileList = ({
     createTableColumn<File>({
       columnId: 'uploadedAt',
       compare: (a, b) => {
-        const dateA = a.uploadedAt ? a.uploadedAt.getTime() : 0;
-        const dateB = b.uploadedAt ? b.uploadedAt.getTime() : 0;
+        const dateA = a.uploadedAt ? new Date(a.uploadedAt).getTime() : 0;
+        const dateB = b.uploadedAt ? new Date(b.uploadedAt).getTime() : 0;
         return dateB - dateA;
       },
       renderHeaderCell: () => t('uploadedAt'),
       renderCell: (file) =>
         file.uploadedAt ? (
           <TableCellLayout>
-            {format(file.uploadedAt, 'dd.MM.yyyy HH:mm')}
+            {format(new Date(file.uploadedAt), 'dd.MM.yyyy HH:mm')}
           </TableCellLayout>
         ) : null
     })
