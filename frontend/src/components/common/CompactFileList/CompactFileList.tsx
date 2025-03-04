@@ -15,7 +15,7 @@ import CompactFileListStyles from './CompactFileListStyles';
 import { File } from '../../../models/File';
 import { useTranslation } from 'react-i18next';
 import ReactCountryFlag from 'react-country-flag';
-import { format, max } from 'date-fns';
+import { format } from 'date-fns';
 import { KeyboardEvent, MouseEvent } from 'react';
 
 const langToCountryCode = (lang: string) => {
