@@ -25,9 +25,10 @@ import { useToast } from '../../../context/ToastProvider';
 
 interface FileExplorerProps {
   onClose?: () => void;
+  onOpen?: () => void;
 }
 
-export const FileExplorer = ({ onClose }: FileExplorerProps) => {
+export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
   const styles = FileExplorerStyles();
   const { t } = useTranslation();
   const { user } = useUser();
@@ -123,7 +124,13 @@ export const FileExplorer = ({ onClose }: FileExplorerProps) => {
   };
 
   return (
-    <Dialog onOpenChange={(_, data) => !data.open && onClose?.()}>
+    <Dialog onOpenChange={(_, data) => {
+      if (data.open) {
+        onOpen?.(); // Call onOpen when the dialog opens
+      } else {
+        onClose?.(); // Call onClose when the dialog closes
+      }
+    }}>    
       <DialogTrigger disableButtonEnhancement>
         <Button
           appearance="primary"

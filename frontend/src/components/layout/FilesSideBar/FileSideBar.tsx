@@ -77,6 +77,10 @@ const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed,
     }
   };
 
+  const handleFileExplorerOpen = () => {
+    setFileChanged(false);
+  };
+
   const handleMouseEnter = () => {
     setFileChanged(false);
   };
@@ -97,7 +101,7 @@ const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed,
       onMouseLeave={handleMouseLeave}>
         <InlineDrawer separator open={!collapsed} position="start" className={styles.drawer}>
           <DrawerHeader>
-            <FileExplorer onClose={handleFileExplorerClose} />
+            <FileExplorer onClose={handleFileExplorerClose} onOpen={handleFileExplorerOpen} />
           </DrawerHeader>
           <DrawerBody>
             <CompactFileList files={files} onSelectionChange={handleFileSelection} />
