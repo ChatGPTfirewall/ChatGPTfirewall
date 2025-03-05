@@ -147,6 +147,14 @@ const Room = () => {
     [setAnonymized]
   );
 
+  const onChangeMessageType = (value: string) => {
+    console.log(value);
+  };
+
+  const onModelChange = (model: OpenAIModel) => {
+    console.log(model);
+  };
+
   const onSendMessage = (value: string) => {
     if (!room) {
       showToast(t('errorNoRoom'), 'error');
@@ -516,8 +524,9 @@ const Room = () => {
         messages={room.messages}
         onSendToChatGPT={onSendToChatGPT}
         isLoading={isMessageLoading}
+        
       />
-      <ChatInput onSendMessage={onSendMessage} />
+      <ChatInput onSendMessage={onSendMessage} onChangeMessageType={onChangeMessageType} onModelChange={onModelChange} />
     </div>
   );
 };

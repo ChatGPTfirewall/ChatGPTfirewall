@@ -147,5 +147,6 @@
   "fullSummarizationInProgress": "Summarizing all chapters...",
   "timePer": "Time spent per File",
   "waitingToAbort": "Waiting to abort...",
-  "abort": "Abort"
+  "abort": "Abort",
+  "MessagePlaceholder": "Write a message..."
 }

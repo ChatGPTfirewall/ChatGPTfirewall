@@ -147,5 +147,6 @@
   "fullSummarizationInProgress": "Alle Kapitel zusammenfassen...",
   "timePer": "Zeit pro Datei",
   "waitingToAbort": "Warte auf Abbruch...",
-  "abort": "Abbrechen"
+  "abort": "Abbrechen",
+  "MessagePlaceholder": "Schreibe eine Nachricht..."
 }
