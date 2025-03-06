@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Textarea, Dropdown, Option, OptionOnSelectData } from '@fluentui/react-components';
 import ChatInputStyles from './ChatInputStyles';
 import { Send24Filled, DocumentSearchRegular, GlobeFilled, ChatFilled } from '@fluentui/react-icons';
@@ -10,14 +10,25 @@ interface ChatInputProps {
   onModelChange?: (value: OpenAIModel) => void;
   onChangeMessageType?: (value: string) => void;
   demo?: boolean;
+  selectedModel: OpenAIModel;
+  selectedMessageType: string;
 }
 
-const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = false }: ChatInputProps) => {
+
+const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = false, selectedModel, selectedMessageType }: ChatInputProps) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
-  const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
-  const [selectedButton, setSelectedButton] = useState<string>('document');
+  const [internalModel, setInternalModel] = useState<string>(selectedModel);
+  const [selectedButton, setSelectedButton] = useState<string>(selectedMessageType);
   const styles = ChatInputStyles();
+
+  useEffect(() => {
+    setInternalModel(selectedModel);
+  }, [selectedModel]);
+
+  useEffect(() => {
+    setSelectedButton(selectedMessageType);
+  }, [selectedMessageType]);
 
   const availableModels = [
     { key: 'gpt-4o', label: 'GPT-4o', description: t('gpt4o_description') },
@@ -41,18 +52,14 @@ const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = f
 
   const handleModelChange = (_event: React.SyntheticEvent, data: OptionOnSelectData) => {
     if (data.optionValue) {
-      setSelectedModel(data.optionValue);
-      if (onModelChange) {
-        onModelChange(data.optionValue as OpenAIModel
-        );
-    }}
+      setInternalModel(data.optionValue);
+      onModelChange?.(data.optionValue as OpenAIModel);
+    }
   };
 
   const handleButtonClick = (type: string) => {
     setSelectedButton(type);
-    if (onChangeMessageType) {
-      onChangeMessageType(type);
-    }
+    onChangeMessageType?.(type);
   };
 
   return (
@@ -74,7 +81,7 @@ const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = f
               className={styles.pillButton}
               onClick={() => handleButtonClick('document')}
             >
-              Document Search
+              {t('DocumentSearchButton')}
             </Button>
             <Button 
               appearance={selectedButton === 'web' ? 'primary' : 'subtle'}
@@ -82,7 +89,7 @@ const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = f
               className={styles.pillButton}
               onClick={() => handleButtonClick('web')}
             >
-              Web Search
+              {t('WebSeachButton')}
             </Button>
             <Button 
               appearance={selectedButton === 'gpt' ? 'primary' : 'subtle'}
@@ -90,14 +97,14 @@ const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = f
               className={styles.pillButton}
               onClick={() => handleButtonClick('gpt')}
             >
-              Direct GPT Message
+              {t('DirectGPTButton')}
             </Button>
           </div>
           <label style={{ fontWeight: 'bold', alignContent: 'center', }}>
             {t('aiModelLabel')}:
           </label>
-          <Dropdown value={selectedModel} onOptionSelect={handleModelChange} aria-label="Select AI Model"style={{ width: '170px', minWidth: '130px', maxWidth: '170px', marginLeft: '8px' }}
-          >
+            <Dropdown value={internalModel} onOptionSelect={handleModelChange} aria-label="Select AI Model" style={{ width: 'auto', minWidth: '130px', maxWidth: '225px', marginLeft: '8px', marginRight: '56px', flexShrink: 1, flexGrow: 1 }}
+            >
             {availableModels.map((model) => (
               <Option key={model.key} value={model.key} text={model.label}>
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center'}}>

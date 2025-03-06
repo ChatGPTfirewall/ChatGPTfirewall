@@ -38,6 +38,8 @@ const Room = () => {
   const [settingsDrawerOpen, setSettingsDrawerOpenState] = useState(false);
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
+  const [searchMode, setSearchMode] = useState<'document' | 'web' | 'gpt' >('document');
+  const [preferedModel, setPreferedModel] = useState<OpenAIModel>(OpenAIModel.GPT_4O_MINI);
 
   const anonymizeContent = useCallback(
     (
@@ -148,11 +150,15 @@ const Room = () => {
   );
 
   const onChangeMessageType = (value: string) => {
-    console.log(value);
+    if (value === 'document' || value === 'web' || value === 'gpt') {
+      setSearchMode(value);
+      return;
+    }
+    console.error("Unknown Search Mode:", value);
   };
 
   const onModelChange = (model: OpenAIModel) => {
-    console.log(model);
+    setPreferedModel(model);
   };
 
   const onSendMessage = (value: string) => {
@@ -190,55 +196,63 @@ const Room = () => {
       messages: [...room.messages, newMessage, tempMessage]
     };
     setRoom(updatedRoom);
-
-    createSearchMessage(newMessage)
-      .then((createdMessage) => {
-        if (Array.isArray(createdMessage.content)) {
-          createdMessage.content.forEach((contentObj: Result) => {
-            if (anonymized) {
-              contentObj.content = anonymizeContent(
-                contentObj.content,
-                createdMessage.room.anonymizationMappings,
-                anonymized,
-                room
-              );
-              contentObj.context_before = anonymizeContent(
-                contentObj.context_before,
-                createdMessage.room.anonymizationMappings,
-                anonymized,
-                room
-              );
-              contentObj.context_after = anonymizeContent(
-                contentObj.context_after,
-                createdMessage.room.anonymizationMappings,
-                anonymized,
-                room
-              );
+    if (searchMode === 'web') {
+      console.log("web search mode");
+      //to be implemented/merged
+    } else if (searchMode === 'gpt') {
+      onSendDirectlyToChatGPT(value);
+    } else if (searchMode === 'document') {
+        createSearchMessage(newMessage)
+          .then((createdMessage) => {
+            if (Array.isArray(createdMessage.content)) {
+              createdMessage.content.forEach((contentObj: Result) => {
+                if (anonymized) {
+                  contentObj.content = anonymizeContent(
+                    contentObj.content,
+                    createdMessage.room.anonymizationMappings,
+                    anonymized,
+                    room
+                  );
+                  contentObj.context_before = anonymizeContent(
+                    contentObj.context_before,
+                    createdMessage.room.anonymizationMappings,
+                    anonymized,
+                    room
+                  );
+                  contentObj.context_after = anonymizeContent(
+                    contentObj.context_after,
+                    createdMessage.room.anonymizationMappings,
+                    anonymized,
+                    room
+                  );
+                }
+              });
             }
-          });
-        }
 
-        setRoom((prevRoom) => {
-          if (!prevRoom) return null;
+            setRoom((prevRoom) => {
+              if (!prevRoom) return null;
 
-          const filteredMessages = prevRoom.messages.filter(
-            (msg) => msg.role !== 'system'
-          );
-          const newMessages = [...filteredMessages, createdMessage];
+              const filteredMessages = prevRoom.messages.filter(
+                (msg) => msg.role !== 'system'
+              );
+              const newMessages = [...filteredMessages, createdMessage];
 
-          return {
-            ...prevRoom,
-            messages: newMessages,
-            anonymizationMappings: createdMessage.room.anonymizationMappings
-          };
-        });
-      })
-      .catch((error) => {
-        const errorMessage =
-          error.response?.data?.error || t('unexpectedErrorOccurred');
-        showToast(`${t('errorSendingMessage')}: ${errorMessage}`, 'error');
-      })
-      .finally(() => setIsMessageLoading(false));
+              return {
+                ...prevRoom,
+                messages: newMessages,
+                anonymizationMappings: createdMessage.room.anonymizationMappings
+              };
+            });
+          })
+          .catch((error) => {
+            const errorMessage =
+              error.response?.data?.error || t('unexpectedErrorOccurred');
+            showToast(`${t('errorSendingMessage')}: ${errorMessage}`, 'error');
+          })
+          .finally(() => setIsMessageLoading(false));
+      } else {
+        console.error("unknown search mode:", searchMode);
+      }
   };
   // Doc-Hint: Should be a different solution where message should be grouped together with question and context.
   const messageToChatGPT = (room: RoomType) => {
@@ -272,14 +286,66 @@ const Room = () => {
     }
   
     return `${promptTemplate}\n\n${t('question')}:\n${question}\n\n${t('context')}:\n${context}`;
-  };  
+  };
 
-  const getModelFromRoom = (room: RoomType) => {
+  const getModelFromLastMessage = (room: RoomType) => {
     if (room.messages && room.messages.length >= 2) {
       const lastIndex = room.messages.length - 1;
       let model = room.messages[lastIndex].model as OpenAIModel;
       return model;
     }
+  };
+
+  const onSendDirectlyToChatGPT = (question: string) => {
+    if (!room) {
+      showToast(t('errorNoRoom'), 'error');
+      return;
+    }
+  
+    const chatGPTMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'user',
+      content: question,
+      created_at: new Date().toISOString(),
+      model: preferedModel,
+    };
+
+    const tempMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'assistant',
+      content: 'Loading...',
+      created_at: new Date().toISOString()
+    };
+
+    setIsMessageLoading(true);
+
+    const updatedRoom = {
+      ...room,
+      messages: [...room.messages, chatGPTMessage, tempMessage]
+    };
+    setRoom(updatedRoom);
+
+    createChatGPTMessage(chatGPTMessage)
+      .then((createdMessage) => {
+        const updatedMessages = updatedRoom.messages
+          .slice(0, -1)
+          .concat(createdMessage);
+        setRoom({
+          ...updatedRoom,
+          messages: updatedMessages
+        });
+      })
+      .catch((error) => {
+        const errorMessage =
+          error.response?.data?.error || t('unexpectedErrorOccurred');
+        showToast(
+          `${t('errorSendingMessageToChatGPT')}: ${errorMessage}`,
+          'error'
+        );
+      })
+      .finally(() => setIsMessageLoading(false));
   };
 
   const onSendToChatGPT = () => {
@@ -294,7 +360,7 @@ const Room = () => {
       role: 'user',
       content: messageToChatGPT(room),
       created_at: new Date().toISOString(),
-      model: getModelFromRoom(room),
+      model: getModelFromLastMessage(room),
     };
 
     const tempMessage: Message = {
@@ -526,7 +592,13 @@ const Room = () => {
         isLoading={isMessageLoading}
         
       />
-      <ChatInput onSendMessage={onSendMessage} onChangeMessageType={onChangeMessageType} onModelChange={onModelChange} />
+      <ChatInput
+        onSendMessage={onSendMessage}
+        onChangeMessageType={onChangeMessageType}
+        onModelChange={onModelChange}
+        selectedModel={preferedModel}
+        selectedMessageType={searchMode}
+      />
     </div>
   );
 };
