@@ -148,5 +148,8 @@
   "timePer": "Zeit pro Datei",
   "waitingToAbort": "Warte auf Abbruch...",
   "abort": "Abbrechen",
-  "MessagePlaceholder": "Schreibe eine Nachricht..."
+  "MessagePlaceholder": "Schreibe eine Nachricht...",
+  "DirectGPTButton": "Frage GPT",
+  "WebSeachButton": "Websuche",
+  "DocumentSearchButton": "Dokumentensuche"
 }
