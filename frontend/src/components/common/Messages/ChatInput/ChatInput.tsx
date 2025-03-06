@@ -74,46 +74,49 @@ const ChatInput = ({ onSendMessage, onModelChange, onChangeMessageType, demo = f
           onKeyDown={handleKeyPress}
         />
         <div className={styles.bottomContainer}>
-          <div className={styles.buttonGroup}>
-            <Button 
-              appearance={selectedButton === 'document' ? 'primary' : 'subtle'}
-              icon={<DocumentSearchRegular />} 
-              className={styles.pillButton}
-              onClick={() => handleButtonClick('document')}
-            >
-              {t('DocumentSearchButton')}
-            </Button>
-            <Button 
-              appearance={selectedButton === 'web' ? 'primary' : 'subtle'}
-              icon={<GlobeFilled />} 
-              className={styles.pillButton}
-              onClick={() => handleButtonClick('web')}
-            >
-              {t('WebSeachButton')}
-            </Button>
-            <Button 
-              appearance={selectedButton === 'gpt' ? 'primary' : 'subtle'}
-              icon={<ChatFilled />} 
-              className={styles.pillButton}
-              onClick={() => handleButtonClick('gpt')}
-            >
-              {t('DirectGPTButton')}
-            </Button>
-          </div>
-          <label style={{ fontWeight: 'bold', alignContent: 'center', }}>
-            {t('aiModelLabel')}:
-          </label>
-            <Dropdown value={internalModel} onOptionSelect={handleModelChange} aria-label="Select AI Model" style={{ width: 'auto', minWidth: '130px', maxWidth: '225px', marginLeft: '8px', marginRight: '56px', flexShrink: 1, flexGrow: 1 }}
-            >
-            {availableModels.map((model) => (
-              <Option key={model.key} value={model.key} text={model.label}>
+            {!demo && (
+            <>
+              <div className={styles.buttonGroup}>
+              <Button 
+                appearance={selectedButton === 'document' ? 'primary' : 'subtle'}
+                icon={<DocumentSearchRegular />} 
+                className={styles.pillButton}
+                onClick={() => handleButtonClick('document')}
+              >
+                {t('DocumentSearchButton')}
+              </Button>
+              <Button 
+                appearance={selectedButton === 'web' ? 'primary' : 'subtle'}
+                icon={<GlobeFilled />} 
+                className={styles.pillButton}
+                onClick={() => handleButtonClick('web')}
+              >
+                {t('WebSeachButton')}
+              </Button>
+              <Button 
+                appearance={selectedButton === 'gpt' ? 'primary' : 'subtle'}
+                icon={<ChatFilled />} 
+                className={styles.pillButton}
+                onClick={() => handleButtonClick('gpt')}
+              >
+                {t('DirectGPTButton')}
+              </Button>
+              </div>
+              <label style={{ fontWeight: 'bold', alignContent: 'center', }}>
+              {t('aiModelLabel')}:
+              </label>
+              <Dropdown value={internalModel} onOptionSelect={handleModelChange} aria-label="Select AI Model" style={{ width: 'auto', minWidth: '130px', maxWidth: '225px', marginLeft: '8px', marginRight: '56px', flexShrink: 1, flexGrow: 1 }}>
+              {availableModels.map((model) => (
+                <Option key={model.key} value={model.key} text={model.label}>
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center'}}>
                   <strong>{model.label}</strong>
                   <span style={{ opacity: 0.7 }}>{model.description}</span>
                 </div>
-              </Option>
-            ))}
-          </Dropdown>
+                </Option>
+              ))}
+              </Dropdown>
+            </>
+            )}
           <Button
           appearance="subtle"
           icon={<Send24Filled />}
