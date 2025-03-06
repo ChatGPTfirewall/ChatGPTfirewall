@@ -17,7 +17,7 @@ const ChatInputStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     ...shorthands.gap('8px'),
-    marginBottom: tokens.spacingVerticalXL,
+    marginBottom: tokens.spacingVerticalM,
     boxShadow: `0px -20px 17px 0px ${tokens.colorNeutralBackground1}`
   },
   textArea: {
@@ -46,7 +46,36 @@ const ChatInputStyles = makeStyles({
     width: '75%',
     minWidth: '400px',
     boxShadow: tokens.shadow8
-  }
+  },
+  bottomContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',  // Allows items to wrap when space is limited
+    marginTop: tokens.spacingVerticalXS,
+    width: '100%', // Make it span the input width
+    paddingBottom: tokens.spacingHorizontalS,
+    Gap: tokens.spacingHorizontalM,
+  },
+  
+  buttonGroup: {
+    display: 'flex',
+    Gap: tokens.spacingHorizontalXS, // Fix typo and make buttons closer
+  },
+  
+  pillButton: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...shorthands.padding(tokens.spacingHorizontalXS, tokens.spacingVerticalXS),
+    fontSize: tokens.fontSizeBase200,
+    minWidth: 'auto', // Prevent buttons from stretching
+    whiteSpace: 'nowrap',
+    marginLeft: tokens.spacingHorizontalS,
+    marginRight: tokens.spacingHorizontalS,
+  },
+  
+  dropdown: {
+    minWidth: '150px', // Adjust width to prevent stretching
+    flexShrink: 0, // Prevent dropdown from taking extra space
+  },  
 });
 
 export default ChatInputStyles;

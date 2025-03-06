@@ -57,9 +57,9 @@ const SearchMessageItem = ({
   const [, setMaxApiCalls] = useState<number | null>(null);
 
   const availableModels = [
-    { key: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: t('gpt35turbo_description') },
     { key: 'gpt-4o', label: 'GPT-4o', description: t('gpt4o_description') },
-    { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') }
+    { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') },
+    { key: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: t('gpt35turbo_description') }
   ];
   
   const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
