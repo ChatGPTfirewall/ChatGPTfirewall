@@ -35,6 +35,7 @@ drf-jwt = "*"
 pyjwt = "*"
 cryptography = "==42.0.3"
 duckduckgo-search = "*"
+huggingface-hub = "==0.25.1"
 
 [dev-packages]
 

@@ -176,71 +176,30 @@ const Room = () => {
       created_at: new Date().toISOString()
     };
 
-    if (searchMode === 'web') {
-      const webSearchMessage: Message = {
-        ...newMessage,
-        content: `Please search the web for information about: ${value}`
-      };
-      
-      setIsMessageLoading(true);
-      createWebSearchMessage(webSearchMessage)
-        .then((createdMessage) => {
-          setRoom(prevRoom => ({
-            ...prevRoom!,
-            messages: [...prevRoom!.messages, newMessage, createdMessage]
-          }));
-        })
-        .catch((error) => {
-          const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
-          showToast(`${t('errorSearchingWeb')}: ${errorMessage}`, 'error');
-        })
-        .finally(() => setIsMessageLoading(false));
-      return;
-    }
+    const tempMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'system',
+      content: [],
+      created_at: new Date().toISOString()
+    };
 
-    if (searchMode === 'document') {
-      const tempMessage: Message = {
-        user: room.user,
-        room: room,
-        role: 'system',
-        content: [],
-        created_at: new Date().toISOString()
-      };
+    setIsMessageLoading(true);
 
-      setIsMessageLoading(true);
-
-      const updatedRoomWithoutTemp = {
-        ...room,
-        messages: [...room.messages, newMessage]
-      };
-      setRoom(updatedRoomWithoutTemp);
+    const updatedRoomWithoutTemp = {
+      ...room,
+      messages: [...room.messages, newMessage]
+    };
+    setRoom(updatedRoomWithoutTemp);
 
     const updatedRoom = {
       ...room,
       messages: [...room.messages, newMessage, tempMessage]
     };
     setRoom(updatedRoom);
+
     if (searchMode === 'web') {
-      console.log("web search mode");
-      const webSearchMessage: Message = {
-        ...newMessage,
-        content: `Please search the web for information about: ${value}`
-      };
-      
-      setIsMessageLoading(true);
-      createWebSearchMessage(webSearchMessage)
-        .then((createdMessage) => {
-          setRoom(prevRoom => ({
-            ...prevRoom!,
-            messages: [...prevRoom!.messages, newMessage, createdMessage]
-          }));
-        })
-        .catch((error) => {
-          const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
-          showToast(`${t('errorSearchingWeb')}: ${errorMessage}`, 'error');
-        })
-        .finally(() => setIsMessageLoading(false));
-      return;
+      onSendWebSearch(value);
     } else if (searchMode === 'gpt') {
       onSendDirectlyToChatGPT(value);
     } else if (searchMode === 'document') {
@@ -338,6 +297,53 @@ const Room = () => {
     }
   };
 
+  const onSendWebSearch = (question: string) => {
+    if (!room) {
+      showToast(t('errorNoRoom'), 'error');
+      return;
+    }
+    const webSearchMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'user',
+      content: `${t('searchTemplate')} ${question}`,
+      created_at: new Date().toISOString(),
+      model: preferedModel,
+    };
+
+    const tempMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'assistant',
+      content: t('searchingWeb'),
+      created_at: new Date().toISOString()
+    };
+
+    setIsMessageLoading(true);
+
+    const updatedRoom = {
+      ...room,
+      messages: [...room.messages, webSearchMessage, tempMessage]
+    };
+    setRoom(updatedRoom);
+    
+    createWebSearchMessage(webSearchMessage)
+      .then((createdMessage) => {
+        const updatedMessages = updatedRoom.messages
+          .slice(0, -1)
+          .concat(createdMessage);
+        setRoom({
+          ...updatedRoom,
+          messages: updatedMessages
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
+        showToast(`Error: ${errorMessage}`, 'error');
+      })
+      .finally(() => setIsMessageLoading(false));
+    }
+
   const onSendDirectlyToChatGPT = (question: string) => {
     if (!room) {
       showToast(t('errorNoRoom'), 'error');
@@ -357,7 +363,7 @@ const Room = () => {
       user: room.user,
       room: room,
       role: 'assistant',
-      content: 'Loading...',
+      content: t('loading'),
       created_at: new Date().toISOString()
     };
 
@@ -409,7 +415,7 @@ const Room = () => {
       user: room.user,
       room: room,
       role: 'assistant',
-      content: 'Loading...',
+      content: t('loading'),
       created_at: new Date().toISOString()
     };
 

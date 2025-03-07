@@ -657,7 +657,7 @@ class MessagesApiView(APIView):
                 )
 
             try:
-                answer = myllmManager.llm.run(myRoom, question, model=selected_model, is_demo=is_demo)
+                answer = myllmManager.llm.run(myRoom, question, model=selected_model, search_mode="document", is_demo=is_demo, user=user)
             except ValueError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -681,7 +681,7 @@ class MessagesApiView(APIView):
             user_data = request.data.get("user")
             room_id = room_data.get("id")
             is_demo = request.query_params.get("demo", "false").lower() == "true"
-            selected_model = request.data.get("model", "gpt-3.5-turbo")  # 获取用户选择的模型
+            selected_model = request.data.get("model", "gpt-3.5-turbo")
 
             try:
                myRoom = Room.objects.get(id=room_id)
@@ -700,13 +700,13 @@ class MessagesApiView(APIView):
                 )
 
             try:
-                # 调用 llm.run 时设置 is_web_search=True
                 answer = myllmManager.llm.run(
                     myRoom, 
                     question, 
                     model=selected_model,  
-                    is_web_search=True,    # Explicitly specify this is a web search
-                    is_demo=is_demo
+                    search_mode="web",
+                    is_demo=is_demo,
+                    user=user
                 )
             except ValueError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
