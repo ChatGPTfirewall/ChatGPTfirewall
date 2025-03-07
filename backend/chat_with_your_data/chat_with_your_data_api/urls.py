@@ -12,6 +12,7 @@ urlpatterns = [
     # path("users/create", UserApiView.as_view()),
     path("files/reload", FilesApiView.as_view()),
     path("documents", DocumentApiView.as_view()),
+    path("documents/<int:document_id>/", DocumentApiView.as_view(), name="document_detail"),
     path(
         "rooms/<int:room_id>/documents/",
         UpdateRoomDocumentsView.as_view(),

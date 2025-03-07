@@ -27,7 +27,10 @@ const RoomStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
     fontSize: tokens.fontSizeBase500,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    maxWidth: "55vw",
+    wordBreak: "break-all",
+    maxHeight: "8vh"
   },
   actions: {
     display: 'flex',
@@ -35,6 +38,7 @@ const RoomStyles = makeStyles({
     marginRight: tokens.spacingHorizontalL
   },
   emptyContainer: {
+    height: '80vh',
     display: 'flex',
     flexDirection: 'column',
     width: '100%',

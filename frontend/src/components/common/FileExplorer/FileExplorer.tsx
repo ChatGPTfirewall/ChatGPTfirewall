@@ -23,7 +23,12 @@ import { File as FileType } from '../../../models/File';
 import { getFiles, createFiles, deleteFiles } from '../../../api/fileApi';
 import { useToast } from '../../../context/ToastProvider';
 
-export const FileExplorer = () => {
+interface FileExplorerProps {
+  onClose?: () => void;
+  onOpen?: () => void;
+}
+
+export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
   const styles = FileExplorerStyles();
   const { t } = useTranslation();
   const { user } = useUser();
@@ -119,7 +124,13 @@ export const FileExplorer = () => {
   };
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={(_, data) => {
+      if (data.open) {
+        onOpen?.(); // Call onOpen when the dialog opens
+      } else {
+        onClose?.(); // Call onClose when the dialog closes
+      }
+    }}>    
       <DialogTrigger disableButtonEnhancement>
         <Button
           appearance="primary"
@@ -128,7 +139,7 @@ export const FileExplorer = () => {
           size="large"
           className={styles.triggerButton}
         >
-          {t('fileExplorerDialogButton')}
+          {t('files')}
         </Button>
       </DialogTrigger>
       <DialogSurface className={styles.surface}>

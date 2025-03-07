@@ -45,7 +45,10 @@ const SearchMessageItemStyles = makeStyles({
   },
   introText: {},
   statText: {
-    opacity: '0.6'
+    flexGrow: "1",
+    display: "flex",
+    alignItems: "center",
+    opacity: "0.6",
   },
   resultContainer: {
     display: 'flex',
@@ -85,7 +88,14 @@ const SearchMessageItemStyles = makeStyles({
     position: 'relative',
     ...shorthands.gap('10px'),
     gridTemplateColumns: 'min-content 20% 20% 15%'
-  }
+  },
+  resultHeader:{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center", 
+    width: "100%",
+  },
+  
 });
 
 export default SearchMessageItemStyles;

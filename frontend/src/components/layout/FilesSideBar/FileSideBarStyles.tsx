@@ -1,8 +1,8 @@
 import { makeStyles, tokens } from '@fluentui/react-components';
 
-const SideBarStyles = makeStyles({
+const FilesSideBarStyles = makeStyles({
   drawer: {
-    width: '212px'
+    width: 'auto',
   },
   divider: {
     marginTop: tokens.spacingVerticalS,
@@ -37,4 +37,4 @@ const SideBarStyles = makeStyles({
   }
 });
 
-export default SideBarStyles;
+export default FilesSideBarStyles;

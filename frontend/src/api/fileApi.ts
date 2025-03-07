@@ -14,6 +14,13 @@ export async function getFiles(auth0_id: string): Promise<File[]> {
   });
 }
 
+export async function getFileDetails(documentID: string): Promise<File> {
+  return Request<File>({
+    url: `/api/documents/${documentID}`,
+    method: 'GET'
+  });
+}
+
 export async function createFiles(data: FormData): Promise<File[]> {
   return Request<File[]>({
     url: '/api/documents/upload',

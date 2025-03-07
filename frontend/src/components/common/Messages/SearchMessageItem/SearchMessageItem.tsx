@@ -19,27 +19,32 @@ import {
   DatabaseSearchRegular,
   Edit24Regular,
   Info20Regular,
-  Send24Regular
+  Send24Regular,
+  DocumentSearchRegular
 } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
 import { HighlightWithinTextarea } from 'react-highlight-within-textarea';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Dropdown, Option, OptionOnSelectData } from '@fluentui/react-components';
 import { OpenAIModel } from '../../../../models/Message';
+import { useNavigate } from 'react-router-dom';
 
 interface SearchMessageItemProps {
   message: Message;
   onSendToChatGPT: () => void;
   isLoading: boolean;
+  onSaveMessage: (updatedMessage: Message) => void;
 }
 
 const SearchMessageItem = ({
   message,
   onSendToChatGPT,
-  isLoading = false
+  isLoading = false,
+  onSaveMessage
 }: SearchMessageItemProps) => {
   const styles = SearchMessageItemStyles();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [editable, setEditable] = useState(false);
   const [visible, setVisible] = useState(false);
   // displayed results
@@ -52,11 +57,10 @@ const SearchMessageItem = ({
   const [, setMaxApiCalls] = useState<number | null>(null);
 
   const availableModels = [
-    { key: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: t('gpt35turbo_description') },
     { key: 'gpt-4o', label: 'GPT-4o', description: t('gpt4o_description') },
-    { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') }
+    { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') },
+    { key: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: t('gpt35turbo_description') }
   ];
-  
   
   const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
   
@@ -65,7 +69,6 @@ const SearchMessageItem = ({
     if (data.optionValue) {
       setSelectedModel(data.optionValue);
       message.model = data.optionValue as OpenAIModel;
-
     }
   };
 
@@ -102,10 +105,42 @@ const SearchMessageItem = ({
   const handleEditClick = () => {
     setEditable(true);
     setTempResults(structuredClone(results));
+    // Store the combined value as the new value for editing
+    setResults((prevResults) =>
+      prevResults.map((result) => ({
+        ...result,
+        content: `${result.context_before} ${result.content} ${result.context_after}`,
+      }))
+    );
   };
 
   const handleSaveClick = () => {
     setEditable(false);
+  
+    const updatedResults = results.map((result, index) => {
+      const prevResult = tempResults[index];
+  
+      // Check if the result content has changed
+      const isChanged =
+        result.content !== `${prevResult.context_before} ${prevResult.content} ${prevResult.context_after}`;
+  
+      if (isChanged) {
+        // Only update if there's a change
+        return {
+          ...result,
+          context_before: '',
+          content: result.content,
+          context_after: ''
+        };
+      }
+  
+      // If no change, return the result as-is
+      return prevResult;
+    });
+
+    setResults(updatedResults);
+    message.content = updatedResults;
+    onSaveMessage(message); // Call the onSaveMessage prop with the updated message
   };
 
   const handleDiscardClick = () => {
@@ -165,33 +200,42 @@ const SearchMessageItem = ({
             ) : (
               results.map((result: Result, i: number) => (
                 <div key={i} className={styles.resultContainer}>
-                  <Caption1Strong className={styles.statText}>
-                    {t('searchMessageStatText', {
-                      index: i + 1,
-                      filename: result.fileName,
-                      accuracy: (result.accuracy * 100).toFixed(2)
-                    })}
-                  </Caption1Strong>
+                  {/* Left Section: Filename & Accuracy */}
+                  <div className={styles.resultHeader}>
+                    <Caption1Strong className={styles.statText}>
+                      {t('searchMessageStatText', {
+                        index: i + 1,
+                        filename: String(result.fileName), // Bold filename
+                        accuracy: (result.accuracy * 100).toFixed(2)
+                      })}
+                    </Caption1Strong>
+                    {!editable && (
+                        <Button
+                        icon={<DocumentSearchRegular />}
+                        onClick={() => {
+                          localStorage.setItem('sidebarCollapsed', String(true));
+                          navigate(`/files/${result.fileId}`);
+                        }}
+                        >
+                        {t('viewFileButton')}
+                        </Button>
+                    )}
+                  </div>
                   {editable ? (
                     <div className={styles.textarea}>
                       <HighlightWithinTextarea
-                        value={`${result.context_before} ${result.content} ${result.context_after}`}
+                        value={result.content}
                         highlight={[]}
-                        onChange={(value: string) =>
-                          handleContentChange(i, value)
-                        }
+                        onChange={(value: string) => handleContentChange(i, value)}
                       />
                     </div>
                   ) : (
                     <Text className={styles.resultContent}>
-                      {result.context_before}{' '}
-                      <strong>{result.content}</strong>{' '}
-                      {result.context_after}{' '}
+                      {result.context_before} <strong>{result.content}</strong> {result.context_after}
                     </Text>
                   )}
                 </div>
               ))
-              
             )}
           </>
         )}

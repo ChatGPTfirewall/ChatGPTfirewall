@@ -7,12 +7,11 @@ import {
   DataGridRow,
   OnSelectionChangeData,
   SelectionItemId,
-  Spinner,
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn
 } from '@fluentui/react-components';
-import FileListStyles from './FileListStyles';
+import CompactFileListStyles from './CompactFileListStyles';
 import { File } from '../../../models/File';
 import { useTranslation } from 'react-i18next';
 import ReactCountryFlag from 'react-country-flag';
@@ -45,24 +44,15 @@ interface FileListProps {
   ) => void;
 }
 
-export const FileList = ({
+export const CompactFileList = ({
   files,
   selectedFileIds,
   onSelectionChange
 }: FileListProps) => {
-  const styles = FileListStyles();
+  const styles = CompactFileListStyles();
   const { t } = useTranslation();
 
   const columns: TableColumnDefinition<File>[] = [
-    createTableColumn<File>({
-      columnId: 'isUploading',
-      renderHeaderCell: () => {
-        return '';
-      },
-      renderCell: (file) => {
-        return file.isUploading ? <Spinner size="tiny" /> : null;
-      }
-    }),
     createTableColumn<File>({
       columnId: 'file',
       compare: (a, b) => {
@@ -85,7 +75,7 @@ export const FileList = ({
               className={styles.fileIcon}
               alt={`${fileExtension} file icon`}
             />
-            <span className={styles.fileCellText}>{fileName}</span>
+            <span>{fileName}</span>
           </TableCellLayout>
         );
       }
@@ -146,40 +136,36 @@ export const FileList = ({
   ];
 
   const columnSizingOptions = {
-    isUploading: {
-      defaultWidth: 20,
-      minWidth: 20,
-      idealWidth: 20
-    },
     file: {
-      defaultWidth: 240,
+      defaultWidth: 350,
       minWidth: 60,
-      idealWidth: 240
+      idealWidth: 350
     },
     lang: {
-      defaultWidth: 80,
+      defaultWidth: 60,
       minWidth: 60,
-      idealWidth: 80
+      idealWidth: 60
     },
     size: {
-      defaultWidth: 90,
-      minWidth: 90,
-      idealWidth: 90
+      defaultWidth: 55,
+      minWidth: 50,
+      idealWidth: 55
     },
     uploadedAt: {
-      defaultWidth: 120,
-      minWidth: 120,
-      idealWidth: 120
-    }
+      defaultWidth: 105,
+      minWidth: 35,
+      idealWidth: 105,
+    },
   };
 
   return (
+    <div style={{ maxWidth: '50vw', width: 'fit-content' }}>
     <DataGrid
       items={files}
       columns={columns}
       sortable
       subtleSelection
-      selectionMode="multiselect"
+      selectionMode="single"
       resizableColumns
       columnSizingOptions={columnSizingOptions}
       getRowId={(item) => item.id}
@@ -188,11 +174,7 @@ export const FileList = ({
       onSelectionChange={onSelectionChange}
     >
       <DataGridHeader>
-        <DataGridRow
-          selectionCell={{
-            checkboxIndicator: { 'aria-label': 'Select all rows' }
-          }}
-        >
+        <DataGridRow>
           {({ renderHeaderCell }) => (
             <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
@@ -200,12 +182,7 @@ export const FileList = ({
       </DataGridHeader>
       <DataGridBody<File>>
         {({ item, rowId }) => (
-          <DataGridRow<File>
-            key={rowId}
-            selectionCell={{
-              checkboxIndicator: { 'aria-label': 'Select row' }
-            }}
-          >
+          <DataGridRow<File> key={rowId}>
             {({ renderCell }) => (
               <DataGridCell>{renderCell(item)}</DataGridCell>
             )}
@@ -213,7 +190,8 @@ export const FileList = ({
         )}
       </DataGridBody>
     </DataGrid>
+    </div>
   );
 };
 
-export default FileList;
+export default CompactFileList;

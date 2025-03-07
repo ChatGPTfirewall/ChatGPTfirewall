@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
 import LoginButtonStyles from "./LoginButtonStyles";
 import { Button } from "@fluentui/react-components";
-import { SignOut24Regular } from "@fluentui/react-icons";
+import { SignOut24Regular, PersonInfoRegular } from "@fluentui/react-icons";
 import UserInfoDialog from "../Dialogs/UserInfoDialog";
 import InfoHover from "../Dialogs/InfoHover";
 import { useState, useEffect } from "react";
@@ -68,6 +68,7 @@ const LoginButton = () => {
           appearance="secondary"
           onClick={() => setIsDialogOpen(true)}
           style={{ marginRight: "10px" }}
+          icon={<PersonInfoRegular/>}
         >
           {t('UserInfoButtonLabel')}
         </Button>

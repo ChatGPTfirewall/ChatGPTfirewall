@@ -1,11 +1,9 @@
 template_de = """Beantworte die Frage anhand des unten stehenden Kontextes. Wenn die
 Frage nicht mit den angegebenen Informationen beantwortet werden kann, antworte
-mit "Ich weiß es nicht".
-\"\""""
+mit "Ich weiß es nicht"."""
 
 template_en = """Answer the question using the context below. If the
-question cannot be answered with the information provided, answer with "I don't know".
-\"\""""
+question cannot be answered with the information provided, answer with "I don't know"."""
 
 # Default anonymization types
 default_anonymization_types = [
