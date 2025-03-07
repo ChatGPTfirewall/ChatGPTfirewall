@@ -151,5 +151,7 @@
   "MessagePlaceholder": "Write a message...",
   "DirectGPTButton": "Ask GPT",
   "WebSeachButton": "Web Search",
-  "DocumentSearchButton": "Document Search"
+  "DocumentSearchButton": "Document Search",
+  "searchingWeb": "Searching the web...",
+  "searchTemplate": "Please search the web for information about:"
 }

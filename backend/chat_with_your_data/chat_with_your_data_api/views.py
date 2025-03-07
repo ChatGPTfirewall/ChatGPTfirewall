@@ -657,7 +657,7 @@ class MessagesApiView(APIView):
                 )
 
             try:
-                answer = myllmManager.llm.run(myRoom, question, model=selected_model, is_demo=is_demo)
+                answer = myllmManager.llm.run(myRoom, question, model=selected_model, search_mode="document", is_demo=is_demo, user=user)
             except ValueError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -671,6 +671,56 @@ class MessagesApiView(APIView):
                 "content": answer,
                 "created_at": current_time,
                 "model": selected_model,  # Include model in response for transparency
+            }
+            return Response(response, status.HTTP_200_OK)
+        
+        # message for web search
+        elif recipient == "websearch":
+            question = request.data.get("content")
+            room_data = request.data.get("room")
+            user_data = request.data.get("user")
+            room_id = room_data.get("id")
+            is_demo = request.query_params.get("demo", "false").lower() == "true"
+            selected_model = request.data.get("model", "gpt-3.5-turbo")
+
+            try:
+               myRoom = Room.objects.get(id=room_id)
+            except Room.DoesNotExist:
+                return Response(
+                    {"error": "Room not found"}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            auth0_id = user_data.get("auth0_id")
+
+            try:
+               user = User.objects.get(auth0_id=auth0_id)
+            except User.DoesNotExist:
+                return Response(
+                    {"error": "User not found"}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            try:
+                answer = myllmManager.llm.run(
+                    myRoom, 
+                    question, 
+                    model=selected_model,  
+                    search_mode="web",
+                    is_demo=is_demo,
+                    user=user
+                )
+            except ValueError as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+            user_serialized = UserSerializer(user).data
+            room_serialized = RoomSerializer(myRoom).data
+
+            response = {
+                "user": user_serialized,
+                "room": room_serialized,
+                "role": "assistant",
+                "content": answer,
+                "created_at": current_time,
+                "model": selected_model,
             }
             return Response(response, status.HTTP_200_OK)
 

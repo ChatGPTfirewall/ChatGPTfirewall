@@ -22,7 +22,8 @@ import { useToast } from '../../context/ToastProvider';
 import { getRoom, updateRoom, updateRoomFiles } from '../../api/roomsApi';
 import {
   createChatGPTMessage,
-  createSearchMessage
+  createSearchMessage,
+  createWebSearchMessage
 } from '../../api/messageApi';
 import FileSelector from '../../components/common/FileSelector/FileSelector';
 import InfoHover from '../../components/common/Dialogs/InfoHover';
@@ -196,9 +197,9 @@ const Room = () => {
       messages: [...room.messages, newMessage, tempMessage]
     };
     setRoom(updatedRoom);
+
     if (searchMode === 'web') {
-      console.log("web search mode");
-      //to be implemented/merged
+      onSendWebSearch(value);
     } else if (searchMode === 'gpt') {
       onSendDirectlyToChatGPT(value);
     } else if (searchMode === 'document') {
@@ -296,6 +297,53 @@ const Room = () => {
     }
   };
 
+  const onSendWebSearch = (question: string) => {
+    if (!room) {
+      showToast(t('errorNoRoom'), 'error');
+      return;
+    }
+    const webSearchMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'user',
+      content: `${t('searchTemplate')} ${question}`,
+      created_at: new Date().toISOString(),
+      model: preferedModel,
+    };
+
+    const tempMessage: Message = {
+      user: room.user,
+      room: room,
+      role: 'assistant',
+      content: t('searchingWeb'),
+      created_at: new Date().toISOString()
+    };
+
+    setIsMessageLoading(true);
+
+    const updatedRoom = {
+      ...room,
+      messages: [...room.messages, webSearchMessage, tempMessage]
+    };
+    setRoom(updatedRoom);
+    
+    createWebSearchMessage(webSearchMessage)
+      .then((createdMessage) => {
+        const updatedMessages = updatedRoom.messages
+          .slice(0, -1)
+          .concat(createdMessage);
+        setRoom({
+          ...updatedRoom,
+          messages: updatedMessages
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
+        showToast(`Error: ${errorMessage}`, 'error');
+      })
+      .finally(() => setIsMessageLoading(false));
+    }
+
   const onSendDirectlyToChatGPT = (question: string) => {
     if (!room) {
       showToast(t('errorNoRoom'), 'error');
@@ -315,7 +363,7 @@ const Room = () => {
       user: room.user,
       room: room,
       role: 'assistant',
-      content: 'Loading...',
+      content: t('loading'),
       created_at: new Date().toISOString()
     };
 
@@ -367,7 +415,7 @@ const Room = () => {
       user: room.user,
       room: room,
       role: 'assistant',
-      content: 'Loading...',
+      content: t('loading'),
       created_at: new Date().toISOString()
     };
 
