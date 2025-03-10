@@ -145,7 +145,7 @@
   "elapsedTime": "Elapsed Time",
   "estimatedTimeLeft": "Estimated Time Left",
   "fullSummarizationInProgress": "Summarizing all chapters...",
-  "timePer": "Time spent per File",
+  "timePer": "Time spent per Chapter",
   "waitingToAbort": "Waiting to abort...",
   "abort": "Abort",
   "MessagePlaceholder": "Write a message...",
