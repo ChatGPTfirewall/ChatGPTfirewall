@@ -23,10 +23,9 @@ export type RoomSettings = {
   prompt_template: string;
   pre_phrase_count: number;
   post_phrase_count: number;
-  active_anonymization_types: string[]; // New field
+  active_anonymization_types: string[];
 };
 
-// Example default value if needed
 export const defaultAnonymizationTypes = [
   'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC',
   'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON', 'PRODUCT',
