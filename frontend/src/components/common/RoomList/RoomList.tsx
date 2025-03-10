@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import RoomItem from './RoomItem';
 import { Room } from '../../../models/Room';
 import { Button, Input } from '@fluentui/react-components';
@@ -16,6 +17,8 @@ import { useToast } from '../../../context/ToastProvider';
 
 const RoomList = () => {
   const styles = RoomListStyles();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useUser();
   const { showToast } = useToast();
@@ -92,6 +95,11 @@ const RoomList = () => {
   };
 
   const handleDelete = (roomId: string) => {
+    //check if roomId matches the one from the URL
+    if (location.pathname === `/chat/room/${roomId}`) {
+      navigate('/');
+    }
+    
     deleteRoom(roomId)
       .then(() => {
         const updatedRooms = rooms.filter((room) => room.id !== roomId);
