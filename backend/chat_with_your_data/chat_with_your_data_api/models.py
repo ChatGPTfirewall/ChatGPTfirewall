@@ -55,7 +55,9 @@ class Room(models.Model):
     name = models.CharField(max_length=255, default="Room")
     anonymizeCompleteContext = models.BooleanField("Anonymize Switch", default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    settings = JSONField(default=RoomSettings().to_dict)
+
+    # Use default=dict to avoid Django migration issues
+    settings = JSONField(default=dict)
 
     def __str__(self):
         return f"{self.user.auth0_id} + {self.id}"
@@ -66,16 +68,15 @@ class Room(models.Model):
             myContext.save()
 
     def createFullMessage(self, room, get_all, is_demo, question):
-        fullMessage: List[Dict] = []
+        fullMessage = []
         msg_length = 0
         if is_demo:
             question_line = {"role": "user", "content": question}
             system_line = {
                 "role": "system",
-                "content": self.settings["prompt_template"],
+                "content": self.settings.get("prompt_template", ""),
             }
-            fullMessage.append(question_line)
-            fullMessage.append(system_line)
+            fullMessage.extend([question_line, system_line])
         else:
             context = ContextEntry.objects.filter(roomID=room).order_by("-created_at")    
             
@@ -83,16 +84,17 @@ class Room(models.Model):
                 content = line.content
                 messageLine = {"role": line.role, "content": content}
                 token_size = len(encoder.encode(str(messageLine)))
-                msg_length = msg_length + token_size
+                msg_length += token_size
 
-                if not get_all:
-                    if msg_length < LLM_MAX_TOKENS:
-                        fullMessage.append(messageLine)
-                    else:
-                        break  # stop
-                else:
-                    fullMessage.append(messageLine)
-            systemLine = {"role": "system", "content": room.settings["prompt_template"]}
+                if not get_all and msg_length >= LLM_MAX_TOKENS:
+                    break  # Stop when exceeding token limit
+
+                fullMessage.append(messageLine)
+            
+            systemLine = {
+                "role": "system",
+                "content": room.settings.get("prompt_template", ""),
+            }
             fullMessage.append(systemLine)
 
         fullMessage.reverse()
