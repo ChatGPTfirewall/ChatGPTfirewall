@@ -90,6 +90,9 @@ const Room = () => {
       getRoom(id)
         .then((fetchedRoom) => {
           setRoom(fetchedRoom);
+          if (anonymized) {
+            setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, anonymized, anonymizeContent));
+          }
         })
         .catch((error) => {
           const errorMessage =
@@ -100,47 +103,49 @@ const Room = () => {
     }
   }, [id, showToast, navigate]);
 
-  useEffect(() => {
-    setRoom((prevRoom) => {
-      if (!prevRoom) return null;
+  const anonymizeRoomMessages = (room: RoomType | null, anonymized: boolean, anonymizeContent: Function) => {
+    if (!room) return null;
 
-      const updatedMessages = prevRoom.messages.map((message) => {
-        let updatedContent = message.content;
-        if (message.role === 'system' && Array.isArray(message.content)) {
-          updatedContent = message.content.map((contentObj) => ({
-            ...contentObj,
-            content: anonymizeContent(
-              contentObj.content,
-              prevRoom.anonymizationMappings,
-              anonymized,
-              room
-            ),
-            context_after: anonymizeContent(
-              contentObj.context_after,
-              prevRoom.anonymizationMappings,
-              anonymized,
-              room
-            ),
-            context_before: anonymizeContent(
-              contentObj.context_before,
-              prevRoom.anonymizationMappings,
-              anonymized,
-              room
-            )
-          }));
-        } else if (typeof message.content === 'string') {
-          updatedContent = anonymizeContent(
-            message.content,
-            prevRoom.anonymizationMappings,
+    const updatedMessages = room.messages.map((message) => {
+      let updatedContent = message.content;
+      if (message.role === 'system' && Array.isArray(message.content)) {
+        updatedContent = message.content.map((contentObj) => ({
+          ...contentObj,
+          content: anonymizeContent(
+            contentObj.content,
+            room.anonymizationMappings,
             anonymized,
             room
-          );
-        }
-        return { ...message, content: updatedContent };
-      });
-
-      return { ...prevRoom, messages: updatedMessages };
+          ),
+          context_after: anonymizeContent(
+            contentObj.context_after,
+            room.anonymizationMappings,
+            anonymized,
+            room
+          ),
+          context_before: anonymizeContent(
+            contentObj.context_before,
+            room.anonymizationMappings,
+            anonymized,
+            room
+          )
+        }));
+      } else if (typeof message.content === 'string') {
+        updatedContent = anonymizeContent(
+          message.content,
+          room.anonymizationMappings,
+          anonymized,
+          room
+        );
+      }
+      return { ...message, content: updatedContent };
     });
+
+    return { ...room, messages: updatedMessages };
+  };
+
+  useEffect(() => {
+    setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, anonymized, anonymizeContent));
   }, [anonymized, anonymizeContent]);
 
   const toggleAnonymization = useCallback(
