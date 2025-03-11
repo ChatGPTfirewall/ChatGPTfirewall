@@ -37,6 +37,7 @@ const SettingsDrawer = ({
   // State management for various settings
   const [promptTemplate, setPromptTemplate] = useState(room.settings.prompt_template);
   const [phraseCount, setPhraseCount] = useState(room?.settings?.pre_phrase_count);
+  const [selectedTemplateKey, setSelectedTemplateKey] = useState<LanguageKey>(room.user.lang as LanguageKey);
 
   // State for the active anonymization types
   const [activeAnonymizationTypes, setActiveAnonymizationTypes] = useState<string[]>(room.settings.active_anonymization_types || []);
@@ -48,9 +49,14 @@ const SettingsDrawer = ({
     'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'
   ];
 
+  useEffect(() => {
+    setSelectedTemplateKey(room.user.lang as LanguageKey);
+  }, [room]);
+  
+
   const handleTemplateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const templateKey = event.target.value as LanguageKey;
-    setPromptTemplate(room.settings.templates?.[templateKey] ?? '');
+    setSelectedTemplateKey(templateKey);
   };
 
   const debounce = (func: Function, delay: number) => {
@@ -95,6 +101,7 @@ const SettingsDrawer = ({
       setPromptTemplate(room.settings.prompt_template);
       setPhraseCount(room.settings.pre_phrase_count);
       setActiveAnonymizationTypes(room.settings.active_anonymization_types || []);
+      setSelectedTemplateKey(room.user.lang as LanguageKey);
     }
   }, [open, room.settings]);
 
@@ -123,7 +130,7 @@ const SettingsDrawer = ({
           <div className={styles.settingsBody}>
             <Field label={t('promptTemplateLabel')}>
               <Textarea
-                textarea={{ className: styles.textArea, style: { height: '10rem' } }}
+                textarea={{ className: styles.textArea, style: { height: '8rem' } }}
                 appearance="outline"
                 resize="vertical"
                 value={promptTemplate}
@@ -132,20 +139,32 @@ const SettingsDrawer = ({
             </Field>
             <Field label={t('promptTemplateSelectLabel')}>
               <Select
+                appearance="outline"
                 defaultValue={room.user.lang}
                 onChange={handleTemplateChange}
               >
                 <option value="de">{t('promptTemplateOptionDE')}</option>
                 <option value="en">{t('promptTemplateOptionEN')}</option>
               </Select>
+              <Button
+                appearance='subtle'
+                className={styles.applyButton}
+                onClick={() => setPromptTemplate(room.settings.templates?.[selectedTemplateKey] ?? '')}
+              >
+                {t('ResetToTemplate')}
+              </Button>
             </Field>
-            <Field label={t('resultSentenceCountLabel')}>
+            <Field label={t('resultSentenceCountLabel')} style={{ height: '7rem', fontSize: '3rem' }}>
               <SpinButton
+                size='medium'
                 appearance="underline"
                 value={phraseCount}
                 onChange={handlePhraseCountChange}
                 min={0}
                 max={4}
+                input={{ readOnly: true }}
+                incrementButton={{ className: styles.crementButton }}
+                decrementButton={{ className: styles.crementButton }}
               />
             </Field>
 

@@ -153,5 +153,6 @@
   "WebSeachButton": "Websuche",
   "DocumentSearchButton": "Dokumentensuche",
   "searchingWeb": "Suche im Web...",
-  "searchTemplate": "Bitte suche im Web nach Informationen über:"
+  "searchTemplate": "Bitte suche im Web nach Informationen über:",
+  "ResetToTemplate": "Prompt auf ausgewähltes Template zurücksetzen"
 }
