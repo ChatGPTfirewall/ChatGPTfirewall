@@ -87,7 +87,7 @@ const LoginButton = () => {
           appearance="primary"
           icon={<SignOut24Regular />}
           size="large"
-          onClick={() => logout()}
+          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
         />
       </div>
     );

@@ -145,7 +145,7 @@
   "elapsedTime": "Vergangene Zeit",
   "estimatedTimeLeft": "Verbleibende Zeit",
   "fullSummarizationInProgress": "Alle Kapitel zusammenfassen...",
-  "timePer": "Zeit pro Datei",
+  "timePer": "Zeit pro Kapitel",
   "waitingToAbort": "Warte auf Abbruch...",
   "abort": "Abbrechen",
   "MessagePlaceholder": "Schreibe eine Nachricht...",
@@ -153,5 +153,6 @@
   "WebSeachButton": "Websuche",
   "DocumentSearchButton": "Dokumentensuche",
   "searchingWeb": "Suche im Web...",
-  "searchTemplate": "Bitte suche im Web nach Informationen über:"
+  "searchTemplate": "Bitte suche im Web nach Informationen über:",
+  "ResetToTemplate": "Prompt auf ausgewähltes Template zurücksetzen"
 }
