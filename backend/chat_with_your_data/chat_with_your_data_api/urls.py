@@ -9,7 +9,6 @@ from .views import (DocumentApiView, FilesApiView, LanguageAPI,
 urlpatterns = [
     path("user/", UserApiView.as_view()),
     path("user/<str:auth0_id>/", UserApiView.as_view()),
-    # path("users/create", UserApiView.as_view()),
     path("files/reload", FilesApiView.as_view()),
     path("documents", DocumentApiView.as_view()),
     path("documents/<int:document_id>/", DocumentApiView.as_view(), name="document_detail"),

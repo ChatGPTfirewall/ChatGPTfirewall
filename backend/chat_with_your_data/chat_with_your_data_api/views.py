@@ -68,7 +68,7 @@ def requires_scope(required_scope):
         return decorated
     return require_scope
 
-def download_file(request, filename):
+def download_file(filename):
     # Define the path to the directory where your files are stored
     files_path = "./ExampleFiles/JuraStudium"
     # Construct the full file path

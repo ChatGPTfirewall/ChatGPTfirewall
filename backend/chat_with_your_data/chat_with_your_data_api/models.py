@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 
 import tiktoken
 from django.db import models

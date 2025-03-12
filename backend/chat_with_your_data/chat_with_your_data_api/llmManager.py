@@ -1,6 +1,5 @@
 # Import the openai package
 import os
-from pprint import pprint
 from duckduckgo_search import DDGS
 
 import openai
