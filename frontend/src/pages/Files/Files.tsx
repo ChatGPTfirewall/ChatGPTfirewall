@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getFileDetails, updateFileHeadings } from '../../api/fileApi';
 import { useUser } from '../../context/UserProvider';
 import { File } from '../../models/File';
+import FilePageStyles from './FilesStyles';
 import { Button, Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle } from '@fluentui/react-components';
 import { LocationAddLeftFilled, ArrowLeft24Regular, TextBulletListSquareSparkleRegular, ChatAddRegular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-components';
@@ -13,6 +14,7 @@ import { createRoom, updateRoomFiles } from '../../api/roomsApi';
 import { useTranslation } from 'react-i18next';
 
 const FileDetailPage = () => {
+    const styles = FilePageStyles();
     const { id } = useParams();
     const navigate = useNavigate();
     const { t } = useTranslation();
@@ -299,33 +301,26 @@ const FullSummarizationDialog = () => {
     const [confirmReCategorizeFile, setConfirmReCategorizeFile] = useState<File | null>(null);
 
     return (
-        <div style={{ display: 'flex', height: "calc(100vh - 55px)", width: navigator.userAgent.includes('Firefox') ? '-moz-available' : '-webkit-fill-available' }}>
+        <div className={styles.container}>
             <FileSidebar collapsed={isSidebarCollapsed} onCollapsedChange={setIsSidebarCollapsed} />
             {/* Left Panel w/ Text */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto' }}>
+            <div className={styles.leftPanel} style={{ flex: 1 }}>
             {/* Pinned Header */}
             <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem', maxWidth: "50vw" }}>
                 <Button icon={<ArrowLeft24Regular />} onClick={() => navigate(-1)} style={{ background: tokens.colorBrandBackground, color: "white" }} />
-                <h2 style={{ marginLeft: '10px', flexGrow: 1, wordBreak: "break-all",  overflow: "hidden", paddingBottom: ".25rem", paddingTop: ".25rem",  maxHeight: "5rem"}}>{file?.filename || t('document')}</h2>
+                <h2 className={styles.headerTitle} style={{ marginLeft: '10px', overflow: "hidden" }}>{file?.filename || t('document')}</h2>
                 <Button 
+                className={styles.createRoomButton}
                 icon={<ChatAddRegular/>} 
                 onClick={handleCreateRoom} 
                 disabled={loading} 
-                style={{ marginLeft: '10px', minWidth: "9rem"}}
                 >
                 {loading ? t('loading') : t('createRoomFileButton')}
                 </Button>
                 </div>
-            {/* New Room Button */}
 
             {/* Scrollable Content */}
-            <div ref={contentRef} style={{
-              flex: 1,
-              overflowY: 'auto',
-              padding: '20px',
-              userSelect: 'text',
-              maxHeight: 'auto',
-              }}>
+            <div className={styles.scrollableContent} ref={contentRef} style={{flex: 1, padding: '20px' }}>
                 {file ? (
                 file.text?.split('\n').map((line, index) => (
                   <div key={index} style={{
@@ -333,16 +328,10 @@ const FullSummarizationDialog = () => {
                       gridTemplateColumns: '50px auto',
                       alignItems: 'start'
                   }}>
-                      <span style={{
-                      textAlign: 'right',
-                      paddingRight: '10px',
-                      fontSize: '14px',
-                      color: '#888',
-                      userSelect: 'none'
-                      }}>
+                      <span className={styles.lineNumber}>
                       {index + 1}
                       </span>
-                      <p data-line={index + 1} style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{line}</p>
+                      <p data-line={index + 1} className={styles.lineText} style={{ margin: 0}}>{line}</p>
                   </div>
                   ))                    
                 ) : (
@@ -352,13 +341,13 @@ const FullSummarizationDialog = () => {
             </div>
 
             {/* Divider */}
-            <div style={{ width: '3px', background: '#ccc',}} />
+            <div className={styles.divider} style={{background: "#ccc"}} />
 
             {/* Right Panel w/ Chapters & Summaries */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: 'auto' }}>
+            <div className={styles.rightPanel} style={{ flex: 1 }}>
             {/* Pinned Header */}
             <div style={{ display: 'flex', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc', background: '#fff', height: '4rem' }}>
-                <h3 style={{ flexGrow: 1 }}>{t('headingsAndSummaries')}</h3>
+                <h3 className={styles.summaryTitle}>{t('headingsAndSummaries')}</h3>
                 {file?.headings?.length ? (
                     <Button
                         icon={<TextBulletListSquareSparkleRegular />}
@@ -385,13 +374,13 @@ const FullSummarizationDialog = () => {
             <div ref={summaryRef} style={{ flex: 1, overflowY: 'auto', padding: '20px', userSelect: 'text' }}>
                 {file?.headings?.length ? (
                 file.headings.map((chapter, index) => (
-                    <div key={index} data-line={chapter.line} style={{ marginBottom: '20px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div key={index} className={styles.chapterContainer} data-line={chapter.line}>
+                    <div className={styles.chapterHeader}>
                         <Button icon={<LocationAddLeftFilled />} style={{color: tokens.colorBrandForeground1}} onClick={() => scrollToMatch(contentRef, chapter.line)} />
                         <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
                         <p style={{ marginLeft: '10px' }}>{t('line') + ": " + chapter.line}</p>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
+                    <div className={styles.summaryText}>
                         <Button
                         appearance="primary"
                         onClick={() => handleSummarize(file, index)}
