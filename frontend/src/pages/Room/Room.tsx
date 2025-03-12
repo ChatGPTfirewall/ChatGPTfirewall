@@ -86,6 +86,10 @@ const Room = () => {
   
 
   useEffect(() => {
+    if (settingsDrawerOpen) {
+      closeSettingsDrawer();
+      setTimeout(() => openSettingsDrawer(), 500);
+    }
     if (id) {
       getRoom(id)
         .then((fetchedRoom) => {
