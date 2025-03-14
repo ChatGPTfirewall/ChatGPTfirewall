@@ -552,6 +552,9 @@ class MessagesApiView(APIView):
                 entity_mapping = map_entities(ner_entities, text, counter)
                 
                 for entry in entity_mapping:
+                    # Skip entries longer than 1024 characters
+                    if len(entry) > 1024:
+                        continue
                     # Check if mapping already exists
                     try:
                         go = AnonymizeEntitie.objects.get(
@@ -581,6 +584,8 @@ class MessagesApiView(APIView):
                 sorted_headings = sorted(headings, key=lambda h: h["line"])
 
                 for i, heading in enumerate(sorted_headings):
+                    if line_number == -1:
+                        break
                     heading_line = heading["line"]
                     next_heading_line = sorted_headings[i + 1]["line"] if i + 1 < len(sorted_headings) else float('inf')
 
