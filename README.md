@@ -14,7 +14,7 @@ ChatGPTFirewall provides a secure platform for users to upload text documents an
 
 Get started with ChatGPTFirewall quickly by accessing the following resources:
 
-- **Try the Application**: Jump straight into the action and experience ChatGPTFirewall firsthand by visiting our [application](https://chatgpt.enclaive.io/). Here, you can interact with your data through our conversational interface.
+- **Try the Application**: Jump straight into the action and experience ChatGPTFirewall firsthand by visiting our [application](https://garnet.enclaive.cloud/). Here, you can interact with your data through our conversational interface.
 
 - **Explore the Landing Page**: Learn more about what ChatGPTFirewall has to offer on our [Landing Page](https://chatgptfirewall.github.io/ChatGPTfirewall/). Discover the features and the technology behind our secure data interaction platform.
 
@@ -108,6 +108,7 @@ sudo apt upgrade
 ```
 
 #### 2.Key Auth (optional)
+This step is optional, if you do not want to use it, you can use the password to authenticate.
 ##### 2.1 Create key file:
 ```sh
 mkdir -p ~/.ssh
