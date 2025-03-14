@@ -377,7 +377,7 @@ const FullSummarizationDialog = () => {
                     <div key={index} className={styles.chapterContainer} data-line={chapter.line}>
                     <div className={styles.chapterHeader}>
                         <Button icon={<LocationAddLeftFilled />} style={{color: tokens.colorBrandForeground1}} onClick={() => scrollToMatch(contentRef, chapter.line)} />
-                        <h3 style={{ marginLeft: '10px' }}>{chapter.heading}</h3>
+                        <h3 style={{ marginLeft: '10px', wordBreak: 'break-all' }}>{chapter.heading}</h3>
                         <p style={{ marginLeft: '10px' }}>{t('line') + ": " + chapter.line}</p>
                     </div>
                     <div className={styles.summaryText}>

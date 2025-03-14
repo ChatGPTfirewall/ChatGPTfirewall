@@ -36,6 +36,7 @@ const FilesPageStyles = makeStyles({
     },
     lineText: {
         whiteSpace: 'pre-wrap',
+        wordBreak: 'break-all',
     },
     divider: {
         width: '3px',
