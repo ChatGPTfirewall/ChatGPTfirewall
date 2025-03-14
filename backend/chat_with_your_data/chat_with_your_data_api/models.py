@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 
 import tiktoken
 from django.db import models
@@ -110,8 +109,8 @@ class ContextEntry(models.Model):
 
 class AnonymizeEntitie(models.Model):
     roomID = models.ForeignKey(Room, on_delete=models.CASCADE)
-    anonymized = models.CharField(max_length=255, null=False)
-    deanonymized = models.CharField(max_length=255, null=False)
+    anonymized = models.CharField(max_length=1024, null=False)
+    deanonymized = models.CharField(max_length=1024, null=False)
     entityType = models.CharField(max_length=255, null=False)
     counter = models.IntegerField()
 

@@ -86,6 +86,10 @@ const Room = () => {
   
 
   useEffect(() => {
+    if (settingsDrawerOpen) {
+      closeSettingsDrawer();
+      setTimeout(() => openSettingsDrawer(), 500);
+    }
     if (id) {
       getRoom(id)
         .then((fetchedRoom) => {
@@ -493,6 +497,13 @@ const Room = () => {
     updateRoom(updatedRoom)
       .then((updatedRoom) => {
         setRoom(updatedRoom);
+        if (anonymized) {
+          setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, !anonymized, anonymizeContent));
+          setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, anonymized, anonymizeContent));
+        }
+        else {
+          setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, anonymized, anonymizeContent));
+        }
         showToast(t('settingsSavedSuccessfully'), 'success');
       })
       .catch((error) => {

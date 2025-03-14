@@ -3,7 +3,7 @@ import os
 import uuid
 import re
 
-from qdrant_client import QdrantClient, http
+from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams
 from qdrant_client.models import (FieldCondition, Filter, FilterSelector,
                                   MatchValue, PointStruct)
@@ -43,13 +43,6 @@ def create_collection(name):
 
 def delete_collection(name):
     __client.delete_collection(collection_name=name)
-
-
-# def search(collection_name, vector):
-#    result = __client.search(
-#        collection_name=collection_name, query_vector=vector.tolist(), limit=3
-#    )
-#    return result
 
 
 def search(collection_name, vector, document_ids):

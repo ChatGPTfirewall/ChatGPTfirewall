@@ -115,7 +115,8 @@ def return_embed_to_line(embedded_text_, fact_index, raw_text):
     # Find the starting and ending positions of the target sentence in the concatenated raw text
     start_pos = concatenated_raw_text.find(target_sentence_text)
     if start_pos == -1:
-        raise ValueError("Target sentence not found in raw text")
+        print("Target sentence not found in raw text")
+        return start_pos
     
     end_pos = start_pos + len(target_sentence_text)
     
