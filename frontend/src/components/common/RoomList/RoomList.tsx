@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import RoomItem from './RoomItem';
 import { Room } from '../../../models/Room';
 import { Button, Input } from '@fluentui/react-components';
+import { ChatAddRegular } from '@fluentui/react-icons';
 import RoomListStyles from './RoomListStyles';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../../../context/UserProvider';
@@ -15,6 +17,8 @@ import { useToast } from '../../../context/ToastProvider';
 
 const RoomList = () => {
   const styles = RoomListStyles();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useUser();
   const { showToast } = useToast();
@@ -91,6 +95,11 @@ const RoomList = () => {
   };
 
   const handleDelete = (roomId: string) => {
+    //check if roomId matches the one from the URL
+    if (location.pathname === `/chat/room/${roomId}`) {
+      navigate('/');
+    }
+    
     deleteRoom(roomId)
       .then(() => {
         const updatedRooms = rooms.filter((room) => room.id !== roomId);
@@ -110,6 +119,7 @@ const RoomList = () => {
         appearance="secondary"
         className={styles.createRoomButton}
         onClick={handleShowCreateInput}
+        icon={<ChatAddRegular/>}
       >
         {t('createRoomButton')}
       </Button>

@@ -14,6 +14,7 @@ const NavBar = () => {
   const logoPath = '/images/android-chrome-512x512.png';
 
   const isChatActive = location.pathname.startsWith('/chat');
+  const isFilesActive = location.pathname.startsWith('/files');
   const isDemoActive = location.pathname.startsWith('/demo');
   const { t } = useTranslation();
 
@@ -26,7 +27,7 @@ const NavBar = () => {
           {isAuthenticated && (<div className={styles.headerTitle}>{t('DemoHeading')}</div>)}
           {isAuthenticated && (
             <InfoHover>
-              <div style={{ width: '15rem' }}>
+              <div style={{ width: '15rem', padding: '.5rem' }}>
                 <strong>{t('DemoHeading')}:</strong>
                 <p>{t('DemoExplanation')}</p>
               </div>
@@ -48,6 +49,18 @@ const NavBar = () => {
                   >
                     Chat
                   </NavLink>
+                </div>
+                <div  className={styles.headerNavLeftMargin}>
+                  <NavLink
+                      to="/files"
+                      className={({ isActive }) =>
+                        isActive || isFilesActive
+                          ? styles.headerNavPageLinkActive
+                          : styles.headerNavPageLink
+                      }
+                    >
+                      {t('files')}
+                    </NavLink>
                 </div>
                 <div className={styles.headerNavLeftMargin}>
                   <NavLink

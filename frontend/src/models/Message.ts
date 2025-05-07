@@ -19,6 +19,7 @@ export type Message = {
 
 export type Result = {
   fileName: string;
+  fileId: number;
   accuracy: number;
   content: string;
   context_before: string;

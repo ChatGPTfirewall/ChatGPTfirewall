@@ -1,6 +1,5 @@
 # Import the openai package
 import os
-from pprint import pprint
 from duckduckgo_search import DDGS
 
 import openai
@@ -65,54 +64,60 @@ class LLM:
             return formatted_results
         except Exception as e:
             print(f"Error: {str(e)}")
-            return "Error"
+            return 
 
-    def run(self, room: Room, question: str, model: str, is_web_search: bool = False, is_demo: bool = False):
+    def run(self, room: Room, question: str, model: str, search_mode: str = "document", is_demo: bool = False, user: User = None):
         """
         Run a chat request to the selected OpenAI model.
-
         :param room: Room object containing chat context.
         :param question: The user's question.
         :param model: The OpenAI model to use ("gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini").
+        :param search_mode: The search mode to use.
         :param is_demo: Flag to indicate if it's a demo mode.
+        :param user: The user object.
         :return: The assistant's response.
         """
-        # 验证模型
+        # Ensure the selected model is valid and not injected by malicious users
         valid_models = ["gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini"]
+        systemSearchTemplateEN = "You are a helpful assistant that can provide up-to-date information based on web search results. Please analyze the search results and provide a comprehensive answer."
+        systemSearchTemplateDE = "Sie sind ein hilfreicher Assistent, der auf dem neuesten Stand der Informationen basierend auf den Suchergebnissen im Web ist. Bitte analysieren Sie die Suchergebnisse und geben Sie eine umfassende Antwort."
+        
         if model not in valid_models:
             raise ValueError(f"Invalid model '{model}'. Choose from {valid_models}")
 
         room.appendContext(room, "user", question, is_demo)
 
-        if is_web_search:
+        # if user is not defined/none or does not have a language, throw error and return
+        if user is None or not user.lang:
+            raise ValueError("User language is not defined")
+        
+
+        if search_mode == "web":
            
             search_results = self.perform_web_search(question)
+
+
+            userSearchTemplateEN = f"Based on the following search results, answer the question:\n\nQuestion: {question}\n\nSearch Results:\n{search_results}"
+            userSearchTemplateDE = f"Basierend auf den folgenden Suchergebnissen beantworten Sie die Frage:\n\nFrage: {question}\n\nSuchergebnisse:\n{search_results}"
+
             
             messages = [
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that can provide up-to-date information based on web search results. Please analyze the search results and provide a comprehensive answer."
+                    "content": systemSearchTemplateDE if user.lang == "de" else systemSearchTemplateEN
                 },
                 {
                     "role": "user",
-                    "content": f"Based on the following search results, answer the question:\n\nQuestion: {question}\n\nSearch Results:\n{search_results}"
+                    "content": userSearchTemplateDE if user.lang == "de" else userSearchTemplateEN
                 }
             ]
         else:
             messages = room.createFullMessage(room, False, is_demo, question)
 
-
-        #  API call parameters
-        api_params = {
-            "model": model,  # 直接使用用户选择的模型
-            "messages": messages,
-            "temperature": 0.7,
-        }
-
-        print("Sending API parameters:", api_params)
-
-        # 调用OpenAI API
-        response = openai.ChatCompletion.create(**api_params)
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=messages,
+        )
         response_content = response["choices"][0]["message"]["content"]
 
         if not response_content:
@@ -129,7 +134,10 @@ class llmManager:
         self.llm: LLM = llm
 
     def addRoom(self, user_, name_):
-        room_settings = RoomSettings(prompt_template_lang="en")
+        if user_.lang == "de":
+            room_settings = RoomSettings(prompt_template_lang="de")
+        else:
+            room_settings = RoomSettings(prompt_template_lang="en")
         new_room = Room(user=user_, name=name_, settings=room_settings.to_dict())
         new_room.save()
 

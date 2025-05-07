@@ -61,7 +61,9 @@ export const UserProvider: FunctionComponent<{ children: ReactNode }> = ({
             max_api_calls: auth0User.max_api_calls
           };
           createUser(newUser)
-            .then(setUser)
+            .then((createdUser) => {
+              setUser(createdUser);
+            })
             .catch((creationError) => {
               console.error('Error creating user in backend!', creationError);
             });

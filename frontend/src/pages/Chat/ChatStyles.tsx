@@ -7,9 +7,9 @@ import {
 const ChatStyles = makeStyles({
   chatRoot: {
     display: 'flex',
-    overflowY: 'auto',
     marginTop: tokens.spacingVerticalXL,
-    width: '100%'
+    width: '100%',
+    height: 'calc(-55px + 100vh - var(--spacingVerticalXL))'
   },
   chatContainer: {
     flexGrow: 1,

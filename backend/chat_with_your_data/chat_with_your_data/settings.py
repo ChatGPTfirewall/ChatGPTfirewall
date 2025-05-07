@@ -42,8 +42,8 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.enclaive.io",  # Original
-    "https://*.enclaive.cloud"  # Add new domain
+    "https://*.enclaive.io",
+    "https://*.enclaive.cloud"
 ]
 
 REST_FRAMEWORK = {

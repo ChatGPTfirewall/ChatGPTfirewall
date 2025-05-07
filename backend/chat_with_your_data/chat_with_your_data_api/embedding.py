@@ -1,6 +1,7 @@
 import os
 import spacy
 import re
+import math
 from spacy.language import Language
 from spacy.tokens import Doc
 from sentence_transformers import SentenceTransformer
@@ -96,6 +97,39 @@ def return_context(embedded_text_, fact_index, range_before_, range_after_):
 
     return (context_before, context_after)
 
+def return_embed_to_line(embedded_text_, fact_index, raw_text):
+    # Split the raw text into lines
+    raw_lines = raw_text.splitlines()
+    
+    # Get the sentence at the fact_index from the embedded text
+    text_sents = list(embedded_text_.sents)
+    if fact_index >= len(text_sents):
+        raise ValueError("fact_index is out of range")
+    
+    target_sentence = text_sents[fact_index]
+    target_sentence_text = target_sentence.text.strip()  # Get the text of the target sentence
+    
+    # Concatenate the raw text lines into a single string with line breaks
+    concatenated_raw_text = "\n".join(raw_lines)
+    
+    # Find the starting and ending positions of the target sentence in the concatenated raw text
+    start_pos = concatenated_raw_text.find(target_sentence_text)
+    if start_pos == -1:
+        print("Target sentence not found in raw text")
+        return start_pos
+    
+    end_pos = start_pos + len(target_sentence_text)
+    
+    # Map the starting and ending positions back to line numbers
+    # Count the number of line breaks before the starting and ending positions
+    start_line = concatenated_raw_text.count("\n", 0, start_pos) + 1
+    end_line = concatenated_raw_text.count("\n", 0, end_pos) + 1
+    
+    # Calculate the middle line number and round it up
+    middle_line = math.ceil((start_line + end_line) / 2)
+    
+    return middle_line
+
 def vectorize(tokens):
     return transformer.encode(tokens)
 
@@ -128,7 +162,7 @@ def categorize(text: str):
         
         # Check if the line meets the heading criteria
         if (
-            len(line.split()) <= 8  # Line is under 8 words
+            len(line.split()) <= 10  # Line is under 10 words
             and is_first_alpha_uppercase(line)  # First letter of the first word is capitalized
             and not line.endswith((".", "!", "?"))  # Current line does not end with a sentence-ending char
             and (
@@ -141,7 +175,35 @@ def categorize(text: str):
         ):
             headings.append((line, i + 1))
 
-    return headings
+    # filter empty chapters
+    filtered_headings = []
+    skip_next = False
+    for j, (heading, line_num) in enumerate(headings):
+        if skip_next:
+            skip_next = False
+            continue
+
+        if j + 1 < len(headings):
+            next_heading_line_num = headings[j + 1][1]
+            if all(len(lines[k].strip()) == 0 for k in range(line_num, next_heading_line_num - 1)):
+                skip_next = True  # Mark to skip the next chapter and take heading of higher level
+        elif all(len(lines[k].strip()) == 0 for k in range(line_num, len(lines))):
+            continue  # Skip empty chapter at the end
+        filtered_headings.append((heading, line_num))
+
+    # Additional check if chapter content meets requirements (at least 15 words or a sentence-ending char)
+    final_headings = []
+    for j, (heading, line_num) in enumerate(filtered_headings):
+        if j + 1 < len(filtered_headings):
+            next_heading_line_num = filtered_headings[j + 1][1]
+            chapter_content = " ".join(lines[line_num:next_heading_line_num])
+        else:
+            chapter_content = " ".join(lines[line_num:])
+
+        if len(chapter_content.split()) >= 15 or any(char in chapter_content for char in [".", "!", "?"]):
+            final_headings.append((heading, line_num))
+
+    return final_headings
 
 def summarize_text(text: str) -> str:
     """

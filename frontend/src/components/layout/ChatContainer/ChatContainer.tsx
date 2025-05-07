@@ -31,6 +31,7 @@ const ChatContainer = ({
             message={message}
             onSendToChatGPT={onSendToChatGPT}
             isLoading={isLoading}
+            onSaveMessage={() => {}}
           />
         );
       case 'assistant':
