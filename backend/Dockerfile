@@ -23,6 +23,17 @@ FROM base AS development
 
 RUN pipenv install --dev --system
 
+# update dependencies of Langchain, huggingface-hub, sentence-transformers
+RUN pip install --no-cache-dir \
+    langchain==0.3.25 \
+    langchain-community==0.3.23 \
+    langchain-core==0.3.59 \
+    langchain-openai==0.3.16 \
+    langchain-text-splitters==0.3.8 \
+    huggingface-hub==0.31.1 \
+    sentence-transformers==4.1.0
+
+
 COPY chat_with_your_data/ ./chat_with_your_data
 COPY entrypoint.dev.sh ./entrypoint.dev.sh
 
@@ -39,6 +50,16 @@ ENTRYPOINT ["/app/entrypoint.dev.sh"]
 FROM base AS production
 
 RUN pipenv install --system
+
+# update dependencies of langchain, huggingface-hub, sentence-transformers
+RUN pip install --no-cache-dir \
+    langchain==0.3.25 \
+    langchain-community==0.3.23 \
+    langchain-core==0.3.59 \
+    langchain-openai==0.3.16 \
+    langchain-text-splitters==0.3.8 \
+    huggingface-hub==0.31.1 \
+    sentence-transformers==4.1.0
 
 COPY chat_with_your_data/ ./chat_with_your_data
 COPY entrypoint.sh ./entrypoint.sh

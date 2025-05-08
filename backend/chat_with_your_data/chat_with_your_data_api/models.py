@@ -3,7 +3,7 @@ import os
 import tiktoken
 from django.db import models
 from django.db.models import JSONField
-from langchain.llms import OpenAI
+from langchain_openai import OpenAI
 from django.utils import timezone
 
 
