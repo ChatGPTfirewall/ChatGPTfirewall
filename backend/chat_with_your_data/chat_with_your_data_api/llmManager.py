@@ -1,6 +1,7 @@
 # Import the openai package
 import os
 from duckduckgo_search import DDGS
+from openai import OpenAI
 
 import openai
 
@@ -51,7 +52,7 @@ class Room_:
 class LLM:
     def __init__(self, apiKey):
         self.apiKey = apiKey
-        openai.api_key = self.apiKey
+        self.client = OpenAI(api_key=apiKey)
 
     def perform_web_search(self, query, num_results=3):
         try:
@@ -114,11 +115,11 @@ class LLM:
         else:
             messages = room.createFullMessage(room, False, is_demo, question)
 
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completions.create(
             model=model,
             messages=messages,
         )
-        response_content = response["choices"][0]["message"]["content"]
+        response_content = response.choices[0].message.content
 
         if not response_content:
             response_content = "I apologize, I cannot generate an appropriate response. Please try rephrasing your question."
