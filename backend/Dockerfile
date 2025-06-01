@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y curl
 
 COPY Pipfile Pipfile.lock ./
 
-
 # Development Environment
 FROM base AS development
 
