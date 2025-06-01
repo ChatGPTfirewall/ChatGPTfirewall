@@ -4,7 +4,6 @@ import tiktoken
 from django.db import models
 from django.db.models import JSONField
 
-# from langchain_openai import OpenAI
 from langchain.llms import OpenAI
 
 from .room_settings import RoomSettings
