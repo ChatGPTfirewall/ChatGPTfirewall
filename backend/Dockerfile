@@ -15,7 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN apt-get update && apt-get install -y curl
 
-COPY Pipfile Pipfile.lock ./
+# COPY Pipfile Pipfile.lock ./
+COPY Pipfile ./
+RUN pipenv lock
 
 # Development Environment
 FROM base AS development
