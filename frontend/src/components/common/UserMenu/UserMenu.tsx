@@ -36,27 +36,27 @@ const UserMenu = () => {
     return user?.lang || localStorage.getItem('cgfwLanguage') || i18n.language;
   });
 
-  // 生成基于用户ID的一致随机avatar
+  
   const userAvatarUrl = useMemo(() => {
     if (!auth0User?.sub) return '';
     
-    // 使用用户的auth0_id作为种子，确保每个用户总是得到相同的avatar
-    const userId = auth0User.sub.replace(/[^a-zA-Z0-9]/g, ''); // 清理特殊字符
     
-    // 固定使用avataaars风格，确保始终是人物卡通头像
+    const userId = auth0User.sub.replace(/[^a-zA-Z0-9]/g, ''); 
+    
+    
     const avatarStyle = 'avataaars';
     
     return `https://api.dicebear.com/7.x/${avatarStyle}/svg?seed=${userId}&size=64`;
   }, [auth0User?.sub]);
 
-  // 获取用户Token信息
+  
   const fetchUserTokens = async () => {
     if (auth0User?.sub) {
       setLoadingTokens(true);
       try {
         const fetchedUser = await getUser(auth0User.sub);
         setRemainingTokens(fetchedUser.max_api_calls);
-        // 同时更新UserProvider中的用户信息
+        
         setUser(fetchedUser);
       } catch (error) {
         console.error("Failed to fetch user tokens:", error);
@@ -67,21 +67,21 @@ const UserMenu = () => {
     }
   };
 
-  // 组件挂载时获取Token信息
+  
   useEffect(() => {
     if (auth0User?.sub) {
       fetchUserTokens();
     }
   }, [auth0User?.sub]);
 
-  // 从UserProvider中获取初始Token值
+  
   useEffect(() => {
     if (user?.max_api_calls !== undefined) {
       setRemainingTokens(user.max_api_calls);
     }
   }, [user?.max_api_calls]);
 
-  // 处理语言按钮点击
+  
   const handleLanguageButtonClick = (newLanguage: string) => {
     if (newLanguage !== selectedLanguage) {
       setSelectedLanguage(newLanguage);
@@ -108,12 +108,12 @@ const UserMenu = () => {
   };
 
   const handleProfile = () => {
-    // TODO: 实现Profile功能
+    
     console.log('Profile clicked');
   };
 
   const handleBilling = () => {
-    // TODO: 实现Billing功能
+    
     console.log('Billing clicked');
   };
 
@@ -137,7 +137,7 @@ const UserMenu = () => {
 
       <MenuPopover>
         <MenuList className={styles.menuList}>
-          {/* 用户信息区域 */}
+          {}
           <div className={styles.userInfo}>
             <div className={styles.userInfoContent}>
               <Avatar
@@ -157,7 +157,7 @@ const UserMenu = () => {
           
           <MenuDivider />
 
-          {/* 语言切换 */}
+          {}
           <div className={styles.languageSection}>
             <span className={styles.languageLabel}>{t('language')}:</span>
             <div className={styles.languageButtons}>
