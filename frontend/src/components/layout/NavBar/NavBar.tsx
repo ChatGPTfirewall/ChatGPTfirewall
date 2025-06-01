@@ -1,9 +1,8 @@
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../../common/LoginButton/LoginButton';
-import LanguageSelector from '../../common/LanguageSelector/LanguageSelector';
+import UserMenu from '../../common/UserMenu/UserMenu';
 import NavBarStyles from './NavBarStyles';
-import InfoHover from '../../common/Dialogs/InfoHover';
 import { useTranslation } from 'react-i18next';
 import { Divider } from '@fluentui/react-components';
 
@@ -15,7 +14,6 @@ const NavBar = () => {
 
   const isChatActive = location.pathname.startsWith('/chat');
   const isFilesActive = location.pathname.startsWith('/files');
-  const isDemoActive = location.pathname.startsWith('/demo');
   const { t } = useTranslation();
 
   return (
@@ -24,15 +22,6 @@ const NavBar = () => {
         <Link to="/" className={styles.headerTitleContainer}>
           <img src={logoPath} alt="Logo" className={styles.appLogo} />
           <h3 className={styles.headerTitle}>ChatGPTfirewall</h3>
-          {isAuthenticated && (<div className={styles.headerTitle}>{t('DemoHeading')}</div>)}
-          {isAuthenticated && (
-            <InfoHover>
-              <div style={{ width: '15rem', padding: '.5rem' }}>
-                <strong>{t('DemoHeading')}:</strong>
-                <p>{t('DemoExplanation')}</p>
-              </div>
-            </InfoHover>
-          )}
         </Link>
         <nav>
           <div className={styles.headerNavList}>
@@ -62,27 +51,17 @@ const NavBar = () => {
                       {t('files')}
                     </NavLink>
                 </div>
+                <Divider vertical={true} className={styles.headerNavLeftMargin} />
                 <div className={styles.headerNavLeftMargin}>
-                  <NavLink
-                    to="/demo"
-                    className={({ isActive }) =>
-                      isActive || isDemoActive
-                        ? styles.headerNavPageLinkActive
-                        : styles.headerNavPageLink
-                    }
-                  >
-                    Demo
-                  </NavLink>
+                  <UserMenu />
                 </div>
               </>
             )}
-            <Divider vertical={true} className={styles.headerNavLeftMargin} />
-            <div className={styles.headerNavLeftMargin}>
-              <LoginButton />
-            </div>
-            <div className={styles.headerNavLeftMargin}>
-              <LanguageSelector />
-            </div>
+            {!isAuthenticated && (
+              <div className={styles.headerNavLeftMargin}>
+                <LoginButton />
+              </div>
+            )}
           </div>
         </nav>
       </div>
