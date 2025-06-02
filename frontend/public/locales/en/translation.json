@@ -20,6 +20,7 @@
   "dialogCloseButton": "Close",
   "uploadButtonSub": "Upload files manually",
   "uploadButton": "Upload",
+  "uploadButtonTooltip": "Please upload a txt, pdf, docx file",
   "file": "File",
   "files": "Files",
   "language": "Language",
