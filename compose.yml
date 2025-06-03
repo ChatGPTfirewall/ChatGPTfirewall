@@ -61,7 +61,7 @@ services:
     environment:
       - QDRANT__STORAGE__STORAGE_PATH=/qdrant/storage
       - QDRANT__SERVICE__ENABLE_CORS=true 
-      - QDRANT__SERVICE__API_KEY=${QDRANT_SECRET}
+      # - QDRANT__SERVICE__API_KEY=${QDRANT_SECRET}
 volumes:
   postgres:
     driver: local
