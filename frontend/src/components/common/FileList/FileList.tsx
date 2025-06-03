@@ -15,18 +15,8 @@ import {
 import FileListStyles from './FileListStyles';
 import { File } from '../../../models/File';
 import { useTranslation } from 'react-i18next';
-import ReactCountryFlag from 'react-country-flag';
 import { format } from 'date-fns';
 import { KeyboardEvent, MouseEvent } from 'react';
-
-const langToCountryCode = (lang: string) => {
-  const map: { [key: string]: string } = {
-    de: 'DE',
-    en: 'US'
-  };
-
-  return map[lang] || 'US';
-};
 
 const formatFileSize = (size: number): string => {
   if (size < 1024) return size + ' Bytes';
@@ -91,30 +81,6 @@ export const FileList = ({
       }
     }),
     createTableColumn<File>({
-      columnId: 'lang',
-      compare: (a, b) => {
-        const langA = a.lang || '';
-        const langB = b.lang || '';
-        return langA.localeCompare(langB);
-      },
-      renderHeaderCell: () => t('language'),
-      renderCell: (file) =>
-        file.lang ? (
-          <TableCellLayout
-            media={
-              <ReactCountryFlag
-                countryCode={langToCountryCode(file.lang)}
-                svg
-                className={styles.langIcon}
-                title={file.lang}
-              />
-            }
-          >
-            {file.lang.toUpperCase()}
-          </TableCellLayout>
-        ) : null
-    }),
-    createTableColumn<File>({
       columnId: 'size',
       compare: (a, b) => {
         return a.fileSize - b.fileSize;
@@ -155,11 +121,6 @@ export const FileList = ({
       defaultWidth: 240,
       minWidth: 60,
       idealWidth: 240
-    },
-    lang: {
-      defaultWidth: 80,
-      minWidth: 60,
-      idealWidth: 80
     },
     size: {
       defaultWidth: 90,

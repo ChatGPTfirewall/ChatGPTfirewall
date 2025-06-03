@@ -20,6 +20,7 @@
   "dialogCloseButton": "Schließen",
   "uploadButtonSub": "Manuell Dateien hochladen",
   "uploadButton": "Hochladen",
+  "uploadButtonTooltip": "Bitte laden Sie eine txt-, pdf- oder docx-Datei hoch",
   "file": "Datei",
   "files": "Dateien",
   "language": "Sprache",
