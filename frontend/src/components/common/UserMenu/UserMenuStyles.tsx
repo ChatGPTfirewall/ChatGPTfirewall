@@ -63,7 +63,9 @@ const UserMenuStyles = makeStyles({
   },
   languageButtons: {
     display: 'flex',
-    gap: tokens.spacingHorizontalS,
+    '& > *:not(:last-child)': {
+      marginRight: tokens.spacingHorizontalS,
+    },
   },
   languageButton: {
     fontSize: tokens.fontSizeBase200,
