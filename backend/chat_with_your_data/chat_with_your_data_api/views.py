@@ -892,10 +892,10 @@ class FilesApiView(APIView):
 
 
 def get_llm():
-    """按需创建 LLM 实例"""
+    
     return LLM(os.getenv("OPEN_AI_KEY"))
 
 
 def get_llm_manager():
-    """按需创建 LLM Manager 实例"""
+    
     return llmManager(get_llm())

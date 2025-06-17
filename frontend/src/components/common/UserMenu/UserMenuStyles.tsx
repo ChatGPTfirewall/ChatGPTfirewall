@@ -74,6 +74,21 @@ const UserMenuStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalXS,
     paddingRight: tokens.spacingHorizontalXS,
   },
+  aiModelSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: tokens.spacingVerticalS,
+    paddingBottom: tokens.spacingVerticalS,
+    paddingLeft: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
+    marginBottom: tokens.spacingVerticalS,
+  },
+  aiModelLabel: {
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightBold,
+    color: tokens.colorNeutralForeground2,
+    marginBottom: tokens.spacingVerticalXS,
+  },
   menuItem: {
     fontSize: tokens.fontSizeBase200,
     paddingTop: tokens.spacingVerticalS,

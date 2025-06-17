@@ -10,6 +10,9 @@ import {
   MenuDivider,
   Button,
   Avatar,
+  Dropdown,
+  Option,
+  OptionOnSelectData,
   tokens
 } from '@fluentui/react-components';
 import {
@@ -21,6 +24,8 @@ import {
 import { useUser } from '../../../context/UserProvider';
 import { updateUser, getUser } from '../../../api/usersApi';
 import { useToast } from '../../../context/ToastProvider';
+import { useAIModel } from '../../../context/AIModelProvider';
+import { OpenAIModel } from '../../../models/Message';
 import UserMenuStyles from './UserMenuStyles';
 
 const UserMenu = () => {
@@ -29,6 +34,7 @@ const UserMenu = () => {
   const { t, i18n } = useTranslation();
   const { user, setUser } = useUser();
   const { showToast } = useToast();
+  const { selectedModel, setSelectedModel } = useAIModel();
   const [remainingTokens, setRemainingTokens] = useState<number | null>(null);
   const [loadingTokens, setLoadingTokens] = useState(false);
 
@@ -117,6 +123,18 @@ const UserMenu = () => {
     console.log('Billing clicked');
   };
 
+  const availableModels = [
+    { key: 'gpt-4o', label: 'GPT-4o', description: t('gpt4o_description') },
+    { key: 'gpt-4o-mini', label: 'GPT-4o Mini', description: t('gpt4o_mini_description') },
+    { key: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: t('gpt35turbo_description') }
+  ];
+
+  const handleModelChange = (_event: React.SyntheticEvent, data: OptionOnSelectData) => {
+    if (data.optionValue) {
+      setSelectedModel(data.optionValue as OpenAIModel);
+    }
+  };
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -190,6 +208,30 @@ const UserMenu = () => {
                 DE
               </button>
             </div>
+          </div>
+
+          <MenuDivider />
+
+          {/* AI Model Selection */}
+          <div className={styles.aiModelSection}>
+            <span className={styles.aiModelLabel}>{t('aiModelLabel')}:</span>
+            <Dropdown 
+              value={selectedModel} 
+              onOptionSelect={handleModelChange} 
+              aria-label="Select AI Model"
+              style={{ width: '100%' }}
+            >
+              {availableModels.map((model) => (
+                <Option key={model.key} value={model.key} text={model.label}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <strong>{model.label}</strong>
+                    <span style={{ opacity: 0.7, fontSize: tokens.fontSizeBase100 }}>
+                      {model.description}
+                    </span>
+                  </div>
+                </Option>
+              ))}
+            </Dropdown>
           </div>
 
           <MenuDivider />
