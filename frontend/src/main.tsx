@@ -15,6 +15,7 @@ import {
 } from '@fluentui/react-components';
 import { UserProvider } from './context/UserProvider.tsx';
 import { ToastProvider } from './context/ToastProvider.tsx';
+import { AIModelProvider } from './context/AIModelProvider.tsx';
 
 const chatGPTfirewall: BrandVariants = {
   10: '#010308',
@@ -63,7 +64,9 @@ ReactDOM.createRoot(rootElement).render(
       <FluentProvider theme={lightTheme} style={{ height: '100%' }}>
         <ToastProvider>
           <UserProvider>
-            <App />
+            <AIModelProvider>
+              <App />
+            </AIModelProvider>
           </UserProvider>
         </ToastProvider>
       </FluentProvider>

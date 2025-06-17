@@ -3,15 +3,21 @@ import os
 import tiktoken
 from django.db import models
 from django.db.models import JSONField
-from langchain.llms import OpenAI
+
+from openai import OpenAI
 
 from .room_settings import RoomSettings
 
 LLM_MAX_TOKENS = 4098
 
 token_encoder = "cl100k_base"  # used for ChatGPT 3.5 Turbo and ChatGPT 4
-llm = OpenAI(openai_api_key=os.getenv("OPEN_AI_KEY"))
+
 encoder = tiktoken.get_encoding(token_encoder)
+
+
+def get_llm():
+    
+    return OpenAI(api_key=os.getenv("OPEN_AI_KEY"))
 
 
 class User(models.Model):

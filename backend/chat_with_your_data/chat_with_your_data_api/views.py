@@ -30,14 +30,13 @@ from rest_framework.permissions import AllowAny
 LLM_MAX_TOKENS = 4098
 
 # initialize llm engine
-myLLM = LLM(os.getenv("OPEN_AI_KEY"))
+# myLLM = LLM(os.getenv("OPEN_AI_KEY"))  
 
 # Labels for Labellist
 labellist = ["CARDINAL", "DATE", "EVENT", "FAC", "GPE", "LANGUAGE", "LAW", "LOC", "MONEY", "NORP", "ORDINAL", "ORG", "PERCENT", "PERSON", "PRODUCT", "QUANTITY", "TIME", "WORK_OF_ART", "PER", "MISC"]
 
 # initialize LLM Manager
-myllmManager = llmManager(myLLM)
-
+# myllmManager = llmManager(myLLM)  
 def get_token_auth_header(request):
     """Obtains the Access Token from the Authorization Header
     """
@@ -299,7 +298,7 @@ class RoomsApiView(APIView):
                 {"error": "User not found"}, status=status.HTTP_404_NOT_FOUND
             )
 
-        new_room = myllmManager.addRoom(user, room_name)
+        new_room = get_llm_manager().addRoom(user, room_name)
         room_serializer = RoomSerializer(new_room)
 
         return Response(room_serializer.data, status=status.HTTP_201_CREATED)
@@ -662,7 +661,7 @@ class MessagesApiView(APIView):
                 )
 
             try:
-                answer = myllmManager.llm.run(myRoom, question, model=selected_model, search_mode="document", is_demo=is_demo, user=user)
+                answer = get_llm_manager().llm.run(myRoom, question, model=selected_model, search_mode="document", is_demo=is_demo, user=user)
             except ValueError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -705,7 +704,7 @@ class MessagesApiView(APIView):
                 )
 
             try:
-                answer = myllmManager.llm.run(
+                answer = get_llm_manager().llm.run(
                     myRoom, 
                     question, 
                     model=selected_model,  
@@ -890,3 +889,13 @@ class FilesApiView(APIView):
             return Response([], status=status.HTTP_200_OK)
         else:
             return Response("File upload failed", status=status.HTTP_400_BAD_REQUEST)
+
+
+def get_llm():
+    
+    return LLM(os.getenv("OPEN_AI_KEY"))
+
+
+def get_llm_manager():
+    
+    return llmManager(get_llm())

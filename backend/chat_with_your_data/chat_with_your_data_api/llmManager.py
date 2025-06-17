@@ -1,14 +1,9 @@
-# Import the openai package
 import os
 from duckduckgo_search import DDGS
-from openai import OpenAI
 
-import openai
+from openai import OpenAI  
 
 from .models import ContextEntry, Room, RoomSettings, User
-
-# Set openai.api_key to the OPENAI environment variable
-openai.api_key = os.getenv("OPEN_AI_KEY")
 
 
 class ContextEntry:

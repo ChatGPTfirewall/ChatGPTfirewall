@@ -5,7 +5,8 @@ FROM python:${PYTHON_VERSION} AS base
 WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    HF_HUB_DOWNLOAD_TIMEOUT=600
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev gcc curl python3-dev tesseract-ocr ghostscript && \

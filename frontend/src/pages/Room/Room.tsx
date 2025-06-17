@@ -14,6 +14,7 @@ import { File } from '../../models/File';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { Message, Result, OpenAIModel } from '../../models/Message';
+import { useAIModel } from '../../context/AIModelProvider';
 
 import { t } from 'i18next';
 import SettingsDrawer from '../../components/layout/SettingsDrawer/SettingsDrawer';
@@ -40,7 +41,7 @@ const Room = () => {
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
   const [searchMode, setSearchMode] = useState<'document' | 'web' | 'gpt' >('document');
-  const [preferedModel, setPreferedModel] = useState<OpenAIModel>(OpenAIModel.GPT_4O_MINI);
+  const { selectedModel } = useAIModel();
 
   const anonymizeContent = useCallback(
     (
@@ -171,9 +172,7 @@ const Room = () => {
     console.error("Unknown Search Mode:", value);
   };
 
-  const onModelChange = (model: OpenAIModel) => {
-    setPreferedModel(model);
-  };
+
 
   const onSendMessage = (value: string) => {
     if (!room) {
@@ -321,7 +320,7 @@ const Room = () => {
       role: 'user',
       content: `${t('searchTemplate')} ${question}`,
       created_at: new Date().toISOString(),
-      model: preferedModel,
+      model: selectedModel,
     };
 
     const tempMessage: Message = {
@@ -369,7 +368,7 @@ const Room = () => {
       role: 'user',
       content: question,
       created_at: new Date().toISOString(),
-      model: preferedModel,
+      model: selectedModel,
     };
 
     const tempMessage: Message = {
@@ -663,8 +662,6 @@ const Room = () => {
       <ChatInput
         onSendMessage={onSendMessage}
         onChangeMessageType={onChangeMessageType}
-        onModelChange={onModelChange}
-        selectedModel={preferedModel}
         selectedMessageType={searchMode}
       />
     </div>
