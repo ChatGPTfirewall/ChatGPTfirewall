@@ -158,5 +158,10 @@
   "DocumentSearchButton": "Dokumentensuche",
   "searchingWeb": "Suche im Web...",
   "searchTemplate": "Bitte suche im Web nach Informationen über:",
-  "ResetToTemplate": "Prompt auf ausgewähltes Template zurücksetzen"
+  "ResetToTemplate": "Prompt auf ausgewähltes Template zurücksetzen",
+  "addFilesTooltip": "Dateien hinzufügen",
+  "today": "Heute",
+  "yesterday": "Gestern",
+  "previousDays": "Vorherige Tage",
+  "newChatButton": "Neuer Chat"
 }

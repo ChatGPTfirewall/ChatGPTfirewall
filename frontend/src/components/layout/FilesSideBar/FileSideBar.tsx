@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronRight24Filled, ChevronLeft24Filled } from '@fluentui/react-icons';
-import { Divider, DrawerBody, DrawerHeader, InlineDrawer } from '@fluentui/react-components';
+import { Divider, DrawerBody, InlineDrawer } from '@fluentui/react-components';
 import CompactFileList from '../../common/CompactFileList/CompactFileList';
 import { getFiles } from '../../../api/fileApi';
 import FilesSideBarStyles from './FileSideBarStyles';
 import { File } from '../../../models/File';
 import { useUser } from '../../../context/UserProvider';
-import FileExplorer from '../../common/FileExplorer/FileExplorer';
+
 
 type SelectionItemId = string | number;
 
@@ -71,15 +71,7 @@ const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed,
     }
   };
 
-  const handleFileExplorerClose = () => {
-    if (user) {
-      getFiles(user.auth0_id).then(setFiles);
-    }
-  };
 
-  const handleFileExplorerOpen = () => {
-    setFileChanged(false);
-  };
 
   const handleMouseEnter = () => {
     setFileChanged(false);
@@ -100,9 +92,6 @@ const FileSidebar: React.FC<FileSidebarProps> = ({ collapsed: externalCollapsed,
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
         <InlineDrawer separator open={!collapsed} position="start" className={styles.drawer}>
-          <DrawerHeader>
-            <FileExplorer onClose={handleFileExplorerClose} onOpen={handleFileExplorerOpen} />
-          </DrawerHeader>
           <DrawerBody>
             <CompactFileList files={files} onSelectionChange={handleFileSelection} />
             <Divider className={styles.divider} />

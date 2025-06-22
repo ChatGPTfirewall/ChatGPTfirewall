@@ -9,7 +9,7 @@ import { Room } from '../../models/Room';
 import { getRooms, updateRoomFiles } from '../../api/roomsApi';
 import { useToast } from '../../context/ToastProvider';
 import ChatContainer from '../../components/layout/ChatContainer/ChatContainer';
-import { Message, OpenAIModel, Result } from '../../models/Message';
+import { Message, Result } from '../../models/Message';
 import {
   createChatGPTMessage,
   createSearchMessage
@@ -315,7 +315,6 @@ const Demo = () => {
           <ChatInput 
             onSendMessage={onSendMessage} 
             demo 
-            selectedModel={OpenAIModel.GPT_4O_MINI}
             selectedMessageType={"document"} 
           />
         </div>
@@ -329,7 +328,6 @@ const Demo = () => {
           <ChatInput 
             onSendMessage={onSendMessage} 
             demo 
-            selectedModel={OpenAIModel.GPT_4O_MINI}
             selectedMessageType={"document"} 
           />
         </div>

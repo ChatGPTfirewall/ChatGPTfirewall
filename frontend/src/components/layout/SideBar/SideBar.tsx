@@ -5,12 +5,10 @@ import {
 } from '@fluentui/react-icons';
 import RoomList from '../../common/RoomList/RoomList';
 import {
-  Divider,
   DrawerBody,
-  DrawerHeader,
   InlineDrawer
 } from '@fluentui/react-components';
-import FileExplorer from '../../common/FileExplorer/FileExplorer';
+
 import SideBarStyles from './SideBarStyles';
 
 interface SidebarProps {
@@ -37,11 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onCollapsedChange }) => {
         position={'start'}
         className={styles.drawer}
       >
-        <DrawerHeader>
-          <FileExplorer />
-        </DrawerHeader>
         <DrawerBody>
-          <Divider className={styles.divider} />
           <RoomList />
         </DrawerBody>
       </InlineDrawer>
