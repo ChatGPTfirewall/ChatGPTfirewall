@@ -5,9 +5,7 @@ import {
 } from '@fluentui/react-icons';
 import RoomList from '../../common/RoomList/RoomList';
 import {
-  Divider,
   DrawerBody,
-  DrawerHeader,
   InlineDrawer
 } from '@fluentui/react-components';
 
