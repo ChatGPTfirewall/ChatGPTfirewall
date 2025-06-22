@@ -15,6 +15,14 @@ import {
 } from '../../../api/roomsApi';
 import { useToast } from '../../../context/ToastProvider';
 
+type TimeCategory = 'today' | 'yesterday' | 'previousDays';
+
+interface GroupedRooms {
+  today: Room[];
+  yesterday: Room[];
+  previousDays: Room[];
+}
+
 const RoomList = () => {
   const styles = RoomListStyles();
   const location = useLocation();
@@ -26,6 +34,43 @@ const RoomList = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [newRoomName, setNewRoomName] = useState('');
   const newRoomInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Helper function to determine time category
+  const getTimeCategory = (createdAt: Date): TimeCategory => {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    const roomDate = new Date(createdAt);
+    const roomDateOnly = new Date(roomDate.getFullYear(), roomDate.getMonth(), roomDate.getDate());
+    
+    if (roomDateOnly.getTime() === today.getTime()) {
+      return 'today';
+    } else if (roomDateOnly.getTime() === yesterday.getTime()) {
+      return 'yesterday';
+    } else {
+      return 'previousDays';
+    }
+  };
+
+  // Group rooms by time category
+  const groupedRooms: GroupedRooms = rooms.reduce<GroupedRooms>(
+    (groups, room) => {
+      const category = getTimeCategory(room.created_at);
+      groups[category].push(room);
+      return groups;
+    },
+    { today: [], yesterday: [], previousDays: [] }
+  );
+
+  // Sort rooms within each group by creation date (newest first)
+  Object.keys(groupedRooms).forEach(key => {
+    const category = key as TimeCategory;
+    groupedRooms[category].sort((a, b) => 
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+  });
 
   // change focus to input for rename or new room
   useEffect(() => {
@@ -113,6 +158,27 @@ const RoomList = () => {
       });
   };
 
+  // Render function for a group of rooms
+  const renderRoomGroup = (category: TimeCategory, rooms: Room[]) => {
+    if (rooms.length === 0) return null;
+    
+    return (
+      <div key={category} className={styles.sectionContainer}>
+        <div className={styles.sectionTitle}>
+          {t(category)}
+        </div>
+        {rooms.map((room, index) => (
+          <RoomItem
+            key={room.id || index}
+            room={room}
+            onRename={handleRename}
+            onDelete={handleDelete}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div>
       <Button
@@ -121,7 +187,7 @@ const RoomList = () => {
         onClick={handleShowCreateInput}
         icon={<ChatAddRegular/>}
       >
-        {t('createRoomButton')}
+        {t('newChatButton')}
       </Button>
       {isCreating && (
         <Input
@@ -139,14 +205,9 @@ const RoomList = () => {
           placeholder={t('roomNamePlaceholder')}
         />
       )}
-      {rooms.map((room, index) => (
-        <RoomItem
-          key={index}
-          room={room}
-          onRename={handleRename}
-          onDelete={handleDelete}
-        />
-      ))}
+      {renderRoomGroup('today', groupedRooms.today)}
+      {renderRoomGroup('yesterday', groupedRooms.yesterday)}
+      {renderRoomGroup('previousDays', groupedRooms.previousDays)}
     </div>
   );
 };

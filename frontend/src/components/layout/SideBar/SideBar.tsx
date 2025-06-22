@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   InlineDrawer
 } from '@fluentui/react-components';
-import FileExplorer from '../../common/FileExplorer/FileExplorer';
+
 import SideBarStyles from './SideBarStyles';
 
 interface SidebarProps {
@@ -37,11 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onCollapsedChange }) => {
         position={'start'}
         className={styles.drawer}
       >
-        <DrawerHeader>
-          <FileExplorer />
-        </DrawerHeader>
         <DrawerBody>
-          <Divider className={styles.divider} />
           <RoomList />
         </DrawerBody>
       </InlineDrawer>

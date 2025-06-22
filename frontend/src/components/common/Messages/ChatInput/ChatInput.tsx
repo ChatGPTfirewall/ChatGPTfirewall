@@ -3,6 +3,7 @@ import { Button, Textarea } from '@fluentui/react-components';
 import ChatInputStyles from './ChatInputStyles';
 import { Send24Filled, DocumentSearchRegular, GlobeFilled, ChatFilled } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
+import { FileExplorer } from '../../FileExplorer/FileExplorer';
 
 interface ChatInputProps {
   onSendMessage: (value: string) => void;
@@ -60,6 +61,7 @@ const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedM
             {!demo && (
             <>
               <div className={styles.buttonGroup}>
+              <FileExplorer />
               <Button 
                 appearance={selectedButton === 'gpt' ? 'primary' : 'subtle'}
                 icon={<ChatFilled />} 

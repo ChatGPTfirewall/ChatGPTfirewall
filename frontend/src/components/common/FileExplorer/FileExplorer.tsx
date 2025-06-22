@@ -10,9 +10,10 @@ import {
   DialogTrigger,
   CompoundButton,
   Spinner,
-  OnSelectionChangeData
+  OnSelectionChangeData,
+  Tooltip
 } from '@fluentui/react-components';
-import { DocumentFolder24Regular } from '@fluentui/react-icons';
+import { Add24Regular } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
 import FileExplorerStyles from './FileExplorerStyles';
 import { FileList as FileListComp } from '../FileList/FileList';
@@ -132,15 +133,14 @@ export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
       }
     }}>    
       <DialogTrigger disableButtonEnhancement>
-        <Button
-          appearance="primary"
-          icon={<DocumentFolder24Regular />}
-          iconPosition="after"
-          size="large"
-          className={styles.triggerButton}
-        >
-          {t('files')}
-        </Button>
+        <Tooltip content={t('addFilesTooltip')} relationship="description">
+          <Button
+            appearance="subtle"
+            icon={<Add24Regular />}
+            size="medium"
+            className={styles.triggerButton}
+          />
+        </Tooltip>
       </DialogTrigger>
       <DialogSurface className={styles.surface}>
         <DialogBody>
