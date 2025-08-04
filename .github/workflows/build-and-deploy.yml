@@ -117,6 +117,25 @@ jobs:
             export DEBUG=${{ secrets.DEBUG }}
             export JWT_ISSUER=${{ secrets.EXP_JWT_ISSUER }}
             export JWT_AUDIENCE=${{ secrets.EXP_JWT_AUDIENCE }}
+            echo "CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}" >> ~/.bck_env
+            echo "DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }}" >> ~/.bck_env
+            echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> ~/.bck_env
+            echo "EXP_SERVER_SSH_KEY=${{ secrets.EXP_SERVER_SSH_KEY }}" >> ~/.bck_env
+            echo "HARBOR_SECRET=${{ secrets.HARBOR_SECRET }}" >> ~/.bck_env
+            echo "HARBOR_USERNAME=${{ secrets.HARBOR_USERNAME }}" >> ~/.bck_env
+            echo "JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}" >> ~/.bck_env
+            echo "JWT_ISSUER=${{ secrets.JWT_ISSUER }}" >> ~/.bck_env
+            echo "PERSONAL_ACCESS_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }}" >> ~/.bck_env
+            echo "QDRANT_SECRET=${{ secrets.QDRANT_SECRET }}" >> ~/.bck_env
+            echo "QDRANT_URL=${{ secrets.QDRANT_URL }}" >> ~/.bck_env
+            echo "QDRANT_URL_TWO=${{ secrets.QDRANT_URL_TWO }}" >> ~/.bck_env
+            echo "SERVER_HOST=${{ secrets.SERVER_HOST }}" >> ~/.bck_env
+            echo "SERVER_SSH_PASSWORD=${{ secrets.SERVER_SSH_PASSWORD }}" >> ~/.bck_env
+            echo "SERVER_USER=${{ secrets.SERVER_USER }}" >> ~/.bck_env
+            echo "VITE_AUTH0_CLIENT_ID=${{ secrets.VITE_AUTH0_CLIENT_ID }}" >> ~/.bck_env
+            echo "VITE_AUTH0_DOMAIN=${{ secrets.VITE_AUTH0_DOMAIN }}" >> ~/.bck_env
+            echo "VITE_JWT_AUDIENCE=${{ secrets.VITE_JWT_AUDIENCE }}" >> ~/.bck_env
+            echo "VITE_JWT_ISSUER=${{ secrets.VITE_JWT_ISSUER }}" >> ~/.bck_env
             docker compose pull
             docker compose up -d
           command_timeout: 25m
