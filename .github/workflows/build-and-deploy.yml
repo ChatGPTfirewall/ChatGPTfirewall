@@ -102,12 +102,10 @@ jobs:
           password: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
           script: |
             export DB_USER=${{ secrets.DB_USER }}
-            echo $DB_USER
             export DB_NAME=${{ secrets.DB_NAME }}
-            echo $DB_NAEM
             export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
             export SECRET_KEY='${{ secrets.SECRET_KEY }}'
-            export DATABASE_URL=${{ secrets.DATABASE_URL }}
+            export DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@postgres:5432/${DB_NAME}"
             export QDRANT_URL=${{ secrets.EXP_QDRANT_URL }}
             export QDRANT_SECRET=${{ secrets.EXP_QDRANT_SECRET }}
             export SPACY_NLP_MODEL=${{ secrets.SPACY_NLP_MODEL }}
