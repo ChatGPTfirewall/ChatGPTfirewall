@@ -129,7 +129,7 @@ jobs:
             export SPACY_NLP_MODEL=${{ secrets.SPACY_NLP_MODEL }}
             export TRANSFORMER_MODEL=${{ secrets.TRANSFORMER_MODEL }}
             export OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}
-            export DOCKER_USERNAME=${{ secrets.EXP_DOCKER_USERNAME }}
+            export DOCKER_IMAGE_PREFIX=${{ env.IMAGE_PREFIX }}
             export DEBUG=${{ secrets.DEBUG }}
             export JWT_ISSUER=${{ secrets.EXP_JWT_ISSUER }}
             export JWT_AUDIENCE=${{ secrets.EXP_JWT_AUDIENCE }}

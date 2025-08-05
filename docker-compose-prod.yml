@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   frontend:
-    image: ${DOCKER_USERNAME}/frontend:latest
+    image: ${DOCKER_IMAGE_PREFIX}/frontend:latest
     container_name: frontend
     stdin_open: true
     tty: true
@@ -20,7 +20,7 @@ services:
       - /home/deploy/letsencrypt/ssl/fullchain.pem:/etc/nginx/ssl/fullchain.pem
       - /home/deploy/letsencrypt/ssl/privkey.pem:/etc/nginx/ssl/privkey.pem
   backend:
-    image: ${DOCKER_USERNAME}/backend:latest
+    image: ${DOCKER_IMAGE_PREFIX}/backend:latest
     container_name: backend
     stdin_open: true
     tty: true
