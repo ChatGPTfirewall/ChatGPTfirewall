@@ -94,6 +94,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v4
+
       - name: Upload docker-compose.yaml
         uses: appleboy/scp-action@master
         with:
