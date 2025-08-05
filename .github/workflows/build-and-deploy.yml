@@ -133,23 +133,6 @@ jobs:
             export DEBUG=${{ secrets.DEBUG }}
             export JWT_ISSUER=${{ secrets.EXP_JWT_ISSUER }}
             export JWT_AUDIENCE=${{ secrets.EXP_JWT_AUDIENCE }}
-            echo "EXP_DOCKER_PASSWORD=${{ secrets.EXP_DOCKER_PASSWORD }}" >> ~/.bck_env
-            echo "EXP_DOCKER_USERNAME=${{ secrets.EXP_DOCKER_USERNAME }}" >> ~/.bck_env
-            echo "EXP_JWT_AUDIENCE=${{ secrets.EXP_JWT_AUDIENCE }}" >> ~/.bck_env
-            echo "EXP_JWT_ISSUER=${{ secrets.EXP_JWT_ISSUER }}" >> ~/.bck_env
-            echo "EXP_QDRANT_SECRET=${{ secrets.EXP_QDRANT_SECRET }}" >> ~/.bck_env
-            echo "EXP_QDRANT_URL=${{ secrets.EXP_QDRANT_URL }}" >> ~/.bck_env
-            echo "EXP_SERVER_HOST=${{ secrets.EXP_SERVER_HOST }}" >> ~/.bck_env
-            echo "EXP_SERVER_SSH_PASSWORD=${{ secrets.EXP_SERVER_SSH_PASSWORD }}" >> ~/.bck_env
-            echo "EXP_SERVER_USER=${{ secrets.EXP_SERVER_USER }}" >> ~/.bck_env
-            echo "EXP_VITE_AUTH0_CLIENT_ID=${{ secrets.EXP_VITE_AUTH0_CLIENT_ID }}" >> ~/.bck_env
-            echo "EXP_VITE_AUTH0_DOMAIN=${{ secrets.EXP_VITE_AUTH0_DOMAIN }}" >> ~/.bck_env
-            echo "EXP_VITE_JWT_AUDIENCE=${{ secrets.EXP_VITE_JWT_AUDIENCE }}" >> ~/.bck_env
-            echo "EXP_VITE_JWT_ISSUER=${{ secrets.EXP_VITE_JWT_ISSUER }}" >> ~/.bck_env
-            echo "OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}" >> ~/.bck_env
-            echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> ~/.bck_env
-            echo "SPACY_NLP_MODEL=${{ secrets.SPACY_NLP_MODEL }}" >> ~/.bck_env
-            echo "TRANSFORMER_MODEL=${{ secrets.TRANSFORMER_MODEL }}" >> ~/.bck_env
             docker compose pull
             docker compose up -d
           command_timeout: 25m
