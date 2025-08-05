@@ -104,7 +104,7 @@ jobs:
           username: ${{ secrets.EXP_SERVER_USER }}
           password: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
           source: "docker-compose-prod.yml"
-          target: "${{ secrets.EXP_REMOTE_APP_PATH }}/docker-compose.yml"
+          target: "${{ secrets.EXP_REMOTE_APP_PATH }}/"
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
@@ -113,6 +113,7 @@ jobs:
           username: ${{ secrets.EXP_SERVER_USER }}
           password: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
           script: |
+            mv "${{ secrets.EXP_REMOTE_APP_PATH }}/docker-compose-prod.yml" "${{ secrets.EXP_REMOTE_APP_PATH }}/docker-compose.yml"
             export DB_USER=${{ secrets.DB_USER }}
             export DB_NAME=${{ secrets.DB_NAME }}
             export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
