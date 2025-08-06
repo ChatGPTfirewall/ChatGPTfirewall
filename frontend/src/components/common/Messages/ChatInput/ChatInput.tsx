@@ -10,10 +10,11 @@ interface ChatInputProps {
   onChangeMessageType?: (value: string) => void;
   demo?: boolean;
   selectedMessageType: string;
+  disableDocumentSearchButton?: boolean;
 }
 
 
-const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedMessageType }: ChatInputProps) => {
+const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedMessageType, disableDocumentSearchButton = false }: ChatInputProps) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [selectedButton, setSelectedButton] = useState<string>(selectedMessageType);
@@ -75,6 +76,7 @@ const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedM
                 icon={<DocumentSearchRegular />} 
                 className={styles.pillButton}
                 onClick={() => handleButtonClick('document')}
+                disabled={disableDocumentSearchButton}
               >
                 {t('DocumentSearchButton')}
               </Button>

@@ -531,7 +531,7 @@ const Room = () => {
   };
 
   // Empty files list state
-  if (!room || room.files.length === 0) {
+  if (!room) {
     return (
       <div className={styles.emptyContainer}>
         <DocumentAdd48Regular className={styles.addIcon} />
@@ -663,6 +663,7 @@ const Room = () => {
         onSendMessage={onSendMessage}
         onChangeMessageType={onChangeMessageType}
         selectedMessageType={searchMode}
+        disableDocumentSearchButton={room.files.length === 0}
       />
     </div>
   );
