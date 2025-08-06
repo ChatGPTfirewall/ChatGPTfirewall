@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_PREFIX: ${{ secrets.HARBOR_REGISTRY }}
+  IMAGE_PREFIX: ${{ secrets.EXP_DOCKER_USERNAME }}
 
 jobs:
   deploy:
