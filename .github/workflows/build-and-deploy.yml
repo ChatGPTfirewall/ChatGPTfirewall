@@ -111,6 +111,13 @@ jobs:
           source: "docker-compose-prod.yml"
           target: "${{ secrets.EXP_REMOTE_APP_PATH }}/"
 
+      - name: Log in to Harbor
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.HARBOR_REGISTRY }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_SECRET }}
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
