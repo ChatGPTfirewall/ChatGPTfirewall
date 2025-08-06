@@ -1,4 +1,4 @@
-name: CI/CD Workflow
+name: CI/CD Workflow Docker Hub
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_PREFIX: ${{ secrets.EXP_DOCKER_USERNAME }}/garnet
+  IMAGE_PREFIX: ${{ secrets.EXP_DOCKER_USERNAME }}
 
 jobs:
   build-and-push-frontend:
