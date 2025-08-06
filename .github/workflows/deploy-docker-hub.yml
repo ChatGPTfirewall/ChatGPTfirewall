@@ -1,0 +1,50 @@
+name: Deploy Workflow
+
+on:
+  workflow_dispatch:
+
+env:
+  IMAGE_PREFIX: ${{ secrets.HARBOR_REGISTRY }}/garnet
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v4
+
+      - name: Upload docker-compose.yaml
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EXP_SERVER_HOST }}
+          username: ${{ secrets.EXP_SERVER_USER }}
+          password: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
+          source: "docker-compose-prod.yml"
+          target: "${{ secrets.EXP_REMOTE_APP_PATH }}/"
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EXP_SERVER_HOST }}
+          username: ${{ secrets.EXP_SERVER_USER }}
+          password: ${{ secrets.EXP_SERVER_SSH_PASSWORD }}
+          script: |
+            mv "${{ secrets.EXP_REMOTE_APP_PATH }}/docker-compose-prod.yml" "${{ secrets.EXP_REMOTE_APP_PATH }}/docker-compose.yml"
+            export DB_USER=${{ secrets.DB_USER }}
+            export DB_NAME=${{ secrets.DB_NAME }}
+            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            export SECRET_KEY='${{ secrets.SECRET_KEY }}'
+            export DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@postgres:5432/${DB_NAME}"
+            export QDRANT_URL=${{ secrets.EXP_QDRANT_URL }}
+            export QDRANT_SECRET=${{ secrets.EXP_QDRANT_SECRET }}
+            export SPACY_NLP_MODEL=${{ secrets.SPACY_NLP_MODEL }}
+            export TRANSFORMER_MODEL=${{ secrets.TRANSFORMER_MODEL }}
+            export OPEN_AI_KEY=${{ secrets.OPEN_AI_KEY }}
+            export DOCKER_IMAGE_PREFIX=${{ env.IMAGE_PREFIX }}
+            export DEBUG=${{ secrets.DEBUG }}
+            export JWT_ISSUER=${{ secrets.EXP_JWT_ISSUER }}
+            export JWT_AUDIENCE=${{ secrets.EXP_JWT_AUDIENCE }}
+            docker compose pull
+            docker compose up -d
+          command_timeout: 25m
