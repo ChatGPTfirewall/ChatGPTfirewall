@@ -109,13 +109,6 @@ jobs:
           source: "docker-compose-prod.yml"
           target: "${{ secrets.EXP_REMOTE_APP_PATH }}/"
 
-      - name: Log in to Harbor
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ secrets.HARBOR_REGISTRY }}
-          username: ${{ secrets.HARBOR_USERNAME }}
-          password: ${{ secrets.HARBOR_SECRET }}
-
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
@@ -138,6 +131,13 @@ jobs:
             export DEBUG=${{ secrets.DEBUG }}
             export JWT_ISSUER=${{ secrets.EXP_JWT_ISSUER }}
             export JWT_AUDIENCE=${{ secrets.EXP_JWT_AUDIENCE }}
+            export VITE_AUTH0_DOMAIN: ${{ secrets.EXP_VITE_AUTH0_DOMAIN }}
+            export VITE_AUTH0_CLIENT_ID: ${{ secrets.EXP_VITE_AUTH0_CLIENT_ID }}
+            export VITE_JWT_AUDIENCE: ${{ secrets.EXP_VITE_JWT_AUDIENCE }}
+            export VITE_JWT_ISSUER: ${{ secrets.EXP_VITE_JWT_ISSUER }}
+            
+            echo "${{ secrets.HARBOR_SECRET }}" | docker login ${{ secrets.HARBOR_REGISTRY }} -u ${{ secrets.HARBOR_USERNAME }} --password-stdin
+            
             docker compose pull
             docker compose up -d
           command_timeout: 25m
