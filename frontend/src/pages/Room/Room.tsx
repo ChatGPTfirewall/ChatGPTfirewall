@@ -40,7 +40,7 @@ const Room = () => {
   const [settingsDrawerOpen, setSettingsDrawerOpenState] = useState(false);
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
-  const [searchMode, setSearchMode] = useState<'document' | 'web' | 'gpt' >('document');
+  const [searchMode, setSearchMode] = useState<'document' | 'web' | 'gpt' >('web');
   const { selectedModel } = useAIModel();
 
   const anonymizeContent = useCallback(
@@ -84,7 +84,7 @@ const Room = () => {
     },
     []
   );
-  
+
 
   useEffect(() => {
     if (settingsDrawerOpen) {
@@ -95,6 +95,7 @@ const Room = () => {
       getRoom(id)
         .then((fetchedRoom) => {
           setRoom(fetchedRoom);
+          setSearchMode(fetchedRoom.files.length === 0? 'gpt' : 'document')
           if (anonymized) {
             setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, !anonymized, anonymizeContent));
             setRoom((prevRoom) => anonymizeRoomMessages(prevRoom, anonymized, anonymizeContent));
@@ -471,6 +472,9 @@ const Room = () => {
     updateRoomFiles(room.id, fileIds)
       .then((updatedRoom) => {
         setRoom(updatedRoom);
+        if (fileIds.length === 0){
+          setSearchMode('gpt')
+        }
       })
       .catch((error) => {
         const errorMessage =
