@@ -2,7 +2,7 @@ import { RoomSettings, Room as RoomType } from '../../models/Room';
 import ChatContainer from '../../components/layout/ChatContainer/ChatContainer';
 import RoomStyles from './RoomStyles';
 import ChatInput from '../../components/common/Messages/ChatInput/ChatInput';
-import { Body1, Body1Strong, Button, Switch } from '@fluentui/react-components';
+import {Button, Spinner, Switch} from '@fluentui/react-components';
 import {
   AddRegular,
   DocumentAdd48Regular,
@@ -534,29 +534,11 @@ const Room = () => {
     setSettingsDrawerOpenState(false);
   };
 
-  // Empty files list state
+  // Room is still loading
   if (!room) {
     return (
       <div className={styles.emptyContainer}>
-        <DocumentAdd48Regular className={styles.addIcon} />
-        <div className={styles.emptyTextContainer}>
-          <Body1Strong>{t('emptyStateBodyTextStrong')}</Body1Strong>
-          <Body1 className={styles.bodyText}>{t('emptyStateBodyText')}</Body1>
-        </div>
-        <FileSelector
-          selectedFiles={[]}
-          onFilesSelected={handleSelectedFiles}
-          triggerButton={(triggerProps) => (
-            <Button
-              {...triggerProps}
-              appearance="primary"
-              icon={<AddRegular />}
-              className={styles.emptyAddFilesButton}
-            >
-              {t('addFilesEmptyPage')}
-            </Button>
-          )}
-        />
+        <Spinner label={t('loading')} />
       </div>
     );
   }

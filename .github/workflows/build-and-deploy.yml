@@ -1,7 +1,9 @@
 name: CI/CD Workflow
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   IMAGE_PREFIX: ${{ secrets.HARBOR_REGISTRY }}/garnet
