@@ -27,6 +27,10 @@ from .serializers import (AnonymizationMappingSerializer, DocumentSerializer,
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 LLM_MAX_TOKENS = 4098
 
 # initialize llm engine
@@ -500,6 +504,7 @@ class MessagesApiView(APIView):
             try:
                 search_results = search(id, vector, roomDocsList)
             except Exception:
+                logger.exception("Search Error")
                 return Response("Search Error", status.HTTP_400_BAD_REQUEST)
 
             facts = []
@@ -850,6 +855,7 @@ class LanguageAPI(APIView):
             user = User.objects.get(auth0_id=auth0_id)
             return Response(user.lang, status.HTTP_200_OK)
         except:
+            logger.exception("Get user language error")
             return Response("Error!", status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @permission_classes([AllowAny])
@@ -865,6 +871,7 @@ class LanguageAPI(APIView):
         except User.DoesNotExist:
             return Response("User not found", status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
+            logger.exception("Set user language error")
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
