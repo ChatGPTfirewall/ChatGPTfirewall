@@ -4,8 +4,6 @@ import RoomStyles from './RoomStyles';
 import ChatInput from '../../components/common/Messages/ChatInput/ChatInput';
 import {Button, Spinner, Switch} from '@fluentui/react-components';
 import {
-  AddRegular,
-  DocumentAdd48Regular,
   DocumentQueueAddRegular,
   BookSearchRegular,
   Settings32Regular
