@@ -65,7 +65,7 @@ const ChatInput = ({ onSendMessage, onChangeMessageType, roomFiles, onFilesSelec
             <>
               <div className={styles.buttonGroup}>
               <FileExplorer
-                  roomFileIds={roomFiles.map(file => file.id)}
+                  roomFileIds={roomFiles?.map(file => file.id!) ?? []}
                   onFilesSelected={onFilesSelected}
               />
               <Button 
