@@ -153,7 +153,6 @@
   "waitingToAbort": "Waiting to abort...",
   "abort": "Abort",
   "MessagePlaceholder": "Write a message...",
-  "DirectGPTButton": "Ask GPT",
   "WebSeachButton": "Web Search",
   "DocumentSearchButton": "Document Search",
   "searchingWeb": "Searching the web...",

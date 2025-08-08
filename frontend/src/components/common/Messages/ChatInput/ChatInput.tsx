@@ -69,14 +69,6 @@ const ChatInput = ({ onSendMessage, onChangeMessageType, roomFiles, onFilesSelec
                   onFilesSelected={onFilesSelected}
               />
               <Button 
-                appearance={selectedButton === 'gpt' ? 'primary' : 'subtle'}
-                icon={<ChatFilled />} 
-                className={styles.pillButton}
-                onClick={() => handleButtonClick('gpt')}
-              >
-                {t('DirectGPTButton')}
-              </Button>
-              <Button 
                 appearance={selectedButton === 'document' ? 'primary' : 'subtle'}
                 icon={<DocumentSearchRegular />} 
                 className={styles.pillButton}

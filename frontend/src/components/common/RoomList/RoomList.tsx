@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import RoomItem from './RoomItem';
 import { Room } from '../../../models/Room';
 import { Button, Input } from '@fluentui/react-components';
-import { ChatAddRegular } from '@fluentui/react-icons';
+import {ChatAddRegular, DocumentQueueAddRegular} from '@fluentui/react-icons';
 import RoomListStyles from './RoomListStyles';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../../../context/UserProvider';
@@ -181,6 +181,15 @@ const RoomList = () => {
 
   return (
     <div>
+      <Link to="/files">
+        <Button
+          appearance="primary"
+          className={styles.createRoomButton}
+          icon={<DocumentQueueAddRegular/>}
+        >
+          {t('files')}
+        </Button>
+      </Link>
       <Button
         appearance="secondary"
         className={styles.createRoomButton}

@@ -639,6 +639,7 @@ class MessagesApiView(APIView):
             return Response(response, status.HTTP_200_OK)
 
 
+        # This is removed from FE
         # message for llm
         elif recipient == "chatgpt":
             question = request.data.get("content")
