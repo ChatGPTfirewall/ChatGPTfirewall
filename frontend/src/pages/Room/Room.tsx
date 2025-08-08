@@ -161,7 +161,7 @@ const Room = () => {
   );
 
   const onChangeMessageType = (value: string) => {
-    if (value === 'document' || value === 'web' || value === 'gpt') {
+    if (value === 'document' || value === 'web' /*|| value === 'gpt'*/) {
       setSearchMode(value);
       return;
     }
@@ -353,57 +353,57 @@ const Room = () => {
       .finally(() => setIsMessageLoading(false));
     }
 
-  const onSendDirectlyToChatGPT = (question: string) => {
-    if (!room) {
-      showToast(t('errorNoRoom'), 'error');
-      return;
-    }
-  
-    const chatGPTMessage: Message = {
-      user: room.user,
-      room: room,
-      role: 'user',
-      content: question,
-      created_at: new Date().toISOString(),
-      model: selectedModel,
-    };
-
-    const tempMessage: Message = {
-      user: room.user,
-      room: room,
-      role: 'assistant',
-      content: t('loading'),
-      created_at: new Date().toISOString()
-    };
-
-    setIsMessageLoading(true);
-
-    const updatedRoom = {
-      ...room,
-      messages: [...room.messages, chatGPTMessage, tempMessage]
-    };
-    setRoom(updatedRoom);
-
-    createChatGPTMessage(chatGPTMessage)
-      .then((createdMessage) => {
-        const updatedMessages = updatedRoom.messages
-          .slice(0, -1)
-          .concat(createdMessage);
-        setRoom({
-          ...updatedRoom,
-          messages: updatedMessages
-        });
-      })
-      .catch((error) => {
-        const errorMessage =
-          error.response?.data?.error || t('unexpectedErrorOccurred');
-        showToast(
-          `${t('errorSendingMessageToChatGPT')}: ${errorMessage}`,
-          'error'
-        );
-      })
-      .finally(() => setIsMessageLoading(false));
-  };
+  // const onSendDirectlyToChatGPT = (question: string) => {
+  //   if (!room) {
+  //     showToast(t('errorNoRoom'), 'error');
+  //     return;
+  //   }
+  //
+  //   const chatGPTMessage: Message = {
+  //     user: room.user,
+  //     room: room,
+  //     role: 'user',
+  //     content: question,
+  //     created_at: new Date().toISOString(),
+  //     model: selectedModel,
+  //   };
+  //
+  //   const tempMessage: Message = {
+  //     user: room.user,
+  //     room: room,
+  //     role: 'assistant',
+  //     content: t('loading'),
+  //     created_at: new Date().toISOString()
+  //   };
+  //
+  //   setIsMessageLoading(true);
+  //
+  //   const updatedRoom = {
+  //     ...room,
+  //     messages: [...room.messages, chatGPTMessage, tempMessage]
+  //   };
+  //   setRoom(updatedRoom);
+  //
+  //   createChatGPTMessage(chatGPTMessage)
+  //     .then((createdMessage) => {
+  //       const updatedMessages = updatedRoom.messages
+  //         .slice(0, -1)
+  //         .concat(createdMessage);
+  //       setRoom({
+  //         ...updatedRoom,
+  //         messages: updatedMessages
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       const errorMessage =
+  //         error.response?.data?.error || t('unexpectedErrorOccurred');
+  //       showToast(
+  //         `${t('errorSendingMessageToChatGPT')}: ${errorMessage}`,
+  //         'error'
+  //       );
+  //     })
+  //     .finally(() => setIsMessageLoading(false));
+  // };
 
   const onSendToChatGPT = () => {
     if (!room) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Textarea } from '@fluentui/react-components';
 import ChatInputStyles from './ChatInputStyles';
-import { Send24Filled, DocumentSearchRegular, GlobeFilled, ChatFilled } from '@fluentui/react-icons';
+import { Send24Filled, DocumentSearchRegular, GlobeFilled } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
 import { FileExplorer } from '../../FileExplorer/FileExplorer';
 import {File} from "../../../../models/File.ts";
