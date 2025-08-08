@@ -208,8 +208,9 @@ const Room = () => {
 
     if (searchMode === 'web') {
       onSendWebSearch(value);
-    } else if (searchMode === 'gpt') {
-      onSendDirectlyToChatGPT(value);
+    // }
+    // else if (searchMode === 'gpt') {
+    //   onSendDirectlyToChatGPT(value);
     } else if (searchMode === 'document') {
         createSearchMessage(newMessage)
           .then((createdMessage) => {
@@ -468,7 +469,7 @@ const Room = () => {
       .then((updatedRoom) => {
         setRoom(updatedRoom);
         if (fileIds.length === 0){
-          setSearchMode('gpt')
+          setSearchMode('web')
         }
       })
       .catch((error) => {

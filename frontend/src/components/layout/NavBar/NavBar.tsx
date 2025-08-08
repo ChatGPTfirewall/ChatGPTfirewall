@@ -3,14 +3,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../../common/LoginButton/LoginButton';
 import UserMenu from '../../common/UserMenu/UserMenu';
 import NavBarStyles from './NavBarStyles';
-import { useTranslation } from 'react-i18next';
 import { Divider } from '@fluentui/react-components';
 
 const NavBar = () => {
   const styles = NavBarStyles();
   const { isAuthenticated } = useAuth0();
-
-  const { t } = useTranslation();
 
   return (
     <header className={styles.header} role={'banner'}>
