@@ -187,7 +187,7 @@ export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: 
                   {t('deleteSelectedFiles')}
                 </Button>
                 <FileListComp
-                  selectedFileIds={[...selectedFiles]}
+                  selectedFileIds={selectedFiles}
                   files={files}
                   onSelectionChange={handleSelectedFiles}
                 />
