@@ -120,7 +120,7 @@ export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: 
     deleteFiles(fileIdsToDelete)
       .then(() => {
         setFiles((prevFiles) =>
-          prevFiles.filter((file) => !selectedFiles.has(file.id))
+          prevFiles.filter((file) => !selectedFiles.has(file.id!))
         );
         setSelectedFiles(new Set());
         showToast(t('filesDeletedSuccess'), 'success');
