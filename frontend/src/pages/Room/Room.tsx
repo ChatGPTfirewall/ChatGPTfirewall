@@ -647,7 +647,8 @@ const Room = () => {
         onSendMessage={onSendMessage}
         onChangeMessageType={onChangeMessageType}
         selectedMessageType={searchMode}
-        disableDocumentSearchButton={room.files.length === 0}
+        roomFiles={room.files}
+        onFilesSelected={handleSelectedFiles}
       />
     </div>
   );

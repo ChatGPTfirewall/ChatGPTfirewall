@@ -11,7 +11,7 @@ import {
   CompoundButton,
   Spinner,
   OnSelectionChangeData,
-  Tooltip
+  Tooltip, SelectionItemId
 } from '@fluentui/react-components';
 import { Add24Regular } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
@@ -20,23 +20,31 @@ import { FileList as FileListComp } from '../FileList/FileList';
 import NextCloudIcon from './NextCloudIcon.svg?react';
 import UploadButton from './UploadButton';
 import { useUser } from '../../../context/UserProvider';
-import { File as FileType } from '../../../models/File';
+import {File, File as FileType} from '../../../models/File';
 import { getFiles, createFiles, deleteFiles } from '../../../api/fileApi';
 import { useToast } from '../../../context/ToastProvider';
 
 interface FileExplorerProps {
   onClose?: () => void;
   onOpen?: () => void;
+  roomFileIds: SelectionItemId[];
+  onFilesSelected: (files: File[]) => void;
 }
 
-export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
+export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: FileExplorerProps) => {
   const styles = FileExplorerStyles();
   const { t } = useTranslation();
   const { user } = useUser();
   const { showToast } = useToast();
   const [files, setFiles] = useState<FileType[]>([]);
-  const [selectedFiles, setSelectedFiles] = useState(new Set());
+  const [selectedFiles, setSelectedFiles] = useState<Set<SelectionItemId>>(new Set(roomFileIds));
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  // Ensure that if `roomFileIds` changes from outside, we sync the selection
+  useEffect(() => {
+    setSelectedFiles(new Set(roomFileIds));
+  }, [roomFileIds]);
 
   useEffect(() => {
     if (!user) return;
@@ -124,14 +132,23 @@ export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
       });
   };
 
+  const selectFiles = () => {
+    onFilesSelected(files.filter((file) => selectedFiles.has(file.id!)));
+    setIsDialogOpen(false);
+  };
+
   return (
-    <Dialog onOpenChange={(_, data) => {
-      if (data.open) {
-        onOpen?.(); // Call onOpen when the dialog opens
-      } else {
-        onClose?.(); // Call onClose when the dialog closes
+    <Dialog
+      open={isDialogOpen}
+      onOpenChange={(_, data) => {
+        setIsDialogOpen(data.open);
+          if (data.open) {
+            onOpen?.(); // Call onOpen when the dialog opens
+          } else {
+            onClose?.(); // Call onClose when the dialog closes
+          }
       }
-    }}>    
+    }>
       <DialogTrigger disableButtonEnhancement>
         <Tooltip content={t('addFilesTooltip')} relationship="description">
           <Button
@@ -170,6 +187,7 @@ export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
                   {t('deleteSelectedFiles')}
                 </Button>
                 <FileListComp
+                  selectedFileIds={[...selectedFiles]}
                   files={files}
                   onSelectionChange={handleSelectedFiles}
                 />
@@ -177,6 +195,9 @@ export const FileExplorer = ({ onClose, onOpen }: FileExplorerProps) => {
             )}
           </DialogContent>
           <DialogActions>
+            <Button appearance="primary" onClick={selectFiles}>
+              {t('fileSelectorSelectButton')}
+            </Button>
             <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">{t('dialogCloseButton')}</Button>
             </DialogTrigger>

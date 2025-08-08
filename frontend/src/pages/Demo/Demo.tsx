@@ -315,7 +315,9 @@ const Demo = () => {
           <ChatInput 
             onSendMessage={onSendMessage} 
             demo 
-            selectedMessageType={"document"} 
+            selectedMessageType={"document"}
+            roomFiles={room.files}
+            onFilesSelected={handleSelectedFiles}
           />
         </div>
       ) : (
@@ -328,7 +330,9 @@ const Demo = () => {
           <ChatInput 
             onSendMessage={onSendMessage} 
             demo 
-            selectedMessageType={"document"} 
+            selectedMessageType={"document"}
+            roomFiles={room?.files ?? []}
+            onFilesSelected={handleSelectedFiles}
           />
         </div>
       )}

@@ -4,17 +4,19 @@ import ChatInputStyles from './ChatInputStyles';
 import { Send24Filled, DocumentSearchRegular, GlobeFilled, ChatFilled } from '@fluentui/react-icons';
 import { useTranslation } from 'react-i18next';
 import { FileExplorer } from '../../FileExplorer/FileExplorer';
+import {File} from "../../../../models/File.ts";
 
 interface ChatInputProps {
   onSendMessage: (value: string) => void;
   onChangeMessageType?: (value: string) => void;
+  roomFiles: File[];
+  onFilesSelected: (files: File[]) => void;
   demo?: boolean;
   selectedMessageType: string;
-  disableDocumentSearchButton?: boolean;
 }
 
 
-const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedMessageType, disableDocumentSearchButton = false }: ChatInputProps) => {
+const ChatInput = ({ onSendMessage, onChangeMessageType, roomFiles, onFilesSelected, demo = false, selectedMessageType }: ChatInputProps) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [selectedButton, setSelectedButton] = useState<string>(selectedMessageType);
@@ -62,7 +64,10 @@ const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedM
             {!demo && (
             <>
               <div className={styles.buttonGroup}>
-              <FileExplorer />
+              <FileExplorer
+                  roomFileIds={roomFiles.map(file => file.id)}
+                  onFilesSelected={onFilesSelected}
+              />
               <Button 
                 appearance={selectedButton === 'gpt' ? 'primary' : 'subtle'}
                 icon={<ChatFilled />} 
@@ -76,7 +81,7 @@ const ChatInput = ({ onSendMessage, onChangeMessageType, demo = false, selectedM
                 icon={<DocumentSearchRegular />} 
                 className={styles.pillButton}
                 onClick={() => handleButtonClick('document')}
-                disabled={disableDocumentSearchButton}
+                disabled={roomFiles.length === 0}
               >
                 {t('DocumentSearchButton')}
               </Button>
