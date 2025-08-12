@@ -10,6 +10,7 @@ import { User } from '../models/User'; // Stelle sicher, dass der Pfad korrekt i
 import { useAuth0 } from '@auth0/auth0-react';
 import { getUser, createUser } from '../api/usersApi'; // Stelle sicher, dass der Pfad korrekt ist
 import { useTranslation } from 'react-i18next';
+import {Spinner} from '@fluentui/react-components';
 
 type UserContextType = {
   user: User | null;
@@ -73,6 +74,10 @@ export const UserProvider: FunctionComponent<{ children: ReactNode }> = ({
 
     fetchUserFromBackend();
   }, [auth0User, isAuthenticated, isLoading, i18n.language]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
