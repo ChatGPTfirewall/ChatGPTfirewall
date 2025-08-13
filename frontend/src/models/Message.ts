@@ -15,6 +15,7 @@ export type Message = {
   content: string | Result[];
   created_at: string;
   model?: OpenAIModel;
+  anonymized?: boolean
 };
 
 export type Result = {

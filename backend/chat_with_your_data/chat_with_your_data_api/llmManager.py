@@ -5,6 +5,8 @@ from openai import OpenAI
 
 from .models import ContextEntry, Room, RoomSettings, User
 
+from .embedding import embed_text
+from collections import defaultdict
 
 class ContextEntry:
     """represents one context line in the form:
@@ -45,6 +47,7 @@ class Room_:
 
 
 class LLM:
+    SUPPORTED_ENTITY_TYPES = ("CARDINAL", "DATE", "EVENT", "FAC", "GPE", "LANGUAGE", "LAW", "LOC", "MONEY", "NORP", "ORDINAL", "ORG", "PERCENT", "PERSON", "PRODUCT", "QUANTITY", "TIME", "WORK_OF_ART", "PER", "MISC")
     def __init__(self, apiKey):
         self.apiKey = apiKey
         self.client = OpenAI(api_key=apiKey)
@@ -60,9 +63,96 @@ class LLM:
             return formatted_results
         except Exception as e:
             print(f"Error: {str(e)}")
-            return 
+            return ''
 
-    def run(self, room: Room, question: str, model: str, search_mode: str = "document", is_demo: bool = False, user: User = None):
+    def system_search_tpl(self, lang: str, anonymized: bool) -> str:
+        """
+        Returns a system search template string based on language and anonymization setting.
+
+        :param lang: Language code (e.g., "en", "de", "fr").
+        :param anonymized: Whether the template should use anonymized placeholders.
+        :return: The template string.
+        """
+        templates = {
+            ("en", True): """
+                You are a helpful assistant that can provide up-to-date information based on web search results.
+
+                The question and any related text may contain anonymized placeholders such as PERSON_1, ORG_1, GPE_2, etc.
+                These placeholders represent named entities (people, organizations, locations, dates, money amounts) that were replaced to protect privacy.
+                
+                IMPORTANT:
+                - Always keep the placeholders exactly as they appear in the input.
+                - Do not attempt to guess, replace, or expand placeholders with real names.
+                - If you need to refer to the same entity multiple times, always use the same placeholder from the input text.
+                - Do not introduce new placeholder formats.
+            """,
+            ("en", False): """
+                "You are a helpful assistant that can provide up-to-date information based on web search results. 
+                Please analyze the search results and provide a comprehensive answer."
+            """,
+            ("de", True): """
+                Sie sind ein hilfreicher Assistent, der aktuelle Informationen basierend auf Websuchergebnissen bereitstellen kann.
+
+                Die Frage und der zugehörige Text können anonymisierte Platzhalter wie PERSON_1, ORG_1, GPE_2 usw. enthalten.
+                Diese Platzhalter stellen benannte Entitäten (Personen, Organisationen, Orte, Daten, Geldbeträge) dar, die zum Schutz der Privatsphäre ersetzt wurden.
+                
+                WICHTIG:
+                - Behalten Sie die Platzhalter immer genau so bei, wie sie in der Eingabe erscheinen.
+                - Versuchen Sie nicht, Platzhalter durch echte Namen zu erraten, zu ersetzen oder zu erweitern.
+                - Wenn Sie mehrmals auf dieselbe Entität verweisen müssen, verwenden Sie immer denselben Platzhalter aus dem Eingabetext.
+                - Führen Sie keine neuen Platzhalterformate ein.
+            """,
+            ("de", False): """
+                Sie sind ein hilfreicher Assistent, der auf dem neuesten Stand der Informationen basierend auf den Suchergebnissen im Web ist. 
+                Bitte analysieren Sie die Suchergebnisse und geben Sie eine umfassende Antwort.
+            """
+        }
+
+        return templates.get(
+            (lang.lower(), anonymized),
+            templates[("en", anonymized)]
+        )
+
+    def user_search_tpl(self, lang: str, anonymized: bool, question: str, search_results: str) -> str:
+        """
+        Returns a user search template string based on language and anonymization setting.
+
+        :param lang: Language code (e.g., "en", "de", "fr").
+        :param anonymized: Whether the template should use anonymized placeholders.
+        :return: The template string.
+        """
+        templates = {
+            ("en", True): f"""
+                Based on the following search results, answer the question:
+
+                Question: {question}
+                
+                Search Results:
+                {search_results}
+                
+                Remember: Keep all placeholders (e.g., PERSON_1, ORG_1) exactly as in the text.
+            """,
+            ("en", False): f"Based on the following search results, answer the question:\n\nQuestion: {question}\n\nSearch Results:\n{search_results}",
+            ("de", True): f"""
+                Beantworten Sie die Frage anhand der folgenden Suchergebnisse:
+
+                Frage: {question}
+                
+                Suchergebnisse:
+                {search_results}
+                
+                Hinweis: Alle Platzhalter (z. B. PERSON_1, ORG_1) müssen exakt wie im Text verwendet werden.
+            """,
+            ("de", False): f"Basierend auf den folgenden Suchergebnissen beantworten Sie die Frage:\n\nFrage: {question}\n\nSuchergebnisse:\n{search_results}"
+        }
+
+        return templates.get(
+            (lang.lower(), anonymized),
+            templates[("en", anonymized)]
+        )
+
+
+    def run(self, room: Room, question: str, model: str, search_mode: str = "document", is_demo: bool = False, user: User = None, anonymized = False):
         """
         Run a chat request to the selected OpenAI model.
         :param room: Room object containing chat context.
@@ -71,12 +161,11 @@ class LLM:
         :param search_mode: The search mode to use.
         :param is_demo: Flag to indicate if it's a demo mode.
         :param user: The user object.
+        :param anonymized: If the user input should be anonymized
         :return: The assistant's response.
         """
         # Ensure the selected model is valid and not injected by malicious users
         valid_models = ["gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini"]
-        systemSearchTemplateEN = "You are a helpful assistant that can provide up-to-date information based on web search results. Please analyze the search results and provide a comprehensive answer."
-        systemSearchTemplateDE = "Sie sind ein hilfreicher Assistent, der auf dem neuesten Stand der Informationen basierend auf den Suchergebnissen im Web ist. Bitte analysieren Sie die Suchergebnisse und geben Sie eine umfassende Antwort."
         
         if model not in valid_models:
             raise ValueError(f"Invalid model '{model}'. Choose from {valid_models}")
@@ -89,22 +178,19 @@ class LLM:
         
 
         if search_mode == "web":
-           
             search_results = self.perform_web_search(question)
 
+            if anonymized:
+                question, search_results, placeholder_map = self.anonymize_text(question, search_results, user.lang)
 
-            userSearchTemplateEN = f"Based on the following search results, answer the question:\n\nQuestion: {question}\n\nSearch Results:\n{search_results}"
-            userSearchTemplateDE = f"Basierend auf den folgenden Suchergebnissen beantworten Sie die Frage:\n\nFrage: {question}\n\nSuchergebnisse:\n{search_results}"
-
-            
             messages = [
                 {
                     "role": "system",
-                    "content": systemSearchTemplateDE if user.lang == "de" else systemSearchTemplateEN
+                    "content": self.system_search_tpl(user.lang, anonymized=True),
                 },
                 {
                     "role": "user",
-                    "content": userSearchTemplateDE if user.lang == "de" else userSearchTemplateEN
+                    "content": self.user_search_tpl(user.lang, anonymized=True, question=question, search_results=search_results),
                 }
             ]
         else:
@@ -122,6 +208,39 @@ class LLM:
         # Add the response to context
         room.appendContext(room, "assistant", response_content, is_demo)
         return response_content
+
+    def anonymize_text(self, question: str, answer: str, lang: str):
+        # Wrap question/answer in tags for later splitting
+        wrapped_text = f"<<QUESTION>> {question} <<ANSWER>> {answer}"
+
+        doc = embed_text(wrapped_text, lang)
+
+        placeholder_map = {}
+        entity_counts = defaultdict(int)
+
+        anonymized_text = wrapped_text
+
+        # We replace entities from the end so indices don't shift
+        for ent in sorted(doc.ents, key=lambda e: e.start_char, reverse=True):
+            # if ent.label_ in self.SUPPORTED_ENTITY_TYPES:
+            if ent.text not in placeholder_map:
+                entity_counts[ent.label_] += 1
+                placeholder = f"{ent.label_}_{entity_counts[ent.label_]}"
+                placeholder_map[ent.text] = placeholder
+            placeholder = placeholder_map[ent.text]
+            anonymized_text = (
+                    anonymized_text[:ent.start_char] + placeholder + anonymized_text[ent.end_char:]
+            )
+
+        return *self.split_anonymized_text(anonymized_text), placeholder_map #, reverse_map
+
+    def split_anonymized_text(self, anonymized_text: str):
+        """
+        Splits anonymized text back into Q & A using the wrapping tags.
+        """
+        q_part = anonymized_text.split("<<ANSWER>>")[0].replace("<<QUESTION>>", "").strip()
+        a_part = anonymized_text.split("<<ANSWER>>")[1].strip()
+        return q_part, a_part
 
 
 

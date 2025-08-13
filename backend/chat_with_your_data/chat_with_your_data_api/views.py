@@ -34,10 +34,7 @@ logger = logging.getLogger(__name__)
 LLM_MAX_TOKENS = 4098
 
 # initialize llm engine
-# myLLM = LLM(os.getenv("OPEN_AI_KEY"))  
-
-# Labels for Labellist
-labellist = ["CARDINAL", "DATE", "EVENT", "FAC", "GPE", "LANGUAGE", "LAW", "LOC", "MONEY", "NORP", "ORDINAL", "ORG", "PERCENT", "PERSON", "PRODUCT", "QUANTITY", "TIME", "WORK_OF_ART", "PER", "MISC"]
+# myLLM = LLM(os.getenv("OPEN_AI_KEY"))
 
 # initialize LLM Manager
 # myllmManager = llmManager(myLLM)  
@@ -539,7 +536,7 @@ class MessagesApiView(APIView):
                 ner_entities = detect_entities(embedded_text, user.lang)
                 
                 # Get actual counters from db
-                for label in labellist:
+                for label in LLM.SUPPORTED_ENTITY_TYPES:
                     precounter_query = AnonymizeEntitie.objects.filter(
                         entityType=label, roomID=room
                     ).order_by("-counter")[:1]
@@ -692,6 +689,7 @@ class MessagesApiView(APIView):
             room_id = room_data.get("id")
             is_demo = request.query_params.get("demo", "false").lower() == "true"
             selected_model = request.data.get("model", "gpt-3.5-turbo")
+            anonymized = request.data.get("anonymized", False)
 
             try:
                myRoom = Room.objects.get(id=room_id)
@@ -716,7 +714,8 @@ class MessagesApiView(APIView):
                     model=selected_model,  
                     search_mode="web",
                     is_demo=is_demo,
-                    user=user
+                    user=user,
+                    anonymized=anonymized
                 )
             except ValueError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

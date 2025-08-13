@@ -318,6 +318,7 @@ const Room = () => {
       content: `${t('searchTemplate')} ${question}`,
       created_at: new Date().toISOString(),
       model: selectedModel,
+      anonymized: anonymized
     };
 
     const tempMessage: Message = {
