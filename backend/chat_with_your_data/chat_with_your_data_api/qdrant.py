@@ -45,7 +45,7 @@ def delete_collection(name):
     __client.delete_collection(collection_name=name)
 
 
-def search(collection_name, vector, document_ids):
+def search(collection_name, vector, document_ids, number_of_results=3):
     # Konvertiere die Liste der Dokument-IDs in eine Liste von MatchValue Bedingungen
     document_id_conditions = [MatchValue(value=doc_id) for doc_id in document_ids]
     # Erstelle einen Filter, der nur Punkte zurückgibt, deren document_id in der Liste der ausgewählten Dokument-IDs enthalten ist
@@ -61,7 +61,7 @@ def search(collection_name, vector, document_ids):
     result = __client.search(
         collection_name=collection_name,
         query_vector=vector.tolist(),
-        limit=3,
+        limit=number_of_results,
         query_filter=filter,
     )
     return result

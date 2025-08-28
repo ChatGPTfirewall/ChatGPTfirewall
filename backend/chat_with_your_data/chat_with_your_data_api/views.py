@@ -21,6 +21,7 @@ from .llmManager import LLM, llmManager
 from .models import (AnonymizeEntitie, Document, Room, RoomDocuments, Section,
                      User)
 from .qdrant import create_collection, delete_text, insert_text, search
+from .re_ranker import re_rank_results
 from .serializers import (AnonymizationMappingSerializer, DocumentSerializer,
                           ReadDocumentSerializer, RoomSerializer,
                           UserSerializer)
@@ -499,26 +500,15 @@ class MessagesApiView(APIView):
                 roomDocsList.append(line.document.id)
 
             try:
-                search_results = search(id, vector, roomDocsList)
+                search_results = search(id, vector, roomDocsList, 20)
             except Exception:
                 logger.exception("Search Error")
                 return Response("Search Error", status.HTTP_400_BAD_REQUEST)
 
             facts = []
             counter = {}
-            actual_entities = []
-            for search_result in search_results:
-                section = Section.objects.get(
-                    id=search_result.payload.get("section_id")
-                )
-                embedded_text = embed_text(section.document.text, user.lang)
-                (before_result, after_result) = return_context(
-                    embedded_text,
-                    section.doc_index,
-                    room.settings.get("pre_phrase_count"),
-                    room.settings.get("post_phrase_count"),
-                )
-
+            sorted_results = re_rank_results(search_results, question, user, room)
+            for section, doc, embedded_text, before_result, after_result, percentage, search_result in sorted_results:
                 # Detect entities using Spacy
                 entities = []
                 for ent in embedded_text.ents:
@@ -611,7 +601,7 @@ class MessagesApiView(APIView):
                     "content": text + " ",
                     "fileName": section.document.filename,
                     "fileId": section.document.id,
-                    "accuracy": search_result.score,
+                    "accuracy": percentage,
                     "context_before": before_result + " ",
                     "context_after": after_result + " " + heading_text,
                 }
