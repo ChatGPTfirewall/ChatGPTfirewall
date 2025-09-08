@@ -46,7 +46,8 @@ export const UserProvider: FunctionComponent<{ children: ReactNode }> = ({
           const emailVerified = idTokenClaims?.email_verified ?? false;
 
           if (!emailVerified) {
-            logout({ logoutParams: { returnTo: window.location.origin } });
+            localStorage.setItem('unverifiedUserEmail', 'true');
+            logout({ logoutParams: { returnTo: window.location.origin } })
             return;
           }
 

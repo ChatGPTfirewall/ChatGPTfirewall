@@ -162,5 +162,6 @@
   "today": "Today",
   "yesterday": "Yesterday",
   "previousDays": "Previous days",
-  "newChatButton": "New Chat"
+  "newChatButton": "New Chat",
+  "userUnverified": "User is not verified!"
 }

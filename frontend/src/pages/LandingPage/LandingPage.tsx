@@ -2,12 +2,22 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import { Button, Link } from '@fluentui/react-components';
 import LandingPageStyles from './LandingPageStyles';
+import {useEffect} from "react";
+import {useToast} from "../../context/ToastProvider.tsx";
 
 const LandingPage = () => {
   const styles = LandingPageStyles();
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   const { t } = useTranslation();
   const logoPath = '/images/android-chrome-512x512.png';
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    if (localStorage.getItem('unverifiedUserEmail')) {
+      showToast(t('userUnverified'), 'warning');
+      localStorage.removeItem('unverifiedUserEmail')
+    }
+  }, []);
 
   if (isAuthenticated) {
     return null;
