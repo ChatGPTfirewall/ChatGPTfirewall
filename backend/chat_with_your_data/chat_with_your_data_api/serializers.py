@@ -33,7 +33,7 @@ class SectionSerializer(serializers.ModelSerializer):
 class ContextEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = ContextEntry
-        fields = ["id", "role", "content", "created_at"]
+        fields = ["id", "role", "content", "created_at", "anonymized"]
 
 
 class AnonymizationMappingSerializer(serializers.ModelSerializer):

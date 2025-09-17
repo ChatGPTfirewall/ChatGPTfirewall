@@ -339,12 +339,27 @@ const Room = () => {
     
     createWebSearchMessage(webSearchMessage)
       .then((createdMessage) => {
+        // Make sure to de-anonymize return content for showing
+        if (!anonymized && typeof createdMessage.content == 'string') {
+          createdMessage = {
+            ...createdMessage,
+            content: anonymizeContent(
+                createdMessage.content,
+                createdMessage.room.anonymizationMappings,
+                anonymized,
+                room
+            )
+          };
+        }
+
         const updatedMessages = updatedRoom.messages
           .slice(0, -1)
           .concat(createdMessage);
+        const updatedAnonymizationMappings = createdMessage.room.anonymizationMappings
         setRoom({
           ...updatedRoom,
-          messages: updatedMessages
+          messages: updatedMessages,
+          anonymizationMappings: updatedAnonymizationMappings
         });
       })
       .catch((error) => {

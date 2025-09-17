@@ -540,7 +540,7 @@ class MessagesApiView(APIView):
 
                 
 
-                entity_mapping = map_entities(ner_entities, text, counter)
+                entity_mapping = map_entities(ner_entities, counter)
                 
                 for entry in entity_mapping:
                     # Skip entries longer than 1024 characters

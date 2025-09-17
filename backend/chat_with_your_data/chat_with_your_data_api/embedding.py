@@ -232,7 +232,7 @@ def detect_entities(text, lang):
     doc = nlp(text)
     return doc.ents
 
-def map_entities(entities, text, counter):
+def map_entities(entities, counter):
     entity_mapping = {}
     for entity in entities:
         entity_label = entity.label_

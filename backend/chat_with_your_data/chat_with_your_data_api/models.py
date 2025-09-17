@@ -67,43 +67,49 @@ class Room(models.Model):
     def __str__(self):
         return f"{self.user.auth0_id} + {self.id}"
 
-    def appendContext(self, room, role, content, is_demo):
-        myContext = ContextEntry(roomID=room, role=role, content=content)
+    def appendContext(self, room, role, content, is_demo, anonymized=False):
+        myContext = ContextEntry(roomID=room, role=role, content=content, anonymized=anonymized)
         if not is_demo:
             myContext.save()
 
     def createFullMessage(self, room, get_all, is_demo, question):
         fullMessage = []
-        msg_length = 0
         if is_demo:
             question_line = {"role": "user", "content": question}
             system_line = {
                 "role": "system",
                 "content": self.settings.get("prompt_template", ""),
             }
-            fullMessage.extend([question_line, system_line])
+            fullMessage.extend([system_line, question_line])
         else:
-            context = ContextEntry.objects.filter(roomID=room).order_by("-created_at")    
-            
-            for line in context:
-                content = line.content
-                messageLine = {"role": line.role, "content": content}
-                token_size = len(encoder.encode(str(messageLine)))
-                msg_length += token_size
+            fullMessage = self.getConversation(room, get_all)
 
-                if not get_all and msg_length >= LLM_MAX_TOKENS:
-                    break  # Stop when exceeding token limit
-
-                fullMessage.append(messageLine)
-            
             systemLine = {
                 "role": "system",
                 "content": room.settings.get("prompt_template", ""),
             }
-            fullMessage.append(systemLine)
+            fullMessage.insert(0, systemLine)
 
-        fullMessage.reverse()
         return fullMessage
+
+    def getConversation(self, room, get_all = True):
+        conversation = []
+        msg_length = 0
+        context = ContextEntry.objects.filter(roomID=room).order_by("-created_at")
+
+        for line in context:
+            content = line.content
+            messageLine = {"role": line.role, "content": content}
+            token_size = len(encoder.encode(str(messageLine)))
+            msg_length += token_size
+
+            if not get_all and msg_length >= LLM_MAX_TOKENS:
+                break  # Stop when exceeding token limit
+
+            conversation.append(messageLine)
+
+        conversation.reverse()
+        return conversation
 
 
 class ContextEntry(models.Model):
@@ -111,6 +117,7 @@ class ContextEntry(models.Model):
     role = models.CharField(max_length=255)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    anonymized = models.BooleanField(default=False)
 
 
 class AnonymizeEntitie(models.Model):
@@ -122,6 +129,7 @@ class AnonymizeEntitie(models.Model):
 
     class Meta:
         unique_together = (
+            "anonymized",
             "deanonymized",
             "roomID",
         )
