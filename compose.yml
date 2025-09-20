@@ -64,6 +64,26 @@ services:
       - QDRANT__STORAGE__STORAGE_PATH=/qdrant/storage
       - QDRANT__SERVICE__ENABLE_CORS=true 
       # - QDRANT__SERVICE__API_KEY=${QDRANT_SECRET}
+  llm-service:
+    image: ollama/ollama
+    container_name: llm-service
+    pull_policy: always
+    restart: always
+    ports:
+      - '11434:11434'
+    volumes:
+        - llm_storage:/root/.ollama
+
+  llm-service-model-loader:
+      build:
+          context: llm-service
+          dockerfile: Dockerfile
+      pull_policy: always
+      volumes:
+          - ./llm-service/scripts/download_model.sh:/usr/src/app/download_model.sh
+      depends_on:
+          llm-service:
+              condition: service_started
 volumes:
   postgres:
     driver: local
@@ -71,3 +91,4 @@ volumes:
     driver: local
   huggingface_cache:
   torch_cache:
+  llm_storage:

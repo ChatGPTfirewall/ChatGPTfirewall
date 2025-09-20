@@ -29,6 +29,7 @@ const formatFileSize = (size: number): string => {
 interface FileListProps {
   files: File[];
   selectedFileIds?: Set<SelectionItemId>;
+  selectionMode: 'single' | 'multiselect';
   onSelectionChange?: (
     e: MouseEvent | KeyboardEvent,
     data: OnSelectionChangeData
@@ -38,7 +39,8 @@ interface FileListProps {
 export const FileList = ({
   files,
   selectedFileIds,
-  onSelectionChange
+  onSelectionChange,
+  selectionMode = 'multiselect'
 }: FileListProps) => {
   const styles = FileListStyles();
   const { t } = useTranslation();
@@ -140,7 +142,7 @@ export const FileList = ({
       columns={columns}
       sortable
       subtleSelection
-      selectionMode="multiselect"
+      selectionMode={selectionMode}
       resizableColumns
       columnSizingOptions={columnSizingOptions}
       getRowId={(item) => item.id}

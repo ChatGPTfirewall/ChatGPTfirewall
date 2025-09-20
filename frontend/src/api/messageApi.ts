@@ -1,4 +1,4 @@
-import { Message } from '../models/Message';
+import { Message, SummaryMessage } from '../models/Message';
 import Request from './Request';
 
 export const createSearchMessage = (message: Message): Promise<Message> => {
@@ -28,6 +28,19 @@ export const createWebSearchMessage = (
   demo?: boolean
 ): Promise<Message> => {
   const baseUrl = '/api/messages/websearch';
+  const url = demo ? `${baseUrl}?demo=true` : baseUrl;
+
+  return Request({
+    url: url,
+    method: 'POST',
+    data: message
+  });
+};
+export const createDocumentSummaryMessage = (
+  message: SummaryMessage,
+  demo?: boolean
+): Promise<Message> => {
+  const baseUrl = '/api/messages/document-summarize';
   const url = demo ? `${baseUrl}?demo=true` : baseUrl;
 
   return Request({

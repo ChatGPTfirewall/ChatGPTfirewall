@@ -17,6 +17,14 @@ export type Message = {
   model?: OpenAIModel;
   anonymized?: boolean
 };
+export type SummaryMessage = {
+  id?: string;
+  user: User;
+  room: Room;
+  role: string;
+  content: string;
+  document_id: string;
+};
 
 export type Result = {
   fileName: string;

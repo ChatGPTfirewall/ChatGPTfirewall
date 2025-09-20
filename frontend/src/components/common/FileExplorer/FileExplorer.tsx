@@ -29,9 +29,14 @@ interface FileExplorerProps {
   onOpen?: () => void;
   roomFileIds: SelectionItemId[];
   onFilesSelected: (files: File[]) => void;
+  // Controlled open support
+  open?: boolean;
+  activeButton: string;
+  onOpenChange?: (open: boolean) => void;
+
 }
 
-export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: FileExplorerProps) => {
+export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected, open, onOpenChange, activeButton = 'document' }: FileExplorerProps) => {
   const styles = FileExplorerStyles();
   const { t } = useTranslation();
   const { user } = useUser();
@@ -41,10 +46,22 @@ export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+    // Resolve controlled/uncontrolled dialog state
+  const dialogOpen = open !== undefined ? open : isDialogOpen;
+  const setDialogOpen = (val: boolean) => {
+    if (onOpenChange) {
+      onOpenChange(val);
+    } else {
+      setIsDialogOpen(val);
+    }
+  };
+
   // Ensure that if `roomFileIds` changes from outside, we sync the selection
   useEffect(() => {
-    setSelectedFiles(new Set(roomFileIds));
-  }, [roomFileIds]);
+    // If a summary button is active, clear selection
+    const initialSelectedFiles = activeButton === 'summary' ? [] : roomFileIds;
+    setSelectedFiles(new Set(initialSelectedFiles));
+  }, [activeButton, roomFileIds]);
 
   useEffect(() => {
     if (!user) return;
@@ -134,19 +151,19 @@ export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: 
 
   const selectFiles = () => {
     onFilesSelected(files.filter((file) => selectedFiles.has(file.id!)));
-    setIsDialogOpen(false);
+    setDialogOpen(false);
   };
 
   return (
     <Dialog
-      open={isDialogOpen}
+      open={dialogOpen}
       onOpenChange={(_, data) => {
-        setIsDialogOpen(data.open);
-          if (data.open) {
-            onOpen?.(); // Call onOpen when the dialog opens
-          } else {
-            onClose?.(); // Call onClose when the dialog closes
-          }
+        setDialogOpen(data.open);
+        if (data.open) {
+          onOpen?.(); // Call onOpen when the dialog opens
+        } else {
+          onClose?.(); // Call onClose when the dialog closes
+        }
       }
     }>
       <DialogTrigger disableButtonEnhancement>
@@ -190,13 +207,14 @@ export const FileExplorer = ({ onClose, onOpen, roomFileIds, onFilesSelected }: 
                   selectedFileIds={selectedFiles}
                   files={files}
                   onSelectionChange={handleSelectedFiles}
+                  selectionMode={activeButton === 'summary' ? 'single' : 'multiselect'}
                 />
               </div>
             )}
           </DialogContent>
           <DialogActions>
             <Button appearance="primary" onClick={selectFiles}>
-              {t('fileSelectorSelectButton')}
+              {t(activeButton === 'summary' ? 'fileSelectorSummarizeButton' : 'fileSelectorSelectButton')}
             </Button>
             <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">{t('dialogCloseButton')}</Button>

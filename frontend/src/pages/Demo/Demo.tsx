@@ -17,6 +17,7 @@ import {
 import FileSelector from '../../components/common/FileSelector/FileSelector';
 import ExampleCards from '../../components/common/Cards/ExampleCards/ExampleCards';
 import { AnonymizationMapping } from '../../models/AnonymizationMapping';
+import { SendMessage } from '../../models/SendMessage.ts';
 
 const demoUserIdDE = 'auth0|demo_user_de';
 const demoUserIdEN = 'auth0|demo_user_en';
@@ -107,7 +108,10 @@ const Demo = () => {
   );
 
   const onExampleClicked = (example?: string) => {
-    onSendMessage(example!);
+    const message: SendMessage = {
+      content: example ?? ''
+    }
+    onSendMessage(message);
   };
 
   const handleSelectedFiles = (selectedFiles: File[]) => {
@@ -131,7 +135,7 @@ const Demo = () => {
         );
       });
   };
-  const onSendMessage = (value: string) => {
+  const onSendMessage = (message: SendMessage) => {
     if (!room) {
       showToast(t('errorNoRoom'), 'error');
       return;
@@ -141,7 +145,7 @@ const Demo = () => {
       user: room.user,
       room: room,
       role: 'user',
-      content: value,
+      content: message.content ?? '',
       created_at: new Date().toISOString()
     };
 

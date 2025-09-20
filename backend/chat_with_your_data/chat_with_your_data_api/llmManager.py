@@ -6,8 +6,9 @@ from openai import OpenAI
 from .models import Room, RoomSettings, User, AnonymizeEntitie
 
 from .embedding import embed_text
-from collections import defaultdict
 from typing import Tuple, Dict
+from .service.anonymization_util import AnonymizationUtil
+
 
 class ContextEntry:
     """represents one context line in the form:
@@ -48,7 +49,6 @@ class Room_:
 
 
 class LLM:
-    SUPPORTED_ENTITY_TYPES = ("CARDINAL", "DATE", "EVENT", "FAC", "GPE", "LANGUAGE", "LAW", "LOC", "MONEY", "NORP", "ORDINAL", "ORG", "PERCENT", "PERSON", "PRODUCT", "QUANTITY", "TIME", "WORK_OF_ART", "PER", "MISC")
     def __init__(self, apiKey):
         self.apiKey = apiKey
         self.client = OpenAI(api_key=apiKey)
@@ -155,12 +155,12 @@ class LLM:
 
         if search_mode == "web":
             search_results = self.perform_web_search(question)
-            entity_counts, entities_map = self.generate_maps_from_existing_entities(room)
+            entity_counts, entities_map = AnonymizationUtil.generate_maps_from_existing_entities(room)
 
             wrapped_text = f"<<QUESTION>> {question} <<ANSWER>> {search_results}"
 
             new_placeholders = []
-            anonymized_text = self._anonymize_text(wrapped_text, user.lang, entities_map, entity_counts, new_placeholders)
+            anonymized_text = AnonymizationUtil.anonymize_text(wrapped_text, user.lang, entities_map, entity_counts, new_placeholders)
 
             anon_question, anon_search = self._split_qa_text(anonymized_text)
 
@@ -186,7 +186,7 @@ class LLM:
 
             # Anonymize response if already not anonymized
             if not anonymized:
-                response_content = self._anonymize_text(response_content, user.lang, entities_map, entity_counts,
+                response_content = AnonymizationUtil.anonymize_text(response_content, user.lang, entities_map, entity_counts,
                                                         new_placeholders)
 
             # Remove placeholders used in search_result but not used in question and answer
@@ -194,7 +194,7 @@ class LLM:
                 self.remove_from_placeholders_unused_in_text(f"{anon_question}\n{response_content}", user.lang,
                                                              new_placeholders)
 
-            self._save_new_anonymized_entities(room, entities_map, new_placeholders)
+            AnonymizationUtil.save_new_anonymized_entities(room, entities_map, new_placeholders)
         else:
             room.appendContext(room, "user", question, is_demo)
             messages = room.createFullMessage(room, False, is_demo, question)
@@ -220,43 +220,6 @@ class LLM:
 
         return response_content
 
-    def _save_new_anonymized_entities(self, room, entities_map, new_placeholders) -> None:
-        for pl in new_placeholders:
-            type, count = pl.rsplit("_", 1)
-            # Find text label for placeholder in map
-            entry = next((k for k, v in entities_map[type].items() if v == pl), None)
-
-            AnonymizeEntitie.objects.create(
-                roomID=room,
-                anonymized=pl,
-                deanonymized=entry,
-                entityType=type,
-                counter=count,
-            )
-
-    def generate_maps_from_existing_entities(self, room) -> Tuple[Dict, Dict]:
-        entity_counts = defaultdict(int)
-        entities_map = defaultdict(lambda: defaultdict(str))
-
-        entities = AnonymizeEntitie.objects.filter(
-            roomID=room,
-            entityType__in=LLM.SUPPORTED_ENTITY_TYPES
-        ).order_by('entityType', '-counter').values('entityType', 'counter', 'anonymized', 'deanonymized')
-
-        current_type = None
-        for entity in entities:
-            entity_type = entity['entityType']
-            entities_map[entity_type][entity['deanonymized']] = entity['anonymized']
-            if current_type != entity_type:
-                current_type = entity_type
-                entity_counts[entity_type] = entity['counter']
-
-        for label in LLM.SUPPORTED_ENTITY_TYPES:
-            if label not in entity_counts:
-                entity_counts[label] = 0
-
-        return entity_counts, entities_map
-
     def remove_from_placeholders_unused_in_text(self, text, lang, new_placeholders) -> None:
         tokens = {token.text for token in embed_text(text, lang)}
         # Get unused placeholders
@@ -264,36 +227,6 @@ class LLM:
 
         for pl in unused:
             new_placeholders.remove(pl)
-
-    def _anonymize_text(self, text: str, lang: str, entities_map: dict, entity_counts: dict, new_placeholders: list) -> str:
-        """
-        Anonymization of provided text
-        Args:
-            text: Text for anonymization
-            lang: Language of the text
-            entities_map: Dict in form of {"PERSON": {"Alice": "PERSON_1"}} that was previously generated from anonymized previous conversations
-            entity_counts: Previously generated map for label and counter {"PERSON": 1, "ORG": 2}
-            new_placeholders: Newly generated placeholders from current text
-
-        Returns:
-            Anonymized text
-        """
-        doc = embed_text(text, lang)
-        anonymized_text = text
-        for ent in sorted(doc.ents, key=lambda e: e.start_char, reverse=True):
-            if not ent.label_ in LLM.SUPPORTED_ENTITY_TYPES or len(ent.text) > 1024:
-                continue
-            if ent.text not in entities_map[ent.label_]:
-                entity_counts[ent.label_] += 1
-                placeholder = f"{ent.label_}_{entity_counts[ent.label_]}"
-                entities_map[ent.label_][ent.text] = placeholder
-                new_placeholders.append(placeholder)
-            placeholder = entities_map[ent.label_][ent.text]
-            anonymized_text = (
-                    anonymized_text[:ent.start_char] + placeholder + anonymized_text[ent.end_char:]
-            )
-
-        return anonymized_text
 
     def _split_qa_text(self, anonymized_text: str):
         """

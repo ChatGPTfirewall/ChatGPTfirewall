@@ -22,6 +22,7 @@ from .models import (AnonymizeEntitie, Document, Room, RoomDocuments, Section,
                      User)
 from .qdrant import create_collection, delete_text, insert_text, search
 from .re_ranker import re_rank_results
+from .room.room_document_summarizer import RoomDocumentSummarizer
 from .serializers import (AnonymizationMappingSerializer, DocumentSerializer,
                           ReadDocumentSerializer, RoomSerializer,
                           UserSerializer)
@@ -29,6 +30,8 @@ from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 
 import logging
+
+from .service.anonymization_util import AnonymizationUtil
 
 logger = logging.getLogger(__name__)
 
@@ -526,7 +529,7 @@ class MessagesApiView(APIView):
                 ner_entities = detect_entities(embedded_text, user.lang)
                 
                 # Get actual counters from db
-                for label in LLM.SUPPORTED_ENTITY_TYPES:
+                for label in AnonymizationUtil.SUPPORTED_ENTITY_TYPES:
                     precounter_query = AnonymizeEntitie.objects.filter(
                         entityType=label, roomID=room
                     ).order_by("-counter")[:1]
@@ -720,6 +723,51 @@ class MessagesApiView(APIView):
                 "content": answer,
                 "created_at": current_time,
                 "model": selected_model,
+            }
+            return Response(response, status.HTTP_200_OK)
+
+        elif recipient == "document-summarize":
+            doc_id = request.data.get("document_id", None)
+            room_id = request.data.get("room", {}).get("id")
+            summarize_action_msg = request.data.get("content", None)
+
+            try:
+                room = Room.objects.get(id=room_id)
+            except Room.DoesNotExist:
+                return Response(
+                    {"error": "Room not found"}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            if not doc_id:
+                return Response(
+                    {"error": "Document not supplied"}, status=status.HTTP_400_BAD_REQUEST
+                )
+
+            user = User.objects.get(auth0_id=auth0_id)
+
+            try:
+                document = Document.objects.get(id=doc_id, user=user)
+            except Document.DoesNotExist:
+                return Response(
+                    {"error": "Document not found"}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            if not document.text:
+                return Response(
+                    {"error": "Document is empty"}, status=status.HTTP_422_UNPROCESSABLE_ENTITY
+                )
+
+            message = RoomDocumentSummarizer.create_summarize_exchange(summarize_action_msg, document, user, room)
+
+            user_serialized = UserSerializer(user).data
+            room_serialized = RoomSerializer(room).data
+
+            response = {
+                "user": user_serialized,
+                "room": room_serialized,
+                "role": "assistant",
+                "content": message,
+                "created_at": current_time
             }
             return Response(response, status.HTTP_200_OK)
 

@@ -10,7 +10,12 @@ import {
 import { File } from '../../models/File';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
-import { Message, Result, OpenAIModel } from '../../models/Message';
+import {
+  Message,
+  Result,
+  OpenAIModel,
+  SummaryMessage
+} from '../../models/Message';
 import { useAIModel } from '../../context/AIModelProvider';
 
 import { t } from 'i18next';
@@ -19,11 +24,12 @@ import TextDetailDrawer from '../../components/layout/TextDetailDrawer/TextDetai
 import { useToast } from '../../context/ToastProvider';
 import { getRoom, updateRoom, updateRoomFiles } from '../../api/roomsApi';
 import {
-  createChatGPTMessage,
+  createChatGPTMessage, createDocumentSummaryMessage,
   createSearchMessage,
   createWebSearchMessage
 } from '../../api/messageApi';
 import { AnonymizationMapping } from '../../models/AnonymizationMapping';
+import { SendMessage } from '../../models/SendMessage.ts';
 
 const Room = () => {
   const styles = RoomStyles();
@@ -35,7 +41,7 @@ const Room = () => {
   const [settingsDrawerOpen, setSettingsDrawerOpenState] = useState(false);
   const [anonymized, setAnonymized] = useState(true);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
-  const [searchMode, setSearchMode] = useState<'document' | 'web' >('web');
+  const [searchMode, setSearchMode] = useState<'document' | 'web'  | 'summary' >('web');
   const { selectedModel } = useAIModel();
 
   const anonymizeContent = useCallback(
@@ -161,7 +167,7 @@ const Room = () => {
   );
 
   const onChangeMessageType = (value: string) => {
-    if (value === 'document' || value === 'web' /*|| value === 'gpt'*/) {
+    if (value === 'document' || value === 'web'  || value === 'summary' /*|| value === 'gpt'*/) {
       setSearchMode(value);
       return;
     }
@@ -170,7 +176,7 @@ const Room = () => {
 
 
 
-  const onSendMessage = (value: string) => {
+  const onSendMessage = (message: SendMessage) => {
     if (!room) {
       showToast(t('errorNoRoom'), 'error');
       return;
@@ -180,7 +186,7 @@ const Room = () => {
       user: room.user,
       room: room,
       role: 'user',
-      content: value,
+      content: message.content || '',
       created_at: new Date().toISOString()
     };
 
@@ -207,10 +213,12 @@ const Room = () => {
     setRoom(updatedRoom);
 
     if (searchMode === 'web') {
-      onSendWebSearch(value);
+      onSendWebSearch(message.content || '');
     // }
     // else if (searchMode === 'gpt') {
     //   onSendDirectlyToChatGPT(value);
+    } else if (searchMode === 'summary') {
+      onSendDocumentSummary(message);
     } else if (searchMode === 'document') {
         createSearchMessage(newMessage)
           .then((createdMessage) => {
@@ -359,6 +367,86 @@ const Room = () => {
         setRoom({
           ...updatedRoom,
           messages: updatedMessages,
+          anonymizationMappings: updatedAnonymizationMappings
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.response?.data?.error || t('unexpectedErrorOccurred');
+        showToast(`Error: ${errorMessage}`, 'error');
+      })
+      .finally(() => setIsMessageLoading(false));
+    }
+
+    const onSendDocumentSummary = (message: SendMessage) => {
+      if (!message.file) {
+        return;
+      }
+
+      if (!room) {
+        showToast(t('errorNoRoom'), 'error');
+        return;
+      }
+
+      const webSearchMessage: Message = {
+      user: room.user,
+        room: room,
+        role: 'user',
+        content: message.content,
+        created_at: new Date().toISOString(),
+        model: selectedModel,
+        anonymized: anonymized
+      };
+
+      const tempMessage: Message = {
+        user: room.user,
+        room: room,
+        role: 'assistant',
+        content: t('summarizingDocument'),
+        created_at: new Date().toISOString()
+      };
+
+      setIsMessageLoading(true);
+
+      const updatedRoom = {
+        ...room,
+        messages: [...room.messages, webSearchMessage, tempMessage]
+      };
+      setRoom(updatedRoom);
+
+
+      const documentSummaryMessage: SummaryMessage = {
+        user: room.user,
+        room: room,
+        role: 'user',
+        content: message.content,
+        document_id: message.file?.id ?? ''
+      };
+
+      setIsMessageLoading(true);
+
+      createDocumentSummaryMessage(documentSummaryMessage)
+      .then((createdMessage) => {
+        // Make sure to de-anonymize return content for showing
+        if (!anonymized && typeof createdMessage.content == 'string') {
+          createdMessage = {
+            ...createdMessage,
+            content: anonymizeContent(
+                createdMessage.content,
+                createdMessage.room.anonymizationMappings,
+                anonymized,
+                room
+            )
+          };
+        }
+
+        const updatedMessages = updatedRoom.messages
+          .slice(0, -1)
+          .concat(createdMessage);
+        const updatedAnonymizationMappings = createdMessage.room.anonymizationMappings
+        setRoom({
+          ...updatedRoom,
+          messages: updatedMessages,
+          files: [...createdMessage.room.files],
           anonymizationMappings: updatedAnonymizationMappings
         });
       })
