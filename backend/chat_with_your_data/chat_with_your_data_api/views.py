@@ -22,13 +22,21 @@ from .models import (AnonymizeEntitie, Document, Room, RoomDocuments, Section,
                      User)
 from .qdrant import create_collection, delete_text, insert_text, search
 from .re_ranker import re_rank_results
+from .room.room_document_summarizer import RoomDocumentSummarizer
 from .serializers import (AnonymizationMappingSerializer, DocumentSerializer,
                           ReadDocumentSerializer, RoomSerializer,
                           UserSerializer)
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 
+# from llama_cpp import Llama
+# from ctransformers import AutoModelForCausalLM
+from chat_with_your_data_api.service.hierarchical_summarizer import HierarchicalSummarizer
+# from .hierarchical_summarizer import HierarchicalSummarizer
+
 import logging
+
+from .service.anonymization_util import AnonymizationUtil
 
 logger = logging.getLogger(__name__)
 
@@ -446,6 +454,38 @@ class DocumentApiView(APIView):
 
         return Response({"message": "Headings updated successfully", "document_id": document.id}, status=status.HTTP_200_OK)
 
+class SummarizeDocumentApiView(APIView):
+    @permission_classes([AllowAny])
+    # def post(self, request, document_id):
+    #     # Look up document by id
+    #     # Run summarization (call your service from earlier)
+    #     content = request.data.get("content")
+    #     summary = f"Summary for document {document_id}\nContent:\n{content}"
+    #     MODEL_PATH = os.getenv("LLM_MODEL_PATH", "/root/.cache/huggingface/hub/models--microsoft--Phi-3-mini-4k-instruct-gguf/snapshots/999f761fe19e26cf1a339a5ec5f9f201301cbb83/Phi-3-mini-4k-instruct-q4.gguf")
+    #     model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, model_type="ggml")
+    #     prompt = 'Tell ma a joke'
+    #     output = model.generate(prompt, max_new_tokens=200)
+    #     # llm = Llama(model_path=MODEL_PATH, n_ctx=4096, n_threads=4)
+    #
+    #     #/root/.cache/huggingface/hub/models--microsoft--Phi-3-mini-4k-instruct-gguf/snapshots/999f761fe19e26cf1a339a5ec5f9f201301cbb83/
+    #     return Response({"prompt": prompt, "output": output})
+
+    @permission_classes([AllowAny])
+    def post(self, request, document_id):
+        content = request.data.get("content")
+        #google/pegasus-cnn_dailymail (1024) 1m30s
+        #sshleifer/distilbart-cnn-12-6 (1024) 35-45s, better output
+        #t5-base (1024) 1m30s, worse output
+        #allenai/longformer-base-4096, not working
+        #google/bigbird-pegasus-large-arxiv, not working
+
+        summarizer = HierarchicalSummarizer("google/bigbird-pegasus-large-arxiv")
+        summarizer.default_window_size = 4096
+
+        # Get global summary
+        summary = summarizer.summarize(content)
+        return Response(summary)
+
 
 class UpdateRoomDocumentsView(APIView):
     @permission_classes([AllowAny])
@@ -526,7 +566,7 @@ class MessagesApiView(APIView):
                 ner_entities = detect_entities(embedded_text, user.lang)
                 
                 # Get actual counters from db
-                for label in LLM.SUPPORTED_ENTITY_TYPES:
+                for label in AnonymizationUtil.SUPPORTED_ENTITY_TYPES:
                     precounter_query = AnonymizeEntitie.objects.filter(
                         entityType=label, roomID=room
                     ).order_by("-counter")[:1]
@@ -720,6 +760,51 @@ class MessagesApiView(APIView):
                 "content": answer,
                 "created_at": current_time,
                 "model": selected_model,
+            }
+            return Response(response, status.HTTP_200_OK)
+
+        elif recipient == "document-summarize":
+            doc_id = request.data.get("document_id", None)
+            room_id = request.data.get("room", {}).get("id")
+            # is_demo = request.query_params.get("demo", "false").lower() == "true"
+
+            try:
+                room = Room.objects.get(id=room_id)
+            except Room.DoesNotExist:
+                return Response(
+                    {"error": "Room not found"}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            if not doc_id:
+                return Response(
+                    {"error": "Document not supplied"}, status=status.HTTP_400_BAD_REQUEST
+                )
+
+            user = User.objects.get(auth0_id=auth0_id)
+
+            try:
+                document = Document.objects.get(id=doc_id, user=user)
+            except Document.DoesNotExist:
+                return Response(
+                    {"error": "Document not found"}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            if not document.text:
+                return Response(
+                    {"error": "Document is empty"}, status=status.HTTP_422_UNPROCESSABLE_ENTITY
+                )
+
+            message = RoomDocumentSummarizer.create_summarize_msg(document, user, room)
+
+            user_serialized = UserSerializer(user).data
+            room_serialized = RoomSerializer(room).data
+
+            response = {
+                "user": user_serialized,
+                "room": room_serialized,
+                "role": "assistant",
+                "content": message,
+                "created_at": current_time
             }
             return Response(response, status.HTTP_200_OK)
 

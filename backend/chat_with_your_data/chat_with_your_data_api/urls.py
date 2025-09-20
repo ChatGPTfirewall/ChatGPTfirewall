@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from .views import (DocumentApiView, FilesApiView, LanguageAPI,
+from .views import (DocumentApiView, SummarizeDocumentApiView, FilesApiView, LanguageAPI,
                     MessagesApiView, NextCloudApiView, NextCloudFilesApiView,
                     RoomApiView, RoomsApiView, UpdateRoomDocumentsView,
                     UploadApiView, UserApiView, CategorizeApiView, SummarizeApiView)
@@ -12,6 +12,7 @@ urlpatterns = [
     path("files/reload", FilesApiView.as_view()),
     path("documents", DocumentApiView.as_view()),
     path("documents/<int:document_id>/", DocumentApiView.as_view(), name="document_detail"),
+    path("documents/<int:document_id>/summarize", SummarizeDocumentApiView.as_view(), name="document_summarize"),
     path(
         "rooms/<int:room_id>/documents/",
         UpdateRoomDocumentsView.as_view(),
