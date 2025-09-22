@@ -105,6 +105,7 @@ export const FileSelector = ({
                   selectedFileIds={selectedFileIds}
                   files={files}
                   onSelectionChange={handleSelectedFiles}
+                  selectionMode='multiselect'
                 />
               </div>
             )}
