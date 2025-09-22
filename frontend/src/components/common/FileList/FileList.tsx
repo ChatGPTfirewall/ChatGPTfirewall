@@ -29,7 +29,7 @@ const formatFileSize = (size: number): string => {
 interface FileListProps {
   files: File[];
   selectedFileIds?: Set<SelectionItemId>;
-  selectionMode: 'single' | 'multiselect';
+  selectionMode?: 'single' | 'multiselect';
   onSelectionChange?: (
     e: MouseEvent | KeyboardEvent,
     data: OnSelectionChangeData
