@@ -66,12 +66,8 @@ services:
       - llm_storage:/root/.ollama
 
   llm-service-model-loader:
-    build:
-      context: llm-service
-      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE_PREFIX}/llm-service-model-loader:latest
     pull_policy: always
-    volumes:
-      - ./llm-service/scripts/download_model.sh:/usr/src/app/download_model.sh
     depends_on:
       llm-service:
         condition: service_started
