@@ -1,33 +1,44 @@
-from chat_with_your_data_api.models import RoomDocuments
+from chat_with_your_data_api.models import RoomDocuments, Document, Room, User
 from chat_with_your_data_api.service.anonymization_util import AnonymizationUtil
 
 import re
 import unicodedata
 
-from chat_with_your_data_api.service.ollama_summarizer import OllamaSummarizer
+from chat_with_your_data_api.service.ollama_hierarchical_summarizer import OllamaHierarchicalSummarizer
 
 
 class RoomDocumentSummarizer:
     @staticmethod
-    def create_summarize_exchange(summarize_action_msg, document, user, room):
+    def create_summarize_exchange(summarize_action_msg: str, document: Document, user: User, room: Room):
         if user is None or not user.lang:
             raise ValueError("User language is not defined")
 
-        #TODO: Raise exception
         if not document.text:
             return "" #or rais exception
 
         if not RoomDocumentSummarizer.is_doc_in_room(document, room):
             RoomDocuments.objects.create(room=room, document=document)
 
-        summarizer = OllamaSummarizer()
-        text = RoomDocumentSummarizer.clean_text(document.text, 7500)
+        summary = RoomDocumentSummarizer._summarize_doc(document)
 
-        summary = summarizer.summarize(text)
         summary_message = "Dies ist die Zusammenfassung für ein Dokument:" if user.lang == 'de' else "This is the summary for a document:"
         summary_message += " " + document.filename + "\n" + summary
 
         return RoomDocumentSummarizer._append_anonymized_to_room(summarize_action_msg, summary_message, user.lang, room)
+
+    @staticmethod
+    def _summarize_doc(document: Document) -> str:
+        if document.summary:
+            return document.summary
+
+        summarizer = OllamaHierarchicalSummarizer()
+        text = RoomDocumentSummarizer.clean_text(document.text)
+
+        summary = summarizer.summarize(text)
+        document.summary = summary
+        document.save(update_fields=['summary'])
+
+        return summary
 
     @staticmethod
     def _append_anonymized_to_room(action, summary, lang, room) -> str:

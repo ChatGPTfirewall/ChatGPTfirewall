@@ -1,7 +1,9 @@
 name: CI/CD Workflow Docker Hub
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   IMAGE_PREFIX: ${{ secrets.EXP_DOCKER_USERNAME }}
@@ -162,6 +164,9 @@ jobs:
             export VITE_AUTH0_CLIENT_ID: ${{ secrets.EXP_VITE_AUTH0_CLIENT_ID }}
             export VITE_JWT_AUDIENCE: ${{ secrets.EXP_VITE_JWT_AUDIENCE }}
             export VITE_JWT_ISSUER: ${{ secrets.EXP_VITE_JWT_ISSUER }}
+            export SUMMARIZATION_MODEL_NAME: ${{ secrets.SUMMARIZATION_MODEL_NAME }}
+            export SUMMARIZATION_CHUNK_SIZE: ${{ secrets.SUMMARIZATION_CHUNK_SIZE }}
+            export SUMMARIZATION_CHUNK_OVERLAP: ${{ secrets.SUMMARIZATION_CHUNK_OVERLAP }}
             docker compose pull
             docker compose up -d
           command_timeout: 25m

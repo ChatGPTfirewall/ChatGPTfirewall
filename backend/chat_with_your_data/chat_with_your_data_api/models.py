@@ -39,6 +39,7 @@ class Document(models.Model):
     fileSize = models.PositiveIntegerField(default=0)
     uploadedAt = models.DateTimeField(auto_now_add=True)
     headings = models.JSONField(blank=True, null=True)
+    summary = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.filename
