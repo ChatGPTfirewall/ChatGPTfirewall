@@ -3,8 +3,6 @@ services:
   frontend:
     image: ${DOCKER_IMAGE_PREFIX}/frontend:latest
     container_name: frontend
-    stdin_open: true
-    tty: true
     ports:
       - "80:80"
       - "443:443"
@@ -22,8 +20,6 @@ services:
   backend:
     image: ${DOCKER_IMAGE_PREFIX}/backend:latest
     container_name: backend
-    stdin_open: true
-    tty: true
     environment:
       DEBUG: ${DEBUG}
       SECRET_KEY: ${SECRET_KEY}
@@ -63,8 +59,6 @@ services:
     container_name: llm-service
     pull_policy: always
     restart: always
-    ports:
-      - '11434:11434'
     volumes:
       - llm_storage:/root/.ollama
 
